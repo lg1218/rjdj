@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.CaXiaoshouMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.CaXiaoshou" >
+    <id column="Ca_id" property="caId" jdbcType="VARCHAR" />
+    <id column="Ca_clientId" property="caClientid" jdbcType="VARCHAR" />
+    <result column="Ca_clientName" property="caClientname" jdbcType="VARCHAR" />
+    <result column="Ca_containTax" property="caContaintax" jdbcType="INTEGER" />
+    <result column="Ca moneyType" property="caMoneytype" jdbcType="VARCHAR" />
+    <result column="Ca_ins torageName" property="caInsToragename" jdbcType="VARCHAR" />
+    <result column="Ca_ins torageId" property="caInsTorageid" jdbcType="VARCHAR" />
+    <result column="Ca_rate" property="caRate" jdbcType="DOUBLE" />
+    <result column="Ca_afreshInstorage" property="caAfreshinstorage" jdbcType="INTEGER" />
+    <result column="Ca_date" property="caDate" jdbcType="DATE" />
+    <result column="Ca_moneyAttach" property="caMoneyattach" jdbcType="VARCHAR" />
+    <result column="Ca_moneyTerm" property="caMoneyterm" jdbcType="VARCHAR" />
+    <result column="Ca_moneyMonth" property="caMoneymonth" jdbcType="DATE" />
+    <result column="Ca_largess" property="caLargess" jdbcType="INTEGER" />
+    <result column="Ca_remark" property="caRemark" jdbcType="VARCHAR" />
+    <result column="Ca_operationPerson" property="caOperationperson" jdbcType="VARCHAR" />
+    <result column="Ca_opId" property="caOpid" jdbcType="VARCHAR" />
+    <result column="Ca_checkPerson" property="caCheckperson" jdbcType="VARCHAR" />
+    <result column="Ca_chId" property="caChid" jdbcType="VARCHAR" />
+    <result column="Ca_makePerson" property="caMakeperson" jdbcType="VARCHAR" />
+    <result column="Ca_mpId" property="caMpid" jdbcType="VARCHAR" />
+    <result column="Ca_dept" property="caDept" jdbcType="VARCHAR" />
+    <result column="Ca_deptId" property="caDeptid" jdbcType="VARCHAR" />
+    <result column="Ca_item" property="caItem" jdbcType="VARCHAR" />
+    <result column="Ca_itemId" property="caItemid" jdbcType="VARCHAR" />
+    <result column="Ca_state" property="caState" jdbcType="INTEGER" />
+    <result column="Ca_byzd1" property="caByzd1" jdbcType="VARCHAR" />
+    <result column="Ca_byzd2" property="caByzd2" jdbcType="VARCHAR" />
+    <result column="Ca_byzd3" property="caByzd3" jdbcType="VARCHAR" />
+    <result column="Ca_byzd4" property="caByzd4" jdbcType="VARCHAR" />
+    <result column="Ca_byzd5" property="caByzd5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Ca_id, Ca_clientId, Ca_clientName, Ca_containTax, "Ca moneyType", "Ca_ins torageName", 
+    "Ca_ins torageId", Ca_rate, Ca_afreshInstorage, Ca_date, Ca_moneyAttach, Ca_moneyTerm, 
+    Ca_moneyMonth, Ca_largess, Ca_remark, Ca_operationPerson, Ca_opId, Ca_checkPerson, 
+    Ca_chId, Ca_makePerson, Ca_mpId, Ca_dept, Ca_deptId, Ca_item, Ca_itemId, Ca_state, 
+    Ca_byzd1, Ca_byzd2, Ca_byzd3, Ca_byzd4, Ca_byzd5
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.CaXiaoshouExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ca_xiaoshou
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.accp.domain.CaXiaoshouKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from ca_xiaoshou
+    where Ca_id = #{caId,jdbcType=VARCHAR}
+      and Ca_clientId = #{caClientid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.accp.domain.CaXiaoshouKey" >
+    delete from ca_xiaoshou
+    where Ca_id = #{caId,jdbcType=VARCHAR}
+      and Ca_clientId = #{caClientid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.CaXiaoshouExample" >
+    delete from ca_xiaoshou
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.CaXiaoshou" >
+    insert into ca_xiaoshou (Ca_id, Ca_clientId, Ca_clientName, 
+      Ca_containTax, "Ca moneyType", "Ca_ins torageName", 
+      "Ca_ins torageId", Ca_rate, Ca_afreshInstorage, 
+      Ca_date, Ca_moneyAttach, Ca_moneyTerm, 
+      Ca_moneyMonth, Ca_largess, Ca_remark, 
+      Ca_operationPerson, Ca_opId, Ca_checkPerson, 
+      Ca_chId, Ca_makePerson, Ca_mpId, 
+      Ca_dept, Ca_deptId, Ca_item, 
+      Ca_itemId, Ca_state, Ca_byzd1, 
+      Ca_byzd2, Ca_byzd3, Ca_byzd4, 
+      Ca_byzd5)
+    values (#{caId,jdbcType=VARCHAR}, #{caClientid,jdbcType=VARCHAR}, #{caClientname,jdbcType=VARCHAR}, 
+      #{caContaintax,jdbcType=INTEGER}, #{caMoneytype,jdbcType=VARCHAR}, #{caInsToragename,jdbcType=VARCHAR}, 
+      #{caInsTorageid,jdbcType=VARCHAR}, #{caRate,jdbcType=DOUBLE}, #{caAfreshinstorage,jdbcType=INTEGER}, 
+      #{caDate,jdbcType=DATE}, #{caMoneyattach,jdbcType=VARCHAR}, #{caMoneyterm,jdbcType=VARCHAR}, 
+      #{caMoneymonth,jdbcType=DATE}, #{caLargess,jdbcType=INTEGER}, #{caRemark,jdbcType=VARCHAR}, 
+      #{caOperationperson,jdbcType=VARCHAR}, #{caOpid,jdbcType=VARCHAR}, #{caCheckperson,jdbcType=VARCHAR}, 
+      #{caChid,jdbcType=VARCHAR}, #{caMakeperson,jdbcType=VARCHAR}, #{caMpid,jdbcType=VARCHAR}, 
+      #{caDept,jdbcType=VARCHAR}, #{caDeptid,jdbcType=VARCHAR}, #{caItem,jdbcType=VARCHAR}, 
+      #{caItemid,jdbcType=VARCHAR}, #{caState,jdbcType=INTEGER}, #{caByzd1,jdbcType=VARCHAR}, 
+      #{caByzd2,jdbcType=VARCHAR}, #{caByzd3,jdbcType=VARCHAR}, #{caByzd4,jdbcType=VARCHAR}, 
+      #{caByzd5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.CaXiaoshou" >
+    insert into ca_xiaoshou
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="caId != null" >
+        Ca_id,
+      </if>
+      <if test="caClientid != null" >
+        Ca_clientId,
+      </if>
+      <if test="caClientname != null" >
+        Ca_clientName,
+      </if>
+      <if test="caContaintax != null" >
+        Ca_containTax,
+      </if>
+      <if test="caMoneytype != null" >
+        "Ca moneyType",
+      </if>
+      <if test="caInsToragename != null" >
+        "Ca_ins torageName",
+      </if>
+      <if test="caInsTorageid != null" >
+        "Ca_ins torageId",
+      </if>
+      <if test="caRate != null" >
+        Ca_rate,
+      </if>
+      <if test="caAfreshinstorage != null" >
+        Ca_afreshInstorage,
+      </if>
+      <if test="caDate != null" >
+        Ca_date,
+      </if>
+      <if test="caMoneyattach != null" >
+        Ca_moneyAttach,
+      </if>
+      <if test="caMoneyterm != null" >
+        Ca_moneyTerm,
+      </if>
+      <if test="caMoneymonth != null" >
+        Ca_moneyMonth,
+      </if>
+      <if test="caLargess != null" >
+        Ca_largess,
+      </if>
+      <if test="caRemark != null" >
+        Ca_remark,
+      </if>
+      <if test="caOperationperson != null" >
+        Ca_operationPerson,
+      </if>
+      <if test="caOpid != null" >
+        Ca_opId,
+      </if>
+      <if test="caCheckperson != null" >
+        Ca_checkPerson,
+      </if>
+      <if test="caChid != null" >
+        Ca_chId,
+      </if>
+      <if test="caMakeperson != null" >
+        Ca_makePerson,
+      </if>
+      <if test="caMpid != null" >
+        Ca_mpId,
+      </if>
+      <if test="caDept != null" >
+        Ca_dept,
+      </if>
+      <if test="caDeptid != null" >
+        Ca_deptId,
+      </if>
+      <if test="caItem != null" >
+        Ca_item,
+      </if>
+      <if test="caItemid != null" >
+        Ca_itemId,
+      </if>
+      <if test="caState != null" >
+        Ca_state,
+      </if>
+      <if test="caByzd1 != null" >
+        Ca_byzd1,
+      </if>
+      <if test="caByzd2 != null" >
+        Ca_byzd2,
+      </if>
+      <if test="caByzd3 != null" >
+        Ca_byzd3,
+      </if>
+      <if test="caByzd4 != null" >
+        Ca_byzd4,
+      </if>
+      <if test="caByzd5 != null" >
+        Ca_byzd5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="caId != null" >
+        #{caId,jdbcType=VARCHAR},
+      </if>
+      <if test="caClientid != null" >
+        #{caClientid,jdbcType=VARCHAR},
+      </if>
+      <if test="caClientname != null" >
+        #{caClientname,jdbcType=VARCHAR},
+      </if>
+      <if test="caContaintax != null" >
+        #{caContaintax,jdbcType=INTEGER},
+      </if>
+      <if test="caMoneytype != null" >
+        #{caMoneytype,jdbcType=VARCHAR},
+      </if>
+      <if test="caInsToragename != null" >
+        #{caInsToragename,jdbcType=VARCHAR},
+      </if>
+      <if test="caInsTorageid != null" >
+        #{caInsTorageid,jdbcType=VARCHAR},
+      </if>
+      <if test="caRate != null" >
+        #{caRate,jdbcType=DOUBLE},
+      </if>
+      <if test="caAfreshinstorage != null" >
+        #{caAfreshinstorage,jdbcType=INTEGER},
+      </if>
+      <if test="caDate != null" >
+        #{caDate,jdbcType=DATE},
+      </if>
+      <if test="caMoneyattach != null" >
+        #{caMoneyattach,jdbcType=VARCHAR},
+      </if>
+      <if test="caMoneyterm != null" >
+        #{caMoneyterm,jdbcType=VARCHAR},
+      </if>
+      <if test="caMoneymonth != null" >
+        #{caMoneymonth,jdbcType=DATE},
+      </if>
+      <if test="caLargess != null" >
+        #{caLargess,jdbcType=INTEGER},
+      </if>
+      <if test="caRemark != null" >
+        #{caRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="caOperationperson != null" >
+        #{caOperationperson,jdbcType=VARCHAR},
+      </if>
+      <if test="caOpid != null" >
+        #{caOpid,jdbcType=VARCHAR},
+      </if>
+      <if test="caCheckperson != null" >
+        #{caCheckperson,jdbcType=VARCHAR},
+      </if>
+      <if test="caChid != null" >
+        #{caChid,jdbcType=VARCHAR},
+      </if>
+      <if test="caMakeperson != null" >
+        #{caMakeperson,jdbcType=VARCHAR},
+      </if>
+      <if test="caMpid != null" >
+        #{caMpid,jdbcType=VARCHAR},
+      </if>
+      <if test="caDept != null" >
+        #{caDept,jdbcType=VARCHAR},
+      </if>
+      <if test="caDeptid != null" >
+        #{caDeptid,jdbcType=VARCHAR},
+      </if>
+      <if test="caItem != null" >
+        #{caItem,jdbcType=VARCHAR},
+      </if>
+      <if test="caItemid != null" >
+        #{caItemid,jdbcType=VARCHAR},
+      </if>
+      <if test="caState != null" >
+        #{caState,jdbcType=INTEGER},
+      </if>
+      <if test="caByzd1 != null" >
+        #{caByzd1,jdbcType=VARCHAR},
+      </if>
+      <if test="caByzd2 != null" >
+        #{caByzd2,jdbcType=VARCHAR},
+      </if>
+      <if test="caByzd3 != null" >
+        #{caByzd3,jdbcType=VARCHAR},
+      </if>
+      <if test="caByzd4 != null" >
+        #{caByzd4,jdbcType=VARCHAR},
+      </if>
+      <if test="caByzd5 != null" >
+        #{caByzd5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.CaXiaoshouExample" resultType="java.lang.Integer" >
+    select count(*) from ca_xiaoshou
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ca_xiaoshou
+    <set >
+      <if test="record.caId != null" >
+        Ca_id = #{record.caId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caClientid != null" >
+        Ca_clientId = #{record.caClientid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caClientname != null" >
+        Ca_clientName = #{record.caClientname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caContaintax != null" >
+        Ca_containTax = #{record.caContaintax,jdbcType=INTEGER},
+      </if>
+      <if test="record.caMoneytype != null" >
+        "Ca moneyType" = #{record.caMoneytype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caInsToragename != null" >
+        "Ca_ins torageName" = #{record.caInsToragename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caInsTorageid != null" >
+        "Ca_ins torageId" = #{record.caInsTorageid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caRate != null" >
+        Ca_rate = #{record.caRate,jdbcType=DOUBLE},
+      </if>
+      <if test="record.caAfreshinstorage != null" >
+        Ca_afreshInstorage = #{record.caAfreshinstorage,jdbcType=INTEGER},
+      </if>
+      <if test="record.caDate != null" >
+        Ca_date = #{record.caDate,jdbcType=DATE},
+      </if>
+      <if test="record.caMoneyattach != null" >
+        Ca_moneyAttach = #{record.caMoneyattach,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caMoneyterm != null" >
+        Ca_moneyTerm = #{record.caMoneyterm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caMoneymonth != null" >
+        Ca_moneyMonth = #{record.caMoneymonth,jdbcType=DATE},
+      </if>
+      <if test="record.caLargess != null" >
+        Ca_largess = #{record.caLargess,jdbcType=INTEGER},
+      </if>
+      <if test="record.caRemark != null" >
+        Ca_remark = #{record.caRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caOperationperson != null" >
+        Ca_operationPerson = #{record.caOperationperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caOpid != null" >
+        Ca_opId = #{record.caOpid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caCheckperson != null" >
+        Ca_checkPerson = #{record.caCheckperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caChid != null" >
+        Ca_chId = #{record.caChid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caMakeperson != null" >
+        Ca_makePerson = #{record.caMakeperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caMpid != null" >
+        Ca_mpId = #{record.caMpid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caDept != null" >
+        Ca_dept = #{record.caDept,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caDeptid != null" >
+        Ca_deptId = #{record.caDeptid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caItem != null" >
+        Ca_item = #{record.caItem,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caItemid != null" >
+        Ca_itemId = #{record.caItemid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caState != null" >
+        Ca_state = #{record.caState,jdbcType=INTEGER},
+      </if>
+      <if test="record.caByzd1 != null" >
+        Ca_byzd1 = #{record.caByzd1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caByzd2 != null" >
+        Ca_byzd2 = #{record.caByzd2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caByzd3 != null" >
+        Ca_byzd3 = #{record.caByzd3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caByzd4 != null" >
+        Ca_byzd4 = #{record.caByzd4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caByzd5 != null" >
+        Ca_byzd5 = #{record.caByzd5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ca_xiaoshou
+    set Ca_id = #{record.caId,jdbcType=VARCHAR},
+      Ca_clientId = #{record.caClientid,jdbcType=VARCHAR},
+      Ca_clientName = #{record.caClientname,jdbcType=VARCHAR},
+      Ca_containTax = #{record.caContaintax,jdbcType=INTEGER},
+      "Ca moneyType" = #{record.caMoneytype,jdbcType=VARCHAR},
+      "Ca_ins torageName" = #{record.caInsToragename,jdbcType=VARCHAR},
+      "Ca_ins torageId" = #{record.caInsTorageid,jdbcType=VARCHAR},
+      Ca_rate = #{record.caRate,jdbcType=DOUBLE},
+      Ca_afreshInstorage = #{record.caAfreshinstorage,jdbcType=INTEGER},
+      Ca_date = #{record.caDate,jdbcType=DATE},
+      Ca_moneyAttach = #{record.caMoneyattach,jdbcType=VARCHAR},
+      Ca_moneyTerm = #{record.caMoneyterm,jdbcType=VARCHAR},
+      Ca_moneyMonth = #{record.caMoneymonth,jdbcType=DATE},
+      Ca_largess = #{record.caLargess,jdbcType=INTEGER},
+      Ca_remark = #{record.caRemark,jdbcType=VARCHAR},
+      Ca_operationPerson = #{record.caOperationperson,jdbcType=VARCHAR},
+      Ca_opId = #{record.caOpid,jdbcType=VARCHAR},
+      Ca_checkPerson = #{record.caCheckperson,jdbcType=VARCHAR},
+      Ca_chId = #{record.caChid,jdbcType=VARCHAR},
+      Ca_makePerson = #{record.caMakeperson,jdbcType=VARCHAR},
+      Ca_mpId = #{record.caMpid,jdbcType=VARCHAR},
+      Ca_dept = #{record.caDept,jdbcType=VARCHAR},
+      Ca_deptId = #{record.caDeptid,jdbcType=VARCHAR},
+      Ca_item = #{record.caItem,jdbcType=VARCHAR},
+      Ca_itemId = #{record.caItemid,jdbcType=VARCHAR},
+      Ca_state = #{record.caState,jdbcType=INTEGER},
+      Ca_byzd1 = #{record.caByzd1,jdbcType=VARCHAR},
+      Ca_byzd2 = #{record.caByzd2,jdbcType=VARCHAR},
+      Ca_byzd3 = #{record.caByzd3,jdbcType=VARCHAR},
+      Ca_byzd4 = #{record.caByzd4,jdbcType=VARCHAR},
+      Ca_byzd5 = #{record.caByzd5,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.CaXiaoshou" >
+    update ca_xiaoshou
+    <set >
+      <if test="caClientname != null" >
+        Ca_clientName = #{caClientname,jdbcType=VARCHAR},
+      </if>
+      <if test="caContaintax != null" >
+        Ca_containTax = #{caContaintax,jdbcType=INTEGER},
+      </if>
+      <if test="caMoneytype != null" >
+        "Ca moneyType" = #{caMoneytype,jdbcType=VARCHAR},
+      </if>
+      <if test="caInsToragename != null" >
+        "Ca_ins torageName" = #{caInsToragename,jdbcType=VARCHAR},
+      </if>
+      <if test="caInsTorageid != null" >
+        "Ca_ins torageId" = #{caInsTorageid,jdbcType=VARCHAR},
+      </if>
+      <if test="caRate != null" >
+        Ca_rate = #{caRate,jdbcType=DOUBLE},
+      </if>
+      <if test="caAfreshinstorage != null" >
+        Ca_afreshInstorage = #{caAfreshinstorage,jdbcType=INTEGER},
+      </if>
+      <if test="caDate != null" >
+        Ca_date = #{caDate,jdbcType=DATE},
+      </if>
+      <if test="caMoneyattach != null" >
+        Ca_moneyAttach = #{caMoneyattach,jdbcType=VARCHAR},
+      </if>
+      <if test="caMoneyterm != null" >
+        Ca_moneyTerm = #{caMoneyterm,jdbcType=VARCHAR},
+      </if>
+      <if test="caMoneymonth != null" >
+        Ca_moneyMonth = #{caMoneymonth,jdbcType=DATE},
+      </if>
+      <if test="caLargess != null" >
+        Ca_largess = #{caLargess,jdbcType=INTEGER},
+      </if>
+      <if test="caRemark != null" >
+        Ca_remark = #{caRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="caOperationperson != null" >
+        Ca_operationPerson = #{caOperationperson,jdbcType=VARCHAR},
+      </if>
+      <if test="caOpid != null" >
+        Ca_opId = #{caOpid,jdbcType=VARCHAR},
+      </if>
+      <if test="caCheckperson != null" >
+        Ca_checkPerson = #{caCheckperson,jdbcType=VARCHAR},
+      </if>
+      <if test="caChid != null" >
+        Ca_chId = #{caChid,jdbcType=VARCHAR},
+      </if>
+      <if test="caMakeperson != null" >
+        Ca_makePerson = #{caMakeperson,jdbcType=VARCHAR},
+      </if>
+      <if test="caMpid != null" >
+        Ca_mpId = #{caMpid,jdbcType=VARCHAR},
+      </if>
+      <if test="caDept != null" >
+        Ca_dept = #{caDept,jdbcType=VARCHAR},
+      </if>
+      <if test="caDeptid != null" >
+        Ca_deptId = #{caDeptid,jdbcType=VARCHAR},
+      </if>
+      <if test="caItem != null" >
+        Ca_item = #{caItem,jdbcType=VARCHAR},
+      </if>
+      <if test="caItemid != null" >
+        Ca_itemId = #{caItemid,jdbcType=VARCHAR},
+      </if>
+      <if test="caState != null" >
+        Ca_state = #{caState,jdbcType=INTEGER},
+      </if>
+      <if test="caByzd1 != null" >
+        Ca_byzd1 = #{caByzd1,jdbcType=VARCHAR},
+      </if>
+      <if test="caByzd2 != null" >
+        Ca_byzd2 = #{caByzd2,jdbcType=VARCHAR},
+      </if>
+      <if test="caByzd3 != null" >
+        Ca_byzd3 = #{caByzd3,jdbcType=VARCHAR},
+      </if>
+      <if test="caByzd4 != null" >
+        Ca_byzd4 = #{caByzd4,jdbcType=VARCHAR},
+      </if>
+      <if test="caByzd5 != null" >
+        Ca_byzd5 = #{caByzd5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Ca_id = #{caId,jdbcType=VARCHAR}
+      and Ca_clientId = #{caClientid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.CaXiaoshou" >
+    update ca_xiaoshou
+    set Ca_clientName = #{caClientname,jdbcType=VARCHAR},
+      Ca_containTax = #{caContaintax,jdbcType=INTEGER},
+      "Ca moneyType" = #{caMoneytype,jdbcType=VARCHAR},
+      "Ca_ins torageName" = #{caInsToragename,jdbcType=VARCHAR},
+      "Ca_ins torageId" = #{caInsTorageid,jdbcType=VARCHAR},
+      Ca_rate = #{caRate,jdbcType=DOUBLE},
+      Ca_afreshInstorage = #{caAfreshinstorage,jdbcType=INTEGER},
+      Ca_date = #{caDate,jdbcType=DATE},
+      Ca_moneyAttach = #{caMoneyattach,jdbcType=VARCHAR},
+      Ca_moneyTerm = #{caMoneyterm,jdbcType=VARCHAR},
+      Ca_moneyMonth = #{caMoneymonth,jdbcType=DATE},
+      Ca_largess = #{caLargess,jdbcType=INTEGER},
+      Ca_remark = #{caRemark,jdbcType=VARCHAR},
+      Ca_operationPerson = #{caOperationperson,jdbcType=VARCHAR},
+      Ca_opId = #{caOpid,jdbcType=VARCHAR},
+      Ca_checkPerson = #{caCheckperson,jdbcType=VARCHAR},
+      Ca_chId = #{caChid,jdbcType=VARCHAR},
+      Ca_makePerson = #{caMakeperson,jdbcType=VARCHAR},
+      Ca_mpId = #{caMpid,jdbcType=VARCHAR},
+      Ca_dept = #{caDept,jdbcType=VARCHAR},
+      Ca_deptId = #{caDeptid,jdbcType=VARCHAR},
+      Ca_item = #{caItem,jdbcType=VARCHAR},
+      Ca_itemId = #{caItemid,jdbcType=VARCHAR},
+      Ca_state = #{caState,jdbcType=INTEGER},
+      Ca_byzd1 = #{caByzd1,jdbcType=VARCHAR},
+      Ca_byzd2 = #{caByzd2,jdbcType=VARCHAR},
+      Ca_byzd3 = #{caByzd3,jdbcType=VARCHAR},
+      Ca_byzd4 = #{caByzd4,jdbcType=VARCHAR},
+      Ca_byzd5 = #{caByzd5,jdbcType=VARCHAR}
+    where Ca_id = #{caId,jdbcType=VARCHAR}
+      and Ca_clientId = #{caClientid,jdbcType=VARCHAR}
+  </update>
+</mapper>

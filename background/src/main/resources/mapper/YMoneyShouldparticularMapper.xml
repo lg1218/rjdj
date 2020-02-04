@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.YMoneyShouldparticularMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.YMoneyShouldparticular" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="sourseOrder" property="sourseorder" jdbcType="VARCHAR" />
+    <result column="sourseNumber" property="soursenumber" jdbcType="VARCHAR" />
+    <result column="totalMoney" property="totalmoney" jdbcType="DOUBLE" />
+    <result column="blance" property="blance" jdbcType="DOUBLE" />
+    <result column="date" property="date" jdbcType="DATE" />
+    <result column="makePerson" property="makeperson" jdbcType="VARCHAR" />
+    <result column="checkPerson" property="checkperson" jdbcType="VARCHAR" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+    <result column="remark2" property="remark2" jdbcType="VARCHAR" />
+    <result column="remark3" property="remark3" jdbcType="VARCHAR" />
+    <result column="remark4" property="remark4" jdbcType="VARCHAR" />
+    <result column="remark5" property="remark5" jdbcType="VARCHAR" />
+    <result column="remark6" property="remark6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, sourseOrder, sourseNumber, totalMoney, blance, date, makePerson, checkPerson, 
+    remark1, remark2, remark3, remark4, remark5, remark6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.YMoneyShouldparticularExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from y_money_shouldparticular
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from y_money_shouldparticular
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from y_money_shouldparticular
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.YMoneyShouldparticularExample" >
+    delete from y_money_shouldparticular
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.YMoneyShouldparticular" >
+    insert into y_money_shouldparticular (id, sourseOrder, sourseNumber, 
+      totalMoney, blance, date, 
+      makePerson, checkPerson, remark1, 
+      remark2, remark3, remark4, 
+      remark5, remark6)
+    values (#{id,jdbcType=VARCHAR}, #{sourseorder,jdbcType=VARCHAR}, #{soursenumber,jdbcType=VARCHAR}, 
+      #{totalmoney,jdbcType=DOUBLE}, #{blance,jdbcType=DOUBLE}, #{date,jdbcType=DATE}, 
+      #{makeperson,jdbcType=VARCHAR}, #{checkperson,jdbcType=VARCHAR}, #{remark1,jdbcType=VARCHAR}, 
+      #{remark2,jdbcType=VARCHAR}, #{remark3,jdbcType=VARCHAR}, #{remark4,jdbcType=VARCHAR}, 
+      #{remark5,jdbcType=VARCHAR}, #{remark6,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.YMoneyShouldparticular" >
+    insert into y_money_shouldparticular
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="sourseorder != null" >
+        sourseOrder,
+      </if>
+      <if test="soursenumber != null" >
+        sourseNumber,
+      </if>
+      <if test="totalmoney != null" >
+        totalMoney,
+      </if>
+      <if test="blance != null" >
+        blance,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="makeperson != null" >
+        makePerson,
+      </if>
+      <if test="checkperson != null" >
+        checkPerson,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+      <if test="remark2 != null" >
+        remark2,
+      </if>
+      <if test="remark3 != null" >
+        remark3,
+      </if>
+      <if test="remark4 != null" >
+        remark4,
+      </if>
+      <if test="remark5 != null" >
+        remark5,
+      </if>
+      <if test="remark6 != null" >
+        remark6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="sourseorder != null" >
+        #{sourseorder,jdbcType=VARCHAR},
+      </if>
+      <if test="soursenumber != null" >
+        #{soursenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="totalmoney != null" >
+        #{totalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="blance != null" >
+        #{blance,jdbcType=DOUBLE},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=DATE},
+      </if>
+      <if test="makeperson != null" >
+        #{makeperson,jdbcType=VARCHAR},
+      </if>
+      <if test="checkperson != null" >
+        #{checkperson,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        #{remark5,jdbcType=VARCHAR},
+      </if>
+      <if test="remark6 != null" >
+        #{remark6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.YMoneyShouldparticularExample" resultType="java.lang.Integer" >
+    select count(*) from y_money_shouldparticular
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update y_money_shouldparticular
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sourseorder != null" >
+        sourseOrder = #{record.sourseorder,jdbcType=VARCHAR},
+      </if>
+      <if test="record.soursenumber != null" >
+        sourseNumber = #{record.soursenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.totalmoney != null" >
+        totalMoney = #{record.totalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.blance != null" >
+        blance = #{record.blance,jdbcType=DOUBLE},
+      </if>
+      <if test="record.date != null" >
+        date = #{record.date,jdbcType=DATE},
+      </if>
+      <if test="record.makeperson != null" >
+        makePerson = #{record.makeperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkperson != null" >
+        checkPerson = #{record.checkperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark1 != null" >
+        remark1 = #{record.remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark2 != null" >
+        remark2 = #{record.remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark3 != null" >
+        remark3 = #{record.remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark4 != null" >
+        remark4 = #{record.remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark5 != null" >
+        remark5 = #{record.remark5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark6 != null" >
+        remark6 = #{record.remark6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update y_money_shouldparticular
+    set id = #{record.id,jdbcType=VARCHAR},
+      sourseOrder = #{record.sourseorder,jdbcType=VARCHAR},
+      sourseNumber = #{record.soursenumber,jdbcType=VARCHAR},
+      totalMoney = #{record.totalmoney,jdbcType=DOUBLE},
+      blance = #{record.blance,jdbcType=DOUBLE},
+      date = #{record.date,jdbcType=DATE},
+      makePerson = #{record.makeperson,jdbcType=VARCHAR},
+      checkPerson = #{record.checkperson,jdbcType=VARCHAR},
+      remark1 = #{record.remark1,jdbcType=VARCHAR},
+      remark2 = #{record.remark2,jdbcType=VARCHAR},
+      remark3 = #{record.remark3,jdbcType=VARCHAR},
+      remark4 = #{record.remark4,jdbcType=VARCHAR},
+      remark5 = #{record.remark5,jdbcType=VARCHAR},
+      remark6 = #{record.remark6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.YMoneyShouldparticular" >
+    update y_money_shouldparticular
+    <set >
+      <if test="sourseorder != null" >
+        sourseOrder = #{sourseorder,jdbcType=VARCHAR},
+      </if>
+      <if test="soursenumber != null" >
+        sourseNumber = #{soursenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="totalmoney != null" >
+        totalMoney = #{totalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="blance != null" >
+        blance = #{blance,jdbcType=DOUBLE},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=DATE},
+      </if>
+      <if test="makeperson != null" >
+        makePerson = #{makeperson,jdbcType=VARCHAR},
+      </if>
+      <if test="checkperson != null" >
+        checkPerson = #{checkperson,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        remark2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        remark3 = #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        remark4 = #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        remark5 = #{remark5,jdbcType=VARCHAR},
+      </if>
+      <if test="remark6 != null" >
+        remark6 = #{remark6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.YMoneyShouldparticular" >
+    update y_money_shouldparticular
+    set sourseOrder = #{sourseorder,jdbcType=VARCHAR},
+      sourseNumber = #{soursenumber,jdbcType=VARCHAR},
+      totalMoney = #{totalmoney,jdbcType=DOUBLE},
+      blance = #{blance,jdbcType=DOUBLE},
+      date = #{date,jdbcType=DATE},
+      makePerson = #{makeperson,jdbcType=VARCHAR},
+      checkPerson = #{checkperson,jdbcType=VARCHAR},
+      remark1 = #{remark1,jdbcType=VARCHAR},
+      remark2 = #{remark2,jdbcType=VARCHAR},
+      remark3 = #{remark3,jdbcType=VARCHAR},
+      remark4 = #{remark4,jdbcType=VARCHAR},
+      remark5 = #{remark5,jdbcType=VARCHAR},
+      remark6 = #{remark6,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

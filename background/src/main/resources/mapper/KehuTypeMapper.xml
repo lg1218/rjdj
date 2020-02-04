@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.KehuTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.KehuType" >
+    <id column="kul_id" property="kulId" jdbcType="INTEGER" />
+    <result column="kul_name" property="kulName" jdbcType="VARCHAR" />
+    <result column="kul_ename" property="kulEname" jdbcType="VARCHAR" />
+    <result column="kul_remark" property="kulRemark" jdbcType="VARCHAR" />
+    <result column="Kul_Bz1" property="kulBz1" jdbcType="VARCHAR" />
+    <result column="Kul_Bz2" property="kulBz2" jdbcType="VARCHAR" />
+    <result column="Kul_Bz3" property="kulBz3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    kul_id, kul_name, kul_ename, kul_remark, Kul_Bz1, Kul_Bz2, Kul_Bz3
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.KehuTypeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from kehu_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from kehu_type
+    where kul_id = #{kulId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from kehu_type
+    where kul_id = #{kulId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.KehuTypeExample" >
+    delete from kehu_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.KehuType" >
+    insert into kehu_type (kul_id, kul_name, kul_ename, 
+      kul_remark, Kul_Bz1, Kul_Bz2, 
+      Kul_Bz3)
+    values (#{kulId,jdbcType=INTEGER}, #{kulName,jdbcType=VARCHAR}, #{kulEname,jdbcType=VARCHAR}, 
+      #{kulRemark,jdbcType=VARCHAR}, #{kulBz1,jdbcType=VARCHAR}, #{kulBz2,jdbcType=VARCHAR}, 
+      #{kulBz3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.KehuType" >
+    insert into kehu_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="kulId != null" >
+        kul_id,
+      </if>
+      <if test="kulName != null" >
+        kul_name,
+      </if>
+      <if test="kulEname != null" >
+        kul_ename,
+      </if>
+      <if test="kulRemark != null" >
+        kul_remark,
+      </if>
+      <if test="kulBz1 != null" >
+        Kul_Bz1,
+      </if>
+      <if test="kulBz2 != null" >
+        Kul_Bz2,
+      </if>
+      <if test="kulBz3 != null" >
+        Kul_Bz3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="kulId != null" >
+        #{kulId,jdbcType=INTEGER},
+      </if>
+      <if test="kulName != null" >
+        #{kulName,jdbcType=VARCHAR},
+      </if>
+      <if test="kulEname != null" >
+        #{kulEname,jdbcType=VARCHAR},
+      </if>
+      <if test="kulRemark != null" >
+        #{kulRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="kulBz1 != null" >
+        #{kulBz1,jdbcType=VARCHAR},
+      </if>
+      <if test="kulBz2 != null" >
+        #{kulBz2,jdbcType=VARCHAR},
+      </if>
+      <if test="kulBz3 != null" >
+        #{kulBz3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.KehuTypeExample" resultType="java.lang.Integer" >
+    select count(*) from kehu_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update kehu_type
+    <set >
+      <if test="record.kulId != null" >
+        kul_id = #{record.kulId,jdbcType=INTEGER},
+      </if>
+      <if test="record.kulName != null" >
+        kul_name = #{record.kulName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kulEname != null" >
+        kul_ename = #{record.kulEname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kulRemark != null" >
+        kul_remark = #{record.kulRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kulBz1 != null" >
+        Kul_Bz1 = #{record.kulBz1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kulBz2 != null" >
+        Kul_Bz2 = #{record.kulBz2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kulBz3 != null" >
+        Kul_Bz3 = #{record.kulBz3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update kehu_type
+    set kul_id = #{record.kulId,jdbcType=INTEGER},
+      kul_name = #{record.kulName,jdbcType=VARCHAR},
+      kul_ename = #{record.kulEname,jdbcType=VARCHAR},
+      kul_remark = #{record.kulRemark,jdbcType=VARCHAR},
+      Kul_Bz1 = #{record.kulBz1,jdbcType=VARCHAR},
+      Kul_Bz2 = #{record.kulBz2,jdbcType=VARCHAR},
+      Kul_Bz3 = #{record.kulBz3,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.KehuType" >
+    update kehu_type
+    <set >
+      <if test="kulName != null" >
+        kul_name = #{kulName,jdbcType=VARCHAR},
+      </if>
+      <if test="kulEname != null" >
+        kul_ename = #{kulEname,jdbcType=VARCHAR},
+      </if>
+      <if test="kulRemark != null" >
+        kul_remark = #{kulRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="kulBz1 != null" >
+        Kul_Bz1 = #{kulBz1,jdbcType=VARCHAR},
+      </if>
+      <if test="kulBz2 != null" >
+        Kul_Bz2 = #{kulBz2,jdbcType=VARCHAR},
+      </if>
+      <if test="kulBz3 != null" >
+        Kul_Bz3 = #{kulBz3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where kul_id = #{kulId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.KehuType" >
+    update kehu_type
+    set kul_name = #{kulName,jdbcType=VARCHAR},
+      kul_ename = #{kulEname,jdbcType=VARCHAR},
+      kul_remark = #{kulRemark,jdbcType=VARCHAR},
+      Kul_Bz1 = #{kulBz1,jdbcType=VARCHAR},
+      Kul_Bz2 = #{kulBz2,jdbcType=VARCHAR},
+      Kul_Bz3 = #{kulBz3,jdbcType=VARCHAR}
+    where kul_id = #{kulId,jdbcType=INTEGER}
+  </update>
+</mapper>

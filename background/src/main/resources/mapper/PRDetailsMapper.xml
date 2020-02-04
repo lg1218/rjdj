@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.PRDetailsMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.PRDetails" >
+    <id column="prd_lineid" property="prdLineid" jdbcType="INTEGER" />
+    <id column="prd_mmid" property="prdMmid" jdbcType="INTEGER" />
+    <result column="prd_prmid" property="prdPrmid" jdbcType="INTEGER" />
+    <result column="prd_mmname" property="prdMmname" jdbcType="VARCHAR" />
+    <result column="prd_mmxh" property="prdMmxh" jdbcType="VARCHAR" />
+    <result column="psd_num" property="psdNum" jdbcType="INTEGER" />
+    <result column="psd_dprice" property="psdDprice" jdbcType="DOUBLE" />
+    <result column="psd_uname" property="psdUname" jdbcType="VARCHAR" />
+    <result column="psd_zheshu" property="psdZheshu" jdbcType="DOUBLE" />
+    <result column="psd_zh_dprice" property="psdZhDprice" jdbcType="DOUBLE" />
+    <result column="psd_bhs_totalmoney" property="psdBhsTotalmoney" jdbcType="DOUBLE" />
+    <result column="psd_slv" property="psdSlv" jdbcType="DOUBLE" />
+    <result column="psd_shuie" property="psdShuie" jdbcType="DOUBLE" />
+    <result column="psd_totalprice" property="psdTotalprice" jdbcType="DOUBLE" />
+    <result column="prd_ly_db" property="prdLyDb" jdbcType="VARCHAR" />
+    <result column="prd_ly_dh" property="prdLyDh" jdbcType="VARCHAR" />
+    <result column="prd_flag_zp" property="prdFlagZp" jdbcType="BIT" />
+    <result column="prd_wkp_num" property="prdWkpNum" jdbcType="INTEGER" />
+    <result column="prd_remark" property="prdRemark" jdbcType="VARCHAR" />
+    <result column="bz1" property="bz1" jdbcType="VARCHAR" />
+    <result column="bz2" property="bz2" jdbcType="VARCHAR" />
+    <result column="bz3" property="bz3" jdbcType="VARCHAR" />
+    <result column="bz4" property="bz4" jdbcType="VARCHAR" />
+    <result column="bz5" property="bz5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    prd_lineid, prd_mmid, prd_prmid, prd_mmname, prd_mmxh, psd_num, psd_dprice, psd_uname, 
+    psd_zheshu, psd_zh_dprice, psd_bhs_totalmoney, psd_slv, psd_shuie, psd_totalprice, 
+    prd_ly_db, prd_ly_dh, prd_flag_zp, prd_wkp_num, prd_remark, bz1, bz2, bz3, bz4, bz5
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.PRDetailsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from p_r_details
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.accp.domain.PRDetailsKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from p_r_details
+    where prd_lineid = #{prdLineid,jdbcType=INTEGER}
+      and prd_mmid = #{prdMmid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.accp.domain.PRDetailsKey" >
+    delete from p_r_details
+    where prd_lineid = #{prdLineid,jdbcType=INTEGER}
+      and prd_mmid = #{prdMmid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.PRDetailsExample" >
+    delete from p_r_details
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.PRDetails" >
+    insert into p_r_details (prd_lineid, prd_mmid, prd_prmid, 
+      prd_mmname, prd_mmxh, psd_num, 
+      psd_dprice, psd_uname, psd_zheshu, 
+      psd_zh_dprice, psd_bhs_totalmoney, psd_slv, 
+      psd_shuie, psd_totalprice, prd_ly_db, 
+      prd_ly_dh, prd_flag_zp, prd_wkp_num, 
+      prd_remark, bz1, bz2, 
+      bz3, bz4, bz5)
+    values (#{prdLineid,jdbcType=INTEGER}, #{prdMmid,jdbcType=INTEGER}, #{prdPrmid,jdbcType=INTEGER}, 
+      #{prdMmname,jdbcType=VARCHAR}, #{prdMmxh,jdbcType=VARCHAR}, #{psdNum,jdbcType=INTEGER}, 
+      #{psdDprice,jdbcType=DOUBLE}, #{psdUname,jdbcType=VARCHAR}, #{psdZheshu,jdbcType=DOUBLE}, 
+      #{psdZhDprice,jdbcType=DOUBLE}, #{psdBhsTotalmoney,jdbcType=DOUBLE}, #{psdSlv,jdbcType=DOUBLE}, 
+      #{psdShuie,jdbcType=DOUBLE}, #{psdTotalprice,jdbcType=DOUBLE}, #{prdLyDb,jdbcType=VARCHAR}, 
+      #{prdLyDh,jdbcType=VARCHAR}, #{prdFlagZp,jdbcType=BIT}, #{prdWkpNum,jdbcType=INTEGER}, 
+      #{prdRemark,jdbcType=VARCHAR}, #{bz1,jdbcType=VARCHAR}, #{bz2,jdbcType=VARCHAR}, 
+      #{bz3,jdbcType=VARCHAR}, #{bz4,jdbcType=VARCHAR}, #{bz5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.PRDetails" >
+    insert into p_r_details
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="prdLineid != null" >
+        prd_lineid,
+      </if>
+      <if test="prdMmid != null" >
+        prd_mmid,
+      </if>
+      <if test="prdPrmid != null" >
+        prd_prmid,
+      </if>
+      <if test="prdMmname != null" >
+        prd_mmname,
+      </if>
+      <if test="prdMmxh != null" >
+        prd_mmxh,
+      </if>
+      <if test="psdNum != null" >
+        psd_num,
+      </if>
+      <if test="psdDprice != null" >
+        psd_dprice,
+      </if>
+      <if test="psdUname != null" >
+        psd_uname,
+      </if>
+      <if test="psdZheshu != null" >
+        psd_zheshu,
+      </if>
+      <if test="psdZhDprice != null" >
+        psd_zh_dprice,
+      </if>
+      <if test="psdBhsTotalmoney != null" >
+        psd_bhs_totalmoney,
+      </if>
+      <if test="psdSlv != null" >
+        psd_slv,
+      </if>
+      <if test="psdShuie != null" >
+        psd_shuie,
+      </if>
+      <if test="psdTotalprice != null" >
+        psd_totalprice,
+      </if>
+      <if test="prdLyDb != null" >
+        prd_ly_db,
+      </if>
+      <if test="prdLyDh != null" >
+        prd_ly_dh,
+      </if>
+      <if test="prdFlagZp != null" >
+        prd_flag_zp,
+      </if>
+      <if test="prdWkpNum != null" >
+        prd_wkp_num,
+      </if>
+      <if test="prdRemark != null" >
+        prd_remark,
+      </if>
+      <if test="bz1 != null" >
+        bz1,
+      </if>
+      <if test="bz2 != null" >
+        bz2,
+      </if>
+      <if test="bz3 != null" >
+        bz3,
+      </if>
+      <if test="bz4 != null" >
+        bz4,
+      </if>
+      <if test="bz5 != null" >
+        bz5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="prdLineid != null" >
+        #{prdLineid,jdbcType=INTEGER},
+      </if>
+      <if test="prdMmid != null" >
+        #{prdMmid,jdbcType=INTEGER},
+      </if>
+      <if test="prdPrmid != null" >
+        #{prdPrmid,jdbcType=INTEGER},
+      </if>
+      <if test="prdMmname != null" >
+        #{prdMmname,jdbcType=VARCHAR},
+      </if>
+      <if test="prdMmxh != null" >
+        #{prdMmxh,jdbcType=VARCHAR},
+      </if>
+      <if test="psdNum != null" >
+        #{psdNum,jdbcType=INTEGER},
+      </if>
+      <if test="psdDprice != null" >
+        #{psdDprice,jdbcType=DOUBLE},
+      </if>
+      <if test="psdUname != null" >
+        #{psdUname,jdbcType=VARCHAR},
+      </if>
+      <if test="psdZheshu != null" >
+        #{psdZheshu,jdbcType=DOUBLE},
+      </if>
+      <if test="psdZhDprice != null" >
+        #{psdZhDprice,jdbcType=DOUBLE},
+      </if>
+      <if test="psdBhsTotalmoney != null" >
+        #{psdBhsTotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="psdSlv != null" >
+        #{psdSlv,jdbcType=DOUBLE},
+      </if>
+      <if test="psdShuie != null" >
+        #{psdShuie,jdbcType=DOUBLE},
+      </if>
+      <if test="psdTotalprice != null" >
+        #{psdTotalprice,jdbcType=DOUBLE},
+      </if>
+      <if test="prdLyDb != null" >
+        #{prdLyDb,jdbcType=VARCHAR},
+      </if>
+      <if test="prdLyDh != null" >
+        #{prdLyDh,jdbcType=VARCHAR},
+      </if>
+      <if test="prdFlagZp != null" >
+        #{prdFlagZp,jdbcType=BIT},
+      </if>
+      <if test="prdWkpNum != null" >
+        #{prdWkpNum,jdbcType=INTEGER},
+      </if>
+      <if test="prdRemark != null" >
+        #{prdRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="bz1 != null" >
+        #{bz1,jdbcType=VARCHAR},
+      </if>
+      <if test="bz2 != null" >
+        #{bz2,jdbcType=VARCHAR},
+      </if>
+      <if test="bz3 != null" >
+        #{bz3,jdbcType=VARCHAR},
+      </if>
+      <if test="bz4 != null" >
+        #{bz4,jdbcType=VARCHAR},
+      </if>
+      <if test="bz5 != null" >
+        #{bz5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.PRDetailsExample" resultType="java.lang.Integer" >
+    select count(*) from p_r_details
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update p_r_details
+    <set >
+      <if test="record.prdLineid != null" >
+        prd_lineid = #{record.prdLineid,jdbcType=INTEGER},
+      </if>
+      <if test="record.prdMmid != null" >
+        prd_mmid = #{record.prdMmid,jdbcType=INTEGER},
+      </if>
+      <if test="record.prdPrmid != null" >
+        prd_prmid = #{record.prdPrmid,jdbcType=INTEGER},
+      </if>
+      <if test="record.prdMmname != null" >
+        prd_mmname = #{record.prdMmname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prdMmxh != null" >
+        prd_mmxh = #{record.prdMmxh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.psdNum != null" >
+        psd_num = #{record.psdNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.psdDprice != null" >
+        psd_dprice = #{record.psdDprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.psdUname != null" >
+        psd_uname = #{record.psdUname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.psdZheshu != null" >
+        psd_zheshu = #{record.psdZheshu,jdbcType=DOUBLE},
+      </if>
+      <if test="record.psdZhDprice != null" >
+        psd_zh_dprice = #{record.psdZhDprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.psdBhsTotalmoney != null" >
+        psd_bhs_totalmoney = #{record.psdBhsTotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.psdSlv != null" >
+        psd_slv = #{record.psdSlv,jdbcType=DOUBLE},
+      </if>
+      <if test="record.psdShuie != null" >
+        psd_shuie = #{record.psdShuie,jdbcType=DOUBLE},
+      </if>
+      <if test="record.psdTotalprice != null" >
+        psd_totalprice = #{record.psdTotalprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.prdLyDb != null" >
+        prd_ly_db = #{record.prdLyDb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prdLyDh != null" >
+        prd_ly_dh = #{record.prdLyDh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prdFlagZp != null" >
+        prd_flag_zp = #{record.prdFlagZp,jdbcType=BIT},
+      </if>
+      <if test="record.prdWkpNum != null" >
+        prd_wkp_num = #{record.prdWkpNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.prdRemark != null" >
+        prd_remark = #{record.prdRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz1 != null" >
+        bz1 = #{record.bz1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz2 != null" >
+        bz2 = #{record.bz2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz3 != null" >
+        bz3 = #{record.bz3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz4 != null" >
+        bz4 = #{record.bz4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz5 != null" >
+        bz5 = #{record.bz5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update p_r_details
+    set prd_lineid = #{record.prdLineid,jdbcType=INTEGER},
+      prd_mmid = #{record.prdMmid,jdbcType=INTEGER},
+      prd_prmid = #{record.prdPrmid,jdbcType=INTEGER},
+      prd_mmname = #{record.prdMmname,jdbcType=VARCHAR},
+      prd_mmxh = #{record.prdMmxh,jdbcType=VARCHAR},
+      psd_num = #{record.psdNum,jdbcType=INTEGER},
+      psd_dprice = #{record.psdDprice,jdbcType=DOUBLE},
+      psd_uname = #{record.psdUname,jdbcType=VARCHAR},
+      psd_zheshu = #{record.psdZheshu,jdbcType=DOUBLE},
+      psd_zh_dprice = #{record.psdZhDprice,jdbcType=DOUBLE},
+      psd_bhs_totalmoney = #{record.psdBhsTotalmoney,jdbcType=DOUBLE},
+      psd_slv = #{record.psdSlv,jdbcType=DOUBLE},
+      psd_shuie = #{record.psdShuie,jdbcType=DOUBLE},
+      psd_totalprice = #{record.psdTotalprice,jdbcType=DOUBLE},
+      prd_ly_db = #{record.prdLyDb,jdbcType=VARCHAR},
+      prd_ly_dh = #{record.prdLyDh,jdbcType=VARCHAR},
+      prd_flag_zp = #{record.prdFlagZp,jdbcType=BIT},
+      prd_wkp_num = #{record.prdWkpNum,jdbcType=INTEGER},
+      prd_remark = #{record.prdRemark,jdbcType=VARCHAR},
+      bz1 = #{record.bz1,jdbcType=VARCHAR},
+      bz2 = #{record.bz2,jdbcType=VARCHAR},
+      bz3 = #{record.bz3,jdbcType=VARCHAR},
+      bz4 = #{record.bz4,jdbcType=VARCHAR},
+      bz5 = #{record.bz5,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.PRDetails" >
+    update p_r_details
+    <set >
+      <if test="prdPrmid != null" >
+        prd_prmid = #{prdPrmid,jdbcType=INTEGER},
+      </if>
+      <if test="prdMmname != null" >
+        prd_mmname = #{prdMmname,jdbcType=VARCHAR},
+      </if>
+      <if test="prdMmxh != null" >
+        prd_mmxh = #{prdMmxh,jdbcType=VARCHAR},
+      </if>
+      <if test="psdNum != null" >
+        psd_num = #{psdNum,jdbcType=INTEGER},
+      </if>
+      <if test="psdDprice != null" >
+        psd_dprice = #{psdDprice,jdbcType=DOUBLE},
+      </if>
+      <if test="psdUname != null" >
+        psd_uname = #{psdUname,jdbcType=VARCHAR},
+      </if>
+      <if test="psdZheshu != null" >
+        psd_zheshu = #{psdZheshu,jdbcType=DOUBLE},
+      </if>
+      <if test="psdZhDprice != null" >
+        psd_zh_dprice = #{psdZhDprice,jdbcType=DOUBLE},
+      </if>
+      <if test="psdBhsTotalmoney != null" >
+        psd_bhs_totalmoney = #{psdBhsTotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="psdSlv != null" >
+        psd_slv = #{psdSlv,jdbcType=DOUBLE},
+      </if>
+      <if test="psdShuie != null" >
+        psd_shuie = #{psdShuie,jdbcType=DOUBLE},
+      </if>
+      <if test="psdTotalprice != null" >
+        psd_totalprice = #{psdTotalprice,jdbcType=DOUBLE},
+      </if>
+      <if test="prdLyDb != null" >
+        prd_ly_db = #{prdLyDb,jdbcType=VARCHAR},
+      </if>
+      <if test="prdLyDh != null" >
+        prd_ly_dh = #{prdLyDh,jdbcType=VARCHAR},
+      </if>
+      <if test="prdFlagZp != null" >
+        prd_flag_zp = #{prdFlagZp,jdbcType=BIT},
+      </if>
+      <if test="prdWkpNum != null" >
+        prd_wkp_num = #{prdWkpNum,jdbcType=INTEGER},
+      </if>
+      <if test="prdRemark != null" >
+        prd_remark = #{prdRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="bz1 != null" >
+        bz1 = #{bz1,jdbcType=VARCHAR},
+      </if>
+      <if test="bz2 != null" >
+        bz2 = #{bz2,jdbcType=VARCHAR},
+      </if>
+      <if test="bz3 != null" >
+        bz3 = #{bz3,jdbcType=VARCHAR},
+      </if>
+      <if test="bz4 != null" >
+        bz4 = #{bz4,jdbcType=VARCHAR},
+      </if>
+      <if test="bz5 != null" >
+        bz5 = #{bz5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where prd_lineid = #{prdLineid,jdbcType=INTEGER}
+      and prd_mmid = #{prdMmid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.PRDetails" >
+    update p_r_details
+    set prd_prmid = #{prdPrmid,jdbcType=INTEGER},
+      prd_mmname = #{prdMmname,jdbcType=VARCHAR},
+      prd_mmxh = #{prdMmxh,jdbcType=VARCHAR},
+      psd_num = #{psdNum,jdbcType=INTEGER},
+      psd_dprice = #{psdDprice,jdbcType=DOUBLE},
+      psd_uname = #{psdUname,jdbcType=VARCHAR},
+      psd_zheshu = #{psdZheshu,jdbcType=DOUBLE},
+      psd_zh_dprice = #{psdZhDprice,jdbcType=DOUBLE},
+      psd_bhs_totalmoney = #{psdBhsTotalmoney,jdbcType=DOUBLE},
+      psd_slv = #{psdSlv,jdbcType=DOUBLE},
+      psd_shuie = #{psdShuie,jdbcType=DOUBLE},
+      psd_totalprice = #{psdTotalprice,jdbcType=DOUBLE},
+      prd_ly_db = #{prdLyDb,jdbcType=VARCHAR},
+      prd_ly_dh = #{prdLyDh,jdbcType=VARCHAR},
+      prd_flag_zp = #{prdFlagZp,jdbcType=BIT},
+      prd_wkp_num = #{prdWkpNum,jdbcType=INTEGER},
+      prd_remark = #{prdRemark,jdbcType=VARCHAR},
+      bz1 = #{bz1,jdbcType=VARCHAR},
+      bz2 = #{bz2,jdbcType=VARCHAR},
+      bz3 = #{bz3,jdbcType=VARCHAR},
+      bz4 = #{bz4,jdbcType=VARCHAR},
+      bz5 = #{bz5,jdbcType=VARCHAR}
+    where prd_lineid = #{prdLineid,jdbcType=INTEGER}
+      and prd_mmid = #{prdMmid,jdbcType=INTEGER}
+  </update>
+</mapper>

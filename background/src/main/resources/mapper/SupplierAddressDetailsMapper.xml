@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.SupplierAddressDetailsMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.SupplierAddressDetails" >
+    <id column="sad_id" property="sadId" jdbcType="INTEGER" />
+    <result column="sad_smid" property="sadSmid" jdbcType="INTEGER" />
+    <result column="sad_address" property="sadAddress" jdbcType="VARCHAR" />
+    <result column="sad_email" property="sadEmail" jdbcType="VARCHAR" />
+    <result column="sad_lx_man" property="sadLxMan" jdbcType="VARCHAR" />
+    <result column="sad_lx_lx" property="sadLxLx" jdbcType="VARCHAR" />
+    <result column="sad_lx_phone" property="sadLxPhone" jdbcType="VARCHAR" />
+    <result column="sad_cz_num" property="sadCzNum" jdbcType="VARCHAR" />
+    <result column="sad_runway" property="sadRunway" jdbcType="VARCHAR" />
+    <result column="sad_remark" property="sadRemark" jdbcType="VARCHAR" />
+    <result column="sad_bz1" property="sadBz1" jdbcType="VARCHAR" />
+    <result column="sad_bz2" property="sadBz2" jdbcType="VARCHAR" />
+    <result column="sad_bz3" property="sadBz3" jdbcType="VARCHAR" />
+    <result column="sad_bz4" property="sadBz4" jdbcType="VARCHAR" />
+    <result column="sad_bz5" property="sadBz5" jdbcType="VARCHAR" />
+    <result column="sad_bz6" property="sadBz6" jdbcType="VARCHAR" />
+    <result column="sad_bz7" property="sadBz7" jdbcType="VARCHAR" />
+    <result column="sad_bz8" property="sadBz8" jdbcType="VARCHAR" />
+    <result column="sad_bz9" property="sadBz9" jdbcType="VARCHAR" />
+    <result column="sad_bz10" property="sadBz10" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    sad_id, sad_smid, sad_address, sad_email, sad_lx_man, sad_lx_lx, sad_lx_phone, sad_cz_num, 
+    sad_runway, sad_remark, sad_bz1, sad_bz2, sad_bz3, sad_bz4, sad_bz5, sad_bz6, sad_bz7, 
+    sad_bz8, sad_bz9, sad_bz10
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.SupplierAddressDetailsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from supplier_address_details
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from supplier_address_details
+    where sad_id = #{sadId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from supplier_address_details
+    where sad_id = #{sadId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.SupplierAddressDetailsExample" >
+    delete from supplier_address_details
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.SupplierAddressDetails" >
+    insert into supplier_address_details (sad_id, sad_smid, sad_address, 
+      sad_email, sad_lx_man, sad_lx_lx, 
+      sad_lx_phone, sad_cz_num, sad_runway, 
+      sad_remark, sad_bz1, sad_bz2, 
+      sad_bz3, sad_bz4, sad_bz5, 
+      sad_bz6, sad_bz7, sad_bz8, 
+      sad_bz9, sad_bz10)
+    values (#{sadId,jdbcType=INTEGER}, #{sadSmid,jdbcType=INTEGER}, #{sadAddress,jdbcType=VARCHAR}, 
+      #{sadEmail,jdbcType=VARCHAR}, #{sadLxMan,jdbcType=VARCHAR}, #{sadLxLx,jdbcType=VARCHAR}, 
+      #{sadLxPhone,jdbcType=VARCHAR}, #{sadCzNum,jdbcType=VARCHAR}, #{sadRunway,jdbcType=VARCHAR}, 
+      #{sadRemark,jdbcType=VARCHAR}, #{sadBz1,jdbcType=VARCHAR}, #{sadBz2,jdbcType=VARCHAR}, 
+      #{sadBz3,jdbcType=VARCHAR}, #{sadBz4,jdbcType=VARCHAR}, #{sadBz5,jdbcType=VARCHAR}, 
+      #{sadBz6,jdbcType=VARCHAR}, #{sadBz7,jdbcType=VARCHAR}, #{sadBz8,jdbcType=VARCHAR}, 
+      #{sadBz9,jdbcType=VARCHAR}, #{sadBz10,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.SupplierAddressDetails" >
+    insert into supplier_address_details
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sadId != null" >
+        sad_id,
+      </if>
+      <if test="sadSmid != null" >
+        sad_smid,
+      </if>
+      <if test="sadAddress != null" >
+        sad_address,
+      </if>
+      <if test="sadEmail != null" >
+        sad_email,
+      </if>
+      <if test="sadLxMan != null" >
+        sad_lx_man,
+      </if>
+      <if test="sadLxLx != null" >
+        sad_lx_lx,
+      </if>
+      <if test="sadLxPhone != null" >
+        sad_lx_phone,
+      </if>
+      <if test="sadCzNum != null" >
+        sad_cz_num,
+      </if>
+      <if test="sadRunway != null" >
+        sad_runway,
+      </if>
+      <if test="sadRemark != null" >
+        sad_remark,
+      </if>
+      <if test="sadBz1 != null" >
+        sad_bz1,
+      </if>
+      <if test="sadBz2 != null" >
+        sad_bz2,
+      </if>
+      <if test="sadBz3 != null" >
+        sad_bz3,
+      </if>
+      <if test="sadBz4 != null" >
+        sad_bz4,
+      </if>
+      <if test="sadBz5 != null" >
+        sad_bz5,
+      </if>
+      <if test="sadBz6 != null" >
+        sad_bz6,
+      </if>
+      <if test="sadBz7 != null" >
+        sad_bz7,
+      </if>
+      <if test="sadBz8 != null" >
+        sad_bz8,
+      </if>
+      <if test="sadBz9 != null" >
+        sad_bz9,
+      </if>
+      <if test="sadBz10 != null" >
+        sad_bz10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sadId != null" >
+        #{sadId,jdbcType=INTEGER},
+      </if>
+      <if test="sadSmid != null" >
+        #{sadSmid,jdbcType=INTEGER},
+      </if>
+      <if test="sadAddress != null" >
+        #{sadAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="sadEmail != null" >
+        #{sadEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="sadLxMan != null" >
+        #{sadLxMan,jdbcType=VARCHAR},
+      </if>
+      <if test="sadLxLx != null" >
+        #{sadLxLx,jdbcType=VARCHAR},
+      </if>
+      <if test="sadLxPhone != null" >
+        #{sadLxPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="sadCzNum != null" >
+        #{sadCzNum,jdbcType=VARCHAR},
+      </if>
+      <if test="sadRunway != null" >
+        #{sadRunway,jdbcType=VARCHAR},
+      </if>
+      <if test="sadRemark != null" >
+        #{sadRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="sadBz1 != null" >
+        #{sadBz1,jdbcType=VARCHAR},
+      </if>
+      <if test="sadBz2 != null" >
+        #{sadBz2,jdbcType=VARCHAR},
+      </if>
+      <if test="sadBz3 != null" >
+        #{sadBz3,jdbcType=VARCHAR},
+      </if>
+      <if test="sadBz4 != null" >
+        #{sadBz4,jdbcType=VARCHAR},
+      </if>
+      <if test="sadBz5 != null" >
+        #{sadBz5,jdbcType=VARCHAR},
+      </if>
+      <if test="sadBz6 != null" >
+        #{sadBz6,jdbcType=VARCHAR},
+      </if>
+      <if test="sadBz7 != null" >
+        #{sadBz7,jdbcType=VARCHAR},
+      </if>
+      <if test="sadBz8 != null" >
+        #{sadBz8,jdbcType=VARCHAR},
+      </if>
+      <if test="sadBz9 != null" >
+        #{sadBz9,jdbcType=VARCHAR},
+      </if>
+      <if test="sadBz10 != null" >
+        #{sadBz10,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.SupplierAddressDetailsExample" resultType="java.lang.Integer" >
+    select count(*) from supplier_address_details
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update supplier_address_details
+    <set >
+      <if test="record.sadId != null" >
+        sad_id = #{record.sadId,jdbcType=INTEGER},
+      </if>
+      <if test="record.sadSmid != null" >
+        sad_smid = #{record.sadSmid,jdbcType=INTEGER},
+      </if>
+      <if test="record.sadAddress != null" >
+        sad_address = #{record.sadAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sadEmail != null" >
+        sad_email = #{record.sadEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sadLxMan != null" >
+        sad_lx_man = #{record.sadLxMan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sadLxLx != null" >
+        sad_lx_lx = #{record.sadLxLx,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sadLxPhone != null" >
+        sad_lx_phone = #{record.sadLxPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sadCzNum != null" >
+        sad_cz_num = #{record.sadCzNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sadRunway != null" >
+        sad_runway = #{record.sadRunway,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sadRemark != null" >
+        sad_remark = #{record.sadRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sadBz1 != null" >
+        sad_bz1 = #{record.sadBz1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sadBz2 != null" >
+        sad_bz2 = #{record.sadBz2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sadBz3 != null" >
+        sad_bz3 = #{record.sadBz3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sadBz4 != null" >
+        sad_bz4 = #{record.sadBz4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sadBz5 != null" >
+        sad_bz5 = #{record.sadBz5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sadBz6 != null" >
+        sad_bz6 = #{record.sadBz6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sadBz7 != null" >
+        sad_bz7 = #{record.sadBz7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sadBz8 != null" >
+        sad_bz8 = #{record.sadBz8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sadBz9 != null" >
+        sad_bz9 = #{record.sadBz9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sadBz10 != null" >
+        sad_bz10 = #{record.sadBz10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update supplier_address_details
+    set sad_id = #{record.sadId,jdbcType=INTEGER},
+      sad_smid = #{record.sadSmid,jdbcType=INTEGER},
+      sad_address = #{record.sadAddress,jdbcType=VARCHAR},
+      sad_email = #{record.sadEmail,jdbcType=VARCHAR},
+      sad_lx_man = #{record.sadLxMan,jdbcType=VARCHAR},
+      sad_lx_lx = #{record.sadLxLx,jdbcType=VARCHAR},
+      sad_lx_phone = #{record.sadLxPhone,jdbcType=VARCHAR},
+      sad_cz_num = #{record.sadCzNum,jdbcType=VARCHAR},
+      sad_runway = #{record.sadRunway,jdbcType=VARCHAR},
+      sad_remark = #{record.sadRemark,jdbcType=VARCHAR},
+      sad_bz1 = #{record.sadBz1,jdbcType=VARCHAR},
+      sad_bz2 = #{record.sadBz2,jdbcType=VARCHAR},
+      sad_bz3 = #{record.sadBz3,jdbcType=VARCHAR},
+      sad_bz4 = #{record.sadBz4,jdbcType=VARCHAR},
+      sad_bz5 = #{record.sadBz5,jdbcType=VARCHAR},
+      sad_bz6 = #{record.sadBz6,jdbcType=VARCHAR},
+      sad_bz7 = #{record.sadBz7,jdbcType=VARCHAR},
+      sad_bz8 = #{record.sadBz8,jdbcType=VARCHAR},
+      sad_bz9 = #{record.sadBz9,jdbcType=VARCHAR},
+      sad_bz10 = #{record.sadBz10,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.SupplierAddressDetails" >
+    update supplier_address_details
+    <set >
+      <if test="sadSmid != null" >
+        sad_smid = #{sadSmid,jdbcType=INTEGER},
+      </if>
+      <if test="sadAddress != null" >
+        sad_address = #{sadAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="sadEmail != null" >
+        sad_email = #{sadEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="sadLxMan != null" >
+        sad_lx_man = #{sadLxMan,jdbcType=VARCHAR},
+      </if>
+      <if test="sadLxLx != null" >
+        sad_lx_lx = #{sadLxLx,jdbcType=VARCHAR},
+      </if>
+      <if test="sadLxPhone != null" >
+        sad_lx_phone = #{sadLxPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="sadCzNum != null" >
+        sad_cz_num = #{sadCzNum,jdbcType=VARCHAR},
+      </if>
+      <if test="sadRunway != null" >
+        sad_runway = #{sadRunway,jdbcType=VARCHAR},
+      </if>
+      <if test="sadRemark != null" >
+        sad_remark = #{sadRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="sadBz1 != null" >
+        sad_bz1 = #{sadBz1,jdbcType=VARCHAR},
+      </if>
+      <if test="sadBz2 != null" >
+        sad_bz2 = #{sadBz2,jdbcType=VARCHAR},
+      </if>
+      <if test="sadBz3 != null" >
+        sad_bz3 = #{sadBz3,jdbcType=VARCHAR},
+      </if>
+      <if test="sadBz4 != null" >
+        sad_bz4 = #{sadBz4,jdbcType=VARCHAR},
+      </if>
+      <if test="sadBz5 != null" >
+        sad_bz5 = #{sadBz5,jdbcType=VARCHAR},
+      </if>
+      <if test="sadBz6 != null" >
+        sad_bz6 = #{sadBz6,jdbcType=VARCHAR},
+      </if>
+      <if test="sadBz7 != null" >
+        sad_bz7 = #{sadBz7,jdbcType=VARCHAR},
+      </if>
+      <if test="sadBz8 != null" >
+        sad_bz8 = #{sadBz8,jdbcType=VARCHAR},
+      </if>
+      <if test="sadBz9 != null" >
+        sad_bz9 = #{sadBz9,jdbcType=VARCHAR},
+      </if>
+      <if test="sadBz10 != null" >
+        sad_bz10 = #{sadBz10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sad_id = #{sadId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.SupplierAddressDetails" >
+    update supplier_address_details
+    set sad_smid = #{sadSmid,jdbcType=INTEGER},
+      sad_address = #{sadAddress,jdbcType=VARCHAR},
+      sad_email = #{sadEmail,jdbcType=VARCHAR},
+      sad_lx_man = #{sadLxMan,jdbcType=VARCHAR},
+      sad_lx_lx = #{sadLxLx,jdbcType=VARCHAR},
+      sad_lx_phone = #{sadLxPhone,jdbcType=VARCHAR},
+      sad_cz_num = #{sadCzNum,jdbcType=VARCHAR},
+      sad_runway = #{sadRunway,jdbcType=VARCHAR},
+      sad_remark = #{sadRemark,jdbcType=VARCHAR},
+      sad_bz1 = #{sadBz1,jdbcType=VARCHAR},
+      sad_bz2 = #{sadBz2,jdbcType=VARCHAR},
+      sad_bz3 = #{sadBz3,jdbcType=VARCHAR},
+      sad_bz4 = #{sadBz4,jdbcType=VARCHAR},
+      sad_bz5 = #{sadBz5,jdbcType=VARCHAR},
+      sad_bz6 = #{sadBz6,jdbcType=VARCHAR},
+      sad_bz7 = #{sadBz7,jdbcType=VARCHAR},
+      sad_bz8 = #{sadBz8,jdbcType=VARCHAR},
+      sad_bz9 = #{sadBz9,jdbcType=VARCHAR},
+      sad_bz10 = #{sadBz10,jdbcType=VARCHAR}
+    where sad_id = #{sadId,jdbcType=INTEGER}
+  </update>
+</mapper>

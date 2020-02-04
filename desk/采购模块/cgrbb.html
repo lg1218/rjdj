@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>应收款账龄分析表(agingAccount.html)</title>
+		<link rel="stylesheet" href="../css/layui.css" media="all" />
+		<script type="text/javascript" src="../jquery-1.12.4.js"></script>
+		<script type="text/javascript" src="../layui.all.js"></script>
+	</head>
+
+	<body>
+		<div style="width: 48%;margin: auto;">
+			<div class="layui-tab layui-tab-card">
+				<ul class="layui-tab-title">
+					<li class="layui-this">供应商</li>
+					<li>物料</li>
+					<li>采购员</li>
+					<li>部门</li>
+				</ul>
+				<div class="layui-tab-content" style="height: auto;">
+					<div class="layui-tab-item layui-show">
+						<!--客户-->
+						<label class="layui-form-label" style="margin-left: -30px;">供应商区间</label>
+						<div class="layui-input-inline">
+							<input class="layui-input" style="width:180px;float:left;">
+							<span style="float: left;line-height:35px;padding: 3px;">To</span>
+							<input class="layui-input" style="float: left;width:180px;">
+							<img style="padding-left: 10px;" src="../img/jing.png" />
+							<input style="vertical-align: middle;" type="checkbox" />
+						</div>
+						<br/><br/>
+						<div class="layui-form-item">
+							<label class="layui-form-label" style="margin-left: -30px;">订单日期</label>
+
+							<div class="layui-input-inline">
+								<input type="text" v-model="data1" name="date" id="test1" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+							</div>
+							<span style="float: left;line-height:35px;padding: 3px;">To</span>
+							<div class="layui-input-inline">
+								<input type="text" v-model="data2" name="date" id="test2" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+							</div>
+
+						</div>
+
+						<div class="layui-form-item">
+							<label class="layui-form-label" style="margin-left: -30px;">预出库日</label>
+
+							<div class="layui-input-inline">
+								<input type="text" v-model="data1" name="date" id="test3" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+							</div>
+							<span style="float: left;line-height:35px;padding: 3px;">To</span>
+							<div class="layui-input-inline">
+								<input type="text" v-model="data2" name="date" id="test4" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+					</div>
+					<div class="layui-tab-item">
+						<!--业务员-->
+						<label class="layui-form-label" style="margin-left: -30px;">物料区间</label>
+						<div class="layui-input-inline">
+							<input class="layui-input" style="width:180px;float:left;">
+							<span style="float: left;line-height:35px;padding: 3px;">To</span>
+							<input class="layui-input" style="float: left;width:180px;">
+							<img style="padding-left: 10px;" src="../img/jing.png" />
+							<input style="vertical-align: middle;" type="checkbox" />
+						</div>
+						<br/><br/>
+						<div class="layui-form-item">
+							<label class="layui-form-label" style="margin-left: -30px;">订单日期</label>
+
+							<div class="layui-input-inline">
+								<input type="text" v-model="data1" name="date" id="test5" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+							</div>
+							<span style="float: left;line-height:35px;padding: 3px;">To</span>
+							<div class="layui-input-inline">
+								<input type="text" v-model="data2" name="date" id="test6" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+							</div>
+
+						</div>
+
+						<div class="layui-form-item">
+							<label class="layui-form-label" style="margin-left: -30px;">预出库日</label>
+
+							<div class="layui-input-inline">
+								<input type="text" v-model="data1" name="date" id="test7" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+							</div>
+							<span style="float: left;line-height:35px;padding: 3px;">To</span>
+							<div class="layui-input-inline">
+								<input type="text" v-model="data2" name="date" id="test8" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+					</div>
+					<div class="layui-tab-item">
+						<!--业务员-->
+						<label class="layui-form-label" style="margin-left: -30px;">采购员区间</label>
+						<div class="layui-input-inline">
+							<input class="layui-input" style="width:180px;float:left;">
+							<span style="float: left;line-height:35px;padding: 3px;">To</span>
+							<input class="layui-input" style="float: left;width:180px;">
+							<img style="padding-left: 10px;" src="../img/jing.png" />
+							<input style="vertical-align: middle;" type="checkbox" />
+						</div>
+						<br/><br/>
+						<div class="layui-form-item">
+							<label class="layui-form-label" style="margin-left: -30px;">订单日期</label>
+
+							<div class="layui-input-inline">
+								<input type="text" v-model="data1" name="date" id="test9" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+							</div>
+							<span style="float: left;line-height:35px;padding: 3px;">To</span>
+							<div class="layui-input-inline">
+								<input type="text" v-model="data2" name="date" id="test10" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+							</div>
+
+						</div>
+
+						<div class="layui-form-item">
+							<label class="layui-form-label" style="margin-left: -30px;">预出库日</label>
+
+							<div class="layui-input-inline">
+								<input type="text" v-model="data1" name="date" id="test11" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+							</div>
+							<span style="float: left;line-height:35px;padding: 3px;">To</span>
+							<div class="layui-input-inline">
+								<input type="text" v-model="data2" name="date" id="test12" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+					</div>
+					<div class="layui-tab-item">
+						<!--业务员-->
+						<label class="layui-form-label" style="margin-left: -30px;">部门区间</label>
+						<div class="layui-input-inline">
+							<input class="layui-input" style="width:180px;float:left;">
+							<span style="float: left;line-height:35px;padding: 3px;">To</span>
+							<input class="layui-input" style="float: left;width:180px;">
+							<img style="padding-left: 10px;" src="../img/jing.png" />
+							<input style="vertical-align: middle;" type="checkbox" />
+						</div>
+						<br/><br/>
+						<div class="layui-form-item">
+							<label class="layui-form-label" style="margin-left: -30px;">订单日期</label>
+
+							<div class="layui-input-inline">
+								<input type="text" v-model="data1" name="date" id="test13" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+							</div>
+							<span style="float: left;line-height:35px;padding: 3px;">To</span>
+							<div class="layui-input-inline">
+								<input type="text" v-model="data2" name="date" id="test14" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+							</div>
+
+						</div>
+
+						<div class="layui-form-item">
+							<label class="layui-form-label" style="margin-left: -30px;">预出库日</label>
+
+							<div class="layui-input-inline">
+								<input type="text" v-model="data1" name="date" id="test15" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+							</div>
+							<span style="float: left;line-height:35px;padding: 3px;">To</span>
+							<div class="layui-input-inline">
+								<input type="text" v-model="data2" name="date" id="test16" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--
+            	底部
+            -->
+			<div>
+				<button type="button" class="layui-btn layui-btn-normal">确定</button>
+				<button type="button" class="layui-btn layui-btn-normal">取消</button>
+				<button type="button" class="layui-btn layui-btn-normal">固定报表</button>
+			</div>
+
+		</div>
+
+	</body>
+	<script type="text/javascript">
+		//日期
+		layui.use('laydate', function() {
+			var laydate = layui.laydate;
+
+			//执行一个laydate实例
+			laydate.render({
+				elem: '#test1' //指定元素
+			});
+			laydate.render({
+				elem: '#test2' //指定元素
+			});
+			laydate.render({
+				elem: '#test3' //指定元素
+			});
+			laydate.render({
+				elem: '#test4' //指定元素
+			});
+			laydate.render({
+				elem: '#test5' //指定元素
+			});
+			laydate.render({
+				elem: '#test6' //指定元素
+			});
+			laydate.render({
+				elem: '#test7' //指定元素
+			});
+			laydate.render({
+				elem: '#test8' //指定元素
+			});
+			laydate.render({
+				elem: '#test9' //指定元素
+			});
+			laydate.render({
+				elem: '#test10' //指定元素
+			});
+			laydate.render({
+				elem: '#test11' //指定元素
+			});
+			laydate.render({
+				elem: '#test12' //指定元素
+			});
+			laydate.render({
+				elem: '#test13' //指定元素
+			});
+			laydate.render({
+				elem: '#test14' //指定元素
+			});
+			laydate.render({
+				elem: '#test15' //指定元素
+			});
+			laydate.render({
+				elem: '#test16' //指定元素
+			});
+
+			//年月选择器
+			laydate.render({
+				elem: '#test3',
+				type: 'month'
+			});
+		});
+	</script>
+
+</html>

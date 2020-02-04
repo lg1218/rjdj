@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.PRMainMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.PRMain" >
+    <id column="prm_id" property="prmId" jdbcType="INTEGER" />
+    <id column="prm_num" property="prmNum" jdbcType="VARCHAR" />
+    <result column="prm_date" property="prmDate" jdbcType="DATE" />
+    <result column="prm_smid" property="prmSmid" jdbcType="INTEGER" />
+    <result column="prm_flag_cxrk" property="prmFlagCxrk" jdbcType="BIT" />
+    <result column="prm_bb_id" property="prmBbId" jdbcType="INTEGER" />
+    <result column="prm_flag_dprice" property="prmFlagDprice" jdbcType="BIT" />
+    <result column="prm_warehose_id" property="prmWarehoseId" jdbcType="INTEGER" />
+    <result column="prm_gywy_flag" property="prmGywyFlag" jdbcType="BIT" />
+    <result column="prm_pznum" property="prmPznum" jdbcType="VARCHAR" />
+    <result column="prm_cg_pfmid" property="prmCgPfmid" jdbcType="INTEGER" />
+    <result column="prm_zd_pfmid" property="prmZdPfmid" jdbcType="INTEGER" />
+    <result column="prm_fh_pfmid" property="prmFhPfmid" jdbcType="INTEGER" />
+    <result column="prm_ssproject" property="prmSsproject" jdbcType="INTEGER" />
+    <result column="prm_zkgs_smid" property="prmZkgsSmid" jdbcType="VARCHAR" />
+    <result column="prm_fkwhere" property="prmFkwhere" jdbcType="INTEGER" />
+    <result column="prm_fkwhere_day" property="prmFkwhereDay" jdbcType="INTEGER" />
+    <result column="prm_fk_date" property="prmFkDate" jdbcType="DATE" />
+    <result column="prm_fk_month" property="prmFkMonth" jdbcType="DATE" />
+    <result column="prm_remark" property="prmRemark" jdbcType="VARCHAR" />
+    <result column="prm_hd_staus" property="prmHdStaus" jdbcType="INTEGER" />
+    <result column="bz1" property="bz1" jdbcType="VARCHAR" />
+    <result column="bz2" property="bz2" jdbcType="VARCHAR" />
+    <result column="bz3" property="bz3" jdbcType="VARCHAR" />
+    <result column="bz4" property="bz4" jdbcType="VARCHAR" />
+    <result column="bz5" property="bz5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    prm_id, prm_num, prm_date, prm_smid, prm_flag_cxrk, prm_bb_id, prm_flag_dprice, prm_warehose_id, 
+    prm_gywy_flag, prm_pznum, prm_cg_pfmid, prm_zd_pfmid, prm_fh_pfmid, prm_ssproject, 
+    prm_zkgs_smid, prm_fkwhere, prm_fkwhere_day, prm_fk_date, prm_fk_month, prm_remark, 
+    prm_hd_staus, bz1, bz2, bz3, bz4, bz5
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.PRMainExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from p_r_main
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.accp.domain.PRMainKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from p_r_main
+    where prm_id = #{prmId,jdbcType=INTEGER}
+      and prm_num = #{prmNum,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.accp.domain.PRMainKey" >
+    delete from p_r_main
+    where prm_id = #{prmId,jdbcType=INTEGER}
+      and prm_num = #{prmNum,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.PRMainExample" >
+    delete from p_r_main
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.PRMain" >
+    insert into p_r_main (prm_id, prm_num, prm_date, 
+      prm_smid, prm_flag_cxrk, prm_bb_id, 
+      prm_flag_dprice, prm_warehose_id, prm_gywy_flag, 
+      prm_pznum, prm_cg_pfmid, prm_zd_pfmid, 
+      prm_fh_pfmid, prm_ssproject, prm_zkgs_smid, 
+      prm_fkwhere, prm_fkwhere_day, prm_fk_date, 
+      prm_fk_month, prm_remark, prm_hd_staus, 
+      bz1, bz2, bz3, bz4, 
+      bz5)
+    values (#{prmId,jdbcType=INTEGER}, #{prmNum,jdbcType=VARCHAR}, #{prmDate,jdbcType=DATE}, 
+      #{prmSmid,jdbcType=INTEGER}, #{prmFlagCxrk,jdbcType=BIT}, #{prmBbId,jdbcType=INTEGER}, 
+      #{prmFlagDprice,jdbcType=BIT}, #{prmWarehoseId,jdbcType=INTEGER}, #{prmGywyFlag,jdbcType=BIT}, 
+      #{prmPznum,jdbcType=VARCHAR}, #{prmCgPfmid,jdbcType=INTEGER}, #{prmZdPfmid,jdbcType=INTEGER}, 
+      #{prmFhPfmid,jdbcType=INTEGER}, #{prmSsproject,jdbcType=INTEGER}, #{prmZkgsSmid,jdbcType=VARCHAR}, 
+      #{prmFkwhere,jdbcType=INTEGER}, #{prmFkwhereDay,jdbcType=INTEGER}, #{prmFkDate,jdbcType=DATE}, 
+      #{prmFkMonth,jdbcType=DATE}, #{prmRemark,jdbcType=VARCHAR}, #{prmHdStaus,jdbcType=INTEGER}, 
+      #{bz1,jdbcType=VARCHAR}, #{bz2,jdbcType=VARCHAR}, #{bz3,jdbcType=VARCHAR}, #{bz4,jdbcType=VARCHAR}, 
+      #{bz5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.PRMain" >
+    insert into p_r_main
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="prmId != null" >
+        prm_id,
+      </if>
+      <if test="prmNum != null" >
+        prm_num,
+      </if>
+      <if test="prmDate != null" >
+        prm_date,
+      </if>
+      <if test="prmSmid != null" >
+        prm_smid,
+      </if>
+      <if test="prmFlagCxrk != null" >
+        prm_flag_cxrk,
+      </if>
+      <if test="prmBbId != null" >
+        prm_bb_id,
+      </if>
+      <if test="prmFlagDprice != null" >
+        prm_flag_dprice,
+      </if>
+      <if test="prmWarehoseId != null" >
+        prm_warehose_id,
+      </if>
+      <if test="prmGywyFlag != null" >
+        prm_gywy_flag,
+      </if>
+      <if test="prmPznum != null" >
+        prm_pznum,
+      </if>
+      <if test="prmCgPfmid != null" >
+        prm_cg_pfmid,
+      </if>
+      <if test="prmZdPfmid != null" >
+        prm_zd_pfmid,
+      </if>
+      <if test="prmFhPfmid != null" >
+        prm_fh_pfmid,
+      </if>
+      <if test="prmSsproject != null" >
+        prm_ssproject,
+      </if>
+      <if test="prmZkgsSmid != null" >
+        prm_zkgs_smid,
+      </if>
+      <if test="prmFkwhere != null" >
+        prm_fkwhere,
+      </if>
+      <if test="prmFkwhereDay != null" >
+        prm_fkwhere_day,
+      </if>
+      <if test="prmFkDate != null" >
+        prm_fk_date,
+      </if>
+      <if test="prmFkMonth != null" >
+        prm_fk_month,
+      </if>
+      <if test="prmRemark != null" >
+        prm_remark,
+      </if>
+      <if test="prmHdStaus != null" >
+        prm_hd_staus,
+      </if>
+      <if test="bz1 != null" >
+        bz1,
+      </if>
+      <if test="bz2 != null" >
+        bz2,
+      </if>
+      <if test="bz3 != null" >
+        bz3,
+      </if>
+      <if test="bz4 != null" >
+        bz4,
+      </if>
+      <if test="bz5 != null" >
+        bz5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="prmId != null" >
+        #{prmId,jdbcType=INTEGER},
+      </if>
+      <if test="prmNum != null" >
+        #{prmNum,jdbcType=VARCHAR},
+      </if>
+      <if test="prmDate != null" >
+        #{prmDate,jdbcType=DATE},
+      </if>
+      <if test="prmSmid != null" >
+        #{prmSmid,jdbcType=INTEGER},
+      </if>
+      <if test="prmFlagCxrk != null" >
+        #{prmFlagCxrk,jdbcType=BIT},
+      </if>
+      <if test="prmBbId != null" >
+        #{prmBbId,jdbcType=INTEGER},
+      </if>
+      <if test="prmFlagDprice != null" >
+        #{prmFlagDprice,jdbcType=BIT},
+      </if>
+      <if test="prmWarehoseId != null" >
+        #{prmWarehoseId,jdbcType=INTEGER},
+      </if>
+      <if test="prmGywyFlag != null" >
+        #{prmGywyFlag,jdbcType=BIT},
+      </if>
+      <if test="prmPznum != null" >
+        #{prmPznum,jdbcType=VARCHAR},
+      </if>
+      <if test="prmCgPfmid != null" >
+        #{prmCgPfmid,jdbcType=INTEGER},
+      </if>
+      <if test="prmZdPfmid != null" >
+        #{prmZdPfmid,jdbcType=INTEGER},
+      </if>
+      <if test="prmFhPfmid != null" >
+        #{prmFhPfmid,jdbcType=INTEGER},
+      </if>
+      <if test="prmSsproject != null" >
+        #{prmSsproject,jdbcType=INTEGER},
+      </if>
+      <if test="prmZkgsSmid != null" >
+        #{prmZkgsSmid,jdbcType=VARCHAR},
+      </if>
+      <if test="prmFkwhere != null" >
+        #{prmFkwhere,jdbcType=INTEGER},
+      </if>
+      <if test="prmFkwhereDay != null" >
+        #{prmFkwhereDay,jdbcType=INTEGER},
+      </if>
+      <if test="prmFkDate != null" >
+        #{prmFkDate,jdbcType=DATE},
+      </if>
+      <if test="prmFkMonth != null" >
+        #{prmFkMonth,jdbcType=DATE},
+      </if>
+      <if test="prmRemark != null" >
+        #{prmRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="prmHdStaus != null" >
+        #{prmHdStaus,jdbcType=INTEGER},
+      </if>
+      <if test="bz1 != null" >
+        #{bz1,jdbcType=VARCHAR},
+      </if>
+      <if test="bz2 != null" >
+        #{bz2,jdbcType=VARCHAR},
+      </if>
+      <if test="bz3 != null" >
+        #{bz3,jdbcType=VARCHAR},
+      </if>
+      <if test="bz4 != null" >
+        #{bz4,jdbcType=VARCHAR},
+      </if>
+      <if test="bz5 != null" >
+        #{bz5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.PRMainExample" resultType="java.lang.Integer" >
+    select count(*) from p_r_main
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update p_r_main
+    <set >
+      <if test="record.prmId != null" >
+        prm_id = #{record.prmId,jdbcType=INTEGER},
+      </if>
+      <if test="record.prmNum != null" >
+        prm_num = #{record.prmNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prmDate != null" >
+        prm_date = #{record.prmDate,jdbcType=DATE},
+      </if>
+      <if test="record.prmSmid != null" >
+        prm_smid = #{record.prmSmid,jdbcType=INTEGER},
+      </if>
+      <if test="record.prmFlagCxrk != null" >
+        prm_flag_cxrk = #{record.prmFlagCxrk,jdbcType=BIT},
+      </if>
+      <if test="record.prmBbId != null" >
+        prm_bb_id = #{record.prmBbId,jdbcType=INTEGER},
+      </if>
+      <if test="record.prmFlagDprice != null" >
+        prm_flag_dprice = #{record.prmFlagDprice,jdbcType=BIT},
+      </if>
+      <if test="record.prmWarehoseId != null" >
+        prm_warehose_id = #{record.prmWarehoseId,jdbcType=INTEGER},
+      </if>
+      <if test="record.prmGywyFlag != null" >
+        prm_gywy_flag = #{record.prmGywyFlag,jdbcType=BIT},
+      </if>
+      <if test="record.prmPznum != null" >
+        prm_pznum = #{record.prmPznum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prmCgPfmid != null" >
+        prm_cg_pfmid = #{record.prmCgPfmid,jdbcType=INTEGER},
+      </if>
+      <if test="record.prmZdPfmid != null" >
+        prm_zd_pfmid = #{record.prmZdPfmid,jdbcType=INTEGER},
+      </if>
+      <if test="record.prmFhPfmid != null" >
+        prm_fh_pfmid = #{record.prmFhPfmid,jdbcType=INTEGER},
+      </if>
+      <if test="record.prmSsproject != null" >
+        prm_ssproject = #{record.prmSsproject,jdbcType=INTEGER},
+      </if>
+      <if test="record.prmZkgsSmid != null" >
+        prm_zkgs_smid = #{record.prmZkgsSmid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prmFkwhere != null" >
+        prm_fkwhere = #{record.prmFkwhere,jdbcType=INTEGER},
+      </if>
+      <if test="record.prmFkwhereDay != null" >
+        prm_fkwhere_day = #{record.prmFkwhereDay,jdbcType=INTEGER},
+      </if>
+      <if test="record.prmFkDate != null" >
+        prm_fk_date = #{record.prmFkDate,jdbcType=DATE},
+      </if>
+      <if test="record.prmFkMonth != null" >
+        prm_fk_month = #{record.prmFkMonth,jdbcType=DATE},
+      </if>
+      <if test="record.prmRemark != null" >
+        prm_remark = #{record.prmRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prmHdStaus != null" >
+        prm_hd_staus = #{record.prmHdStaus,jdbcType=INTEGER},
+      </if>
+      <if test="record.bz1 != null" >
+        bz1 = #{record.bz1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz2 != null" >
+        bz2 = #{record.bz2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz3 != null" >
+        bz3 = #{record.bz3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz4 != null" >
+        bz4 = #{record.bz4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz5 != null" >
+        bz5 = #{record.bz5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update p_r_main
+    set prm_id = #{record.prmId,jdbcType=INTEGER},
+      prm_num = #{record.prmNum,jdbcType=VARCHAR},
+      prm_date = #{record.prmDate,jdbcType=DATE},
+      prm_smid = #{record.prmSmid,jdbcType=INTEGER},
+      prm_flag_cxrk = #{record.prmFlagCxrk,jdbcType=BIT},
+      prm_bb_id = #{record.prmBbId,jdbcType=INTEGER},
+      prm_flag_dprice = #{record.prmFlagDprice,jdbcType=BIT},
+      prm_warehose_id = #{record.prmWarehoseId,jdbcType=INTEGER},
+      prm_gywy_flag = #{record.prmGywyFlag,jdbcType=BIT},
+      prm_pznum = #{record.prmPznum,jdbcType=VARCHAR},
+      prm_cg_pfmid = #{record.prmCgPfmid,jdbcType=INTEGER},
+      prm_zd_pfmid = #{record.prmZdPfmid,jdbcType=INTEGER},
+      prm_fh_pfmid = #{record.prmFhPfmid,jdbcType=INTEGER},
+      prm_ssproject = #{record.prmSsproject,jdbcType=INTEGER},
+      prm_zkgs_smid = #{record.prmZkgsSmid,jdbcType=VARCHAR},
+      prm_fkwhere = #{record.prmFkwhere,jdbcType=INTEGER},
+      prm_fkwhere_day = #{record.prmFkwhereDay,jdbcType=INTEGER},
+      prm_fk_date = #{record.prmFkDate,jdbcType=DATE},
+      prm_fk_month = #{record.prmFkMonth,jdbcType=DATE},
+      prm_remark = #{record.prmRemark,jdbcType=VARCHAR},
+      prm_hd_staus = #{record.prmHdStaus,jdbcType=INTEGER},
+      bz1 = #{record.bz1,jdbcType=VARCHAR},
+      bz2 = #{record.bz2,jdbcType=VARCHAR},
+      bz3 = #{record.bz3,jdbcType=VARCHAR},
+      bz4 = #{record.bz4,jdbcType=VARCHAR},
+      bz5 = #{record.bz5,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.PRMain" >
+    update p_r_main
+    <set >
+      <if test="prmDate != null" >
+        prm_date = #{prmDate,jdbcType=DATE},
+      </if>
+      <if test="prmSmid != null" >
+        prm_smid = #{prmSmid,jdbcType=INTEGER},
+      </if>
+      <if test="prmFlagCxrk != null" >
+        prm_flag_cxrk = #{prmFlagCxrk,jdbcType=BIT},
+      </if>
+      <if test="prmBbId != null" >
+        prm_bb_id = #{prmBbId,jdbcType=INTEGER},
+      </if>
+      <if test="prmFlagDprice != null" >
+        prm_flag_dprice = #{prmFlagDprice,jdbcType=BIT},
+      </if>
+      <if test="prmWarehoseId != null" >
+        prm_warehose_id = #{prmWarehoseId,jdbcType=INTEGER},
+      </if>
+      <if test="prmGywyFlag != null" >
+        prm_gywy_flag = #{prmGywyFlag,jdbcType=BIT},
+      </if>
+      <if test="prmPznum != null" >
+        prm_pznum = #{prmPznum,jdbcType=VARCHAR},
+      </if>
+      <if test="prmCgPfmid != null" >
+        prm_cg_pfmid = #{prmCgPfmid,jdbcType=INTEGER},
+      </if>
+      <if test="prmZdPfmid != null" >
+        prm_zd_pfmid = #{prmZdPfmid,jdbcType=INTEGER},
+      </if>
+      <if test="prmFhPfmid != null" >
+        prm_fh_pfmid = #{prmFhPfmid,jdbcType=INTEGER},
+      </if>
+      <if test="prmSsproject != null" >
+        prm_ssproject = #{prmSsproject,jdbcType=INTEGER},
+      </if>
+      <if test="prmZkgsSmid != null" >
+        prm_zkgs_smid = #{prmZkgsSmid,jdbcType=VARCHAR},
+      </if>
+      <if test="prmFkwhere != null" >
+        prm_fkwhere = #{prmFkwhere,jdbcType=INTEGER},
+      </if>
+      <if test="prmFkwhereDay != null" >
+        prm_fkwhere_day = #{prmFkwhereDay,jdbcType=INTEGER},
+      </if>
+      <if test="prmFkDate != null" >
+        prm_fk_date = #{prmFkDate,jdbcType=DATE},
+      </if>
+      <if test="prmFkMonth != null" >
+        prm_fk_month = #{prmFkMonth,jdbcType=DATE},
+      </if>
+      <if test="prmRemark != null" >
+        prm_remark = #{prmRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="prmHdStaus != null" >
+        prm_hd_staus = #{prmHdStaus,jdbcType=INTEGER},
+      </if>
+      <if test="bz1 != null" >
+        bz1 = #{bz1,jdbcType=VARCHAR},
+      </if>
+      <if test="bz2 != null" >
+        bz2 = #{bz2,jdbcType=VARCHAR},
+      </if>
+      <if test="bz3 != null" >
+        bz3 = #{bz3,jdbcType=VARCHAR},
+      </if>
+      <if test="bz4 != null" >
+        bz4 = #{bz4,jdbcType=VARCHAR},
+      </if>
+      <if test="bz5 != null" >
+        bz5 = #{bz5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where prm_id = #{prmId,jdbcType=INTEGER}
+      and prm_num = #{prmNum,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.PRMain" >
+    update p_r_main
+    set prm_date = #{prmDate,jdbcType=DATE},
+      prm_smid = #{prmSmid,jdbcType=INTEGER},
+      prm_flag_cxrk = #{prmFlagCxrk,jdbcType=BIT},
+      prm_bb_id = #{prmBbId,jdbcType=INTEGER},
+      prm_flag_dprice = #{prmFlagDprice,jdbcType=BIT},
+      prm_warehose_id = #{prmWarehoseId,jdbcType=INTEGER},
+      prm_gywy_flag = #{prmGywyFlag,jdbcType=BIT},
+      prm_pznum = #{prmPznum,jdbcType=VARCHAR},
+      prm_cg_pfmid = #{prmCgPfmid,jdbcType=INTEGER},
+      prm_zd_pfmid = #{prmZdPfmid,jdbcType=INTEGER},
+      prm_fh_pfmid = #{prmFhPfmid,jdbcType=INTEGER},
+      prm_ssproject = #{prmSsproject,jdbcType=INTEGER},
+      prm_zkgs_smid = #{prmZkgsSmid,jdbcType=VARCHAR},
+      prm_fkwhere = #{prmFkwhere,jdbcType=INTEGER},
+      prm_fkwhere_day = #{prmFkwhereDay,jdbcType=INTEGER},
+      prm_fk_date = #{prmFkDate,jdbcType=DATE},
+      prm_fk_month = #{prmFkMonth,jdbcType=DATE},
+      prm_remark = #{prmRemark,jdbcType=VARCHAR},
+      prm_hd_staus = #{prmHdStaus,jdbcType=INTEGER},
+      bz1 = #{bz1,jdbcType=VARCHAR},
+      bz2 = #{bz2,jdbcType=VARCHAR},
+      bz3 = #{bz3,jdbcType=VARCHAR},
+      bz4 = #{bz4,jdbcType=VARCHAR},
+      bz5 = #{bz5,jdbcType=VARCHAR}
+    where prm_id = #{prmId,jdbcType=INTEGER}
+      and prm_num = #{prmNum,jdbcType=VARCHAR}
+  </update>
+</mapper>

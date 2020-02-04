@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.YMoneyExpectMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.YMoneyExpect" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="DATE" />
+    <result column="client" property="client" jdbcType="VARCHAR" />
+    <result column="onterminationofTheaccount" property="onterminationoftheaccount" jdbcType="DATE" />
+    <result column="discount_rate" property="discountRate" jdbcType="VARCHAR" />
+    <result column="clearing_form1" property="clearingForm1" jdbcType="VARCHAR" />
+    <result column="clearing_form2" property="clearingForm2" jdbcType="VARCHAR" />
+    <result column="clearing_form3" property="clearingForm3" jdbcType="VARCHAR" />
+    <result column="department" property="department" jdbcType="VARCHAR" />
+    <result column="makePerson" property="makeperson" jdbcType="VARCHAR" />
+    <result column="checkPerson" property="checkperson" jdbcType="VARCHAR" />
+    <result column="subordinateToTheProject" property="subordinatetotheproject" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+    <result column="remark2" property="remark2" jdbcType="VARCHAR" />
+    <result column="remark3" property="remark3" jdbcType="VARCHAR" />
+    <result column="remark4" property="remark4" jdbcType="VARCHAR" />
+    <result column="remark5" property="remark5" jdbcType="VARCHAR" />
+    <result column="remark6" property="remark6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, date, client, onterminationofTheaccount, discount_rate, clearing_form1, clearing_form2, 
+    clearing_form3, department, makePerson, checkPerson, subordinateToTheProject, state, 
+    remark1, remark2, remark3, remark4, remark5, remark6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.YMoneyExpectExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from y_money_expect
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from y_money_expect
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from y_money_expect
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.YMoneyExpectExample" >
+    delete from y_money_expect
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.YMoneyExpect" >
+    insert into y_money_expect (id, date, client, 
+      onterminationofTheaccount, discount_rate, clearing_form1, 
+      clearing_form2, clearing_form3, department, 
+      makePerson, checkPerson, subordinateToTheProject, 
+      state, remark1, remark2, 
+      remark3, remark4, remark5, 
+      remark6)
+    values (#{id,jdbcType=VARCHAR}, #{date,jdbcType=DATE}, #{client,jdbcType=VARCHAR}, 
+      #{onterminationoftheaccount,jdbcType=DATE}, #{discountRate,jdbcType=VARCHAR}, #{clearingForm1,jdbcType=VARCHAR}, 
+      #{clearingForm2,jdbcType=VARCHAR}, #{clearingForm3,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, 
+      #{makeperson,jdbcType=VARCHAR}, #{checkperson,jdbcType=VARCHAR}, #{subordinatetotheproject,jdbcType=VARCHAR}, 
+      #{state,jdbcType=VARCHAR}, #{remark1,jdbcType=VARCHAR}, #{remark2,jdbcType=VARCHAR}, 
+      #{remark3,jdbcType=VARCHAR}, #{remark4,jdbcType=VARCHAR}, #{remark5,jdbcType=VARCHAR}, 
+      #{remark6,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.YMoneyExpect" >
+    insert into y_money_expect
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="client != null" >
+        client,
+      </if>
+      <if test="onterminationoftheaccount != null" >
+        onterminationofTheaccount,
+      </if>
+      <if test="discountRate != null" >
+        discount_rate,
+      </if>
+      <if test="clearingForm1 != null" >
+        clearing_form1,
+      </if>
+      <if test="clearingForm2 != null" >
+        clearing_form2,
+      </if>
+      <if test="clearingForm3 != null" >
+        clearing_form3,
+      </if>
+      <if test="department != null" >
+        department,
+      </if>
+      <if test="makeperson != null" >
+        makePerson,
+      </if>
+      <if test="checkperson != null" >
+        checkPerson,
+      </if>
+      <if test="subordinatetotheproject != null" >
+        subordinateToTheProject,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+      <if test="remark2 != null" >
+        remark2,
+      </if>
+      <if test="remark3 != null" >
+        remark3,
+      </if>
+      <if test="remark4 != null" >
+        remark4,
+      </if>
+      <if test="remark5 != null" >
+        remark5,
+      </if>
+      <if test="remark6 != null" >
+        remark6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=DATE},
+      </if>
+      <if test="client != null" >
+        #{client,jdbcType=VARCHAR},
+      </if>
+      <if test="onterminationoftheaccount != null" >
+        #{onterminationoftheaccount,jdbcType=DATE},
+      </if>
+      <if test="discountRate != null" >
+        #{discountRate,jdbcType=VARCHAR},
+      </if>
+      <if test="clearingForm1 != null" >
+        #{clearingForm1,jdbcType=VARCHAR},
+      </if>
+      <if test="clearingForm2 != null" >
+        #{clearingForm2,jdbcType=VARCHAR},
+      </if>
+      <if test="clearingForm3 != null" >
+        #{clearingForm3,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="makeperson != null" >
+        #{makeperson,jdbcType=VARCHAR},
+      </if>
+      <if test="checkperson != null" >
+        #{checkperson,jdbcType=VARCHAR},
+      </if>
+      <if test="subordinatetotheproject != null" >
+        #{subordinatetotheproject,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        #{remark5,jdbcType=VARCHAR},
+      </if>
+      <if test="remark6 != null" >
+        #{remark6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.YMoneyExpectExample" resultType="java.lang.Integer" >
+    select count(*) from y_money_expect
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update y_money_expect
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.date != null" >
+        date = #{record.date,jdbcType=DATE},
+      </if>
+      <if test="record.client != null" >
+        client = #{record.client,jdbcType=VARCHAR},
+      </if>
+      <if test="record.onterminationoftheaccount != null" >
+        onterminationofTheaccount = #{record.onterminationoftheaccount,jdbcType=DATE},
+      </if>
+      <if test="record.discountRate != null" >
+        discount_rate = #{record.discountRate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clearingForm1 != null" >
+        clearing_form1 = #{record.clearingForm1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clearingForm2 != null" >
+        clearing_form2 = #{record.clearingForm2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clearingForm3 != null" >
+        clearing_form3 = #{record.clearingForm3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.department != null" >
+        department = #{record.department,jdbcType=VARCHAR},
+      </if>
+      <if test="record.makeperson != null" >
+        makePerson = #{record.makeperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkperson != null" >
+        checkPerson = #{record.checkperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subordinatetotheproject != null" >
+        subordinateToTheProject = #{record.subordinatetotheproject,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null" >
+        state = #{record.state,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark1 != null" >
+        remark1 = #{record.remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark2 != null" >
+        remark2 = #{record.remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark3 != null" >
+        remark3 = #{record.remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark4 != null" >
+        remark4 = #{record.remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark5 != null" >
+        remark5 = #{record.remark5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark6 != null" >
+        remark6 = #{record.remark6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update y_money_expect
+    set id = #{record.id,jdbcType=VARCHAR},
+      date = #{record.date,jdbcType=DATE},
+      client = #{record.client,jdbcType=VARCHAR},
+      onterminationofTheaccount = #{record.onterminationoftheaccount,jdbcType=DATE},
+      discount_rate = #{record.discountRate,jdbcType=VARCHAR},
+      clearing_form1 = #{record.clearingForm1,jdbcType=VARCHAR},
+      clearing_form2 = #{record.clearingForm2,jdbcType=VARCHAR},
+      clearing_form3 = #{record.clearingForm3,jdbcType=VARCHAR},
+      department = #{record.department,jdbcType=VARCHAR},
+      makePerson = #{record.makeperson,jdbcType=VARCHAR},
+      checkPerson = #{record.checkperson,jdbcType=VARCHAR},
+      subordinateToTheProject = #{record.subordinatetotheproject,jdbcType=VARCHAR},
+      state = #{record.state,jdbcType=VARCHAR},
+      remark1 = #{record.remark1,jdbcType=VARCHAR},
+      remark2 = #{record.remark2,jdbcType=VARCHAR},
+      remark3 = #{record.remark3,jdbcType=VARCHAR},
+      remark4 = #{record.remark4,jdbcType=VARCHAR},
+      remark5 = #{record.remark5,jdbcType=VARCHAR},
+      remark6 = #{record.remark6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.YMoneyExpect" >
+    update y_money_expect
+    <set >
+      <if test="date != null" >
+        date = #{date,jdbcType=DATE},
+      </if>
+      <if test="client != null" >
+        client = #{client,jdbcType=VARCHAR},
+      </if>
+      <if test="onterminationoftheaccount != null" >
+        onterminationofTheaccount = #{onterminationoftheaccount,jdbcType=DATE},
+      </if>
+      <if test="discountRate != null" >
+        discount_rate = #{discountRate,jdbcType=VARCHAR},
+      </if>
+      <if test="clearingForm1 != null" >
+        clearing_form1 = #{clearingForm1,jdbcType=VARCHAR},
+      </if>
+      <if test="clearingForm2 != null" >
+        clearing_form2 = #{clearingForm2,jdbcType=VARCHAR},
+      </if>
+      <if test="clearingForm3 != null" >
+        clearing_form3 = #{clearingForm3,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="makeperson != null" >
+        makePerson = #{makeperson,jdbcType=VARCHAR},
+      </if>
+      <if test="checkperson != null" >
+        checkPerson = #{checkperson,jdbcType=VARCHAR},
+      </if>
+      <if test="subordinatetotheproject != null" >
+        subordinateToTheProject = #{subordinatetotheproject,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        remark2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        remark3 = #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        remark4 = #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        remark5 = #{remark5,jdbcType=VARCHAR},
+      </if>
+      <if test="remark6 != null" >
+        remark6 = #{remark6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.YMoneyExpect" >
+    update y_money_expect
+    set date = #{date,jdbcType=DATE},
+      client = #{client,jdbcType=VARCHAR},
+      onterminationofTheaccount = #{onterminationoftheaccount,jdbcType=DATE},
+      discount_rate = #{discountRate,jdbcType=VARCHAR},
+      clearing_form1 = #{clearingForm1,jdbcType=VARCHAR},
+      clearing_form2 = #{clearingForm2,jdbcType=VARCHAR},
+      clearing_form3 = #{clearingForm3,jdbcType=VARCHAR},
+      department = #{department,jdbcType=VARCHAR},
+      makePerson = #{makeperson,jdbcType=VARCHAR},
+      checkPerson = #{checkperson,jdbcType=VARCHAR},
+      subordinateToTheProject = #{subordinatetotheproject,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR},
+      remark1 = #{remark1,jdbcType=VARCHAR},
+      remark2 = #{remark2,jdbcType=VARCHAR},
+      remark3 = #{remark3,jdbcType=VARCHAR},
+      remark4 = #{remark4,jdbcType=VARCHAR},
+      remark5 = #{remark5,jdbcType=VARCHAR},
+      remark6 = #{remark6,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

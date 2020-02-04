@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.CgftMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Cgft" >
+    <id column="cgftid" property="cgftid" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="DATE" />
+    <result column="cgftpzbh" property="cgftpzbh" jdbcType="VARCHAR" />
+    <result column="cgftfs" property="cgftfs" jdbcType="INTEGER" />
+    <result column="cgftbwb" property="cgftbwb" jdbcType="DOUBLE" />
+    <result column="cgftzd" property="cgftzd" jdbcType="VARCHAR" />
+    <result column="cgftfh" property="cgftfh" jdbcType="VARCHAR" />
+    <result column="cgftby1" property="cgftby1" jdbcType="VARCHAR" />
+    <result column="cgftby2" property="cgftby2" jdbcType="VARCHAR" />
+    <result column="cgftby3" property="cgftby3" jdbcType="VARCHAR" />
+    <result column="cgftzt" property="cgftzt" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    cgftid, date, cgftpzbh, cgftfs, cgftbwb, cgftzd, cgftfh, cgftby1, cgftby2, cgftby3, 
+    cgftzt
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.CgftExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from cgft
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from cgft
+    where cgftid = #{cgftid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from cgft
+    where cgftid = #{cgftid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.CgftExample" >
+    delete from cgft
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Cgft" >
+    insert into cgft (cgftid, date, cgftpzbh, 
+      cgftfs, cgftbwb, cgftzd, 
+      cgftfh, cgftby1, cgftby2, 
+      cgftby3, cgftzt)
+    values (#{cgftid,jdbcType=VARCHAR}, #{date,jdbcType=DATE}, #{cgftpzbh,jdbcType=VARCHAR}, 
+      #{cgftfs,jdbcType=INTEGER}, #{cgftbwb,jdbcType=DOUBLE}, #{cgftzd,jdbcType=VARCHAR}, 
+      #{cgftfh,jdbcType=VARCHAR}, #{cgftby1,jdbcType=VARCHAR}, #{cgftby2,jdbcType=VARCHAR}, 
+      #{cgftby3,jdbcType=VARCHAR}, #{cgftzt,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Cgft" >
+    insert into cgft
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cgftid != null" >
+        cgftid,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="cgftpzbh != null" >
+        cgftpzbh,
+      </if>
+      <if test="cgftfs != null" >
+        cgftfs,
+      </if>
+      <if test="cgftbwb != null" >
+        cgftbwb,
+      </if>
+      <if test="cgftzd != null" >
+        cgftzd,
+      </if>
+      <if test="cgftfh != null" >
+        cgftfh,
+      </if>
+      <if test="cgftby1 != null" >
+        cgftby1,
+      </if>
+      <if test="cgftby2 != null" >
+        cgftby2,
+      </if>
+      <if test="cgftby3 != null" >
+        cgftby3,
+      </if>
+      <if test="cgftzt != null" >
+        cgftzt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cgftid != null" >
+        #{cgftid,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=DATE},
+      </if>
+      <if test="cgftpzbh != null" >
+        #{cgftpzbh,jdbcType=VARCHAR},
+      </if>
+      <if test="cgftfs != null" >
+        #{cgftfs,jdbcType=INTEGER},
+      </if>
+      <if test="cgftbwb != null" >
+        #{cgftbwb,jdbcType=DOUBLE},
+      </if>
+      <if test="cgftzd != null" >
+        #{cgftzd,jdbcType=VARCHAR},
+      </if>
+      <if test="cgftfh != null" >
+        #{cgftfh,jdbcType=VARCHAR},
+      </if>
+      <if test="cgftby1 != null" >
+        #{cgftby1,jdbcType=VARCHAR},
+      </if>
+      <if test="cgftby2 != null" >
+        #{cgftby2,jdbcType=VARCHAR},
+      </if>
+      <if test="cgftby3 != null" >
+        #{cgftby3,jdbcType=VARCHAR},
+      </if>
+      <if test="cgftzt != null" >
+        #{cgftzt,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.CgftExample" resultType="java.lang.Integer" >
+    select count(*) from cgft
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update cgft
+    <set >
+      <if test="record.cgftid != null" >
+        cgftid = #{record.cgftid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.date != null" >
+        date = #{record.date,jdbcType=DATE},
+      </if>
+      <if test="record.cgftpzbh != null" >
+        cgftpzbh = #{record.cgftpzbh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cgftfs != null" >
+        cgftfs = #{record.cgftfs,jdbcType=INTEGER},
+      </if>
+      <if test="record.cgftbwb != null" >
+        cgftbwb = #{record.cgftbwb,jdbcType=DOUBLE},
+      </if>
+      <if test="record.cgftzd != null" >
+        cgftzd = #{record.cgftzd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cgftfh != null" >
+        cgftfh = #{record.cgftfh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cgftby1 != null" >
+        cgftby1 = #{record.cgftby1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cgftby2 != null" >
+        cgftby2 = #{record.cgftby2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cgftby3 != null" >
+        cgftby3 = #{record.cgftby3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cgftzt != null" >
+        cgftzt = #{record.cgftzt,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update cgft
+    set cgftid = #{record.cgftid,jdbcType=VARCHAR},
+      date = #{record.date,jdbcType=DATE},
+      cgftpzbh = #{record.cgftpzbh,jdbcType=VARCHAR},
+      cgftfs = #{record.cgftfs,jdbcType=INTEGER},
+      cgftbwb = #{record.cgftbwb,jdbcType=DOUBLE},
+      cgftzd = #{record.cgftzd,jdbcType=VARCHAR},
+      cgftfh = #{record.cgftfh,jdbcType=VARCHAR},
+      cgftby1 = #{record.cgftby1,jdbcType=VARCHAR},
+      cgftby2 = #{record.cgftby2,jdbcType=VARCHAR},
+      cgftby3 = #{record.cgftby3,jdbcType=VARCHAR},
+      cgftzt = #{record.cgftzt,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Cgft" >
+    update cgft
+    <set >
+      <if test="date != null" >
+        date = #{date,jdbcType=DATE},
+      </if>
+      <if test="cgftpzbh != null" >
+        cgftpzbh = #{cgftpzbh,jdbcType=VARCHAR},
+      </if>
+      <if test="cgftfs != null" >
+        cgftfs = #{cgftfs,jdbcType=INTEGER},
+      </if>
+      <if test="cgftbwb != null" >
+        cgftbwb = #{cgftbwb,jdbcType=DOUBLE},
+      </if>
+      <if test="cgftzd != null" >
+        cgftzd = #{cgftzd,jdbcType=VARCHAR},
+      </if>
+      <if test="cgftfh != null" >
+        cgftfh = #{cgftfh,jdbcType=VARCHAR},
+      </if>
+      <if test="cgftby1 != null" >
+        cgftby1 = #{cgftby1,jdbcType=VARCHAR},
+      </if>
+      <if test="cgftby2 != null" >
+        cgftby2 = #{cgftby2,jdbcType=VARCHAR},
+      </if>
+      <if test="cgftby3 != null" >
+        cgftby3 = #{cgftby3,jdbcType=VARCHAR},
+      </if>
+      <if test="cgftzt != null" >
+        cgftzt = #{cgftzt,jdbcType=INTEGER},
+      </if>
+    </set>
+    where cgftid = #{cgftid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Cgft" >
+    update cgft
+    set date = #{date,jdbcType=DATE},
+      cgftpzbh = #{cgftpzbh,jdbcType=VARCHAR},
+      cgftfs = #{cgftfs,jdbcType=INTEGER},
+      cgftbwb = #{cgftbwb,jdbcType=DOUBLE},
+      cgftzd = #{cgftzd,jdbcType=VARCHAR},
+      cgftfh = #{cgftfh,jdbcType=VARCHAR},
+      cgftby1 = #{cgftby1,jdbcType=VARCHAR},
+      cgftby2 = #{cgftby2,jdbcType=VARCHAR},
+      cgftby3 = #{cgftby3,jdbcType=VARCHAR},
+      cgftzt = #{cgftzt,jdbcType=INTEGER}
+    where cgftid = #{cgftid,jdbcType=VARCHAR}
+  </update>
+</mapper>

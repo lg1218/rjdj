@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.PCheckmemuDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.PCheckmemuDetail" >
+    <id column="me_billno" property="meBillno" jdbcType="VARCHAR" />
+    <result column="mp_line_id" property="mpLineId" jdbcType="INTEGER" />
+    <result column="mp_mm_id" property="mpMmId" jdbcType="DATE" />
+    <result column="mp_prodname" property="mpProdname" jdbcType="VARCHAR" />
+    <result column="mp_prodsize" property="mpProdsize" jdbcType="INTEGER" />
+    <result column="mp_unit" property="mpUnit" jdbcType="VARCHAR" />
+    <result column="mp_curqty" property="mpCurqty" jdbcType="INTEGER" />
+    <result column="mp_checkqty" property="mpCheckqty" jdbcType="INTEGER" />
+    <result column="mp_quantity" property="mpQuantity" jdbcType="VARCHAR" />
+    <result column="mp_price" property="mpPrice" jdbcType="DOUBLE" />
+    <result column="mp_amount" property="mpAmount" jdbcType="DOUBLE" />
+    <result column="mp_billstatus" property="mpBillstatus" jdbcType="INTEGER" />
+    <result column="mp_itemremark" property="mpItemremark" jdbcType="VARCHAR" />
+    <result column="mp_sumcurqty" property="mpSumcurqty" jdbcType="VARCHAR" />
+    <result column="mp_sumcheckqty" property="mpSumcheckqty" jdbcType="VARCHAR" />
+    <result column="mp_sumqty" property="mpSumqty" jdbcType="VARCHAR" />
+    <result column="mp_sumcost" property="mpSumcost" jdbcType="DOUBLE" />
+    <result column="mp_udef1" property="mpUdef1" jdbcType="VARCHAR" />
+    <result column="mp_udef2" property="mpUdef2" jdbcType="VARCHAR" />
+    <result column="mp_remark" property="mpRemark" jdbcType="VARCHAR" />
+    <result column="by1" property="by1" jdbcType="VARCHAR" />
+    <result column="by2" property="by2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    me_billno, mp_line_id, mp_mm_id, mp_prodname, mp_prodsize, mp_unit, mp_curqty, mp_checkqty, 
+    mp_quantity, mp_price, mp_amount, mp_billstatus, mp_itemremark, mp_sumcurqty, mp_sumcheckqty, 
+    mp_sumqty, mp_sumcost, mp_udef1, mp_udef2, mp_remark, by1, by2
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.PCheckmemuDetailExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from p_checkmemu_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from p_checkmemu_detail
+    where me_billno = #{meBillno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from p_checkmemu_detail
+    where me_billno = #{meBillno,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.PCheckmemuDetailExample" >
+    delete from p_checkmemu_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.PCheckmemuDetail" >
+    insert into p_checkmemu_detail (me_billno, mp_line_id, mp_mm_id, 
+      mp_prodname, mp_prodsize, mp_unit, 
+      mp_curqty, mp_checkqty, mp_quantity, 
+      mp_price, mp_amount, mp_billstatus, 
+      mp_itemremark, mp_sumcurqty, mp_sumcheckqty, 
+      mp_sumqty, mp_sumcost, mp_udef1, 
+      mp_udef2, mp_remark, by1, 
+      by2)
+    values (#{meBillno,jdbcType=VARCHAR}, #{mpLineId,jdbcType=INTEGER}, #{mpMmId,jdbcType=DATE}, 
+      #{mpProdname,jdbcType=VARCHAR}, #{mpProdsize,jdbcType=INTEGER}, #{mpUnit,jdbcType=VARCHAR}, 
+      #{mpCurqty,jdbcType=INTEGER}, #{mpCheckqty,jdbcType=INTEGER}, #{mpQuantity,jdbcType=VARCHAR}, 
+      #{mpPrice,jdbcType=DOUBLE}, #{mpAmount,jdbcType=DOUBLE}, #{mpBillstatus,jdbcType=INTEGER}, 
+      #{mpItemremark,jdbcType=VARCHAR}, #{mpSumcurqty,jdbcType=VARCHAR}, #{mpSumcheckqty,jdbcType=VARCHAR}, 
+      #{mpSumqty,jdbcType=VARCHAR}, #{mpSumcost,jdbcType=DOUBLE}, #{mpUdef1,jdbcType=VARCHAR}, 
+      #{mpUdef2,jdbcType=VARCHAR}, #{mpRemark,jdbcType=VARCHAR}, #{by1,jdbcType=VARCHAR}, 
+      #{by2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.PCheckmemuDetail" >
+    insert into p_checkmemu_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="meBillno != null" >
+        me_billno,
+      </if>
+      <if test="mpLineId != null" >
+        mp_line_id,
+      </if>
+      <if test="mpMmId != null" >
+        mp_mm_id,
+      </if>
+      <if test="mpProdname != null" >
+        mp_prodname,
+      </if>
+      <if test="mpProdsize != null" >
+        mp_prodsize,
+      </if>
+      <if test="mpUnit != null" >
+        mp_unit,
+      </if>
+      <if test="mpCurqty != null" >
+        mp_curqty,
+      </if>
+      <if test="mpCheckqty != null" >
+        mp_checkqty,
+      </if>
+      <if test="mpQuantity != null" >
+        mp_quantity,
+      </if>
+      <if test="mpPrice != null" >
+        mp_price,
+      </if>
+      <if test="mpAmount != null" >
+        mp_amount,
+      </if>
+      <if test="mpBillstatus != null" >
+        mp_billstatus,
+      </if>
+      <if test="mpItemremark != null" >
+        mp_itemremark,
+      </if>
+      <if test="mpSumcurqty != null" >
+        mp_sumcurqty,
+      </if>
+      <if test="mpSumcheckqty != null" >
+        mp_sumcheckqty,
+      </if>
+      <if test="mpSumqty != null" >
+        mp_sumqty,
+      </if>
+      <if test="mpSumcost != null" >
+        mp_sumcost,
+      </if>
+      <if test="mpUdef1 != null" >
+        mp_udef1,
+      </if>
+      <if test="mpUdef2 != null" >
+        mp_udef2,
+      </if>
+      <if test="mpRemark != null" >
+        mp_remark,
+      </if>
+      <if test="by1 != null" >
+        by1,
+      </if>
+      <if test="by2 != null" >
+        by2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="meBillno != null" >
+        #{meBillno,jdbcType=VARCHAR},
+      </if>
+      <if test="mpLineId != null" >
+        #{mpLineId,jdbcType=INTEGER},
+      </if>
+      <if test="mpMmId != null" >
+        #{mpMmId,jdbcType=DATE},
+      </if>
+      <if test="mpProdname != null" >
+        #{mpProdname,jdbcType=VARCHAR},
+      </if>
+      <if test="mpProdsize != null" >
+        #{mpProdsize,jdbcType=INTEGER},
+      </if>
+      <if test="mpUnit != null" >
+        #{mpUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="mpCurqty != null" >
+        #{mpCurqty,jdbcType=INTEGER},
+      </if>
+      <if test="mpCheckqty != null" >
+        #{mpCheckqty,jdbcType=INTEGER},
+      </if>
+      <if test="mpQuantity != null" >
+        #{mpQuantity,jdbcType=VARCHAR},
+      </if>
+      <if test="mpPrice != null" >
+        #{mpPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="mpAmount != null" >
+        #{mpAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="mpBillstatus != null" >
+        #{mpBillstatus,jdbcType=INTEGER},
+      </if>
+      <if test="mpItemremark != null" >
+        #{mpItemremark,jdbcType=VARCHAR},
+      </if>
+      <if test="mpSumcurqty != null" >
+        #{mpSumcurqty,jdbcType=VARCHAR},
+      </if>
+      <if test="mpSumcheckqty != null" >
+        #{mpSumcheckqty,jdbcType=VARCHAR},
+      </if>
+      <if test="mpSumqty != null" >
+        #{mpSumqty,jdbcType=VARCHAR},
+      </if>
+      <if test="mpSumcost != null" >
+        #{mpSumcost,jdbcType=DOUBLE},
+      </if>
+      <if test="mpUdef1 != null" >
+        #{mpUdef1,jdbcType=VARCHAR},
+      </if>
+      <if test="mpUdef2 != null" >
+        #{mpUdef2,jdbcType=VARCHAR},
+      </if>
+      <if test="mpRemark != null" >
+        #{mpRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="by1 != null" >
+        #{by1,jdbcType=VARCHAR},
+      </if>
+      <if test="by2 != null" >
+        #{by2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.PCheckmemuDetailExample" resultType="java.lang.Integer" >
+    select count(*) from p_checkmemu_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update p_checkmemu_detail
+    <set >
+      <if test="record.meBillno != null" >
+        me_billno = #{record.meBillno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mpLineId != null" >
+        mp_line_id = #{record.mpLineId,jdbcType=INTEGER},
+      </if>
+      <if test="record.mpMmId != null" >
+        mp_mm_id = #{record.mpMmId,jdbcType=DATE},
+      </if>
+      <if test="record.mpProdname != null" >
+        mp_prodname = #{record.mpProdname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mpProdsize != null" >
+        mp_prodsize = #{record.mpProdsize,jdbcType=INTEGER},
+      </if>
+      <if test="record.mpUnit != null" >
+        mp_unit = #{record.mpUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mpCurqty != null" >
+        mp_curqty = #{record.mpCurqty,jdbcType=INTEGER},
+      </if>
+      <if test="record.mpCheckqty != null" >
+        mp_checkqty = #{record.mpCheckqty,jdbcType=INTEGER},
+      </if>
+      <if test="record.mpQuantity != null" >
+        mp_quantity = #{record.mpQuantity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mpPrice != null" >
+        mp_price = #{record.mpPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.mpAmount != null" >
+        mp_amount = #{record.mpAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="record.mpBillstatus != null" >
+        mp_billstatus = #{record.mpBillstatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.mpItemremark != null" >
+        mp_itemremark = #{record.mpItemremark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mpSumcurqty != null" >
+        mp_sumcurqty = #{record.mpSumcurqty,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mpSumcheckqty != null" >
+        mp_sumcheckqty = #{record.mpSumcheckqty,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mpSumqty != null" >
+        mp_sumqty = #{record.mpSumqty,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mpSumcost != null" >
+        mp_sumcost = #{record.mpSumcost,jdbcType=DOUBLE},
+      </if>
+      <if test="record.mpUdef1 != null" >
+        mp_udef1 = #{record.mpUdef1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mpUdef2 != null" >
+        mp_udef2 = #{record.mpUdef2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mpRemark != null" >
+        mp_remark = #{record.mpRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.by1 != null" >
+        by1 = #{record.by1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.by2 != null" >
+        by2 = #{record.by2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update p_checkmemu_detail
+    set me_billno = #{record.meBillno,jdbcType=VARCHAR},
+      mp_line_id = #{record.mpLineId,jdbcType=INTEGER},
+      mp_mm_id = #{record.mpMmId,jdbcType=DATE},
+      mp_prodname = #{record.mpProdname,jdbcType=VARCHAR},
+      mp_prodsize = #{record.mpProdsize,jdbcType=INTEGER},
+      mp_unit = #{record.mpUnit,jdbcType=VARCHAR},
+      mp_curqty = #{record.mpCurqty,jdbcType=INTEGER},
+      mp_checkqty = #{record.mpCheckqty,jdbcType=INTEGER},
+      mp_quantity = #{record.mpQuantity,jdbcType=VARCHAR},
+      mp_price = #{record.mpPrice,jdbcType=DOUBLE},
+      mp_amount = #{record.mpAmount,jdbcType=DOUBLE},
+      mp_billstatus = #{record.mpBillstatus,jdbcType=INTEGER},
+      mp_itemremark = #{record.mpItemremark,jdbcType=VARCHAR},
+      mp_sumcurqty = #{record.mpSumcurqty,jdbcType=VARCHAR},
+      mp_sumcheckqty = #{record.mpSumcheckqty,jdbcType=VARCHAR},
+      mp_sumqty = #{record.mpSumqty,jdbcType=VARCHAR},
+      mp_sumcost = #{record.mpSumcost,jdbcType=DOUBLE},
+      mp_udef1 = #{record.mpUdef1,jdbcType=VARCHAR},
+      mp_udef2 = #{record.mpUdef2,jdbcType=VARCHAR},
+      mp_remark = #{record.mpRemark,jdbcType=VARCHAR},
+      by1 = #{record.by1,jdbcType=VARCHAR},
+      by2 = #{record.by2,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.PCheckmemuDetail" >
+    update p_checkmemu_detail
+    <set >
+      <if test="mpLineId != null" >
+        mp_line_id = #{mpLineId,jdbcType=INTEGER},
+      </if>
+      <if test="mpMmId != null" >
+        mp_mm_id = #{mpMmId,jdbcType=DATE},
+      </if>
+      <if test="mpProdname != null" >
+        mp_prodname = #{mpProdname,jdbcType=VARCHAR},
+      </if>
+      <if test="mpProdsize != null" >
+        mp_prodsize = #{mpProdsize,jdbcType=INTEGER},
+      </if>
+      <if test="mpUnit != null" >
+        mp_unit = #{mpUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="mpCurqty != null" >
+        mp_curqty = #{mpCurqty,jdbcType=INTEGER},
+      </if>
+      <if test="mpCheckqty != null" >
+        mp_checkqty = #{mpCheckqty,jdbcType=INTEGER},
+      </if>
+      <if test="mpQuantity != null" >
+        mp_quantity = #{mpQuantity,jdbcType=VARCHAR},
+      </if>
+      <if test="mpPrice != null" >
+        mp_price = #{mpPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="mpAmount != null" >
+        mp_amount = #{mpAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="mpBillstatus != null" >
+        mp_billstatus = #{mpBillstatus,jdbcType=INTEGER},
+      </if>
+      <if test="mpItemremark != null" >
+        mp_itemremark = #{mpItemremark,jdbcType=VARCHAR},
+      </if>
+      <if test="mpSumcurqty != null" >
+        mp_sumcurqty = #{mpSumcurqty,jdbcType=VARCHAR},
+      </if>
+      <if test="mpSumcheckqty != null" >
+        mp_sumcheckqty = #{mpSumcheckqty,jdbcType=VARCHAR},
+      </if>
+      <if test="mpSumqty != null" >
+        mp_sumqty = #{mpSumqty,jdbcType=VARCHAR},
+      </if>
+      <if test="mpSumcost != null" >
+        mp_sumcost = #{mpSumcost,jdbcType=DOUBLE},
+      </if>
+      <if test="mpUdef1 != null" >
+        mp_udef1 = #{mpUdef1,jdbcType=VARCHAR},
+      </if>
+      <if test="mpUdef2 != null" >
+        mp_udef2 = #{mpUdef2,jdbcType=VARCHAR},
+      </if>
+      <if test="mpRemark != null" >
+        mp_remark = #{mpRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="by1 != null" >
+        by1 = #{by1,jdbcType=VARCHAR},
+      </if>
+      <if test="by2 != null" >
+        by2 = #{by2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where me_billno = #{meBillno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.PCheckmemuDetail" >
+    update p_checkmemu_detail
+    set mp_line_id = #{mpLineId,jdbcType=INTEGER},
+      mp_mm_id = #{mpMmId,jdbcType=DATE},
+      mp_prodname = #{mpProdname,jdbcType=VARCHAR},
+      mp_prodsize = #{mpProdsize,jdbcType=INTEGER},
+      mp_unit = #{mpUnit,jdbcType=VARCHAR},
+      mp_curqty = #{mpCurqty,jdbcType=INTEGER},
+      mp_checkqty = #{mpCheckqty,jdbcType=INTEGER},
+      mp_quantity = #{mpQuantity,jdbcType=VARCHAR},
+      mp_price = #{mpPrice,jdbcType=DOUBLE},
+      mp_amount = #{mpAmount,jdbcType=DOUBLE},
+      mp_billstatus = #{mpBillstatus,jdbcType=INTEGER},
+      mp_itemremark = #{mpItemremark,jdbcType=VARCHAR},
+      mp_sumcurqty = #{mpSumcurqty,jdbcType=VARCHAR},
+      mp_sumcheckqty = #{mpSumcheckqty,jdbcType=VARCHAR},
+      mp_sumqty = #{mpSumqty,jdbcType=VARCHAR},
+      mp_sumcost = #{mpSumcost,jdbcType=DOUBLE},
+      mp_udef1 = #{mpUdef1,jdbcType=VARCHAR},
+      mp_udef2 = #{mpUdef2,jdbcType=VARCHAR},
+      mp_remark = #{mpRemark,jdbcType=VARCHAR},
+      by1 = #{by1,jdbcType=VARCHAR},
+      by2 = #{by2,jdbcType=VARCHAR}
+    where me_billno = #{meBillno,jdbcType=VARCHAR}
+  </update>
+</mapper>

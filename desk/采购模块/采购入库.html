@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/layui.css">
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/layui.js"></script>
+
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/layui.all.js"></script>
+</head>
+<body>
+    <div id="cgrk" style="width: 960px">
+        <button @click="open">打开供应商</button>
+        <br>
+        取回的数据: <input type="text" id="xxx" v-model="xx">
+    </div>
+    <script>
+        var vue = new Vue({
+            el:"#cgrk",
+            data(){
+                return{
+                    xx:'xxxxxx'
+                }
+            },methods:{
+                open:function () { //调用父类的open
+                    parent.procurementVue.Open(this,'gys','gys.html','380px','260px','1')
+                },
+                xz:function () {
+                    vue.xx = "新增";
+                },xg:function () {
+                    vue.xx = "修改";
+                },sc:function () {
+                    alert('要删除？');
+                }
+            },created:function () {
+
+            }
+        })
+
+    </script>
+</body>
+</html>

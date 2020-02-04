@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.UnitMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Unit" >
+    <id column="u_id" property="uId" jdbcType="INTEGER" />
+    <result column="u_name" property="uName" jdbcType="VARCHAR" />
+    <result column="u_ename" property="uEname" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="bz1" property="bz1" jdbcType="VARCHAR" />
+    <result column="bz2" property="bz2" jdbcType="VARCHAR" />
+    <result column="bz3" property="bz3" jdbcType="VARCHAR" />
+    <result column="bz4" property="bz4" jdbcType="VARCHAR" />
+    <result column="bz5" property="bz5" jdbcType="VARCHAR" />
+    <result column="bz6" property="bz6" jdbcType="VARCHAR" />
+    <result column="bz7" property="bz7" jdbcType="VARCHAR" />
+    <result column="bz8" property="bz8" jdbcType="VARCHAR" />
+    <result column="bz9" property="bz9" jdbcType="VARCHAR" />
+    <result column="bz10" property="bz10" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    u_id, u_name, u_ename, remark, bz1, bz2, bz3, bz4, bz5, bz6, bz7, bz8, bz9, bz10
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.UnitExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from unit
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from unit
+    where u_id = #{uId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from unit
+    where u_id = #{uId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.UnitExample" >
+    delete from unit
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Unit" >
+    insert into unit (u_id, u_name, u_ename, 
+      remark, bz1, bz2, bz3, 
+      bz4, bz5, bz6, bz7, 
+      bz8, bz9, bz10)
+    values (#{uId,jdbcType=INTEGER}, #{uName,jdbcType=VARCHAR}, #{uEname,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{bz1,jdbcType=VARCHAR}, #{bz2,jdbcType=VARCHAR}, #{bz3,jdbcType=VARCHAR}, 
+      #{bz4,jdbcType=VARCHAR}, #{bz5,jdbcType=VARCHAR}, #{bz6,jdbcType=VARCHAR}, #{bz7,jdbcType=VARCHAR}, 
+      #{bz8,jdbcType=VARCHAR}, #{bz9,jdbcType=VARCHAR}, #{bz10,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Unit" >
+    insert into unit
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uId != null" >
+        u_id,
+      </if>
+      <if test="uName != null" >
+        u_name,
+      </if>
+      <if test="uEname != null" >
+        u_ename,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="bz1 != null" >
+        bz1,
+      </if>
+      <if test="bz2 != null" >
+        bz2,
+      </if>
+      <if test="bz3 != null" >
+        bz3,
+      </if>
+      <if test="bz4 != null" >
+        bz4,
+      </if>
+      <if test="bz5 != null" >
+        bz5,
+      </if>
+      <if test="bz6 != null" >
+        bz6,
+      </if>
+      <if test="bz7 != null" >
+        bz7,
+      </if>
+      <if test="bz8 != null" >
+        bz8,
+      </if>
+      <if test="bz9 != null" >
+        bz9,
+      </if>
+      <if test="bz10 != null" >
+        bz10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uId != null" >
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="uName != null" >
+        #{uName,jdbcType=VARCHAR},
+      </if>
+      <if test="uEname != null" >
+        #{uEname,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="bz1 != null" >
+        #{bz1,jdbcType=VARCHAR},
+      </if>
+      <if test="bz2 != null" >
+        #{bz2,jdbcType=VARCHAR},
+      </if>
+      <if test="bz3 != null" >
+        #{bz3,jdbcType=VARCHAR},
+      </if>
+      <if test="bz4 != null" >
+        #{bz4,jdbcType=VARCHAR},
+      </if>
+      <if test="bz5 != null" >
+        #{bz5,jdbcType=VARCHAR},
+      </if>
+      <if test="bz6 != null" >
+        #{bz6,jdbcType=VARCHAR},
+      </if>
+      <if test="bz7 != null" >
+        #{bz7,jdbcType=VARCHAR},
+      </if>
+      <if test="bz8 != null" >
+        #{bz8,jdbcType=VARCHAR},
+      </if>
+      <if test="bz9 != null" >
+        #{bz9,jdbcType=VARCHAR},
+      </if>
+      <if test="bz10 != null" >
+        #{bz10,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.UnitExample" resultType="java.lang.Integer" >
+    select count(*) from unit
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update unit
+    <set >
+      <if test="record.uId != null" >
+        u_id = #{record.uId,jdbcType=INTEGER},
+      </if>
+      <if test="record.uName != null" >
+        u_name = #{record.uName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uEname != null" >
+        u_ename = #{record.uEname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz1 != null" >
+        bz1 = #{record.bz1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz2 != null" >
+        bz2 = #{record.bz2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz3 != null" >
+        bz3 = #{record.bz3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz4 != null" >
+        bz4 = #{record.bz4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz5 != null" >
+        bz5 = #{record.bz5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz6 != null" >
+        bz6 = #{record.bz6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz7 != null" >
+        bz7 = #{record.bz7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz8 != null" >
+        bz8 = #{record.bz8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz9 != null" >
+        bz9 = #{record.bz9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz10 != null" >
+        bz10 = #{record.bz10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update unit
+    set u_id = #{record.uId,jdbcType=INTEGER},
+      u_name = #{record.uName,jdbcType=VARCHAR},
+      u_ename = #{record.uEname,jdbcType=VARCHAR},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      bz1 = #{record.bz1,jdbcType=VARCHAR},
+      bz2 = #{record.bz2,jdbcType=VARCHAR},
+      bz3 = #{record.bz3,jdbcType=VARCHAR},
+      bz4 = #{record.bz4,jdbcType=VARCHAR},
+      bz5 = #{record.bz5,jdbcType=VARCHAR},
+      bz6 = #{record.bz6,jdbcType=VARCHAR},
+      bz7 = #{record.bz7,jdbcType=VARCHAR},
+      bz8 = #{record.bz8,jdbcType=VARCHAR},
+      bz9 = #{record.bz9,jdbcType=VARCHAR},
+      bz10 = #{record.bz10,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Unit" >
+    update unit
+    <set >
+      <if test="uName != null" >
+        u_name = #{uName,jdbcType=VARCHAR},
+      </if>
+      <if test="uEname != null" >
+        u_ename = #{uEname,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="bz1 != null" >
+        bz1 = #{bz1,jdbcType=VARCHAR},
+      </if>
+      <if test="bz2 != null" >
+        bz2 = #{bz2,jdbcType=VARCHAR},
+      </if>
+      <if test="bz3 != null" >
+        bz3 = #{bz3,jdbcType=VARCHAR},
+      </if>
+      <if test="bz4 != null" >
+        bz4 = #{bz4,jdbcType=VARCHAR},
+      </if>
+      <if test="bz5 != null" >
+        bz5 = #{bz5,jdbcType=VARCHAR},
+      </if>
+      <if test="bz6 != null" >
+        bz6 = #{bz6,jdbcType=VARCHAR},
+      </if>
+      <if test="bz7 != null" >
+        bz7 = #{bz7,jdbcType=VARCHAR},
+      </if>
+      <if test="bz8 != null" >
+        bz8 = #{bz8,jdbcType=VARCHAR},
+      </if>
+      <if test="bz9 != null" >
+        bz9 = #{bz9,jdbcType=VARCHAR},
+      </if>
+      <if test="bz10 != null" >
+        bz10 = #{bz10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where u_id = #{uId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Unit" >
+    update unit
+    set u_name = #{uName,jdbcType=VARCHAR},
+      u_ename = #{uEname,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      bz1 = #{bz1,jdbcType=VARCHAR},
+      bz2 = #{bz2,jdbcType=VARCHAR},
+      bz3 = #{bz3,jdbcType=VARCHAR},
+      bz4 = #{bz4,jdbcType=VARCHAR},
+      bz5 = #{bz5,jdbcType=VARCHAR},
+      bz6 = #{bz6,jdbcType=VARCHAR},
+      bz7 = #{bz7,jdbcType=VARCHAR},
+      bz8 = #{bz8,jdbcType=VARCHAR},
+      bz9 = #{bz9,jdbcType=VARCHAR},
+      bz10 = #{bz10,jdbcType=VARCHAR}
+    where u_id = #{uId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.bodes{
+				margin: 50px;
+			}
+			.zhuymhg{
+				height: 150px;
+			}
+
+			/*.xiaoshoukuang{
+				background-image: url('./images/ss.png');
+ 				background-size:cover;
+				background-size:100% 100%;
+			}*/
+			p{
+				 color: black;
+			 }
+		</style>
+	</head>
+	<body>
+		<div class="layui-tab layui-tab-card bodes app" style="background-color:white">
+		  <ul class="layui-tab-title">
+		    <li class="layui-this">库存作业</li>
+		    <li>常用报表</li>
+		  </ul>
+		  <div class="layui-tab-content">
+		    <div class="layui-tab-item layui-show xiaoshoukuang">
+				<div class="layui-container">
+					 <div class="layui-row zhuymhg">
+					 	<div class="layui-col-md4">
+					 		<div class="xsbj" @click="show($event,'盘点单','库存模块/gitKuCunDB.html')" style="width: 70px;text-align: center;margin:22px 0 0 45px;">
+					 			<i class="layui-icon layui-icon-form" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>盘点单</p>
+					 		</div>
+					 	</div>
+					    <div class="layui-col-md4">
+					 		<div  @click="show($event,'销售订单','库存模块/')" style="width: 80px;text-align: center;margin:22px 0 0 -82px;">
+					 			<i class="layui-icon layui-icon-form" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>调价单</p>
+					 		</div>
+					 	</div>
+					 	<div class="layui-col-md4">
+					 		<div  @click="show($event,'调拨单','库存模块/gitKuCunDB.html')" style="width: 80px;text-align: center;margin:22px 0 0 -204px;">
+					 			<i class="layui-icon layui-icon-form" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>调拨单</p>
+					 		</div>
+					 	</div>
+					 </div>
+				</div>
+		    </div>
+		    <!--报表-->
+		    <div class="layui-tab-item">
+					 <div class="layui-row zhuymhg">
+					 	<div class="layui-col-md4">
+					 		<div  @click="show($event,'库存台账','库存模块/KuCunTaiZhang.html')" style="width: 70px;text-align: center;margin:22px 0 0 65px;">
+					 			<i class="layui-icon layui-icon-form" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>库存台账</p>
+					 		</div>
+					 	</div>
+					    <div class="layui-col-md4">
+					 		<div @click="show($event,'库存呆滞分析表','库存模块/KuCunDaiZhiFXB.html')" style="width: 80px;text-align: center;margin:22px 0 0 65px;">
+					 			<i class="layui-icon layui-icon-form" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>库存呆滞分析表</p>
+					 		</div>
+					 	</div>
+
+					 </div>
+					 <!--第2行-->
+
+		    </div>
+		  </div>
+		</div>
+	</body>
+<script>
+	layui.use('element', function(){
+  		var element = layui.element;
+	});
+	
+	var vue_tjy_xsgl = new Vue({
+		el:'.app',
+		data(){//值
+			return{
+				list:[
+					{"id":1,"name":"xiao"},
+					{"id":1,"name":"xiao"},
+					{"id":1,"name":"xiao"},
+					{"id":1,"name":"xiao"},
+					{"id":1,"name":"xiao"}
+				],ids:1
+			}
+			
+		},
+		methods:{//执行方法
+			 show(e,title,url,width,height,flag){ // e.target 获取当前对象
+				 if(width == null){
+					 width  = "80%";
+				 }
+				 if(height == null){
+					 height = "80%";
+				 }
+				 if(flag == null){   //只有单据是可以执行新增、修改、审核的。
+					 flag = '0';
+				 }
+				 layer.open({
+					 type: 2
+					 ,title:title
+					 ,area: [width, height]
+					 ,shade: 0
+					 ,maxmin: true
+					 ,offset:'auto'
+					 ,content: url// $(e.target) 要显示的节点,若用此法则可能会影响到样式，就是把选择的节点移到弹出框了
+					 ,
+					 id:title
+					 ,zIndex: layer.zIndex
+					 ,success: function(layero){
+						 layer.setTop(layero);
+						 if(flag === '0'){
+							 indeVue.zIndex = layer.zIndex;
+						 }
+					 },moveEnd :function () {
+						 if (flag === '0') {
+							 indeVue.zIndex = layer.zIndex + 1;
+						 }
+					 }
+				 });
+			 },
+             zishow(){
+             	layui.use('layer', function(){
+		  			var layer = layui.layer;
+		   			 layer.open({
+			  		type: 1, //类型
+			  		content: '传入任意的文本或html',//这里content是一个普通的String
+			  		shade:0,
+			 		id:"s1"
+				});
+		});
+             }
+		},
+		created:function(){//启动时生成代码
+			
+		}
+	})
+	
+
+/*点击销售报价*/
+/*   $(".xsbj").click(function(){
+   	  $(this).removeClass("layui-anim layui-anim-scaleSpring");
+   	  
+	  layui.use('layer', function(){
+		  var layer = layui.layer;
+				layer.open({
+				  type: 2, 
+				  skin: 'layui-layer-rim', //加上边框
+				  content: 'html/tjy_xsbjd.html?list='+vue_tjy_xsgl.list, //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+				  shade:0,
+				  id:'s',
+				  area: ['800px','382px'],
+				});
+		});
+	   $(this).attr("class","layui-anim layui-anim-scaleSpring");
+  }) */
+
+/*  //注意：parent 是 JS 自带的全局对象，可用于操作父页面
+var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+
+//让层自适应iframe
+$('#add').on('click', function(){
+    $('body').append('插入很多酱油。插入很多酱油。插入很多酱油。插入很多酱油。插入很多酱油。插入很多酱油。插入很多酱油。');
+    parent.layer.iframeAuto(index);
+});
+//在父层弹出一个层
+$('#new').on('click', function(){
+    parent.layer.msg('Hi, man', {shade: 0.3})
+});
+//给父页面传值
+$('#transmit').on('click', function(){
+    parent.$('#parentIframe').text('我被改变了');
+    parent.layer.tips('Look here', '#parentIframe', {time: 5000});
+    parent.layer.close(index);
+});
+//关闭iframe
+$('#closeIframe').click(function(){
+    var val = $('#name').val();
+    if(val === ''){
+        parent.layer.msg('请填写标记');
+        return;
+    }
+    parent.layer.msg('您将标记 [ ' +val + ' ] 成功传送给了父窗口');
+    parent.layer.close(index);
+});*/
+	</script>
+</html>
+  

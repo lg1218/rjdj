@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.KehuAddressDetailsMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.KehuAddressDetails" >
+    <id column="kud_d_sad_id" property="kudDSadId" jdbcType="INTEGER" />
+    <result column="kud_d_smid" property="kudDSmid" jdbcType="INTEGER" />
+    <result column="kud_d_address" property="kudDAddress" jdbcType="VARCHAR" />
+    <result column="kud_d_email" property="kudDEmail" jdbcType="VARCHAR" />
+    <result column="kud_d_lx_man" property="kudDLxMan" jdbcType="VARCHAR" />
+    <result column="kud_d_lx_lx" property="kudDLxLx" jdbcType="VARCHAR" />
+    <result column="kud_d_lx_phone" property="kudDLxPhone" jdbcType="VARCHAR" />
+    <result column="kud_d_cz_num" property="kudDCzNum" jdbcType="VARCHAR" />
+    <result column="kud_d_runway" property="kudDRunway" jdbcType="VARCHAR" />
+    <result column="kud_d_remark" property="kudDRemark" jdbcType="VARCHAR" />
+    <result column="kud_d_Bz1" property="kudDBz1" jdbcType="VARCHAR" />
+    <result column="kud_d_Bz2" property="kudDBz2" jdbcType="VARCHAR" />
+    <result column="kud_d_Bz3" property="kudDBz3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    kud_d_sad_id, kud_d_smid, kud_d_address, kud_d_email, kud_d_lx_man, kud_d_lx_lx, 
+    kud_d_lx_phone, kud_d_cz_num, kud_d_runway, kud_d_remark, kud_d_Bz1, kud_d_Bz2, kud_d_Bz3
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.KehuAddressDetailsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from kehu_address_details
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from kehu_address_details
+    where kud_d_sad_id = #{kudDSadId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from kehu_address_details
+    where kud_d_sad_id = #{kudDSadId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.KehuAddressDetailsExample" >
+    delete from kehu_address_details
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.KehuAddressDetails" >
+    insert into kehu_address_details (kud_d_sad_id, kud_d_smid, kud_d_address, 
+      kud_d_email, kud_d_lx_man, kud_d_lx_lx, 
+      kud_d_lx_phone, kud_d_cz_num, kud_d_runway, 
+      kud_d_remark, kud_d_Bz1, kud_d_Bz2, 
+      kud_d_Bz3)
+    values (#{kudDSadId,jdbcType=INTEGER}, #{kudDSmid,jdbcType=INTEGER}, #{kudDAddress,jdbcType=VARCHAR}, 
+      #{kudDEmail,jdbcType=VARCHAR}, #{kudDLxMan,jdbcType=VARCHAR}, #{kudDLxLx,jdbcType=VARCHAR}, 
+      #{kudDLxPhone,jdbcType=VARCHAR}, #{kudDCzNum,jdbcType=VARCHAR}, #{kudDRunway,jdbcType=VARCHAR}, 
+      #{kudDRemark,jdbcType=VARCHAR}, #{kudDBz1,jdbcType=VARCHAR}, #{kudDBz2,jdbcType=VARCHAR}, 
+      #{kudDBz3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.KehuAddressDetails" >
+    insert into kehu_address_details
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="kudDSadId != null" >
+        kud_d_sad_id,
+      </if>
+      <if test="kudDSmid != null" >
+        kud_d_smid,
+      </if>
+      <if test="kudDAddress != null" >
+        kud_d_address,
+      </if>
+      <if test="kudDEmail != null" >
+        kud_d_email,
+      </if>
+      <if test="kudDLxMan != null" >
+        kud_d_lx_man,
+      </if>
+      <if test="kudDLxLx != null" >
+        kud_d_lx_lx,
+      </if>
+      <if test="kudDLxPhone != null" >
+        kud_d_lx_phone,
+      </if>
+      <if test="kudDCzNum != null" >
+        kud_d_cz_num,
+      </if>
+      <if test="kudDRunway != null" >
+        kud_d_runway,
+      </if>
+      <if test="kudDRemark != null" >
+        kud_d_remark,
+      </if>
+      <if test="kudDBz1 != null" >
+        kud_d_Bz1,
+      </if>
+      <if test="kudDBz2 != null" >
+        kud_d_Bz2,
+      </if>
+      <if test="kudDBz3 != null" >
+        kud_d_Bz3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="kudDSadId != null" >
+        #{kudDSadId,jdbcType=INTEGER},
+      </if>
+      <if test="kudDSmid != null" >
+        #{kudDSmid,jdbcType=INTEGER},
+      </if>
+      <if test="kudDAddress != null" >
+        #{kudDAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="kudDEmail != null" >
+        #{kudDEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="kudDLxMan != null" >
+        #{kudDLxMan,jdbcType=VARCHAR},
+      </if>
+      <if test="kudDLxLx != null" >
+        #{kudDLxLx,jdbcType=VARCHAR},
+      </if>
+      <if test="kudDLxPhone != null" >
+        #{kudDLxPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="kudDCzNum != null" >
+        #{kudDCzNum,jdbcType=VARCHAR},
+      </if>
+      <if test="kudDRunway != null" >
+        #{kudDRunway,jdbcType=VARCHAR},
+      </if>
+      <if test="kudDRemark != null" >
+        #{kudDRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="kudDBz1 != null" >
+        #{kudDBz1,jdbcType=VARCHAR},
+      </if>
+      <if test="kudDBz2 != null" >
+        #{kudDBz2,jdbcType=VARCHAR},
+      </if>
+      <if test="kudDBz3 != null" >
+        #{kudDBz3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.KehuAddressDetailsExample" resultType="java.lang.Integer" >
+    select count(*) from kehu_address_details
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update kehu_address_details
+    <set >
+      <if test="record.kudDSadId != null" >
+        kud_d_sad_id = #{record.kudDSadId,jdbcType=INTEGER},
+      </if>
+      <if test="record.kudDSmid != null" >
+        kud_d_smid = #{record.kudDSmid,jdbcType=INTEGER},
+      </if>
+      <if test="record.kudDAddress != null" >
+        kud_d_address = #{record.kudDAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kudDEmail != null" >
+        kud_d_email = #{record.kudDEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kudDLxMan != null" >
+        kud_d_lx_man = #{record.kudDLxMan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kudDLxLx != null" >
+        kud_d_lx_lx = #{record.kudDLxLx,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kudDLxPhone != null" >
+        kud_d_lx_phone = #{record.kudDLxPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kudDCzNum != null" >
+        kud_d_cz_num = #{record.kudDCzNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kudDRunway != null" >
+        kud_d_runway = #{record.kudDRunway,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kudDRemark != null" >
+        kud_d_remark = #{record.kudDRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kudDBz1 != null" >
+        kud_d_Bz1 = #{record.kudDBz1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kudDBz2 != null" >
+        kud_d_Bz2 = #{record.kudDBz2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kudDBz3 != null" >
+        kud_d_Bz3 = #{record.kudDBz3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update kehu_address_details
+    set kud_d_sad_id = #{record.kudDSadId,jdbcType=INTEGER},
+      kud_d_smid = #{record.kudDSmid,jdbcType=INTEGER},
+      kud_d_address = #{record.kudDAddress,jdbcType=VARCHAR},
+      kud_d_email = #{record.kudDEmail,jdbcType=VARCHAR},
+      kud_d_lx_man = #{record.kudDLxMan,jdbcType=VARCHAR},
+      kud_d_lx_lx = #{record.kudDLxLx,jdbcType=VARCHAR},
+      kud_d_lx_phone = #{record.kudDLxPhone,jdbcType=VARCHAR},
+      kud_d_cz_num = #{record.kudDCzNum,jdbcType=VARCHAR},
+      kud_d_runway = #{record.kudDRunway,jdbcType=VARCHAR},
+      kud_d_remark = #{record.kudDRemark,jdbcType=VARCHAR},
+      kud_d_Bz1 = #{record.kudDBz1,jdbcType=VARCHAR},
+      kud_d_Bz2 = #{record.kudDBz2,jdbcType=VARCHAR},
+      kud_d_Bz3 = #{record.kudDBz3,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.KehuAddressDetails" >
+    update kehu_address_details
+    <set >
+      <if test="kudDSmid != null" >
+        kud_d_smid = #{kudDSmid,jdbcType=INTEGER},
+      </if>
+      <if test="kudDAddress != null" >
+        kud_d_address = #{kudDAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="kudDEmail != null" >
+        kud_d_email = #{kudDEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="kudDLxMan != null" >
+        kud_d_lx_man = #{kudDLxMan,jdbcType=VARCHAR},
+      </if>
+      <if test="kudDLxLx != null" >
+        kud_d_lx_lx = #{kudDLxLx,jdbcType=VARCHAR},
+      </if>
+      <if test="kudDLxPhone != null" >
+        kud_d_lx_phone = #{kudDLxPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="kudDCzNum != null" >
+        kud_d_cz_num = #{kudDCzNum,jdbcType=VARCHAR},
+      </if>
+      <if test="kudDRunway != null" >
+        kud_d_runway = #{kudDRunway,jdbcType=VARCHAR},
+      </if>
+      <if test="kudDRemark != null" >
+        kud_d_remark = #{kudDRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="kudDBz1 != null" >
+        kud_d_Bz1 = #{kudDBz1,jdbcType=VARCHAR},
+      </if>
+      <if test="kudDBz2 != null" >
+        kud_d_Bz2 = #{kudDBz2,jdbcType=VARCHAR},
+      </if>
+      <if test="kudDBz3 != null" >
+        kud_d_Bz3 = #{kudDBz3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where kud_d_sad_id = #{kudDSadId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.KehuAddressDetails" >
+    update kehu_address_details
+    set kud_d_smid = #{kudDSmid,jdbcType=INTEGER},
+      kud_d_address = #{kudDAddress,jdbcType=VARCHAR},
+      kud_d_email = #{kudDEmail,jdbcType=VARCHAR},
+      kud_d_lx_man = #{kudDLxMan,jdbcType=VARCHAR},
+      kud_d_lx_lx = #{kudDLxLx,jdbcType=VARCHAR},
+      kud_d_lx_phone = #{kudDLxPhone,jdbcType=VARCHAR},
+      kud_d_cz_num = #{kudDCzNum,jdbcType=VARCHAR},
+      kud_d_runway = #{kudDRunway,jdbcType=VARCHAR},
+      kud_d_remark = #{kudDRemark,jdbcType=VARCHAR},
+      kud_d_Bz1 = #{kudDBz1,jdbcType=VARCHAR},
+      kud_d_Bz2 = #{kudDBz2,jdbcType=VARCHAR},
+      kud_d_Bz3 = #{kudDBz3,jdbcType=VARCHAR}
+    where kud_d_sad_id = #{kudDSadId,jdbcType=INTEGER}
+  </update>
+</mapper>

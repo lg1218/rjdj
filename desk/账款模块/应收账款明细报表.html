@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>应付账款明细报表(agingAccount.html)</title>
+		<link rel="stylesheet" href="../css/layui.css" />
+		<script src="../js/layui.all.js"></script>
+		<script src="../js/layui.js"></script>
+	</head>
+	<body>
+		<div style="width:700px;margin: auto;">
+			<div class="layui-tab layui-tab-card" >
+			  <ul class="layui-tab-title">
+			    <li class="layui-this">客户</li>
+			    <li>业务员</li>
+			  </ul>
+			  <div class="layui-tab-content" style="height: auto;">
+			    <div class="layui-tab-item layui-show">
+			    	<!--客户-->
+			    	<label class="layui-form-label" style="margin-left: -30px;">客户区间</label>
+				    <div class="layui-input-inline">
+				      <input class="layui-input" style="width:180px;float:left;">
+				      <span style="float: left;line-height:35px;padding: 3px;margin-left: 14px;">To</span>
+				      <input class="layui-input" style="float: left;width:180px;">
+				      <img style="padding-left: 10px;" src="../images/jing1.png"/>
+				      <input style="vertical-align: middle;" type="checkbox"/>
+				    </div>
+				    
+				    <div class="layui-form-item">
+			          <label class="layui-form-label" style="margin-left: -30px;">账龄时间</label>
+						 <div class="layui-input-inline" style="width: 180px;">
+							<input type="text" v-model="data2"  name="date" id="test2" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+						</div>
+						 <div class="layui-form-mid layui-word-aux" style="color: #000000!important;">To</div>
+						<div class="layui-input-inline" style="width: 180px;">
+							<input type="text" v-model="data2"  name="date" id="test3" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+						</div>
+			        </div> 
+                    <!--5-->
+					<div class="layui-form-item layui-form" style="margin-left: 250px;">
+						<div class="layui-input-inline" style="width: 50px;margin-left: 75px;">
+							<input type="checkbox" name="like1[write]" lay-skin="primary"  checked="">
+						</div>
+						<div class="layui-form-mid layui-word-aux" style="margin-left: 5px;color: #000000!important;">期末为零显示</div>
+					</div>
+
+				</div>	
+			    <div class="layui-tab-item">
+			    	<!--业务员-->
+			    	<label class="layui-form-label" style="margin-left: -30px;">业务员区间</label>
+				    <div class="layui-input-inline">
+				      <input class="layui-input" style="width:180px;float:left;">
+				      <span style="float: left;line-height:35px;padding: 3px;margin-left: 14px;">To</span>
+				      <input class="layui-input" style="float: left;width:180px;">
+				      <img style="padding-left: 10px;" src="../images/jing1.png"/>
+				      <input style="vertical-align: middle;" type="checkbox"/>
+				    </div>
+				    
+				    <div class="layui-form-item">
+			          <label class="layui-form-label" style="margin-left: -30px;">账龄时间</label>
+						 <div class="layui-input-inline" style="width: 180px;">
+							<input type="text" v-model="data2"  name="date" id="test2" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+						</div>
+						 <div class="layui-form-mid layui-word-aux" style="color: #000000!important;">To</div>
+						<div class="layui-input-inline" style="width: 180px;">
+							<input type="text" v-model="data2"  name="date" id="test3" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+						</div>
+			        </div> 
+                    <!--5-->
+					<div class="layui-form-item layui-form" style="margin-left: 250px;">
+						<div class="layui-input-inline" style="width: 50px;margin-left: 75px;">
+							<input type="checkbox" name="like1[write]" lay-skin="primary"  checked="">
+						</div>
+						<div class="layui-form-mid layui-word-aux" style="margin-left: 5px;color: #000000!important;">期末为零显示</div>
+					</div>
+			    </div>
+			  </div>
+			</div>
+			
+			<!--
+            	底部
+           -->
+            <div>
+            	<button type="button" class="layui-btn layui-btn-normal">确定</button>
+            	<button type="button" class="layui-btn layui-btn-normal">取消</button>
+            	<button type="button" class="layui-btn layui-btn-normal">固定报表</button>
+        	</div>
+		</div>
+		
+	</div>
+	</body>
+	<script>
+		//有效日期
+layui.use('laydate', function(){
+	var laydate = layui.laydate;
+	laydate.render({
+	    elem: '#test2'
+	  });
+});
+
+layui.use('laydate', function(){
+	var laydate = layui.laydate;
+	laydate.render({
+	    elem: '#test3'
+	  });
+});
+
+//form表单提交
+layui.use('form', function(){
+  var form = layui.form;
+  
+  //监听提交
+  form.on('submit(formDemo)', function(data){
+    layer.msg(JSON.stringify(data.field));
+    return false;
+  });
+});
+	</script>
+</html>
+

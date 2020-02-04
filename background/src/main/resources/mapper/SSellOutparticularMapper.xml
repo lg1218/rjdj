@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.SSellOutparticularMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.SSellOutparticular" >
+    <id column="ou_number" property="ouNumber" jdbcType="VARCHAR" />
+    <id column="S_line" property="sLine" jdbcType="VARCHAR" />
+    <result column="S_identifier" property="sIdentifier" jdbcType="VARCHAR" />
+    <result column="S_name" property="sName" jdbcType="VARCHAR" />
+    <result column="S_model" property="sModel" jdbcType="VARCHAR" />
+    <result column="S_unitName" property="sUnitname" jdbcType="VARCHAR" />
+    <result column="S_count" property="sCount" jdbcType="INTEGER" />
+    <result column="S_rebatePrice" property="sRebateprice" jdbcType="DOUBLE" />
+    <result column="s_rebate" property="sRebate" jdbcType="INTEGER" />
+    <result column="S_price" property="sPrice" jdbcType="DOUBLE" />
+    <result column="S_money" property="sMoney" jdbcType="DOUBLE" />
+    <result column="S_taxes" property="sTaxes" jdbcType="INTEGER" />
+    <result column="S_tax" property="sTax" jdbcType="DOUBLE" />
+    <result column="S_costPrice" property="sCostprice" jdbcType="DOUBLE" />
+    <result column="S_normPrice" property="sNormprice" jdbcType="DOUBLE" />
+    <result column="S_taxMoney" property="sTaxmoney" jdbcType="DOUBLE" />
+    <result column="S_gift" property="sGift" jdbcType="INTEGER" />
+    <result column="S_numbers" property="sNumbers" jdbcType="VARCHAR" />
+    <result column="S_source" property="sSource" jdbcType="VARCHAR" />
+    <result column="S_remark" property="sRemark" jdbcType="VARCHAR" />
+    <result column="s_byzd1" property="sByzd1" jdbcType="VARCHAR" />
+    <result column="s_byzd2" property="sByzd2" jdbcType="VARCHAR" />
+    <result column="s_byzd3" property="sByzd3" jdbcType="VARCHAR" />
+    <result column="s_byzd4" property="sByzd4" jdbcType="VARCHAR" />
+    <result column="s_byzd5" property="sByzd5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ou_number, S_line, S_identifier, S_name, S_model, S_unitName, S_count, S_rebatePrice, 
+    s_rebate, S_price, S_money, S_taxes, S_tax, S_costPrice, S_normPrice, S_taxMoney, 
+    S_gift, S_numbers, S_source, S_remark, s_byzd1, s_byzd2, s_byzd3, s_byzd4, s_byzd5
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.SSellOutparticularExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from s_sell_outparticular
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.accp.domain.SSellOutparticularKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from s_sell_outparticular
+    where ou_number = #{ouNumber,jdbcType=VARCHAR}
+      and S_line = #{sLine,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.accp.domain.SSellOutparticularKey" >
+    delete from s_sell_outparticular
+    where ou_number = #{ouNumber,jdbcType=VARCHAR}
+      and S_line = #{sLine,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.SSellOutparticularExample" >
+    delete from s_sell_outparticular
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.SSellOutparticular" >
+    insert into s_sell_outparticular (ou_number, S_line, S_identifier, 
+      S_name, S_model, S_unitName, 
+      S_count, S_rebatePrice, s_rebate, 
+      S_price, S_money, S_taxes, 
+      S_tax, S_costPrice, S_normPrice, 
+      S_taxMoney, S_gift, S_numbers, 
+      S_source, S_remark, s_byzd1, 
+      s_byzd2, s_byzd3, s_byzd4, 
+      s_byzd5)
+    values (#{ouNumber,jdbcType=VARCHAR}, #{sLine,jdbcType=VARCHAR}, #{sIdentifier,jdbcType=VARCHAR}, 
+      #{sName,jdbcType=VARCHAR}, #{sModel,jdbcType=VARCHAR}, #{sUnitname,jdbcType=VARCHAR}, 
+      #{sCount,jdbcType=INTEGER}, #{sRebateprice,jdbcType=DOUBLE}, #{sRebate,jdbcType=INTEGER}, 
+      #{sPrice,jdbcType=DOUBLE}, #{sMoney,jdbcType=DOUBLE}, #{sTaxes,jdbcType=INTEGER}, 
+      #{sTax,jdbcType=DOUBLE}, #{sCostprice,jdbcType=DOUBLE}, #{sNormprice,jdbcType=DOUBLE}, 
+      #{sTaxmoney,jdbcType=DOUBLE}, #{sGift,jdbcType=INTEGER}, #{sNumbers,jdbcType=VARCHAR}, 
+      #{sSource,jdbcType=VARCHAR}, #{sRemark,jdbcType=VARCHAR}, #{sByzd1,jdbcType=VARCHAR}, 
+      #{sByzd2,jdbcType=VARCHAR}, #{sByzd3,jdbcType=VARCHAR}, #{sByzd4,jdbcType=VARCHAR}, 
+      #{sByzd5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.SSellOutparticular" >
+    insert into s_sell_outparticular
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ouNumber != null" >
+        ou_number,
+      </if>
+      <if test="sLine != null" >
+        S_line,
+      </if>
+      <if test="sIdentifier != null" >
+        S_identifier,
+      </if>
+      <if test="sName != null" >
+        S_name,
+      </if>
+      <if test="sModel != null" >
+        S_model,
+      </if>
+      <if test="sUnitname != null" >
+        S_unitName,
+      </if>
+      <if test="sCount != null" >
+        S_count,
+      </if>
+      <if test="sRebateprice != null" >
+        S_rebatePrice,
+      </if>
+      <if test="sRebate != null" >
+        s_rebate,
+      </if>
+      <if test="sPrice != null" >
+        S_price,
+      </if>
+      <if test="sMoney != null" >
+        S_money,
+      </if>
+      <if test="sTaxes != null" >
+        S_taxes,
+      </if>
+      <if test="sTax != null" >
+        S_tax,
+      </if>
+      <if test="sCostprice != null" >
+        S_costPrice,
+      </if>
+      <if test="sNormprice != null" >
+        S_normPrice,
+      </if>
+      <if test="sTaxmoney != null" >
+        S_taxMoney,
+      </if>
+      <if test="sGift != null" >
+        S_gift,
+      </if>
+      <if test="sNumbers != null" >
+        S_numbers,
+      </if>
+      <if test="sSource != null" >
+        S_source,
+      </if>
+      <if test="sRemark != null" >
+        S_remark,
+      </if>
+      <if test="sByzd1 != null" >
+        s_byzd1,
+      </if>
+      <if test="sByzd2 != null" >
+        s_byzd2,
+      </if>
+      <if test="sByzd3 != null" >
+        s_byzd3,
+      </if>
+      <if test="sByzd4 != null" >
+        s_byzd4,
+      </if>
+      <if test="sByzd5 != null" >
+        s_byzd5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ouNumber != null" >
+        #{ouNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sLine != null" >
+        #{sLine,jdbcType=VARCHAR},
+      </if>
+      <if test="sIdentifier != null" >
+        #{sIdentifier,jdbcType=VARCHAR},
+      </if>
+      <if test="sName != null" >
+        #{sName,jdbcType=VARCHAR},
+      </if>
+      <if test="sModel != null" >
+        #{sModel,jdbcType=VARCHAR},
+      </if>
+      <if test="sUnitname != null" >
+        #{sUnitname,jdbcType=VARCHAR},
+      </if>
+      <if test="sCount != null" >
+        #{sCount,jdbcType=INTEGER},
+      </if>
+      <if test="sRebateprice != null" >
+        #{sRebateprice,jdbcType=DOUBLE},
+      </if>
+      <if test="sRebate != null" >
+        #{sRebate,jdbcType=INTEGER},
+      </if>
+      <if test="sPrice != null" >
+        #{sPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="sMoney != null" >
+        #{sMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="sTaxes != null" >
+        #{sTaxes,jdbcType=INTEGER},
+      </if>
+      <if test="sTax != null" >
+        #{sTax,jdbcType=DOUBLE},
+      </if>
+      <if test="sCostprice != null" >
+        #{sCostprice,jdbcType=DOUBLE},
+      </if>
+      <if test="sNormprice != null" >
+        #{sNormprice,jdbcType=DOUBLE},
+      </if>
+      <if test="sTaxmoney != null" >
+        #{sTaxmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="sGift != null" >
+        #{sGift,jdbcType=INTEGER},
+      </if>
+      <if test="sNumbers != null" >
+        #{sNumbers,jdbcType=VARCHAR},
+      </if>
+      <if test="sSource != null" >
+        #{sSource,jdbcType=VARCHAR},
+      </if>
+      <if test="sRemark != null" >
+        #{sRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="sByzd1 != null" >
+        #{sByzd1,jdbcType=VARCHAR},
+      </if>
+      <if test="sByzd2 != null" >
+        #{sByzd2,jdbcType=VARCHAR},
+      </if>
+      <if test="sByzd3 != null" >
+        #{sByzd3,jdbcType=VARCHAR},
+      </if>
+      <if test="sByzd4 != null" >
+        #{sByzd4,jdbcType=VARCHAR},
+      </if>
+      <if test="sByzd5 != null" >
+        #{sByzd5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.SSellOutparticularExample" resultType="java.lang.Integer" >
+    select count(*) from s_sell_outparticular
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update s_sell_outparticular
+    <set >
+      <if test="record.ouNumber != null" >
+        ou_number = #{record.ouNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sLine != null" >
+        S_line = #{record.sLine,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sIdentifier != null" >
+        S_identifier = #{record.sIdentifier,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sName != null" >
+        S_name = #{record.sName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sModel != null" >
+        S_model = #{record.sModel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sUnitname != null" >
+        S_unitName = #{record.sUnitname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sCount != null" >
+        S_count = #{record.sCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.sRebateprice != null" >
+        S_rebatePrice = #{record.sRebateprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sRebate != null" >
+        s_rebate = #{record.sRebate,jdbcType=INTEGER},
+      </if>
+      <if test="record.sPrice != null" >
+        S_price = #{record.sPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sMoney != null" >
+        S_money = #{record.sMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sTaxes != null" >
+        S_taxes = #{record.sTaxes,jdbcType=INTEGER},
+      </if>
+      <if test="record.sTax != null" >
+        S_tax = #{record.sTax,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sCostprice != null" >
+        S_costPrice = #{record.sCostprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sNormprice != null" >
+        S_normPrice = #{record.sNormprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sTaxmoney != null" >
+        S_taxMoney = #{record.sTaxmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sGift != null" >
+        S_gift = #{record.sGift,jdbcType=INTEGER},
+      </if>
+      <if test="record.sNumbers != null" >
+        S_numbers = #{record.sNumbers,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sSource != null" >
+        S_source = #{record.sSource,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sRemark != null" >
+        S_remark = #{record.sRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sByzd1 != null" >
+        s_byzd1 = #{record.sByzd1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sByzd2 != null" >
+        s_byzd2 = #{record.sByzd2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sByzd3 != null" >
+        s_byzd3 = #{record.sByzd3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sByzd4 != null" >
+        s_byzd4 = #{record.sByzd4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sByzd5 != null" >
+        s_byzd5 = #{record.sByzd5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update s_sell_outparticular
+    set ou_number = #{record.ouNumber,jdbcType=VARCHAR},
+      S_line = #{record.sLine,jdbcType=VARCHAR},
+      S_identifier = #{record.sIdentifier,jdbcType=VARCHAR},
+      S_name = #{record.sName,jdbcType=VARCHAR},
+      S_model = #{record.sModel,jdbcType=VARCHAR},
+      S_unitName = #{record.sUnitname,jdbcType=VARCHAR},
+      S_count = #{record.sCount,jdbcType=INTEGER},
+      S_rebatePrice = #{record.sRebateprice,jdbcType=DOUBLE},
+      s_rebate = #{record.sRebate,jdbcType=INTEGER},
+      S_price = #{record.sPrice,jdbcType=DOUBLE},
+      S_money = #{record.sMoney,jdbcType=DOUBLE},
+      S_taxes = #{record.sTaxes,jdbcType=INTEGER},
+      S_tax = #{record.sTax,jdbcType=DOUBLE},
+      S_costPrice = #{record.sCostprice,jdbcType=DOUBLE},
+      S_normPrice = #{record.sNormprice,jdbcType=DOUBLE},
+      S_taxMoney = #{record.sTaxmoney,jdbcType=DOUBLE},
+      S_gift = #{record.sGift,jdbcType=INTEGER},
+      S_numbers = #{record.sNumbers,jdbcType=VARCHAR},
+      S_source = #{record.sSource,jdbcType=VARCHAR},
+      S_remark = #{record.sRemark,jdbcType=VARCHAR},
+      s_byzd1 = #{record.sByzd1,jdbcType=VARCHAR},
+      s_byzd2 = #{record.sByzd2,jdbcType=VARCHAR},
+      s_byzd3 = #{record.sByzd3,jdbcType=VARCHAR},
+      s_byzd4 = #{record.sByzd4,jdbcType=VARCHAR},
+      s_byzd5 = #{record.sByzd5,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.SSellOutparticular" >
+    update s_sell_outparticular
+    <set >
+      <if test="sIdentifier != null" >
+        S_identifier = #{sIdentifier,jdbcType=VARCHAR},
+      </if>
+      <if test="sName != null" >
+        S_name = #{sName,jdbcType=VARCHAR},
+      </if>
+      <if test="sModel != null" >
+        S_model = #{sModel,jdbcType=VARCHAR},
+      </if>
+      <if test="sUnitname != null" >
+        S_unitName = #{sUnitname,jdbcType=VARCHAR},
+      </if>
+      <if test="sCount != null" >
+        S_count = #{sCount,jdbcType=INTEGER},
+      </if>
+      <if test="sRebateprice != null" >
+        S_rebatePrice = #{sRebateprice,jdbcType=DOUBLE},
+      </if>
+      <if test="sRebate != null" >
+        s_rebate = #{sRebate,jdbcType=INTEGER},
+      </if>
+      <if test="sPrice != null" >
+        S_price = #{sPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="sMoney != null" >
+        S_money = #{sMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="sTaxes != null" >
+        S_taxes = #{sTaxes,jdbcType=INTEGER},
+      </if>
+      <if test="sTax != null" >
+        S_tax = #{sTax,jdbcType=DOUBLE},
+      </if>
+      <if test="sCostprice != null" >
+        S_costPrice = #{sCostprice,jdbcType=DOUBLE},
+      </if>
+      <if test="sNormprice != null" >
+        S_normPrice = #{sNormprice,jdbcType=DOUBLE},
+      </if>
+      <if test="sTaxmoney != null" >
+        S_taxMoney = #{sTaxmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="sGift != null" >
+        S_gift = #{sGift,jdbcType=INTEGER},
+      </if>
+      <if test="sNumbers != null" >
+        S_numbers = #{sNumbers,jdbcType=VARCHAR},
+      </if>
+      <if test="sSource != null" >
+        S_source = #{sSource,jdbcType=VARCHAR},
+      </if>
+      <if test="sRemark != null" >
+        S_remark = #{sRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="sByzd1 != null" >
+        s_byzd1 = #{sByzd1,jdbcType=VARCHAR},
+      </if>
+      <if test="sByzd2 != null" >
+        s_byzd2 = #{sByzd2,jdbcType=VARCHAR},
+      </if>
+      <if test="sByzd3 != null" >
+        s_byzd3 = #{sByzd3,jdbcType=VARCHAR},
+      </if>
+      <if test="sByzd4 != null" >
+        s_byzd4 = #{sByzd4,jdbcType=VARCHAR},
+      </if>
+      <if test="sByzd5 != null" >
+        s_byzd5 = #{sByzd5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ou_number = #{ouNumber,jdbcType=VARCHAR}
+      and S_line = #{sLine,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.SSellOutparticular" >
+    update s_sell_outparticular
+    set S_identifier = #{sIdentifier,jdbcType=VARCHAR},
+      S_name = #{sName,jdbcType=VARCHAR},
+      S_model = #{sModel,jdbcType=VARCHAR},
+      S_unitName = #{sUnitname,jdbcType=VARCHAR},
+      S_count = #{sCount,jdbcType=INTEGER},
+      S_rebatePrice = #{sRebateprice,jdbcType=DOUBLE},
+      s_rebate = #{sRebate,jdbcType=INTEGER},
+      S_price = #{sPrice,jdbcType=DOUBLE},
+      S_money = #{sMoney,jdbcType=DOUBLE},
+      S_taxes = #{sTaxes,jdbcType=INTEGER},
+      S_tax = #{sTax,jdbcType=DOUBLE},
+      S_costPrice = #{sCostprice,jdbcType=DOUBLE},
+      S_normPrice = #{sNormprice,jdbcType=DOUBLE},
+      S_taxMoney = #{sTaxmoney,jdbcType=DOUBLE},
+      S_gift = #{sGift,jdbcType=INTEGER},
+      S_numbers = #{sNumbers,jdbcType=VARCHAR},
+      S_source = #{sSource,jdbcType=VARCHAR},
+      S_remark = #{sRemark,jdbcType=VARCHAR},
+      s_byzd1 = #{sByzd1,jdbcType=VARCHAR},
+      s_byzd2 = #{sByzd2,jdbcType=VARCHAR},
+      s_byzd3 = #{sByzd3,jdbcType=VARCHAR},
+      s_byzd4 = #{sByzd4,jdbcType=VARCHAR},
+      s_byzd5 = #{sByzd5,jdbcType=VARCHAR}
+    where ou_number = #{ouNumber,jdbcType=VARCHAR}
+      and S_line = #{sLine,jdbcType=VARCHAR}
+  </update>
+</mapper>

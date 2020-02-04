@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.CgftmxMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Cgftmx" >
+    <id column="cgftmxid" property="cgftmxid" jdbcType="INTEGER" />
+    <result column="cgftid" property="cgftid" jdbcType="VARCHAR" />
+    <result column="cgftmxfyid" property="cgftmxfyid" jdbcType="INTEGER" />
+    <result column="cgftmxfyname" property="cgftmxfyname" jdbcType="VARCHAR" />
+    <result column="cgftmxbb" property="cgftmxbb" jdbcType="VARCHAR" />
+    <result column="cgftmxhl" property="cgftmxhl" jdbcType="VARCHAR" />
+    <result column="cgftmxje" property="cgftmxje" jdbcType="DOUBLE" />
+    <result column="cgftmxjebw" property="cgftmxjebw" jdbcType="VARCHAR" />
+    <result column="cgftmxby1" property="cgftmxby1" jdbcType="VARCHAR" />
+    <result column="cgftmxby2" property="cgftmxby2" jdbcType="VARCHAR" />
+    <result column="cgftmxby3" property="cgftmxby3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    cgftmxid, cgftid, cgftmxfyid, cgftmxfyname, cgftmxbb, cgftmxhl, cgftmxje, cgftmxjebw, 
+    cgftmxby1, cgftmxby2, cgftmxby3
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.CgftmxExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from cgftmx
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from cgftmx
+    where cgftmxid = #{cgftmxid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from cgftmx
+    where cgftmxid = #{cgftmxid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.CgftmxExample" >
+    delete from cgftmx
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Cgftmx" >
+    insert into cgftmx (cgftmxid, cgftid, cgftmxfyid, 
+      cgftmxfyname, cgftmxbb, cgftmxhl, 
+      cgftmxje, cgftmxjebw, cgftmxby1, 
+      cgftmxby2, cgftmxby3)
+    values (#{cgftmxid,jdbcType=INTEGER}, #{cgftid,jdbcType=VARCHAR}, #{cgftmxfyid,jdbcType=INTEGER}, 
+      #{cgftmxfyname,jdbcType=VARCHAR}, #{cgftmxbb,jdbcType=VARCHAR}, #{cgftmxhl,jdbcType=VARCHAR}, 
+      #{cgftmxje,jdbcType=DOUBLE}, #{cgftmxjebw,jdbcType=VARCHAR}, #{cgftmxby1,jdbcType=VARCHAR}, 
+      #{cgftmxby2,jdbcType=VARCHAR}, #{cgftmxby3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Cgftmx" >
+    insert into cgftmx
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cgftmxid != null" >
+        cgftmxid,
+      </if>
+      <if test="cgftid != null" >
+        cgftid,
+      </if>
+      <if test="cgftmxfyid != null" >
+        cgftmxfyid,
+      </if>
+      <if test="cgftmxfyname != null" >
+        cgftmxfyname,
+      </if>
+      <if test="cgftmxbb != null" >
+        cgftmxbb,
+      </if>
+      <if test="cgftmxhl != null" >
+        cgftmxhl,
+      </if>
+      <if test="cgftmxje != null" >
+        cgftmxje,
+      </if>
+      <if test="cgftmxjebw != null" >
+        cgftmxjebw,
+      </if>
+      <if test="cgftmxby1 != null" >
+        cgftmxby1,
+      </if>
+      <if test="cgftmxby2 != null" >
+        cgftmxby2,
+      </if>
+      <if test="cgftmxby3 != null" >
+        cgftmxby3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cgftmxid != null" >
+        #{cgftmxid,jdbcType=INTEGER},
+      </if>
+      <if test="cgftid != null" >
+        #{cgftid,jdbcType=VARCHAR},
+      </if>
+      <if test="cgftmxfyid != null" >
+        #{cgftmxfyid,jdbcType=INTEGER},
+      </if>
+      <if test="cgftmxfyname != null" >
+        #{cgftmxfyname,jdbcType=VARCHAR},
+      </if>
+      <if test="cgftmxbb != null" >
+        #{cgftmxbb,jdbcType=VARCHAR},
+      </if>
+      <if test="cgftmxhl != null" >
+        #{cgftmxhl,jdbcType=VARCHAR},
+      </if>
+      <if test="cgftmxje != null" >
+        #{cgftmxje,jdbcType=DOUBLE},
+      </if>
+      <if test="cgftmxjebw != null" >
+        #{cgftmxjebw,jdbcType=VARCHAR},
+      </if>
+      <if test="cgftmxby1 != null" >
+        #{cgftmxby1,jdbcType=VARCHAR},
+      </if>
+      <if test="cgftmxby2 != null" >
+        #{cgftmxby2,jdbcType=VARCHAR},
+      </if>
+      <if test="cgftmxby3 != null" >
+        #{cgftmxby3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.CgftmxExample" resultType="java.lang.Integer" >
+    select count(*) from cgftmx
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update cgftmx
+    <set >
+      <if test="record.cgftmxid != null" >
+        cgftmxid = #{record.cgftmxid,jdbcType=INTEGER},
+      </if>
+      <if test="record.cgftid != null" >
+        cgftid = #{record.cgftid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cgftmxfyid != null" >
+        cgftmxfyid = #{record.cgftmxfyid,jdbcType=INTEGER},
+      </if>
+      <if test="record.cgftmxfyname != null" >
+        cgftmxfyname = #{record.cgftmxfyname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cgftmxbb != null" >
+        cgftmxbb = #{record.cgftmxbb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cgftmxhl != null" >
+        cgftmxhl = #{record.cgftmxhl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cgftmxje != null" >
+        cgftmxje = #{record.cgftmxje,jdbcType=DOUBLE},
+      </if>
+      <if test="record.cgftmxjebw != null" >
+        cgftmxjebw = #{record.cgftmxjebw,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cgftmxby1 != null" >
+        cgftmxby1 = #{record.cgftmxby1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cgftmxby2 != null" >
+        cgftmxby2 = #{record.cgftmxby2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cgftmxby3 != null" >
+        cgftmxby3 = #{record.cgftmxby3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update cgftmx
+    set cgftmxid = #{record.cgftmxid,jdbcType=INTEGER},
+      cgftid = #{record.cgftid,jdbcType=VARCHAR},
+      cgftmxfyid = #{record.cgftmxfyid,jdbcType=INTEGER},
+      cgftmxfyname = #{record.cgftmxfyname,jdbcType=VARCHAR},
+      cgftmxbb = #{record.cgftmxbb,jdbcType=VARCHAR},
+      cgftmxhl = #{record.cgftmxhl,jdbcType=VARCHAR},
+      cgftmxje = #{record.cgftmxje,jdbcType=DOUBLE},
+      cgftmxjebw = #{record.cgftmxjebw,jdbcType=VARCHAR},
+      cgftmxby1 = #{record.cgftmxby1,jdbcType=VARCHAR},
+      cgftmxby2 = #{record.cgftmxby2,jdbcType=VARCHAR},
+      cgftmxby3 = #{record.cgftmxby3,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Cgftmx" >
+    update cgftmx
+    <set >
+      <if test="cgftid != null" >
+        cgftid = #{cgftid,jdbcType=VARCHAR},
+      </if>
+      <if test="cgftmxfyid != null" >
+        cgftmxfyid = #{cgftmxfyid,jdbcType=INTEGER},
+      </if>
+      <if test="cgftmxfyname != null" >
+        cgftmxfyname = #{cgftmxfyname,jdbcType=VARCHAR},
+      </if>
+      <if test="cgftmxbb != null" >
+        cgftmxbb = #{cgftmxbb,jdbcType=VARCHAR},
+      </if>
+      <if test="cgftmxhl != null" >
+        cgftmxhl = #{cgftmxhl,jdbcType=VARCHAR},
+      </if>
+      <if test="cgftmxje != null" >
+        cgftmxje = #{cgftmxje,jdbcType=DOUBLE},
+      </if>
+      <if test="cgftmxjebw != null" >
+        cgftmxjebw = #{cgftmxjebw,jdbcType=VARCHAR},
+      </if>
+      <if test="cgftmxby1 != null" >
+        cgftmxby1 = #{cgftmxby1,jdbcType=VARCHAR},
+      </if>
+      <if test="cgftmxby2 != null" >
+        cgftmxby2 = #{cgftmxby2,jdbcType=VARCHAR},
+      </if>
+      <if test="cgftmxby3 != null" >
+        cgftmxby3 = #{cgftmxby3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cgftmxid = #{cgftmxid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Cgftmx" >
+    update cgftmx
+    set cgftid = #{cgftid,jdbcType=VARCHAR},
+      cgftmxfyid = #{cgftmxfyid,jdbcType=INTEGER},
+      cgftmxfyname = #{cgftmxfyname,jdbcType=VARCHAR},
+      cgftmxbb = #{cgftmxbb,jdbcType=VARCHAR},
+      cgftmxhl = #{cgftmxhl,jdbcType=VARCHAR},
+      cgftmxje = #{cgftmxje,jdbcType=DOUBLE},
+      cgftmxjebw = #{cgftmxjebw,jdbcType=VARCHAR},
+      cgftmxby1 = #{cgftmxby1,jdbcType=VARCHAR},
+      cgftmxby2 = #{cgftmxby2,jdbcType=VARCHAR},
+      cgftmxby3 = #{cgftmxby3,jdbcType=VARCHAR}
+    where cgftmxid = #{cgftmxid,jdbcType=INTEGER}
+  </update>
+</mapper>

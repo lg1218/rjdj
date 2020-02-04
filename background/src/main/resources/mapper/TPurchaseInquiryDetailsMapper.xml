@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.TPurchaseInquiryDetailsMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.TPurchaseInquiryDetails" >
+    <id column="serno" property="serno" jdbcType="VARCHAR" />
+    <result column="prodid" property="prodid" jdbcType="DATE" />
+    <result column="prodname" property="prodname" jdbcType="INTEGER" />
+    <result column="prodsize" property="prodsize" jdbcType="VARCHAR" />
+    <result column="sunitid" property="sunitid" jdbcType="INTEGER" />
+    <result column="squantity" property="squantity" jdbcType="INTEGER" />
+    <result column="oldprice" property="oldprice" jdbcType="DOUBLE" />
+    <result column="discount" property="discount" jdbcType="DOUBLE" />
+    <result column="sprice" property="sprice" jdbcType="DOUBLE" />
+    <result column="amount" property="amount" jdbcType="DOUBLE" />
+    <result column="taxrate" property="taxrate" jdbcType="DOUBLE" />
+    <result column="taxamt" property="taxamt" jdbcType="DOUBLE" />
+    <result column="vftotal" property="vftotal" jdbcType="DOUBLE" />
+    <result column="isgift" property="isgift" jdbcType="INTEGER" />
+    <result column="trantype" property="trantype" jdbcType="VARCHAR" />
+    <result column="fromno" property="fromno" jdbcType="VARCHAR" />
+    <result column="itemremark" property="itemremark" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="bz1" property="bz1" jdbcType="VARCHAR" />
+    <result column="bz2" property="bz2" jdbcType="VARCHAR" />
+    <result column="bz3" property="bz3" jdbcType="VARCHAR" />
+    <result column="bz4" property="bz4" jdbcType="VARCHAR" />
+    <result column="bz5" property="bz5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    serno, prodid, prodname, prodsize, sunitid, squantity, oldprice, discount, sprice, 
+    amount, taxrate, taxamt, vftotal, isgift, trantype, fromno, itemremark, remark, bz1, 
+    bz2, bz3, bz4, bz5
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.TPurchaseInquiryDetailsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_purchase_inquiry_details
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_purchase_inquiry_details
+    where serno = #{serno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_purchase_inquiry_details
+    where serno = #{serno,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.TPurchaseInquiryDetailsExample" >
+    delete from t_purchase_inquiry_details
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.TPurchaseInquiryDetails" >
+    insert into t_purchase_inquiry_details (serno, prodid, prodname, 
+      prodsize, sunitid, squantity, 
+      oldprice, discount, sprice, 
+      amount, taxrate, taxamt, 
+      vftotal, isgift, trantype, 
+      fromno, itemremark, remark, 
+      bz1, bz2, bz3, bz4, 
+      bz5)
+    values (#{serno,jdbcType=VARCHAR}, #{prodid,jdbcType=DATE}, #{prodname,jdbcType=INTEGER}, 
+      #{prodsize,jdbcType=VARCHAR}, #{sunitid,jdbcType=INTEGER}, #{squantity,jdbcType=INTEGER}, 
+      #{oldprice,jdbcType=DOUBLE}, #{discount,jdbcType=DOUBLE}, #{sprice,jdbcType=DOUBLE}, 
+      #{amount,jdbcType=DOUBLE}, #{taxrate,jdbcType=DOUBLE}, #{taxamt,jdbcType=DOUBLE}, 
+      #{vftotal,jdbcType=DOUBLE}, #{isgift,jdbcType=INTEGER}, #{trantype,jdbcType=VARCHAR}, 
+      #{fromno,jdbcType=VARCHAR}, #{itemremark,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{bz1,jdbcType=VARCHAR}, #{bz2,jdbcType=VARCHAR}, #{bz3,jdbcType=VARCHAR}, #{bz4,jdbcType=VARCHAR}, 
+      #{bz5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.TPurchaseInquiryDetails" >
+    insert into t_purchase_inquiry_details
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="serno != null" >
+        serno,
+      </if>
+      <if test="prodid != null" >
+        prodid,
+      </if>
+      <if test="prodname != null" >
+        prodname,
+      </if>
+      <if test="prodsize != null" >
+        prodsize,
+      </if>
+      <if test="sunitid != null" >
+        sunitid,
+      </if>
+      <if test="squantity != null" >
+        squantity,
+      </if>
+      <if test="oldprice != null" >
+        oldprice,
+      </if>
+      <if test="discount != null" >
+        discount,
+      </if>
+      <if test="sprice != null" >
+        sprice,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="taxrate != null" >
+        taxrate,
+      </if>
+      <if test="taxamt != null" >
+        taxamt,
+      </if>
+      <if test="vftotal != null" >
+        vftotal,
+      </if>
+      <if test="isgift != null" >
+        isgift,
+      </if>
+      <if test="trantype != null" >
+        trantype,
+      </if>
+      <if test="fromno != null" >
+        fromno,
+      </if>
+      <if test="itemremark != null" >
+        itemremark,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="bz1 != null" >
+        bz1,
+      </if>
+      <if test="bz2 != null" >
+        bz2,
+      </if>
+      <if test="bz3 != null" >
+        bz3,
+      </if>
+      <if test="bz4 != null" >
+        bz4,
+      </if>
+      <if test="bz5 != null" >
+        bz5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="serno != null" >
+        #{serno,jdbcType=VARCHAR},
+      </if>
+      <if test="prodid != null" >
+        #{prodid,jdbcType=DATE},
+      </if>
+      <if test="prodname != null" >
+        #{prodname,jdbcType=INTEGER},
+      </if>
+      <if test="prodsize != null" >
+        #{prodsize,jdbcType=VARCHAR},
+      </if>
+      <if test="sunitid != null" >
+        #{sunitid,jdbcType=INTEGER},
+      </if>
+      <if test="squantity != null" >
+        #{squantity,jdbcType=INTEGER},
+      </if>
+      <if test="oldprice != null" >
+        #{oldprice,jdbcType=DOUBLE},
+      </if>
+      <if test="discount != null" >
+        #{discount,jdbcType=DOUBLE},
+      </if>
+      <if test="sprice != null" >
+        #{sprice,jdbcType=DOUBLE},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="taxrate != null" >
+        #{taxrate,jdbcType=DOUBLE},
+      </if>
+      <if test="taxamt != null" >
+        #{taxamt,jdbcType=DOUBLE},
+      </if>
+      <if test="vftotal != null" >
+        #{vftotal,jdbcType=DOUBLE},
+      </if>
+      <if test="isgift != null" >
+        #{isgift,jdbcType=INTEGER},
+      </if>
+      <if test="trantype != null" >
+        #{trantype,jdbcType=VARCHAR},
+      </if>
+      <if test="fromno != null" >
+        #{fromno,jdbcType=VARCHAR},
+      </if>
+      <if test="itemremark != null" >
+        #{itemremark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="bz1 != null" >
+        #{bz1,jdbcType=VARCHAR},
+      </if>
+      <if test="bz2 != null" >
+        #{bz2,jdbcType=VARCHAR},
+      </if>
+      <if test="bz3 != null" >
+        #{bz3,jdbcType=VARCHAR},
+      </if>
+      <if test="bz4 != null" >
+        #{bz4,jdbcType=VARCHAR},
+      </if>
+      <if test="bz5 != null" >
+        #{bz5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.TPurchaseInquiryDetailsExample" resultType="java.lang.Integer" >
+    select count(*) from t_purchase_inquiry_details
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_purchase_inquiry_details
+    <set >
+      <if test="record.serno != null" >
+        serno = #{record.serno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prodid != null" >
+        prodid = #{record.prodid,jdbcType=DATE},
+      </if>
+      <if test="record.prodname != null" >
+        prodname = #{record.prodname,jdbcType=INTEGER},
+      </if>
+      <if test="record.prodsize != null" >
+        prodsize = #{record.prodsize,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sunitid != null" >
+        sunitid = #{record.sunitid,jdbcType=INTEGER},
+      </if>
+      <if test="record.squantity != null" >
+        squantity = #{record.squantity,jdbcType=INTEGER},
+      </if>
+      <if test="record.oldprice != null" >
+        oldprice = #{record.oldprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.discount != null" >
+        discount = #{record.discount,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sprice != null" >
+        sprice = #{record.sprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.amount != null" >
+        amount = #{record.amount,jdbcType=DOUBLE},
+      </if>
+      <if test="record.taxrate != null" >
+        taxrate = #{record.taxrate,jdbcType=DOUBLE},
+      </if>
+      <if test="record.taxamt != null" >
+        taxamt = #{record.taxamt,jdbcType=DOUBLE},
+      </if>
+      <if test="record.vftotal != null" >
+        vftotal = #{record.vftotal,jdbcType=DOUBLE},
+      </if>
+      <if test="record.isgift != null" >
+        isgift = #{record.isgift,jdbcType=INTEGER},
+      </if>
+      <if test="record.trantype != null" >
+        trantype = #{record.trantype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fromno != null" >
+        fromno = #{record.fromno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemremark != null" >
+        itemremark = #{record.itemremark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz1 != null" >
+        bz1 = #{record.bz1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz2 != null" >
+        bz2 = #{record.bz2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz3 != null" >
+        bz3 = #{record.bz3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz4 != null" >
+        bz4 = #{record.bz4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz5 != null" >
+        bz5 = #{record.bz5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_purchase_inquiry_details
+    set serno = #{record.serno,jdbcType=VARCHAR},
+      prodid = #{record.prodid,jdbcType=DATE},
+      prodname = #{record.prodname,jdbcType=INTEGER},
+      prodsize = #{record.prodsize,jdbcType=VARCHAR},
+      sunitid = #{record.sunitid,jdbcType=INTEGER},
+      squantity = #{record.squantity,jdbcType=INTEGER},
+      oldprice = #{record.oldprice,jdbcType=DOUBLE},
+      discount = #{record.discount,jdbcType=DOUBLE},
+      sprice = #{record.sprice,jdbcType=DOUBLE},
+      amount = #{record.amount,jdbcType=DOUBLE},
+      taxrate = #{record.taxrate,jdbcType=DOUBLE},
+      taxamt = #{record.taxamt,jdbcType=DOUBLE},
+      vftotal = #{record.vftotal,jdbcType=DOUBLE},
+      isgift = #{record.isgift,jdbcType=INTEGER},
+      trantype = #{record.trantype,jdbcType=VARCHAR},
+      fromno = #{record.fromno,jdbcType=VARCHAR},
+      itemremark = #{record.itemremark,jdbcType=VARCHAR},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      bz1 = #{record.bz1,jdbcType=VARCHAR},
+      bz2 = #{record.bz2,jdbcType=VARCHAR},
+      bz3 = #{record.bz3,jdbcType=VARCHAR},
+      bz4 = #{record.bz4,jdbcType=VARCHAR},
+      bz5 = #{record.bz5,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.TPurchaseInquiryDetails" >
+    update t_purchase_inquiry_details
+    <set >
+      <if test="prodid != null" >
+        prodid = #{prodid,jdbcType=DATE},
+      </if>
+      <if test="prodname != null" >
+        prodname = #{prodname,jdbcType=INTEGER},
+      </if>
+      <if test="prodsize != null" >
+        prodsize = #{prodsize,jdbcType=VARCHAR},
+      </if>
+      <if test="sunitid != null" >
+        sunitid = #{sunitid,jdbcType=INTEGER},
+      </if>
+      <if test="squantity != null" >
+        squantity = #{squantity,jdbcType=INTEGER},
+      </if>
+      <if test="oldprice != null" >
+        oldprice = #{oldprice,jdbcType=DOUBLE},
+      </if>
+      <if test="discount != null" >
+        discount = #{discount,jdbcType=DOUBLE},
+      </if>
+      <if test="sprice != null" >
+        sprice = #{sprice,jdbcType=DOUBLE},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="taxrate != null" >
+        taxrate = #{taxrate,jdbcType=DOUBLE},
+      </if>
+      <if test="taxamt != null" >
+        taxamt = #{taxamt,jdbcType=DOUBLE},
+      </if>
+      <if test="vftotal != null" >
+        vftotal = #{vftotal,jdbcType=DOUBLE},
+      </if>
+      <if test="isgift != null" >
+        isgift = #{isgift,jdbcType=INTEGER},
+      </if>
+      <if test="trantype != null" >
+        trantype = #{trantype,jdbcType=VARCHAR},
+      </if>
+      <if test="fromno != null" >
+        fromno = #{fromno,jdbcType=VARCHAR},
+      </if>
+      <if test="itemremark != null" >
+        itemremark = #{itemremark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="bz1 != null" >
+        bz1 = #{bz1,jdbcType=VARCHAR},
+      </if>
+      <if test="bz2 != null" >
+        bz2 = #{bz2,jdbcType=VARCHAR},
+      </if>
+      <if test="bz3 != null" >
+        bz3 = #{bz3,jdbcType=VARCHAR},
+      </if>
+      <if test="bz4 != null" >
+        bz4 = #{bz4,jdbcType=VARCHAR},
+      </if>
+      <if test="bz5 != null" >
+        bz5 = #{bz5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where serno = #{serno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.TPurchaseInquiryDetails" >
+    update t_purchase_inquiry_details
+    set prodid = #{prodid,jdbcType=DATE},
+      prodname = #{prodname,jdbcType=INTEGER},
+      prodsize = #{prodsize,jdbcType=VARCHAR},
+      sunitid = #{sunitid,jdbcType=INTEGER},
+      squantity = #{squantity,jdbcType=INTEGER},
+      oldprice = #{oldprice,jdbcType=DOUBLE},
+      discount = #{discount,jdbcType=DOUBLE},
+      sprice = #{sprice,jdbcType=DOUBLE},
+      amount = #{amount,jdbcType=DOUBLE},
+      taxrate = #{taxrate,jdbcType=DOUBLE},
+      taxamt = #{taxamt,jdbcType=DOUBLE},
+      vftotal = #{vftotal,jdbcType=DOUBLE},
+      isgift = #{isgift,jdbcType=INTEGER},
+      trantype = #{trantype,jdbcType=VARCHAR},
+      fromno = #{fromno,jdbcType=VARCHAR},
+      itemremark = #{itemremark,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      bz1 = #{bz1,jdbcType=VARCHAR},
+      bz2 = #{bz2,jdbcType=VARCHAR},
+      bz3 = #{bz3,jdbcType=VARCHAR},
+      bz4 = #{bz4,jdbcType=VARCHAR},
+      bz5 = #{bz5,jdbcType=VARCHAR}
+    where serno = #{serno,jdbcType=VARCHAR}
+  </update>
+</mapper>

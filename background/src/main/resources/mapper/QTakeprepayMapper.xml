@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.QTakeprepayMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.QTakeprepay" >
+    <result column="id" property="id" jdbcType="VARCHAR" />
+    <result column="ad_id" property="adId" jdbcType="VARCHAR" />
+    <result column="rows" property="rows" jdbcType="DOUBLE" />
+    <result column="origintype" property="origintype" jdbcType="VARCHAR" />
+    <result column="ordid" property="ordid" jdbcType="VARCHAR" />
+    <result column="originmoney" property="originmoney" jdbcType="DOUBLE" />
+    <result column="balance" property="balance" jdbcType="DOUBLE" />
+    <result column="takeprepay" property="takeprepay" jdbcType="DOUBLE" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+    <result column="remark2" property="remark2" jdbcType="VARCHAR" />
+    <result column="remark3" property="remark3" jdbcType="VARCHAR" />
+    <result column="remark4" property="remark4" jdbcType="VARCHAR" />
+    <result column="remark5" property="remark5" jdbcType="VARCHAR" />
+    <result column="remark6" property="remark6" jdbcType="VARCHAR" />
+    <result column="remark7" property="remark7" jdbcType="VARCHAR" />
+    <result column="remark8" property="remark8" jdbcType="VARCHAR" />
+    <result column="remark9" property="remark9" jdbcType="VARCHAR" />
+    <result column="remark10" property="remark10" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, ad_id, rows, origintype, ordid, originmoney, balance, takeprepay, remark1, remark2, 
+    remark3, remark4, remark5, remark6, remark7, remark8, remark9, remark10
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.QTakeprepayExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from q_takeprepay
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.accp.domain.QTakeprepayExample" >
+    delete from q_takeprepay
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.QTakeprepay" >
+    insert into q_takeprepay (id, ad_id, rows, 
+      origintype, ordid, originmoney, 
+      balance, takeprepay, remark1, 
+      remark2, remark3, remark4, 
+      remark5, remark6, remark7, 
+      remark8, remark9, remark10
+      )
+    values (#{id,jdbcType=VARCHAR}, #{adId,jdbcType=VARCHAR}, #{rows,jdbcType=DOUBLE}, 
+      #{origintype,jdbcType=VARCHAR}, #{ordid,jdbcType=VARCHAR}, #{originmoney,jdbcType=DOUBLE}, 
+      #{balance,jdbcType=DOUBLE}, #{takeprepay,jdbcType=DOUBLE}, #{remark1,jdbcType=VARCHAR}, 
+      #{remark2,jdbcType=VARCHAR}, #{remark3,jdbcType=VARCHAR}, #{remark4,jdbcType=VARCHAR}, 
+      #{remark5,jdbcType=VARCHAR}, #{remark6,jdbcType=VARCHAR}, #{remark7,jdbcType=VARCHAR}, 
+      #{remark8,jdbcType=VARCHAR}, #{remark9,jdbcType=VARCHAR}, #{remark10,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.QTakeprepay" >
+    insert into q_takeprepay
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="adId != null" >
+        ad_id,
+      </if>
+      <if test="rows != null" >
+        rows,
+      </if>
+      <if test="origintype != null" >
+        origintype,
+      </if>
+      <if test="ordid != null" >
+        ordid,
+      </if>
+      <if test="originmoney != null" >
+        originmoney,
+      </if>
+      <if test="balance != null" >
+        balance,
+      </if>
+      <if test="takeprepay != null" >
+        takeprepay,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+      <if test="remark2 != null" >
+        remark2,
+      </if>
+      <if test="remark3 != null" >
+        remark3,
+      </if>
+      <if test="remark4 != null" >
+        remark4,
+      </if>
+      <if test="remark5 != null" >
+        remark5,
+      </if>
+      <if test="remark6 != null" >
+        remark6,
+      </if>
+      <if test="remark7 != null" >
+        remark7,
+      </if>
+      <if test="remark8 != null" >
+        remark8,
+      </if>
+      <if test="remark9 != null" >
+        remark9,
+      </if>
+      <if test="remark10 != null" >
+        remark10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="adId != null" >
+        #{adId,jdbcType=VARCHAR},
+      </if>
+      <if test="rows != null" >
+        #{rows,jdbcType=DOUBLE},
+      </if>
+      <if test="origintype != null" >
+        #{origintype,jdbcType=VARCHAR},
+      </if>
+      <if test="ordid != null" >
+        #{ordid,jdbcType=VARCHAR},
+      </if>
+      <if test="originmoney != null" >
+        #{originmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="balance != null" >
+        #{balance,jdbcType=DOUBLE},
+      </if>
+      <if test="takeprepay != null" >
+        #{takeprepay,jdbcType=DOUBLE},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        #{remark5,jdbcType=VARCHAR},
+      </if>
+      <if test="remark6 != null" >
+        #{remark6,jdbcType=VARCHAR},
+      </if>
+      <if test="remark7 != null" >
+        #{remark7,jdbcType=VARCHAR},
+      </if>
+      <if test="remark8 != null" >
+        #{remark8,jdbcType=VARCHAR},
+      </if>
+      <if test="remark9 != null" >
+        #{remark9,jdbcType=VARCHAR},
+      </if>
+      <if test="remark10 != null" >
+        #{remark10,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.QTakeprepayExample" resultType="java.lang.Integer" >
+    select count(*) from q_takeprepay
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update q_takeprepay
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adId != null" >
+        ad_id = #{record.adId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rows != null" >
+        rows = #{record.rows,jdbcType=DOUBLE},
+      </if>
+      <if test="record.origintype != null" >
+        origintype = #{record.origintype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ordid != null" >
+        ordid = #{record.ordid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.originmoney != null" >
+        originmoney = #{record.originmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.balance != null" >
+        balance = #{record.balance,jdbcType=DOUBLE},
+      </if>
+      <if test="record.takeprepay != null" >
+        takeprepay = #{record.takeprepay,jdbcType=DOUBLE},
+      </if>
+      <if test="record.remark1 != null" >
+        remark1 = #{record.remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark2 != null" >
+        remark2 = #{record.remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark3 != null" >
+        remark3 = #{record.remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark4 != null" >
+        remark4 = #{record.remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark5 != null" >
+        remark5 = #{record.remark5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark6 != null" >
+        remark6 = #{record.remark6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark7 != null" >
+        remark7 = #{record.remark7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark8 != null" >
+        remark8 = #{record.remark8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark9 != null" >
+        remark9 = #{record.remark9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark10 != null" >
+        remark10 = #{record.remark10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update q_takeprepay
+    set id = #{record.id,jdbcType=VARCHAR},
+      ad_id = #{record.adId,jdbcType=VARCHAR},
+      rows = #{record.rows,jdbcType=DOUBLE},
+      origintype = #{record.origintype,jdbcType=VARCHAR},
+      ordid = #{record.ordid,jdbcType=VARCHAR},
+      originmoney = #{record.originmoney,jdbcType=DOUBLE},
+      balance = #{record.balance,jdbcType=DOUBLE},
+      takeprepay = #{record.takeprepay,jdbcType=DOUBLE},
+      remark1 = #{record.remark1,jdbcType=VARCHAR},
+      remark2 = #{record.remark2,jdbcType=VARCHAR},
+      remark3 = #{record.remark3,jdbcType=VARCHAR},
+      remark4 = #{record.remark4,jdbcType=VARCHAR},
+      remark5 = #{record.remark5,jdbcType=VARCHAR},
+      remark6 = #{record.remark6,jdbcType=VARCHAR},
+      remark7 = #{record.remark7,jdbcType=VARCHAR},
+      remark8 = #{record.remark8,jdbcType=VARCHAR},
+      remark9 = #{record.remark9,jdbcType=VARCHAR},
+      remark10 = #{record.remark10,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

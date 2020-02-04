@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>库存呆滞分析表</title>
+		<link rel="stylesheet" href="../css/layui.css">
+	</head>
+	<body>
+		<div class="layui-container" style="width: 600px;">
+			<div class="layui-row" style=" ">
+			    <div class="layui-col-xs6" style="margin: 20px 0px;">
+			      <div class="grid-demo grid-demo-bg1">
+			      	<span class="layui-col-xs4">物料区间</span>
+			      	<input type="" />		
+			      </div>
+			      	
+			    </div>
+			    <div class="layui-col-xs6" style="margin: 20px 0px;">
+			      <div class="grid-demo">
+			      	<span>To</span>
+			      	<input type="" />
+			      </div>
+			    </div>
+  			</div>
+  			<br />
+  			<div class="layui-row" style=" ">
+			    <div class="layui-col-xs6" style="margin: 20px 0px;">
+			      <div class="grid-demo grid-demo-bg1">
+			      	<span class="layui-col-xs4">物料类别</span>
+			      	<input  />		
+			      </div>
+			      	
+			    </div>
+			    <div class="layui-col-xs6" style="margin: 20px 0px;">
+			      <div class="grid-demo">
+			      	<span>To</span>
+			      	<input  />
+			      </div>
+			    </div>
+  			</div>
+  			<br />
+  			<div class="layui-row" style=" ">
+			    <div  style="margin: 20px 0px;">
+			      	<span class="layui-col-xs4">日期选择</span>
+			      	<div class="layui-col-xs3">
+			      		<input type="radio" />	
+			      		<span >最近入库日</span>
+			      	</div>
+			      	<div class="layui-col-xs3">
+			      		<input type="radio" />	
+			      		<span >最近出库日</span>
+			      	</div>
+			    </div>
+  			</div>
+  			<br />
+  			<div class="layui-row" style=" ">
+			    <div class="layui-col-xs6" style="margin: 20px 0px;">
+			      <div class="grid-demo grid-demo-bg1">
+			      	<span class="layui-col-xs4">呆滞计算日期</span>
+			      	<input type="date" />		
+			      </div>
+			    </div>
+  			</div>
+  			<div>
+  				呆滞区间
+  				<table>
+  					<tr>
+  						<td>(区间)</td>
+  						<td>(起始天数)</td>
+  						<td>截止天数</td>
+  						<td>(区间说明)</td>
+  					</tr>
+  					<tr>
+  						<td>1</td>
+  						<td>0</td>
+  						<td>30</td>
+  						<td>30天以下</td>
+  					</tr>
+  					<tr>
+  						<td>2</td>
+  						<td>31</td>
+  						<td>60</td>
+  						<td>31天至60天</td>
+  					</tr>
+  					<tr>
+  						<td>3</td>
+  						<td>61</td>
+  						<td>90</td>
+  						<td>61天至90天</td>
+  					</tr>
+  					<tr>
+  						<td>4</td>
+  						<td>91</td>
+  						<td>180</td>
+  						<td>91天至180天</td>
+  					</tr>
+  					<tr>
+  						<td>5</td>
+  						<td>181</td>
+  						<td></td>
+  						<td>181天以上</td>
+  					</tr>
+  				</table>
+  			</div>
+  			
+  			<div align="">
+  				<button>确定</button>&nbsp;&nbsp;&nbsp;<button>取消</button>&nbsp;&nbsp;&nbsp;<button>固定报表</button>
+  			</div>
+		</div>
+	</body>
+	<script src="../js/layui.js"></script>
+	<script src="../js/jquery-1.12.4.js"></script>
+	<script>
+		
+	</script> 
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit">
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title></title>
+		 <link rel="icon" type="image/x-icon" href="images/icon.ico" />
+		<style>
+			.bodes{
+				margin: 50px;
+			}
+			.zhuymhg{
+				height: 150px;
+			}
+
+			.xiaoshoukuang{
+				background-image: url('./images/ss.png');
+ 			    background-repeat:no-repeat;
+				background-size:123% 123%;
+ 				background-position: -60px -45px;
+			}
+
+        .site-doc-icon li{width: 222px;}
+        .site-doc-icon li .layui-anim{
+        	width: 150px; height: 150px;
+        	line-height: 150px; margin: 0 auto 10px;
+        	text-align: center;
+        	background-color: #009688;
+        	cursor: pointer;
+        	color: #fff;
+        	border-radius: 50%;}
+			
+			p{
+				color: black !important;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="layui-tab layui-tab-card bodes app" style="background-color:white;">
+		  <ul class="layui-tab-title">
+		    <li class="layui-this">销售作业</li>
+		    <li>常用报表</li>
+		  </ul>
+		  <div class="layui-tab-content">
+		    <div class="layui-tab-item layui-show xiaoshoukuang">
+					 <div class="layui-row zhuymhg">
+					 	<div class="layui-col-md4">
+					 		<div @click="show($event,'销售报价','销售模块/销售报价.html')" style="width: 70px;text-align: center;margin: 0 0 0 36px;">
+					 			<i class="layui-icon layui-icon-form layui-anim" data-anim="layui-anim-scaleSpring" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>销售报价单</p>
+					 		</div>
+					 	</div>
+					    <div class="layui-col-md3">
+					 		<div  @click="show($event,'销售订单','销售模块/销售订单.html')" style="width: 80px;text-align: center;margin: 0 0 0 76px;">
+					 			<i class="layui-icon layui-icon-form layui-anim" data-anim="layui-anim-scaleSpring" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>销售订单</p>
+					 		</div>
+					 	</div>
+					 </div>
+					 <!--第2行-->
+					 <div class="layui-row zhuymhg">
+					 	<div class="layui-col-md4">
+					 		<div  @click="show($event,'销售退货','销售模块/销售退货.html')" style="width: 80px;text-align: center;margin: 0 0 0 36px;">
+					 			<i class="layui-icon layui-icon-form layui-anim" data-anim="layui-anim-scaleSpring" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>销售退货单</p>
+					 		</div>
+					 	</div>
+					    <div class="layui-col-md4">
+					 		<div  @click="show($event,'销售出库','销售模块/销售出库.html')" style="width: 80px;text-align: center;margin: 0 0 0 76px;">
+					 			<i class="layui-icon layui-icon-form layui-anim" data-anim="layui-anim-scaleSpring" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>销售出库单</p>
+					 		</div>
+					 	</div>
+					 	 <div class="layui-col-md4">
+					 		<div  @click="show($event,'销售折让确认','销售模块/销售折让确认.html')" style="width: 80px;text-align: center;margin: 0 0 0 110px;">
+					 			<i class="layui-icon layui-icon-form layui-anim" data-anim="layui-anim-scaleSpring" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>销售折让确认单</p>
+					 		</div>
+					 	</div>
+					 </div>
+					 <!--第3行-->
+					 <div class="layui-row">
+					    <div class="layui-col-md4 layui-col-md-offset4">
+					 		<div  @click="show($event,'销售发票','销售模块/销售发票.html')" style="width: 80px;text-align: center;margin: 62px 0 0 76px;">
+					 			<i class="layui-icon layui-icon-form layui-anim" data-anim="layui-anim-scaleSpring" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>销售发票</p>
+					 		</div>
+					 	</div>
+					 </div>
+				</div>
+
+		    <!--报表-->
+		    <div class="layui-tab-item">
+					 <div class="layui-row zhuymhg">
+					 	<div class="layui-col-md4">
+					 		<div  @click="show($event,'销售日报表','销售模块/销售日报表.html')" style="width: 70px;text-align: center;margin:22px 0 0 65px;">
+					 			<i class="layui-icon layui-icon-form layui-anim" data-anim="layui-anim-scaleSpring" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>销售日报表</p>
+					 		</div>
+					 	</div>
+					    <div class="layui-col-md4">
+					 		<div @click="show($event,'销售订单分析表','销售模块/销售订单分析表.html')" style="width: 80px;text-align: center;margin:22px 0 0 65px;">
+					 			<i class="layui-icon layui-icon-form layui-anim" data-anim="layui-anim-scaleSpring" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>销售订单分析表</p>
+					 		</div>
+					 	</div>
+					 	<div class="layui-col-md4">
+					 		<div @click="show($event,'销售排行表','销售模块/销售排行表.html')" style="width: 80px;text-align: center;margin:22px 0 0 65px;">
+					 			<i class="layui-icon layui-icon-form layui-anim" data-anim="layui-anim-scaleSpring" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>销售排行表</p>
+					 		</div>
+					 	</div>
+					 </div>
+					 <!--第2行-->
+					 <div class="layui-row zhuymhg">
+					 	<div class="layui-col-md4">
+					 		<div @click="show($event,'应收账款明细报表','销售模块/应收账款明细报表.html')" style="width: 80px;text-align: center;margin:22px 0 0 65px;">
+					 			<i class="layui-icon layui-icon-form layui-anim" data-anim="layui-anim-scaleSpring" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>应收账款明细报表</p>
+					 		</div>
+					 	</div>
+					    <div class="layui-col-md4">
+					 		<div  style="width: 80px;text-align: center;margin:22px 0 0 65px;">
+					 			<i class="layui-icon layui-icon-form layui-anim" data-anim="layui-anim-scaleSpring" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>销售交易分析明细表</p>
+					 		</div>
+					 	</div>
+					 </div>
+					 <!--第3行-->
+					 <div class="layui-row">
+					    <div class="layui-col-md4">
+					 		<div @click="show($event,'报价明细日报表','销售模块/报价明细日报表.html')"  style="width: 80px;text-align: center;margin:0 0 0 65px;">
+					 		<i class="layui-icon layui-icon-form layui-anim" data-anim="layui-anim-scaleSpring" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>报价明细表</p>
+					 		</div>
+					 	</div>
+					 	<div class="layui-col-md4">
+					 		<div  style="width: 80px;text-align: center;margin:0 0 0 65px;">
+					 		<i class="layui-icon layui-icon-form layui-anim" data-anim="layui-anim-scaleSpring" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>客户交易明细</p>
+					 		</div>
+					 	</div>
+					 	<div class="layui-col-md4">
+					 		<div  style="width: 80px;text-align: center;margin:0 0 0 65px;">
+					<i class="layui-icon layui-icon-form layui-anim" data-anim="layui-anim-scaleSpring" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>销售开票状况分析表</p>
+					 		</div>
+					 	</div>
+					 </div>
+		    </div>
+		  </div>
+		</div> 
+	</body>
+
+	
+<script>
+	layui.use('element', function(){
+  		var element = layui.element;
+	});
+	
+	var vue_tjy_xsgl = new Vue({
+		el:'.app',
+		data(){//值
+			return{
+				list:[
+					{"id":1,"name":"xiao"},
+					{"id":1,"name":"xiao"},
+					{"id":1,"name":"xiao"},
+					{"id":1,"name":"xiao"},
+					{"id":1,"name":"xiao"}
+				],ids:1
+			}
+			
+		},
+		methods:{//执行方法
+			 show(e,title,url,width,height,flag){ // e.target 获取当前对象
+				 if(width == null){
+					 width  = "80%";
+				 }
+				 if(height == null){
+					 height = "80%";
+				 }
+				 if(flag == null){   //只有单据是可以执行新增、修改、审核的。
+					 flag = '0';
+				 }
+                    layer.open({
+                        type: 2
+                        ,title:title
+                        ,area: [width, height]
+                        ,shade: 0
+                        ,maxmin: true
+                        ,offset:'auto'
+                        ,content: url// $(e.target) 要显示的节点,若用此法则可能会影响到样式，就是把选择的节点移到弹出框了
+                        ,
+                        id:title
+                        ,zIndex: layer.zIndex
+                        ,success: function(layero){
+                            layer.setTop(layero);
+							if(flag === '0'){
+								indeVue.zIndex = layer.zIndex;
+							}
+                        },moveEnd :function () {
+							 if (flag === '0') {
+									 indeVue.zIndex = layer.zIndex + 1;
+								 }
+							 }
+						});
+                },
+             zishow(){
+             	layui.use('layer', function(){
+		  			var layer = layui.layer;
+		   			 layer.open({
+			  		type: 1, //类型
+			  		content: '传入任意的文本或html',//这里content是一个普通的String
+			  		shade:0,
+			 		id:"s1"
+				});
+		});
+             }
+		},
+		created:function(){//启动时生成代码
+			
+		}
+	})
+	
+
+/*点击销售报价*/
+/*   $(".xsbj").click(function(){
+   	
+   	  
+	  layui.use('layer', function(){
+		  var layer = layui.layer;
+				layer.open({
+				  type: 2, 
+				  skin: 'layui-layer-rim', //加上边框
+				  content: 'html/tjy_xsbjd.html?list='+vue_tjy_xsgl.list, //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+				  shade:0,
+				  id:'s',
+				  area: ['800px','382px'],
+				});
+		});
+	  
+  }) */
+
+/*  //注意：parent 是 JS 自带的全局对象，可用于操作父页面
+var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+
+//让层自适应iframe
+$('#add').on('click', function(){
+    $('body').append('插入很多酱油。插入很多酱油。插入很多酱油。插入很多酱油。插入很多酱油。插入很多酱油。插入很多酱油。');
+    parent.layer.iframeAuto(index);
+});
+//在父层弹出一个层
+$('#new').on('click', function(){
+    parent.layer.msg('Hi, man', {shade: 0.3})
+});
+//给父页面传值
+$('#transmit').on('click', function(){
+    parent.$('#parentIframe').text('我被改变了');
+    parent.layer.tips('Look here', '#parentIframe', {time: 5000});
+    parent.layer.close(index);
+});
+//关闭iframe
+$('#closeIframe').click(function(){
+    var val = $('#name').val();
+    if(val === ''){
+        parent.layer.msg('请填写标记');
+        return;
+    }
+    parent.layer.msg('您将标记 [ ' +val + ' ] 成功传送给了父窗口');
+    parent.layer.close(index);
+});*/
+	</script>
+	<!--演示动画-->
+ 
+<script>
+    layui.use('jquery', function(){
+        var $ = layui.$;
+        //演示动画
+        $('.layui-anim').on('click', function(){
+            var othis = $(this), anim = othis.data('anim');
+ 
+            //停止循环
+            if(othis.hasClass('layui-anim-loop')){
+                return othis.removeClass(anim);
+            }
+ 
+            othis.removeClass(anim);
+ 
+            setTimeout(function(){
+                othis.addClass(anim);
+            });
+            //恢复渐隐
+            if(anim === 'layui-anim-fadeout'){
+                setTimeout(function(){
+                    othis.removeClass(anim);
+                }, 1300);
+            }
+        });
+    });
+</script>
+</html>
+  

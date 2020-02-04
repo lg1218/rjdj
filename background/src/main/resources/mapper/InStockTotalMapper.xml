@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.InStockTotalMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.InStockTotal" >
+    <id column="ist_id" property="istId" jdbcType="INTEGER" />
+    <result column="ist_mm_id" property="istMmId" jdbcType="VARCHAR" />
+    <result column="ist_num" property="istNum" jdbcType="INTEGER" />
+    <result column="ist_dprice" property="istDprice" jdbcType="DOUBLE" />
+    <result column="ist_totalMoney" property="istTotalmoney" jdbcType="DOUBLE" />
+    <result column="ist_mm_anqnum" property="istMmAnqnum" jdbcType="INTEGER" />
+    <result column="ist_mm_start_totalnum" property="istMmStartTotalnum" jdbcType="INTEGER" />
+    <result column="ist_mm_start_pjcprice" property="istMmStartPjcprice" jdbcType="DOUBLE" />
+    <result column="Ist_mm_start_bb_pjcprice" property="istMmStartBbPjcprice" jdbcType="DOUBLE" />
+    <result column="Ist_mm_start_totalcprice" property="istMmStartTotalcprice" jdbcType="DOUBLE" />
+    <result column="Ist_mm_dy_anqcun" property="istMmDyAnqcun" jdbcType="INTEGER" />
+    <result column="Ist_mm_now_totalnum" property="istMmNowTotalnum" jdbcType="INTEGER" />
+    <result column="Ist_mm_now_pccprice" property="istMmNowPccprice" jdbcType="DOUBLE" />
+    <result column="Ist_mm_now_bztotalcb" property="istMmNowBztotalcb" jdbcType="DOUBLE" />
+    <result column="Ist_mm_now_totalcb" property="istMmNowTotalcb" jdbcType="DOUBLE" />
+    <result column="bz1" property="bz1" jdbcType="VARCHAR" />
+    <result column="bz2" property="bz2" jdbcType="VARCHAR" />
+    <result column="bz3" property="bz3" jdbcType="VARCHAR" />
+    <result column="bz4" property="bz4" jdbcType="VARCHAR" />
+    <result column="bz5" property="bz5" jdbcType="VARCHAR" />
+    <result column="bz6" property="bz6" jdbcType="VARCHAR" />
+    <result column="bz7" property="bz7" jdbcType="VARCHAR" />
+    <result column="bz8" property="bz8" jdbcType="VARCHAR" />
+    <result column="bz9" property="bz9" jdbcType="VARCHAR" />
+    <result column="bz10" property="bz10" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ist_id, ist_mm_id, ist_num, ist_dprice, ist_totalMoney, ist_mm_anqnum, ist_mm_start_totalnum, 
+    ist_mm_start_pjcprice, Ist_mm_start_bb_pjcprice, Ist_mm_start_totalcprice, Ist_mm_dy_anqcun, 
+    Ist_mm_now_totalnum, Ist_mm_now_pccprice, Ist_mm_now_bztotalcb, Ist_mm_now_totalcb, 
+    bz1, bz2, bz3, bz4, bz5, bz6, bz7, bz8, bz9, bz10
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.InStockTotalExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from in_stock_total
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from in_stock_total
+    where ist_id = #{istId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from in_stock_total
+    where ist_id = #{istId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.InStockTotalExample" >
+    delete from in_stock_total
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.InStockTotal" >
+    insert into in_stock_total (ist_id, ist_mm_id, ist_num, 
+      ist_dprice, ist_totalMoney, ist_mm_anqnum, 
+      ist_mm_start_totalnum, ist_mm_start_pjcprice, 
+      Ist_mm_start_bb_pjcprice, Ist_mm_start_totalcprice, 
+      Ist_mm_dy_anqcun, Ist_mm_now_totalnum, Ist_mm_now_pccprice, 
+      Ist_mm_now_bztotalcb, Ist_mm_now_totalcb, bz1, 
+      bz2, bz3, bz4, bz5, 
+      bz6, bz7, bz8, bz9, 
+      bz10)
+    values (#{istId,jdbcType=INTEGER}, #{istMmId,jdbcType=VARCHAR}, #{istNum,jdbcType=INTEGER}, 
+      #{istDprice,jdbcType=DOUBLE}, #{istTotalmoney,jdbcType=DOUBLE}, #{istMmAnqnum,jdbcType=INTEGER}, 
+      #{istMmStartTotalnum,jdbcType=INTEGER}, #{istMmStartPjcprice,jdbcType=DOUBLE}, 
+      #{istMmStartBbPjcprice,jdbcType=DOUBLE}, #{istMmStartTotalcprice,jdbcType=DOUBLE}, 
+      #{istMmDyAnqcun,jdbcType=INTEGER}, #{istMmNowTotalnum,jdbcType=INTEGER}, #{istMmNowPccprice,jdbcType=DOUBLE}, 
+      #{istMmNowBztotalcb,jdbcType=DOUBLE}, #{istMmNowTotalcb,jdbcType=DOUBLE}, #{bz1,jdbcType=VARCHAR}, 
+      #{bz2,jdbcType=VARCHAR}, #{bz3,jdbcType=VARCHAR}, #{bz4,jdbcType=VARCHAR}, #{bz5,jdbcType=VARCHAR}, 
+      #{bz6,jdbcType=VARCHAR}, #{bz7,jdbcType=VARCHAR}, #{bz8,jdbcType=VARCHAR}, #{bz9,jdbcType=VARCHAR}, 
+      #{bz10,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.InStockTotal" >
+    insert into in_stock_total
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="istId != null" >
+        ist_id,
+      </if>
+      <if test="istMmId != null" >
+        ist_mm_id,
+      </if>
+      <if test="istNum != null" >
+        ist_num,
+      </if>
+      <if test="istDprice != null" >
+        ist_dprice,
+      </if>
+      <if test="istTotalmoney != null" >
+        ist_totalMoney,
+      </if>
+      <if test="istMmAnqnum != null" >
+        ist_mm_anqnum,
+      </if>
+      <if test="istMmStartTotalnum != null" >
+        ist_mm_start_totalnum,
+      </if>
+      <if test="istMmStartPjcprice != null" >
+        ist_mm_start_pjcprice,
+      </if>
+      <if test="istMmStartBbPjcprice != null" >
+        Ist_mm_start_bb_pjcprice,
+      </if>
+      <if test="istMmStartTotalcprice != null" >
+        Ist_mm_start_totalcprice,
+      </if>
+      <if test="istMmDyAnqcun != null" >
+        Ist_mm_dy_anqcun,
+      </if>
+      <if test="istMmNowTotalnum != null" >
+        Ist_mm_now_totalnum,
+      </if>
+      <if test="istMmNowPccprice != null" >
+        Ist_mm_now_pccprice,
+      </if>
+      <if test="istMmNowBztotalcb != null" >
+        Ist_mm_now_bztotalcb,
+      </if>
+      <if test="istMmNowTotalcb != null" >
+        Ist_mm_now_totalcb,
+      </if>
+      <if test="bz1 != null" >
+        bz1,
+      </if>
+      <if test="bz2 != null" >
+        bz2,
+      </if>
+      <if test="bz3 != null" >
+        bz3,
+      </if>
+      <if test="bz4 != null" >
+        bz4,
+      </if>
+      <if test="bz5 != null" >
+        bz5,
+      </if>
+      <if test="bz6 != null" >
+        bz6,
+      </if>
+      <if test="bz7 != null" >
+        bz7,
+      </if>
+      <if test="bz8 != null" >
+        bz8,
+      </if>
+      <if test="bz9 != null" >
+        bz9,
+      </if>
+      <if test="bz10 != null" >
+        bz10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="istId != null" >
+        #{istId,jdbcType=INTEGER},
+      </if>
+      <if test="istMmId != null" >
+        #{istMmId,jdbcType=VARCHAR},
+      </if>
+      <if test="istNum != null" >
+        #{istNum,jdbcType=INTEGER},
+      </if>
+      <if test="istDprice != null" >
+        #{istDprice,jdbcType=DOUBLE},
+      </if>
+      <if test="istTotalmoney != null" >
+        #{istTotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="istMmAnqnum != null" >
+        #{istMmAnqnum,jdbcType=INTEGER},
+      </if>
+      <if test="istMmStartTotalnum != null" >
+        #{istMmStartTotalnum,jdbcType=INTEGER},
+      </if>
+      <if test="istMmStartPjcprice != null" >
+        #{istMmStartPjcprice,jdbcType=DOUBLE},
+      </if>
+      <if test="istMmStartBbPjcprice != null" >
+        #{istMmStartBbPjcprice,jdbcType=DOUBLE},
+      </if>
+      <if test="istMmStartTotalcprice != null" >
+        #{istMmStartTotalcprice,jdbcType=DOUBLE},
+      </if>
+      <if test="istMmDyAnqcun != null" >
+        #{istMmDyAnqcun,jdbcType=INTEGER},
+      </if>
+      <if test="istMmNowTotalnum != null" >
+        #{istMmNowTotalnum,jdbcType=INTEGER},
+      </if>
+      <if test="istMmNowPccprice != null" >
+        #{istMmNowPccprice,jdbcType=DOUBLE},
+      </if>
+      <if test="istMmNowBztotalcb != null" >
+        #{istMmNowBztotalcb,jdbcType=DOUBLE},
+      </if>
+      <if test="istMmNowTotalcb != null" >
+        #{istMmNowTotalcb,jdbcType=DOUBLE},
+      </if>
+      <if test="bz1 != null" >
+        #{bz1,jdbcType=VARCHAR},
+      </if>
+      <if test="bz2 != null" >
+        #{bz2,jdbcType=VARCHAR},
+      </if>
+      <if test="bz3 != null" >
+        #{bz3,jdbcType=VARCHAR},
+      </if>
+      <if test="bz4 != null" >
+        #{bz4,jdbcType=VARCHAR},
+      </if>
+      <if test="bz5 != null" >
+        #{bz5,jdbcType=VARCHAR},
+      </if>
+      <if test="bz6 != null" >
+        #{bz6,jdbcType=VARCHAR},
+      </if>
+      <if test="bz7 != null" >
+        #{bz7,jdbcType=VARCHAR},
+      </if>
+      <if test="bz8 != null" >
+        #{bz8,jdbcType=VARCHAR},
+      </if>
+      <if test="bz9 != null" >
+        #{bz9,jdbcType=VARCHAR},
+      </if>
+      <if test="bz10 != null" >
+        #{bz10,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.InStockTotalExample" resultType="java.lang.Integer" >
+    select count(*) from in_stock_total
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update in_stock_total
+    <set >
+      <if test="record.istId != null" >
+        ist_id = #{record.istId,jdbcType=INTEGER},
+      </if>
+      <if test="record.istMmId != null" >
+        ist_mm_id = #{record.istMmId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.istNum != null" >
+        ist_num = #{record.istNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.istDprice != null" >
+        ist_dprice = #{record.istDprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.istTotalmoney != null" >
+        ist_totalMoney = #{record.istTotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.istMmAnqnum != null" >
+        ist_mm_anqnum = #{record.istMmAnqnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.istMmStartTotalnum != null" >
+        ist_mm_start_totalnum = #{record.istMmStartTotalnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.istMmStartPjcprice != null" >
+        ist_mm_start_pjcprice = #{record.istMmStartPjcprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.istMmStartBbPjcprice != null" >
+        Ist_mm_start_bb_pjcprice = #{record.istMmStartBbPjcprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.istMmStartTotalcprice != null" >
+        Ist_mm_start_totalcprice = #{record.istMmStartTotalcprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.istMmDyAnqcun != null" >
+        Ist_mm_dy_anqcun = #{record.istMmDyAnqcun,jdbcType=INTEGER},
+      </if>
+      <if test="record.istMmNowTotalnum != null" >
+        Ist_mm_now_totalnum = #{record.istMmNowTotalnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.istMmNowPccprice != null" >
+        Ist_mm_now_pccprice = #{record.istMmNowPccprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.istMmNowBztotalcb != null" >
+        Ist_mm_now_bztotalcb = #{record.istMmNowBztotalcb,jdbcType=DOUBLE},
+      </if>
+      <if test="record.istMmNowTotalcb != null" >
+        Ist_mm_now_totalcb = #{record.istMmNowTotalcb,jdbcType=DOUBLE},
+      </if>
+      <if test="record.bz1 != null" >
+        bz1 = #{record.bz1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz2 != null" >
+        bz2 = #{record.bz2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz3 != null" >
+        bz3 = #{record.bz3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz4 != null" >
+        bz4 = #{record.bz4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz5 != null" >
+        bz5 = #{record.bz5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz6 != null" >
+        bz6 = #{record.bz6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz7 != null" >
+        bz7 = #{record.bz7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz8 != null" >
+        bz8 = #{record.bz8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz9 != null" >
+        bz9 = #{record.bz9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz10 != null" >
+        bz10 = #{record.bz10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update in_stock_total
+    set ist_id = #{record.istId,jdbcType=INTEGER},
+      ist_mm_id = #{record.istMmId,jdbcType=VARCHAR},
+      ist_num = #{record.istNum,jdbcType=INTEGER},
+      ist_dprice = #{record.istDprice,jdbcType=DOUBLE},
+      ist_totalMoney = #{record.istTotalmoney,jdbcType=DOUBLE},
+      ist_mm_anqnum = #{record.istMmAnqnum,jdbcType=INTEGER},
+      ist_mm_start_totalnum = #{record.istMmStartTotalnum,jdbcType=INTEGER},
+      ist_mm_start_pjcprice = #{record.istMmStartPjcprice,jdbcType=DOUBLE},
+      Ist_mm_start_bb_pjcprice = #{record.istMmStartBbPjcprice,jdbcType=DOUBLE},
+      Ist_mm_start_totalcprice = #{record.istMmStartTotalcprice,jdbcType=DOUBLE},
+      Ist_mm_dy_anqcun = #{record.istMmDyAnqcun,jdbcType=INTEGER},
+      Ist_mm_now_totalnum = #{record.istMmNowTotalnum,jdbcType=INTEGER},
+      Ist_mm_now_pccprice = #{record.istMmNowPccprice,jdbcType=DOUBLE},
+      Ist_mm_now_bztotalcb = #{record.istMmNowBztotalcb,jdbcType=DOUBLE},
+      Ist_mm_now_totalcb = #{record.istMmNowTotalcb,jdbcType=DOUBLE},
+      bz1 = #{record.bz1,jdbcType=VARCHAR},
+      bz2 = #{record.bz2,jdbcType=VARCHAR},
+      bz3 = #{record.bz3,jdbcType=VARCHAR},
+      bz4 = #{record.bz4,jdbcType=VARCHAR},
+      bz5 = #{record.bz5,jdbcType=VARCHAR},
+      bz6 = #{record.bz6,jdbcType=VARCHAR},
+      bz7 = #{record.bz7,jdbcType=VARCHAR},
+      bz8 = #{record.bz8,jdbcType=VARCHAR},
+      bz9 = #{record.bz9,jdbcType=VARCHAR},
+      bz10 = #{record.bz10,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.InStockTotal" >
+    update in_stock_total
+    <set >
+      <if test="istMmId != null" >
+        ist_mm_id = #{istMmId,jdbcType=VARCHAR},
+      </if>
+      <if test="istNum != null" >
+        ist_num = #{istNum,jdbcType=INTEGER},
+      </if>
+      <if test="istDprice != null" >
+        ist_dprice = #{istDprice,jdbcType=DOUBLE},
+      </if>
+      <if test="istTotalmoney != null" >
+        ist_totalMoney = #{istTotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="istMmAnqnum != null" >
+        ist_mm_anqnum = #{istMmAnqnum,jdbcType=INTEGER},
+      </if>
+      <if test="istMmStartTotalnum != null" >
+        ist_mm_start_totalnum = #{istMmStartTotalnum,jdbcType=INTEGER},
+      </if>
+      <if test="istMmStartPjcprice != null" >
+        ist_mm_start_pjcprice = #{istMmStartPjcprice,jdbcType=DOUBLE},
+      </if>
+      <if test="istMmStartBbPjcprice != null" >
+        Ist_mm_start_bb_pjcprice = #{istMmStartBbPjcprice,jdbcType=DOUBLE},
+      </if>
+      <if test="istMmStartTotalcprice != null" >
+        Ist_mm_start_totalcprice = #{istMmStartTotalcprice,jdbcType=DOUBLE},
+      </if>
+      <if test="istMmDyAnqcun != null" >
+        Ist_mm_dy_anqcun = #{istMmDyAnqcun,jdbcType=INTEGER},
+      </if>
+      <if test="istMmNowTotalnum != null" >
+        Ist_mm_now_totalnum = #{istMmNowTotalnum,jdbcType=INTEGER},
+      </if>
+      <if test="istMmNowPccprice != null" >
+        Ist_mm_now_pccprice = #{istMmNowPccprice,jdbcType=DOUBLE},
+      </if>
+      <if test="istMmNowBztotalcb != null" >
+        Ist_mm_now_bztotalcb = #{istMmNowBztotalcb,jdbcType=DOUBLE},
+      </if>
+      <if test="istMmNowTotalcb != null" >
+        Ist_mm_now_totalcb = #{istMmNowTotalcb,jdbcType=DOUBLE},
+      </if>
+      <if test="bz1 != null" >
+        bz1 = #{bz1,jdbcType=VARCHAR},
+      </if>
+      <if test="bz2 != null" >
+        bz2 = #{bz2,jdbcType=VARCHAR},
+      </if>
+      <if test="bz3 != null" >
+        bz3 = #{bz3,jdbcType=VARCHAR},
+      </if>
+      <if test="bz4 != null" >
+        bz4 = #{bz4,jdbcType=VARCHAR},
+      </if>
+      <if test="bz5 != null" >
+        bz5 = #{bz5,jdbcType=VARCHAR},
+      </if>
+      <if test="bz6 != null" >
+        bz6 = #{bz6,jdbcType=VARCHAR},
+      </if>
+      <if test="bz7 != null" >
+        bz7 = #{bz7,jdbcType=VARCHAR},
+      </if>
+      <if test="bz8 != null" >
+        bz8 = #{bz8,jdbcType=VARCHAR},
+      </if>
+      <if test="bz9 != null" >
+        bz9 = #{bz9,jdbcType=VARCHAR},
+      </if>
+      <if test="bz10 != null" >
+        bz10 = #{bz10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ist_id = #{istId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.InStockTotal" >
+    update in_stock_total
+    set ist_mm_id = #{istMmId,jdbcType=VARCHAR},
+      ist_num = #{istNum,jdbcType=INTEGER},
+      ist_dprice = #{istDprice,jdbcType=DOUBLE},
+      ist_totalMoney = #{istTotalmoney,jdbcType=DOUBLE},
+      ist_mm_anqnum = #{istMmAnqnum,jdbcType=INTEGER},
+      ist_mm_start_totalnum = #{istMmStartTotalnum,jdbcType=INTEGER},
+      ist_mm_start_pjcprice = #{istMmStartPjcprice,jdbcType=DOUBLE},
+      Ist_mm_start_bb_pjcprice = #{istMmStartBbPjcprice,jdbcType=DOUBLE},
+      Ist_mm_start_totalcprice = #{istMmStartTotalcprice,jdbcType=DOUBLE},
+      Ist_mm_dy_anqcun = #{istMmDyAnqcun,jdbcType=INTEGER},
+      Ist_mm_now_totalnum = #{istMmNowTotalnum,jdbcType=INTEGER},
+      Ist_mm_now_pccprice = #{istMmNowPccprice,jdbcType=DOUBLE},
+      Ist_mm_now_bztotalcb = #{istMmNowBztotalcb,jdbcType=DOUBLE},
+      Ist_mm_now_totalcb = #{istMmNowTotalcb,jdbcType=DOUBLE},
+      bz1 = #{bz1,jdbcType=VARCHAR},
+      bz2 = #{bz2,jdbcType=VARCHAR},
+      bz3 = #{bz3,jdbcType=VARCHAR},
+      bz4 = #{bz4,jdbcType=VARCHAR},
+      bz5 = #{bz5,jdbcType=VARCHAR},
+      bz6 = #{bz6,jdbcType=VARCHAR},
+      bz7 = #{bz7,jdbcType=VARCHAR},
+      bz8 = #{bz8,jdbcType=VARCHAR},
+      bz9 = #{bz9,jdbcType=VARCHAR},
+      bz10 = #{bz10,jdbcType=VARCHAR}
+    where ist_id = #{istId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/layui.css" media="all" />
+	</head>
+
+	<body>
+		<form class="layui-form" action="">
+
+			<!--5-->
+			<div class="layui-row">
+				<div class="layui-col-md3 layui-col-md-offset3">
+					<div class="layui-form-item">
+						<label class="layui-form-label" style="width: auto;">供应商</label>
+						<div class="layui-input-inline">
+							<input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-md6">
+					<div class="layui-form-item">
+						<label class="layui-form-label">单据日期</label>
+						<div class="layui-input-inline">
+							<input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="layui-row">
+				<div class="layui-col-md3 layui-col-md-offset3">
+					<div class="layui-form-item">
+						<label class="layui-form-label" style="width: auto;">供应商地址</label>
+						<div class="layui-input-inline">
+							<input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-md6">
+					<div class="layui-form-item">
+						<label class="layui-form-label">单据号码</label>
+						<div class="layui-input-inline">
+							<input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="layui-row">
+				<div class="layui-col-md3 layui-col-md-offset3">
+					<div class="layui-form-item">
+						<label class="layui-form-label" style="width: auto;">采购订单类型</label>
+						<div class="layui-input-inline">
+							<input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-md6">
+					<div class="layui-form-item">
+						<label class="layui-form-label">币别</label>
+						<div class="layui-input-inline">
+							<input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--6-->
+			<div class="layui-row">
+				<div class="layui-col-md3 layui-col-md-offset3">
+					<div class="layui-form-item">
+						<label class="layui-form-label" style="width: auto;">单价是否含税</label>
+						<div class="layui-input-block" style="padding-left:10px;width:180px;">
+							<select name="city" lay-verify="required">
+								<option value=""></option>
+								<option value="0">北京</option>
+								<option value="1">上海</option>
+								<option value="2">广州</option>
+								<option value="3">深圳</option>
+								<option value="4">杭州</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-md6">
+					<div class="layui-form-item">
+						<label class="layui-form-label">汇率</label>
+						<div class="layui-input-inline">
+							<input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="layui-row">
+				<div class="layui-col-md3 layui-col-md-offset3">
+					<div class="layui-form-item">
+						<label class="layui-form-label" style="width: auto;">单况</label>
+						<div class="layui-input-block" style="padding-left:10px;width:180px;">
+							<select name="city" lay-verify="required">
+								<option value=""></option>
+								<option value="0">北京</option>
+								<option value="1">上海</option>
+								<option value="2">广州</option>
+								<option value="3">深圳</option>
+								<option value="4">杭州</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-md6">
+					<div class="layui-form-item">
+						<label class="layui-form-label">送货地址</label>
+						<div class="layui-input-block" style="padding-left:10px;width:180px;">
+							<select name="city" lay-verify="required">
+								<option value=""></option>
+								<option value="0">北京</option>
+								<option value="1">上海</option>
+								<option value="2">广州</option>
+								<option value="3">深圳</option>
+								<option value="4">杭州</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="layui-form-item">
+						    <div class="layui-input-block">
+						      <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+						      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+						    </div>
+						 </div>-->
+		</form>
+
+		<div class="layui-row">
+			<div class="layui-col-md6  layui-col-md-offset3">
+				<div class="layui-tab layui-tab-card">
+					<ul class="layui-tab-title">
+						<li class="layui-this">内容</li>
+						<li>账款</li>
+						<li>备注</li>
+						<!--<li>权限分配</li>
+								    <li>商品管理</li>
+								    <li>订单管理</li>-->
+					</ul>
+					<div class="layui-tab-content" style="height: 300px;">
+						<div class="layui-tab-item layui-show">
+							<table id="demo" lay-filter="test"></table>
+						</div>
+						<div class="layui-tab-item">
+							<div class="layui-form-item" style="display: inline-block;">
+								<label class="layui-form-label">账款归属</label>
+								<div class="layui-input-block">
+									<input type="text" name="title" required lay-verify="required" style="width: 150px;" placeholder="请输入标题" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-form-item" style="display: inline-block;">
+								<label class="layui-form-label">付款日期</label>
+								<div class="layui-input-block">
+									<input type="date" name="title" required lay-verify="required" style="width: 150px;" placeholder="请输入标题" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-form-item" style="display: inline-block;">
+								<label class="layui-form-label">付款条件</label>
+								<div class="layui-input-block">
+									<select name="city" style="width: 60px;height:38px;display: inline-block;" lay-verify="required">
+										<option value="">货到</option>
+										<option value="0">北京</option>
+										<option value="1">上海</option>
+										<option value="2">广州</option>
+										<option value="3">深圳</option>
+										<option value="4">杭州</option>
+									</select>
+									<input type="text" name="title" required lay-verify="required" style="width: 120px; display: inline-block;" placeholder="请输入标题" autocomplete="off" class="layui-input">天
+								</div>
+							</div>
+							<div class="layui-form-item" style="display: inline-block;">
+								<label class="layui-form-label">账款月份</label>
+								<div class="layui-input-block">
+									<input type="date" name="title" required lay-verify="required" style="width: 150px;" placeholder="请输入标题" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+							
+						</div>
+						<div class="layui-tab-item">
+							<div class="layui-form-item" style="display: inline-block;">
+								<label class="layui-form-label">表头条文</label>
+								<div class="layui-input-block">
+									<input type="text" name="title" required lay-verify="required" style="width: 150px;" placeholder="请输入标题" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-form-item" style="display: inline-block;">
+								<label class="layui-form-label">自定栏一</label>
+								<div class="layui-input-block">
+									<select name="city" style="width: 150px;" lay-verify="required">
+										<option value=""></option>
+										<option value="0">北京</option>
+										<option value="1">上海</option>
+										<option value="2">广州</option>
+										<option value="3">深圳</option>
+										<option value="4">杭州</option>
+									</select>
+								</div>
+							</div>
+							<div class="layui-form-item" style="display: inline-block;">
+								<label class="layui-form-label">表尾条文</label>
+								<div class="layui-input-block">
+									<input type="text" name="title" required lay-verify="required" style="width: 150px;" placeholder="请输入标题" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-form-item" style="display: inline-block;">
+								<label class="layui-form-label">自定栏二</label>
+								<div class="layui-input-block">
+									<select name="city" style="width: 150px;" lay-verify="required">
+										<option value=""></option>
+										<option value="0">北京</option>
+										<option value="1">上海</option>
+										<option value="2">广州</option>
+										<option value="3">深圳</option>
+										<option value="4">杭州</option>
+									</select>
+								</div>
+							</div>
+							<div class="layui-form-item layui-form-text">
+								<label class="layui-form-label">备注</label>
+								<div class="layui-input-block">
+									<textarea name="desc" style="height: 90px;width: 305px;" placeholder="请输入内容" class="layui-textarea"></textarea>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="layui-row">
+			<div class="layui-col-md3 layui-col-md-offset3">
+				<div class="layui-form-item">
+					<label class="layui-form-label" style="width: auto;">采购人员</label>
+						<div class="layui-input-inline">
+						<input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+			</div>
+			<div class="layui-col-md6">
+				<div class="layui-form-item">
+					<label class="layui-form-label">制单人员</label>
+					<div class="layui-input-inline">
+						<input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="layui-row">
+			<div class="layui-col-md3 layui-col-md-offset3">
+				<div class="layui-form-item">
+					<label class="layui-form-label" style="width: auto;">所属部门</label>
+					<div class="layui-input-inline">
+						<input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+			</div>
+			<div class="layui-col-md6">
+				<div class="layui-form-item">
+					<label class="layui-form-label">复核人员</label>
+					<div class="layui-input-inline">
+						<input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="layui-row">
+			<div class="layui-col-md3 layui-col-md-offset3">
+				<div class="layui-form-item">
+					<label class="layui-form-label" style="width: auto;">所属项目</label>
+					<div class="layui-input-inline">
+						<input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="layui-row">
+			<div class="layui-col-md6 layui-col-md-offset3" style="display: inline-block;">
+				<div style="float: left">
+					<ul class="layui-nav layui-bg-green btnz" lay-filter="" style="font-size: 12px;border-radius: 0px;float: right;padding:0px 0px 0px 0px;margin-left: 2px;">
+						<li class="layui-nav-item" style="line-height: 30px;font-size: 12px;">
+							<a href="" style="color:white;font-size: 12px;padding: 0px 30px 0px 20px;">查询<span class="layui-nav-more" style="right: 10px;font-size: 12px;"></span></a>
+							<dl class="layui-nav-child" style="top: 30px;line-height: 31px;padding: 0px 0px 0px 0px;">
+								<!-- 二级菜单 -->
+								<dd><button class="layui-btn layui-btn layui-btn-sm layui-btn-fluid" id="btn_cjb">批号设定</button></dd>
+								<dd><button class="layui-btn layui-btn layui-btn-sm layui-btn-fluid" id="btn_cjbs">条码打印</button></dd>
+							</dl>
+						</li>
+					</ul>
+
+				</div>
+				<div style="float: left">
+					<ul class="layui-nav layui-bg-green btnz" lay-filter="" style="font-size: 12px;border-radius: 0px;float: right;padding:0px 0px 0px 0px;margin-left: 2px;">
+						<li class="layui-nav-item" style="line-height: 30px;font-size: 12px;">
+							<a href="" style="color:white;font-size: 12px;padding: 0px 30px 0px 20px;">转单<span class="layui-nav-more" style="right: 10px;font-size: 12px;"></span></a>
+							<dl class="layui-nav-child" style="top: 30px;line-height: 31px;padding: 0px 0px 0px 0px;">
+								<!-- 二级菜单 -->
+								<dd><button class="layui-btn layui-btn layui-btn-sm layui-btn-fluid" id="btn_cjb">批号设定</button></dd>
+								<dd><button class="layui-btn layui-btn layui-btn-sm layui-btn-fluid" id="btn_cjbs">条码打印</button></dd>
+							</dl>
+						</li>
+					</ul>
+
+				</div>
+				<div style="float: left">
+					<ul class="layui-nav layui-bg-green btnz" lay-filter="" style="font-size: 12px;border-radius: 0px;float: right;padding:0px 0px 0px 0px;margin-left: 2px;">
+						<li class="layui-nav-item" style="line-height: 30px;font-size: 12px;">
+							<a href="" style="color:white;font-size: 12px;padding: 0px 30px 0px 20px;">功能<span class="layui-nav-more" style="right: 10px;font-size: 12px;"></span></a>
+							<dl class="layui-nav-child" style="top: 30px;line-height: 31px;padding: 0px 0px 0px 0px;">
+								<!-- 二级菜单 -->
+								<dd><button class="layui-btn layui-btn layui-btn-sm layui-btn-fluid" id="btn_cjb">批号设定</button></dd>
+								<dd><button class="layui-btn layui-btn layui-btn-sm layui-btn-fluid" id="btn_cjbs">条码打印</button></dd>
+							</dl>
+						</li>
+					</ul>
+
+				</div>
+			</div>
+
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="../js/layui.js"></script>
+	<script>
+		$.ajax({
+		    type: 'GET',
+		    dataType: "json",  //json text 服务器返回的数据类型
+		    url: 'http://localhost:8080/perms/loginin',
+		    success: function (result) {
+	    		console.log(result);
+	 			var vue=new Vue({
+					el:'#app',
+					data(){
+						return{
+							item1:result
+						}
+					},
+					methods:{	
+						
+					}
+	 			});
+	 		}
+		});
+		
+		
+		
+		
+		
+		var s = [];
+		s = [
+			{ "id": 1, "name": "xiao" }
+		]
+		//alert(JSON.stringify(new URLSearchParams(location.search).get("list"))); // 蜘蛛侠)
+		layui.use('element', function() {
+			var element = layui.element;
+		});
+
+		//form表单提交
+		layui.use('form', function() {
+			var form = layui.form;
+
+			//监听提交
+			form.on('submit(formDemo)', function(data) {
+				layer.msg(JSON.stringify(data.field));
+				return false;
+			});
+		});
+		/*表单*/
+		layui.use('table', function() {
+			var table = layui.table;
+			//第一个实例
+			table.render({
+				elem: '#demo',
+				height: 300,
+				data: s //数据接口
+					,
+				page: false //不开启分页
+					,
+				cols: [
+					[ //表头
+						{ field: 'id', title: '(栏号)', width: 80 }, { field: 'name', title: '物料编号', width: 90 }, { field: 'xiao', title: '(物料名称)', width: 110 }, { field: 'xiao', title: '(规格型号)', width: 110 }, { field: 'xiao', title: '(单位名称)', width: 110 }, { field: 'xiao', title: '数量', width: 80 }, { field: 'xiao', title: '折扣前单价', width: 110 }, { field: 'xiao', title: '折数%', width: 80 }, { field: 'xiao', title: '单价', width: 110 }, { field: 'xiao', title: '金额', width: 100 }, { field: 'xiao', title: '税率(%)', width: 110 }, { field: 'xiao', title: '(税额)', width: 110 }, { field: 'xiao', title: '(含税金额)', width: 110 }, { field: 'xiao', title: '预入库目', width: 110 }, { field: 'xiao', title: '(未入库量)', width: 110 }, { field: 'xiao', title: '赠品', width: 110 },{ field: 'xiao', title: '分录备注', width: 110 },{ field: 'xiao', title: '(来源单别)', width: 110 }
+					]
+				]
+			});
+
+		});
+
+		/*如果是页面层*/
+		$(".s1").click(function() {
+			window.parent.ns();
+			/*layui.use('layer', function(){
+		  var layer = layui.layer;
+		    layer.open({
+			  	type: 1, //类型
+			  	content: '传入任意的文本或html',//这里content是一个普通的String
+			  	shade:0
+				});
+		});*/
+		})
+	</script>
+
+</html>

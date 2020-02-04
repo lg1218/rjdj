@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+
+		<style>
+			.bodes{
+				margin: 50px;
+			}
+			.zhuymhg{
+				height: 150px;
+			}
+			.j{
+				margin: 0 auto;
+			}
+			.xiaoshoukuang{
+				background-image: url('./images/ss.png');
+ 			    background-repeat:no-repeat;
+				background-size:123% 123%;
+ 				background-position: -60px -45px;
+			}
+			p{
+				color: #000;
+			}
+			
+			.site-doc-icon li{width: 222px;}
+        .site-doc-icon li .layui-anim{
+        	width: 150px; height: 150px;
+        	line-height: 150px; margin: 0 auto 10px;
+        	text-align: center;
+        	background-color: #009688;
+        	cursor: pointer;
+        	color: #fff;
+        	border-radius: 50%;}
+		</style>
+	</head>
+	<body>
+		<div class="layui-tab layui-tab-card bodes app" style="background-color: white;">
+		  <ul class="layui-tab-title">
+		    <li class="layui-this">采购作业</li>
+		    <li>常用报表</li>
+		  </ul>
+		  <div class="layui-tab-content" >
+		    <div class="layui-tab-item layui-show xiaoshoukuang">
+				<div class="layui-container">
+					 <div class="layui-row zhuymhg">
+					 	<div class="layui-col-md4">
+					 		<div class="xsbj" style="width: 70px;text-align: center;margin: 0 0 0 36px;">
+					 			<i class="layui-icon layui-icon-form" @click="Open($event,'采购请购单',)" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>采购请购单</p>
+					 		</div>
+					 	</div>
+					    <div class="layui-col-md4" style="width: 70px;text-align: center;margin: 0 0 0 -76px;">
+					 		<div class="s1" style="">
+					 			<i class="layui-icon layui-icon-form" @click="Open($event,'采购订单','采购模块/wxx_cgdd.html')" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>采购订单</p>
+					 		</div>
+					 	</div>
+						 <div class="layui-col-md4" style="width: 70px;text-align: center;margin: 0 0 0 192px">
+							 <div class="s1" style="">
+								 <i class="layui-icon layui-icon-form" @click="Open($event,'采购询价单','采购模块/wxx_xjd.html')" style="font-size: 50px;color: #1E9FFF;"></i>
+								 <p>采购询价单</p>
+							 </div>
+						 </div>
+					 </div>
+					<!--第2行-->
+					<div class="layui-row zhuymhg">
+						<div class="layui-col-md4">
+							<div class="xsbj" style="width: 70px;text-align: center;margin: 22px 0 0 36px;">
+								<i class="layui-icon layui-icon-form" @click="Open($event,'采购退货单','采购模块/purchase _returns.html')" style="font-size: 50px;color: #1E9FFF;"></i>
+								<p>采购退货单</p>
+							</div>
+						</div>
+						<div class="layui-col-md4">
+							<div class="s1" style="width: 70px;text-align: center;margin: 22px 0 0 -76px;">
+								<i class="layui-icon layui-icon-form" @click="Open($event,'采购入库单','采购模块/purchase_storage.html')" style="font-size: 50px;color: #1E9FFF;"></i>
+								<p>采购入库单</p>
+							</div>
+						</div>
+						<div class="layui-col-md4">
+							<div class="s1" style="width: 70px;text-align: center;margin: 22px 0 0 -186px;">
+								<i class="layui-icon layui-icon-form" style="font-size: 50px;color: #1E9FFF;"></i>
+								<p>采购折让确认单</p>
+							</div>
+						</div>
+					</div>
+					 <!--第3行-->
+					<div class="layui-row zhuymhg">
+						<div class="layui-col-md4 layui-col-md-offset4">
+							<div class="xsbj" style="width: 70px;text-align: center;margin: 48px 0 0 -76px;">
+								<i class="layui-icon layui-icon-form" @click="Open($event,'销售报价单',)" style="font-size: 50px;color: #1E9FFF;"></i>
+								<p>采购发票</p>
+							</div>
+						</div>
+						<div class="layui-col-md4">
+							<div class="s1" style="width: 70px;text-align: center;margin: 48px 0 0 -186px;">
+								<i class="layui-icon layui-icon-form"  @click="Open($event,'销售报价单','采购模块/purchase_sharing.html')" style="font-size: 50px;color: #1E9FFF;"></i>
+								<p>采购分摊作业</p>
+							</div>
+						</div>
+					</div>
+				</div>
+		    </div>
+		    <!--报表-->
+		    <div class="layui-tab-item">
+		    	<div class="layui-container">
+					<div class="layui-row zhuymhg">
+						<div class="layui-col-md6">
+							<div class="xsbj" style="">
+								<i class="layui-icon layui-icon-form" @click="Open($event,'销售报价单',)" style="font-size: 50px;color: #1E9FFF;"></i>
+								<p>采购订单分析表</p>
+							</div>
+						</div>
+						<div class="layui-col-md6">
+							<div class="s1" style="">
+								<i class="layui-icon layui-icon-form" style="font-size: 50px;color: #1E9FFF;"></i>
+								<p>采购订单分析明细表</p>
+							</div>
+						</div>
+					</div>
+					<div class="layui-row zhuymhg">
+						<div class="layui-col-md6">
+							<div class="xsbj" style="">
+								<i class="layui-icon layui-icon-form" @click="Open($event,'销售报价单',)" style="font-size: 50px;color: #1E9FFF;"></i>
+								<p>采购交易分析表</p>
+							</div>
+						</div>
+						<div class="layui-col-md6">
+							<div class="s1" style="">
+								<i class="layui-icon layui-icon-form" style="font-size: 50px;color: #1E9FFF;"></i>
+								<p>采购交易分析明细表</p>
+							</div>
+						</div>
+					</div>
+					<div class="layui-row zhuymhg">
+						<div class="layui-col-md4">
+							<div class="xsbj" style="">
+								<i class="layui-icon layui-icon-form" @click="Open($event,'销售报价单',)" style="font-size: 50px;color: #1E9FFF;"></i>
+								<p>供应商交易分析表</p>
+							</div>
+						</div>
+						<div class="layui-col-md4">
+							<div class="s1" style="">
+								<i class="layui-icon layui-icon-form" style="font-size: 50px;color: #1E9FFF;"></i>
+								<p>采购开票状况分析表</p>
+							</div>
+						</div>
+						<div class="layui-col-md4">
+							<div class="s1" style="">
+								<i class="layui-icon layui-icon-form" style="font-size: 50px;color: #1E9FFF;"></i>
+								<p>采购分摊明细表</p>
+							</div>
+						</div>
+					</div>
+				</div>
+		    </div>
+		  </div>
+		</div>
+	</body>
+<script>
+	var procurementVue = new Vue({
+		el:'.app',
+		data(){//值
+			return{
+				xxx:'555',
+				id:""
+			}
+		},
+		methods:{//执行方法
+			cl:function(content){
+				$(procurementVue.id)[0].contentWindow.vue.xx = content;
+			},
+			xz:function(id){
+				$(id)[0].contentWindow.vue.xz();
+			},
+			xg:function(id){
+				$(id)[0].contentWindow.vue.xg();
+			},
+			sc:function(id){
+				$(id)[0].contentWindow.vue.sc();
+			},
+			Open:function (th,title,url,width,height,flag) {
+				if(width == null){
+					width  = "80%";
+				}
+				if(height == null){
+					height = "80%";
+				}
+				if(flag == null){   //只有单据是可以执行新增、修改、审核的。
+					flag = '0';
+				}
+				layer.open({
+					type: 2
+					,title:title
+					,area: [width, height]
+					,shade: 0
+					,maxmin:true
+					,moveOut:true
+					,scrollbar:false
+					,content: url   // $(e.target) 要显示的节点,若用此法则可能会影响到样式，就是把选择的节点移到弹出框了
+					,
+					id:title
+					,zIndex: layer.zIndex
+					,success: function(layero){
+						layer.setTop(layero);
+						if(flag === '0'){
+							indeVue.zIndex = layer.zIndex;
+						}
+					},moveEnd :function () {
+						if (flag === '0') {
+							indeVue.zIndex = layer.zIndex + 1;
+						}
+					}
+				});
+			}
+		},
+		created:function(){//启动时生成代码
+			
+		}
+	});
+
+	</script>
+	
+	
+	<script>
+    layui.use('jquery', function(){
+        var $ = layui.$;
+        //演示动画
+        $('.layui-anim').on('click', function(){
+            var othis = $(this), anim = othis.data('anim');
+ 
+            //停止循环
+            if(othis.hasClass('layui-anim-loop')){
+                return othis.removeClass(anim);
+            }
+ 
+            othis.removeClass(anim);
+ 
+            setTimeout(function(){
+                othis.addClass(anim);
+            });
+            //恢复渐隐
+            if(anim === 'layui-anim-fadeout'){
+                setTimeout(function(){
+                    othis.removeClass(anim);
+                }, 1300);
+            }
+        });
+    });
+</script>
+</html>
+  

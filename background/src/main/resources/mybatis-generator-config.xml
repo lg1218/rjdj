@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<!-- 
+		mybatis foreach 查询，属性colleciont 中如果传入进来的是一个参数，数据类型为list则colleciont定义为list，数组类型用array
+		separator:每次执行都会拼接，但是最后一次会省略
+		item：当前循环的对象
+		
+	
+	 -->
+	
+	<!--生成mybatis接口和实体mavne命令： mybatis-generator:generate -->
+	
+	<!-- ModuleExample example = new ModuleExample();
+    	Criteria c = example.createCriteria();
+    	c.andNameLike("%"+name+"%");
+    	c.andParentidEqualTo(parentId); -->
+	<classPathEntry
+		location="F:\cangku\mysql\mysql-connector-java\5.1.6\mysql-connector-java-5.1.6.jar" />
+	<context id="context1">
+		<!-- 注释 -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" /><!-- 是否取消注释 -->
+			<property name="suppressDate" value="true" /> <!-- 是否生成注释代时间戳 -->
+		</commentGenerator>
+		<jdbcConnection connectionURL="jdbc:mysql://localhost:3306/houtai?useUnicode=true&amp;characterEncoding=utf-8&amp;allowMutilQueries=true"
+			driverClass="com.mysql.jdbc.Driver" password="123" userId="root" />
+		<!-- 实体生成位置 -->
+		<javaModelGenerator targetPackage="com.accp.domain"
+			targetProject="src/main/java" />
+		<!-- mapper配置文件生成 -->
+		<sqlMapGenerator targetPackage="mapper"
+			targetProject="src/main/resources" />
+		<!-- mapper接口生成 -->
+		<javaClientGenerator targetPackage="com.accp.mapper"
+			targetProject="src/main/java" type="XMLMAPPER" />
+
+		<table schema="Salesquotation" tableName="Salesquotation"></table>
+
+		<!--<table schema="billnot_purchase_requisitions" tableName="billnot_purchase_requisitions"></table>
+		<table schema="c_payforcontent" tableName="c_payforcontent"></table>
+		<table schema="ca_xiaoshou" tableName="ca_xiaoshou"></table>
+		<table schema="cgft" tableName="cgft"></table>
+		<table schema="cgftmx" tableName="cgftmx"></table>
+		<table schema="db" tableName="db"></table>
+		<table schema="dbmx" tableName="dbmx"></table>
+		<table schema="in_out_warehouse" tableName="in_out_warehouse"></table>
+		<table schema="in_stock_total" tableName="in_stock_total"></table>
+		<table schema="k_store_adjustpriecedetail" tableName="k_store_adjustpriecedetail"></table>
+		<table schema="kehu_address" tableName="kehu_address"></table>
+		<table schema="kehu_address_details" tableName="kehu_address_details"></table>
+		<table schema="kehu_main" tableName="kehu_main"></table>
+		<table schema="kehu_type" tableName="kehu_type"></table>
+		<table schema="materials_main" tableName="materials_main"></table>
+		<table schema="materials_type" tableName="materials_type"></table>
+		<table schema="p_check_memu" tableName="p_check_memu"></table>
+		<table schema="p_checkmemu_detail" tableName="p_checkmemu_detail"></table>
+		<table schema="p_r_details" tableName="p_r_details"></table>
+		<table schema="p_r_main" tableName="p_r_main"></table>
+		<table schema="p_s_details" tableName="p_s_details"></table>
+		<table schema="p_s_main" tableName="p_s_main"></table>
+		<table schema="q_takeprepay" tableName="q_takeprepay"></table>
+		<table schema="s_sell_cancelparticular" tableName="s_sell_cancelparticular"></table>
+		<table schema="s_sell_out" tableName="s_sell_out"></table>
+		<table schema="s_sell_outparticular" tableName="s_sell_outparticular"></table>
+		<table schema="salesorder" tableName="salesorder"></table>
+		<table schema="salesorderlist" tableName="salesorderlist"></table>
+		<table schema="salesquotation" tableName="salesquotation"></table>
+		<table schema="salesquotationlist" tableName="salesquotationlist"></table>
+		<table schema="supplier_address" tableName="supplier_address"></table>
+		<table schema="supplier_address_details" tableName="supplier_address_details"></table>
+		<table schema="supplier_main" tableName="supplier_main"></table>
+		<table schema="supplier_type" tableName="supplier_type"></table>
+		<table schema="t_purchase_inquiry" tableName="t_purchase_inquiry"></table>
+		<table schema="t_purchase_inquiry_details" tableName="t_purchase_inquiry_details"></table>
+		<table schema="t_purchase_order" tableName="t_purchase_order"></table>
+		<table schema="t_purchase_order_details" tableName="t_purchase_order_details"></table>
+		<table schema="t_purchase_requisitions_details" tableName="t_purchase_requisitions_details"></table>
+		<table schema="t_purchase_requisitions_type" tableName="t_purchase_requisitions_type"></table>
+		<table schema="tax_items" tableName="tax_items"></table>
+		<table schema="unit" tableName="unit"></table>
+		<table schema="warehouse" tableName="warehouse"></table>
+		<table schema="y_advancechild" tableName="y_advancechild"></table>
+		<table schema="y_advancemain" tableName="y_advancemain"></table>
+		<table schema="y_money_expect" tableName="y_money_expect"></table>
+		<table schema="y_money_expect1" tableName="y_money_expect1"></table>
+		<table schema="y_money_expect2" tableName="y_money_expect2"></table>
+		<table schema="y_money_should" tableName="y_money_should"></table>
+		<table schema="y_money_shouldparticular" tableName="y_money_shouldparticular"></table>
+		<table schema="y_payformain" tableName="y_payformain"></table>-->
+
+
+		<!--<table schema="Module" tableName="module">
+
+		</table>
+		<table schema="Role" tableName="role">
+
+		</table>
+		<table schema="User" tableName="user">
+
+		</table>
+		<table schema="RoleModule" tableName="rolemodule">
+
+		</table>
+		<table schema="RoleUser" tableName="roleuser">
+
+		</table>-->
+	</context>
+</generatorConfiguration>
+
+
+
+
+<!-- <build>
+		<plugins>
+			<plugin>
+				Mybatis-generator插件,用于自动生成Mapper和POJO
+				<groupId>org.mybatis.generator</groupId>
+				<artifactId>mybatis-generator-maven-plugin</artifactId>
+				<version>1.3.2</version>
+				<configuration>
+					配置文件的位置
+					<configurationFile>src/main/resources/mybatis-generator-config.xml</configurationFile>
+					<verbose>true</verbose>
+					<overwrite>true</overwrite>
+				</configuration>
+				<executions>
+					<execution>
+						<id>Generate MyBatis Artifacts</id>
+						<phase>generate</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.mybatis.generator</groupId>
+						<artifactId>mybatis-generator-core</artifactId>
+						<version>1.3.2</version>
+					</dependency>
+					<dependency>
+                        <groupId>com.itfsw</groupId>
+                        <artifactId>mybatis-generator-plugin</artifactId>
+                        <version>1.3.0</version>
+                    </dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build> -->
+	
+	
+	<!-- 集联查询 -->
+	
+	<!-- <resultMap id="BaseResultMap" type="com.accp.domain.Module" >
+	    <id column="id" property="id" jdbcType="INTEGER" />
+	    <result column="name" property="name" jdbcType="VARCHAR" />
+	    <result column="parentid" property="parentid" jdbcType="INTEGER" />
+	  </resultMap>
+	  
+	  <resultMap type="com.accp.domain.Module" id="BaseResultMapExtends"
+	  	 extends="BaseResultMap">
+	  	<collection property="list" column="id" select="query"></collection>
+	  </resultMap>
+	  
+	  
+	  <select id="query" resultMap="BaseResultMapExtends">
+	  	select * from module where parentid=#{id}
+	  </select> -->

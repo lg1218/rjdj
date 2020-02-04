@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.PSMainMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.PSMain" >
+    <id column="psm_id" property="psmId" jdbcType="INTEGER" />
+    <id column="psm_num" property="psmNum" jdbcType="VARCHAR" />
+    <result column="psm_date" property="psmDate" jdbcType="DATE" />
+    <result column="psm_sm_id" property="psmSmId" jdbcType="INTEGER" />
+    <result column="psm_typeid" property="psmTypeid" jdbcType="INTEGER" />
+    <result column="psm_bb_id" property="psmBbId" jdbcType="INTEGER" />
+    <result column="psm_flaghs" property="psmFlaghs" jdbcType="BIT" />
+    <result column="psm_ck_id" property="psmCkId" jdbcType="INTEGER" />
+    <result column="psm_gwmyflag" property="psmGwmyflag" jdbcType="BIT" />
+    <result column="psm_pznum" property="psmPznum" jdbcType="VARCHAR" />
+    <result column="psm_cgpfmid" property="psmCgpfmid" jdbcType="INTEGER" />
+    <result column="psm_zdpfmid" property="psmZdpfmid" jdbcType="INTEGER" />
+    <result column="psm_fhpfmid" property="psmFhpfmid" jdbcType="INTEGER" />
+    <result column="psm_ssproject" property="psmSsproject" jdbcType="INTEGER" />
+    <result column="psm_zkgs_smid" property="psmZkgsSmid" jdbcType="VARCHAR" />
+    <result column="psm_fkwhere" property="psmFkwhere" jdbcType="INTEGER" />
+    <result column="psm_whereday" property="psmWhereday" jdbcType="INTEGER" />
+    <result column="psm_fk_date" property="psmFkDate" jdbcType="DATE" />
+    <result column="psm_fk_month" property="psmFkMonth" jdbcType="DATE" />
+    <result column="psm_remark" property="psmRemark" jdbcType="VARCHAR" />
+    <result column="psm_hd_status" property="psmHdStatus" jdbcType="INTEGER" />
+    <result column="psm_hs_totalmoney" property="psmHsTotalmoney" jdbcType="DOUBLE" />
+    <result column="psm_noths_totalmoney" property="psmNothsTotalmoney" jdbcType="DOUBLE" />
+    <result column="bz1" property="bz1" jdbcType="VARCHAR" />
+    <result column="bz2" property="bz2" jdbcType="VARCHAR" />
+    <result column="bz3" property="bz3" jdbcType="VARCHAR" />
+    <result column="bz4" property="bz4" jdbcType="VARCHAR" />
+    <result column="bz5" property="bz5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    psm_id, psm_num, psm_date, psm_sm_id, psm_typeid, psm_bb_id, psm_flaghs, psm_ck_id, 
+    psm_gwmyflag, psm_pznum, psm_cgpfmid, psm_zdpfmid, psm_fhpfmid, psm_ssproject, psm_zkgs_smid, 
+    psm_fkwhere, psm_whereday, psm_fk_date, psm_fk_month, psm_remark, psm_hd_status, 
+    psm_hs_totalmoney, psm_noths_totalmoney, bz1, bz2, bz3, bz4, bz5
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.PSMainExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from p_s_main
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.accp.domain.PSMainKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from p_s_main
+    where psm_id = #{psmId,jdbcType=INTEGER}
+      and psm_num = #{psmNum,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.accp.domain.PSMainKey" >
+    delete from p_s_main
+    where psm_id = #{psmId,jdbcType=INTEGER}
+      and psm_num = #{psmNum,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.PSMainExample" >
+    delete from p_s_main
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.PSMain" >
+    insert into p_s_main (psm_id, psm_num, psm_date, 
+      psm_sm_id, psm_typeid, psm_bb_id, 
+      psm_flaghs, psm_ck_id, psm_gwmyflag, 
+      psm_pznum, psm_cgpfmid, psm_zdpfmid, 
+      psm_fhpfmid, psm_ssproject, psm_zkgs_smid, 
+      psm_fkwhere, psm_whereday, psm_fk_date, 
+      psm_fk_month, psm_remark, psm_hd_status, 
+      psm_hs_totalmoney, psm_noths_totalmoney, bz1, 
+      bz2, bz3, bz4, bz5
+      )
+    values (#{psmId,jdbcType=INTEGER}, #{psmNum,jdbcType=VARCHAR}, #{psmDate,jdbcType=DATE}, 
+      #{psmSmId,jdbcType=INTEGER}, #{psmTypeid,jdbcType=INTEGER}, #{psmBbId,jdbcType=INTEGER}, 
+      #{psmFlaghs,jdbcType=BIT}, #{psmCkId,jdbcType=INTEGER}, #{psmGwmyflag,jdbcType=BIT}, 
+      #{psmPznum,jdbcType=VARCHAR}, #{psmCgpfmid,jdbcType=INTEGER}, #{psmZdpfmid,jdbcType=INTEGER}, 
+      #{psmFhpfmid,jdbcType=INTEGER}, #{psmSsproject,jdbcType=INTEGER}, #{psmZkgsSmid,jdbcType=VARCHAR}, 
+      #{psmFkwhere,jdbcType=INTEGER}, #{psmWhereday,jdbcType=INTEGER}, #{psmFkDate,jdbcType=DATE}, 
+      #{psmFkMonth,jdbcType=DATE}, #{psmRemark,jdbcType=VARCHAR}, #{psmHdStatus,jdbcType=INTEGER}, 
+      #{psmHsTotalmoney,jdbcType=DOUBLE}, #{psmNothsTotalmoney,jdbcType=DOUBLE}, #{bz1,jdbcType=VARCHAR}, 
+      #{bz2,jdbcType=VARCHAR}, #{bz3,jdbcType=VARCHAR}, #{bz4,jdbcType=VARCHAR}, #{bz5,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.PSMain" >
+    insert into p_s_main
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="psmId != null" >
+        psm_id,
+      </if>
+      <if test="psmNum != null" >
+        psm_num,
+      </if>
+      <if test="psmDate != null" >
+        psm_date,
+      </if>
+      <if test="psmSmId != null" >
+        psm_sm_id,
+      </if>
+      <if test="psmTypeid != null" >
+        psm_typeid,
+      </if>
+      <if test="psmBbId != null" >
+        psm_bb_id,
+      </if>
+      <if test="psmFlaghs != null" >
+        psm_flaghs,
+      </if>
+      <if test="psmCkId != null" >
+        psm_ck_id,
+      </if>
+      <if test="psmGwmyflag != null" >
+        psm_gwmyflag,
+      </if>
+      <if test="psmPznum != null" >
+        psm_pznum,
+      </if>
+      <if test="psmCgpfmid != null" >
+        psm_cgpfmid,
+      </if>
+      <if test="psmZdpfmid != null" >
+        psm_zdpfmid,
+      </if>
+      <if test="psmFhpfmid != null" >
+        psm_fhpfmid,
+      </if>
+      <if test="psmSsproject != null" >
+        psm_ssproject,
+      </if>
+      <if test="psmZkgsSmid != null" >
+        psm_zkgs_smid,
+      </if>
+      <if test="psmFkwhere != null" >
+        psm_fkwhere,
+      </if>
+      <if test="psmWhereday != null" >
+        psm_whereday,
+      </if>
+      <if test="psmFkDate != null" >
+        psm_fk_date,
+      </if>
+      <if test="psmFkMonth != null" >
+        psm_fk_month,
+      </if>
+      <if test="psmRemark != null" >
+        psm_remark,
+      </if>
+      <if test="psmHdStatus != null" >
+        psm_hd_status,
+      </if>
+      <if test="psmHsTotalmoney != null" >
+        psm_hs_totalmoney,
+      </if>
+      <if test="psmNothsTotalmoney != null" >
+        psm_noths_totalmoney,
+      </if>
+      <if test="bz1 != null" >
+        bz1,
+      </if>
+      <if test="bz2 != null" >
+        bz2,
+      </if>
+      <if test="bz3 != null" >
+        bz3,
+      </if>
+      <if test="bz4 != null" >
+        bz4,
+      </if>
+      <if test="bz5 != null" >
+        bz5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="psmId != null" >
+        #{psmId,jdbcType=INTEGER},
+      </if>
+      <if test="psmNum != null" >
+        #{psmNum,jdbcType=VARCHAR},
+      </if>
+      <if test="psmDate != null" >
+        #{psmDate,jdbcType=DATE},
+      </if>
+      <if test="psmSmId != null" >
+        #{psmSmId,jdbcType=INTEGER},
+      </if>
+      <if test="psmTypeid != null" >
+        #{psmTypeid,jdbcType=INTEGER},
+      </if>
+      <if test="psmBbId != null" >
+        #{psmBbId,jdbcType=INTEGER},
+      </if>
+      <if test="psmFlaghs != null" >
+        #{psmFlaghs,jdbcType=BIT},
+      </if>
+      <if test="psmCkId != null" >
+        #{psmCkId,jdbcType=INTEGER},
+      </if>
+      <if test="psmGwmyflag != null" >
+        #{psmGwmyflag,jdbcType=BIT},
+      </if>
+      <if test="psmPznum != null" >
+        #{psmPznum,jdbcType=VARCHAR},
+      </if>
+      <if test="psmCgpfmid != null" >
+        #{psmCgpfmid,jdbcType=INTEGER},
+      </if>
+      <if test="psmZdpfmid != null" >
+        #{psmZdpfmid,jdbcType=INTEGER},
+      </if>
+      <if test="psmFhpfmid != null" >
+        #{psmFhpfmid,jdbcType=INTEGER},
+      </if>
+      <if test="psmSsproject != null" >
+        #{psmSsproject,jdbcType=INTEGER},
+      </if>
+      <if test="psmZkgsSmid != null" >
+        #{psmZkgsSmid,jdbcType=VARCHAR},
+      </if>
+      <if test="psmFkwhere != null" >
+        #{psmFkwhere,jdbcType=INTEGER},
+      </if>
+      <if test="psmWhereday != null" >
+        #{psmWhereday,jdbcType=INTEGER},
+      </if>
+      <if test="psmFkDate != null" >
+        #{psmFkDate,jdbcType=DATE},
+      </if>
+      <if test="psmFkMonth != null" >
+        #{psmFkMonth,jdbcType=DATE},
+      </if>
+      <if test="psmRemark != null" >
+        #{psmRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="psmHdStatus != null" >
+        #{psmHdStatus,jdbcType=INTEGER},
+      </if>
+      <if test="psmHsTotalmoney != null" >
+        #{psmHsTotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="psmNothsTotalmoney != null" >
+        #{psmNothsTotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="bz1 != null" >
+        #{bz1,jdbcType=VARCHAR},
+      </if>
+      <if test="bz2 != null" >
+        #{bz2,jdbcType=VARCHAR},
+      </if>
+      <if test="bz3 != null" >
+        #{bz3,jdbcType=VARCHAR},
+      </if>
+      <if test="bz4 != null" >
+        #{bz4,jdbcType=VARCHAR},
+      </if>
+      <if test="bz5 != null" >
+        #{bz5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.PSMainExample" resultType="java.lang.Integer" >
+    select count(*) from p_s_main
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update p_s_main
+    <set >
+      <if test="record.psmId != null" >
+        psm_id = #{record.psmId,jdbcType=INTEGER},
+      </if>
+      <if test="record.psmNum != null" >
+        psm_num = #{record.psmNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.psmDate != null" >
+        psm_date = #{record.psmDate,jdbcType=DATE},
+      </if>
+      <if test="record.psmSmId != null" >
+        psm_sm_id = #{record.psmSmId,jdbcType=INTEGER},
+      </if>
+      <if test="record.psmTypeid != null" >
+        psm_typeid = #{record.psmTypeid,jdbcType=INTEGER},
+      </if>
+      <if test="record.psmBbId != null" >
+        psm_bb_id = #{record.psmBbId,jdbcType=INTEGER},
+      </if>
+      <if test="record.psmFlaghs != null" >
+        psm_flaghs = #{record.psmFlaghs,jdbcType=BIT},
+      </if>
+      <if test="record.psmCkId != null" >
+        psm_ck_id = #{record.psmCkId,jdbcType=INTEGER},
+      </if>
+      <if test="record.psmGwmyflag != null" >
+        psm_gwmyflag = #{record.psmGwmyflag,jdbcType=BIT},
+      </if>
+      <if test="record.psmPznum != null" >
+        psm_pznum = #{record.psmPznum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.psmCgpfmid != null" >
+        psm_cgpfmid = #{record.psmCgpfmid,jdbcType=INTEGER},
+      </if>
+      <if test="record.psmZdpfmid != null" >
+        psm_zdpfmid = #{record.psmZdpfmid,jdbcType=INTEGER},
+      </if>
+      <if test="record.psmFhpfmid != null" >
+        psm_fhpfmid = #{record.psmFhpfmid,jdbcType=INTEGER},
+      </if>
+      <if test="record.psmSsproject != null" >
+        psm_ssproject = #{record.psmSsproject,jdbcType=INTEGER},
+      </if>
+      <if test="record.psmZkgsSmid != null" >
+        psm_zkgs_smid = #{record.psmZkgsSmid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.psmFkwhere != null" >
+        psm_fkwhere = #{record.psmFkwhere,jdbcType=INTEGER},
+      </if>
+      <if test="record.psmWhereday != null" >
+        psm_whereday = #{record.psmWhereday,jdbcType=INTEGER},
+      </if>
+      <if test="record.psmFkDate != null" >
+        psm_fk_date = #{record.psmFkDate,jdbcType=DATE},
+      </if>
+      <if test="record.psmFkMonth != null" >
+        psm_fk_month = #{record.psmFkMonth,jdbcType=DATE},
+      </if>
+      <if test="record.psmRemark != null" >
+        psm_remark = #{record.psmRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.psmHdStatus != null" >
+        psm_hd_status = #{record.psmHdStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.psmHsTotalmoney != null" >
+        psm_hs_totalmoney = #{record.psmHsTotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.psmNothsTotalmoney != null" >
+        psm_noths_totalmoney = #{record.psmNothsTotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.bz1 != null" >
+        bz1 = #{record.bz1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz2 != null" >
+        bz2 = #{record.bz2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz3 != null" >
+        bz3 = #{record.bz3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz4 != null" >
+        bz4 = #{record.bz4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz5 != null" >
+        bz5 = #{record.bz5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update p_s_main
+    set psm_id = #{record.psmId,jdbcType=INTEGER},
+      psm_num = #{record.psmNum,jdbcType=VARCHAR},
+      psm_date = #{record.psmDate,jdbcType=DATE},
+      psm_sm_id = #{record.psmSmId,jdbcType=INTEGER},
+      psm_typeid = #{record.psmTypeid,jdbcType=INTEGER},
+      psm_bb_id = #{record.psmBbId,jdbcType=INTEGER},
+      psm_flaghs = #{record.psmFlaghs,jdbcType=BIT},
+      psm_ck_id = #{record.psmCkId,jdbcType=INTEGER},
+      psm_gwmyflag = #{record.psmGwmyflag,jdbcType=BIT},
+      psm_pznum = #{record.psmPznum,jdbcType=VARCHAR},
+      psm_cgpfmid = #{record.psmCgpfmid,jdbcType=INTEGER},
+      psm_zdpfmid = #{record.psmZdpfmid,jdbcType=INTEGER},
+      psm_fhpfmid = #{record.psmFhpfmid,jdbcType=INTEGER},
+      psm_ssproject = #{record.psmSsproject,jdbcType=INTEGER},
+      psm_zkgs_smid = #{record.psmZkgsSmid,jdbcType=VARCHAR},
+      psm_fkwhere = #{record.psmFkwhere,jdbcType=INTEGER},
+      psm_whereday = #{record.psmWhereday,jdbcType=INTEGER},
+      psm_fk_date = #{record.psmFkDate,jdbcType=DATE},
+      psm_fk_month = #{record.psmFkMonth,jdbcType=DATE},
+      psm_remark = #{record.psmRemark,jdbcType=VARCHAR},
+      psm_hd_status = #{record.psmHdStatus,jdbcType=INTEGER},
+      psm_hs_totalmoney = #{record.psmHsTotalmoney,jdbcType=DOUBLE},
+      psm_noths_totalmoney = #{record.psmNothsTotalmoney,jdbcType=DOUBLE},
+      bz1 = #{record.bz1,jdbcType=VARCHAR},
+      bz2 = #{record.bz2,jdbcType=VARCHAR},
+      bz3 = #{record.bz3,jdbcType=VARCHAR},
+      bz4 = #{record.bz4,jdbcType=VARCHAR},
+      bz5 = #{record.bz5,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.PSMain" >
+    update p_s_main
+    <set >
+      <if test="psmDate != null" >
+        psm_date = #{psmDate,jdbcType=DATE},
+      </if>
+      <if test="psmSmId != null" >
+        psm_sm_id = #{psmSmId,jdbcType=INTEGER},
+      </if>
+      <if test="psmTypeid != null" >
+        psm_typeid = #{psmTypeid,jdbcType=INTEGER},
+      </if>
+      <if test="psmBbId != null" >
+        psm_bb_id = #{psmBbId,jdbcType=INTEGER},
+      </if>
+      <if test="psmFlaghs != null" >
+        psm_flaghs = #{psmFlaghs,jdbcType=BIT},
+      </if>
+      <if test="psmCkId != null" >
+        psm_ck_id = #{psmCkId,jdbcType=INTEGER},
+      </if>
+      <if test="psmGwmyflag != null" >
+        psm_gwmyflag = #{psmGwmyflag,jdbcType=BIT},
+      </if>
+      <if test="psmPznum != null" >
+        psm_pznum = #{psmPznum,jdbcType=VARCHAR},
+      </if>
+      <if test="psmCgpfmid != null" >
+        psm_cgpfmid = #{psmCgpfmid,jdbcType=INTEGER},
+      </if>
+      <if test="psmZdpfmid != null" >
+        psm_zdpfmid = #{psmZdpfmid,jdbcType=INTEGER},
+      </if>
+      <if test="psmFhpfmid != null" >
+        psm_fhpfmid = #{psmFhpfmid,jdbcType=INTEGER},
+      </if>
+      <if test="psmSsproject != null" >
+        psm_ssproject = #{psmSsproject,jdbcType=INTEGER},
+      </if>
+      <if test="psmZkgsSmid != null" >
+        psm_zkgs_smid = #{psmZkgsSmid,jdbcType=VARCHAR},
+      </if>
+      <if test="psmFkwhere != null" >
+        psm_fkwhere = #{psmFkwhere,jdbcType=INTEGER},
+      </if>
+      <if test="psmWhereday != null" >
+        psm_whereday = #{psmWhereday,jdbcType=INTEGER},
+      </if>
+      <if test="psmFkDate != null" >
+        psm_fk_date = #{psmFkDate,jdbcType=DATE},
+      </if>
+      <if test="psmFkMonth != null" >
+        psm_fk_month = #{psmFkMonth,jdbcType=DATE},
+      </if>
+      <if test="psmRemark != null" >
+        psm_remark = #{psmRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="psmHdStatus != null" >
+        psm_hd_status = #{psmHdStatus,jdbcType=INTEGER},
+      </if>
+      <if test="psmHsTotalmoney != null" >
+        psm_hs_totalmoney = #{psmHsTotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="psmNothsTotalmoney != null" >
+        psm_noths_totalmoney = #{psmNothsTotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="bz1 != null" >
+        bz1 = #{bz1,jdbcType=VARCHAR},
+      </if>
+      <if test="bz2 != null" >
+        bz2 = #{bz2,jdbcType=VARCHAR},
+      </if>
+      <if test="bz3 != null" >
+        bz3 = #{bz3,jdbcType=VARCHAR},
+      </if>
+      <if test="bz4 != null" >
+        bz4 = #{bz4,jdbcType=VARCHAR},
+      </if>
+      <if test="bz5 != null" >
+        bz5 = #{bz5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where psm_id = #{psmId,jdbcType=INTEGER}
+      and psm_num = #{psmNum,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.PSMain" >
+    update p_s_main
+    set psm_date = #{psmDate,jdbcType=DATE},
+      psm_sm_id = #{psmSmId,jdbcType=INTEGER},
+      psm_typeid = #{psmTypeid,jdbcType=INTEGER},
+      psm_bb_id = #{psmBbId,jdbcType=INTEGER},
+      psm_flaghs = #{psmFlaghs,jdbcType=BIT},
+      psm_ck_id = #{psmCkId,jdbcType=INTEGER},
+      psm_gwmyflag = #{psmGwmyflag,jdbcType=BIT},
+      psm_pznum = #{psmPznum,jdbcType=VARCHAR},
+      psm_cgpfmid = #{psmCgpfmid,jdbcType=INTEGER},
+      psm_zdpfmid = #{psmZdpfmid,jdbcType=INTEGER},
+      psm_fhpfmid = #{psmFhpfmid,jdbcType=INTEGER},
+      psm_ssproject = #{psmSsproject,jdbcType=INTEGER},
+      psm_zkgs_smid = #{psmZkgsSmid,jdbcType=VARCHAR},
+      psm_fkwhere = #{psmFkwhere,jdbcType=INTEGER},
+      psm_whereday = #{psmWhereday,jdbcType=INTEGER},
+      psm_fk_date = #{psmFkDate,jdbcType=DATE},
+      psm_fk_month = #{psmFkMonth,jdbcType=DATE},
+      psm_remark = #{psmRemark,jdbcType=VARCHAR},
+      psm_hd_status = #{psmHdStatus,jdbcType=INTEGER},
+      psm_hs_totalmoney = #{psmHsTotalmoney,jdbcType=DOUBLE},
+      psm_noths_totalmoney = #{psmNothsTotalmoney,jdbcType=DOUBLE},
+      bz1 = #{bz1,jdbcType=VARCHAR},
+      bz2 = #{bz2,jdbcType=VARCHAR},
+      bz3 = #{bz3,jdbcType=VARCHAR},
+      bz4 = #{bz4,jdbcType=VARCHAR},
+      bz5 = #{bz5,jdbcType=VARCHAR}
+    where psm_id = #{psmId,jdbcType=INTEGER}
+      and psm_num = #{psmNum,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.MaterialsTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.MaterialsType" >
+    <result column="mt_id" property="mtId" jdbcType="VARCHAR" />
+    <result column="mt_name" property="mtName" jdbcType="VARCHAR" />
+    <result column="mt_ename" property="mtEname" jdbcType="VARCHAR" />
+    <result column="mt_hc_subjectid" property="mtHcSubjectid" jdbcType="INTEGER" />
+    <result column="mt_xssr_subjectid" property="mtXssrSubjectid" jdbcType="INTEGER" />
+    <result column="mt_zpcb_subjectid" property="mtZpcbSubjectid" jdbcType="INTEGER" />
+    <result column="mt_zpfy_subjectid" property="mtZpfySubjectid" jdbcType="INTEGER" />
+    <result column="mt_qtsr_subjectid" property="mtQtsrSubjectid" jdbcType="INTEGER" />
+    <result column="mt_qtfy_subjectid" property="mtQtfySubjectid" jdbcType="INTEGER" />
+    <result column="mt_qtcb_subjectid" property="mtQtcbSubjectid" jdbcType="INTEGER" />
+    <result column="mt_remark" property="mtRemark" jdbcType="VARCHAR" />
+    <result column="bz1" property="bz1" jdbcType="VARCHAR" />
+    <result column="bz2" property="bz2" jdbcType="VARCHAR" />
+    <result column="bz3" property="bz3" jdbcType="VARCHAR" />
+    <result column="bz4" property="bz4" jdbcType="VARCHAR" />
+    <result column="bz5" property="bz5" jdbcType="VARCHAR" />
+    <result column="bz6" property="bz6" jdbcType="VARCHAR" />
+    <result column="bz7" property="bz7" jdbcType="VARCHAR" />
+    <result column="bz8" property="bz8" jdbcType="VARCHAR" />
+    <result column="bz9" property="bz9" jdbcType="VARCHAR" />
+    <result column="bz10" property="bz10" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    mt_id, mt_name, mt_ename, mt_hc_subjectid, mt_xssr_subjectid, mt_zpcb_subjectid, 
+    mt_zpfy_subjectid, mt_qtsr_subjectid, mt_qtfy_subjectid, mt_qtcb_subjectid, mt_remark, 
+    bz1, bz2, bz3, bz4, bz5, bz6, bz7, bz8, bz9, bz10
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.MaterialsTypeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from materials_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.accp.domain.MaterialsTypeExample" >
+    delete from materials_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.MaterialsType" >
+    insert into materials_type (mt_id, mt_name, mt_ename, 
+      mt_hc_subjectid, mt_xssr_subjectid, mt_zpcb_subjectid, 
+      mt_zpfy_subjectid, mt_qtsr_subjectid, mt_qtfy_subjectid, 
+      mt_qtcb_subjectid, mt_remark, bz1, 
+      bz2, bz3, bz4, bz5, 
+      bz6, bz7, bz8, bz9, 
+      bz10)
+    values (#{mtId,jdbcType=VARCHAR}, #{mtName,jdbcType=VARCHAR}, #{mtEname,jdbcType=VARCHAR}, 
+      #{mtHcSubjectid,jdbcType=INTEGER}, #{mtXssrSubjectid,jdbcType=INTEGER}, #{mtZpcbSubjectid,jdbcType=INTEGER}, 
+      #{mtZpfySubjectid,jdbcType=INTEGER}, #{mtQtsrSubjectid,jdbcType=INTEGER}, #{mtQtfySubjectid,jdbcType=INTEGER}, 
+      #{mtQtcbSubjectid,jdbcType=INTEGER}, #{mtRemark,jdbcType=VARCHAR}, #{bz1,jdbcType=VARCHAR}, 
+      #{bz2,jdbcType=VARCHAR}, #{bz3,jdbcType=VARCHAR}, #{bz4,jdbcType=VARCHAR}, #{bz5,jdbcType=VARCHAR}, 
+      #{bz6,jdbcType=VARCHAR}, #{bz7,jdbcType=VARCHAR}, #{bz8,jdbcType=VARCHAR}, #{bz9,jdbcType=VARCHAR}, 
+      #{bz10,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.MaterialsType" >
+    insert into materials_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mtId != null" >
+        mt_id,
+      </if>
+      <if test="mtName != null" >
+        mt_name,
+      </if>
+      <if test="mtEname != null" >
+        mt_ename,
+      </if>
+      <if test="mtHcSubjectid != null" >
+        mt_hc_subjectid,
+      </if>
+      <if test="mtXssrSubjectid != null" >
+        mt_xssr_subjectid,
+      </if>
+      <if test="mtZpcbSubjectid != null" >
+        mt_zpcb_subjectid,
+      </if>
+      <if test="mtZpfySubjectid != null" >
+        mt_zpfy_subjectid,
+      </if>
+      <if test="mtQtsrSubjectid != null" >
+        mt_qtsr_subjectid,
+      </if>
+      <if test="mtQtfySubjectid != null" >
+        mt_qtfy_subjectid,
+      </if>
+      <if test="mtQtcbSubjectid != null" >
+        mt_qtcb_subjectid,
+      </if>
+      <if test="mtRemark != null" >
+        mt_remark,
+      </if>
+      <if test="bz1 != null" >
+        bz1,
+      </if>
+      <if test="bz2 != null" >
+        bz2,
+      </if>
+      <if test="bz3 != null" >
+        bz3,
+      </if>
+      <if test="bz4 != null" >
+        bz4,
+      </if>
+      <if test="bz5 != null" >
+        bz5,
+      </if>
+      <if test="bz6 != null" >
+        bz6,
+      </if>
+      <if test="bz7 != null" >
+        bz7,
+      </if>
+      <if test="bz8 != null" >
+        bz8,
+      </if>
+      <if test="bz9 != null" >
+        bz9,
+      </if>
+      <if test="bz10 != null" >
+        bz10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mtId != null" >
+        #{mtId,jdbcType=VARCHAR},
+      </if>
+      <if test="mtName != null" >
+        #{mtName,jdbcType=VARCHAR},
+      </if>
+      <if test="mtEname != null" >
+        #{mtEname,jdbcType=VARCHAR},
+      </if>
+      <if test="mtHcSubjectid != null" >
+        #{mtHcSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="mtXssrSubjectid != null" >
+        #{mtXssrSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="mtZpcbSubjectid != null" >
+        #{mtZpcbSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="mtZpfySubjectid != null" >
+        #{mtZpfySubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="mtQtsrSubjectid != null" >
+        #{mtQtsrSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="mtQtfySubjectid != null" >
+        #{mtQtfySubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="mtQtcbSubjectid != null" >
+        #{mtQtcbSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="mtRemark != null" >
+        #{mtRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="bz1 != null" >
+        #{bz1,jdbcType=VARCHAR},
+      </if>
+      <if test="bz2 != null" >
+        #{bz2,jdbcType=VARCHAR},
+      </if>
+      <if test="bz3 != null" >
+        #{bz3,jdbcType=VARCHAR},
+      </if>
+      <if test="bz4 != null" >
+        #{bz4,jdbcType=VARCHAR},
+      </if>
+      <if test="bz5 != null" >
+        #{bz5,jdbcType=VARCHAR},
+      </if>
+      <if test="bz6 != null" >
+        #{bz6,jdbcType=VARCHAR},
+      </if>
+      <if test="bz7 != null" >
+        #{bz7,jdbcType=VARCHAR},
+      </if>
+      <if test="bz8 != null" >
+        #{bz8,jdbcType=VARCHAR},
+      </if>
+      <if test="bz9 != null" >
+        #{bz9,jdbcType=VARCHAR},
+      </if>
+      <if test="bz10 != null" >
+        #{bz10,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.MaterialsTypeExample" resultType="java.lang.Integer" >
+    select count(*) from materials_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update materials_type
+    <set >
+      <if test="record.mtId != null" >
+        mt_id = #{record.mtId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mtName != null" >
+        mt_name = #{record.mtName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mtEname != null" >
+        mt_ename = #{record.mtEname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mtHcSubjectid != null" >
+        mt_hc_subjectid = #{record.mtHcSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="record.mtXssrSubjectid != null" >
+        mt_xssr_subjectid = #{record.mtXssrSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="record.mtZpcbSubjectid != null" >
+        mt_zpcb_subjectid = #{record.mtZpcbSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="record.mtZpfySubjectid != null" >
+        mt_zpfy_subjectid = #{record.mtZpfySubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="record.mtQtsrSubjectid != null" >
+        mt_qtsr_subjectid = #{record.mtQtsrSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="record.mtQtfySubjectid != null" >
+        mt_qtfy_subjectid = #{record.mtQtfySubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="record.mtQtcbSubjectid != null" >
+        mt_qtcb_subjectid = #{record.mtQtcbSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="record.mtRemark != null" >
+        mt_remark = #{record.mtRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz1 != null" >
+        bz1 = #{record.bz1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz2 != null" >
+        bz2 = #{record.bz2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz3 != null" >
+        bz3 = #{record.bz3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz4 != null" >
+        bz4 = #{record.bz4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz5 != null" >
+        bz5 = #{record.bz5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz6 != null" >
+        bz6 = #{record.bz6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz7 != null" >
+        bz7 = #{record.bz7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz8 != null" >
+        bz8 = #{record.bz8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz9 != null" >
+        bz9 = #{record.bz9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz10 != null" >
+        bz10 = #{record.bz10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update materials_type
+    set mt_id = #{record.mtId,jdbcType=VARCHAR},
+      mt_name = #{record.mtName,jdbcType=VARCHAR},
+      mt_ename = #{record.mtEname,jdbcType=VARCHAR},
+      mt_hc_subjectid = #{record.mtHcSubjectid,jdbcType=INTEGER},
+      mt_xssr_subjectid = #{record.mtXssrSubjectid,jdbcType=INTEGER},
+      mt_zpcb_subjectid = #{record.mtZpcbSubjectid,jdbcType=INTEGER},
+      mt_zpfy_subjectid = #{record.mtZpfySubjectid,jdbcType=INTEGER},
+      mt_qtsr_subjectid = #{record.mtQtsrSubjectid,jdbcType=INTEGER},
+      mt_qtfy_subjectid = #{record.mtQtfySubjectid,jdbcType=INTEGER},
+      mt_qtcb_subjectid = #{record.mtQtcbSubjectid,jdbcType=INTEGER},
+      mt_remark = #{record.mtRemark,jdbcType=VARCHAR},
+      bz1 = #{record.bz1,jdbcType=VARCHAR},
+      bz2 = #{record.bz2,jdbcType=VARCHAR},
+      bz3 = #{record.bz3,jdbcType=VARCHAR},
+      bz4 = #{record.bz4,jdbcType=VARCHAR},
+      bz5 = #{record.bz5,jdbcType=VARCHAR},
+      bz6 = #{record.bz6,jdbcType=VARCHAR},
+      bz7 = #{record.bz7,jdbcType=VARCHAR},
+      bz8 = #{record.bz8,jdbcType=VARCHAR},
+      bz9 = #{record.bz9,jdbcType=VARCHAR},
+      bz10 = #{record.bz10,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

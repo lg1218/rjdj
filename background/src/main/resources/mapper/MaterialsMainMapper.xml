@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.MaterialsMainMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.MaterialsMain" >
+    <id column="mm_id" property="mmId" jdbcType="INTEGER" />
+    <result column="mm_name" property="mmName" jdbcType="VARCHAR" />
+    <result column="mm_xh" property="mmXh" jdbcType="VARCHAR" />
+    <result column="mm_ename" property="mmEname" jdbcType="VARCHAR" />
+    <result column="mm_mtid" property="mmMtid" jdbcType="INTEGER" />
+    <result column="mm_uid" property="mmUid" jdbcType="INTEGER" />
+    <result column="mm_txmnum" property="mmTxmnum" jdbcType="VARCHAR" />
+    <result column="mm_jyout" property="mmJyout" jdbcType="DOUBLE" />
+    <result column="mm_jyout_a" property="mmJyoutA" jdbcType="DOUBLE" />
+    <result column="mm_jyout_b" property="mmJyoutB" jdbcType="DOUBLE" />
+    <result column="mm_jyout_c" property="mmJyoutC" jdbcType="DOUBLE" />
+    <result column="mm_jyout_d" property="mmJyoutD" jdbcType="DOUBLE" />
+    <result column="mm_jyout_e" property="mmJyoutE" jdbcType="DOUBLE" />
+    <result column="mm_jyout_f" property="mmJyoutF" jdbcType="DOUBLE" />
+    <result column="mm_bzjj" property="mmBzjj" jdbcType="DOUBLE" />
+    <result column="mm_cid" property="mmCid" jdbcType="INTEGER" />
+    <result column="mm_mmxt" property="mmMmxt" jdbcType="INTEGER" />
+    <result column="mm_dprice_flag" property="mmDpriceFlag" jdbcType="BIT" />
+    <result column="mm_tiid" property="mmTiid" jdbcType="INTEGER" />
+    <result column="mm_slv" property="mmSlv" jdbcType="DOUBLE" />
+    <result column="mm_cgbefore_date" property="mmCgbeforeDate" jdbcType="INTEGER" />
+    <result column="mm_main_smid" property="mmMainSmid" jdbcType="VARCHAR" />
+    <result column="mm_near_ck_date" property="mmNearCkDate" jdbcType="DATE" />
+    <result column="mm_near_rk_date" property="mmNearRkDate" jdbcType="DATE" />
+    <result column="mm_dz_days" property="mmDzDays" jdbcType="INTEGER" />
+    <result column="mm_jin_ck_date" property="mmJinCkDate" jdbcType="DATE" />
+    <result column="mm_stop_date" property="mmStopDate" jdbcType="DATE" />
+    <result column="mm_remark" property="mmRemark" jdbcType="VARCHAR" />
+    <result column="bz1" property="bz1" jdbcType="VARCHAR" />
+    <result column="bz2" property="bz2" jdbcType="VARCHAR" />
+    <result column="bz3" property="bz3" jdbcType="VARCHAR" />
+    <result column="bz4" property="bz4" jdbcType="VARCHAR" />
+    <result column="bz5" property="bz5" jdbcType="VARCHAR" />
+    <result column="bz6" property="bz6" jdbcType="VARCHAR" />
+    <result column="bz7" property="bz7" jdbcType="VARCHAR" />
+    <result column="bz8" property="bz8" jdbcType="VARCHAR" />
+    <result column="bz9" property="bz9" jdbcType="VARCHAR" />
+    <result column="bz10" property="bz10" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    mm_id, mm_name, mm_xh, mm_ename, mm_mtid, mm_uid, mm_txmnum, mm_jyout, mm_jyout_a, 
+    mm_jyout_b, mm_jyout_c, mm_jyout_d, mm_jyout_e, mm_jyout_f, mm_bzjj, mm_cid, mm_mmxt, 
+    mm_dprice_flag, mm_tiid, mm_slv, mm_cgbefore_date, mm_main_smid, mm_near_ck_date, 
+    mm_near_rk_date, mm_dz_days, mm_jin_ck_date, mm_stop_date, mm_remark, bz1, bz2, bz3, 
+    bz4, bz5, bz6, bz7, bz8, bz9, bz10
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.MaterialsMainExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from materials_main
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from materials_main
+    where mm_id = #{mmId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from materials_main
+    where mm_id = #{mmId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.MaterialsMainExample" >
+    delete from materials_main
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.MaterialsMain" >
+    insert into materials_main (mm_id, mm_name, mm_xh, 
+      mm_ename, mm_mtid, mm_uid, 
+      mm_txmnum, mm_jyout, mm_jyout_a, 
+      mm_jyout_b, mm_jyout_c, mm_jyout_d, 
+      mm_jyout_e, mm_jyout_f, mm_bzjj, 
+      mm_cid, mm_mmxt, mm_dprice_flag, 
+      mm_tiid, mm_slv, mm_cgbefore_date, 
+      mm_main_smid, mm_near_ck_date, mm_near_rk_date, 
+      mm_dz_days, mm_jin_ck_date, mm_stop_date, 
+      mm_remark, bz1, bz2, 
+      bz3, bz4, bz5, bz6, 
+      bz7, bz8, bz9, bz10
+      )
+    values (#{mmId,jdbcType=INTEGER}, #{mmName,jdbcType=VARCHAR}, #{mmXh,jdbcType=VARCHAR}, 
+      #{mmEname,jdbcType=VARCHAR}, #{mmMtid,jdbcType=INTEGER}, #{mmUid,jdbcType=INTEGER}, 
+      #{mmTxmnum,jdbcType=VARCHAR}, #{mmJyout,jdbcType=DOUBLE}, #{mmJyoutA,jdbcType=DOUBLE}, 
+      #{mmJyoutB,jdbcType=DOUBLE}, #{mmJyoutC,jdbcType=DOUBLE}, #{mmJyoutD,jdbcType=DOUBLE}, 
+      #{mmJyoutE,jdbcType=DOUBLE}, #{mmJyoutF,jdbcType=DOUBLE}, #{mmBzjj,jdbcType=DOUBLE}, 
+      #{mmCid,jdbcType=INTEGER}, #{mmMmxt,jdbcType=INTEGER}, #{mmDpriceFlag,jdbcType=BIT}, 
+      #{mmTiid,jdbcType=INTEGER}, #{mmSlv,jdbcType=DOUBLE}, #{mmCgbeforeDate,jdbcType=INTEGER}, 
+      #{mmMainSmid,jdbcType=VARCHAR}, #{mmNearCkDate,jdbcType=DATE}, #{mmNearRkDate,jdbcType=DATE}, 
+      #{mmDzDays,jdbcType=INTEGER}, #{mmJinCkDate,jdbcType=DATE}, #{mmStopDate,jdbcType=DATE}, 
+      #{mmRemark,jdbcType=VARCHAR}, #{bz1,jdbcType=VARCHAR}, #{bz2,jdbcType=VARCHAR}, 
+      #{bz3,jdbcType=VARCHAR}, #{bz4,jdbcType=VARCHAR}, #{bz5,jdbcType=VARCHAR}, #{bz6,jdbcType=VARCHAR}, 
+      #{bz7,jdbcType=VARCHAR}, #{bz8,jdbcType=VARCHAR}, #{bz9,jdbcType=VARCHAR}, #{bz10,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.MaterialsMain" >
+    insert into materials_main
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mmId != null" >
+        mm_id,
+      </if>
+      <if test="mmName != null" >
+        mm_name,
+      </if>
+      <if test="mmXh != null" >
+        mm_xh,
+      </if>
+      <if test="mmEname != null" >
+        mm_ename,
+      </if>
+      <if test="mmMtid != null" >
+        mm_mtid,
+      </if>
+      <if test="mmUid != null" >
+        mm_uid,
+      </if>
+      <if test="mmTxmnum != null" >
+        mm_txmnum,
+      </if>
+      <if test="mmJyout != null" >
+        mm_jyout,
+      </if>
+      <if test="mmJyoutA != null" >
+        mm_jyout_a,
+      </if>
+      <if test="mmJyoutB != null" >
+        mm_jyout_b,
+      </if>
+      <if test="mmJyoutC != null" >
+        mm_jyout_c,
+      </if>
+      <if test="mmJyoutD != null" >
+        mm_jyout_d,
+      </if>
+      <if test="mmJyoutE != null" >
+        mm_jyout_e,
+      </if>
+      <if test="mmJyoutF != null" >
+        mm_jyout_f,
+      </if>
+      <if test="mmBzjj != null" >
+        mm_bzjj,
+      </if>
+      <if test="mmCid != null" >
+        mm_cid,
+      </if>
+      <if test="mmMmxt != null" >
+        mm_mmxt,
+      </if>
+      <if test="mmDpriceFlag != null" >
+        mm_dprice_flag,
+      </if>
+      <if test="mmTiid != null" >
+        mm_tiid,
+      </if>
+      <if test="mmSlv != null" >
+        mm_slv,
+      </if>
+      <if test="mmCgbeforeDate != null" >
+        mm_cgbefore_date,
+      </if>
+      <if test="mmMainSmid != null" >
+        mm_main_smid,
+      </if>
+      <if test="mmNearCkDate != null" >
+        mm_near_ck_date,
+      </if>
+      <if test="mmNearRkDate != null" >
+        mm_near_rk_date,
+      </if>
+      <if test="mmDzDays != null" >
+        mm_dz_days,
+      </if>
+      <if test="mmJinCkDate != null" >
+        mm_jin_ck_date,
+      </if>
+      <if test="mmStopDate != null" >
+        mm_stop_date,
+      </if>
+      <if test="mmRemark != null" >
+        mm_remark,
+      </if>
+      <if test="bz1 != null" >
+        bz1,
+      </if>
+      <if test="bz2 != null" >
+        bz2,
+      </if>
+      <if test="bz3 != null" >
+        bz3,
+      </if>
+      <if test="bz4 != null" >
+        bz4,
+      </if>
+      <if test="bz5 != null" >
+        bz5,
+      </if>
+      <if test="bz6 != null" >
+        bz6,
+      </if>
+      <if test="bz7 != null" >
+        bz7,
+      </if>
+      <if test="bz8 != null" >
+        bz8,
+      </if>
+      <if test="bz9 != null" >
+        bz9,
+      </if>
+      <if test="bz10 != null" >
+        bz10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mmId != null" >
+        #{mmId,jdbcType=INTEGER},
+      </if>
+      <if test="mmName != null" >
+        #{mmName,jdbcType=VARCHAR},
+      </if>
+      <if test="mmXh != null" >
+        #{mmXh,jdbcType=VARCHAR},
+      </if>
+      <if test="mmEname != null" >
+        #{mmEname,jdbcType=VARCHAR},
+      </if>
+      <if test="mmMtid != null" >
+        #{mmMtid,jdbcType=INTEGER},
+      </if>
+      <if test="mmUid != null" >
+        #{mmUid,jdbcType=INTEGER},
+      </if>
+      <if test="mmTxmnum != null" >
+        #{mmTxmnum,jdbcType=VARCHAR},
+      </if>
+      <if test="mmJyout != null" >
+        #{mmJyout,jdbcType=DOUBLE},
+      </if>
+      <if test="mmJyoutA != null" >
+        #{mmJyoutA,jdbcType=DOUBLE},
+      </if>
+      <if test="mmJyoutB != null" >
+        #{mmJyoutB,jdbcType=DOUBLE},
+      </if>
+      <if test="mmJyoutC != null" >
+        #{mmJyoutC,jdbcType=DOUBLE},
+      </if>
+      <if test="mmJyoutD != null" >
+        #{mmJyoutD,jdbcType=DOUBLE},
+      </if>
+      <if test="mmJyoutE != null" >
+        #{mmJyoutE,jdbcType=DOUBLE},
+      </if>
+      <if test="mmJyoutF != null" >
+        #{mmJyoutF,jdbcType=DOUBLE},
+      </if>
+      <if test="mmBzjj != null" >
+        #{mmBzjj,jdbcType=DOUBLE},
+      </if>
+      <if test="mmCid != null" >
+        #{mmCid,jdbcType=INTEGER},
+      </if>
+      <if test="mmMmxt != null" >
+        #{mmMmxt,jdbcType=INTEGER},
+      </if>
+      <if test="mmDpriceFlag != null" >
+        #{mmDpriceFlag,jdbcType=BIT},
+      </if>
+      <if test="mmTiid != null" >
+        #{mmTiid,jdbcType=INTEGER},
+      </if>
+      <if test="mmSlv != null" >
+        #{mmSlv,jdbcType=DOUBLE},
+      </if>
+      <if test="mmCgbeforeDate != null" >
+        #{mmCgbeforeDate,jdbcType=INTEGER},
+      </if>
+      <if test="mmMainSmid != null" >
+        #{mmMainSmid,jdbcType=VARCHAR},
+      </if>
+      <if test="mmNearCkDate != null" >
+        #{mmNearCkDate,jdbcType=DATE},
+      </if>
+      <if test="mmNearRkDate != null" >
+        #{mmNearRkDate,jdbcType=DATE},
+      </if>
+      <if test="mmDzDays != null" >
+        #{mmDzDays,jdbcType=INTEGER},
+      </if>
+      <if test="mmJinCkDate != null" >
+        #{mmJinCkDate,jdbcType=DATE},
+      </if>
+      <if test="mmStopDate != null" >
+        #{mmStopDate,jdbcType=DATE},
+      </if>
+      <if test="mmRemark != null" >
+        #{mmRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="bz1 != null" >
+        #{bz1,jdbcType=VARCHAR},
+      </if>
+      <if test="bz2 != null" >
+        #{bz2,jdbcType=VARCHAR},
+      </if>
+      <if test="bz3 != null" >
+        #{bz3,jdbcType=VARCHAR},
+      </if>
+      <if test="bz4 != null" >
+        #{bz4,jdbcType=VARCHAR},
+      </if>
+      <if test="bz5 != null" >
+        #{bz5,jdbcType=VARCHAR},
+      </if>
+      <if test="bz6 != null" >
+        #{bz6,jdbcType=VARCHAR},
+      </if>
+      <if test="bz7 != null" >
+        #{bz7,jdbcType=VARCHAR},
+      </if>
+      <if test="bz8 != null" >
+        #{bz8,jdbcType=VARCHAR},
+      </if>
+      <if test="bz9 != null" >
+        #{bz9,jdbcType=VARCHAR},
+      </if>
+      <if test="bz10 != null" >
+        #{bz10,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.MaterialsMainExample" resultType="java.lang.Integer" >
+    select count(*) from materials_main
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update materials_main
+    <set >
+      <if test="record.mmId != null" >
+        mm_id = #{record.mmId,jdbcType=INTEGER},
+      </if>
+      <if test="record.mmName != null" >
+        mm_name = #{record.mmName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mmXh != null" >
+        mm_xh = #{record.mmXh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mmEname != null" >
+        mm_ename = #{record.mmEname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mmMtid != null" >
+        mm_mtid = #{record.mmMtid,jdbcType=INTEGER},
+      </if>
+      <if test="record.mmUid != null" >
+        mm_uid = #{record.mmUid,jdbcType=INTEGER},
+      </if>
+      <if test="record.mmTxmnum != null" >
+        mm_txmnum = #{record.mmTxmnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mmJyout != null" >
+        mm_jyout = #{record.mmJyout,jdbcType=DOUBLE},
+      </if>
+      <if test="record.mmJyoutA != null" >
+        mm_jyout_a = #{record.mmJyoutA,jdbcType=DOUBLE},
+      </if>
+      <if test="record.mmJyoutB != null" >
+        mm_jyout_b = #{record.mmJyoutB,jdbcType=DOUBLE},
+      </if>
+      <if test="record.mmJyoutC != null" >
+        mm_jyout_c = #{record.mmJyoutC,jdbcType=DOUBLE},
+      </if>
+      <if test="record.mmJyoutD != null" >
+        mm_jyout_d = #{record.mmJyoutD,jdbcType=DOUBLE},
+      </if>
+      <if test="record.mmJyoutE != null" >
+        mm_jyout_e = #{record.mmJyoutE,jdbcType=DOUBLE},
+      </if>
+      <if test="record.mmJyoutF != null" >
+        mm_jyout_f = #{record.mmJyoutF,jdbcType=DOUBLE},
+      </if>
+      <if test="record.mmBzjj != null" >
+        mm_bzjj = #{record.mmBzjj,jdbcType=DOUBLE},
+      </if>
+      <if test="record.mmCid != null" >
+        mm_cid = #{record.mmCid,jdbcType=INTEGER},
+      </if>
+      <if test="record.mmMmxt != null" >
+        mm_mmxt = #{record.mmMmxt,jdbcType=INTEGER},
+      </if>
+      <if test="record.mmDpriceFlag != null" >
+        mm_dprice_flag = #{record.mmDpriceFlag,jdbcType=BIT},
+      </if>
+      <if test="record.mmTiid != null" >
+        mm_tiid = #{record.mmTiid,jdbcType=INTEGER},
+      </if>
+      <if test="record.mmSlv != null" >
+        mm_slv = #{record.mmSlv,jdbcType=DOUBLE},
+      </if>
+      <if test="record.mmCgbeforeDate != null" >
+        mm_cgbefore_date = #{record.mmCgbeforeDate,jdbcType=INTEGER},
+      </if>
+      <if test="record.mmMainSmid != null" >
+        mm_main_smid = #{record.mmMainSmid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mmNearCkDate != null" >
+        mm_near_ck_date = #{record.mmNearCkDate,jdbcType=DATE},
+      </if>
+      <if test="record.mmNearRkDate != null" >
+        mm_near_rk_date = #{record.mmNearRkDate,jdbcType=DATE},
+      </if>
+      <if test="record.mmDzDays != null" >
+        mm_dz_days = #{record.mmDzDays,jdbcType=INTEGER},
+      </if>
+      <if test="record.mmJinCkDate != null" >
+        mm_jin_ck_date = #{record.mmJinCkDate,jdbcType=DATE},
+      </if>
+      <if test="record.mmStopDate != null" >
+        mm_stop_date = #{record.mmStopDate,jdbcType=DATE},
+      </if>
+      <if test="record.mmRemark != null" >
+        mm_remark = #{record.mmRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz1 != null" >
+        bz1 = #{record.bz1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz2 != null" >
+        bz2 = #{record.bz2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz3 != null" >
+        bz3 = #{record.bz3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz4 != null" >
+        bz4 = #{record.bz4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz5 != null" >
+        bz5 = #{record.bz5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz6 != null" >
+        bz6 = #{record.bz6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz7 != null" >
+        bz7 = #{record.bz7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz8 != null" >
+        bz8 = #{record.bz8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz9 != null" >
+        bz9 = #{record.bz9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz10 != null" >
+        bz10 = #{record.bz10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update materials_main
+    set mm_id = #{record.mmId,jdbcType=INTEGER},
+      mm_name = #{record.mmName,jdbcType=VARCHAR},
+      mm_xh = #{record.mmXh,jdbcType=VARCHAR},
+      mm_ename = #{record.mmEname,jdbcType=VARCHAR},
+      mm_mtid = #{record.mmMtid,jdbcType=INTEGER},
+      mm_uid = #{record.mmUid,jdbcType=INTEGER},
+      mm_txmnum = #{record.mmTxmnum,jdbcType=VARCHAR},
+      mm_jyout = #{record.mmJyout,jdbcType=DOUBLE},
+      mm_jyout_a = #{record.mmJyoutA,jdbcType=DOUBLE},
+      mm_jyout_b = #{record.mmJyoutB,jdbcType=DOUBLE},
+      mm_jyout_c = #{record.mmJyoutC,jdbcType=DOUBLE},
+      mm_jyout_d = #{record.mmJyoutD,jdbcType=DOUBLE},
+      mm_jyout_e = #{record.mmJyoutE,jdbcType=DOUBLE},
+      mm_jyout_f = #{record.mmJyoutF,jdbcType=DOUBLE},
+      mm_bzjj = #{record.mmBzjj,jdbcType=DOUBLE},
+      mm_cid = #{record.mmCid,jdbcType=INTEGER},
+      mm_mmxt = #{record.mmMmxt,jdbcType=INTEGER},
+      mm_dprice_flag = #{record.mmDpriceFlag,jdbcType=BIT},
+      mm_tiid = #{record.mmTiid,jdbcType=INTEGER},
+      mm_slv = #{record.mmSlv,jdbcType=DOUBLE},
+      mm_cgbefore_date = #{record.mmCgbeforeDate,jdbcType=INTEGER},
+      mm_main_smid = #{record.mmMainSmid,jdbcType=VARCHAR},
+      mm_near_ck_date = #{record.mmNearCkDate,jdbcType=DATE},
+      mm_near_rk_date = #{record.mmNearRkDate,jdbcType=DATE},
+      mm_dz_days = #{record.mmDzDays,jdbcType=INTEGER},
+      mm_jin_ck_date = #{record.mmJinCkDate,jdbcType=DATE},
+      mm_stop_date = #{record.mmStopDate,jdbcType=DATE},
+      mm_remark = #{record.mmRemark,jdbcType=VARCHAR},
+      bz1 = #{record.bz1,jdbcType=VARCHAR},
+      bz2 = #{record.bz2,jdbcType=VARCHAR},
+      bz3 = #{record.bz3,jdbcType=VARCHAR},
+      bz4 = #{record.bz4,jdbcType=VARCHAR},
+      bz5 = #{record.bz5,jdbcType=VARCHAR},
+      bz6 = #{record.bz6,jdbcType=VARCHAR},
+      bz7 = #{record.bz7,jdbcType=VARCHAR},
+      bz8 = #{record.bz8,jdbcType=VARCHAR},
+      bz9 = #{record.bz9,jdbcType=VARCHAR},
+      bz10 = #{record.bz10,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.MaterialsMain" >
+    update materials_main
+    <set >
+      <if test="mmName != null" >
+        mm_name = #{mmName,jdbcType=VARCHAR},
+      </if>
+      <if test="mmXh != null" >
+        mm_xh = #{mmXh,jdbcType=VARCHAR},
+      </if>
+      <if test="mmEname != null" >
+        mm_ename = #{mmEname,jdbcType=VARCHAR},
+      </if>
+      <if test="mmMtid != null" >
+        mm_mtid = #{mmMtid,jdbcType=INTEGER},
+      </if>
+      <if test="mmUid != null" >
+        mm_uid = #{mmUid,jdbcType=INTEGER},
+      </if>
+      <if test="mmTxmnum != null" >
+        mm_txmnum = #{mmTxmnum,jdbcType=VARCHAR},
+      </if>
+      <if test="mmJyout != null" >
+        mm_jyout = #{mmJyout,jdbcType=DOUBLE},
+      </if>
+      <if test="mmJyoutA != null" >
+        mm_jyout_a = #{mmJyoutA,jdbcType=DOUBLE},
+      </if>
+      <if test="mmJyoutB != null" >
+        mm_jyout_b = #{mmJyoutB,jdbcType=DOUBLE},
+      </if>
+      <if test="mmJyoutC != null" >
+        mm_jyout_c = #{mmJyoutC,jdbcType=DOUBLE},
+      </if>
+      <if test="mmJyoutD != null" >
+        mm_jyout_d = #{mmJyoutD,jdbcType=DOUBLE},
+      </if>
+      <if test="mmJyoutE != null" >
+        mm_jyout_e = #{mmJyoutE,jdbcType=DOUBLE},
+      </if>
+      <if test="mmJyoutF != null" >
+        mm_jyout_f = #{mmJyoutF,jdbcType=DOUBLE},
+      </if>
+      <if test="mmBzjj != null" >
+        mm_bzjj = #{mmBzjj,jdbcType=DOUBLE},
+      </if>
+      <if test="mmCid != null" >
+        mm_cid = #{mmCid,jdbcType=INTEGER},
+      </if>
+      <if test="mmMmxt != null" >
+        mm_mmxt = #{mmMmxt,jdbcType=INTEGER},
+      </if>
+      <if test="mmDpriceFlag != null" >
+        mm_dprice_flag = #{mmDpriceFlag,jdbcType=BIT},
+      </if>
+      <if test="mmTiid != null" >
+        mm_tiid = #{mmTiid,jdbcType=INTEGER},
+      </if>
+      <if test="mmSlv != null" >
+        mm_slv = #{mmSlv,jdbcType=DOUBLE},
+      </if>
+      <if test="mmCgbeforeDate != null" >
+        mm_cgbefore_date = #{mmCgbeforeDate,jdbcType=INTEGER},
+      </if>
+      <if test="mmMainSmid != null" >
+        mm_main_smid = #{mmMainSmid,jdbcType=VARCHAR},
+      </if>
+      <if test="mmNearCkDate != null" >
+        mm_near_ck_date = #{mmNearCkDate,jdbcType=DATE},
+      </if>
+      <if test="mmNearRkDate != null" >
+        mm_near_rk_date = #{mmNearRkDate,jdbcType=DATE},
+      </if>
+      <if test="mmDzDays != null" >
+        mm_dz_days = #{mmDzDays,jdbcType=INTEGER},
+      </if>
+      <if test="mmJinCkDate != null" >
+        mm_jin_ck_date = #{mmJinCkDate,jdbcType=DATE},
+      </if>
+      <if test="mmStopDate != null" >
+        mm_stop_date = #{mmStopDate,jdbcType=DATE},
+      </if>
+      <if test="mmRemark != null" >
+        mm_remark = #{mmRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="bz1 != null" >
+        bz1 = #{bz1,jdbcType=VARCHAR},
+      </if>
+      <if test="bz2 != null" >
+        bz2 = #{bz2,jdbcType=VARCHAR},
+      </if>
+      <if test="bz3 != null" >
+        bz3 = #{bz3,jdbcType=VARCHAR},
+      </if>
+      <if test="bz4 != null" >
+        bz4 = #{bz4,jdbcType=VARCHAR},
+      </if>
+      <if test="bz5 != null" >
+        bz5 = #{bz5,jdbcType=VARCHAR},
+      </if>
+      <if test="bz6 != null" >
+        bz6 = #{bz6,jdbcType=VARCHAR},
+      </if>
+      <if test="bz7 != null" >
+        bz7 = #{bz7,jdbcType=VARCHAR},
+      </if>
+      <if test="bz8 != null" >
+        bz8 = #{bz8,jdbcType=VARCHAR},
+      </if>
+      <if test="bz9 != null" >
+        bz9 = #{bz9,jdbcType=VARCHAR},
+      </if>
+      <if test="bz10 != null" >
+        bz10 = #{bz10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where mm_id = #{mmId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.MaterialsMain" >
+    update materials_main
+    set mm_name = #{mmName,jdbcType=VARCHAR},
+      mm_xh = #{mmXh,jdbcType=VARCHAR},
+      mm_ename = #{mmEname,jdbcType=VARCHAR},
+      mm_mtid = #{mmMtid,jdbcType=INTEGER},
+      mm_uid = #{mmUid,jdbcType=INTEGER},
+      mm_txmnum = #{mmTxmnum,jdbcType=VARCHAR},
+      mm_jyout = #{mmJyout,jdbcType=DOUBLE},
+      mm_jyout_a = #{mmJyoutA,jdbcType=DOUBLE},
+      mm_jyout_b = #{mmJyoutB,jdbcType=DOUBLE},
+      mm_jyout_c = #{mmJyoutC,jdbcType=DOUBLE},
+      mm_jyout_d = #{mmJyoutD,jdbcType=DOUBLE},
+      mm_jyout_e = #{mmJyoutE,jdbcType=DOUBLE},
+      mm_jyout_f = #{mmJyoutF,jdbcType=DOUBLE},
+      mm_bzjj = #{mmBzjj,jdbcType=DOUBLE},
+      mm_cid = #{mmCid,jdbcType=INTEGER},
+      mm_mmxt = #{mmMmxt,jdbcType=INTEGER},
+      mm_dprice_flag = #{mmDpriceFlag,jdbcType=BIT},
+      mm_tiid = #{mmTiid,jdbcType=INTEGER},
+      mm_slv = #{mmSlv,jdbcType=DOUBLE},
+      mm_cgbefore_date = #{mmCgbeforeDate,jdbcType=INTEGER},
+      mm_main_smid = #{mmMainSmid,jdbcType=VARCHAR},
+      mm_near_ck_date = #{mmNearCkDate,jdbcType=DATE},
+      mm_near_rk_date = #{mmNearRkDate,jdbcType=DATE},
+      mm_dz_days = #{mmDzDays,jdbcType=INTEGER},
+      mm_jin_ck_date = #{mmJinCkDate,jdbcType=DATE},
+      mm_stop_date = #{mmStopDate,jdbcType=DATE},
+      mm_remark = #{mmRemark,jdbcType=VARCHAR},
+      bz1 = #{bz1,jdbcType=VARCHAR},
+      bz2 = #{bz2,jdbcType=VARCHAR},
+      bz3 = #{bz3,jdbcType=VARCHAR},
+      bz4 = #{bz4,jdbcType=VARCHAR},
+      bz5 = #{bz5,jdbcType=VARCHAR},
+      bz6 = #{bz6,jdbcType=VARCHAR},
+      bz7 = #{bz7,jdbcType=VARCHAR},
+      bz8 = #{bz8,jdbcType=VARCHAR},
+      bz9 = #{bz9,jdbcType=VARCHAR},
+      bz10 = #{bz10,jdbcType=VARCHAR}
+    where mm_id = #{mmId,jdbcType=INTEGER}
+  </update>
+</mapper>

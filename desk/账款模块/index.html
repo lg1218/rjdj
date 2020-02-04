@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.bodes{
+				margin: 50px;
+			}
+			.zhuymhg{
+				height: 150px;
+			}
+
+			.xiaoshoukuang{
+				background-image: url('./images/箭头1(1).png');
+ 				background-repeat:no-repeat;
+				background-size:100% 130%;
+ 				background-position: -20px -65px;
+			}
+		.site-doc-icon li{width: 222px;}
+        .site-doc-icon li .layui-anim{width: 150px; height: 150px; line-height: 150px; margin: 0 auto 10px; text-align: center; background-color: #009688; cursor: pointer; color: #fff; border-radius: 50%;}
+		p{
+			color: black !important;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="layui-tab layui-tab-card bodes app" style="background-color: white;">
+		  <ul class="layui-tab-title">
+		    <li class="layui-this">账款管理</li>
+		    <li>常用报表</li>
+		  </ul>
+		  <div class="layui-tab-content">
+		    <div class="layui-tab-item layui-show xiaoshoukuang">
+				<div class="layui-container">
+					 <div class="layui-row zhuymhg">
+					 	<div class="layui-col-md1">
+					 		<div class="xsbj"  style="width: 70px;text-align: center;margin:22px 0 0 0px;">
+					 			<p>销售发票</p>
+					 			<p>商业发票</p>
+					 			<p>其他应收单</p>
+					 		</div>
+					 	</div>
+					 	<div class="layui-col-md1">
+					 		<div class="xsbj"  style="width: 70px;text-align: center;margin:22px 0 0 0px;">		 			
+					 			<p>单别</p>
+					 		</div>
+					 	</div>
+					 	<div class="layui-col-md2">
+					 		<div class="xsbj" @click="show($event,'销售应收冲款','账款模块/销售应收冲款.html')" style="width: 70px;text-align: center;margin:22px 0 0 0px;">
+					 			<i class="layui-icon layui-icon-form layui-anim" data-anim="layui-anim-scaleSpring" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>销售应收冲款</p>
+					 		</div>
+					 	</div>
+					    <div class="layui-col-md1">
+					 		<div  @click="show($event,'销售其他冲款','账款模块/销售其他冲款.html')" style="width: 80px;text-align: center;margin:22px 0 0 0px;">
+					 			<i class="layui-icon layui-icon-form layui-anim" data-anim="layui-anim-scaleSpring" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>销售其他冲款	</p>
+					 		</div>
+					 	</div>
+					 	<div class="layui-col-md1">
+					 		<div   style="width: 80px;text-align: center;margin:22px 0 0 0px;">
+					 			<p>来源类别</p>
+					 		</div>
+					 	</div>
+					 	<div class="layui-col-md1">
+					 		<div   style="width: 80px;text-align: center;margin:22px 0 0 0px;">
+					 			<p>销售出库单</p>
+					 			<p>商业发票</p>
+					 			<p>其他收入</p>
+					 		</div>
+					 	</div>
+					 </div>
+					 <!--第2行-->
+					<div class="layui-row zhuymhg">
+					 	<div class="layui-col-md1">
+					 		<div class="xsbj" @click="show($event,'采购其他冲款','账款模块/采购其他冲款.html')" style="width: 70px;text-align: center;margin:22px 0 0 0px;">
+					 			<p>采购发票</p>
+					 			<p>进口发票</p>
+					 			<p>交货确认单</p>
+					 			<p>外委加工单</p>
+					 			<p>其他应付单</p>
+					 		</div>
+					 	</div>
+					 	<div class="layui-col-md1">
+					 		<div class="xsbj" @click="show($event,'采购其他冲款','账款模块/采购其他冲款.html')" style="width: 70px;text-align: center;margin:40px 0 0 0px;">
+					 			<p>单别</p>
+					 		</div>
+					 	</div>
+					 	<div class="layui-col-md2">
+					 		<div class="xsbj" @click="show($event,'采购应收冲款','账款模块/采购应收冲款.html')" style="width: 70px;text-align: center;margin:22px 0 0 0px;">
+					 			<i class="layui-icon layui-icon-form layui-anim" data-anim="layui-anim-scaleSpring" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>采购应收冲款</p>
+					 		</div>
+					 	</div>
+					    <div class="layui-col-md1">
+					 		<div  @click="show($event,'采购其他冲款','账款模块/采购其他冲款.html')" style="width: 80px;text-align: center;margin:22px 0 0 0px;">
+					 			<i class="layui-icon layui-icon-form layui-anim" data-anim="layui-anim-scaleSpring" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>采购其他冲款</p>
+					 		</div>
+					 	</div>
+					 	<div class="layui-col-md1">
+					 		<div  @click="show($event,'销售订单','账款模块/销售订单.html')" style="width: 80px;text-align: center;margin:40px 0 0 0px;">
+					 			<p>来源类别</p>
+					 		</div>
+					 	</div>
+					 	<div class="layui-col-md1">
+					 		<div  @click="show($event,'销售订单','账款模块/销售订单.html')" style="width: 80px;text-align: center;margin:22px 0 0 0px;">
+					 			<p>采购入库单</p>
+					 			<p>销售出库单</p>
+					 			<p>委外送货单</p>
+					 			<p>商业发票</p>
+					 			<p>小伙确认单</p>
+					 		</div>
+					 	</div>
+					 </div>
+				</div>
+		    </div>
+		    <!--报表-->
+		    <div class="layui-tab-item">
+					 <div class="layui-row zhuymhg">
+					 	<div class="layui-col-md3">
+					 		<div  @click="show($event,'销售日报表','账款模块/销售日报表.html')" style="width: 70px;text-align: center;margin:22px 0 0 22px;">
+					 			<i class="layui-icon layui-icon-form" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>应收款报表</p>
+					 		</div>
+					 	</div>
+					    <div class="layui-col-md3">
+					 		<div @click="show($event,'应收账款明细报表','账款模块/应收账款明细报表.html')" style="width: 80px;text-align: center;margin:22px 0 0 22px;">
+					 			<i class="layui-icon layui-icon-form" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>应收账款明细报表</p>
+					 		</div>
+					 	</div>
+					 	<div class="layui-col-md3">
+					 		<div @click="show($event,'销售排行表','账款模块/销售排行表.html')" style="width: 80px;text-align: center;margin:22px 0 0 22px;">
+					 			<i class="layui-icon layui-icon-form" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>应收账款分析表</p>
+					 		</div>
+					 	</div>
+					 	<div class="layui-col-md3">
+					 		<div @click="show($event,'应收款账龄分析表','账款模块/应收款账龄分析表.html')" style="width: 80px;text-align: center;margin:22px 0 0 22px;">
+					 			<i class="layui-icon layui-icon-form" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>应收款账龄分析表</p>
+					 		</div>
+					 	</div>
+					 </div>
+					 <!--第2行-->
+					 <div class="layui-row zhuymhg">
+					 	<div class="layui-col-md3">
+					 		<div @click="show($event,'应付款报表','账款模块/应付款报表.html')" style="width: 80px;text-align: center;margin:22px 0 0 22px;">
+					 			<i class="layui-icon layui-icon-form" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>应付款报表</p>
+					 		</div>
+					 	</div>
+					    <div class="layui-col-md3">
+					 		<div @click="show($event,'应付账款明细报表','账款模块/应付账款明细报表.html')" style="width: 80px;text-align: center;margin:22px 0 0 22px;">
+					 			<i class="layui-icon layui-icon-form" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>应付账款明细报表</p>
+					 		</div>
+					 	</div>
+					 	<div class="layui-col-md3">
+					 		<div  style="width: 80px;text-align: center;margin:22px 0 0 22px;">
+					 			<i class="layui-icon layui-icon-form" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>应付款龄分析表</p>
+					 		</div>
+					 	</div>
+					 	<div class="layui-col-md3">
+					 		<div  style="width: 80px;text-align: center;margin:22px 0 0 22px;">
+					 			<i class="layui-icon layui-icon-form" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>应付款龄明细表</p>
+					 		</div>
+					 	</div>
+					 </div>
+					 <!--第3行-->
+					 <div class="layui-row">
+					    <div class="layui-col-md3">
+					 		<div  style="width: 80px;text-align: center;margin:0 0 0 22px;">
+					 			<i class="layui-icon layui-icon-form" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>应付佣金明细表</p>
+					 		</div>
+					 	</div>
+					 	<div class="layui-col-md3">
+					 		<div  style="width: 80px;text-align: center;margin:0 0 0 22px;">
+					 			<i class="layui-icon layui-icon-form" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>应收账款对账表</p>
+					 		</div>
+					 	</div>
+					 	<div class="layui-col-md3">
+					 		<div  style="width: 80px;text-align: center;margin:0 0 0 22px;">
+					 			<i class="layui-icon layui-icon-form" style="font-size: 50px;color: #1E9FFF;"></i>
+					 			<p>应付账款对账表</p>
+					 		</div>
+					 	</div>
+					 </div>
+		    </div>
+		  </div>
+		</div>
+	</body>
+
+	
+<script>
+	layui.use('element', function(){
+  		var element = layui.element;
+	});
+	
+	var vue_tjy_xsgl = new Vue({
+		el:'.app',
+		data(){//值
+			return{
+				list:[
+					{"id":1,"name":"xiao"},
+					{"id":1,"name":"xiao"},
+					{"id":1,"name":"xiao"},
+					{"id":1,"name":"xiao"},
+					{"id":1,"name":"xiao"}
+				],ids:1
+			}
+			
+		},
+		methods:{//执行方法
+			 show(e,title,url){ // e.target 获取当前对象
+                    layer.open({
+                        type: 2
+                        ,title:title
+                        ,area: ['800px', '360px']
+                        ,shade: 0
+                        ,maxmin: true
+                        ,offset:'auto'
+                        ,content: url// $(e.target) 要显示的节点,若用此法则可能会影响到样式，就是把选择的节点移到弹出框了
+                        ,
+                        id:title
+                        ,zIndex: layer.zIndex
+                        ,success: function(layero){
+                            layer.setTop(layero);
+                        }
+                    });
+                },
+             zishow(){
+             	layui.use('layer', function(){
+		  			var layer = layui.layer;
+		   			 layer.open({
+			  		type: 1, //类型
+			  		content: '传入任意的文本或html',//这里content是一个普通的String
+			  		shade:0,
+			 		id:"s1"
+				});
+		});
+             }
+		},
+		created:function(){//启动时生成代码
+			
+		}
+	})
+	
+	</script>
+		<!--演示动画-->
+ 
+<script>
+    layui.use('jquery', function(){
+        var $ = layui.$;
+ 
+        //演示动画
+        $('.layui-anim').on('click', function(){
+            var othis = $(this), anim = othis.data('anim');
+ 
+            //停止循环
+            if(othis.hasClass('layui-anim-loop')){
+                return othis.removeClass(anim);
+            }
+ 
+            othis.removeClass(anim);
+ 
+            setTimeout(function(){
+                othis.addClass(anim);
+            });
+            //恢复渐隐
+            if(anim === 'layui-anim-fadeout'){
+                setTimeout(function(){
+                    othis.removeClass(anim);
+                }, 1300);
+            }
+        });
+    });
+</script>
+</html>
+  

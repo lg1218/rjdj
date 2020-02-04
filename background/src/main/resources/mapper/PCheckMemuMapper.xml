@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.PCheckMemuMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.PCheckMemu" >
+    <id column="me_billno" property="meBillno" jdbcType="VARCHAR" />
+    <result column="me_adjustdate" property="meAdjustdate" jdbcType="DATE" />
+    <result column="me_wareid" property="meWareid" jdbcType="INTEGER" />
+    <result column="me_salesid" property="meSalesid" jdbcType="INTEGER" />
+    <result column="me_maker" property="meMaker" jdbcType="VARCHAR" />
+    <result column="me_departid" property="meDepartid" jdbcType="VARCHAR" />
+    <result column="me_permitter" property="mePermitter" jdbcType="VARCHAR" />
+    <result column="me_zerofilter" property="meZerofilter" jdbcType="INTEGER" />
+    <result column="byzd1" property="byzd1" jdbcType="VARCHAR" />
+    <result column="byzd2" property="byzd2" jdbcType="VARCHAR" />
+    <result column="byzd3" property="byzd3" jdbcType="VARCHAR" />
+    <result column="byzd4" property="byzd4" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    me_billno, me_adjustdate, me_wareid, me_salesid, me_maker, me_departid, me_permitter, 
+    me_zerofilter, byzd1, byzd2, byzd3, byzd4
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.PCheckMemuExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from p_check_memu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from p_check_memu
+    where me_billno = #{meBillno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from p_check_memu
+    where me_billno = #{meBillno,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.PCheckMemuExample" >
+    delete from p_check_memu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.PCheckMemu" >
+    insert into p_check_memu (me_billno, me_adjustdate, me_wareid, 
+      me_salesid, me_maker, me_departid, 
+      me_permitter, me_zerofilter, byzd1, 
+      byzd2, byzd3, byzd4
+      )
+    values (#{meBillno,jdbcType=VARCHAR}, #{meAdjustdate,jdbcType=DATE}, #{meWareid,jdbcType=INTEGER}, 
+      #{meSalesid,jdbcType=INTEGER}, #{meMaker,jdbcType=VARCHAR}, #{meDepartid,jdbcType=VARCHAR}, 
+      #{mePermitter,jdbcType=VARCHAR}, #{meZerofilter,jdbcType=INTEGER}, #{byzd1,jdbcType=VARCHAR}, 
+      #{byzd2,jdbcType=VARCHAR}, #{byzd3,jdbcType=VARCHAR}, #{byzd4,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.PCheckMemu" >
+    insert into p_check_memu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="meBillno != null" >
+        me_billno,
+      </if>
+      <if test="meAdjustdate != null" >
+        me_adjustdate,
+      </if>
+      <if test="meWareid != null" >
+        me_wareid,
+      </if>
+      <if test="meSalesid != null" >
+        me_salesid,
+      </if>
+      <if test="meMaker != null" >
+        me_maker,
+      </if>
+      <if test="meDepartid != null" >
+        me_departid,
+      </if>
+      <if test="mePermitter != null" >
+        me_permitter,
+      </if>
+      <if test="meZerofilter != null" >
+        me_zerofilter,
+      </if>
+      <if test="byzd1 != null" >
+        byzd1,
+      </if>
+      <if test="byzd2 != null" >
+        byzd2,
+      </if>
+      <if test="byzd3 != null" >
+        byzd3,
+      </if>
+      <if test="byzd4 != null" >
+        byzd4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="meBillno != null" >
+        #{meBillno,jdbcType=VARCHAR},
+      </if>
+      <if test="meAdjustdate != null" >
+        #{meAdjustdate,jdbcType=DATE},
+      </if>
+      <if test="meWareid != null" >
+        #{meWareid,jdbcType=INTEGER},
+      </if>
+      <if test="meSalesid != null" >
+        #{meSalesid,jdbcType=INTEGER},
+      </if>
+      <if test="meMaker != null" >
+        #{meMaker,jdbcType=VARCHAR},
+      </if>
+      <if test="meDepartid != null" >
+        #{meDepartid,jdbcType=VARCHAR},
+      </if>
+      <if test="mePermitter != null" >
+        #{mePermitter,jdbcType=VARCHAR},
+      </if>
+      <if test="meZerofilter != null" >
+        #{meZerofilter,jdbcType=INTEGER},
+      </if>
+      <if test="byzd1 != null" >
+        #{byzd1,jdbcType=VARCHAR},
+      </if>
+      <if test="byzd2 != null" >
+        #{byzd2,jdbcType=VARCHAR},
+      </if>
+      <if test="byzd3 != null" >
+        #{byzd3,jdbcType=VARCHAR},
+      </if>
+      <if test="byzd4 != null" >
+        #{byzd4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.PCheckMemuExample" resultType="java.lang.Integer" >
+    select count(*) from p_check_memu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update p_check_memu
+    <set >
+      <if test="record.meBillno != null" >
+        me_billno = #{record.meBillno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.meAdjustdate != null" >
+        me_adjustdate = #{record.meAdjustdate,jdbcType=DATE},
+      </if>
+      <if test="record.meWareid != null" >
+        me_wareid = #{record.meWareid,jdbcType=INTEGER},
+      </if>
+      <if test="record.meSalesid != null" >
+        me_salesid = #{record.meSalesid,jdbcType=INTEGER},
+      </if>
+      <if test="record.meMaker != null" >
+        me_maker = #{record.meMaker,jdbcType=VARCHAR},
+      </if>
+      <if test="record.meDepartid != null" >
+        me_departid = #{record.meDepartid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mePermitter != null" >
+        me_permitter = #{record.mePermitter,jdbcType=VARCHAR},
+      </if>
+      <if test="record.meZerofilter != null" >
+        me_zerofilter = #{record.meZerofilter,jdbcType=INTEGER},
+      </if>
+      <if test="record.byzd1 != null" >
+        byzd1 = #{record.byzd1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.byzd2 != null" >
+        byzd2 = #{record.byzd2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.byzd3 != null" >
+        byzd3 = #{record.byzd3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.byzd4 != null" >
+        byzd4 = #{record.byzd4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update p_check_memu
+    set me_billno = #{record.meBillno,jdbcType=VARCHAR},
+      me_adjustdate = #{record.meAdjustdate,jdbcType=DATE},
+      me_wareid = #{record.meWareid,jdbcType=INTEGER},
+      me_salesid = #{record.meSalesid,jdbcType=INTEGER},
+      me_maker = #{record.meMaker,jdbcType=VARCHAR},
+      me_departid = #{record.meDepartid,jdbcType=VARCHAR},
+      me_permitter = #{record.mePermitter,jdbcType=VARCHAR},
+      me_zerofilter = #{record.meZerofilter,jdbcType=INTEGER},
+      byzd1 = #{record.byzd1,jdbcType=VARCHAR},
+      byzd2 = #{record.byzd2,jdbcType=VARCHAR},
+      byzd3 = #{record.byzd3,jdbcType=VARCHAR},
+      byzd4 = #{record.byzd4,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.PCheckMemu" >
+    update p_check_memu
+    <set >
+      <if test="meAdjustdate != null" >
+        me_adjustdate = #{meAdjustdate,jdbcType=DATE},
+      </if>
+      <if test="meWareid != null" >
+        me_wareid = #{meWareid,jdbcType=INTEGER},
+      </if>
+      <if test="meSalesid != null" >
+        me_salesid = #{meSalesid,jdbcType=INTEGER},
+      </if>
+      <if test="meMaker != null" >
+        me_maker = #{meMaker,jdbcType=VARCHAR},
+      </if>
+      <if test="meDepartid != null" >
+        me_departid = #{meDepartid,jdbcType=VARCHAR},
+      </if>
+      <if test="mePermitter != null" >
+        me_permitter = #{mePermitter,jdbcType=VARCHAR},
+      </if>
+      <if test="meZerofilter != null" >
+        me_zerofilter = #{meZerofilter,jdbcType=INTEGER},
+      </if>
+      <if test="byzd1 != null" >
+        byzd1 = #{byzd1,jdbcType=VARCHAR},
+      </if>
+      <if test="byzd2 != null" >
+        byzd2 = #{byzd2,jdbcType=VARCHAR},
+      </if>
+      <if test="byzd3 != null" >
+        byzd3 = #{byzd3,jdbcType=VARCHAR},
+      </if>
+      <if test="byzd4 != null" >
+        byzd4 = #{byzd4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where me_billno = #{meBillno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.PCheckMemu" >
+    update p_check_memu
+    set me_adjustdate = #{meAdjustdate,jdbcType=DATE},
+      me_wareid = #{meWareid,jdbcType=INTEGER},
+      me_salesid = #{meSalesid,jdbcType=INTEGER},
+      me_maker = #{meMaker,jdbcType=VARCHAR},
+      me_departid = #{meDepartid,jdbcType=VARCHAR},
+      me_permitter = #{mePermitter,jdbcType=VARCHAR},
+      me_zerofilter = #{meZerofilter,jdbcType=INTEGER},
+      byzd1 = #{byzd1,jdbcType=VARCHAR},
+      byzd2 = #{byzd2,jdbcType=VARCHAR},
+      byzd3 = #{byzd3,jdbcType=VARCHAR},
+      byzd4 = #{byzd4,jdbcType=VARCHAR}
+    where me_billno = #{meBillno,jdbcType=VARCHAR}
+  </update>
+</mapper>

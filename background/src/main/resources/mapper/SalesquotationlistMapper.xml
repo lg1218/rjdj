@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.SalesquotationlistMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Salesquotationlist" >
+    <id column="Sql_documentnumber" property="sqlDocumentnumber" jdbcType="VARCHAR" />
+    <result column="Sql_Id" property="sqlId" jdbcType="INTEGER" />
+    <result column="Sql_mat_number" property="sqlMatNumber" jdbcType="VARCHAR" />
+    <result column="Sql_mat_name" property="sqlMatName" jdbcType="VARCHAR" />
+    <result column="Sql_mat_type" property="sqlMatType" jdbcType="VARCHAR" />
+    <result column="Sql_nominal" property="sqlNominal" jdbcType="VARCHAR" />
+    <result column="Sql_quantity" property="sqlQuantity" jdbcType="INTEGER" />
+    <result column="Sql_pre_price" property="sqlPrePrice" jdbcType="DOUBLE" />
+    <result column="Sql_fold" property="sqlFold" jdbcType="INTEGER" />
+    <result column="Sql_price" property="sqlPrice" jdbcType="DOUBLE" />
+    <result column="Sql_amount" property="sqlAmount" jdbcType="DOUBLE" />
+    <result column="Sql_tax_rate" property="sqlTaxRate" jdbcType="DOUBLE" />
+    <result column="Sql_tax" property="sqlTax" jdbcType="DOUBLE" />
+    <result column="Sql_tax_amount" property="sqlTaxAmount" jdbcType="DOUBLE" />
+    <result column="Sql_giveaway" property="sqlGiveaway" jdbcType="INTEGER" />
+    <result column="Sql_remark" property="sqlRemark" jdbcType="VARCHAR" />
+    <result column="Sql_Spare1" property="sqlSpare1" jdbcType="VARCHAR" />
+    <result column="Sql_Spare2" property="sqlSpare2" jdbcType="VARCHAR" />
+    <result column="Sql_Spare3" property="sqlSpare3" jdbcType="VARCHAR" />
+    <result column="Sql_Spare4" property="sqlSpare4" jdbcType="VARCHAR" />
+    <result column="Sql_Spare5" property="sqlSpare5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Sql_documentnumber, Sql_Id, Sql_mat_number, Sql_mat_name, Sql_mat_type, Sql_nominal, 
+    Sql_quantity, Sql_pre_price, Sql_fold, Sql_price, Sql_amount, Sql_tax_rate, Sql_tax, 
+    Sql_tax_amount, Sql_giveaway, Sql_remark, Sql_Spare1, Sql_Spare2, Sql_Spare3, Sql_Spare4, 
+    Sql_Spare5
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.SalesquotationlistExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from salesquotationlist
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from salesquotationlist
+    where Sql_documentnumber = #{sqlDocumentnumber,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from salesquotationlist
+    where Sql_documentnumber = #{sqlDocumentnumber,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.SalesquotationlistExample" >
+    delete from salesquotationlist
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Salesquotationlist" >
+    insert into salesquotationlist (Sql_documentnumber, Sql_Id, Sql_mat_number, 
+      Sql_mat_name, Sql_mat_type, Sql_nominal, 
+      Sql_quantity, Sql_pre_price, Sql_fold, 
+      Sql_price, Sql_amount, Sql_tax_rate, 
+      Sql_tax, Sql_tax_amount, Sql_giveaway, 
+      Sql_remark, Sql_Spare1, Sql_Spare2, 
+      Sql_Spare3, Sql_Spare4, Sql_Spare5
+      )
+    values (#{sqlDocumentnumber,jdbcType=VARCHAR}, #{sqlId,jdbcType=INTEGER}, #{sqlMatNumber,jdbcType=VARCHAR}, 
+      #{sqlMatName,jdbcType=VARCHAR}, #{sqlMatType,jdbcType=VARCHAR}, #{sqlNominal,jdbcType=VARCHAR}, 
+      #{sqlQuantity,jdbcType=INTEGER}, #{sqlPrePrice,jdbcType=DOUBLE}, #{sqlFold,jdbcType=INTEGER}, 
+      #{sqlPrice,jdbcType=DOUBLE}, #{sqlAmount,jdbcType=DOUBLE}, #{sqlTaxRate,jdbcType=DOUBLE}, 
+      #{sqlTax,jdbcType=DOUBLE}, #{sqlTaxAmount,jdbcType=DOUBLE}, #{sqlGiveaway,jdbcType=INTEGER}, 
+      #{sqlRemark,jdbcType=VARCHAR}, #{sqlSpare1,jdbcType=VARCHAR}, #{sqlSpare2,jdbcType=VARCHAR}, 
+      #{sqlSpare3,jdbcType=VARCHAR}, #{sqlSpare4,jdbcType=VARCHAR}, #{sqlSpare5,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Salesquotationlist" >
+    insert into salesquotationlist
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sqlDocumentnumber != null" >
+        Sql_documentnumber,
+      </if>
+      <if test="sqlId != null" >
+        Sql_Id,
+      </if>
+      <if test="sqlMatNumber != null" >
+        Sql_mat_number,
+      </if>
+      <if test="sqlMatName != null" >
+        Sql_mat_name,
+      </if>
+      <if test="sqlMatType != null" >
+        Sql_mat_type,
+      </if>
+      <if test="sqlNominal != null" >
+        Sql_nominal,
+      </if>
+      <if test="sqlQuantity != null" >
+        Sql_quantity,
+      </if>
+      <if test="sqlPrePrice != null" >
+        Sql_pre_price,
+      </if>
+      <if test="sqlFold != null" >
+        Sql_fold,
+      </if>
+      <if test="sqlPrice != null" >
+        Sql_price,
+      </if>
+      <if test="sqlAmount != null" >
+        Sql_amount,
+      </if>
+      <if test="sqlTaxRate != null" >
+        Sql_tax_rate,
+      </if>
+      <if test="sqlTax != null" >
+        Sql_tax,
+      </if>
+      <if test="sqlTaxAmount != null" >
+        Sql_tax_amount,
+      </if>
+      <if test="sqlGiveaway != null" >
+        Sql_giveaway,
+      </if>
+      <if test="sqlRemark != null" >
+        Sql_remark,
+      </if>
+      <if test="sqlSpare1 != null" >
+        Sql_Spare1,
+      </if>
+      <if test="sqlSpare2 != null" >
+        Sql_Spare2,
+      </if>
+      <if test="sqlSpare3 != null" >
+        Sql_Spare3,
+      </if>
+      <if test="sqlSpare4 != null" >
+        Sql_Spare4,
+      </if>
+      <if test="sqlSpare5 != null" >
+        Sql_Spare5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sqlDocumentnumber != null" >
+        #{sqlDocumentnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sqlId != null" >
+        #{sqlId,jdbcType=INTEGER},
+      </if>
+      <if test="sqlMatNumber != null" >
+        #{sqlMatNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sqlMatName != null" >
+        #{sqlMatName,jdbcType=VARCHAR},
+      </if>
+      <if test="sqlMatType != null" >
+        #{sqlMatType,jdbcType=VARCHAR},
+      </if>
+      <if test="sqlNominal != null" >
+        #{sqlNominal,jdbcType=VARCHAR},
+      </if>
+      <if test="sqlQuantity != null" >
+        #{sqlQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="sqlPrePrice != null" >
+        #{sqlPrePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="sqlFold != null" >
+        #{sqlFold,jdbcType=INTEGER},
+      </if>
+      <if test="sqlPrice != null" >
+        #{sqlPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="sqlAmount != null" >
+        #{sqlAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="sqlTaxRate != null" >
+        #{sqlTaxRate,jdbcType=DOUBLE},
+      </if>
+      <if test="sqlTax != null" >
+        #{sqlTax,jdbcType=DOUBLE},
+      </if>
+      <if test="sqlTaxAmount != null" >
+        #{sqlTaxAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="sqlGiveaway != null" >
+        #{sqlGiveaway,jdbcType=INTEGER},
+      </if>
+      <if test="sqlRemark != null" >
+        #{sqlRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="sqlSpare1 != null" >
+        #{sqlSpare1,jdbcType=VARCHAR},
+      </if>
+      <if test="sqlSpare2 != null" >
+        #{sqlSpare2,jdbcType=VARCHAR},
+      </if>
+      <if test="sqlSpare3 != null" >
+        #{sqlSpare3,jdbcType=VARCHAR},
+      </if>
+      <if test="sqlSpare4 != null" >
+        #{sqlSpare4,jdbcType=VARCHAR},
+      </if>
+      <if test="sqlSpare5 != null" >
+        #{sqlSpare5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.SalesquotationlistExample" resultType="java.lang.Integer" >
+    select count(*) from salesquotationlist
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update salesquotationlist
+    <set >
+      <if test="record.sqlDocumentnumber != null" >
+        Sql_documentnumber = #{record.sqlDocumentnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sqlId != null" >
+        Sql_Id = #{record.sqlId,jdbcType=INTEGER},
+      </if>
+      <if test="record.sqlMatNumber != null" >
+        Sql_mat_number = #{record.sqlMatNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sqlMatName != null" >
+        Sql_mat_name = #{record.sqlMatName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sqlMatType != null" >
+        Sql_mat_type = #{record.sqlMatType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sqlNominal != null" >
+        Sql_nominal = #{record.sqlNominal,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sqlQuantity != null" >
+        Sql_quantity = #{record.sqlQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="record.sqlPrePrice != null" >
+        Sql_pre_price = #{record.sqlPrePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sqlFold != null" >
+        Sql_fold = #{record.sqlFold,jdbcType=INTEGER},
+      </if>
+      <if test="record.sqlPrice != null" >
+        Sql_price = #{record.sqlPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sqlAmount != null" >
+        Sql_amount = #{record.sqlAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sqlTaxRate != null" >
+        Sql_tax_rate = #{record.sqlTaxRate,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sqlTax != null" >
+        Sql_tax = #{record.sqlTax,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sqlTaxAmount != null" >
+        Sql_tax_amount = #{record.sqlTaxAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sqlGiveaway != null" >
+        Sql_giveaway = #{record.sqlGiveaway,jdbcType=INTEGER},
+      </if>
+      <if test="record.sqlRemark != null" >
+        Sql_remark = #{record.sqlRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sqlSpare1 != null" >
+        Sql_Spare1 = #{record.sqlSpare1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sqlSpare2 != null" >
+        Sql_Spare2 = #{record.sqlSpare2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sqlSpare3 != null" >
+        Sql_Spare3 = #{record.sqlSpare3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sqlSpare4 != null" >
+        Sql_Spare4 = #{record.sqlSpare4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sqlSpare5 != null" >
+        Sql_Spare5 = #{record.sqlSpare5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update salesquotationlist
+    set Sql_documentnumber = #{record.sqlDocumentnumber,jdbcType=VARCHAR},
+      Sql_Id = #{record.sqlId,jdbcType=INTEGER},
+      Sql_mat_number = #{record.sqlMatNumber,jdbcType=VARCHAR},
+      Sql_mat_name = #{record.sqlMatName,jdbcType=VARCHAR},
+      Sql_mat_type = #{record.sqlMatType,jdbcType=VARCHAR},
+      Sql_nominal = #{record.sqlNominal,jdbcType=VARCHAR},
+      Sql_quantity = #{record.sqlQuantity,jdbcType=INTEGER},
+      Sql_pre_price = #{record.sqlPrePrice,jdbcType=DOUBLE},
+      Sql_fold = #{record.sqlFold,jdbcType=INTEGER},
+      Sql_price = #{record.sqlPrice,jdbcType=DOUBLE},
+      Sql_amount = #{record.sqlAmount,jdbcType=DOUBLE},
+      Sql_tax_rate = #{record.sqlTaxRate,jdbcType=DOUBLE},
+      Sql_tax = #{record.sqlTax,jdbcType=DOUBLE},
+      Sql_tax_amount = #{record.sqlTaxAmount,jdbcType=DOUBLE},
+      Sql_giveaway = #{record.sqlGiveaway,jdbcType=INTEGER},
+      Sql_remark = #{record.sqlRemark,jdbcType=VARCHAR},
+      Sql_Spare1 = #{record.sqlSpare1,jdbcType=VARCHAR},
+      Sql_Spare2 = #{record.sqlSpare2,jdbcType=VARCHAR},
+      Sql_Spare3 = #{record.sqlSpare3,jdbcType=VARCHAR},
+      Sql_Spare4 = #{record.sqlSpare4,jdbcType=VARCHAR},
+      Sql_Spare5 = #{record.sqlSpare5,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Salesquotationlist" >
+    update salesquotationlist
+    <set >
+      <if test="sqlId != null" >
+        Sql_Id = #{sqlId,jdbcType=INTEGER},
+      </if>
+      <if test="sqlMatNumber != null" >
+        Sql_mat_number = #{sqlMatNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sqlMatName != null" >
+        Sql_mat_name = #{sqlMatName,jdbcType=VARCHAR},
+      </if>
+      <if test="sqlMatType != null" >
+        Sql_mat_type = #{sqlMatType,jdbcType=VARCHAR},
+      </if>
+      <if test="sqlNominal != null" >
+        Sql_nominal = #{sqlNominal,jdbcType=VARCHAR},
+      </if>
+      <if test="sqlQuantity != null" >
+        Sql_quantity = #{sqlQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="sqlPrePrice != null" >
+        Sql_pre_price = #{sqlPrePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="sqlFold != null" >
+        Sql_fold = #{sqlFold,jdbcType=INTEGER},
+      </if>
+      <if test="sqlPrice != null" >
+        Sql_price = #{sqlPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="sqlAmount != null" >
+        Sql_amount = #{sqlAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="sqlTaxRate != null" >
+        Sql_tax_rate = #{sqlTaxRate,jdbcType=DOUBLE},
+      </if>
+      <if test="sqlTax != null" >
+        Sql_tax = #{sqlTax,jdbcType=DOUBLE},
+      </if>
+      <if test="sqlTaxAmount != null" >
+        Sql_tax_amount = #{sqlTaxAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="sqlGiveaway != null" >
+        Sql_giveaway = #{sqlGiveaway,jdbcType=INTEGER},
+      </if>
+      <if test="sqlRemark != null" >
+        Sql_remark = #{sqlRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="sqlSpare1 != null" >
+        Sql_Spare1 = #{sqlSpare1,jdbcType=VARCHAR},
+      </if>
+      <if test="sqlSpare2 != null" >
+        Sql_Spare2 = #{sqlSpare2,jdbcType=VARCHAR},
+      </if>
+      <if test="sqlSpare3 != null" >
+        Sql_Spare3 = #{sqlSpare3,jdbcType=VARCHAR},
+      </if>
+      <if test="sqlSpare4 != null" >
+        Sql_Spare4 = #{sqlSpare4,jdbcType=VARCHAR},
+      </if>
+      <if test="sqlSpare5 != null" >
+        Sql_Spare5 = #{sqlSpare5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Sql_documentnumber = #{sqlDocumentnumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Salesquotationlist" >
+    update salesquotationlist
+    set Sql_Id = #{sqlId,jdbcType=INTEGER},
+      Sql_mat_number = #{sqlMatNumber,jdbcType=VARCHAR},
+      Sql_mat_name = #{sqlMatName,jdbcType=VARCHAR},
+      Sql_mat_type = #{sqlMatType,jdbcType=VARCHAR},
+      Sql_nominal = #{sqlNominal,jdbcType=VARCHAR},
+      Sql_quantity = #{sqlQuantity,jdbcType=INTEGER},
+      Sql_pre_price = #{sqlPrePrice,jdbcType=DOUBLE},
+      Sql_fold = #{sqlFold,jdbcType=INTEGER},
+      Sql_price = #{sqlPrice,jdbcType=DOUBLE},
+      Sql_amount = #{sqlAmount,jdbcType=DOUBLE},
+      Sql_tax_rate = #{sqlTaxRate,jdbcType=DOUBLE},
+      Sql_tax = #{sqlTax,jdbcType=DOUBLE},
+      Sql_tax_amount = #{sqlTaxAmount,jdbcType=DOUBLE},
+      Sql_giveaway = #{sqlGiveaway,jdbcType=INTEGER},
+      Sql_remark = #{sqlRemark,jdbcType=VARCHAR},
+      Sql_Spare1 = #{sqlSpare1,jdbcType=VARCHAR},
+      Sql_Spare2 = #{sqlSpare2,jdbcType=VARCHAR},
+      Sql_Spare3 = #{sqlSpare3,jdbcType=VARCHAR},
+      Sql_Spare4 = #{sqlSpare4,jdbcType=VARCHAR},
+      Sql_Spare5 = #{sqlSpare5,jdbcType=VARCHAR}
+    where Sql_documentnumber = #{sqlDocumentnumber,jdbcType=VARCHAR}
+  </update>
+</mapper>

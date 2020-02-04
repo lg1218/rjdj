@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>应收款账龄分析表(agingAccount.html)</title>
+		<link rel="stylesheet" href="../css/layui.css" />
+		<script src="../js/layui.all.js"></script>
+		<script src="../js/layui.js"></script>
+	</head>
+	<body>
+		<div style="width:700px;margin: auto;">
+			<div class="layui-tab layui-tab-card" >
+			  <ul class="layui-tab-title">
+			    <li class="layui-this">客户</li>
+			    <li>业务员</li>
+			  </ul>
+			  <div class="layui-tab-content" style="height: auto;">
+			    <div class="layui-tab-item layui-show">
+			    	<!--客户-->
+			    	<label class="layui-form-label" style="margin-left: -30px;">客户区间</label>
+				    <div class="layui-input-inline">
+				      <input class="layui-input" style="width:180px;float:left;">
+				      <span style="float: left;line-height:35px;padding: 3px;">To</span>
+				      <input class="layui-input" style="float: left;width:180px;">
+				      <img style="padding-left: 10px;" src="img/jing.png"/>
+				      <input style="vertical-align: middle;" type="checkbox"/>
+				    </div>
+				    
+				    <div class="layui-form-item">
+			          <label class="layui-form-label" style="margin-left: -30px;">账龄时间</label>
+			          <div class="layui-input-inline" style="width: 82%;border: 1px solid skyblue;">
+			            <div style="width: 180px;float: left;">
+			            	<input style="vertical-align: middle;" type="radio" name="agingTime" value="单据日期" title="单据日期">
+				            <div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i>
+				            	<div>单据日期</div>
+				            </div>
+			            </div>
+			            <div style="width: 180px;float: left;">
+			            	<input style="vertical-align: middle;" type="radio" name="agingTime" value="收款日期" title="收款日期" checked="">
+				            <div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i>
+				            	<div>收款日期</div>
+				            </div>
+			            </div>
+			          </div>
+			        </div>
+			        
+			        <div class="layui-form-item">
+			          <label class="layui-form-label" style="margin-left: -30px;">终止日期</label>
+			          <div class="layui-input-inline" >
+			            <div style="width: 180px;float: left;">
+			            	<input type="date" style="border: 1px solid #D3D4D3;width:160px;padding: 8px;">
+			            </div>
+			          </div>
+			        </div>
+			        
+			        <fieldset class="layui-elem-field">
+					  <legend>账龄区间</legend>
+					  <div class="layui-field-box">
+					    <!--内容区域-->
+					    <table class="layui-table">
+						  <colgroup>
+						    <col width="150">
+						    <col width="200">
+						    <col>
+						  </colgroup>
+						  <thead>
+						    <tr>
+						      <th>(区间)</th>
+						      <th>(起始天数)</th>
+						      <th>(截止天数)</th>
+						    </tr> 
+						  </thead>
+						  <tbody>
+						    <tr>
+						      <td><input style="border: none;" value="1"/></td>
+						      <td><input style="border: none;" value="0"/></td>
+						      <td><input style="border: none;" value="30"/></td>
+						    </tr>
+						    <tr>
+						      <td><input style="border: none;" value="2"/></td>
+						      <td><input style="border: none;" value="31"/></td>
+						      <td><input style="border: none;" value="60"/></td>
+						    </tr>
+						    <tr>
+						      <td><input style="border: none;" value="3"/></td>
+						      <td><input style="border: none;" value="61"/></td>
+						      <td><input style="border: none;" value="90"/></td>
+						    </tr>
+						    <tr>
+						      <td><input style="border: none;" value="4"/></td>
+						      <td><input style="border: none;" value="91"/></td>
+						      <td><input style="border: none;" value="180"/></td>
+						    </tr>
+						    <tr>
+						      <td><input style="border: none;" value="5"/></td>
+						      <td><input style="border: none;" value="181"/></td>
+						      <td></td>
+						    </tr>
+						  </tbody>
+						</table>
+					  </div>
+					</fieldset>
+				  
+			    </div>
+			    <div class="layui-tab-item">
+			    	<!--业务员-->
+			    	<label class="layui-form-label" style="margin-left: -30px;">业务员区间</label>
+				    <div class="layui-input-inline">
+				      <input class="layui-input" style="width:180px;float:left;">
+				      <span style="float: left;line-height:35px;padding: 3px;">To</span>
+				      <input class="layui-input" style="float: left;width:180px;">
+				      <img style="padding-left: 10px;" src="img/jing.png"/>
+				      <input style="vertical-align: middle;" type="checkbox"/>
+				    </div>
+				    
+				    <div class="layui-form-item">
+			          <label class="layui-form-label" style="margin-left: -30px;">账龄时间</label>
+			          <div class="layui-input-inline" style="width: 82%;border: 1px solid skyblue;">
+			            <div style="width: 180px;float: left;">
+			            	<input style="vertical-align: middle;" type="radio" name="yeagingTime" value="单据日期" title="单据日期">
+				            <div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i>
+				            	<div>单据日期</div>
+				            </div>
+			            </div>
+			            <div style="width: 180px;float: left;">
+			            	<input style="vertical-align: middle;" type="radio" name="yeagingTime" value="收款日期" title="收款日期" checked="">
+				            <div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i>
+				            	<div>收款日期</div>
+				            </div>
+			            </div>
+			          </div>
+			        </div>
+			        
+			        <div class="layui-form-item">
+			          <label class="layui-form-label" style="margin-left: -30px;">终止日期</label>
+			          <div class="layui-input-inline" >
+			            <div style="width: 180px;float: left;">
+			            	<input type="date" style="border: 1px solid #D3D4D3;width:160px;padding: 8px;">
+			            </div>
+			          </div>
+			        </div>
+			        
+			        <fieldset class="layui-elem-field">
+					  <legend>账龄区间</legend>
+					  <div class="layui-field-box">
+					    <!--内容区域-->
+					    <table class="layui-table">
+						  <colgroup>
+						    <col width="150">
+						    <col width="200">
+						    <col>
+						  </colgroup>
+						  <thead>
+						    <tr>
+						      <th>(区间)</th>
+						      <th>(起始天数)</th>
+						      <th>(截止天数)</th>
+						    </tr> 
+						  </thead>
+						  <tbody>
+						    <tr>
+						      <td><input style="border: none;" value="1"/></td>
+						      <td><input style="border: none;" value="0"/></td>
+						      <td><input style="border: none;" value="30"/></td>
+						    </tr>
+						    <tr>
+						      <td><input style="border: none;" value="2"/></td>
+						      <td><input style="border: none;" value="31"/></td>
+						      <td><input style="border: none;" value="60"/></td>
+						    </tr>
+						    <tr>
+						      <td><input style="border: none;" value="3"/></td>
+						      <td><input style="border: none;" value="61"/></td>
+						      <td><input style="border: none;" value="90"/></td>
+						    </tr>
+						    <tr>
+						      <td><input style="border: none;" value="4"/></td>
+						      <td><input style="border: none;" value="91"/></td>
+						      <td><input style="border: none;" value="180"/></td>
+						    </tr>
+						    <tr>
+						      <td><input style="border: none;" value="5"/></td>
+						      <td><input style="border: none;" value="181"/></td>
+						      <td></td>
+						    </tr>
+						  </tbody>
+						</table>
+					  </div>
+					</fieldset>
+				  
+			    </div>
+			  </div>
+			</div>
+			
+			<!--
+            	底部
+            -->
+            <div>
+            	<button type="button" class="layui-btn layui-btn-normal">确定</button>
+            	<button type="button" class="layui-btn layui-btn-normal">取消</button>
+            	<button type="button" class="layui-btn layui-btn-normal">固定报表</button>
+            </div>
+            
+		</div>
+		
+		
+	</body>
+</html>

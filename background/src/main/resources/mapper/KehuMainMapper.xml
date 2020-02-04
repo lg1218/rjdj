@@ -1,0 +1,923 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.KehuMainMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.KehuMain" >
+    <id column="khid" property="khid" jdbcType="INTEGER" />
+    <result column="khfname" property="khfname" jdbcType="VARCHAR" />
+    <result column="khsname" property="khsname" jdbcType="VARCHAR" />
+    <result column="khefname" property="khefname" jdbcType="VARCHAR" />
+    <result column="khssname" property="khssname" jdbcType="VARCHAR" />
+    <result column="khavid" property="khavid" jdbcType="INTEGER" />
+    <result column="khtypeid" property="khtypeid" jdbcType="INTEGER" />
+    <result column="khAreaid" property="khareaid" jdbcType="INTEGER" />
+    <result column="khCurrencyid" property="khcurrencyid" jdbcType="INTEGER" />
+    <result column="kh_fz_man" property="khFzMan" jdbcType="VARCHAR" />
+    <result column="kh_lx_man" property="khLxMan" jdbcType="VARCHAR" />
+    <result column="kh_lx_phoneone" property="khLxPhoneone" jdbcType="VARCHAR" />
+    <result column="kh_lx_phonetwo" property="khLxPhonetwo" jdbcType="VARCHAR" />
+    <result column="kh_lx_phonethree" property="khLxPhonethree" jdbcType="VARCHAR" />
+    <result column="kh_lx_phone_mobile" property="khLxPhoneMobile" jdbcType="VARCHAR" />
+    <result column="kh_yh_numu" property="khYhNumu" jdbcType="VARCHAR" />
+    <result column="kh_yh_num" property="khYhNum" jdbcType="INTEGER" />
+    <result column="kh_xs_man_id" property="khXsManId" jdbcType="INTEGER" />
+    <result column="kh_sw_nums" property="khSwNums" jdbcType="VARCHAR" />
+    <result column="kh_zb_money" property="khZbMoney" jdbcType="DOUBLE" />
+    <result column="kh_hy_type" property="khHyType" jdbcType="VARCHAR" />
+    <result column="kh_e_mail" property="khEMail" jdbcType="VARCHAR" />
+    <result column="kh_intel_address" property="khIntelAddress" jdbcType="VARCHAR" />
+    <result column="kh_cz_num" property="khCzNum" jdbcType="VARCHAR" />
+    <result column="kh_startcg_rk_date" property="khStartcgRkDate" jdbcType="DATE" />
+    <result column="kh_startcg_th_date" property="khStartcgThDate" jdbcType="DATE" />
+    <result column="kh_nearcg_rk_date" property="khNearcgRkDate" jdbcType="DATE" />
+    <result column="kh_nearcg_th_date" property="khNearcgThDate" jdbcType="DATE" />
+    <result column="kh_price_hs_bl" property="khPriceHsBl" jdbcType="BIT" />
+    <result column="kh_end_jy_date" property="khEndJyDate" jdbcType="DATE" />
+    <result column="kh_zk_totalmoney" property="khZkTotalmoney" jdbcType="DOUBLE" />
+    <result column="kh_sy_money" property="khSyMoney" jdbcType="DOUBLE" />
+    <result column="kh_fk_where" property="khFkWhere" jdbcType="INTEGER" />
+    <result column="kh_where_day" property="khWhereDay" jdbcType="INTEGER" />
+    <result column="kh_month_jz_date" property="khMonthJzDate" jdbcType="DATE" />
+    <result column="kh_xy_level" property="khXyLevel" jdbcType="INTEGER" />
+    <result column="kh_fp_typeid" property="khFpTypeid" jdbcType="INTEGER" />
+    <result column="kh_start_yinf_money" property="khStartYinfMoney" jdbcType="DOUBLE" />
+    <result column="kh_start_yuf_money" property="khStartYufMoney" jdbcType="DOUBLE" />
+    <result column="kh_last_yuf_money" property="khLastYufMoney" jdbcType="DOUBLE" />
+    <result column="kh_last_yinf_monet" property="khLastYinfMonet" jdbcType="DOUBLE" />
+    <result column="kh_yufzk_subjectid" property="khYufzkSubjectid" jdbcType="INTEGER" />
+    <result column="kh_yinfzk_subjectid" property="khYinfzkSubjectid" jdbcType="INTEGER" />
+    <result column="kh_yinfzg_subjectid" property="khYinfzgSubjectid" jdbcType="INTEGER" />
+    <result column="kh_remark" property="khRemark" jdbcType="VARCHAR" />
+    <result column="kh_Bz1" property="khBz1" jdbcType="VARCHAR" />
+    <result column="kh_Bz2" property="khBz2" jdbcType="VARCHAR" />
+    <result column="kh_Bz3" property="khBz3" jdbcType="VARCHAR" />
+    <result column="kh_Bz4" property="khBz4" jdbcType="VARCHAR" />
+    <result column="kh_Bz5" property="khBz5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    khid, khfname, khsname, khefname, khssname, khavid, khtypeid, khAreaid, khCurrencyid, 
+    kh_fz_man, kh_lx_man, kh_lx_phoneone, kh_lx_phonetwo, kh_lx_phonethree, kh_lx_phone_mobile, 
+    kh_yh_numu, kh_yh_num, kh_xs_man_id, kh_sw_nums, kh_zb_money, kh_hy_type, kh_e_mail, 
+    kh_intel_address, kh_cz_num, kh_startcg_rk_date, kh_startcg_th_date, kh_nearcg_rk_date, 
+    kh_nearcg_th_date, kh_price_hs_bl, kh_end_jy_date, kh_zk_totalmoney, kh_sy_money, 
+    kh_fk_where, kh_where_day, kh_month_jz_date, kh_xy_level, kh_fp_typeid, kh_start_yinf_money, 
+    kh_start_yuf_money, kh_last_yuf_money, kh_last_yinf_monet, kh_yufzk_subjectid, kh_yinfzk_subjectid, 
+    kh_yinfzg_subjectid, kh_remark, kh_Bz1, kh_Bz2, kh_Bz3, kh_Bz4, kh_Bz5
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.KehuMainExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from kehu_main
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from kehu_main
+    where khid = #{khid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from kehu_main
+    where khid = #{khid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.KehuMainExample" >
+    delete from kehu_main
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.KehuMain" >
+    insert into kehu_main (khid, khfname, khsname, 
+      khefname, khssname, khavid, 
+      khtypeid, khAreaid, khCurrencyid, 
+      kh_fz_man, kh_lx_man, kh_lx_phoneone, 
+      kh_lx_phonetwo, kh_lx_phonethree, kh_lx_phone_mobile, 
+      kh_yh_numu, kh_yh_num, kh_xs_man_id, 
+      kh_sw_nums, kh_zb_money, kh_hy_type, 
+      kh_e_mail, kh_intel_address, kh_cz_num, 
+      kh_startcg_rk_date, kh_startcg_th_date, kh_nearcg_rk_date, 
+      kh_nearcg_th_date, kh_price_hs_bl, kh_end_jy_date, 
+      kh_zk_totalmoney, kh_sy_money, kh_fk_where, 
+      kh_where_day, kh_month_jz_date, kh_xy_level, 
+      kh_fp_typeid, kh_start_yinf_money, kh_start_yuf_money, 
+      kh_last_yuf_money, kh_last_yinf_monet, kh_yufzk_subjectid, 
+      kh_yinfzk_subjectid, kh_yinfzg_subjectid, kh_remark, 
+      kh_Bz1, kh_Bz2, kh_Bz3, 
+      kh_Bz4, kh_Bz5)
+    values (#{khid,jdbcType=INTEGER}, #{khfname,jdbcType=VARCHAR}, #{khsname,jdbcType=VARCHAR}, 
+      #{khefname,jdbcType=VARCHAR}, #{khssname,jdbcType=VARCHAR}, #{khavid,jdbcType=INTEGER}, 
+      #{khtypeid,jdbcType=INTEGER}, #{khareaid,jdbcType=INTEGER}, #{khcurrencyid,jdbcType=INTEGER}, 
+      #{khFzMan,jdbcType=VARCHAR}, #{khLxMan,jdbcType=VARCHAR}, #{khLxPhoneone,jdbcType=VARCHAR}, 
+      #{khLxPhonetwo,jdbcType=VARCHAR}, #{khLxPhonethree,jdbcType=VARCHAR}, #{khLxPhoneMobile,jdbcType=VARCHAR}, 
+      #{khYhNumu,jdbcType=VARCHAR}, #{khYhNum,jdbcType=INTEGER}, #{khXsManId,jdbcType=INTEGER}, 
+      #{khSwNums,jdbcType=VARCHAR}, #{khZbMoney,jdbcType=DOUBLE}, #{khHyType,jdbcType=VARCHAR}, 
+      #{khEMail,jdbcType=VARCHAR}, #{khIntelAddress,jdbcType=VARCHAR}, #{khCzNum,jdbcType=VARCHAR}, 
+      #{khStartcgRkDate,jdbcType=DATE}, #{khStartcgThDate,jdbcType=DATE}, #{khNearcgRkDate,jdbcType=DATE}, 
+      #{khNearcgThDate,jdbcType=DATE}, #{khPriceHsBl,jdbcType=BIT}, #{khEndJyDate,jdbcType=DATE}, 
+      #{khZkTotalmoney,jdbcType=DOUBLE}, #{khSyMoney,jdbcType=DOUBLE}, #{khFkWhere,jdbcType=INTEGER}, 
+      #{khWhereDay,jdbcType=INTEGER}, #{khMonthJzDate,jdbcType=DATE}, #{khXyLevel,jdbcType=INTEGER}, 
+      #{khFpTypeid,jdbcType=INTEGER}, #{khStartYinfMoney,jdbcType=DOUBLE}, #{khStartYufMoney,jdbcType=DOUBLE}, 
+      #{khLastYufMoney,jdbcType=DOUBLE}, #{khLastYinfMonet,jdbcType=DOUBLE}, #{khYufzkSubjectid,jdbcType=INTEGER}, 
+      #{khYinfzkSubjectid,jdbcType=INTEGER}, #{khYinfzgSubjectid,jdbcType=INTEGER}, #{khRemark,jdbcType=VARCHAR}, 
+      #{khBz1,jdbcType=VARCHAR}, #{khBz2,jdbcType=VARCHAR}, #{khBz3,jdbcType=VARCHAR}, 
+      #{khBz4,jdbcType=VARCHAR}, #{khBz5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.KehuMain" >
+    insert into kehu_main
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="khid != null" >
+        khid,
+      </if>
+      <if test="khfname != null" >
+        khfname,
+      </if>
+      <if test="khsname != null" >
+        khsname,
+      </if>
+      <if test="khefname != null" >
+        khefname,
+      </if>
+      <if test="khssname != null" >
+        khssname,
+      </if>
+      <if test="khavid != null" >
+        khavid,
+      </if>
+      <if test="khtypeid != null" >
+        khtypeid,
+      </if>
+      <if test="khareaid != null" >
+        khAreaid,
+      </if>
+      <if test="khcurrencyid != null" >
+        khCurrencyid,
+      </if>
+      <if test="khFzMan != null" >
+        kh_fz_man,
+      </if>
+      <if test="khLxMan != null" >
+        kh_lx_man,
+      </if>
+      <if test="khLxPhoneone != null" >
+        kh_lx_phoneone,
+      </if>
+      <if test="khLxPhonetwo != null" >
+        kh_lx_phonetwo,
+      </if>
+      <if test="khLxPhonethree != null" >
+        kh_lx_phonethree,
+      </if>
+      <if test="khLxPhoneMobile != null" >
+        kh_lx_phone_mobile,
+      </if>
+      <if test="khYhNumu != null" >
+        kh_yh_numu,
+      </if>
+      <if test="khYhNum != null" >
+        kh_yh_num,
+      </if>
+      <if test="khXsManId != null" >
+        kh_xs_man_id,
+      </if>
+      <if test="khSwNums != null" >
+        kh_sw_nums,
+      </if>
+      <if test="khZbMoney != null" >
+        kh_zb_money,
+      </if>
+      <if test="khHyType != null" >
+        kh_hy_type,
+      </if>
+      <if test="khEMail != null" >
+        kh_e_mail,
+      </if>
+      <if test="khIntelAddress != null" >
+        kh_intel_address,
+      </if>
+      <if test="khCzNum != null" >
+        kh_cz_num,
+      </if>
+      <if test="khStartcgRkDate != null" >
+        kh_startcg_rk_date,
+      </if>
+      <if test="khStartcgThDate != null" >
+        kh_startcg_th_date,
+      </if>
+      <if test="khNearcgRkDate != null" >
+        kh_nearcg_rk_date,
+      </if>
+      <if test="khNearcgThDate != null" >
+        kh_nearcg_th_date,
+      </if>
+      <if test="khPriceHsBl != null" >
+        kh_price_hs_bl,
+      </if>
+      <if test="khEndJyDate != null" >
+        kh_end_jy_date,
+      </if>
+      <if test="khZkTotalmoney != null" >
+        kh_zk_totalmoney,
+      </if>
+      <if test="khSyMoney != null" >
+        kh_sy_money,
+      </if>
+      <if test="khFkWhere != null" >
+        kh_fk_where,
+      </if>
+      <if test="khWhereDay != null" >
+        kh_where_day,
+      </if>
+      <if test="khMonthJzDate != null" >
+        kh_month_jz_date,
+      </if>
+      <if test="khXyLevel != null" >
+        kh_xy_level,
+      </if>
+      <if test="khFpTypeid != null" >
+        kh_fp_typeid,
+      </if>
+      <if test="khStartYinfMoney != null" >
+        kh_start_yinf_money,
+      </if>
+      <if test="khStartYufMoney != null" >
+        kh_start_yuf_money,
+      </if>
+      <if test="khLastYufMoney != null" >
+        kh_last_yuf_money,
+      </if>
+      <if test="khLastYinfMonet != null" >
+        kh_last_yinf_monet,
+      </if>
+      <if test="khYufzkSubjectid != null" >
+        kh_yufzk_subjectid,
+      </if>
+      <if test="khYinfzkSubjectid != null" >
+        kh_yinfzk_subjectid,
+      </if>
+      <if test="khYinfzgSubjectid != null" >
+        kh_yinfzg_subjectid,
+      </if>
+      <if test="khRemark != null" >
+        kh_remark,
+      </if>
+      <if test="khBz1 != null" >
+        kh_Bz1,
+      </if>
+      <if test="khBz2 != null" >
+        kh_Bz2,
+      </if>
+      <if test="khBz3 != null" >
+        kh_Bz3,
+      </if>
+      <if test="khBz4 != null" >
+        kh_Bz4,
+      </if>
+      <if test="khBz5 != null" >
+        kh_Bz5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="khid != null" >
+        #{khid,jdbcType=INTEGER},
+      </if>
+      <if test="khfname != null" >
+        #{khfname,jdbcType=VARCHAR},
+      </if>
+      <if test="khsname != null" >
+        #{khsname,jdbcType=VARCHAR},
+      </if>
+      <if test="khefname != null" >
+        #{khefname,jdbcType=VARCHAR},
+      </if>
+      <if test="khssname != null" >
+        #{khssname,jdbcType=VARCHAR},
+      </if>
+      <if test="khavid != null" >
+        #{khavid,jdbcType=INTEGER},
+      </if>
+      <if test="khtypeid != null" >
+        #{khtypeid,jdbcType=INTEGER},
+      </if>
+      <if test="khareaid != null" >
+        #{khareaid,jdbcType=INTEGER},
+      </if>
+      <if test="khcurrencyid != null" >
+        #{khcurrencyid,jdbcType=INTEGER},
+      </if>
+      <if test="khFzMan != null" >
+        #{khFzMan,jdbcType=VARCHAR},
+      </if>
+      <if test="khLxMan != null" >
+        #{khLxMan,jdbcType=VARCHAR},
+      </if>
+      <if test="khLxPhoneone != null" >
+        #{khLxPhoneone,jdbcType=VARCHAR},
+      </if>
+      <if test="khLxPhonetwo != null" >
+        #{khLxPhonetwo,jdbcType=VARCHAR},
+      </if>
+      <if test="khLxPhonethree != null" >
+        #{khLxPhonethree,jdbcType=VARCHAR},
+      </if>
+      <if test="khLxPhoneMobile != null" >
+        #{khLxPhoneMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="khYhNumu != null" >
+        #{khYhNumu,jdbcType=VARCHAR},
+      </if>
+      <if test="khYhNum != null" >
+        #{khYhNum,jdbcType=INTEGER},
+      </if>
+      <if test="khXsManId != null" >
+        #{khXsManId,jdbcType=INTEGER},
+      </if>
+      <if test="khSwNums != null" >
+        #{khSwNums,jdbcType=VARCHAR},
+      </if>
+      <if test="khZbMoney != null" >
+        #{khZbMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="khHyType != null" >
+        #{khHyType,jdbcType=VARCHAR},
+      </if>
+      <if test="khEMail != null" >
+        #{khEMail,jdbcType=VARCHAR},
+      </if>
+      <if test="khIntelAddress != null" >
+        #{khIntelAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="khCzNum != null" >
+        #{khCzNum,jdbcType=VARCHAR},
+      </if>
+      <if test="khStartcgRkDate != null" >
+        #{khStartcgRkDate,jdbcType=DATE},
+      </if>
+      <if test="khStartcgThDate != null" >
+        #{khStartcgThDate,jdbcType=DATE},
+      </if>
+      <if test="khNearcgRkDate != null" >
+        #{khNearcgRkDate,jdbcType=DATE},
+      </if>
+      <if test="khNearcgThDate != null" >
+        #{khNearcgThDate,jdbcType=DATE},
+      </if>
+      <if test="khPriceHsBl != null" >
+        #{khPriceHsBl,jdbcType=BIT},
+      </if>
+      <if test="khEndJyDate != null" >
+        #{khEndJyDate,jdbcType=DATE},
+      </if>
+      <if test="khZkTotalmoney != null" >
+        #{khZkTotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="khSyMoney != null" >
+        #{khSyMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="khFkWhere != null" >
+        #{khFkWhere,jdbcType=INTEGER},
+      </if>
+      <if test="khWhereDay != null" >
+        #{khWhereDay,jdbcType=INTEGER},
+      </if>
+      <if test="khMonthJzDate != null" >
+        #{khMonthJzDate,jdbcType=DATE},
+      </if>
+      <if test="khXyLevel != null" >
+        #{khXyLevel,jdbcType=INTEGER},
+      </if>
+      <if test="khFpTypeid != null" >
+        #{khFpTypeid,jdbcType=INTEGER},
+      </if>
+      <if test="khStartYinfMoney != null" >
+        #{khStartYinfMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="khStartYufMoney != null" >
+        #{khStartYufMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="khLastYufMoney != null" >
+        #{khLastYufMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="khLastYinfMonet != null" >
+        #{khLastYinfMonet,jdbcType=DOUBLE},
+      </if>
+      <if test="khYufzkSubjectid != null" >
+        #{khYufzkSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="khYinfzkSubjectid != null" >
+        #{khYinfzkSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="khYinfzgSubjectid != null" >
+        #{khYinfzgSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="khRemark != null" >
+        #{khRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="khBz1 != null" >
+        #{khBz1,jdbcType=VARCHAR},
+      </if>
+      <if test="khBz2 != null" >
+        #{khBz2,jdbcType=VARCHAR},
+      </if>
+      <if test="khBz3 != null" >
+        #{khBz3,jdbcType=VARCHAR},
+      </if>
+      <if test="khBz4 != null" >
+        #{khBz4,jdbcType=VARCHAR},
+      </if>
+      <if test="khBz5 != null" >
+        #{khBz5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.KehuMainExample" resultType="java.lang.Integer" >
+    select count(*) from kehu_main
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update kehu_main
+    <set >
+      <if test="record.khid != null" >
+        khid = #{record.khid,jdbcType=INTEGER},
+      </if>
+      <if test="record.khfname != null" >
+        khfname = #{record.khfname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.khsname != null" >
+        khsname = #{record.khsname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.khefname != null" >
+        khefname = #{record.khefname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.khssname != null" >
+        khssname = #{record.khssname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.khavid != null" >
+        khavid = #{record.khavid,jdbcType=INTEGER},
+      </if>
+      <if test="record.khtypeid != null" >
+        khtypeid = #{record.khtypeid,jdbcType=INTEGER},
+      </if>
+      <if test="record.khareaid != null" >
+        khAreaid = #{record.khareaid,jdbcType=INTEGER},
+      </if>
+      <if test="record.khcurrencyid != null" >
+        khCurrencyid = #{record.khcurrencyid,jdbcType=INTEGER},
+      </if>
+      <if test="record.khFzMan != null" >
+        kh_fz_man = #{record.khFzMan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.khLxMan != null" >
+        kh_lx_man = #{record.khLxMan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.khLxPhoneone != null" >
+        kh_lx_phoneone = #{record.khLxPhoneone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.khLxPhonetwo != null" >
+        kh_lx_phonetwo = #{record.khLxPhonetwo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.khLxPhonethree != null" >
+        kh_lx_phonethree = #{record.khLxPhonethree,jdbcType=VARCHAR},
+      </if>
+      <if test="record.khLxPhoneMobile != null" >
+        kh_lx_phone_mobile = #{record.khLxPhoneMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.khYhNumu != null" >
+        kh_yh_numu = #{record.khYhNumu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.khYhNum != null" >
+        kh_yh_num = #{record.khYhNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.khXsManId != null" >
+        kh_xs_man_id = #{record.khXsManId,jdbcType=INTEGER},
+      </if>
+      <if test="record.khSwNums != null" >
+        kh_sw_nums = #{record.khSwNums,jdbcType=VARCHAR},
+      </if>
+      <if test="record.khZbMoney != null" >
+        kh_zb_money = #{record.khZbMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.khHyType != null" >
+        kh_hy_type = #{record.khHyType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.khEMail != null" >
+        kh_e_mail = #{record.khEMail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.khIntelAddress != null" >
+        kh_intel_address = #{record.khIntelAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.khCzNum != null" >
+        kh_cz_num = #{record.khCzNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.khStartcgRkDate != null" >
+        kh_startcg_rk_date = #{record.khStartcgRkDate,jdbcType=DATE},
+      </if>
+      <if test="record.khStartcgThDate != null" >
+        kh_startcg_th_date = #{record.khStartcgThDate,jdbcType=DATE},
+      </if>
+      <if test="record.khNearcgRkDate != null" >
+        kh_nearcg_rk_date = #{record.khNearcgRkDate,jdbcType=DATE},
+      </if>
+      <if test="record.khNearcgThDate != null" >
+        kh_nearcg_th_date = #{record.khNearcgThDate,jdbcType=DATE},
+      </if>
+      <if test="record.khPriceHsBl != null" >
+        kh_price_hs_bl = #{record.khPriceHsBl,jdbcType=BIT},
+      </if>
+      <if test="record.khEndJyDate != null" >
+        kh_end_jy_date = #{record.khEndJyDate,jdbcType=DATE},
+      </if>
+      <if test="record.khZkTotalmoney != null" >
+        kh_zk_totalmoney = #{record.khZkTotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.khSyMoney != null" >
+        kh_sy_money = #{record.khSyMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.khFkWhere != null" >
+        kh_fk_where = #{record.khFkWhere,jdbcType=INTEGER},
+      </if>
+      <if test="record.khWhereDay != null" >
+        kh_where_day = #{record.khWhereDay,jdbcType=INTEGER},
+      </if>
+      <if test="record.khMonthJzDate != null" >
+        kh_month_jz_date = #{record.khMonthJzDate,jdbcType=DATE},
+      </if>
+      <if test="record.khXyLevel != null" >
+        kh_xy_level = #{record.khXyLevel,jdbcType=INTEGER},
+      </if>
+      <if test="record.khFpTypeid != null" >
+        kh_fp_typeid = #{record.khFpTypeid,jdbcType=INTEGER},
+      </if>
+      <if test="record.khStartYinfMoney != null" >
+        kh_start_yinf_money = #{record.khStartYinfMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.khStartYufMoney != null" >
+        kh_start_yuf_money = #{record.khStartYufMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.khLastYufMoney != null" >
+        kh_last_yuf_money = #{record.khLastYufMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.khLastYinfMonet != null" >
+        kh_last_yinf_monet = #{record.khLastYinfMonet,jdbcType=DOUBLE},
+      </if>
+      <if test="record.khYufzkSubjectid != null" >
+        kh_yufzk_subjectid = #{record.khYufzkSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="record.khYinfzkSubjectid != null" >
+        kh_yinfzk_subjectid = #{record.khYinfzkSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="record.khYinfzgSubjectid != null" >
+        kh_yinfzg_subjectid = #{record.khYinfzgSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="record.khRemark != null" >
+        kh_remark = #{record.khRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.khBz1 != null" >
+        kh_Bz1 = #{record.khBz1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.khBz2 != null" >
+        kh_Bz2 = #{record.khBz2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.khBz3 != null" >
+        kh_Bz3 = #{record.khBz3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.khBz4 != null" >
+        kh_Bz4 = #{record.khBz4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.khBz5 != null" >
+        kh_Bz5 = #{record.khBz5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update kehu_main
+    set khid = #{record.khid,jdbcType=INTEGER},
+      khfname = #{record.khfname,jdbcType=VARCHAR},
+      khsname = #{record.khsname,jdbcType=VARCHAR},
+      khefname = #{record.khefname,jdbcType=VARCHAR},
+      khssname = #{record.khssname,jdbcType=VARCHAR},
+      khavid = #{record.khavid,jdbcType=INTEGER},
+      khtypeid = #{record.khtypeid,jdbcType=INTEGER},
+      khAreaid = #{record.khareaid,jdbcType=INTEGER},
+      khCurrencyid = #{record.khcurrencyid,jdbcType=INTEGER},
+      kh_fz_man = #{record.khFzMan,jdbcType=VARCHAR},
+      kh_lx_man = #{record.khLxMan,jdbcType=VARCHAR},
+      kh_lx_phoneone = #{record.khLxPhoneone,jdbcType=VARCHAR},
+      kh_lx_phonetwo = #{record.khLxPhonetwo,jdbcType=VARCHAR},
+      kh_lx_phonethree = #{record.khLxPhonethree,jdbcType=VARCHAR},
+      kh_lx_phone_mobile = #{record.khLxPhoneMobile,jdbcType=VARCHAR},
+      kh_yh_numu = #{record.khYhNumu,jdbcType=VARCHAR},
+      kh_yh_num = #{record.khYhNum,jdbcType=INTEGER},
+      kh_xs_man_id = #{record.khXsManId,jdbcType=INTEGER},
+      kh_sw_nums = #{record.khSwNums,jdbcType=VARCHAR},
+      kh_zb_money = #{record.khZbMoney,jdbcType=DOUBLE},
+      kh_hy_type = #{record.khHyType,jdbcType=VARCHAR},
+      kh_e_mail = #{record.khEMail,jdbcType=VARCHAR},
+      kh_intel_address = #{record.khIntelAddress,jdbcType=VARCHAR},
+      kh_cz_num = #{record.khCzNum,jdbcType=VARCHAR},
+      kh_startcg_rk_date = #{record.khStartcgRkDate,jdbcType=DATE},
+      kh_startcg_th_date = #{record.khStartcgThDate,jdbcType=DATE},
+      kh_nearcg_rk_date = #{record.khNearcgRkDate,jdbcType=DATE},
+      kh_nearcg_th_date = #{record.khNearcgThDate,jdbcType=DATE},
+      kh_price_hs_bl = #{record.khPriceHsBl,jdbcType=BIT},
+      kh_end_jy_date = #{record.khEndJyDate,jdbcType=DATE},
+      kh_zk_totalmoney = #{record.khZkTotalmoney,jdbcType=DOUBLE},
+      kh_sy_money = #{record.khSyMoney,jdbcType=DOUBLE},
+      kh_fk_where = #{record.khFkWhere,jdbcType=INTEGER},
+      kh_where_day = #{record.khWhereDay,jdbcType=INTEGER},
+      kh_month_jz_date = #{record.khMonthJzDate,jdbcType=DATE},
+      kh_xy_level = #{record.khXyLevel,jdbcType=INTEGER},
+      kh_fp_typeid = #{record.khFpTypeid,jdbcType=INTEGER},
+      kh_start_yinf_money = #{record.khStartYinfMoney,jdbcType=DOUBLE},
+      kh_start_yuf_money = #{record.khStartYufMoney,jdbcType=DOUBLE},
+      kh_last_yuf_money = #{record.khLastYufMoney,jdbcType=DOUBLE},
+      kh_last_yinf_monet = #{record.khLastYinfMonet,jdbcType=DOUBLE},
+      kh_yufzk_subjectid = #{record.khYufzkSubjectid,jdbcType=INTEGER},
+      kh_yinfzk_subjectid = #{record.khYinfzkSubjectid,jdbcType=INTEGER},
+      kh_yinfzg_subjectid = #{record.khYinfzgSubjectid,jdbcType=INTEGER},
+      kh_remark = #{record.khRemark,jdbcType=VARCHAR},
+      kh_Bz1 = #{record.khBz1,jdbcType=VARCHAR},
+      kh_Bz2 = #{record.khBz2,jdbcType=VARCHAR},
+      kh_Bz3 = #{record.khBz3,jdbcType=VARCHAR},
+      kh_Bz4 = #{record.khBz4,jdbcType=VARCHAR},
+      kh_Bz5 = #{record.khBz5,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.KehuMain" >
+    update kehu_main
+    <set >
+      <if test="khfname != null" >
+        khfname = #{khfname,jdbcType=VARCHAR},
+      </if>
+      <if test="khsname != null" >
+        khsname = #{khsname,jdbcType=VARCHAR},
+      </if>
+      <if test="khefname != null" >
+        khefname = #{khefname,jdbcType=VARCHAR},
+      </if>
+      <if test="khssname != null" >
+        khssname = #{khssname,jdbcType=VARCHAR},
+      </if>
+      <if test="khavid != null" >
+        khavid = #{khavid,jdbcType=INTEGER},
+      </if>
+      <if test="khtypeid != null" >
+        khtypeid = #{khtypeid,jdbcType=INTEGER},
+      </if>
+      <if test="khareaid != null" >
+        khAreaid = #{khareaid,jdbcType=INTEGER},
+      </if>
+      <if test="khcurrencyid != null" >
+        khCurrencyid = #{khcurrencyid,jdbcType=INTEGER},
+      </if>
+      <if test="khFzMan != null" >
+        kh_fz_man = #{khFzMan,jdbcType=VARCHAR},
+      </if>
+      <if test="khLxMan != null" >
+        kh_lx_man = #{khLxMan,jdbcType=VARCHAR},
+      </if>
+      <if test="khLxPhoneone != null" >
+        kh_lx_phoneone = #{khLxPhoneone,jdbcType=VARCHAR},
+      </if>
+      <if test="khLxPhonetwo != null" >
+        kh_lx_phonetwo = #{khLxPhonetwo,jdbcType=VARCHAR},
+      </if>
+      <if test="khLxPhonethree != null" >
+        kh_lx_phonethree = #{khLxPhonethree,jdbcType=VARCHAR},
+      </if>
+      <if test="khLxPhoneMobile != null" >
+        kh_lx_phone_mobile = #{khLxPhoneMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="khYhNumu != null" >
+        kh_yh_numu = #{khYhNumu,jdbcType=VARCHAR},
+      </if>
+      <if test="khYhNum != null" >
+        kh_yh_num = #{khYhNum,jdbcType=INTEGER},
+      </if>
+      <if test="khXsManId != null" >
+        kh_xs_man_id = #{khXsManId,jdbcType=INTEGER},
+      </if>
+      <if test="khSwNums != null" >
+        kh_sw_nums = #{khSwNums,jdbcType=VARCHAR},
+      </if>
+      <if test="khZbMoney != null" >
+        kh_zb_money = #{khZbMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="khHyType != null" >
+        kh_hy_type = #{khHyType,jdbcType=VARCHAR},
+      </if>
+      <if test="khEMail != null" >
+        kh_e_mail = #{khEMail,jdbcType=VARCHAR},
+      </if>
+      <if test="khIntelAddress != null" >
+        kh_intel_address = #{khIntelAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="khCzNum != null" >
+        kh_cz_num = #{khCzNum,jdbcType=VARCHAR},
+      </if>
+      <if test="khStartcgRkDate != null" >
+        kh_startcg_rk_date = #{khStartcgRkDate,jdbcType=DATE},
+      </if>
+      <if test="khStartcgThDate != null" >
+        kh_startcg_th_date = #{khStartcgThDate,jdbcType=DATE},
+      </if>
+      <if test="khNearcgRkDate != null" >
+        kh_nearcg_rk_date = #{khNearcgRkDate,jdbcType=DATE},
+      </if>
+      <if test="khNearcgThDate != null" >
+        kh_nearcg_th_date = #{khNearcgThDate,jdbcType=DATE},
+      </if>
+      <if test="khPriceHsBl != null" >
+        kh_price_hs_bl = #{khPriceHsBl,jdbcType=BIT},
+      </if>
+      <if test="khEndJyDate != null" >
+        kh_end_jy_date = #{khEndJyDate,jdbcType=DATE},
+      </if>
+      <if test="khZkTotalmoney != null" >
+        kh_zk_totalmoney = #{khZkTotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="khSyMoney != null" >
+        kh_sy_money = #{khSyMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="khFkWhere != null" >
+        kh_fk_where = #{khFkWhere,jdbcType=INTEGER},
+      </if>
+      <if test="khWhereDay != null" >
+        kh_where_day = #{khWhereDay,jdbcType=INTEGER},
+      </if>
+      <if test="khMonthJzDate != null" >
+        kh_month_jz_date = #{khMonthJzDate,jdbcType=DATE},
+      </if>
+      <if test="khXyLevel != null" >
+        kh_xy_level = #{khXyLevel,jdbcType=INTEGER},
+      </if>
+      <if test="khFpTypeid != null" >
+        kh_fp_typeid = #{khFpTypeid,jdbcType=INTEGER},
+      </if>
+      <if test="khStartYinfMoney != null" >
+        kh_start_yinf_money = #{khStartYinfMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="khStartYufMoney != null" >
+        kh_start_yuf_money = #{khStartYufMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="khLastYufMoney != null" >
+        kh_last_yuf_money = #{khLastYufMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="khLastYinfMonet != null" >
+        kh_last_yinf_monet = #{khLastYinfMonet,jdbcType=DOUBLE},
+      </if>
+      <if test="khYufzkSubjectid != null" >
+        kh_yufzk_subjectid = #{khYufzkSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="khYinfzkSubjectid != null" >
+        kh_yinfzk_subjectid = #{khYinfzkSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="khYinfzgSubjectid != null" >
+        kh_yinfzg_subjectid = #{khYinfzgSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="khRemark != null" >
+        kh_remark = #{khRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="khBz1 != null" >
+        kh_Bz1 = #{khBz1,jdbcType=VARCHAR},
+      </if>
+      <if test="khBz2 != null" >
+        kh_Bz2 = #{khBz2,jdbcType=VARCHAR},
+      </if>
+      <if test="khBz3 != null" >
+        kh_Bz3 = #{khBz3,jdbcType=VARCHAR},
+      </if>
+      <if test="khBz4 != null" >
+        kh_Bz4 = #{khBz4,jdbcType=VARCHAR},
+      </if>
+      <if test="khBz5 != null" >
+        kh_Bz5 = #{khBz5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where khid = #{khid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.KehuMain" >
+    update kehu_main
+    set khfname = #{khfname,jdbcType=VARCHAR},
+      khsname = #{khsname,jdbcType=VARCHAR},
+      khefname = #{khefname,jdbcType=VARCHAR},
+      khssname = #{khssname,jdbcType=VARCHAR},
+      khavid = #{khavid,jdbcType=INTEGER},
+      khtypeid = #{khtypeid,jdbcType=INTEGER},
+      khAreaid = #{khareaid,jdbcType=INTEGER},
+      khCurrencyid = #{khcurrencyid,jdbcType=INTEGER},
+      kh_fz_man = #{khFzMan,jdbcType=VARCHAR},
+      kh_lx_man = #{khLxMan,jdbcType=VARCHAR},
+      kh_lx_phoneone = #{khLxPhoneone,jdbcType=VARCHAR},
+      kh_lx_phonetwo = #{khLxPhonetwo,jdbcType=VARCHAR},
+      kh_lx_phonethree = #{khLxPhonethree,jdbcType=VARCHAR},
+      kh_lx_phone_mobile = #{khLxPhoneMobile,jdbcType=VARCHAR},
+      kh_yh_numu = #{khYhNumu,jdbcType=VARCHAR},
+      kh_yh_num = #{khYhNum,jdbcType=INTEGER},
+      kh_xs_man_id = #{khXsManId,jdbcType=INTEGER},
+      kh_sw_nums = #{khSwNums,jdbcType=VARCHAR},
+      kh_zb_money = #{khZbMoney,jdbcType=DOUBLE},
+      kh_hy_type = #{khHyType,jdbcType=VARCHAR},
+      kh_e_mail = #{khEMail,jdbcType=VARCHAR},
+      kh_intel_address = #{khIntelAddress,jdbcType=VARCHAR},
+      kh_cz_num = #{khCzNum,jdbcType=VARCHAR},
+      kh_startcg_rk_date = #{khStartcgRkDate,jdbcType=DATE},
+      kh_startcg_th_date = #{khStartcgThDate,jdbcType=DATE},
+      kh_nearcg_rk_date = #{khNearcgRkDate,jdbcType=DATE},
+      kh_nearcg_th_date = #{khNearcgThDate,jdbcType=DATE},
+      kh_price_hs_bl = #{khPriceHsBl,jdbcType=BIT},
+      kh_end_jy_date = #{khEndJyDate,jdbcType=DATE},
+      kh_zk_totalmoney = #{khZkTotalmoney,jdbcType=DOUBLE},
+      kh_sy_money = #{khSyMoney,jdbcType=DOUBLE},
+      kh_fk_where = #{khFkWhere,jdbcType=INTEGER},
+      kh_where_day = #{khWhereDay,jdbcType=INTEGER},
+      kh_month_jz_date = #{khMonthJzDate,jdbcType=DATE},
+      kh_xy_level = #{khXyLevel,jdbcType=INTEGER},
+      kh_fp_typeid = #{khFpTypeid,jdbcType=INTEGER},
+      kh_start_yinf_money = #{khStartYinfMoney,jdbcType=DOUBLE},
+      kh_start_yuf_money = #{khStartYufMoney,jdbcType=DOUBLE},
+      kh_last_yuf_money = #{khLastYufMoney,jdbcType=DOUBLE},
+      kh_last_yinf_monet = #{khLastYinfMonet,jdbcType=DOUBLE},
+      kh_yufzk_subjectid = #{khYufzkSubjectid,jdbcType=INTEGER},
+      kh_yinfzk_subjectid = #{khYinfzkSubjectid,jdbcType=INTEGER},
+      kh_yinfzg_subjectid = #{khYinfzgSubjectid,jdbcType=INTEGER},
+      kh_remark = #{khRemark,jdbcType=VARCHAR},
+      kh_Bz1 = #{khBz1,jdbcType=VARCHAR},
+      kh_Bz2 = #{khBz2,jdbcType=VARCHAR},
+      kh_Bz3 = #{khBz3,jdbcType=VARCHAR},
+      kh_Bz4 = #{khBz4,jdbcType=VARCHAR},
+      kh_Bz5 = #{khBz5,jdbcType=VARCHAR}
+    where khid = #{khid,jdbcType=INTEGER}
+  </update>
+</mapper>

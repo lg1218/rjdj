@@ -1,0 +1,999 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.SupplierMainMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.SupplierMain" >
+    <id column="smid" property="smid" jdbcType="INTEGER" />
+    <result column="smfname" property="smfname" jdbcType="VARCHAR" />
+    <result column="smsname" property="smsname" jdbcType="VARCHAR" />
+    <result column="smefname" property="smefname" jdbcType="VARCHAR" />
+    <result column="smssname" property="smssname" jdbcType="VARCHAR" />
+    <result column="smavid" property="smavid" jdbcType="INTEGER" />
+    <result column="smtypeid" property="smtypeid" jdbcType="INTEGER" />
+    <result column="smareaid" property="smareaid" jdbcType="INTEGER" />
+    <result column="smcurrencyid" property="smcurrencyid" jdbcType="INTEGER" />
+    <result column="fz_man" property="fzMan" jdbcType="VARCHAR" />
+    <result column="lx_man" property="lxMan" jdbcType="VARCHAR" />
+    <result column="lx_phoneone" property="lxPhoneone" jdbcType="VARCHAR" />
+    <result column="lx_phonetwo" property="lxPhonetwo" jdbcType="VARCHAR" />
+    <result column="lx_phonethree" property="lxPhonethree" jdbcType="VARCHAR" />
+    <result column="lx_phone_mobile" property="lxPhoneMobile" jdbcType="VARCHAR" />
+    <result column="yh_num" property="yhNum" jdbcType="VARCHAR" />
+    <result column="khyh_num" property="khyhNum" jdbcType="INTEGER" />
+    <result column="cg_man_id" property="cgManId" jdbcType="INTEGER" />
+    <result column="sw_nums" property="swNums" jdbcType="VARCHAR" />
+    <result column="zb_money" property="zbMoney" jdbcType="DOUBLE" />
+    <result column="hy_type" property="hyType" jdbcType="VARCHAR" />
+    <result column="e_mail" property="eMail" jdbcType="VARCHAR" />
+    <result column="intel_address" property="intelAddress" jdbcType="VARCHAR" />
+    <result column="cz_num" property="czNum" jdbcType="VARCHAR" />
+    <result column="startcg_rk_date" property="startcgRkDate" jdbcType="DATE" />
+    <result column="startcg_th_date" property="startcgThDate" jdbcType="DATE" />
+    <result column="nearcg_rk_date" property="nearcgRkDate" jdbcType="DATE" />
+    <result column="nearcg_th_date" property="nearcgThDate" jdbcType="DATE" />
+    <result column="price_hs_bl" property="priceHsBl" jdbcType="BIT" />
+    <result column="end_jy_date" property="endJyDate" jdbcType="DATE" />
+    <result column="zk_totalmoney" property="zkTotalmoney" jdbcType="DOUBLE" />
+    <result column="sy_money" property="syMoney" jdbcType="DOUBLE" />
+    <result column="fk_where" property="fkWhere" jdbcType="INTEGER" />
+    <result column="where_day" property="whereDay" jdbcType="INTEGER" />
+    <result column="month_jz_date" property="monthJzDate" jdbcType="DATE" />
+    <result column="xy_level" property="xyLevel" jdbcType="INTEGER" />
+    <result column="fp_typeid" property="fpTypeid" jdbcType="INTEGER" />
+    <result column="start_yuf_money" property="startYufMoney" jdbcType="DOUBLE" />
+    <result column="start_yinf_money" property="startYinfMoney" jdbcType="DOUBLE" />
+    <result column="last_yuf_money" property="lastYufMoney" jdbcType="DOUBLE" />
+    <result column="last_yinf_monet" property="lastYinfMonet" jdbcType="DOUBLE" />
+    <result column="yufzk_subjectid" property="yufzkSubjectid" jdbcType="INTEGER" />
+    <result column="yinfzk_subjectid" property="yinfzkSubjectid" jdbcType="INTEGER" />
+    <result column="yinfzg_subjectid" property="yinfzgSubjectid" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="bz1" property="bz1" jdbcType="INTEGER" />
+    <result column="bz2" property="bz2" jdbcType="INTEGER" />
+    <result column="bz3" property="bz3" jdbcType="VARCHAR" />
+    <result column="bz4" property="bz4" jdbcType="VARCHAR" />
+    <result column="bz5" property="bz5" jdbcType="VARCHAR" />
+    <result column="bz6" property="bz6" jdbcType="VARCHAR" />
+    <result column="bz7" property="bz7" jdbcType="VARCHAR" />
+    <result column="bz8" property="bz8" jdbcType="VARCHAR" />
+    <result column="bz9" property="bz9" jdbcType="VARCHAR" />
+    <result column="bz10" property="bz10" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    smid, smfname, smsname, smefname, smssname, smavid, smtypeid, smareaid, smcurrencyid, 
+    fz_man, lx_man, lx_phoneone, lx_phonetwo, lx_phonethree, lx_phone_mobile, yh_num, 
+    khyh_num, cg_man_id, sw_nums, zb_money, hy_type, e_mail, intel_address, cz_num, startcg_rk_date, 
+    startcg_th_date, nearcg_rk_date, nearcg_th_date, price_hs_bl, end_jy_date, zk_totalmoney, 
+    sy_money, fk_where, where_day, month_jz_date, xy_level, fp_typeid, start_yuf_money, 
+    start_yinf_money, last_yuf_money, last_yinf_monet, yufzk_subjectid, yinfzk_subjectid, 
+    yinfzg_subjectid, remark, bz1, bz2, bz3, bz4, bz5, bz6, bz7, bz8, bz9, bz10
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.SupplierMainExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from supplier_main
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from supplier_main
+    where smid = #{smid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from supplier_main
+    where smid = #{smid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.SupplierMainExample" >
+    delete from supplier_main
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.SupplierMain" >
+    insert into supplier_main (smid, smfname, smsname, 
+      smefname, smssname, smavid, 
+      smtypeid, smareaid, smcurrencyid, 
+      fz_man, lx_man, lx_phoneone, 
+      lx_phonetwo, lx_phonethree, lx_phone_mobile, 
+      yh_num, khyh_num, cg_man_id, 
+      sw_nums, zb_money, hy_type, 
+      e_mail, intel_address, cz_num, 
+      startcg_rk_date, startcg_th_date, nearcg_rk_date, 
+      nearcg_th_date, price_hs_bl, end_jy_date, 
+      zk_totalmoney, sy_money, fk_where, 
+      where_day, month_jz_date, xy_level, 
+      fp_typeid, start_yuf_money, start_yinf_money, 
+      last_yuf_money, last_yinf_monet, yufzk_subjectid, 
+      yinfzk_subjectid, yinfzg_subjectid, remark, 
+      bz1, bz2, bz3, bz4, 
+      bz5, bz6, bz7, bz8, 
+      bz9, bz10)
+    values (#{smid,jdbcType=INTEGER}, #{smfname,jdbcType=VARCHAR}, #{smsname,jdbcType=VARCHAR}, 
+      #{smefname,jdbcType=VARCHAR}, #{smssname,jdbcType=VARCHAR}, #{smavid,jdbcType=INTEGER}, 
+      #{smtypeid,jdbcType=INTEGER}, #{smareaid,jdbcType=INTEGER}, #{smcurrencyid,jdbcType=INTEGER}, 
+      #{fzMan,jdbcType=VARCHAR}, #{lxMan,jdbcType=VARCHAR}, #{lxPhoneone,jdbcType=VARCHAR}, 
+      #{lxPhonetwo,jdbcType=VARCHAR}, #{lxPhonethree,jdbcType=VARCHAR}, #{lxPhoneMobile,jdbcType=VARCHAR}, 
+      #{yhNum,jdbcType=VARCHAR}, #{khyhNum,jdbcType=INTEGER}, #{cgManId,jdbcType=INTEGER}, 
+      #{swNums,jdbcType=VARCHAR}, #{zbMoney,jdbcType=DOUBLE}, #{hyType,jdbcType=VARCHAR}, 
+      #{eMail,jdbcType=VARCHAR}, #{intelAddress,jdbcType=VARCHAR}, #{czNum,jdbcType=VARCHAR}, 
+      #{startcgRkDate,jdbcType=DATE}, #{startcgThDate,jdbcType=DATE}, #{nearcgRkDate,jdbcType=DATE}, 
+      #{nearcgThDate,jdbcType=DATE}, #{priceHsBl,jdbcType=BIT}, #{endJyDate,jdbcType=DATE}, 
+      #{zkTotalmoney,jdbcType=DOUBLE}, #{syMoney,jdbcType=DOUBLE}, #{fkWhere,jdbcType=INTEGER}, 
+      #{whereDay,jdbcType=INTEGER}, #{monthJzDate,jdbcType=DATE}, #{xyLevel,jdbcType=INTEGER}, 
+      #{fpTypeid,jdbcType=INTEGER}, #{startYufMoney,jdbcType=DOUBLE}, #{startYinfMoney,jdbcType=DOUBLE}, 
+      #{lastYufMoney,jdbcType=DOUBLE}, #{lastYinfMonet,jdbcType=DOUBLE}, #{yufzkSubjectid,jdbcType=INTEGER}, 
+      #{yinfzkSubjectid,jdbcType=INTEGER}, #{yinfzgSubjectid,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{bz1,jdbcType=INTEGER}, #{bz2,jdbcType=INTEGER}, #{bz3,jdbcType=VARCHAR}, #{bz4,jdbcType=VARCHAR}, 
+      #{bz5,jdbcType=VARCHAR}, #{bz6,jdbcType=VARCHAR}, #{bz7,jdbcType=VARCHAR}, #{bz8,jdbcType=VARCHAR}, 
+      #{bz9,jdbcType=VARCHAR}, #{bz10,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.SupplierMain" >
+    insert into supplier_main
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="smid != null" >
+        smid,
+      </if>
+      <if test="smfname != null" >
+        smfname,
+      </if>
+      <if test="smsname != null" >
+        smsname,
+      </if>
+      <if test="smefname != null" >
+        smefname,
+      </if>
+      <if test="smssname != null" >
+        smssname,
+      </if>
+      <if test="smavid != null" >
+        smavid,
+      </if>
+      <if test="smtypeid != null" >
+        smtypeid,
+      </if>
+      <if test="smareaid != null" >
+        smareaid,
+      </if>
+      <if test="smcurrencyid != null" >
+        smcurrencyid,
+      </if>
+      <if test="fzMan != null" >
+        fz_man,
+      </if>
+      <if test="lxMan != null" >
+        lx_man,
+      </if>
+      <if test="lxPhoneone != null" >
+        lx_phoneone,
+      </if>
+      <if test="lxPhonetwo != null" >
+        lx_phonetwo,
+      </if>
+      <if test="lxPhonethree != null" >
+        lx_phonethree,
+      </if>
+      <if test="lxPhoneMobile != null" >
+        lx_phone_mobile,
+      </if>
+      <if test="yhNum != null" >
+        yh_num,
+      </if>
+      <if test="khyhNum != null" >
+        khyh_num,
+      </if>
+      <if test="cgManId != null" >
+        cg_man_id,
+      </if>
+      <if test="swNums != null" >
+        sw_nums,
+      </if>
+      <if test="zbMoney != null" >
+        zb_money,
+      </if>
+      <if test="hyType != null" >
+        hy_type,
+      </if>
+      <if test="eMail != null" >
+        e_mail,
+      </if>
+      <if test="intelAddress != null" >
+        intel_address,
+      </if>
+      <if test="czNum != null" >
+        cz_num,
+      </if>
+      <if test="startcgRkDate != null" >
+        startcg_rk_date,
+      </if>
+      <if test="startcgThDate != null" >
+        startcg_th_date,
+      </if>
+      <if test="nearcgRkDate != null" >
+        nearcg_rk_date,
+      </if>
+      <if test="nearcgThDate != null" >
+        nearcg_th_date,
+      </if>
+      <if test="priceHsBl != null" >
+        price_hs_bl,
+      </if>
+      <if test="endJyDate != null" >
+        end_jy_date,
+      </if>
+      <if test="zkTotalmoney != null" >
+        zk_totalmoney,
+      </if>
+      <if test="syMoney != null" >
+        sy_money,
+      </if>
+      <if test="fkWhere != null" >
+        fk_where,
+      </if>
+      <if test="whereDay != null" >
+        where_day,
+      </if>
+      <if test="monthJzDate != null" >
+        month_jz_date,
+      </if>
+      <if test="xyLevel != null" >
+        xy_level,
+      </if>
+      <if test="fpTypeid != null" >
+        fp_typeid,
+      </if>
+      <if test="startYufMoney != null" >
+        start_yuf_money,
+      </if>
+      <if test="startYinfMoney != null" >
+        start_yinf_money,
+      </if>
+      <if test="lastYufMoney != null" >
+        last_yuf_money,
+      </if>
+      <if test="lastYinfMonet != null" >
+        last_yinf_monet,
+      </if>
+      <if test="yufzkSubjectid != null" >
+        yufzk_subjectid,
+      </if>
+      <if test="yinfzkSubjectid != null" >
+        yinfzk_subjectid,
+      </if>
+      <if test="yinfzgSubjectid != null" >
+        yinfzg_subjectid,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="bz1 != null" >
+        bz1,
+      </if>
+      <if test="bz2 != null" >
+        bz2,
+      </if>
+      <if test="bz3 != null" >
+        bz3,
+      </if>
+      <if test="bz4 != null" >
+        bz4,
+      </if>
+      <if test="bz5 != null" >
+        bz5,
+      </if>
+      <if test="bz6 != null" >
+        bz6,
+      </if>
+      <if test="bz7 != null" >
+        bz7,
+      </if>
+      <if test="bz8 != null" >
+        bz8,
+      </if>
+      <if test="bz9 != null" >
+        bz9,
+      </if>
+      <if test="bz10 != null" >
+        bz10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="smid != null" >
+        #{smid,jdbcType=INTEGER},
+      </if>
+      <if test="smfname != null" >
+        #{smfname,jdbcType=VARCHAR},
+      </if>
+      <if test="smsname != null" >
+        #{smsname,jdbcType=VARCHAR},
+      </if>
+      <if test="smefname != null" >
+        #{smefname,jdbcType=VARCHAR},
+      </if>
+      <if test="smssname != null" >
+        #{smssname,jdbcType=VARCHAR},
+      </if>
+      <if test="smavid != null" >
+        #{smavid,jdbcType=INTEGER},
+      </if>
+      <if test="smtypeid != null" >
+        #{smtypeid,jdbcType=INTEGER},
+      </if>
+      <if test="smareaid != null" >
+        #{smareaid,jdbcType=INTEGER},
+      </if>
+      <if test="smcurrencyid != null" >
+        #{smcurrencyid,jdbcType=INTEGER},
+      </if>
+      <if test="fzMan != null" >
+        #{fzMan,jdbcType=VARCHAR},
+      </if>
+      <if test="lxMan != null" >
+        #{lxMan,jdbcType=VARCHAR},
+      </if>
+      <if test="lxPhoneone != null" >
+        #{lxPhoneone,jdbcType=VARCHAR},
+      </if>
+      <if test="lxPhonetwo != null" >
+        #{lxPhonetwo,jdbcType=VARCHAR},
+      </if>
+      <if test="lxPhonethree != null" >
+        #{lxPhonethree,jdbcType=VARCHAR},
+      </if>
+      <if test="lxPhoneMobile != null" >
+        #{lxPhoneMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="yhNum != null" >
+        #{yhNum,jdbcType=VARCHAR},
+      </if>
+      <if test="khyhNum != null" >
+        #{khyhNum,jdbcType=INTEGER},
+      </if>
+      <if test="cgManId != null" >
+        #{cgManId,jdbcType=INTEGER},
+      </if>
+      <if test="swNums != null" >
+        #{swNums,jdbcType=VARCHAR},
+      </if>
+      <if test="zbMoney != null" >
+        #{zbMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="hyType != null" >
+        #{hyType,jdbcType=VARCHAR},
+      </if>
+      <if test="eMail != null" >
+        #{eMail,jdbcType=VARCHAR},
+      </if>
+      <if test="intelAddress != null" >
+        #{intelAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="czNum != null" >
+        #{czNum,jdbcType=VARCHAR},
+      </if>
+      <if test="startcgRkDate != null" >
+        #{startcgRkDate,jdbcType=DATE},
+      </if>
+      <if test="startcgThDate != null" >
+        #{startcgThDate,jdbcType=DATE},
+      </if>
+      <if test="nearcgRkDate != null" >
+        #{nearcgRkDate,jdbcType=DATE},
+      </if>
+      <if test="nearcgThDate != null" >
+        #{nearcgThDate,jdbcType=DATE},
+      </if>
+      <if test="priceHsBl != null" >
+        #{priceHsBl,jdbcType=BIT},
+      </if>
+      <if test="endJyDate != null" >
+        #{endJyDate,jdbcType=DATE},
+      </if>
+      <if test="zkTotalmoney != null" >
+        #{zkTotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="syMoney != null" >
+        #{syMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="fkWhere != null" >
+        #{fkWhere,jdbcType=INTEGER},
+      </if>
+      <if test="whereDay != null" >
+        #{whereDay,jdbcType=INTEGER},
+      </if>
+      <if test="monthJzDate != null" >
+        #{monthJzDate,jdbcType=DATE},
+      </if>
+      <if test="xyLevel != null" >
+        #{xyLevel,jdbcType=INTEGER},
+      </if>
+      <if test="fpTypeid != null" >
+        #{fpTypeid,jdbcType=INTEGER},
+      </if>
+      <if test="startYufMoney != null" >
+        #{startYufMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="startYinfMoney != null" >
+        #{startYinfMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="lastYufMoney != null" >
+        #{lastYufMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="lastYinfMonet != null" >
+        #{lastYinfMonet,jdbcType=DOUBLE},
+      </if>
+      <if test="yufzkSubjectid != null" >
+        #{yufzkSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="yinfzkSubjectid != null" >
+        #{yinfzkSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="yinfzgSubjectid != null" >
+        #{yinfzgSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="bz1 != null" >
+        #{bz1,jdbcType=INTEGER},
+      </if>
+      <if test="bz2 != null" >
+        #{bz2,jdbcType=INTEGER},
+      </if>
+      <if test="bz3 != null" >
+        #{bz3,jdbcType=VARCHAR},
+      </if>
+      <if test="bz4 != null" >
+        #{bz4,jdbcType=VARCHAR},
+      </if>
+      <if test="bz5 != null" >
+        #{bz5,jdbcType=VARCHAR},
+      </if>
+      <if test="bz6 != null" >
+        #{bz6,jdbcType=VARCHAR},
+      </if>
+      <if test="bz7 != null" >
+        #{bz7,jdbcType=VARCHAR},
+      </if>
+      <if test="bz8 != null" >
+        #{bz8,jdbcType=VARCHAR},
+      </if>
+      <if test="bz9 != null" >
+        #{bz9,jdbcType=VARCHAR},
+      </if>
+      <if test="bz10 != null" >
+        #{bz10,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.SupplierMainExample" resultType="java.lang.Integer" >
+    select count(*) from supplier_main
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update supplier_main
+    <set >
+      <if test="record.smid != null" >
+        smid = #{record.smid,jdbcType=INTEGER},
+      </if>
+      <if test="record.smfname != null" >
+        smfname = #{record.smfname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.smsname != null" >
+        smsname = #{record.smsname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.smefname != null" >
+        smefname = #{record.smefname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.smssname != null" >
+        smssname = #{record.smssname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.smavid != null" >
+        smavid = #{record.smavid,jdbcType=INTEGER},
+      </if>
+      <if test="record.smtypeid != null" >
+        smtypeid = #{record.smtypeid,jdbcType=INTEGER},
+      </if>
+      <if test="record.smareaid != null" >
+        smareaid = #{record.smareaid,jdbcType=INTEGER},
+      </if>
+      <if test="record.smcurrencyid != null" >
+        smcurrencyid = #{record.smcurrencyid,jdbcType=INTEGER},
+      </if>
+      <if test="record.fzMan != null" >
+        fz_man = #{record.fzMan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lxMan != null" >
+        lx_man = #{record.lxMan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lxPhoneone != null" >
+        lx_phoneone = #{record.lxPhoneone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lxPhonetwo != null" >
+        lx_phonetwo = #{record.lxPhonetwo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lxPhonethree != null" >
+        lx_phonethree = #{record.lxPhonethree,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lxPhoneMobile != null" >
+        lx_phone_mobile = #{record.lxPhoneMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yhNum != null" >
+        yh_num = #{record.yhNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.khyhNum != null" >
+        khyh_num = #{record.khyhNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.cgManId != null" >
+        cg_man_id = #{record.cgManId,jdbcType=INTEGER},
+      </if>
+      <if test="record.swNums != null" >
+        sw_nums = #{record.swNums,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zbMoney != null" >
+        zb_money = #{record.zbMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.hyType != null" >
+        hy_type = #{record.hyType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eMail != null" >
+        e_mail = #{record.eMail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.intelAddress != null" >
+        intel_address = #{record.intelAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czNum != null" >
+        cz_num = #{record.czNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.startcgRkDate != null" >
+        startcg_rk_date = #{record.startcgRkDate,jdbcType=DATE},
+      </if>
+      <if test="record.startcgThDate != null" >
+        startcg_th_date = #{record.startcgThDate,jdbcType=DATE},
+      </if>
+      <if test="record.nearcgRkDate != null" >
+        nearcg_rk_date = #{record.nearcgRkDate,jdbcType=DATE},
+      </if>
+      <if test="record.nearcgThDate != null" >
+        nearcg_th_date = #{record.nearcgThDate,jdbcType=DATE},
+      </if>
+      <if test="record.priceHsBl != null" >
+        price_hs_bl = #{record.priceHsBl,jdbcType=BIT},
+      </if>
+      <if test="record.endJyDate != null" >
+        end_jy_date = #{record.endJyDate,jdbcType=DATE},
+      </if>
+      <if test="record.zkTotalmoney != null" >
+        zk_totalmoney = #{record.zkTotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.syMoney != null" >
+        sy_money = #{record.syMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.fkWhere != null" >
+        fk_where = #{record.fkWhere,jdbcType=INTEGER},
+      </if>
+      <if test="record.whereDay != null" >
+        where_day = #{record.whereDay,jdbcType=INTEGER},
+      </if>
+      <if test="record.monthJzDate != null" >
+        month_jz_date = #{record.monthJzDate,jdbcType=DATE},
+      </if>
+      <if test="record.xyLevel != null" >
+        xy_level = #{record.xyLevel,jdbcType=INTEGER},
+      </if>
+      <if test="record.fpTypeid != null" >
+        fp_typeid = #{record.fpTypeid,jdbcType=INTEGER},
+      </if>
+      <if test="record.startYufMoney != null" >
+        start_yuf_money = #{record.startYufMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.startYinfMoney != null" >
+        start_yinf_money = #{record.startYinfMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.lastYufMoney != null" >
+        last_yuf_money = #{record.lastYufMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.lastYinfMonet != null" >
+        last_yinf_monet = #{record.lastYinfMonet,jdbcType=DOUBLE},
+      </if>
+      <if test="record.yufzkSubjectid != null" >
+        yufzk_subjectid = #{record.yufzkSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="record.yinfzkSubjectid != null" >
+        yinfzk_subjectid = #{record.yinfzkSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="record.yinfzgSubjectid != null" >
+        yinfzg_subjectid = #{record.yinfzgSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz1 != null" >
+        bz1 = #{record.bz1,jdbcType=INTEGER},
+      </if>
+      <if test="record.bz2 != null" >
+        bz2 = #{record.bz2,jdbcType=INTEGER},
+      </if>
+      <if test="record.bz3 != null" >
+        bz3 = #{record.bz3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz4 != null" >
+        bz4 = #{record.bz4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz5 != null" >
+        bz5 = #{record.bz5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz6 != null" >
+        bz6 = #{record.bz6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz7 != null" >
+        bz7 = #{record.bz7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz8 != null" >
+        bz8 = #{record.bz8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz9 != null" >
+        bz9 = #{record.bz9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz10 != null" >
+        bz10 = #{record.bz10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update supplier_main
+    set smid = #{record.smid,jdbcType=INTEGER},
+      smfname = #{record.smfname,jdbcType=VARCHAR},
+      smsname = #{record.smsname,jdbcType=VARCHAR},
+      smefname = #{record.smefname,jdbcType=VARCHAR},
+      smssname = #{record.smssname,jdbcType=VARCHAR},
+      smavid = #{record.smavid,jdbcType=INTEGER},
+      smtypeid = #{record.smtypeid,jdbcType=INTEGER},
+      smareaid = #{record.smareaid,jdbcType=INTEGER},
+      smcurrencyid = #{record.smcurrencyid,jdbcType=INTEGER},
+      fz_man = #{record.fzMan,jdbcType=VARCHAR},
+      lx_man = #{record.lxMan,jdbcType=VARCHAR},
+      lx_phoneone = #{record.lxPhoneone,jdbcType=VARCHAR},
+      lx_phonetwo = #{record.lxPhonetwo,jdbcType=VARCHAR},
+      lx_phonethree = #{record.lxPhonethree,jdbcType=VARCHAR},
+      lx_phone_mobile = #{record.lxPhoneMobile,jdbcType=VARCHAR},
+      yh_num = #{record.yhNum,jdbcType=VARCHAR},
+      khyh_num = #{record.khyhNum,jdbcType=INTEGER},
+      cg_man_id = #{record.cgManId,jdbcType=INTEGER},
+      sw_nums = #{record.swNums,jdbcType=VARCHAR},
+      zb_money = #{record.zbMoney,jdbcType=DOUBLE},
+      hy_type = #{record.hyType,jdbcType=VARCHAR},
+      e_mail = #{record.eMail,jdbcType=VARCHAR},
+      intel_address = #{record.intelAddress,jdbcType=VARCHAR},
+      cz_num = #{record.czNum,jdbcType=VARCHAR},
+      startcg_rk_date = #{record.startcgRkDate,jdbcType=DATE},
+      startcg_th_date = #{record.startcgThDate,jdbcType=DATE},
+      nearcg_rk_date = #{record.nearcgRkDate,jdbcType=DATE},
+      nearcg_th_date = #{record.nearcgThDate,jdbcType=DATE},
+      price_hs_bl = #{record.priceHsBl,jdbcType=BIT},
+      end_jy_date = #{record.endJyDate,jdbcType=DATE},
+      zk_totalmoney = #{record.zkTotalmoney,jdbcType=DOUBLE},
+      sy_money = #{record.syMoney,jdbcType=DOUBLE},
+      fk_where = #{record.fkWhere,jdbcType=INTEGER},
+      where_day = #{record.whereDay,jdbcType=INTEGER},
+      month_jz_date = #{record.monthJzDate,jdbcType=DATE},
+      xy_level = #{record.xyLevel,jdbcType=INTEGER},
+      fp_typeid = #{record.fpTypeid,jdbcType=INTEGER},
+      start_yuf_money = #{record.startYufMoney,jdbcType=DOUBLE},
+      start_yinf_money = #{record.startYinfMoney,jdbcType=DOUBLE},
+      last_yuf_money = #{record.lastYufMoney,jdbcType=DOUBLE},
+      last_yinf_monet = #{record.lastYinfMonet,jdbcType=DOUBLE},
+      yufzk_subjectid = #{record.yufzkSubjectid,jdbcType=INTEGER},
+      yinfzk_subjectid = #{record.yinfzkSubjectid,jdbcType=INTEGER},
+      yinfzg_subjectid = #{record.yinfzgSubjectid,jdbcType=INTEGER},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      bz1 = #{record.bz1,jdbcType=INTEGER},
+      bz2 = #{record.bz2,jdbcType=INTEGER},
+      bz3 = #{record.bz3,jdbcType=VARCHAR},
+      bz4 = #{record.bz4,jdbcType=VARCHAR},
+      bz5 = #{record.bz5,jdbcType=VARCHAR},
+      bz6 = #{record.bz6,jdbcType=VARCHAR},
+      bz7 = #{record.bz7,jdbcType=VARCHAR},
+      bz8 = #{record.bz8,jdbcType=VARCHAR},
+      bz9 = #{record.bz9,jdbcType=VARCHAR},
+      bz10 = #{record.bz10,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.SupplierMain" >
+    update supplier_main
+    <set >
+      <if test="smfname != null" >
+        smfname = #{smfname,jdbcType=VARCHAR},
+      </if>
+      <if test="smsname != null" >
+        smsname = #{smsname,jdbcType=VARCHAR},
+      </if>
+      <if test="smefname != null" >
+        smefname = #{smefname,jdbcType=VARCHAR},
+      </if>
+      <if test="smssname != null" >
+        smssname = #{smssname,jdbcType=VARCHAR},
+      </if>
+      <if test="smavid != null" >
+        smavid = #{smavid,jdbcType=INTEGER},
+      </if>
+      <if test="smtypeid != null" >
+        smtypeid = #{smtypeid,jdbcType=INTEGER},
+      </if>
+      <if test="smareaid != null" >
+        smareaid = #{smareaid,jdbcType=INTEGER},
+      </if>
+      <if test="smcurrencyid != null" >
+        smcurrencyid = #{smcurrencyid,jdbcType=INTEGER},
+      </if>
+      <if test="fzMan != null" >
+        fz_man = #{fzMan,jdbcType=VARCHAR},
+      </if>
+      <if test="lxMan != null" >
+        lx_man = #{lxMan,jdbcType=VARCHAR},
+      </if>
+      <if test="lxPhoneone != null" >
+        lx_phoneone = #{lxPhoneone,jdbcType=VARCHAR},
+      </if>
+      <if test="lxPhonetwo != null" >
+        lx_phonetwo = #{lxPhonetwo,jdbcType=VARCHAR},
+      </if>
+      <if test="lxPhonethree != null" >
+        lx_phonethree = #{lxPhonethree,jdbcType=VARCHAR},
+      </if>
+      <if test="lxPhoneMobile != null" >
+        lx_phone_mobile = #{lxPhoneMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="yhNum != null" >
+        yh_num = #{yhNum,jdbcType=VARCHAR},
+      </if>
+      <if test="khyhNum != null" >
+        khyh_num = #{khyhNum,jdbcType=INTEGER},
+      </if>
+      <if test="cgManId != null" >
+        cg_man_id = #{cgManId,jdbcType=INTEGER},
+      </if>
+      <if test="swNums != null" >
+        sw_nums = #{swNums,jdbcType=VARCHAR},
+      </if>
+      <if test="zbMoney != null" >
+        zb_money = #{zbMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="hyType != null" >
+        hy_type = #{hyType,jdbcType=VARCHAR},
+      </if>
+      <if test="eMail != null" >
+        e_mail = #{eMail,jdbcType=VARCHAR},
+      </if>
+      <if test="intelAddress != null" >
+        intel_address = #{intelAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="czNum != null" >
+        cz_num = #{czNum,jdbcType=VARCHAR},
+      </if>
+      <if test="startcgRkDate != null" >
+        startcg_rk_date = #{startcgRkDate,jdbcType=DATE},
+      </if>
+      <if test="startcgThDate != null" >
+        startcg_th_date = #{startcgThDate,jdbcType=DATE},
+      </if>
+      <if test="nearcgRkDate != null" >
+        nearcg_rk_date = #{nearcgRkDate,jdbcType=DATE},
+      </if>
+      <if test="nearcgThDate != null" >
+        nearcg_th_date = #{nearcgThDate,jdbcType=DATE},
+      </if>
+      <if test="priceHsBl != null" >
+        price_hs_bl = #{priceHsBl,jdbcType=BIT},
+      </if>
+      <if test="endJyDate != null" >
+        end_jy_date = #{endJyDate,jdbcType=DATE},
+      </if>
+      <if test="zkTotalmoney != null" >
+        zk_totalmoney = #{zkTotalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="syMoney != null" >
+        sy_money = #{syMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="fkWhere != null" >
+        fk_where = #{fkWhere,jdbcType=INTEGER},
+      </if>
+      <if test="whereDay != null" >
+        where_day = #{whereDay,jdbcType=INTEGER},
+      </if>
+      <if test="monthJzDate != null" >
+        month_jz_date = #{monthJzDate,jdbcType=DATE},
+      </if>
+      <if test="xyLevel != null" >
+        xy_level = #{xyLevel,jdbcType=INTEGER},
+      </if>
+      <if test="fpTypeid != null" >
+        fp_typeid = #{fpTypeid,jdbcType=INTEGER},
+      </if>
+      <if test="startYufMoney != null" >
+        start_yuf_money = #{startYufMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="startYinfMoney != null" >
+        start_yinf_money = #{startYinfMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="lastYufMoney != null" >
+        last_yuf_money = #{lastYufMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="lastYinfMonet != null" >
+        last_yinf_monet = #{lastYinfMonet,jdbcType=DOUBLE},
+      </if>
+      <if test="yufzkSubjectid != null" >
+        yufzk_subjectid = #{yufzkSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="yinfzkSubjectid != null" >
+        yinfzk_subjectid = #{yinfzkSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="yinfzgSubjectid != null" >
+        yinfzg_subjectid = #{yinfzgSubjectid,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="bz1 != null" >
+        bz1 = #{bz1,jdbcType=INTEGER},
+      </if>
+      <if test="bz2 != null" >
+        bz2 = #{bz2,jdbcType=INTEGER},
+      </if>
+      <if test="bz3 != null" >
+        bz3 = #{bz3,jdbcType=VARCHAR},
+      </if>
+      <if test="bz4 != null" >
+        bz4 = #{bz4,jdbcType=VARCHAR},
+      </if>
+      <if test="bz5 != null" >
+        bz5 = #{bz5,jdbcType=VARCHAR},
+      </if>
+      <if test="bz6 != null" >
+        bz6 = #{bz6,jdbcType=VARCHAR},
+      </if>
+      <if test="bz7 != null" >
+        bz7 = #{bz7,jdbcType=VARCHAR},
+      </if>
+      <if test="bz8 != null" >
+        bz8 = #{bz8,jdbcType=VARCHAR},
+      </if>
+      <if test="bz9 != null" >
+        bz9 = #{bz9,jdbcType=VARCHAR},
+      </if>
+      <if test="bz10 != null" >
+        bz10 = #{bz10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where smid = #{smid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.SupplierMain" >
+    update supplier_main
+    set smfname = #{smfname,jdbcType=VARCHAR},
+      smsname = #{smsname,jdbcType=VARCHAR},
+      smefname = #{smefname,jdbcType=VARCHAR},
+      smssname = #{smssname,jdbcType=VARCHAR},
+      smavid = #{smavid,jdbcType=INTEGER},
+      smtypeid = #{smtypeid,jdbcType=INTEGER},
+      smareaid = #{smareaid,jdbcType=INTEGER},
+      smcurrencyid = #{smcurrencyid,jdbcType=INTEGER},
+      fz_man = #{fzMan,jdbcType=VARCHAR},
+      lx_man = #{lxMan,jdbcType=VARCHAR},
+      lx_phoneone = #{lxPhoneone,jdbcType=VARCHAR},
+      lx_phonetwo = #{lxPhonetwo,jdbcType=VARCHAR},
+      lx_phonethree = #{lxPhonethree,jdbcType=VARCHAR},
+      lx_phone_mobile = #{lxPhoneMobile,jdbcType=VARCHAR},
+      yh_num = #{yhNum,jdbcType=VARCHAR},
+      khyh_num = #{khyhNum,jdbcType=INTEGER},
+      cg_man_id = #{cgManId,jdbcType=INTEGER},
+      sw_nums = #{swNums,jdbcType=VARCHAR},
+      zb_money = #{zbMoney,jdbcType=DOUBLE},
+      hy_type = #{hyType,jdbcType=VARCHAR},
+      e_mail = #{eMail,jdbcType=VARCHAR},
+      intel_address = #{intelAddress,jdbcType=VARCHAR},
+      cz_num = #{czNum,jdbcType=VARCHAR},
+      startcg_rk_date = #{startcgRkDate,jdbcType=DATE},
+      startcg_th_date = #{startcgThDate,jdbcType=DATE},
+      nearcg_rk_date = #{nearcgRkDate,jdbcType=DATE},
+      nearcg_th_date = #{nearcgThDate,jdbcType=DATE},
+      price_hs_bl = #{priceHsBl,jdbcType=BIT},
+      end_jy_date = #{endJyDate,jdbcType=DATE},
+      zk_totalmoney = #{zkTotalmoney,jdbcType=DOUBLE},
+      sy_money = #{syMoney,jdbcType=DOUBLE},
+      fk_where = #{fkWhere,jdbcType=INTEGER},
+      where_day = #{whereDay,jdbcType=INTEGER},
+      month_jz_date = #{monthJzDate,jdbcType=DATE},
+      xy_level = #{xyLevel,jdbcType=INTEGER},
+      fp_typeid = #{fpTypeid,jdbcType=INTEGER},
+      start_yuf_money = #{startYufMoney,jdbcType=DOUBLE},
+      start_yinf_money = #{startYinfMoney,jdbcType=DOUBLE},
+      last_yuf_money = #{lastYufMoney,jdbcType=DOUBLE},
+      last_yinf_monet = #{lastYinfMonet,jdbcType=DOUBLE},
+      yufzk_subjectid = #{yufzkSubjectid,jdbcType=INTEGER},
+      yinfzk_subjectid = #{yinfzkSubjectid,jdbcType=INTEGER},
+      yinfzg_subjectid = #{yinfzgSubjectid,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      bz1 = #{bz1,jdbcType=INTEGER},
+      bz2 = #{bz2,jdbcType=INTEGER},
+      bz3 = #{bz3,jdbcType=VARCHAR},
+      bz4 = #{bz4,jdbcType=VARCHAR},
+      bz5 = #{bz5,jdbcType=VARCHAR},
+      bz6 = #{bz6,jdbcType=VARCHAR},
+      bz7 = #{bz7,jdbcType=VARCHAR},
+      bz8 = #{bz8,jdbcType=VARCHAR},
+      bz9 = #{bz9,jdbcType=VARCHAR},
+      bz10 = #{bz10,jdbcType=VARCHAR}
+    where smid = #{smid,jdbcType=INTEGER}
+  </update>
+</mapper>

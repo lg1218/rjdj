@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.SSellCancelparticularMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.SSellCancelparticular" >
+    <id column="cpa_id" property="cpaId" jdbcType="INTEGER" />
+    <id column="ca_id" property="caId" jdbcType="VARCHAR" />
+    <result column="cpa_materielid" property="cpaMaterielid" jdbcType="VARCHAR" />
+    <result column="cpa_materielname" property="cpaMaterielname" jdbcType="VARCHAR" />
+    <result column="cpa_order" property="cpaOrder" jdbcType="VARCHAR" />
+    <result column="cpa_number" property="cpaNumber" jdbcType="VARCHAR" />
+    <result column="cpa_beione" property="cpaBeione" jdbcType="VARCHAR" />
+    <result column="cpa_beitwo" property="cpaBeitwo" jdbcType="VARCHAR" />
+    <result column="cpa_beithree" property="cpaBeithree" jdbcType="VARCHAR" />
+    <result column="cpa_state" property="cpaState" jdbcType="INTEGER" />
+    <result column="cpa_totalcost" property="cpaTotalcost" jdbcType="DOUBLE" />
+    <result column="cpa_standcost" property="cpaStandcost" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    cpa_id, ca_id, cpa_materielid, cpa_materielname, cpa_order, cpa_number, cpa_beione, 
+    cpa_beitwo, cpa_beithree, cpa_state, cpa_totalcost, cpa_standcost
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.SSellCancelparticularExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from s_sell_cancelparticular
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.accp.domain.SSellCancelparticularKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from s_sell_cancelparticular
+    where cpa_id = #{cpaId,jdbcType=INTEGER}
+      and ca_id = #{caId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.accp.domain.SSellCancelparticularKey" >
+    delete from s_sell_cancelparticular
+    where cpa_id = #{cpaId,jdbcType=INTEGER}
+      and ca_id = #{caId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.SSellCancelparticularExample" >
+    delete from s_sell_cancelparticular
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.SSellCancelparticular" >
+    insert into s_sell_cancelparticular (cpa_id, ca_id, cpa_materielid, 
+      cpa_materielname, cpa_order, cpa_number, 
+      cpa_beione, cpa_beitwo, cpa_beithree, 
+      cpa_state, cpa_totalcost, cpa_standcost
+      )
+    values (#{cpaId,jdbcType=INTEGER}, #{caId,jdbcType=VARCHAR}, #{cpaMaterielid,jdbcType=VARCHAR}, 
+      #{cpaMaterielname,jdbcType=VARCHAR}, #{cpaOrder,jdbcType=VARCHAR}, #{cpaNumber,jdbcType=VARCHAR}, 
+      #{cpaBeione,jdbcType=VARCHAR}, #{cpaBeitwo,jdbcType=VARCHAR}, #{cpaBeithree,jdbcType=VARCHAR}, 
+      #{cpaState,jdbcType=INTEGER}, #{cpaTotalcost,jdbcType=DOUBLE}, #{cpaStandcost,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.SSellCancelparticular" >
+    insert into s_sell_cancelparticular
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cpaId != null" >
+        cpa_id,
+      </if>
+      <if test="caId != null" >
+        ca_id,
+      </if>
+      <if test="cpaMaterielid != null" >
+        cpa_materielid,
+      </if>
+      <if test="cpaMaterielname != null" >
+        cpa_materielname,
+      </if>
+      <if test="cpaOrder != null" >
+        cpa_order,
+      </if>
+      <if test="cpaNumber != null" >
+        cpa_number,
+      </if>
+      <if test="cpaBeione != null" >
+        cpa_beione,
+      </if>
+      <if test="cpaBeitwo != null" >
+        cpa_beitwo,
+      </if>
+      <if test="cpaBeithree != null" >
+        cpa_beithree,
+      </if>
+      <if test="cpaState != null" >
+        cpa_state,
+      </if>
+      <if test="cpaTotalcost != null" >
+        cpa_totalcost,
+      </if>
+      <if test="cpaStandcost != null" >
+        cpa_standcost,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cpaId != null" >
+        #{cpaId,jdbcType=INTEGER},
+      </if>
+      <if test="caId != null" >
+        #{caId,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaMaterielid != null" >
+        #{cpaMaterielid,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaMaterielname != null" >
+        #{cpaMaterielname,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaOrder != null" >
+        #{cpaOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaNumber != null" >
+        #{cpaNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaBeione != null" >
+        #{cpaBeione,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaBeitwo != null" >
+        #{cpaBeitwo,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaBeithree != null" >
+        #{cpaBeithree,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaState != null" >
+        #{cpaState,jdbcType=INTEGER},
+      </if>
+      <if test="cpaTotalcost != null" >
+        #{cpaTotalcost,jdbcType=DOUBLE},
+      </if>
+      <if test="cpaStandcost != null" >
+        #{cpaStandcost,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.SSellCancelparticularExample" resultType="java.lang.Integer" >
+    select count(*) from s_sell_cancelparticular
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update s_sell_cancelparticular
+    <set >
+      <if test="record.cpaId != null" >
+        cpa_id = #{record.cpaId,jdbcType=INTEGER},
+      </if>
+      <if test="record.caId != null" >
+        ca_id = #{record.caId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cpaMaterielid != null" >
+        cpa_materielid = #{record.cpaMaterielid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cpaMaterielname != null" >
+        cpa_materielname = #{record.cpaMaterielname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cpaOrder != null" >
+        cpa_order = #{record.cpaOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cpaNumber != null" >
+        cpa_number = #{record.cpaNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cpaBeione != null" >
+        cpa_beione = #{record.cpaBeione,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cpaBeitwo != null" >
+        cpa_beitwo = #{record.cpaBeitwo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cpaBeithree != null" >
+        cpa_beithree = #{record.cpaBeithree,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cpaState != null" >
+        cpa_state = #{record.cpaState,jdbcType=INTEGER},
+      </if>
+      <if test="record.cpaTotalcost != null" >
+        cpa_totalcost = #{record.cpaTotalcost,jdbcType=DOUBLE},
+      </if>
+      <if test="record.cpaStandcost != null" >
+        cpa_standcost = #{record.cpaStandcost,jdbcType=DOUBLE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update s_sell_cancelparticular
+    set cpa_id = #{record.cpaId,jdbcType=INTEGER},
+      ca_id = #{record.caId,jdbcType=VARCHAR},
+      cpa_materielid = #{record.cpaMaterielid,jdbcType=VARCHAR},
+      cpa_materielname = #{record.cpaMaterielname,jdbcType=VARCHAR},
+      cpa_order = #{record.cpaOrder,jdbcType=VARCHAR},
+      cpa_number = #{record.cpaNumber,jdbcType=VARCHAR},
+      cpa_beione = #{record.cpaBeione,jdbcType=VARCHAR},
+      cpa_beitwo = #{record.cpaBeitwo,jdbcType=VARCHAR},
+      cpa_beithree = #{record.cpaBeithree,jdbcType=VARCHAR},
+      cpa_state = #{record.cpaState,jdbcType=INTEGER},
+      cpa_totalcost = #{record.cpaTotalcost,jdbcType=DOUBLE},
+      cpa_standcost = #{record.cpaStandcost,jdbcType=DOUBLE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.SSellCancelparticular" >
+    update s_sell_cancelparticular
+    <set >
+      <if test="cpaMaterielid != null" >
+        cpa_materielid = #{cpaMaterielid,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaMaterielname != null" >
+        cpa_materielname = #{cpaMaterielname,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaOrder != null" >
+        cpa_order = #{cpaOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaNumber != null" >
+        cpa_number = #{cpaNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaBeione != null" >
+        cpa_beione = #{cpaBeione,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaBeitwo != null" >
+        cpa_beitwo = #{cpaBeitwo,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaBeithree != null" >
+        cpa_beithree = #{cpaBeithree,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaState != null" >
+        cpa_state = #{cpaState,jdbcType=INTEGER},
+      </if>
+      <if test="cpaTotalcost != null" >
+        cpa_totalcost = #{cpaTotalcost,jdbcType=DOUBLE},
+      </if>
+      <if test="cpaStandcost != null" >
+        cpa_standcost = #{cpaStandcost,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where cpa_id = #{cpaId,jdbcType=INTEGER}
+      and ca_id = #{caId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.SSellCancelparticular" >
+    update s_sell_cancelparticular
+    set cpa_materielid = #{cpaMaterielid,jdbcType=VARCHAR},
+      cpa_materielname = #{cpaMaterielname,jdbcType=VARCHAR},
+      cpa_order = #{cpaOrder,jdbcType=VARCHAR},
+      cpa_number = #{cpaNumber,jdbcType=VARCHAR},
+      cpa_beione = #{cpaBeione,jdbcType=VARCHAR},
+      cpa_beitwo = #{cpaBeitwo,jdbcType=VARCHAR},
+      cpa_beithree = #{cpaBeithree,jdbcType=VARCHAR},
+      cpa_state = #{cpaState,jdbcType=INTEGER},
+      cpa_totalcost = #{cpaTotalcost,jdbcType=DOUBLE},
+      cpa_standcost = #{cpaStandcost,jdbcType=DOUBLE}
+    where cpa_id = #{cpaId,jdbcType=INTEGER}
+      and ca_id = #{caId,jdbcType=VARCHAR}
+  </update>
+</mapper>

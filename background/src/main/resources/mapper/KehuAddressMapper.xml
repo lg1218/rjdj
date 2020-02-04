@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.KehuAddressMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.KehuAddress" >
+    <id column="kud_id" property="kudId" jdbcType="INTEGER" />
+    <result column="kud_name" property="kudName" jdbcType="VARCHAR" />
+    <result column="kud_ename" property="kudEname" jdbcType="VARCHAR" />
+    <result column="kud_remark" property="kudRemark" jdbcType="VARCHAR" />
+    <result column="kud_Bz1" property="kudBz1" jdbcType="VARCHAR" />
+    <result column="kud_Bz2" property="kudBz2" jdbcType="VARCHAR" />
+    <result column="bz3" property="bz3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    kud_id, kud_name, kud_ename, kud_remark, kud_Bz1, kud_Bz2, bz3
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.KehuAddressExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from kehu_address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from kehu_address
+    where kud_id = #{kudId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from kehu_address
+    where kud_id = #{kudId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.KehuAddressExample" >
+    delete from kehu_address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.KehuAddress" >
+    insert into kehu_address (kud_id, kud_name, kud_ename, 
+      kud_remark, kud_Bz1, kud_Bz2, 
+      bz3)
+    values (#{kudId,jdbcType=INTEGER}, #{kudName,jdbcType=VARCHAR}, #{kudEname,jdbcType=VARCHAR}, 
+      #{kudRemark,jdbcType=VARCHAR}, #{kudBz1,jdbcType=VARCHAR}, #{kudBz2,jdbcType=VARCHAR}, 
+      #{bz3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.KehuAddress" >
+    insert into kehu_address
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="kudId != null" >
+        kud_id,
+      </if>
+      <if test="kudName != null" >
+        kud_name,
+      </if>
+      <if test="kudEname != null" >
+        kud_ename,
+      </if>
+      <if test="kudRemark != null" >
+        kud_remark,
+      </if>
+      <if test="kudBz1 != null" >
+        kud_Bz1,
+      </if>
+      <if test="kudBz2 != null" >
+        kud_Bz2,
+      </if>
+      <if test="bz3 != null" >
+        bz3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="kudId != null" >
+        #{kudId,jdbcType=INTEGER},
+      </if>
+      <if test="kudName != null" >
+        #{kudName,jdbcType=VARCHAR},
+      </if>
+      <if test="kudEname != null" >
+        #{kudEname,jdbcType=VARCHAR},
+      </if>
+      <if test="kudRemark != null" >
+        #{kudRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="kudBz1 != null" >
+        #{kudBz1,jdbcType=VARCHAR},
+      </if>
+      <if test="kudBz2 != null" >
+        #{kudBz2,jdbcType=VARCHAR},
+      </if>
+      <if test="bz3 != null" >
+        #{bz3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.KehuAddressExample" resultType="java.lang.Integer" >
+    select count(*) from kehu_address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update kehu_address
+    <set >
+      <if test="record.kudId != null" >
+        kud_id = #{record.kudId,jdbcType=INTEGER},
+      </if>
+      <if test="record.kudName != null" >
+        kud_name = #{record.kudName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kudEname != null" >
+        kud_ename = #{record.kudEname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kudRemark != null" >
+        kud_remark = #{record.kudRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kudBz1 != null" >
+        kud_Bz1 = #{record.kudBz1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kudBz2 != null" >
+        kud_Bz2 = #{record.kudBz2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz3 != null" >
+        bz3 = #{record.bz3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update kehu_address
+    set kud_id = #{record.kudId,jdbcType=INTEGER},
+      kud_name = #{record.kudName,jdbcType=VARCHAR},
+      kud_ename = #{record.kudEname,jdbcType=VARCHAR},
+      kud_remark = #{record.kudRemark,jdbcType=VARCHAR},
+      kud_Bz1 = #{record.kudBz1,jdbcType=VARCHAR},
+      kud_Bz2 = #{record.kudBz2,jdbcType=VARCHAR},
+      bz3 = #{record.bz3,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.KehuAddress" >
+    update kehu_address
+    <set >
+      <if test="kudName != null" >
+        kud_name = #{kudName,jdbcType=VARCHAR},
+      </if>
+      <if test="kudEname != null" >
+        kud_ename = #{kudEname,jdbcType=VARCHAR},
+      </if>
+      <if test="kudRemark != null" >
+        kud_remark = #{kudRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="kudBz1 != null" >
+        kud_Bz1 = #{kudBz1,jdbcType=VARCHAR},
+      </if>
+      <if test="kudBz2 != null" >
+        kud_Bz2 = #{kudBz2,jdbcType=VARCHAR},
+      </if>
+      <if test="bz3 != null" >
+        bz3 = #{bz3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where kud_id = #{kudId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.KehuAddress" >
+    update kehu_address
+    set kud_name = #{kudName,jdbcType=VARCHAR},
+      kud_ename = #{kudEname,jdbcType=VARCHAR},
+      kud_remark = #{kudRemark,jdbcType=VARCHAR},
+      kud_Bz1 = #{kudBz1,jdbcType=VARCHAR},
+      kud_Bz2 = #{kudBz2,jdbcType=VARCHAR},
+      bz3 = #{bz3,jdbcType=VARCHAR}
+    where kud_id = #{kudId,jdbcType=INTEGER}
+  </update>
+</mapper>

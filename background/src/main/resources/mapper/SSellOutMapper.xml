@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.SSellOutMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.SSellOut" >
+    <id column="ou_number" property="ouNumber" jdbcType="VARCHAR" />
+    <result column="ou_data" property="ouData" jdbcType="DATE" />
+    <result column="ou_clientName" property="ouClientname" jdbcType="VARCHAR" />
+    <result column="ou_location" property="ouLocation" jdbcType="VARCHAR" />
+    <result column="ou_tax" property="ouTax" jdbcType="INTEGER" />
+    <result column="ou_storage" property="ouStorage" jdbcType="VARCHAR" />
+    <result column="ou_storageType" property="ouStoragetype" jdbcType="VARCHAR" />
+    <result column="ou_RMB" property="ouRmb" jdbcType="VARCHAR" />
+    <result column="ou_parities" property="ouParities" jdbcType="INTEGER" />
+    <result column="ou_salesman" property="ouSalesman" jdbcType="VARCHAR" />
+    <result column="ou_department" property="ouDepartment" jdbcType="VARCHAR" />
+    <result column="ou_debtBelong" property="ouDebtbelong" jdbcType="VARCHAR" />
+    <result column="ou_deDate" property="ouDedate" jdbcType="DATE" />
+    <result column="ou_debtType" property="ouDebttype" jdbcType="VARCHAR" />
+    <result column="ou_deYear" property="ouDeyear" jdbcType="INTEGER" />
+    <result column="ou_debtMonth" property="ouDebtmonth" jdbcType="DATE" />
+    <result column="ou_neoStaff" property="ouNeostaff" jdbcType="VARCHAR" />
+    <result column="ou_checkStaff" property="ouCheckstaff" jdbcType="VARCHAR" />
+    <result column="ou_item" property="ouItem" jdbcType="VARCHAR" />
+    <result column="ou_byzd1" property="ouByzd1" jdbcType="VARCHAR" />
+    <result column="ou_byzd2" property="ouByzd2" jdbcType="VARCHAR" />
+    <result column="ou_byzd3" property="ouByzd3" jdbcType="VARCHAR" />
+    <result column="ou_byzd4" property="ouByzd4" jdbcType="VARCHAR" />
+    <result column="ou_byzd5" property="ouByzd5" jdbcType="VARCHAR" />
+    <result column="ou_byzd6" property="ouByzd6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ou_number, ou_data, ou_clientName, ou_location, ou_tax, ou_storage, ou_storageType, 
+    ou_RMB, ou_parities, ou_salesman, ou_department, ou_debtBelong, ou_deDate, ou_debtType, 
+    ou_deYear, ou_debtMonth, ou_neoStaff, ou_checkStaff, ou_item, ou_byzd1, ou_byzd2, 
+    ou_byzd3, ou_byzd4, ou_byzd5, ou_byzd6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.SSellOutExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from s_sell_out
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from s_sell_out
+    where ou_number = #{ouNumber,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from s_sell_out
+    where ou_number = #{ouNumber,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.SSellOutExample" >
+    delete from s_sell_out
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.SSellOut" >
+    insert into s_sell_out (ou_number, ou_data, ou_clientName, 
+      ou_location, ou_tax, ou_storage, 
+      ou_storageType, ou_RMB, ou_parities, 
+      ou_salesman, ou_department, ou_debtBelong, 
+      ou_deDate, ou_debtType, ou_deYear, 
+      ou_debtMonth, ou_neoStaff, ou_checkStaff, 
+      ou_item, ou_byzd1, ou_byzd2, 
+      ou_byzd3, ou_byzd4, ou_byzd5, 
+      ou_byzd6)
+    values (#{ouNumber,jdbcType=VARCHAR}, #{ouData,jdbcType=DATE}, #{ouClientname,jdbcType=VARCHAR}, 
+      #{ouLocation,jdbcType=VARCHAR}, #{ouTax,jdbcType=INTEGER}, #{ouStorage,jdbcType=VARCHAR}, 
+      #{ouStoragetype,jdbcType=VARCHAR}, #{ouRmb,jdbcType=VARCHAR}, #{ouParities,jdbcType=INTEGER}, 
+      #{ouSalesman,jdbcType=VARCHAR}, #{ouDepartment,jdbcType=VARCHAR}, #{ouDebtbelong,jdbcType=VARCHAR}, 
+      #{ouDedate,jdbcType=DATE}, #{ouDebttype,jdbcType=VARCHAR}, #{ouDeyear,jdbcType=INTEGER}, 
+      #{ouDebtmonth,jdbcType=DATE}, #{ouNeostaff,jdbcType=VARCHAR}, #{ouCheckstaff,jdbcType=VARCHAR}, 
+      #{ouItem,jdbcType=VARCHAR}, #{ouByzd1,jdbcType=VARCHAR}, #{ouByzd2,jdbcType=VARCHAR}, 
+      #{ouByzd3,jdbcType=VARCHAR}, #{ouByzd4,jdbcType=VARCHAR}, #{ouByzd5,jdbcType=VARCHAR}, 
+      #{ouByzd6,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.SSellOut" >
+    insert into s_sell_out
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ouNumber != null" >
+        ou_number,
+      </if>
+      <if test="ouData != null" >
+        ou_data,
+      </if>
+      <if test="ouClientname != null" >
+        ou_clientName,
+      </if>
+      <if test="ouLocation != null" >
+        ou_location,
+      </if>
+      <if test="ouTax != null" >
+        ou_tax,
+      </if>
+      <if test="ouStorage != null" >
+        ou_storage,
+      </if>
+      <if test="ouStoragetype != null" >
+        ou_storageType,
+      </if>
+      <if test="ouRmb != null" >
+        ou_RMB,
+      </if>
+      <if test="ouParities != null" >
+        ou_parities,
+      </if>
+      <if test="ouSalesman != null" >
+        ou_salesman,
+      </if>
+      <if test="ouDepartment != null" >
+        ou_department,
+      </if>
+      <if test="ouDebtbelong != null" >
+        ou_debtBelong,
+      </if>
+      <if test="ouDedate != null" >
+        ou_deDate,
+      </if>
+      <if test="ouDebttype != null" >
+        ou_debtType,
+      </if>
+      <if test="ouDeyear != null" >
+        ou_deYear,
+      </if>
+      <if test="ouDebtmonth != null" >
+        ou_debtMonth,
+      </if>
+      <if test="ouNeostaff != null" >
+        ou_neoStaff,
+      </if>
+      <if test="ouCheckstaff != null" >
+        ou_checkStaff,
+      </if>
+      <if test="ouItem != null" >
+        ou_item,
+      </if>
+      <if test="ouByzd1 != null" >
+        ou_byzd1,
+      </if>
+      <if test="ouByzd2 != null" >
+        ou_byzd2,
+      </if>
+      <if test="ouByzd3 != null" >
+        ou_byzd3,
+      </if>
+      <if test="ouByzd4 != null" >
+        ou_byzd4,
+      </if>
+      <if test="ouByzd5 != null" >
+        ou_byzd5,
+      </if>
+      <if test="ouByzd6 != null" >
+        ou_byzd6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ouNumber != null" >
+        #{ouNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="ouData != null" >
+        #{ouData,jdbcType=DATE},
+      </if>
+      <if test="ouClientname != null" >
+        #{ouClientname,jdbcType=VARCHAR},
+      </if>
+      <if test="ouLocation != null" >
+        #{ouLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="ouTax != null" >
+        #{ouTax,jdbcType=INTEGER},
+      </if>
+      <if test="ouStorage != null" >
+        #{ouStorage,jdbcType=VARCHAR},
+      </if>
+      <if test="ouStoragetype != null" >
+        #{ouStoragetype,jdbcType=VARCHAR},
+      </if>
+      <if test="ouRmb != null" >
+        #{ouRmb,jdbcType=VARCHAR},
+      </if>
+      <if test="ouParities != null" >
+        #{ouParities,jdbcType=INTEGER},
+      </if>
+      <if test="ouSalesman != null" >
+        #{ouSalesman,jdbcType=VARCHAR},
+      </if>
+      <if test="ouDepartment != null" >
+        #{ouDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="ouDebtbelong != null" >
+        #{ouDebtbelong,jdbcType=VARCHAR},
+      </if>
+      <if test="ouDedate != null" >
+        #{ouDedate,jdbcType=DATE},
+      </if>
+      <if test="ouDebttype != null" >
+        #{ouDebttype,jdbcType=VARCHAR},
+      </if>
+      <if test="ouDeyear != null" >
+        #{ouDeyear,jdbcType=INTEGER},
+      </if>
+      <if test="ouDebtmonth != null" >
+        #{ouDebtmonth,jdbcType=DATE},
+      </if>
+      <if test="ouNeostaff != null" >
+        #{ouNeostaff,jdbcType=VARCHAR},
+      </if>
+      <if test="ouCheckstaff != null" >
+        #{ouCheckstaff,jdbcType=VARCHAR},
+      </if>
+      <if test="ouItem != null" >
+        #{ouItem,jdbcType=VARCHAR},
+      </if>
+      <if test="ouByzd1 != null" >
+        #{ouByzd1,jdbcType=VARCHAR},
+      </if>
+      <if test="ouByzd2 != null" >
+        #{ouByzd2,jdbcType=VARCHAR},
+      </if>
+      <if test="ouByzd3 != null" >
+        #{ouByzd3,jdbcType=VARCHAR},
+      </if>
+      <if test="ouByzd4 != null" >
+        #{ouByzd4,jdbcType=VARCHAR},
+      </if>
+      <if test="ouByzd5 != null" >
+        #{ouByzd5,jdbcType=VARCHAR},
+      </if>
+      <if test="ouByzd6 != null" >
+        #{ouByzd6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.SSellOutExample" resultType="java.lang.Integer" >
+    select count(*) from s_sell_out
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update s_sell_out
+    <set >
+      <if test="record.ouNumber != null" >
+        ou_number = #{record.ouNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ouData != null" >
+        ou_data = #{record.ouData,jdbcType=DATE},
+      </if>
+      <if test="record.ouClientname != null" >
+        ou_clientName = #{record.ouClientname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ouLocation != null" >
+        ou_location = #{record.ouLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ouTax != null" >
+        ou_tax = #{record.ouTax,jdbcType=INTEGER},
+      </if>
+      <if test="record.ouStorage != null" >
+        ou_storage = #{record.ouStorage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ouStoragetype != null" >
+        ou_storageType = #{record.ouStoragetype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ouRmb != null" >
+        ou_RMB = #{record.ouRmb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ouParities != null" >
+        ou_parities = #{record.ouParities,jdbcType=INTEGER},
+      </if>
+      <if test="record.ouSalesman != null" >
+        ou_salesman = #{record.ouSalesman,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ouDepartment != null" >
+        ou_department = #{record.ouDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ouDebtbelong != null" >
+        ou_debtBelong = #{record.ouDebtbelong,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ouDedate != null" >
+        ou_deDate = #{record.ouDedate,jdbcType=DATE},
+      </if>
+      <if test="record.ouDebttype != null" >
+        ou_debtType = #{record.ouDebttype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ouDeyear != null" >
+        ou_deYear = #{record.ouDeyear,jdbcType=INTEGER},
+      </if>
+      <if test="record.ouDebtmonth != null" >
+        ou_debtMonth = #{record.ouDebtmonth,jdbcType=DATE},
+      </if>
+      <if test="record.ouNeostaff != null" >
+        ou_neoStaff = #{record.ouNeostaff,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ouCheckstaff != null" >
+        ou_checkStaff = #{record.ouCheckstaff,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ouItem != null" >
+        ou_item = #{record.ouItem,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ouByzd1 != null" >
+        ou_byzd1 = #{record.ouByzd1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ouByzd2 != null" >
+        ou_byzd2 = #{record.ouByzd2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ouByzd3 != null" >
+        ou_byzd3 = #{record.ouByzd3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ouByzd4 != null" >
+        ou_byzd4 = #{record.ouByzd4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ouByzd5 != null" >
+        ou_byzd5 = #{record.ouByzd5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ouByzd6 != null" >
+        ou_byzd6 = #{record.ouByzd6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update s_sell_out
+    set ou_number = #{record.ouNumber,jdbcType=VARCHAR},
+      ou_data = #{record.ouData,jdbcType=DATE},
+      ou_clientName = #{record.ouClientname,jdbcType=VARCHAR},
+      ou_location = #{record.ouLocation,jdbcType=VARCHAR},
+      ou_tax = #{record.ouTax,jdbcType=INTEGER},
+      ou_storage = #{record.ouStorage,jdbcType=VARCHAR},
+      ou_storageType = #{record.ouStoragetype,jdbcType=VARCHAR},
+      ou_RMB = #{record.ouRmb,jdbcType=VARCHAR},
+      ou_parities = #{record.ouParities,jdbcType=INTEGER},
+      ou_salesman = #{record.ouSalesman,jdbcType=VARCHAR},
+      ou_department = #{record.ouDepartment,jdbcType=VARCHAR},
+      ou_debtBelong = #{record.ouDebtbelong,jdbcType=VARCHAR},
+      ou_deDate = #{record.ouDedate,jdbcType=DATE},
+      ou_debtType = #{record.ouDebttype,jdbcType=VARCHAR},
+      ou_deYear = #{record.ouDeyear,jdbcType=INTEGER},
+      ou_debtMonth = #{record.ouDebtmonth,jdbcType=DATE},
+      ou_neoStaff = #{record.ouNeostaff,jdbcType=VARCHAR},
+      ou_checkStaff = #{record.ouCheckstaff,jdbcType=VARCHAR},
+      ou_item = #{record.ouItem,jdbcType=VARCHAR},
+      ou_byzd1 = #{record.ouByzd1,jdbcType=VARCHAR},
+      ou_byzd2 = #{record.ouByzd2,jdbcType=VARCHAR},
+      ou_byzd3 = #{record.ouByzd3,jdbcType=VARCHAR},
+      ou_byzd4 = #{record.ouByzd4,jdbcType=VARCHAR},
+      ou_byzd5 = #{record.ouByzd5,jdbcType=VARCHAR},
+      ou_byzd6 = #{record.ouByzd6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.SSellOut" >
+    update s_sell_out
+    <set >
+      <if test="ouData != null" >
+        ou_data = #{ouData,jdbcType=DATE},
+      </if>
+      <if test="ouClientname != null" >
+        ou_clientName = #{ouClientname,jdbcType=VARCHAR},
+      </if>
+      <if test="ouLocation != null" >
+        ou_location = #{ouLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="ouTax != null" >
+        ou_tax = #{ouTax,jdbcType=INTEGER},
+      </if>
+      <if test="ouStorage != null" >
+        ou_storage = #{ouStorage,jdbcType=VARCHAR},
+      </if>
+      <if test="ouStoragetype != null" >
+        ou_storageType = #{ouStoragetype,jdbcType=VARCHAR},
+      </if>
+      <if test="ouRmb != null" >
+        ou_RMB = #{ouRmb,jdbcType=VARCHAR},
+      </if>
+      <if test="ouParities != null" >
+        ou_parities = #{ouParities,jdbcType=INTEGER},
+      </if>
+      <if test="ouSalesman != null" >
+        ou_salesman = #{ouSalesman,jdbcType=VARCHAR},
+      </if>
+      <if test="ouDepartment != null" >
+        ou_department = #{ouDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="ouDebtbelong != null" >
+        ou_debtBelong = #{ouDebtbelong,jdbcType=VARCHAR},
+      </if>
+      <if test="ouDedate != null" >
+        ou_deDate = #{ouDedate,jdbcType=DATE},
+      </if>
+      <if test="ouDebttype != null" >
+        ou_debtType = #{ouDebttype,jdbcType=VARCHAR},
+      </if>
+      <if test="ouDeyear != null" >
+        ou_deYear = #{ouDeyear,jdbcType=INTEGER},
+      </if>
+      <if test="ouDebtmonth != null" >
+        ou_debtMonth = #{ouDebtmonth,jdbcType=DATE},
+      </if>
+      <if test="ouNeostaff != null" >
+        ou_neoStaff = #{ouNeostaff,jdbcType=VARCHAR},
+      </if>
+      <if test="ouCheckstaff != null" >
+        ou_checkStaff = #{ouCheckstaff,jdbcType=VARCHAR},
+      </if>
+      <if test="ouItem != null" >
+        ou_item = #{ouItem,jdbcType=VARCHAR},
+      </if>
+      <if test="ouByzd1 != null" >
+        ou_byzd1 = #{ouByzd1,jdbcType=VARCHAR},
+      </if>
+      <if test="ouByzd2 != null" >
+        ou_byzd2 = #{ouByzd2,jdbcType=VARCHAR},
+      </if>
+      <if test="ouByzd3 != null" >
+        ou_byzd3 = #{ouByzd3,jdbcType=VARCHAR},
+      </if>
+      <if test="ouByzd4 != null" >
+        ou_byzd4 = #{ouByzd4,jdbcType=VARCHAR},
+      </if>
+      <if test="ouByzd5 != null" >
+        ou_byzd5 = #{ouByzd5,jdbcType=VARCHAR},
+      </if>
+      <if test="ouByzd6 != null" >
+        ou_byzd6 = #{ouByzd6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ou_number = #{ouNumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.SSellOut" >
+    update s_sell_out
+    set ou_data = #{ouData,jdbcType=DATE},
+      ou_clientName = #{ouClientname,jdbcType=VARCHAR},
+      ou_location = #{ouLocation,jdbcType=VARCHAR},
+      ou_tax = #{ouTax,jdbcType=INTEGER},
+      ou_storage = #{ouStorage,jdbcType=VARCHAR},
+      ou_storageType = #{ouStoragetype,jdbcType=VARCHAR},
+      ou_RMB = #{ouRmb,jdbcType=VARCHAR},
+      ou_parities = #{ouParities,jdbcType=INTEGER},
+      ou_salesman = #{ouSalesman,jdbcType=VARCHAR},
+      ou_department = #{ouDepartment,jdbcType=VARCHAR},
+      ou_debtBelong = #{ouDebtbelong,jdbcType=VARCHAR},
+      ou_deDate = #{ouDedate,jdbcType=DATE},
+      ou_debtType = #{ouDebttype,jdbcType=VARCHAR},
+      ou_deYear = #{ouDeyear,jdbcType=INTEGER},
+      ou_debtMonth = #{ouDebtmonth,jdbcType=DATE},
+      ou_neoStaff = #{ouNeostaff,jdbcType=VARCHAR},
+      ou_checkStaff = #{ouCheckstaff,jdbcType=VARCHAR},
+      ou_item = #{ouItem,jdbcType=VARCHAR},
+      ou_byzd1 = #{ouByzd1,jdbcType=VARCHAR},
+      ou_byzd2 = #{ouByzd2,jdbcType=VARCHAR},
+      ou_byzd3 = #{ouByzd3,jdbcType=VARCHAR},
+      ou_byzd4 = #{ouByzd4,jdbcType=VARCHAR},
+      ou_byzd5 = #{ouByzd5,jdbcType=VARCHAR},
+      ou_byzd6 = #{ouByzd6,jdbcType=VARCHAR}
+    where ou_number = #{ouNumber,jdbcType=VARCHAR}
+  </update>
+</mapper>

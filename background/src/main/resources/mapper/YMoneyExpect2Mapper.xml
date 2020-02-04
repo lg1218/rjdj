@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.YMoneyExpect2Mapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.YMoneyExpect2" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="sourseOrder" property="sourseorder" jdbcType="VARCHAR" />
+    <result column="sourseNumber" property="soursenumber" jdbcType="VARCHAR" />
+    <result column="sourceLineNumber" property="sourcelinenumber" jdbcType="VARCHAR" />
+    <result column="theAmountInAdvance1" property="theamountinadvance1" jdbcType="DOUBLE" />
+    <result column="theOriginalSingleAmount" property="theoriginalsingleamount" jdbcType="DOUBLE" />
+    <result column="theOriginalSingleAmount1" property="theoriginalsingleamount1" jdbcType="DOUBLE" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+    <result column="remark2" property="remark2" jdbcType="VARCHAR" />
+    <result column="remark3" property="remark3" jdbcType="VARCHAR" />
+    <result column="remark4" property="remark4" jdbcType="VARCHAR" />
+    <result column="remark5" property="remark5" jdbcType="VARCHAR" />
+    <result column="remark6" property="remark6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, sourseOrder, sourseNumber, sourceLineNumber, theAmountInAdvance1, theOriginalSingleAmount, 
+    theOriginalSingleAmount1, remark1, remark2, remark3, remark4, remark5, remark6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.YMoneyExpect2Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from y_money_expect2
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from y_money_expect2
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from y_money_expect2
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.YMoneyExpect2Example" >
+    delete from y_money_expect2
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.YMoneyExpect2" >
+    insert into y_money_expect2 (id, sourseOrder, sourseNumber, 
+      sourceLineNumber, theAmountInAdvance1, theOriginalSingleAmount, 
+      theOriginalSingleAmount1, remark1, remark2, 
+      remark3, remark4, remark5, 
+      remark6)
+    values (#{id,jdbcType=VARCHAR}, #{sourseorder,jdbcType=VARCHAR}, #{soursenumber,jdbcType=VARCHAR}, 
+      #{sourcelinenumber,jdbcType=VARCHAR}, #{theamountinadvance1,jdbcType=DOUBLE}, #{theoriginalsingleamount,jdbcType=DOUBLE}, 
+      #{theoriginalsingleamount1,jdbcType=DOUBLE}, #{remark1,jdbcType=VARCHAR}, #{remark2,jdbcType=VARCHAR}, 
+      #{remark3,jdbcType=VARCHAR}, #{remark4,jdbcType=VARCHAR}, #{remark5,jdbcType=VARCHAR}, 
+      #{remark6,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.YMoneyExpect2" >
+    insert into y_money_expect2
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="sourseorder != null" >
+        sourseOrder,
+      </if>
+      <if test="soursenumber != null" >
+        sourseNumber,
+      </if>
+      <if test="sourcelinenumber != null" >
+        sourceLineNumber,
+      </if>
+      <if test="theamountinadvance1 != null" >
+        theAmountInAdvance1,
+      </if>
+      <if test="theoriginalsingleamount != null" >
+        theOriginalSingleAmount,
+      </if>
+      <if test="theoriginalsingleamount1 != null" >
+        theOriginalSingleAmount1,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+      <if test="remark2 != null" >
+        remark2,
+      </if>
+      <if test="remark3 != null" >
+        remark3,
+      </if>
+      <if test="remark4 != null" >
+        remark4,
+      </if>
+      <if test="remark5 != null" >
+        remark5,
+      </if>
+      <if test="remark6 != null" >
+        remark6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="sourseorder != null" >
+        #{sourseorder,jdbcType=VARCHAR},
+      </if>
+      <if test="soursenumber != null" >
+        #{soursenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcelinenumber != null" >
+        #{sourcelinenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="theamountinadvance1 != null" >
+        #{theamountinadvance1,jdbcType=DOUBLE},
+      </if>
+      <if test="theoriginalsingleamount != null" >
+        #{theoriginalsingleamount,jdbcType=DOUBLE},
+      </if>
+      <if test="theoriginalsingleamount1 != null" >
+        #{theoriginalsingleamount1,jdbcType=DOUBLE},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        #{remark5,jdbcType=VARCHAR},
+      </if>
+      <if test="remark6 != null" >
+        #{remark6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.YMoneyExpect2Example" resultType="java.lang.Integer" >
+    select count(*) from y_money_expect2
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update y_money_expect2
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sourseorder != null" >
+        sourseOrder = #{record.sourseorder,jdbcType=VARCHAR},
+      </if>
+      <if test="record.soursenumber != null" >
+        sourseNumber = #{record.soursenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sourcelinenumber != null" >
+        sourceLineNumber = #{record.sourcelinenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.theamountinadvance1 != null" >
+        theAmountInAdvance1 = #{record.theamountinadvance1,jdbcType=DOUBLE},
+      </if>
+      <if test="record.theoriginalsingleamount != null" >
+        theOriginalSingleAmount = #{record.theoriginalsingleamount,jdbcType=DOUBLE},
+      </if>
+      <if test="record.theoriginalsingleamount1 != null" >
+        theOriginalSingleAmount1 = #{record.theoriginalsingleamount1,jdbcType=DOUBLE},
+      </if>
+      <if test="record.remark1 != null" >
+        remark1 = #{record.remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark2 != null" >
+        remark2 = #{record.remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark3 != null" >
+        remark3 = #{record.remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark4 != null" >
+        remark4 = #{record.remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark5 != null" >
+        remark5 = #{record.remark5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark6 != null" >
+        remark6 = #{record.remark6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update y_money_expect2
+    set id = #{record.id,jdbcType=VARCHAR},
+      sourseOrder = #{record.sourseorder,jdbcType=VARCHAR},
+      sourseNumber = #{record.soursenumber,jdbcType=VARCHAR},
+      sourceLineNumber = #{record.sourcelinenumber,jdbcType=VARCHAR},
+      theAmountInAdvance1 = #{record.theamountinadvance1,jdbcType=DOUBLE},
+      theOriginalSingleAmount = #{record.theoriginalsingleamount,jdbcType=DOUBLE},
+      theOriginalSingleAmount1 = #{record.theoriginalsingleamount1,jdbcType=DOUBLE},
+      remark1 = #{record.remark1,jdbcType=VARCHAR},
+      remark2 = #{record.remark2,jdbcType=VARCHAR},
+      remark3 = #{record.remark3,jdbcType=VARCHAR},
+      remark4 = #{record.remark4,jdbcType=VARCHAR},
+      remark5 = #{record.remark5,jdbcType=VARCHAR},
+      remark6 = #{record.remark6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.YMoneyExpect2" >
+    update y_money_expect2
+    <set >
+      <if test="sourseorder != null" >
+        sourseOrder = #{sourseorder,jdbcType=VARCHAR},
+      </if>
+      <if test="soursenumber != null" >
+        sourseNumber = #{soursenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcelinenumber != null" >
+        sourceLineNumber = #{sourcelinenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="theamountinadvance1 != null" >
+        theAmountInAdvance1 = #{theamountinadvance1,jdbcType=DOUBLE},
+      </if>
+      <if test="theoriginalsingleamount != null" >
+        theOriginalSingleAmount = #{theoriginalsingleamount,jdbcType=DOUBLE},
+      </if>
+      <if test="theoriginalsingleamount1 != null" >
+        theOriginalSingleAmount1 = #{theoriginalsingleamount1,jdbcType=DOUBLE},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        remark2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        remark3 = #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        remark4 = #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        remark5 = #{remark5,jdbcType=VARCHAR},
+      </if>
+      <if test="remark6 != null" >
+        remark6 = #{remark6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.YMoneyExpect2" >
+    update y_money_expect2
+    set sourseOrder = #{sourseorder,jdbcType=VARCHAR},
+      sourseNumber = #{soursenumber,jdbcType=VARCHAR},
+      sourceLineNumber = #{sourcelinenumber,jdbcType=VARCHAR},
+      theAmountInAdvance1 = #{theamountinadvance1,jdbcType=DOUBLE},
+      theOriginalSingleAmount = #{theoriginalsingleamount,jdbcType=DOUBLE},
+      theOriginalSingleAmount1 = #{theoriginalsingleamount1,jdbcType=DOUBLE},
+      remark1 = #{remark1,jdbcType=VARCHAR},
+      remark2 = #{remark2,jdbcType=VARCHAR},
+      remark3 = #{remark3,jdbcType=VARCHAR},
+      remark4 = #{remark4,jdbcType=VARCHAR},
+      remark5 = #{remark5,jdbcType=VARCHAR},
+      remark6 = #{remark6,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

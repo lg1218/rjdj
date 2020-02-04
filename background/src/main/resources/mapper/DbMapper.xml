@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.DbMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Db" >
+    <id column="dbid" property="dbid" jdbcType="VARCHAR" />
+    <result column="dbdate" property="dbdate" jdbcType="DATE" />
+    <result column="dbdiaoru" property="dbdiaoru" jdbcType="INTEGER" />
+    <result column="dbdiaochu" property="dbdiaochu" jdbcType="INTEGER" />
+    <result column="dbzd" property="dbzd" jdbcType="VARCHAR" />
+    <result column="dbfh" property="dbfh" jdbcType="VARCHAR" />
+    <result column="dbbeizhu" property="dbbeizhu" jdbcType="VARCHAR" />
+    <result column="dbby1" property="dbby1" jdbcType="VARCHAR" />
+    <result column="dbby2" property="dbby2" jdbcType="VARCHAR" />
+    <result column="dbby3" property="dbby3" jdbcType="VARCHAR" />
+    <result column="dbzt" property="dbzt" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    dbid, dbdate, dbdiaoru, dbdiaochu, dbzd, dbfh, dbbeizhu, dbby1, dbby2, dbby3, dbzt
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.DbExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from db
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from db
+    where dbid = #{dbid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from db
+    where dbid = #{dbid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.DbExample" >
+    delete from db
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Db" >
+    insert into db (dbid, dbdate, dbdiaoru, 
+      dbdiaochu, dbzd, dbfh, 
+      dbbeizhu, dbby1, dbby2, 
+      dbby3, dbzt)
+    values (#{dbid,jdbcType=VARCHAR}, #{dbdate,jdbcType=DATE}, #{dbdiaoru,jdbcType=INTEGER}, 
+      #{dbdiaochu,jdbcType=INTEGER}, #{dbzd,jdbcType=VARCHAR}, #{dbfh,jdbcType=VARCHAR}, 
+      #{dbbeizhu,jdbcType=VARCHAR}, #{dbby1,jdbcType=VARCHAR}, #{dbby2,jdbcType=VARCHAR}, 
+      #{dbby3,jdbcType=VARCHAR}, #{dbzt,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Db" >
+    insert into db
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dbid != null" >
+        dbid,
+      </if>
+      <if test="dbdate != null" >
+        dbdate,
+      </if>
+      <if test="dbdiaoru != null" >
+        dbdiaoru,
+      </if>
+      <if test="dbdiaochu != null" >
+        dbdiaochu,
+      </if>
+      <if test="dbzd != null" >
+        dbzd,
+      </if>
+      <if test="dbfh != null" >
+        dbfh,
+      </if>
+      <if test="dbbeizhu != null" >
+        dbbeizhu,
+      </if>
+      <if test="dbby1 != null" >
+        dbby1,
+      </if>
+      <if test="dbby2 != null" >
+        dbby2,
+      </if>
+      <if test="dbby3 != null" >
+        dbby3,
+      </if>
+      <if test="dbzt != null" >
+        dbzt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dbid != null" >
+        #{dbid,jdbcType=VARCHAR},
+      </if>
+      <if test="dbdate != null" >
+        #{dbdate,jdbcType=DATE},
+      </if>
+      <if test="dbdiaoru != null" >
+        #{dbdiaoru,jdbcType=INTEGER},
+      </if>
+      <if test="dbdiaochu != null" >
+        #{dbdiaochu,jdbcType=INTEGER},
+      </if>
+      <if test="dbzd != null" >
+        #{dbzd,jdbcType=VARCHAR},
+      </if>
+      <if test="dbfh != null" >
+        #{dbfh,jdbcType=VARCHAR},
+      </if>
+      <if test="dbbeizhu != null" >
+        #{dbbeizhu,jdbcType=VARCHAR},
+      </if>
+      <if test="dbby1 != null" >
+        #{dbby1,jdbcType=VARCHAR},
+      </if>
+      <if test="dbby2 != null" >
+        #{dbby2,jdbcType=VARCHAR},
+      </if>
+      <if test="dbby3 != null" >
+        #{dbby3,jdbcType=VARCHAR},
+      </if>
+      <if test="dbzt != null" >
+        #{dbzt,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.DbExample" resultType="java.lang.Integer" >
+    select count(*) from db
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update db
+    <set >
+      <if test="record.dbid != null" >
+        dbid = #{record.dbid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dbdate != null" >
+        dbdate = #{record.dbdate,jdbcType=DATE},
+      </if>
+      <if test="record.dbdiaoru != null" >
+        dbdiaoru = #{record.dbdiaoru,jdbcType=INTEGER},
+      </if>
+      <if test="record.dbdiaochu != null" >
+        dbdiaochu = #{record.dbdiaochu,jdbcType=INTEGER},
+      </if>
+      <if test="record.dbzd != null" >
+        dbzd = #{record.dbzd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dbfh != null" >
+        dbfh = #{record.dbfh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dbbeizhu != null" >
+        dbbeizhu = #{record.dbbeizhu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dbby1 != null" >
+        dbby1 = #{record.dbby1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dbby2 != null" >
+        dbby2 = #{record.dbby2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dbby3 != null" >
+        dbby3 = #{record.dbby3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dbzt != null" >
+        dbzt = #{record.dbzt,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update db
+    set dbid = #{record.dbid,jdbcType=VARCHAR},
+      dbdate = #{record.dbdate,jdbcType=DATE},
+      dbdiaoru = #{record.dbdiaoru,jdbcType=INTEGER},
+      dbdiaochu = #{record.dbdiaochu,jdbcType=INTEGER},
+      dbzd = #{record.dbzd,jdbcType=VARCHAR},
+      dbfh = #{record.dbfh,jdbcType=VARCHAR},
+      dbbeizhu = #{record.dbbeizhu,jdbcType=VARCHAR},
+      dbby1 = #{record.dbby1,jdbcType=VARCHAR},
+      dbby2 = #{record.dbby2,jdbcType=VARCHAR},
+      dbby3 = #{record.dbby3,jdbcType=VARCHAR},
+      dbzt = #{record.dbzt,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Db" >
+    update db
+    <set >
+      <if test="dbdate != null" >
+        dbdate = #{dbdate,jdbcType=DATE},
+      </if>
+      <if test="dbdiaoru != null" >
+        dbdiaoru = #{dbdiaoru,jdbcType=INTEGER},
+      </if>
+      <if test="dbdiaochu != null" >
+        dbdiaochu = #{dbdiaochu,jdbcType=INTEGER},
+      </if>
+      <if test="dbzd != null" >
+        dbzd = #{dbzd,jdbcType=VARCHAR},
+      </if>
+      <if test="dbfh != null" >
+        dbfh = #{dbfh,jdbcType=VARCHAR},
+      </if>
+      <if test="dbbeizhu != null" >
+        dbbeizhu = #{dbbeizhu,jdbcType=VARCHAR},
+      </if>
+      <if test="dbby1 != null" >
+        dbby1 = #{dbby1,jdbcType=VARCHAR},
+      </if>
+      <if test="dbby2 != null" >
+        dbby2 = #{dbby2,jdbcType=VARCHAR},
+      </if>
+      <if test="dbby3 != null" >
+        dbby3 = #{dbby3,jdbcType=VARCHAR},
+      </if>
+      <if test="dbzt != null" >
+        dbzt = #{dbzt,jdbcType=INTEGER},
+      </if>
+    </set>
+    where dbid = #{dbid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Db" >
+    update db
+    set dbdate = #{dbdate,jdbcType=DATE},
+      dbdiaoru = #{dbdiaoru,jdbcType=INTEGER},
+      dbdiaochu = #{dbdiaochu,jdbcType=INTEGER},
+      dbzd = #{dbzd,jdbcType=VARCHAR},
+      dbfh = #{dbfh,jdbcType=VARCHAR},
+      dbbeizhu = #{dbbeizhu,jdbcType=VARCHAR},
+      dbby1 = #{dbby1,jdbcType=VARCHAR},
+      dbby2 = #{dbby2,jdbcType=VARCHAR},
+      dbby3 = #{dbby3,jdbcType=VARCHAR},
+      dbzt = #{dbzt,jdbcType=INTEGER}
+    where dbid = #{dbid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>日进斗金</title>
+    <link rel="stylesheet" href="./css/layui.css">
+    <script src="./js/jquery-1.12.4.js"></script>
+    <script src="./js/vue.js"></script>
+    <script src="./js/layui.js"></script>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <script src="./js/layui.all.js"></script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin" id="index" >
+    <div class="layui-header">
+        <div class="layui-logo">日进斗金</div>
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item">
+                <button @click="xz">新增</button>
+            </li>
+            <li class="layui-nav-item">
+                <button @click="xg">修改</button>
+            </li>
+            <li class="layui-nav-item">
+                <button @click="sc">删除</button>
+            </li>
+            <li class="layui-nav-item">
+                <!--<button >审核</button> @click="sh"-->
+            </li>
+            <li class="layui-nav-item">
+                <!--<button >取消审核</button> @click="qxsh"-->
+            </li>
+        </ul>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                    贤心
+                </a>
+                <!--<dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                </dl>-->
+            </li>
+            <li class="layui-nav-item"><a href="">退出</a></li>
+        </ul>
+    </div>
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="">
+                <li class="layui-nav-item layui-nav-itemed">
+
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="lv1" href="javascript:;" data-id="采购管理" @click="LoadContent('采购模块')">采购管理</a>
+
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="lv1" href="javascript:;" data-id="销售管理" @click="LoadContent('销售模块')">销售管理</a>
+
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="lv1" href="javascript:;" data-id="库存管理" @click="LoadContent('库存模块')">库存管理</a>
+
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="lv1" href="javascript:;" data-id="账款模块" @click="LoadContent('账款模块')">账款管理</a>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="lv1" href="javascript:;" data-id="基本资料" @click="LoadContent('基本资料')">基本资料</a>
+                </li>
+            </ul>
+        </div>
+
+
+    <div class="layui-body" style="background-image: url(images/timg.png);">
+        <!-- 内容主体区域 -->
+        <div style="margin: 85px auto 15px;width: 62.5%;" id="body"></div>
+    </div>
+
+    <div class="layui-footer" style="color: black">
+        <!-- 底部固定区域 -->
+        © 日进斗金
+    </div>
+</div>
+</div>
+
+<script>
+    var indeVue = new Vue({
+        el:"#index",
+        data(){
+            return{
+                zIndex:""
+            }
+        },methods:{
+            LoadContent:function (dataid) {
+                $("#body").load(dataid+"/index.html");
+            },xz:function () {
+               $(".layui-layer-iframe").each(function (i,e) {
+                   let zindex = $(e).attr("style").split(";")[0];
+                   let index = zindex.indexOf(":")+1;
+                   zindex = zindex.substring(index,zindex.length);
+
+                   if(indeVue.zIndex == zindex){    //如果zindex想等，则找到了最顶层的窗口
+                    let title = $(e).find(".layui-layer-title").text();
+                    title = title.substring(0,title.indexOf("(")>0?title.indexOf("("):title.length);
+
+                    $(e).find(".layui-layer-title").text(title+"(新增...)");
+                    let id = $(e).find("iframe").attr("id");
+                    parent.procurementVue.xz("#"+id);//函数回调
+                    parent.procurementVue.id="#"+id;
+                   }
+               })
+            },xg:function () {
+                $(".layui-layer-iframe").each(function (i,e) {
+                    let zindex = $(e).attr("style").split(";")[0];
+                    let index = zindex.indexOf(":")+1;
+                    zindex = zindex.substring(index,zindex.length);
+                    if(indeVue.zIndex == zindex){    //如果zindex想等，则找到了最顶层的窗口
+                        let title = $(e).find(".layui-layer-title").text();
+                        title = title.substring(0,title.indexOf("(")>0?title.indexOf("("):title.length);
+                        $(e).find(".layui-layer-title").text(title+"(修改...)");
+                        let id = $(e).find("iframe").attr("id");
+                        parent.procurementVue.xg("#"+id);//函数回调
+                    }
+                })
+            },sc:function () {
+                $(".layui-layer-iframe").each(function (i,e) {
+                    let zindex = $(e).attr("style").split(";")[0];
+                    let index = zindex.indexOf(":")+1;
+                    zindex = zindex.substring(index,zindex.length);
+
+                    if(indeVue.zIndex == zindex){    //如果zindex想等，则找到了最顶层的窗口
+                        let title = $(e).find(".layui-layer-title").text();
+                        title = title.substring(0,title.indexOf("(")>0?title.indexOf("("):title.length);
+                        $(e).find(".layui-layer-title").text(title);
+                        let id = $(e).find("iframe").attr("id");
+                        parent.procurementVue.sc("#"+id);//函数回调
+                    }
+                })
+            }
+        },created:function () {
+            this.LoadContent("采购模块");
+        }
+    });
+    //JavaScript代码区域
+    layui.use('element', function(){
+        var element = layui.element;
+    });
+    $(function () {
+        $("#body").load("采购模块/index.html");
+    })
+</script>
+</body>
+</html>
