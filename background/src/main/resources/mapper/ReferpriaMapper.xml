@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.ReferpriaMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Referpria" >
+    <id column="Referpria_id" property="referpriaId" jdbcType="VARCHAR" />
+    <result column="Priadetails_id" property="priadetailsId" jdbcType="VARCHAR" />
+    <result column="Priabill_id" property="priabillId" jdbcType="VARCHAR" />
+    <result column="Priabill _number" property="priabillNumber" jdbcType="VARCHAR" />
+    <result column="Priabill _type" property="priabillType" jdbcType="VARCHAR" />
+    <result column="Priabill_advance" property="priabillAdvance" jdbcType="REAL" />
+    <result column="Priabill_qyadvance" property="priabillQyadvance" jdbcType="REAL" />
+    <result column="Referpria_remarks" property="referpriaRemarks" jdbcType="VARCHAR" />
+    <result column="Referpria_Auditing" property="referpriaAuditing" jdbcType="VARCHAR" />
+    <result column="Referpria_yn" property="referpriaYn" jdbcType="VARCHAR" />
+    <result column="Referpria_custom1" property="referpriaCustom1" jdbcType="VARCHAR" />
+    <result column="Referpria_custom2" property="referpriaCustom2" jdbcType="VARCHAR" />
+    <result column="Referpria_custom3" property="referpriaCustom3" jdbcType="VARCHAR" />
+    <result column="Referpria_custom4" property="referpriaCustom4" jdbcType="VARCHAR" />
+    <result column="Referpria_custom5" property="referpriaCustom5" jdbcType="VARCHAR" />
+    <result column="Referpria_custom6" property="referpriaCustom6" jdbcType="VARCHAR" />
+    <result column="Referpria_custom7" property="referpriaCustom7" jdbcType="VARCHAR" />
+    <result column="Referpria_custom8" property="referpriaCustom8" jdbcType="VARCHAR" />
+    <result column="Referpria_custom9" property="referpriaCustom9" jdbcType="VARCHAR" />
+    <result column="Referpria_custom10" property="referpriaCustom10" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Referpria_id, Priadetails_id, Priabill_id, "Priabill _number", "Priabill _type", 
+    Priabill_advance, Priabill_qyadvance, Referpria_remarks, Referpria_Auditing, Referpria_yn, 
+    Referpria_custom1, Referpria_custom2, Referpria_custom3, Referpria_custom4, Referpria_custom5, 
+    Referpria_custom6, Referpria_custom7, Referpria_custom8, Referpria_custom9, Referpria_custom10
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.ReferpriaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from referpria
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from referpria
+    where Referpria_id = #{referpriaId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from referpria
+    where Referpria_id = #{referpriaId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.ReferpriaExample" >
+    delete from referpria
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Referpria" >
+    insert into referpria (Referpria_id, Priadetails_id, Priabill_id, 
+      "Priabill _number", "Priabill _type", Priabill_advance, 
+      Priabill_qyadvance, Referpria_remarks, Referpria_Auditing, 
+      Referpria_yn, Referpria_custom1, Referpria_custom2, 
+      Referpria_custom3, Referpria_custom4, Referpria_custom5, 
+      Referpria_custom6, Referpria_custom7, Referpria_custom8, 
+      Referpria_custom9, Referpria_custom10)
+    values (#{referpriaId,jdbcType=VARCHAR}, #{priadetailsId,jdbcType=VARCHAR}, #{priabillId,jdbcType=VARCHAR}, 
+      #{priabillNumber,jdbcType=VARCHAR}, #{priabillType,jdbcType=VARCHAR}, #{priabillAdvance,jdbcType=REAL}, 
+      #{priabillQyadvance,jdbcType=REAL}, #{referpriaRemarks,jdbcType=VARCHAR}, #{referpriaAuditing,jdbcType=VARCHAR}, 
+      #{referpriaYn,jdbcType=VARCHAR}, #{referpriaCustom1,jdbcType=VARCHAR}, #{referpriaCustom2,jdbcType=VARCHAR}, 
+      #{referpriaCustom3,jdbcType=VARCHAR}, #{referpriaCustom4,jdbcType=VARCHAR}, #{referpriaCustom5,jdbcType=VARCHAR}, 
+      #{referpriaCustom6,jdbcType=VARCHAR}, #{referpriaCustom7,jdbcType=VARCHAR}, #{referpriaCustom8,jdbcType=VARCHAR}, 
+      #{referpriaCustom9,jdbcType=VARCHAR}, #{referpriaCustom10,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Referpria" >
+    insert into referpria
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="referpriaId != null" >
+        Referpria_id,
+      </if>
+      <if test="priadetailsId != null" >
+        Priadetails_id,
+      </if>
+      <if test="priabillId != null" >
+        Priabill_id,
+      </if>
+      <if test="priabillNumber != null" >
+        "Priabill _number",
+      </if>
+      <if test="priabillType != null" >
+        "Priabill _type",
+      </if>
+      <if test="priabillAdvance != null" >
+        Priabill_advance,
+      </if>
+      <if test="priabillQyadvance != null" >
+        Priabill_qyadvance,
+      </if>
+      <if test="referpriaRemarks != null" >
+        Referpria_remarks,
+      </if>
+      <if test="referpriaAuditing != null" >
+        Referpria_Auditing,
+      </if>
+      <if test="referpriaYn != null" >
+        Referpria_yn,
+      </if>
+      <if test="referpriaCustom1 != null" >
+        Referpria_custom1,
+      </if>
+      <if test="referpriaCustom2 != null" >
+        Referpria_custom2,
+      </if>
+      <if test="referpriaCustom3 != null" >
+        Referpria_custom3,
+      </if>
+      <if test="referpriaCustom4 != null" >
+        Referpria_custom4,
+      </if>
+      <if test="referpriaCustom5 != null" >
+        Referpria_custom5,
+      </if>
+      <if test="referpriaCustom6 != null" >
+        Referpria_custom6,
+      </if>
+      <if test="referpriaCustom7 != null" >
+        Referpria_custom7,
+      </if>
+      <if test="referpriaCustom8 != null" >
+        Referpria_custom8,
+      </if>
+      <if test="referpriaCustom9 != null" >
+        Referpria_custom9,
+      </if>
+      <if test="referpriaCustom10 != null" >
+        Referpria_custom10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="referpriaId != null" >
+        #{referpriaId,jdbcType=VARCHAR},
+      </if>
+      <if test="priadetailsId != null" >
+        #{priadetailsId,jdbcType=VARCHAR},
+      </if>
+      <if test="priabillId != null" >
+        #{priabillId,jdbcType=VARCHAR},
+      </if>
+      <if test="priabillNumber != null" >
+        #{priabillNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="priabillType != null" >
+        #{priabillType,jdbcType=VARCHAR},
+      </if>
+      <if test="priabillAdvance != null" >
+        #{priabillAdvance,jdbcType=REAL},
+      </if>
+      <if test="priabillQyadvance != null" >
+        #{priabillQyadvance,jdbcType=REAL},
+      </if>
+      <if test="referpriaRemarks != null" >
+        #{referpriaRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="referpriaAuditing != null" >
+        #{referpriaAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="referpriaYn != null" >
+        #{referpriaYn,jdbcType=VARCHAR},
+      </if>
+      <if test="referpriaCustom1 != null" >
+        #{referpriaCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="referpriaCustom2 != null" >
+        #{referpriaCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="referpriaCustom3 != null" >
+        #{referpriaCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="referpriaCustom4 != null" >
+        #{referpriaCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="referpriaCustom5 != null" >
+        #{referpriaCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="referpriaCustom6 != null" >
+        #{referpriaCustom6,jdbcType=VARCHAR},
+      </if>
+      <if test="referpriaCustom7 != null" >
+        #{referpriaCustom7,jdbcType=VARCHAR},
+      </if>
+      <if test="referpriaCustom8 != null" >
+        #{referpriaCustom8,jdbcType=VARCHAR},
+      </if>
+      <if test="referpriaCustom9 != null" >
+        #{referpriaCustom9,jdbcType=VARCHAR},
+      </if>
+      <if test="referpriaCustom10 != null" >
+        #{referpriaCustom10,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.ReferpriaExample" resultType="java.lang.Integer" >
+    select count(*) from referpria
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update referpria
+    <set >
+      <if test="record.referpriaId != null" >
+        Referpria_id = #{record.referpriaId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.priadetailsId != null" >
+        Priadetails_id = #{record.priadetailsId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.priabillId != null" >
+        Priabill_id = #{record.priabillId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.priabillNumber != null" >
+        "Priabill _number" = #{record.priabillNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.priabillType != null" >
+        "Priabill _type" = #{record.priabillType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.priabillAdvance != null" >
+        Priabill_advance = #{record.priabillAdvance,jdbcType=REAL},
+      </if>
+      <if test="record.priabillQyadvance != null" >
+        Priabill_qyadvance = #{record.priabillQyadvance,jdbcType=REAL},
+      </if>
+      <if test="record.referpriaRemarks != null" >
+        Referpria_remarks = #{record.referpriaRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.referpriaAuditing != null" >
+        Referpria_Auditing = #{record.referpriaAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.referpriaYn != null" >
+        Referpria_yn = #{record.referpriaYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.referpriaCustom1 != null" >
+        Referpria_custom1 = #{record.referpriaCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.referpriaCustom2 != null" >
+        Referpria_custom2 = #{record.referpriaCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.referpriaCustom3 != null" >
+        Referpria_custom3 = #{record.referpriaCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.referpriaCustom4 != null" >
+        Referpria_custom4 = #{record.referpriaCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.referpriaCustom5 != null" >
+        Referpria_custom5 = #{record.referpriaCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.referpriaCustom6 != null" >
+        Referpria_custom6 = #{record.referpriaCustom6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.referpriaCustom7 != null" >
+        Referpria_custom7 = #{record.referpriaCustom7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.referpriaCustom8 != null" >
+        Referpria_custom8 = #{record.referpriaCustom8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.referpriaCustom9 != null" >
+        Referpria_custom9 = #{record.referpriaCustom9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.referpriaCustom10 != null" >
+        Referpria_custom10 = #{record.referpriaCustom10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update referpria
+    set Referpria_id = #{record.referpriaId,jdbcType=VARCHAR},
+      Priadetails_id = #{record.priadetailsId,jdbcType=VARCHAR},
+      Priabill_id = #{record.priabillId,jdbcType=VARCHAR},
+      "Priabill _number" = #{record.priabillNumber,jdbcType=VARCHAR},
+      "Priabill _type" = #{record.priabillType,jdbcType=VARCHAR},
+      Priabill_advance = #{record.priabillAdvance,jdbcType=REAL},
+      Priabill_qyadvance = #{record.priabillQyadvance,jdbcType=REAL},
+      Referpria_remarks = #{record.referpriaRemarks,jdbcType=VARCHAR},
+      Referpria_Auditing = #{record.referpriaAuditing,jdbcType=VARCHAR},
+      Referpria_yn = #{record.referpriaYn,jdbcType=VARCHAR},
+      Referpria_custom1 = #{record.referpriaCustom1,jdbcType=VARCHAR},
+      Referpria_custom2 = #{record.referpriaCustom2,jdbcType=VARCHAR},
+      Referpria_custom3 = #{record.referpriaCustom3,jdbcType=VARCHAR},
+      Referpria_custom4 = #{record.referpriaCustom4,jdbcType=VARCHAR},
+      Referpria_custom5 = #{record.referpriaCustom5,jdbcType=VARCHAR},
+      Referpria_custom6 = #{record.referpriaCustom6,jdbcType=VARCHAR},
+      Referpria_custom7 = #{record.referpriaCustom7,jdbcType=VARCHAR},
+      Referpria_custom8 = #{record.referpriaCustom8,jdbcType=VARCHAR},
+      Referpria_custom9 = #{record.referpriaCustom9,jdbcType=VARCHAR},
+      Referpria_custom10 = #{record.referpriaCustom10,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Referpria" >
+    update referpria
+    <set >
+      <if test="priadetailsId != null" >
+        Priadetails_id = #{priadetailsId,jdbcType=VARCHAR},
+      </if>
+      <if test="priabillId != null" >
+        Priabill_id = #{priabillId,jdbcType=VARCHAR},
+      </if>
+      <if test="priabillNumber != null" >
+        "Priabill _number" = #{priabillNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="priabillType != null" >
+        "Priabill _type" = #{priabillType,jdbcType=VARCHAR},
+      </if>
+      <if test="priabillAdvance != null" >
+        Priabill_advance = #{priabillAdvance,jdbcType=REAL},
+      </if>
+      <if test="priabillQyadvance != null" >
+        Priabill_qyadvance = #{priabillQyadvance,jdbcType=REAL},
+      </if>
+      <if test="referpriaRemarks != null" >
+        Referpria_remarks = #{referpriaRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="referpriaAuditing != null" >
+        Referpria_Auditing = #{referpriaAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="referpriaYn != null" >
+        Referpria_yn = #{referpriaYn,jdbcType=VARCHAR},
+      </if>
+      <if test="referpriaCustom1 != null" >
+        Referpria_custom1 = #{referpriaCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="referpriaCustom2 != null" >
+        Referpria_custom2 = #{referpriaCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="referpriaCustom3 != null" >
+        Referpria_custom3 = #{referpriaCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="referpriaCustom4 != null" >
+        Referpria_custom4 = #{referpriaCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="referpriaCustom5 != null" >
+        Referpria_custom5 = #{referpriaCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="referpriaCustom6 != null" >
+        Referpria_custom6 = #{referpriaCustom6,jdbcType=VARCHAR},
+      </if>
+      <if test="referpriaCustom7 != null" >
+        Referpria_custom7 = #{referpriaCustom7,jdbcType=VARCHAR},
+      </if>
+      <if test="referpriaCustom8 != null" >
+        Referpria_custom8 = #{referpriaCustom8,jdbcType=VARCHAR},
+      </if>
+      <if test="referpriaCustom9 != null" >
+        Referpria_custom9 = #{referpriaCustom9,jdbcType=VARCHAR},
+      </if>
+      <if test="referpriaCustom10 != null" >
+        Referpria_custom10 = #{referpriaCustom10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Referpria_id = #{referpriaId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Referpria" >
+    update referpria
+    set Priadetails_id = #{priadetailsId,jdbcType=VARCHAR},
+      Priabill_id = #{priabillId,jdbcType=VARCHAR},
+      "Priabill _number" = #{priabillNumber,jdbcType=VARCHAR},
+      "Priabill _type" = #{priabillType,jdbcType=VARCHAR},
+      Priabill_advance = #{priabillAdvance,jdbcType=REAL},
+      Priabill_qyadvance = #{priabillQyadvance,jdbcType=REAL},
+      Referpria_remarks = #{referpriaRemarks,jdbcType=VARCHAR},
+      Referpria_Auditing = #{referpriaAuditing,jdbcType=VARCHAR},
+      Referpria_yn = #{referpriaYn,jdbcType=VARCHAR},
+      Referpria_custom1 = #{referpriaCustom1,jdbcType=VARCHAR},
+      Referpria_custom2 = #{referpriaCustom2,jdbcType=VARCHAR},
+      Referpria_custom3 = #{referpriaCustom3,jdbcType=VARCHAR},
+      Referpria_custom4 = #{referpriaCustom4,jdbcType=VARCHAR},
+      Referpria_custom5 = #{referpriaCustom5,jdbcType=VARCHAR},
+      Referpria_custom6 = #{referpriaCustom6,jdbcType=VARCHAR},
+      Referpria_custom7 = #{referpriaCustom7,jdbcType=VARCHAR},
+      Referpria_custom8 = #{referpriaCustom8,jdbcType=VARCHAR},
+      Referpria_custom9 = #{referpriaCustom9,jdbcType=VARCHAR},
+      Referpria_custom10 = #{referpriaCustom10,jdbcType=VARCHAR}
+    where Referpria_id = #{referpriaId,jdbcType=VARCHAR}
+  </update>
+</mapper>

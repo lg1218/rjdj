@@ -10,7 +10,7 @@ public interface TaxItemsMapper {
 
     int deleteByExample(TaxItemsExample example);
 
-    int deleteByPrimaryKey(Integer tiId);
+    int deleteByPrimaryKey(String tiId);
 
     int insert(TaxItems record);
 
@@ -18,7 +18,7 @@ public interface TaxItemsMapper {
 
     List<TaxItems> selectByExample(TaxItemsExample example);
 
-    TaxItems selectByPrimaryKey(Integer tiId);
+    TaxItems selectByPrimaryKey(String tiId);
 
     int updateByExampleSelective(@Param("record") TaxItems record, @Param("example") TaxItemsExample example);
 

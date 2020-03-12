@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.PurchaseInquiryDetailedMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.PurchaseInquiryDetailed" >
+    <id column="did_id" property="didId" jdbcType="VARCHAR" />
+    <result column="pi_id" property="piId" jdbcType="VARCHAR" />
+    <result column="did_matter_id" property="didMatterId" jdbcType="VARCHAR" />
+    <result column="did_matter_name" property="didMatterName" jdbcType="VARCHAR" />
+    <result column="did_specifications" property="didSpecifications" jdbcType="VARCHAR" />
+    <result column="did_company_name" property="didCompanyName" jdbcType="VARCHAR" />
+    <result column="did_amount" property="didAmount" jdbcType="INTEGER" />
+    <result column="did_money_discount_before" property="didMoneyDiscountBefore" jdbcType="REAL" />
+    <result column="did_discount_number" property="didDiscountNumber" jdbcType="VARCHAR" />
+    <result column="did_price" property="didPrice" jdbcType="REAL" />
+    <result column="did_money" property="didMoney" jdbcType="REAL" />
+    <result column="did_tax_rate" property="didTaxRate" jdbcType="REAL" />
+    <result column="did_tax_amount" property="didTaxAmount" jdbcType="REAL" />
+    <result column="did_include_tax_amount" property="didIncludeTaxAmount" jdbcType="REAL" />
+    <result column="did_ifgift" property="didIfgift" jdbcType="VARCHAR" />
+    <result column="did_remarks" property="didRemarks" jdbcType="VARCHAR" />
+    <result column="did_source_order" property="didSourceOrder" jdbcType="VARCHAR" />
+    <result column="did_source_no" property="didSourceNo" jdbcType="VARCHAR" />
+    <result column="did_audition" property="didAudition" jdbcType="VARCHAR" />
+    <result column="did_yn" property="didYn" jdbcType="VARCHAR" />
+    <result column="did_custom1" property="didCustom1" jdbcType="VARCHAR" />
+    <result column="did_custom2" property="didCustom2" jdbcType="VARCHAR" />
+    <result column="did_custom3" property="didCustom3" jdbcType="VARCHAR" />
+    <result column="did_custom4" property="didCustom4" jdbcType="VARCHAR" />
+    <result column="did_custom5" property="didCustom5" jdbcType="VARCHAR" />
+    <result column="did_custom6" property="didCustom6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    did_id, pi_id, did_matter_id, did_matter_name, did_specifications, did_company_name, 
+    did_amount, did_money_discount_before, did_discount_number, did_price, did_money, 
+    did_tax_rate, did_tax_amount, did_include_tax_amount, did_ifgift, did_remarks, did_source_order, 
+    did_source_no, did_audition, did_yn, did_custom1, did_custom2, did_custom3, did_custom4, 
+    did_custom5, did_custom6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.PurchaseInquiryDetailedExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from purchase_inquiry_detailed
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from purchase_inquiry_detailed
+    where did_id = #{didId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from purchase_inquiry_detailed
+    where did_id = #{didId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.PurchaseInquiryDetailedExample" >
+    delete from purchase_inquiry_detailed
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.PurchaseInquiryDetailed" >
+    insert into purchase_inquiry_detailed (did_id, pi_id, did_matter_id, 
+      did_matter_name, did_specifications, did_company_name, 
+      did_amount, did_money_discount_before, did_discount_number, 
+      did_price, did_money, did_tax_rate, 
+      did_tax_amount, did_include_tax_amount, did_ifgift, 
+      did_remarks, did_source_order, did_source_no, 
+      did_audition, did_yn, did_custom1, 
+      did_custom2, did_custom3, did_custom4, 
+      did_custom5, did_custom6)
+    values (#{didId,jdbcType=VARCHAR}, #{piId,jdbcType=VARCHAR}, #{didMatterId,jdbcType=VARCHAR}, 
+      #{didMatterName,jdbcType=VARCHAR}, #{didSpecifications,jdbcType=VARCHAR}, #{didCompanyName,jdbcType=VARCHAR}, 
+      #{didAmount,jdbcType=INTEGER}, #{didMoneyDiscountBefore,jdbcType=REAL}, #{didDiscountNumber,jdbcType=VARCHAR}, 
+      #{didPrice,jdbcType=REAL}, #{didMoney,jdbcType=REAL}, #{didTaxRate,jdbcType=REAL}, 
+      #{didTaxAmount,jdbcType=REAL}, #{didIncludeTaxAmount,jdbcType=REAL}, #{didIfgift,jdbcType=VARCHAR}, 
+      #{didRemarks,jdbcType=VARCHAR}, #{didSourceOrder,jdbcType=VARCHAR}, #{didSourceNo,jdbcType=VARCHAR}, 
+      #{didAudition,jdbcType=VARCHAR}, #{didYn,jdbcType=VARCHAR}, #{didCustom1,jdbcType=VARCHAR}, 
+      #{didCustom2,jdbcType=VARCHAR}, #{didCustom3,jdbcType=VARCHAR}, #{didCustom4,jdbcType=VARCHAR}, 
+      #{didCustom5,jdbcType=VARCHAR}, #{didCustom6,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.PurchaseInquiryDetailed" >
+    insert into purchase_inquiry_detailed
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="didId != null" >
+        did_id,
+      </if>
+      <if test="piId != null" >
+        pi_id,
+      </if>
+      <if test="didMatterId != null" >
+        did_matter_id,
+      </if>
+      <if test="didMatterName != null" >
+        did_matter_name,
+      </if>
+      <if test="didSpecifications != null" >
+        did_specifications,
+      </if>
+      <if test="didCompanyName != null" >
+        did_company_name,
+      </if>
+      <if test="didAmount != null" >
+        did_amount,
+      </if>
+      <if test="didMoneyDiscountBefore != null" >
+        did_money_discount_before,
+      </if>
+      <if test="didDiscountNumber != null" >
+        did_discount_number,
+      </if>
+      <if test="didPrice != null" >
+        did_price,
+      </if>
+      <if test="didMoney != null" >
+        did_money,
+      </if>
+      <if test="didTaxRate != null" >
+        did_tax_rate,
+      </if>
+      <if test="didTaxAmount != null" >
+        did_tax_amount,
+      </if>
+      <if test="didIncludeTaxAmount != null" >
+        did_include_tax_amount,
+      </if>
+      <if test="didIfgift != null" >
+        did_ifgift,
+      </if>
+      <if test="didRemarks != null" >
+        did_remarks,
+      </if>
+      <if test="didSourceOrder != null" >
+        did_source_order,
+      </if>
+      <if test="didSourceNo != null" >
+        did_source_no,
+      </if>
+      <if test="didAudition != null" >
+        did_audition,
+      </if>
+      <if test="didYn != null" >
+        did_yn,
+      </if>
+      <if test="didCustom1 != null" >
+        did_custom1,
+      </if>
+      <if test="didCustom2 != null" >
+        did_custom2,
+      </if>
+      <if test="didCustom3 != null" >
+        did_custom3,
+      </if>
+      <if test="didCustom4 != null" >
+        did_custom4,
+      </if>
+      <if test="didCustom5 != null" >
+        did_custom5,
+      </if>
+      <if test="didCustom6 != null" >
+        did_custom6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="didId != null" >
+        #{didId,jdbcType=VARCHAR},
+      </if>
+      <if test="piId != null" >
+        #{piId,jdbcType=VARCHAR},
+      </if>
+      <if test="didMatterId != null" >
+        #{didMatterId,jdbcType=VARCHAR},
+      </if>
+      <if test="didMatterName != null" >
+        #{didMatterName,jdbcType=VARCHAR},
+      </if>
+      <if test="didSpecifications != null" >
+        #{didSpecifications,jdbcType=VARCHAR},
+      </if>
+      <if test="didCompanyName != null" >
+        #{didCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="didAmount != null" >
+        #{didAmount,jdbcType=INTEGER},
+      </if>
+      <if test="didMoneyDiscountBefore != null" >
+        #{didMoneyDiscountBefore,jdbcType=REAL},
+      </if>
+      <if test="didDiscountNumber != null" >
+        #{didDiscountNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="didPrice != null" >
+        #{didPrice,jdbcType=REAL},
+      </if>
+      <if test="didMoney != null" >
+        #{didMoney,jdbcType=REAL},
+      </if>
+      <if test="didTaxRate != null" >
+        #{didTaxRate,jdbcType=REAL},
+      </if>
+      <if test="didTaxAmount != null" >
+        #{didTaxAmount,jdbcType=REAL},
+      </if>
+      <if test="didIncludeTaxAmount != null" >
+        #{didIncludeTaxAmount,jdbcType=REAL},
+      </if>
+      <if test="didIfgift != null" >
+        #{didIfgift,jdbcType=VARCHAR},
+      </if>
+      <if test="didRemarks != null" >
+        #{didRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="didSourceOrder != null" >
+        #{didSourceOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="didSourceNo != null" >
+        #{didSourceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="didAudition != null" >
+        #{didAudition,jdbcType=VARCHAR},
+      </if>
+      <if test="didYn != null" >
+        #{didYn,jdbcType=VARCHAR},
+      </if>
+      <if test="didCustom1 != null" >
+        #{didCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="didCustom2 != null" >
+        #{didCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="didCustom3 != null" >
+        #{didCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="didCustom4 != null" >
+        #{didCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="didCustom5 != null" >
+        #{didCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="didCustom6 != null" >
+        #{didCustom6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.PurchaseInquiryDetailedExample" resultType="java.lang.Integer" >
+    select count(*) from purchase_inquiry_detailed
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update purchase_inquiry_detailed
+    <set >
+      <if test="record.didId != null" >
+        did_id = #{record.didId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.piId != null" >
+        pi_id = #{record.piId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.didMatterId != null" >
+        did_matter_id = #{record.didMatterId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.didMatterName != null" >
+        did_matter_name = #{record.didMatterName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.didSpecifications != null" >
+        did_specifications = #{record.didSpecifications,jdbcType=VARCHAR},
+      </if>
+      <if test="record.didCompanyName != null" >
+        did_company_name = #{record.didCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.didAmount != null" >
+        did_amount = #{record.didAmount,jdbcType=INTEGER},
+      </if>
+      <if test="record.didMoneyDiscountBefore != null" >
+        did_money_discount_before = #{record.didMoneyDiscountBefore,jdbcType=REAL},
+      </if>
+      <if test="record.didDiscountNumber != null" >
+        did_discount_number = #{record.didDiscountNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.didPrice != null" >
+        did_price = #{record.didPrice,jdbcType=REAL},
+      </if>
+      <if test="record.didMoney != null" >
+        did_money = #{record.didMoney,jdbcType=REAL},
+      </if>
+      <if test="record.didTaxRate != null" >
+        did_tax_rate = #{record.didTaxRate,jdbcType=REAL},
+      </if>
+      <if test="record.didTaxAmount != null" >
+        did_tax_amount = #{record.didTaxAmount,jdbcType=REAL},
+      </if>
+      <if test="record.didIncludeTaxAmount != null" >
+        did_include_tax_amount = #{record.didIncludeTaxAmount,jdbcType=REAL},
+      </if>
+      <if test="record.didIfgift != null" >
+        did_ifgift = #{record.didIfgift,jdbcType=VARCHAR},
+      </if>
+      <if test="record.didRemarks != null" >
+        did_remarks = #{record.didRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.didSourceOrder != null" >
+        did_source_order = #{record.didSourceOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="record.didSourceNo != null" >
+        did_source_no = #{record.didSourceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.didAudition != null" >
+        did_audition = #{record.didAudition,jdbcType=VARCHAR},
+      </if>
+      <if test="record.didYn != null" >
+        did_yn = #{record.didYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.didCustom1 != null" >
+        did_custom1 = #{record.didCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.didCustom2 != null" >
+        did_custom2 = #{record.didCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.didCustom3 != null" >
+        did_custom3 = #{record.didCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.didCustom4 != null" >
+        did_custom4 = #{record.didCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.didCustom5 != null" >
+        did_custom5 = #{record.didCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.didCustom6 != null" >
+        did_custom6 = #{record.didCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update purchase_inquiry_detailed
+    set did_id = #{record.didId,jdbcType=VARCHAR},
+      pi_id = #{record.piId,jdbcType=VARCHAR},
+      did_matter_id = #{record.didMatterId,jdbcType=VARCHAR},
+      did_matter_name = #{record.didMatterName,jdbcType=VARCHAR},
+      did_specifications = #{record.didSpecifications,jdbcType=VARCHAR},
+      did_company_name = #{record.didCompanyName,jdbcType=VARCHAR},
+      did_amount = #{record.didAmount,jdbcType=INTEGER},
+      did_money_discount_before = #{record.didMoneyDiscountBefore,jdbcType=REAL},
+      did_discount_number = #{record.didDiscountNumber,jdbcType=VARCHAR},
+      did_price = #{record.didPrice,jdbcType=REAL},
+      did_money = #{record.didMoney,jdbcType=REAL},
+      did_tax_rate = #{record.didTaxRate,jdbcType=REAL},
+      did_tax_amount = #{record.didTaxAmount,jdbcType=REAL},
+      did_include_tax_amount = #{record.didIncludeTaxAmount,jdbcType=REAL},
+      did_ifgift = #{record.didIfgift,jdbcType=VARCHAR},
+      did_remarks = #{record.didRemarks,jdbcType=VARCHAR},
+      did_source_order = #{record.didSourceOrder,jdbcType=VARCHAR},
+      did_source_no = #{record.didSourceNo,jdbcType=VARCHAR},
+      did_audition = #{record.didAudition,jdbcType=VARCHAR},
+      did_yn = #{record.didYn,jdbcType=VARCHAR},
+      did_custom1 = #{record.didCustom1,jdbcType=VARCHAR},
+      did_custom2 = #{record.didCustom2,jdbcType=VARCHAR},
+      did_custom3 = #{record.didCustom3,jdbcType=VARCHAR},
+      did_custom4 = #{record.didCustom4,jdbcType=VARCHAR},
+      did_custom5 = #{record.didCustom5,jdbcType=VARCHAR},
+      did_custom6 = #{record.didCustom6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.PurchaseInquiryDetailed" >
+    update purchase_inquiry_detailed
+    <set >
+      <if test="piId != null" >
+        pi_id = #{piId,jdbcType=VARCHAR},
+      </if>
+      <if test="didMatterId != null" >
+        did_matter_id = #{didMatterId,jdbcType=VARCHAR},
+      </if>
+      <if test="didMatterName != null" >
+        did_matter_name = #{didMatterName,jdbcType=VARCHAR},
+      </if>
+      <if test="didSpecifications != null" >
+        did_specifications = #{didSpecifications,jdbcType=VARCHAR},
+      </if>
+      <if test="didCompanyName != null" >
+        did_company_name = #{didCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="didAmount != null" >
+        did_amount = #{didAmount,jdbcType=INTEGER},
+      </if>
+      <if test="didMoneyDiscountBefore != null" >
+        did_money_discount_before = #{didMoneyDiscountBefore,jdbcType=REAL},
+      </if>
+      <if test="didDiscountNumber != null" >
+        did_discount_number = #{didDiscountNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="didPrice != null" >
+        did_price = #{didPrice,jdbcType=REAL},
+      </if>
+      <if test="didMoney != null" >
+        did_money = #{didMoney,jdbcType=REAL},
+      </if>
+      <if test="didTaxRate != null" >
+        did_tax_rate = #{didTaxRate,jdbcType=REAL},
+      </if>
+      <if test="didTaxAmount != null" >
+        did_tax_amount = #{didTaxAmount,jdbcType=REAL},
+      </if>
+      <if test="didIncludeTaxAmount != null" >
+        did_include_tax_amount = #{didIncludeTaxAmount,jdbcType=REAL},
+      </if>
+      <if test="didIfgift != null" >
+        did_ifgift = #{didIfgift,jdbcType=VARCHAR},
+      </if>
+      <if test="didRemarks != null" >
+        did_remarks = #{didRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="didSourceOrder != null" >
+        did_source_order = #{didSourceOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="didSourceNo != null" >
+        did_source_no = #{didSourceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="didAudition != null" >
+        did_audition = #{didAudition,jdbcType=VARCHAR},
+      </if>
+      <if test="didYn != null" >
+        did_yn = #{didYn,jdbcType=VARCHAR},
+      </if>
+      <if test="didCustom1 != null" >
+        did_custom1 = #{didCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="didCustom2 != null" >
+        did_custom2 = #{didCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="didCustom3 != null" >
+        did_custom3 = #{didCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="didCustom4 != null" >
+        did_custom4 = #{didCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="didCustom5 != null" >
+        did_custom5 = #{didCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="didCustom6 != null" >
+        did_custom6 = #{didCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where did_id = #{didId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.PurchaseInquiryDetailed" >
+    update purchase_inquiry_detailed
+    set pi_id = #{piId,jdbcType=VARCHAR},
+      did_matter_id = #{didMatterId,jdbcType=VARCHAR},
+      did_matter_name = #{didMatterName,jdbcType=VARCHAR},
+      did_specifications = #{didSpecifications,jdbcType=VARCHAR},
+      did_company_name = #{didCompanyName,jdbcType=VARCHAR},
+      did_amount = #{didAmount,jdbcType=INTEGER},
+      did_money_discount_before = #{didMoneyDiscountBefore,jdbcType=REAL},
+      did_discount_number = #{didDiscountNumber,jdbcType=VARCHAR},
+      did_price = #{didPrice,jdbcType=REAL},
+      did_money = #{didMoney,jdbcType=REAL},
+      did_tax_rate = #{didTaxRate,jdbcType=REAL},
+      did_tax_amount = #{didTaxAmount,jdbcType=REAL},
+      did_include_tax_amount = #{didIncludeTaxAmount,jdbcType=REAL},
+      did_ifgift = #{didIfgift,jdbcType=VARCHAR},
+      did_remarks = #{didRemarks,jdbcType=VARCHAR},
+      did_source_order = #{didSourceOrder,jdbcType=VARCHAR},
+      did_source_no = #{didSourceNo,jdbcType=VARCHAR},
+      did_audition = #{didAudition,jdbcType=VARCHAR},
+      did_yn = #{didYn,jdbcType=VARCHAR},
+      did_custom1 = #{didCustom1,jdbcType=VARCHAR},
+      did_custom2 = #{didCustom2,jdbcType=VARCHAR},
+      did_custom3 = #{didCustom3,jdbcType=VARCHAR},
+      did_custom4 = #{didCustom4,jdbcType=VARCHAR},
+      did_custom5 = #{didCustom5,jdbcType=VARCHAR},
+      did_custom6 = #{didCustom6,jdbcType=VARCHAR}
+    where did_id = #{didId,jdbcType=VARCHAR}
+  </update>
+</mapper>

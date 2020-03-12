@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.InvoiceTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.InvoiceType" >
+    <id column="it_id" property="itId" jdbcType="VARCHAR" />
+    <result column="it_name" property="itName" jdbcType="VARCHAR" />
+    <result column="it_english_name" property="itEnglishName" jdbcType="VARCHAR" />
+    <result column="it_remark" property="itRemark" jdbcType="VARCHAR" />
+    <result column="it_Auditing" property="itAuditing" jdbcType="VARCHAR" />
+    <result column="it_yn" property="itYn" jdbcType="VARCHAR" />
+    <result column="it_custom1" property="itCustom1" jdbcType="VARCHAR" />
+    <result column="it_custom2" property="itCustom2" jdbcType="VARCHAR" />
+    <result column="it_custom3" property="itCustom3" jdbcType="VARCHAR" />
+    <result column="it_custom4" property="itCustom4" jdbcType="VARCHAR" />
+    <result column="it_custom5" property="itCustom5" jdbcType="VARCHAR" />
+    <result column="it_custom6" property="itCustom6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    it_id, it_name, it_english_name, it_remark, it_Auditing, it_yn, it_custom1, it_custom2, 
+    it_custom3, it_custom4, it_custom5, it_custom6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.InvoiceTypeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from invoice_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from invoice_type
+    where it_id = #{itId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from invoice_type
+    where it_id = #{itId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.InvoiceTypeExample" >
+    delete from invoice_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.InvoiceType" >
+    insert into invoice_type (it_id, it_name, it_english_name, 
+      it_remark, it_Auditing, it_yn, 
+      it_custom1, it_custom2, it_custom3, 
+      it_custom4, it_custom5, it_custom6
+      )
+    values (#{itId,jdbcType=VARCHAR}, #{itName,jdbcType=VARCHAR}, #{itEnglishName,jdbcType=VARCHAR}, 
+      #{itRemark,jdbcType=VARCHAR}, #{itAuditing,jdbcType=VARCHAR}, #{itYn,jdbcType=VARCHAR}, 
+      #{itCustom1,jdbcType=VARCHAR}, #{itCustom2,jdbcType=VARCHAR}, #{itCustom3,jdbcType=VARCHAR}, 
+      #{itCustom4,jdbcType=VARCHAR}, #{itCustom5,jdbcType=VARCHAR}, #{itCustom6,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.InvoiceType" >
+    insert into invoice_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="itId != null" >
+        it_id,
+      </if>
+      <if test="itName != null" >
+        it_name,
+      </if>
+      <if test="itEnglishName != null" >
+        it_english_name,
+      </if>
+      <if test="itRemark != null" >
+        it_remark,
+      </if>
+      <if test="itAuditing != null" >
+        it_Auditing,
+      </if>
+      <if test="itYn != null" >
+        it_yn,
+      </if>
+      <if test="itCustom1 != null" >
+        it_custom1,
+      </if>
+      <if test="itCustom2 != null" >
+        it_custom2,
+      </if>
+      <if test="itCustom3 != null" >
+        it_custom3,
+      </if>
+      <if test="itCustom4 != null" >
+        it_custom4,
+      </if>
+      <if test="itCustom5 != null" >
+        it_custom5,
+      </if>
+      <if test="itCustom6 != null" >
+        it_custom6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="itId != null" >
+        #{itId,jdbcType=VARCHAR},
+      </if>
+      <if test="itName != null" >
+        #{itName,jdbcType=VARCHAR},
+      </if>
+      <if test="itEnglishName != null" >
+        #{itEnglishName,jdbcType=VARCHAR},
+      </if>
+      <if test="itRemark != null" >
+        #{itRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="itAuditing != null" >
+        #{itAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="itYn != null" >
+        #{itYn,jdbcType=VARCHAR},
+      </if>
+      <if test="itCustom1 != null" >
+        #{itCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="itCustom2 != null" >
+        #{itCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="itCustom3 != null" >
+        #{itCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="itCustom4 != null" >
+        #{itCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="itCustom5 != null" >
+        #{itCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="itCustom6 != null" >
+        #{itCustom6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.InvoiceTypeExample" resultType="java.lang.Integer" >
+    select count(*) from invoice_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update invoice_type
+    <set >
+      <if test="record.itId != null" >
+        it_id = #{record.itId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itName != null" >
+        it_name = #{record.itName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itEnglishName != null" >
+        it_english_name = #{record.itEnglishName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itRemark != null" >
+        it_remark = #{record.itRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itAuditing != null" >
+        it_Auditing = #{record.itAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itYn != null" >
+        it_yn = #{record.itYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itCustom1 != null" >
+        it_custom1 = #{record.itCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itCustom2 != null" >
+        it_custom2 = #{record.itCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itCustom3 != null" >
+        it_custom3 = #{record.itCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itCustom4 != null" >
+        it_custom4 = #{record.itCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itCustom5 != null" >
+        it_custom5 = #{record.itCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itCustom6 != null" >
+        it_custom6 = #{record.itCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update invoice_type
+    set it_id = #{record.itId,jdbcType=VARCHAR},
+      it_name = #{record.itName,jdbcType=VARCHAR},
+      it_english_name = #{record.itEnglishName,jdbcType=VARCHAR},
+      it_remark = #{record.itRemark,jdbcType=VARCHAR},
+      it_Auditing = #{record.itAuditing,jdbcType=VARCHAR},
+      it_yn = #{record.itYn,jdbcType=VARCHAR},
+      it_custom1 = #{record.itCustom1,jdbcType=VARCHAR},
+      it_custom2 = #{record.itCustom2,jdbcType=VARCHAR},
+      it_custom3 = #{record.itCustom3,jdbcType=VARCHAR},
+      it_custom4 = #{record.itCustom4,jdbcType=VARCHAR},
+      it_custom5 = #{record.itCustom5,jdbcType=VARCHAR},
+      it_custom6 = #{record.itCustom6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.InvoiceType" >
+    update invoice_type
+    <set >
+      <if test="itName != null" >
+        it_name = #{itName,jdbcType=VARCHAR},
+      </if>
+      <if test="itEnglishName != null" >
+        it_english_name = #{itEnglishName,jdbcType=VARCHAR},
+      </if>
+      <if test="itRemark != null" >
+        it_remark = #{itRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="itAuditing != null" >
+        it_Auditing = #{itAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="itYn != null" >
+        it_yn = #{itYn,jdbcType=VARCHAR},
+      </if>
+      <if test="itCustom1 != null" >
+        it_custom1 = #{itCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="itCustom2 != null" >
+        it_custom2 = #{itCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="itCustom3 != null" >
+        it_custom3 = #{itCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="itCustom4 != null" >
+        it_custom4 = #{itCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="itCustom5 != null" >
+        it_custom5 = #{itCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="itCustom6 != null" >
+        it_custom6 = #{itCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where it_id = #{itId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.InvoiceType" >
+    update invoice_type
+    set it_name = #{itName,jdbcType=VARCHAR},
+      it_english_name = #{itEnglishName,jdbcType=VARCHAR},
+      it_remark = #{itRemark,jdbcType=VARCHAR},
+      it_Auditing = #{itAuditing,jdbcType=VARCHAR},
+      it_yn = #{itYn,jdbcType=VARCHAR},
+      it_custom1 = #{itCustom1,jdbcType=VARCHAR},
+      it_custom2 = #{itCustom2,jdbcType=VARCHAR},
+      it_custom3 = #{itCustom3,jdbcType=VARCHAR},
+      it_custom4 = #{itCustom4,jdbcType=VARCHAR},
+      it_custom5 = #{itCustom5,jdbcType=VARCHAR},
+      it_custom6 = #{itCustom6,jdbcType=VARCHAR}
+    where it_id = #{itId,jdbcType=VARCHAR}
+  </update>
+</mapper>

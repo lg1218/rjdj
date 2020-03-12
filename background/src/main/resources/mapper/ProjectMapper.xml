@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.ProjectMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Project" >
+    <id column="project_id" property="projectId" jdbcType="VARCHAR" />
+    <result column="project_name" property="projectName" jdbcType="VARCHAR" />
+    <result column="project_english_name" property="projectEnglishName" jdbcType="VARCHAR" />
+    <result column="project_abate" property="projectAbate" jdbcType="DATE" />
+    <result column="project_remark" property="projectRemark" jdbcType="VARCHAR" />
+    <result column="project_Auditing" property="projectAuditing" jdbcType="VARCHAR" />
+    <result column="project_yn" property="projectYn" jdbcType="VARCHAR" />
+    <result column="project_custom1" property="projectCustom1" jdbcType="VARCHAR" />
+    <result column="project_custom2" property="projectCustom2" jdbcType="VARCHAR" />
+    <result column="project_custom3" property="projectCustom3" jdbcType="VARCHAR" />
+    <result column="project_custom4" property="projectCustom4" jdbcType="VARCHAR" />
+    <result column="project_custom5" property="projectCustom5" jdbcType="VARCHAR" />
+    <result column="project_custom6" property="projectCustom6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    project_id, project_name, project_english_name, project_abate, project_remark, project_Auditing, 
+    project_yn, project_custom1, project_custom2, project_custom3, project_custom4, project_custom5, 
+    project_custom6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.ProjectExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from project
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from project
+    where project_id = #{projectId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from project
+    where project_id = #{projectId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.ProjectExample" >
+    delete from project
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Project" >
+    insert into project (project_id, project_name, project_english_name, 
+      project_abate, project_remark, project_Auditing, 
+      project_yn, project_custom1, project_custom2, 
+      project_custom3, project_custom4, project_custom5, 
+      project_custom6)
+    values (#{projectId,jdbcType=VARCHAR}, #{projectName,jdbcType=VARCHAR}, #{projectEnglishName,jdbcType=VARCHAR}, 
+      #{projectAbate,jdbcType=DATE}, #{projectRemark,jdbcType=VARCHAR}, #{projectAuditing,jdbcType=VARCHAR}, 
+      #{projectYn,jdbcType=VARCHAR}, #{projectCustom1,jdbcType=VARCHAR}, #{projectCustom2,jdbcType=VARCHAR}, 
+      #{projectCustom3,jdbcType=VARCHAR}, #{projectCustom4,jdbcType=VARCHAR}, #{projectCustom5,jdbcType=VARCHAR}, 
+      #{projectCustom6,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Project" >
+    insert into project
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="projectName != null" >
+        project_name,
+      </if>
+      <if test="projectEnglishName != null" >
+        project_english_name,
+      </if>
+      <if test="projectAbate != null" >
+        project_abate,
+      </if>
+      <if test="projectRemark != null" >
+        project_remark,
+      </if>
+      <if test="projectAuditing != null" >
+        project_Auditing,
+      </if>
+      <if test="projectYn != null" >
+        project_yn,
+      </if>
+      <if test="projectCustom1 != null" >
+        project_custom1,
+      </if>
+      <if test="projectCustom2 != null" >
+        project_custom2,
+      </if>
+      <if test="projectCustom3 != null" >
+        project_custom3,
+      </if>
+      <if test="projectCustom4 != null" >
+        project_custom4,
+      </if>
+      <if test="projectCustom5 != null" >
+        project_custom5,
+      </if>
+      <if test="projectCustom6 != null" >
+        project_custom6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="projectId != null" >
+        #{projectId,jdbcType=VARCHAR},
+      </if>
+      <if test="projectName != null" >
+        #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectEnglishName != null" >
+        #{projectEnglishName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectAbate != null" >
+        #{projectAbate,jdbcType=DATE},
+      </if>
+      <if test="projectRemark != null" >
+        #{projectRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="projectAuditing != null" >
+        #{projectAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="projectYn != null" >
+        #{projectYn,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCustom1 != null" >
+        #{projectCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCustom2 != null" >
+        #{projectCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCustom3 != null" >
+        #{projectCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCustom4 != null" >
+        #{projectCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCustom5 != null" >
+        #{projectCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCustom6 != null" >
+        #{projectCustom6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.ProjectExample" resultType="java.lang.Integer" >
+    select count(*) from project
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update project
+    <set >
+      <if test="record.projectId != null" >
+        project_id = #{record.projectId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectName != null" >
+        project_name = #{record.projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectEnglishName != null" >
+        project_english_name = #{record.projectEnglishName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectAbate != null" >
+        project_abate = #{record.projectAbate,jdbcType=DATE},
+      </if>
+      <if test="record.projectRemark != null" >
+        project_remark = #{record.projectRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectAuditing != null" >
+        project_Auditing = #{record.projectAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectYn != null" >
+        project_yn = #{record.projectYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectCustom1 != null" >
+        project_custom1 = #{record.projectCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectCustom2 != null" >
+        project_custom2 = #{record.projectCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectCustom3 != null" >
+        project_custom3 = #{record.projectCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectCustom4 != null" >
+        project_custom4 = #{record.projectCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectCustom5 != null" >
+        project_custom5 = #{record.projectCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectCustom6 != null" >
+        project_custom6 = #{record.projectCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update project
+    set project_id = #{record.projectId,jdbcType=VARCHAR},
+      project_name = #{record.projectName,jdbcType=VARCHAR},
+      project_english_name = #{record.projectEnglishName,jdbcType=VARCHAR},
+      project_abate = #{record.projectAbate,jdbcType=DATE},
+      project_remark = #{record.projectRemark,jdbcType=VARCHAR},
+      project_Auditing = #{record.projectAuditing,jdbcType=VARCHAR},
+      project_yn = #{record.projectYn,jdbcType=VARCHAR},
+      project_custom1 = #{record.projectCustom1,jdbcType=VARCHAR},
+      project_custom2 = #{record.projectCustom2,jdbcType=VARCHAR},
+      project_custom3 = #{record.projectCustom3,jdbcType=VARCHAR},
+      project_custom4 = #{record.projectCustom4,jdbcType=VARCHAR},
+      project_custom5 = #{record.projectCustom5,jdbcType=VARCHAR},
+      project_custom6 = #{record.projectCustom6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Project" >
+    update project
+    <set >
+      <if test="projectName != null" >
+        project_name = #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectEnglishName != null" >
+        project_english_name = #{projectEnglishName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectAbate != null" >
+        project_abate = #{projectAbate,jdbcType=DATE},
+      </if>
+      <if test="projectRemark != null" >
+        project_remark = #{projectRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="projectAuditing != null" >
+        project_Auditing = #{projectAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="projectYn != null" >
+        project_yn = #{projectYn,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCustom1 != null" >
+        project_custom1 = #{projectCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCustom2 != null" >
+        project_custom2 = #{projectCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCustom3 != null" >
+        project_custom3 = #{projectCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCustom4 != null" >
+        project_custom4 = #{projectCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCustom5 != null" >
+        project_custom5 = #{projectCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCustom6 != null" >
+        project_custom6 = #{projectCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where project_id = #{projectId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Project" >
+    update project
+    set project_name = #{projectName,jdbcType=VARCHAR},
+      project_english_name = #{projectEnglishName,jdbcType=VARCHAR},
+      project_abate = #{projectAbate,jdbcType=DATE},
+      project_remark = #{projectRemark,jdbcType=VARCHAR},
+      project_Auditing = #{projectAuditing,jdbcType=VARCHAR},
+      project_yn = #{projectYn,jdbcType=VARCHAR},
+      project_custom1 = #{projectCustom1,jdbcType=VARCHAR},
+      project_custom2 = #{projectCustom2,jdbcType=VARCHAR},
+      project_custom3 = #{projectCustom3,jdbcType=VARCHAR},
+      project_custom4 = #{projectCustom4,jdbcType=VARCHAR},
+      project_custom5 = #{projectCustom5,jdbcType=VARCHAR},
+      project_custom6 = #{projectCustom6,jdbcType=VARCHAR}
+    where project_id = #{projectId,jdbcType=VARCHAR}
+  </update>
+</mapper>

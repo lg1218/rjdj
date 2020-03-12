@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.MeasurementUnitMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.MeasurementUnit" >
+    <id column="mu_id" property="muId" jdbcType="VARCHAR" />
+    <result column="mu_name" property="muName" jdbcType="VARCHAR" />
+    <result column="mu_englist_name" property="muEnglistName" jdbcType="VARCHAR" />
+    <result column="mu_remark" property="muRemark" jdbcType="VARCHAR" />
+    <result column="mu_Auditing" property="muAuditing" jdbcType="VARCHAR" />
+    <result column="mu_yn" property="muYn" jdbcType="VARCHAR" />
+    <result column="mu_custom1" property="muCustom1" jdbcType="VARCHAR" />
+    <result column="mu_custom2" property="muCustom2" jdbcType="VARCHAR" />
+    <result column="mu_custom3" property="muCustom3" jdbcType="VARCHAR" />
+    <result column="mu_custom4" property="muCustom4" jdbcType="VARCHAR" />
+    <result column="mu_custom5" property="muCustom5" jdbcType="VARCHAR" />
+    <result column="mu_custom6" property="muCustom6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    mu_id, mu_name, mu_englist_name, mu_remark, mu_Auditing, mu_yn, mu_custom1, mu_custom2, 
+    mu_custom3, mu_custom4, mu_custom5, mu_custom6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.MeasurementUnitExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from measurement_unit
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from measurement_unit
+    where mu_id = #{muId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from measurement_unit
+    where mu_id = #{muId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.MeasurementUnitExample" >
+    delete from measurement_unit
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.MeasurementUnit" >
+    insert into measurement_unit (mu_id, mu_name, mu_englist_name, 
+      mu_remark, mu_Auditing, mu_yn, 
+      mu_custom1, mu_custom2, mu_custom3, 
+      mu_custom4, mu_custom5, mu_custom6
+      )
+    values (#{muId,jdbcType=VARCHAR}, #{muName,jdbcType=VARCHAR}, #{muEnglistName,jdbcType=VARCHAR}, 
+      #{muRemark,jdbcType=VARCHAR}, #{muAuditing,jdbcType=VARCHAR}, #{muYn,jdbcType=VARCHAR}, 
+      #{muCustom1,jdbcType=VARCHAR}, #{muCustom2,jdbcType=VARCHAR}, #{muCustom3,jdbcType=VARCHAR}, 
+      #{muCustom4,jdbcType=VARCHAR}, #{muCustom5,jdbcType=VARCHAR}, #{muCustom6,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.MeasurementUnit" >
+    insert into measurement_unit
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="muId != null" >
+        mu_id,
+      </if>
+      <if test="muName != null" >
+        mu_name,
+      </if>
+      <if test="muEnglistName != null" >
+        mu_englist_name,
+      </if>
+      <if test="muRemark != null" >
+        mu_remark,
+      </if>
+      <if test="muAuditing != null" >
+        mu_Auditing,
+      </if>
+      <if test="muYn != null" >
+        mu_yn,
+      </if>
+      <if test="muCustom1 != null" >
+        mu_custom1,
+      </if>
+      <if test="muCustom2 != null" >
+        mu_custom2,
+      </if>
+      <if test="muCustom3 != null" >
+        mu_custom3,
+      </if>
+      <if test="muCustom4 != null" >
+        mu_custom4,
+      </if>
+      <if test="muCustom5 != null" >
+        mu_custom5,
+      </if>
+      <if test="muCustom6 != null" >
+        mu_custom6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="muId != null" >
+        #{muId,jdbcType=VARCHAR},
+      </if>
+      <if test="muName != null" >
+        #{muName,jdbcType=VARCHAR},
+      </if>
+      <if test="muEnglistName != null" >
+        #{muEnglistName,jdbcType=VARCHAR},
+      </if>
+      <if test="muRemark != null" >
+        #{muRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="muAuditing != null" >
+        #{muAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="muYn != null" >
+        #{muYn,jdbcType=VARCHAR},
+      </if>
+      <if test="muCustom1 != null" >
+        #{muCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="muCustom2 != null" >
+        #{muCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="muCustom3 != null" >
+        #{muCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="muCustom4 != null" >
+        #{muCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="muCustom5 != null" >
+        #{muCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="muCustom6 != null" >
+        #{muCustom6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.MeasurementUnitExample" resultType="java.lang.Integer" >
+    select count(*) from measurement_unit
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update measurement_unit
+    <set >
+      <if test="record.muId != null" >
+        mu_id = #{record.muId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.muName != null" >
+        mu_name = #{record.muName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.muEnglistName != null" >
+        mu_englist_name = #{record.muEnglistName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.muRemark != null" >
+        mu_remark = #{record.muRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.muAuditing != null" >
+        mu_Auditing = #{record.muAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.muYn != null" >
+        mu_yn = #{record.muYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.muCustom1 != null" >
+        mu_custom1 = #{record.muCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.muCustom2 != null" >
+        mu_custom2 = #{record.muCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.muCustom3 != null" >
+        mu_custom3 = #{record.muCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.muCustom4 != null" >
+        mu_custom4 = #{record.muCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.muCustom5 != null" >
+        mu_custom5 = #{record.muCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.muCustom6 != null" >
+        mu_custom6 = #{record.muCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update measurement_unit
+    set mu_id = #{record.muId,jdbcType=VARCHAR},
+      mu_name = #{record.muName,jdbcType=VARCHAR},
+      mu_englist_name = #{record.muEnglistName,jdbcType=VARCHAR},
+      mu_remark = #{record.muRemark,jdbcType=VARCHAR},
+      mu_Auditing = #{record.muAuditing,jdbcType=VARCHAR},
+      mu_yn = #{record.muYn,jdbcType=VARCHAR},
+      mu_custom1 = #{record.muCustom1,jdbcType=VARCHAR},
+      mu_custom2 = #{record.muCustom2,jdbcType=VARCHAR},
+      mu_custom3 = #{record.muCustom3,jdbcType=VARCHAR},
+      mu_custom4 = #{record.muCustom4,jdbcType=VARCHAR},
+      mu_custom5 = #{record.muCustom5,jdbcType=VARCHAR},
+      mu_custom6 = #{record.muCustom6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.MeasurementUnit" >
+    update measurement_unit
+    <set >
+      <if test="muName != null" >
+        mu_name = #{muName,jdbcType=VARCHAR},
+      </if>
+      <if test="muEnglistName != null" >
+        mu_englist_name = #{muEnglistName,jdbcType=VARCHAR},
+      </if>
+      <if test="muRemark != null" >
+        mu_remark = #{muRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="muAuditing != null" >
+        mu_Auditing = #{muAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="muYn != null" >
+        mu_yn = #{muYn,jdbcType=VARCHAR},
+      </if>
+      <if test="muCustom1 != null" >
+        mu_custom1 = #{muCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="muCustom2 != null" >
+        mu_custom2 = #{muCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="muCustom3 != null" >
+        mu_custom3 = #{muCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="muCustom4 != null" >
+        mu_custom4 = #{muCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="muCustom5 != null" >
+        mu_custom5 = #{muCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="muCustom6 != null" >
+        mu_custom6 = #{muCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where mu_id = #{muId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.MeasurementUnit" >
+    update measurement_unit
+    set mu_name = #{muName,jdbcType=VARCHAR},
+      mu_englist_name = #{muEnglistName,jdbcType=VARCHAR},
+      mu_remark = #{muRemark,jdbcType=VARCHAR},
+      mu_Auditing = #{muAuditing,jdbcType=VARCHAR},
+      mu_yn = #{muYn,jdbcType=VARCHAR},
+      mu_custom1 = #{muCustom1,jdbcType=VARCHAR},
+      mu_custom2 = #{muCustom2,jdbcType=VARCHAR},
+      mu_custom3 = #{muCustom3,jdbcType=VARCHAR},
+      mu_custom4 = #{muCustom4,jdbcType=VARCHAR},
+      mu_custom5 = #{muCustom5,jdbcType=VARCHAR},
+      mu_custom6 = #{muCustom6,jdbcType=VARCHAR}
+    where mu_id = #{muId,jdbcType=VARCHAR}
+  </update>
+</mapper>

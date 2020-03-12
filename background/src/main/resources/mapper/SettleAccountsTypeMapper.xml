@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.SettleAccountsTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.SettleAccountsType" >
+    <id column="sat_id" property="satId" jdbcType="VARCHAR" />
+    <result column="sat_name" property="satName" jdbcType="VARCHAR" />
+    <result column="sat_english_name" property="satEnglishName" jdbcType="VARCHAR" />
+    <result column="sat_subject" property="satSubject" jdbcType="VARCHAR" />
+    <result column="sat_remark" property="satRemark" jdbcType="VARCHAR" />
+    <result column="sat_Auditing" property="satAuditing" jdbcType="VARCHAR" />
+    <result column="sat_yn" property="satYn" jdbcType="VARCHAR" />
+    <result column="sat_custom1" property="satCustom1" jdbcType="VARCHAR" />
+    <result column="sat_custom2" property="satCustom2" jdbcType="VARCHAR" />
+    <result column="sat_custom3" property="satCustom3" jdbcType="VARCHAR" />
+    <result column="sat_custom4" property="satCustom4" jdbcType="VARCHAR" />
+    <result column="sat_custom5" property="satCustom5" jdbcType="VARCHAR" />
+    <result column="sat_custom6" property="satCustom6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    sat_id, sat_name, sat_english_name, sat_subject, sat_remark, sat_Auditing, sat_yn, 
+    sat_custom1, sat_custom2, sat_custom3, sat_custom4, sat_custom5, sat_custom6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.SettleAccountsTypeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from settle_accounts_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from settle_accounts_type
+    where sat_id = #{satId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from settle_accounts_type
+    where sat_id = #{satId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.SettleAccountsTypeExample" >
+    delete from settle_accounts_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.SettleAccountsType" >
+    insert into settle_accounts_type (sat_id, sat_name, sat_english_name, 
+      sat_subject, sat_remark, sat_Auditing, 
+      sat_yn, sat_custom1, sat_custom2, 
+      sat_custom3, sat_custom4, sat_custom5, 
+      sat_custom6)
+    values (#{satId,jdbcType=VARCHAR}, #{satName,jdbcType=VARCHAR}, #{satEnglishName,jdbcType=VARCHAR}, 
+      #{satSubject,jdbcType=VARCHAR}, #{satRemark,jdbcType=VARCHAR}, #{satAuditing,jdbcType=VARCHAR}, 
+      #{satYn,jdbcType=VARCHAR}, #{satCustom1,jdbcType=VARCHAR}, #{satCustom2,jdbcType=VARCHAR}, 
+      #{satCustom3,jdbcType=VARCHAR}, #{satCustom4,jdbcType=VARCHAR}, #{satCustom5,jdbcType=VARCHAR}, 
+      #{satCustom6,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.SettleAccountsType" >
+    insert into settle_accounts_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="satId != null" >
+        sat_id,
+      </if>
+      <if test="satName != null" >
+        sat_name,
+      </if>
+      <if test="satEnglishName != null" >
+        sat_english_name,
+      </if>
+      <if test="satSubject != null" >
+        sat_subject,
+      </if>
+      <if test="satRemark != null" >
+        sat_remark,
+      </if>
+      <if test="satAuditing != null" >
+        sat_Auditing,
+      </if>
+      <if test="satYn != null" >
+        sat_yn,
+      </if>
+      <if test="satCustom1 != null" >
+        sat_custom1,
+      </if>
+      <if test="satCustom2 != null" >
+        sat_custom2,
+      </if>
+      <if test="satCustom3 != null" >
+        sat_custom3,
+      </if>
+      <if test="satCustom4 != null" >
+        sat_custom4,
+      </if>
+      <if test="satCustom5 != null" >
+        sat_custom5,
+      </if>
+      <if test="satCustom6 != null" >
+        sat_custom6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="satId != null" >
+        #{satId,jdbcType=VARCHAR},
+      </if>
+      <if test="satName != null" >
+        #{satName,jdbcType=VARCHAR},
+      </if>
+      <if test="satEnglishName != null" >
+        #{satEnglishName,jdbcType=VARCHAR},
+      </if>
+      <if test="satSubject != null" >
+        #{satSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="satRemark != null" >
+        #{satRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="satAuditing != null" >
+        #{satAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="satYn != null" >
+        #{satYn,jdbcType=VARCHAR},
+      </if>
+      <if test="satCustom1 != null" >
+        #{satCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="satCustom2 != null" >
+        #{satCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="satCustom3 != null" >
+        #{satCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="satCustom4 != null" >
+        #{satCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="satCustom5 != null" >
+        #{satCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="satCustom6 != null" >
+        #{satCustom6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.SettleAccountsTypeExample" resultType="java.lang.Integer" >
+    select count(*) from settle_accounts_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update settle_accounts_type
+    <set >
+      <if test="record.satId != null" >
+        sat_id = #{record.satId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.satName != null" >
+        sat_name = #{record.satName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.satEnglishName != null" >
+        sat_english_name = #{record.satEnglishName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.satSubject != null" >
+        sat_subject = #{record.satSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="record.satRemark != null" >
+        sat_remark = #{record.satRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.satAuditing != null" >
+        sat_Auditing = #{record.satAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.satYn != null" >
+        sat_yn = #{record.satYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.satCustom1 != null" >
+        sat_custom1 = #{record.satCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.satCustom2 != null" >
+        sat_custom2 = #{record.satCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.satCustom3 != null" >
+        sat_custom3 = #{record.satCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.satCustom4 != null" >
+        sat_custom4 = #{record.satCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.satCustom5 != null" >
+        sat_custom5 = #{record.satCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.satCustom6 != null" >
+        sat_custom6 = #{record.satCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update settle_accounts_type
+    set sat_id = #{record.satId,jdbcType=VARCHAR},
+      sat_name = #{record.satName,jdbcType=VARCHAR},
+      sat_english_name = #{record.satEnglishName,jdbcType=VARCHAR},
+      sat_subject = #{record.satSubject,jdbcType=VARCHAR},
+      sat_remark = #{record.satRemark,jdbcType=VARCHAR},
+      sat_Auditing = #{record.satAuditing,jdbcType=VARCHAR},
+      sat_yn = #{record.satYn,jdbcType=VARCHAR},
+      sat_custom1 = #{record.satCustom1,jdbcType=VARCHAR},
+      sat_custom2 = #{record.satCustom2,jdbcType=VARCHAR},
+      sat_custom3 = #{record.satCustom3,jdbcType=VARCHAR},
+      sat_custom4 = #{record.satCustom4,jdbcType=VARCHAR},
+      sat_custom5 = #{record.satCustom5,jdbcType=VARCHAR},
+      sat_custom6 = #{record.satCustom6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.SettleAccountsType" >
+    update settle_accounts_type
+    <set >
+      <if test="satName != null" >
+        sat_name = #{satName,jdbcType=VARCHAR},
+      </if>
+      <if test="satEnglishName != null" >
+        sat_english_name = #{satEnglishName,jdbcType=VARCHAR},
+      </if>
+      <if test="satSubject != null" >
+        sat_subject = #{satSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="satRemark != null" >
+        sat_remark = #{satRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="satAuditing != null" >
+        sat_Auditing = #{satAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="satYn != null" >
+        sat_yn = #{satYn,jdbcType=VARCHAR},
+      </if>
+      <if test="satCustom1 != null" >
+        sat_custom1 = #{satCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="satCustom2 != null" >
+        sat_custom2 = #{satCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="satCustom3 != null" >
+        sat_custom3 = #{satCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="satCustom4 != null" >
+        sat_custom4 = #{satCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="satCustom5 != null" >
+        sat_custom5 = #{satCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="satCustom6 != null" >
+        sat_custom6 = #{satCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sat_id = #{satId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.SettleAccountsType" >
+    update settle_accounts_type
+    set sat_name = #{satName,jdbcType=VARCHAR},
+      sat_english_name = #{satEnglishName,jdbcType=VARCHAR},
+      sat_subject = #{satSubject,jdbcType=VARCHAR},
+      sat_remark = #{satRemark,jdbcType=VARCHAR},
+      sat_Auditing = #{satAuditing,jdbcType=VARCHAR},
+      sat_yn = #{satYn,jdbcType=VARCHAR},
+      sat_custom1 = #{satCustom1,jdbcType=VARCHAR},
+      sat_custom2 = #{satCustom2,jdbcType=VARCHAR},
+      sat_custom3 = #{satCustom3,jdbcType=VARCHAR},
+      sat_custom4 = #{satCustom4,jdbcType=VARCHAR},
+      sat_custom5 = #{satCustom5,jdbcType=VARCHAR},
+      sat_custom6 = #{satCustom6,jdbcType=VARCHAR}
+    where sat_id = #{satId,jdbcType=VARCHAR}
+  </update>
+</mapper>

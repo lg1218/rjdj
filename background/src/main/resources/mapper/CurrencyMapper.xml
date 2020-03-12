@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.CurrencyMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Currency" >
+    <id column="currency_id" property="currencyId" jdbcType="VARCHAR" />
+    <result column="currency_name" property="currencyName" jdbcType="VARCHAR" />
+    <result column="currency_easyname" property="currencyEasyname" jdbcType="VARCHAR" />
+    <result column="currency_engname" property="currencyEngname" jdbcType="VARCHAR" />
+    <result column="currency_transactionday" property="currencyTransactionday" jdbcType="DATE" />
+    <result column="currency_standardexchange" property="currencyStandardexchange" jdbcType="REAL" />
+    <result column="currency_inexchange" property="currencyInexchange" jdbcType="REAL" />
+    <result column="currency_outexchange" property="currencyOutexchange" jdbcType="REAL" />
+    <result column="currency_ifthousand" property="currencyIfthousand" jdbcType="INTEGER" />
+    <result column="currency_mpointset" property="currencyMpointset" jdbcType="INTEGER" />
+    <result column="currency_Auditing" property="currencyAuditing" jdbcType="VARCHAR" />
+    <result column="urrency_yn" property="urrencyYn" jdbcType="VARCHAR" />
+    <result column="currency_custom1" property="currencyCustom1" jdbcType="VARCHAR" />
+    <result column="currency_custom2" property="currencyCustom2" jdbcType="VARCHAR" />
+    <result column="currency_custom3" property="currencyCustom3" jdbcType="VARCHAR" />
+    <result column="currency_custom4" property="currencyCustom4" jdbcType="VARCHAR" />
+    <result column="currency_custom5" property="currencyCustom5" jdbcType="VARCHAR" />
+    <result column="currency_custom6" property="currencyCustom6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    currency_id, currency_name, currency_easyname, currency_engname, currency_transactionday, 
+    currency_standardexchange, currency_inexchange, currency_outexchange, currency_ifthousand, 
+    currency_mpointset, currency_Auditing, urrency_yn, currency_custom1, currency_custom2, 
+    currency_custom3, currency_custom4, currency_custom5, currency_custom6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.CurrencyExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from currency
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from currency
+    where currency_id = #{currencyId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from currency
+    where currency_id = #{currencyId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.CurrencyExample" >
+    delete from currency
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Currency" >
+    insert into currency (currency_id, currency_name, currency_easyname, 
+      currency_engname, currency_transactionday, currency_standardexchange, 
+      currency_inexchange, currency_outexchange, currency_ifthousand, 
+      currency_mpointset, currency_Auditing, urrency_yn, 
+      currency_custom1, currency_custom2, currency_custom3, 
+      currency_custom4, currency_custom5, currency_custom6
+      )
+    values (#{currencyId,jdbcType=VARCHAR}, #{currencyName,jdbcType=VARCHAR}, #{currencyEasyname,jdbcType=VARCHAR}, 
+      #{currencyEngname,jdbcType=VARCHAR}, #{currencyTransactionday,jdbcType=DATE}, #{currencyStandardexchange,jdbcType=REAL}, 
+      #{currencyInexchange,jdbcType=REAL}, #{currencyOutexchange,jdbcType=REAL}, #{currencyIfthousand,jdbcType=INTEGER}, 
+      #{currencyMpointset,jdbcType=INTEGER}, #{currencyAuditing,jdbcType=VARCHAR}, #{urrencyYn,jdbcType=VARCHAR}, 
+      #{currencyCustom1,jdbcType=VARCHAR}, #{currencyCustom2,jdbcType=VARCHAR}, #{currencyCustom3,jdbcType=VARCHAR}, 
+      #{currencyCustom4,jdbcType=VARCHAR}, #{currencyCustom5,jdbcType=VARCHAR}, #{currencyCustom6,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Currency" >
+    insert into currency
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="currencyId != null" >
+        currency_id,
+      </if>
+      <if test="currencyName != null" >
+        currency_name,
+      </if>
+      <if test="currencyEasyname != null" >
+        currency_easyname,
+      </if>
+      <if test="currencyEngname != null" >
+        currency_engname,
+      </if>
+      <if test="currencyTransactionday != null" >
+        currency_transactionday,
+      </if>
+      <if test="currencyStandardexchange != null" >
+        currency_standardexchange,
+      </if>
+      <if test="currencyInexchange != null" >
+        currency_inexchange,
+      </if>
+      <if test="currencyOutexchange != null" >
+        currency_outexchange,
+      </if>
+      <if test="currencyIfthousand != null" >
+        currency_ifthousand,
+      </if>
+      <if test="currencyMpointset != null" >
+        currency_mpointset,
+      </if>
+      <if test="currencyAuditing != null" >
+        currency_Auditing,
+      </if>
+      <if test="urrencyYn != null" >
+        urrency_yn,
+      </if>
+      <if test="currencyCustom1 != null" >
+        currency_custom1,
+      </if>
+      <if test="currencyCustom2 != null" >
+        currency_custom2,
+      </if>
+      <if test="currencyCustom3 != null" >
+        currency_custom3,
+      </if>
+      <if test="currencyCustom4 != null" >
+        currency_custom4,
+      </if>
+      <if test="currencyCustom5 != null" >
+        currency_custom5,
+      </if>
+      <if test="currencyCustom6 != null" >
+        currency_custom6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="currencyId != null" >
+        #{currencyId,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyName != null" >
+        #{currencyName,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyEasyname != null" >
+        #{currencyEasyname,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyEngname != null" >
+        #{currencyEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyTransactionday != null" >
+        #{currencyTransactionday,jdbcType=DATE},
+      </if>
+      <if test="currencyStandardexchange != null" >
+        #{currencyStandardexchange,jdbcType=REAL},
+      </if>
+      <if test="currencyInexchange != null" >
+        #{currencyInexchange,jdbcType=REAL},
+      </if>
+      <if test="currencyOutexchange != null" >
+        #{currencyOutexchange,jdbcType=REAL},
+      </if>
+      <if test="currencyIfthousand != null" >
+        #{currencyIfthousand,jdbcType=INTEGER},
+      </if>
+      <if test="currencyMpointset != null" >
+        #{currencyMpointset,jdbcType=INTEGER},
+      </if>
+      <if test="currencyAuditing != null" >
+        #{currencyAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="urrencyYn != null" >
+        #{urrencyYn,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyCustom1 != null" >
+        #{currencyCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyCustom2 != null" >
+        #{currencyCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyCustom3 != null" >
+        #{currencyCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyCustom4 != null" >
+        #{currencyCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyCustom5 != null" >
+        #{currencyCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyCustom6 != null" >
+        #{currencyCustom6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.CurrencyExample" resultType="java.lang.Integer" >
+    select count(*) from currency
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update currency
+    <set >
+      <if test="record.currencyId != null" >
+        currency_id = #{record.currencyId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.currencyName != null" >
+        currency_name = #{record.currencyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.currencyEasyname != null" >
+        currency_easyname = #{record.currencyEasyname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.currencyEngname != null" >
+        currency_engname = #{record.currencyEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.currencyTransactionday != null" >
+        currency_transactionday = #{record.currencyTransactionday,jdbcType=DATE},
+      </if>
+      <if test="record.currencyStandardexchange != null" >
+        currency_standardexchange = #{record.currencyStandardexchange,jdbcType=REAL},
+      </if>
+      <if test="record.currencyInexchange != null" >
+        currency_inexchange = #{record.currencyInexchange,jdbcType=REAL},
+      </if>
+      <if test="record.currencyOutexchange != null" >
+        currency_outexchange = #{record.currencyOutexchange,jdbcType=REAL},
+      </if>
+      <if test="record.currencyIfthousand != null" >
+        currency_ifthousand = #{record.currencyIfthousand,jdbcType=INTEGER},
+      </if>
+      <if test="record.currencyMpointset != null" >
+        currency_mpointset = #{record.currencyMpointset,jdbcType=INTEGER},
+      </if>
+      <if test="record.currencyAuditing != null" >
+        currency_Auditing = #{record.currencyAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.urrencyYn != null" >
+        urrency_yn = #{record.urrencyYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.currencyCustom1 != null" >
+        currency_custom1 = #{record.currencyCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.currencyCustom2 != null" >
+        currency_custom2 = #{record.currencyCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.currencyCustom3 != null" >
+        currency_custom3 = #{record.currencyCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.currencyCustom4 != null" >
+        currency_custom4 = #{record.currencyCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.currencyCustom5 != null" >
+        currency_custom5 = #{record.currencyCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.currencyCustom6 != null" >
+        currency_custom6 = #{record.currencyCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update currency
+    set currency_id = #{record.currencyId,jdbcType=VARCHAR},
+      currency_name = #{record.currencyName,jdbcType=VARCHAR},
+      currency_easyname = #{record.currencyEasyname,jdbcType=VARCHAR},
+      currency_engname = #{record.currencyEngname,jdbcType=VARCHAR},
+      currency_transactionday = #{record.currencyTransactionday,jdbcType=DATE},
+      currency_standardexchange = #{record.currencyStandardexchange,jdbcType=REAL},
+      currency_inexchange = #{record.currencyInexchange,jdbcType=REAL},
+      currency_outexchange = #{record.currencyOutexchange,jdbcType=REAL},
+      currency_ifthousand = #{record.currencyIfthousand,jdbcType=INTEGER},
+      currency_mpointset = #{record.currencyMpointset,jdbcType=INTEGER},
+      currency_Auditing = #{record.currencyAuditing,jdbcType=VARCHAR},
+      urrency_yn = #{record.urrencyYn,jdbcType=VARCHAR},
+      currency_custom1 = #{record.currencyCustom1,jdbcType=VARCHAR},
+      currency_custom2 = #{record.currencyCustom2,jdbcType=VARCHAR},
+      currency_custom3 = #{record.currencyCustom3,jdbcType=VARCHAR},
+      currency_custom4 = #{record.currencyCustom4,jdbcType=VARCHAR},
+      currency_custom5 = #{record.currencyCustom5,jdbcType=VARCHAR},
+      currency_custom6 = #{record.currencyCustom6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Currency" >
+    update currency
+    <set >
+      <if test="currencyName != null" >
+        currency_name = #{currencyName,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyEasyname != null" >
+        currency_easyname = #{currencyEasyname,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyEngname != null" >
+        currency_engname = #{currencyEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyTransactionday != null" >
+        currency_transactionday = #{currencyTransactionday,jdbcType=DATE},
+      </if>
+      <if test="currencyStandardexchange != null" >
+        currency_standardexchange = #{currencyStandardexchange,jdbcType=REAL},
+      </if>
+      <if test="currencyInexchange != null" >
+        currency_inexchange = #{currencyInexchange,jdbcType=REAL},
+      </if>
+      <if test="currencyOutexchange != null" >
+        currency_outexchange = #{currencyOutexchange,jdbcType=REAL},
+      </if>
+      <if test="currencyIfthousand != null" >
+        currency_ifthousand = #{currencyIfthousand,jdbcType=INTEGER},
+      </if>
+      <if test="currencyMpointset != null" >
+        currency_mpointset = #{currencyMpointset,jdbcType=INTEGER},
+      </if>
+      <if test="currencyAuditing != null" >
+        currency_Auditing = #{currencyAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="urrencyYn != null" >
+        urrency_yn = #{urrencyYn,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyCustom1 != null" >
+        currency_custom1 = #{currencyCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyCustom2 != null" >
+        currency_custom2 = #{currencyCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyCustom3 != null" >
+        currency_custom3 = #{currencyCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyCustom4 != null" >
+        currency_custom4 = #{currencyCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyCustom5 != null" >
+        currency_custom5 = #{currencyCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyCustom6 != null" >
+        currency_custom6 = #{currencyCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where currency_id = #{currencyId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Currency" >
+    update currency
+    set currency_name = #{currencyName,jdbcType=VARCHAR},
+      currency_easyname = #{currencyEasyname,jdbcType=VARCHAR},
+      currency_engname = #{currencyEngname,jdbcType=VARCHAR},
+      currency_transactionday = #{currencyTransactionday,jdbcType=DATE},
+      currency_standardexchange = #{currencyStandardexchange,jdbcType=REAL},
+      currency_inexchange = #{currencyInexchange,jdbcType=REAL},
+      currency_outexchange = #{currencyOutexchange,jdbcType=REAL},
+      currency_ifthousand = #{currencyIfthousand,jdbcType=INTEGER},
+      currency_mpointset = #{currencyMpointset,jdbcType=INTEGER},
+      currency_Auditing = #{currencyAuditing,jdbcType=VARCHAR},
+      urrency_yn = #{urrencyYn,jdbcType=VARCHAR},
+      currency_custom1 = #{currencyCustom1,jdbcType=VARCHAR},
+      currency_custom2 = #{currencyCustom2,jdbcType=VARCHAR},
+      currency_custom3 = #{currencyCustom3,jdbcType=VARCHAR},
+      currency_custom4 = #{currencyCustom4,jdbcType=VARCHAR},
+      currency_custom5 = #{currencyCustom5,jdbcType=VARCHAR},
+      currency_custom6 = #{currencyCustom6,jdbcType=VARCHAR}
+    where currency_id = #{currencyId,jdbcType=VARCHAR}
+  </update>
+</mapper>

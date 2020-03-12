@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.TeamMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Team" >
+    <id column="team_id" property="teamId" jdbcType="VARCHAR" />
+    <result column="team_name" property="teamName" jdbcType="VARCHAR" />
+    <result column="team_english_name" property="teamEnglishName" jdbcType="VARCHAR" />
+    <result column="team_abate" property="teamAbate" jdbcType="DATE" />
+    <result column="team_remark" property="teamRemark" jdbcType="VARCHAR" />
+    <result column="team_Auditing" property="teamAuditing" jdbcType="VARCHAR" />
+    <result column="team_yn" property="teamYn" jdbcType="VARCHAR" />
+    <result column="team_custom1" property="teamCustom1" jdbcType="VARCHAR" />
+    <result column="team_custom2" property="teamCustom2" jdbcType="VARCHAR" />
+    <result column="team_custom3" property="teamCustom3" jdbcType="VARCHAR" />
+    <result column="team_custom4" property="teamCustom4" jdbcType="VARCHAR" />
+    <result column="team_custom5" property="teamCustom5" jdbcType="VARCHAR" />
+    <result column="team_custom6" property="teamCustom6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    team_id, team_name, team_english_name, team_abate, team_remark, team_Auditing, team_yn, 
+    team_custom1, team_custom2, team_custom3, team_custom4, team_custom5, team_custom6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.TeamExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from team
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from team
+    where team_id = #{teamId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from team
+    where team_id = #{teamId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.TeamExample" >
+    delete from team
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Team" >
+    insert into team (team_id, team_name, team_english_name, 
+      team_abate, team_remark, team_Auditing, 
+      team_yn, team_custom1, team_custom2, 
+      team_custom3, team_custom4, team_custom5, 
+      team_custom6)
+    values (#{teamId,jdbcType=VARCHAR}, #{teamName,jdbcType=VARCHAR}, #{teamEnglishName,jdbcType=VARCHAR}, 
+      #{teamAbate,jdbcType=DATE}, #{teamRemark,jdbcType=VARCHAR}, #{teamAuditing,jdbcType=VARCHAR}, 
+      #{teamYn,jdbcType=VARCHAR}, #{teamCustom1,jdbcType=VARCHAR}, #{teamCustom2,jdbcType=VARCHAR}, 
+      #{teamCustom3,jdbcType=VARCHAR}, #{teamCustom4,jdbcType=VARCHAR}, #{teamCustom5,jdbcType=VARCHAR}, 
+      #{teamCustom6,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Team" >
+    insert into team
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="teamId != null" >
+        team_id,
+      </if>
+      <if test="teamName != null" >
+        team_name,
+      </if>
+      <if test="teamEnglishName != null" >
+        team_english_name,
+      </if>
+      <if test="teamAbate != null" >
+        team_abate,
+      </if>
+      <if test="teamRemark != null" >
+        team_remark,
+      </if>
+      <if test="teamAuditing != null" >
+        team_Auditing,
+      </if>
+      <if test="teamYn != null" >
+        team_yn,
+      </if>
+      <if test="teamCustom1 != null" >
+        team_custom1,
+      </if>
+      <if test="teamCustom2 != null" >
+        team_custom2,
+      </if>
+      <if test="teamCustom3 != null" >
+        team_custom3,
+      </if>
+      <if test="teamCustom4 != null" >
+        team_custom4,
+      </if>
+      <if test="teamCustom5 != null" >
+        team_custom5,
+      </if>
+      <if test="teamCustom6 != null" >
+        team_custom6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="teamId != null" >
+        #{teamId,jdbcType=VARCHAR},
+      </if>
+      <if test="teamName != null" >
+        #{teamName,jdbcType=VARCHAR},
+      </if>
+      <if test="teamEnglishName != null" >
+        #{teamEnglishName,jdbcType=VARCHAR},
+      </if>
+      <if test="teamAbate != null" >
+        #{teamAbate,jdbcType=DATE},
+      </if>
+      <if test="teamRemark != null" >
+        #{teamRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="teamAuditing != null" >
+        #{teamAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="teamYn != null" >
+        #{teamYn,jdbcType=VARCHAR},
+      </if>
+      <if test="teamCustom1 != null" >
+        #{teamCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="teamCustom2 != null" >
+        #{teamCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="teamCustom3 != null" >
+        #{teamCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="teamCustom4 != null" >
+        #{teamCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="teamCustom5 != null" >
+        #{teamCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="teamCustom6 != null" >
+        #{teamCustom6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.TeamExample" resultType="java.lang.Integer" >
+    select count(*) from team
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update team
+    <set >
+      <if test="record.teamId != null" >
+        team_id = #{record.teamId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teamName != null" >
+        team_name = #{record.teamName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teamEnglishName != null" >
+        team_english_name = #{record.teamEnglishName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teamAbate != null" >
+        team_abate = #{record.teamAbate,jdbcType=DATE},
+      </if>
+      <if test="record.teamRemark != null" >
+        team_remark = #{record.teamRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teamAuditing != null" >
+        team_Auditing = #{record.teamAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teamYn != null" >
+        team_yn = #{record.teamYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teamCustom1 != null" >
+        team_custom1 = #{record.teamCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teamCustom2 != null" >
+        team_custom2 = #{record.teamCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teamCustom3 != null" >
+        team_custom3 = #{record.teamCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teamCustom4 != null" >
+        team_custom4 = #{record.teamCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teamCustom5 != null" >
+        team_custom5 = #{record.teamCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teamCustom6 != null" >
+        team_custom6 = #{record.teamCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update team
+    set team_id = #{record.teamId,jdbcType=VARCHAR},
+      team_name = #{record.teamName,jdbcType=VARCHAR},
+      team_english_name = #{record.teamEnglishName,jdbcType=VARCHAR},
+      team_abate = #{record.teamAbate,jdbcType=DATE},
+      team_remark = #{record.teamRemark,jdbcType=VARCHAR},
+      team_Auditing = #{record.teamAuditing,jdbcType=VARCHAR},
+      team_yn = #{record.teamYn,jdbcType=VARCHAR},
+      team_custom1 = #{record.teamCustom1,jdbcType=VARCHAR},
+      team_custom2 = #{record.teamCustom2,jdbcType=VARCHAR},
+      team_custom3 = #{record.teamCustom3,jdbcType=VARCHAR},
+      team_custom4 = #{record.teamCustom4,jdbcType=VARCHAR},
+      team_custom5 = #{record.teamCustom5,jdbcType=VARCHAR},
+      team_custom6 = #{record.teamCustom6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Team" >
+    update team
+    <set >
+      <if test="teamName != null" >
+        team_name = #{teamName,jdbcType=VARCHAR},
+      </if>
+      <if test="teamEnglishName != null" >
+        team_english_name = #{teamEnglishName,jdbcType=VARCHAR},
+      </if>
+      <if test="teamAbate != null" >
+        team_abate = #{teamAbate,jdbcType=DATE},
+      </if>
+      <if test="teamRemark != null" >
+        team_remark = #{teamRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="teamAuditing != null" >
+        team_Auditing = #{teamAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="teamYn != null" >
+        team_yn = #{teamYn,jdbcType=VARCHAR},
+      </if>
+      <if test="teamCustom1 != null" >
+        team_custom1 = #{teamCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="teamCustom2 != null" >
+        team_custom2 = #{teamCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="teamCustom3 != null" >
+        team_custom3 = #{teamCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="teamCustom4 != null" >
+        team_custom4 = #{teamCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="teamCustom5 != null" >
+        team_custom5 = #{teamCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="teamCustom6 != null" >
+        team_custom6 = #{teamCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where team_id = #{teamId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Team" >
+    update team
+    set team_name = #{teamName,jdbcType=VARCHAR},
+      team_english_name = #{teamEnglishName,jdbcType=VARCHAR},
+      team_abate = #{teamAbate,jdbcType=DATE},
+      team_remark = #{teamRemark,jdbcType=VARCHAR},
+      team_Auditing = #{teamAuditing,jdbcType=VARCHAR},
+      team_yn = #{teamYn,jdbcType=VARCHAR},
+      team_custom1 = #{teamCustom1,jdbcType=VARCHAR},
+      team_custom2 = #{teamCustom2,jdbcType=VARCHAR},
+      team_custom3 = #{teamCustom3,jdbcType=VARCHAR},
+      team_custom4 = #{teamCustom4,jdbcType=VARCHAR},
+      team_custom5 = #{teamCustom5,jdbcType=VARCHAR},
+      team_custom6 = #{teamCustom6,jdbcType=VARCHAR}
+    where team_id = #{teamId,jdbcType=VARCHAR}
+  </update>
+</mapper>

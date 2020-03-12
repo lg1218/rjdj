@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.CustomerTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.CustomerType" >
+    <id column="cuty_id" property="cutyId" jdbcType="VARCHAR" />
+    <result column="cuty_name" property="cutyName" jdbcType="VARCHAR" />
+    <result column="cuty_engname" property="cutyEngname" jdbcType="VARCHAR" />
+    <result column="cuty_remark" property="cutyRemark" jdbcType="VARCHAR" />
+    <result column="cuty_Auditing" property="cutyAuditing" jdbcType="VARCHAR" />
+    <result column="cuty_yn" property="cutyYn" jdbcType="VARCHAR" />
+    <result column="cuty_custom1" property="cutyCustom1" jdbcType="VARCHAR" />
+    <result column="cuty_custom2" property="cutyCustom2" jdbcType="VARCHAR" />
+    <result column="cuty_custom3" property="cutyCustom3" jdbcType="VARCHAR" />
+    <result column="cuty_custom4" property="cutyCustom4" jdbcType="VARCHAR" />
+    <result column="cuty_custom5" property="cutyCustom5" jdbcType="VARCHAR" />
+    <result column="cuty_custom6" property="cutyCustom6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    cuty_id, cuty_name, cuty_engname, cuty_remark, cuty_Auditing, cuty_yn, cuty_custom1, 
+    cuty_custom2, cuty_custom3, cuty_custom4, cuty_custom5, cuty_custom6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.CustomerTypeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from customer_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from customer_type
+    where cuty_id = #{cutyId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from customer_type
+    where cuty_id = #{cutyId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.CustomerTypeExample" >
+    delete from customer_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.CustomerType" >
+    insert into customer_type (cuty_id, cuty_name, cuty_engname, 
+      cuty_remark, cuty_Auditing, cuty_yn, 
+      cuty_custom1, cuty_custom2, cuty_custom3, 
+      cuty_custom4, cuty_custom5, cuty_custom6
+      )
+    values (#{cutyId,jdbcType=VARCHAR}, #{cutyName,jdbcType=VARCHAR}, #{cutyEngname,jdbcType=VARCHAR}, 
+      #{cutyRemark,jdbcType=VARCHAR}, #{cutyAuditing,jdbcType=VARCHAR}, #{cutyYn,jdbcType=VARCHAR}, 
+      #{cutyCustom1,jdbcType=VARCHAR}, #{cutyCustom2,jdbcType=VARCHAR}, #{cutyCustom3,jdbcType=VARCHAR}, 
+      #{cutyCustom4,jdbcType=VARCHAR}, #{cutyCustom5,jdbcType=VARCHAR}, #{cutyCustom6,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.CustomerType" >
+    insert into customer_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cutyId != null" >
+        cuty_id,
+      </if>
+      <if test="cutyName != null" >
+        cuty_name,
+      </if>
+      <if test="cutyEngname != null" >
+        cuty_engname,
+      </if>
+      <if test="cutyRemark != null" >
+        cuty_remark,
+      </if>
+      <if test="cutyAuditing != null" >
+        cuty_Auditing,
+      </if>
+      <if test="cutyYn != null" >
+        cuty_yn,
+      </if>
+      <if test="cutyCustom1 != null" >
+        cuty_custom1,
+      </if>
+      <if test="cutyCustom2 != null" >
+        cuty_custom2,
+      </if>
+      <if test="cutyCustom3 != null" >
+        cuty_custom3,
+      </if>
+      <if test="cutyCustom4 != null" >
+        cuty_custom4,
+      </if>
+      <if test="cutyCustom5 != null" >
+        cuty_custom5,
+      </if>
+      <if test="cutyCustom6 != null" >
+        cuty_custom6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cutyId != null" >
+        #{cutyId,jdbcType=VARCHAR},
+      </if>
+      <if test="cutyName != null" >
+        #{cutyName,jdbcType=VARCHAR},
+      </if>
+      <if test="cutyEngname != null" >
+        #{cutyEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="cutyRemark != null" >
+        #{cutyRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="cutyAuditing != null" >
+        #{cutyAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="cutyYn != null" >
+        #{cutyYn,jdbcType=VARCHAR},
+      </if>
+      <if test="cutyCustom1 != null" >
+        #{cutyCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="cutyCustom2 != null" >
+        #{cutyCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="cutyCustom3 != null" >
+        #{cutyCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="cutyCustom4 != null" >
+        #{cutyCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="cutyCustom5 != null" >
+        #{cutyCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="cutyCustom6 != null" >
+        #{cutyCustom6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.CustomerTypeExample" resultType="java.lang.Integer" >
+    select count(*) from customer_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update customer_type
+    <set >
+      <if test="record.cutyId != null" >
+        cuty_id = #{record.cutyId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cutyName != null" >
+        cuty_name = #{record.cutyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cutyEngname != null" >
+        cuty_engname = #{record.cutyEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cutyRemark != null" >
+        cuty_remark = #{record.cutyRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cutyAuditing != null" >
+        cuty_Auditing = #{record.cutyAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cutyYn != null" >
+        cuty_yn = #{record.cutyYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cutyCustom1 != null" >
+        cuty_custom1 = #{record.cutyCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cutyCustom2 != null" >
+        cuty_custom2 = #{record.cutyCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cutyCustom3 != null" >
+        cuty_custom3 = #{record.cutyCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cutyCustom4 != null" >
+        cuty_custom4 = #{record.cutyCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cutyCustom5 != null" >
+        cuty_custom5 = #{record.cutyCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cutyCustom6 != null" >
+        cuty_custom6 = #{record.cutyCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update customer_type
+    set cuty_id = #{record.cutyId,jdbcType=VARCHAR},
+      cuty_name = #{record.cutyName,jdbcType=VARCHAR},
+      cuty_engname = #{record.cutyEngname,jdbcType=VARCHAR},
+      cuty_remark = #{record.cutyRemark,jdbcType=VARCHAR},
+      cuty_Auditing = #{record.cutyAuditing,jdbcType=VARCHAR},
+      cuty_yn = #{record.cutyYn,jdbcType=VARCHAR},
+      cuty_custom1 = #{record.cutyCustom1,jdbcType=VARCHAR},
+      cuty_custom2 = #{record.cutyCustom2,jdbcType=VARCHAR},
+      cuty_custom3 = #{record.cutyCustom3,jdbcType=VARCHAR},
+      cuty_custom4 = #{record.cutyCustom4,jdbcType=VARCHAR},
+      cuty_custom5 = #{record.cutyCustom5,jdbcType=VARCHAR},
+      cuty_custom6 = #{record.cutyCustom6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.CustomerType" >
+    update customer_type
+    <set >
+      <if test="cutyName != null" >
+        cuty_name = #{cutyName,jdbcType=VARCHAR},
+      </if>
+      <if test="cutyEngname != null" >
+        cuty_engname = #{cutyEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="cutyRemark != null" >
+        cuty_remark = #{cutyRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="cutyAuditing != null" >
+        cuty_Auditing = #{cutyAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="cutyYn != null" >
+        cuty_yn = #{cutyYn,jdbcType=VARCHAR},
+      </if>
+      <if test="cutyCustom1 != null" >
+        cuty_custom1 = #{cutyCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="cutyCustom2 != null" >
+        cuty_custom2 = #{cutyCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="cutyCustom3 != null" >
+        cuty_custom3 = #{cutyCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="cutyCustom4 != null" >
+        cuty_custom4 = #{cutyCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="cutyCustom5 != null" >
+        cuty_custom5 = #{cutyCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="cutyCustom6 != null" >
+        cuty_custom6 = #{cutyCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cuty_id = #{cutyId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.CustomerType" >
+    update customer_type
+    set cuty_name = #{cutyName,jdbcType=VARCHAR},
+      cuty_engname = #{cutyEngname,jdbcType=VARCHAR},
+      cuty_remark = #{cutyRemark,jdbcType=VARCHAR},
+      cuty_Auditing = #{cutyAuditing,jdbcType=VARCHAR},
+      cuty_yn = #{cutyYn,jdbcType=VARCHAR},
+      cuty_custom1 = #{cutyCustom1,jdbcType=VARCHAR},
+      cuty_custom2 = #{cutyCustom2,jdbcType=VARCHAR},
+      cuty_custom3 = #{cutyCustom3,jdbcType=VARCHAR},
+      cuty_custom4 = #{cutyCustom4,jdbcType=VARCHAR},
+      cuty_custom5 = #{cutyCustom5,jdbcType=VARCHAR},
+      cuty_custom6 = #{cutyCustom6,jdbcType=VARCHAR}
+    where cuty_id = #{cutyId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.OtherOutStorageMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.OtherOutStorage" >
+    <id column="oos_id" property="oosId" jdbcType="VARCHAR" />
+    <result column="ist_id" property="istId" jdbcType="INTEGER" />
+    <result column="warehouse_id" property="warehouseId" jdbcType="VARCHAR" />
+    <result column="oos_documentation_date" property="oosDocumentationDate" jdbcType="VARCHAR" />
+    <result column="oos_documentation_no" property="oosDocumentationNo" jdbcType="TIMESTAMP" />
+    <result column="oos_certificate_number" property="oosCertificateNumber" jdbcType="CHAR" />
+    <result column="oos_warehousing_personnel" property="oosWarehousingPersonnel" jdbcType="VARCHAR" />
+    <result column="oos_belongs_section" property="oosBelongsSection" jdbcType="VARCHAR" />
+    <result column="oos_form" property="oosForm" jdbcType="VARCHAR" />
+    <result column="oos_review_staff" property="oosReviewStaff" jdbcType="VARCHAR" />
+    <result column="oos_remark" property="oosRemark" jdbcType="VARCHAR" />
+    <result column="oos_auditing" property="oosAuditing" jdbcType="VARCHAR" />
+    <result column="oos_yn" property="oosYn" jdbcType="VARCHAR" />
+    <result column="oos_custom1" property="oosCustom1" jdbcType="VARCHAR" />
+    <result column="oos_custom2" property="oosCustom2" jdbcType="VARCHAR" />
+    <result column="oos_custom3" property="oosCustom3" jdbcType="VARCHAR" />
+    <result column="oos_custom4" property="oosCustom4" jdbcType="VARCHAR" />
+    <result column="oos_custom5" property="oosCustom5" jdbcType="VARCHAR" />
+    <result column="oos_custom6" property="oosCustom6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    oos_id, ist_id, warehouse_id, oos_documentation_date, oos_documentation_no, oos_certificate_number, 
+    oos_warehousing_personnel, oos_belongs_section, oos_form, oos_review_staff, oos_remark, 
+    oos_auditing, oos_yn, oos_custom1, oos_custom2, oos_custom3, oos_custom4, oos_custom5, 
+    oos_custom6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.OtherOutStorageExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from other_out_storage
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from other_out_storage
+    where oos_id = #{oosId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from other_out_storage
+    where oos_id = #{oosId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.OtherOutStorageExample" >
+    delete from other_out_storage
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.OtherOutStorage" >
+    insert into other_out_storage (oos_id, ist_id, warehouse_id, 
+      oos_documentation_date, oos_documentation_no, 
+      oos_certificate_number, oos_warehousing_personnel, 
+      oos_belongs_section, oos_form, oos_review_staff, 
+      oos_remark, oos_auditing, oos_yn, 
+      oos_custom1, oos_custom2, oos_custom3, 
+      oos_custom4, oos_custom5, oos_custom6
+      )
+    values (#{oosId,jdbcType=VARCHAR}, #{istId,jdbcType=INTEGER}, #{warehouseId,jdbcType=VARCHAR}, 
+      #{oosDocumentationDate,jdbcType=VARCHAR}, #{oosDocumentationNo,jdbcType=TIMESTAMP}, 
+      #{oosCertificateNumber,jdbcType=CHAR}, #{oosWarehousingPersonnel,jdbcType=VARCHAR}, 
+      #{oosBelongsSection,jdbcType=VARCHAR}, #{oosForm,jdbcType=VARCHAR}, #{oosReviewStaff,jdbcType=VARCHAR}, 
+      #{oosRemark,jdbcType=VARCHAR}, #{oosAuditing,jdbcType=VARCHAR}, #{oosYn,jdbcType=VARCHAR}, 
+      #{oosCustom1,jdbcType=VARCHAR}, #{oosCustom2,jdbcType=VARCHAR}, #{oosCustom3,jdbcType=VARCHAR}, 
+      #{oosCustom4,jdbcType=VARCHAR}, #{oosCustom5,jdbcType=VARCHAR}, #{oosCustom6,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.OtherOutStorage" >
+    insert into other_out_storage
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="oosId != null" >
+        oos_id,
+      </if>
+      <if test="istId != null" >
+        ist_id,
+      </if>
+      <if test="warehouseId != null" >
+        warehouse_id,
+      </if>
+      <if test="oosDocumentationDate != null" >
+        oos_documentation_date,
+      </if>
+      <if test="oosDocumentationNo != null" >
+        oos_documentation_no,
+      </if>
+      <if test="oosCertificateNumber != null" >
+        oos_certificate_number,
+      </if>
+      <if test="oosWarehousingPersonnel != null" >
+        oos_warehousing_personnel,
+      </if>
+      <if test="oosBelongsSection != null" >
+        oos_belongs_section,
+      </if>
+      <if test="oosForm != null" >
+        oos_form,
+      </if>
+      <if test="oosReviewStaff != null" >
+        oos_review_staff,
+      </if>
+      <if test="oosRemark != null" >
+        oos_remark,
+      </if>
+      <if test="oosAuditing != null" >
+        oos_auditing,
+      </if>
+      <if test="oosYn != null" >
+        oos_yn,
+      </if>
+      <if test="oosCustom1 != null" >
+        oos_custom1,
+      </if>
+      <if test="oosCustom2 != null" >
+        oos_custom2,
+      </if>
+      <if test="oosCustom3 != null" >
+        oos_custom3,
+      </if>
+      <if test="oosCustom4 != null" >
+        oos_custom4,
+      </if>
+      <if test="oosCustom5 != null" >
+        oos_custom5,
+      </if>
+      <if test="oosCustom6 != null" >
+        oos_custom6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="oosId != null" >
+        #{oosId,jdbcType=VARCHAR},
+      </if>
+      <if test="istId != null" >
+        #{istId,jdbcType=INTEGER},
+      </if>
+      <if test="warehouseId != null" >
+        #{warehouseId,jdbcType=VARCHAR},
+      </if>
+      <if test="oosDocumentationDate != null" >
+        #{oosDocumentationDate,jdbcType=VARCHAR},
+      </if>
+      <if test="oosDocumentationNo != null" >
+        #{oosDocumentationNo,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oosCertificateNumber != null" >
+        #{oosCertificateNumber,jdbcType=CHAR},
+      </if>
+      <if test="oosWarehousingPersonnel != null" >
+        #{oosWarehousingPersonnel,jdbcType=VARCHAR},
+      </if>
+      <if test="oosBelongsSection != null" >
+        #{oosBelongsSection,jdbcType=VARCHAR},
+      </if>
+      <if test="oosForm != null" >
+        #{oosForm,jdbcType=VARCHAR},
+      </if>
+      <if test="oosReviewStaff != null" >
+        #{oosReviewStaff,jdbcType=VARCHAR},
+      </if>
+      <if test="oosRemark != null" >
+        #{oosRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="oosAuditing != null" >
+        #{oosAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="oosYn != null" >
+        #{oosYn,jdbcType=VARCHAR},
+      </if>
+      <if test="oosCustom1 != null" >
+        #{oosCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="oosCustom2 != null" >
+        #{oosCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="oosCustom3 != null" >
+        #{oosCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="oosCustom4 != null" >
+        #{oosCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="oosCustom5 != null" >
+        #{oosCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="oosCustom6 != null" >
+        #{oosCustom6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.OtherOutStorageExample" resultType="java.lang.Integer" >
+    select count(*) from other_out_storage
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update other_out_storage
+    <set >
+      <if test="record.oosId != null" >
+        oos_id = #{record.oosId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.istId != null" >
+        ist_id = #{record.istId,jdbcType=INTEGER},
+      </if>
+      <if test="record.warehouseId != null" >
+        warehouse_id = #{record.warehouseId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oosDocumentationDate != null" >
+        oos_documentation_date = #{record.oosDocumentationDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oosDocumentationNo != null" >
+        oos_documentation_no = #{record.oosDocumentationNo,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.oosCertificateNumber != null" >
+        oos_certificate_number = #{record.oosCertificateNumber,jdbcType=CHAR},
+      </if>
+      <if test="record.oosWarehousingPersonnel != null" >
+        oos_warehousing_personnel = #{record.oosWarehousingPersonnel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oosBelongsSection != null" >
+        oos_belongs_section = #{record.oosBelongsSection,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oosForm != null" >
+        oos_form = #{record.oosForm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oosReviewStaff != null" >
+        oos_review_staff = #{record.oosReviewStaff,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oosRemark != null" >
+        oos_remark = #{record.oosRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oosAuditing != null" >
+        oos_auditing = #{record.oosAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oosYn != null" >
+        oos_yn = #{record.oosYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oosCustom1 != null" >
+        oos_custom1 = #{record.oosCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oosCustom2 != null" >
+        oos_custom2 = #{record.oosCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oosCustom3 != null" >
+        oos_custom3 = #{record.oosCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oosCustom4 != null" >
+        oos_custom4 = #{record.oosCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oosCustom5 != null" >
+        oos_custom5 = #{record.oosCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oosCustom6 != null" >
+        oos_custom6 = #{record.oosCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update other_out_storage
+    set oos_id = #{record.oosId,jdbcType=VARCHAR},
+      ist_id = #{record.istId,jdbcType=INTEGER},
+      warehouse_id = #{record.warehouseId,jdbcType=VARCHAR},
+      oos_documentation_date = #{record.oosDocumentationDate,jdbcType=VARCHAR},
+      oos_documentation_no = #{record.oosDocumentationNo,jdbcType=TIMESTAMP},
+      oos_certificate_number = #{record.oosCertificateNumber,jdbcType=CHAR},
+      oos_warehousing_personnel = #{record.oosWarehousingPersonnel,jdbcType=VARCHAR},
+      oos_belongs_section = #{record.oosBelongsSection,jdbcType=VARCHAR},
+      oos_form = #{record.oosForm,jdbcType=VARCHAR},
+      oos_review_staff = #{record.oosReviewStaff,jdbcType=VARCHAR},
+      oos_remark = #{record.oosRemark,jdbcType=VARCHAR},
+      oos_auditing = #{record.oosAuditing,jdbcType=VARCHAR},
+      oos_yn = #{record.oosYn,jdbcType=VARCHAR},
+      oos_custom1 = #{record.oosCustom1,jdbcType=VARCHAR},
+      oos_custom2 = #{record.oosCustom2,jdbcType=VARCHAR},
+      oos_custom3 = #{record.oosCustom3,jdbcType=VARCHAR},
+      oos_custom4 = #{record.oosCustom4,jdbcType=VARCHAR},
+      oos_custom5 = #{record.oosCustom5,jdbcType=VARCHAR},
+      oos_custom6 = #{record.oosCustom6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.OtherOutStorage" >
+    update other_out_storage
+    <set >
+      <if test="istId != null" >
+        ist_id = #{istId,jdbcType=INTEGER},
+      </if>
+      <if test="warehouseId != null" >
+        warehouse_id = #{warehouseId,jdbcType=VARCHAR},
+      </if>
+      <if test="oosDocumentationDate != null" >
+        oos_documentation_date = #{oosDocumentationDate,jdbcType=VARCHAR},
+      </if>
+      <if test="oosDocumentationNo != null" >
+        oos_documentation_no = #{oosDocumentationNo,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oosCertificateNumber != null" >
+        oos_certificate_number = #{oosCertificateNumber,jdbcType=CHAR},
+      </if>
+      <if test="oosWarehousingPersonnel != null" >
+        oos_warehousing_personnel = #{oosWarehousingPersonnel,jdbcType=VARCHAR},
+      </if>
+      <if test="oosBelongsSection != null" >
+        oos_belongs_section = #{oosBelongsSection,jdbcType=VARCHAR},
+      </if>
+      <if test="oosForm != null" >
+        oos_form = #{oosForm,jdbcType=VARCHAR},
+      </if>
+      <if test="oosReviewStaff != null" >
+        oos_review_staff = #{oosReviewStaff,jdbcType=VARCHAR},
+      </if>
+      <if test="oosRemark != null" >
+        oos_remark = #{oosRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="oosAuditing != null" >
+        oos_auditing = #{oosAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="oosYn != null" >
+        oos_yn = #{oosYn,jdbcType=VARCHAR},
+      </if>
+      <if test="oosCustom1 != null" >
+        oos_custom1 = #{oosCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="oosCustom2 != null" >
+        oos_custom2 = #{oosCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="oosCustom3 != null" >
+        oos_custom3 = #{oosCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="oosCustom4 != null" >
+        oos_custom4 = #{oosCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="oosCustom5 != null" >
+        oos_custom5 = #{oosCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="oosCustom6 != null" >
+        oos_custom6 = #{oosCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where oos_id = #{oosId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.OtherOutStorage" >
+    update other_out_storage
+    set ist_id = #{istId,jdbcType=INTEGER},
+      warehouse_id = #{warehouseId,jdbcType=VARCHAR},
+      oos_documentation_date = #{oosDocumentationDate,jdbcType=VARCHAR},
+      oos_documentation_no = #{oosDocumentationNo,jdbcType=TIMESTAMP},
+      oos_certificate_number = #{oosCertificateNumber,jdbcType=CHAR},
+      oos_warehousing_personnel = #{oosWarehousingPersonnel,jdbcType=VARCHAR},
+      oos_belongs_section = #{oosBelongsSection,jdbcType=VARCHAR},
+      oos_form = #{oosForm,jdbcType=VARCHAR},
+      oos_review_staff = #{oosReviewStaff,jdbcType=VARCHAR},
+      oos_remark = #{oosRemark,jdbcType=VARCHAR},
+      oos_auditing = #{oosAuditing,jdbcType=VARCHAR},
+      oos_yn = #{oosYn,jdbcType=VARCHAR},
+      oos_custom1 = #{oosCustom1,jdbcType=VARCHAR},
+      oos_custom2 = #{oosCustom2,jdbcType=VARCHAR},
+      oos_custom3 = #{oosCustom3,jdbcType=VARCHAR},
+      oos_custom4 = #{oosCustom4,jdbcType=VARCHAR},
+      oos_custom5 = #{oosCustom5,jdbcType=VARCHAR},
+      oos_custom6 = #{oosCustom6,jdbcType=VARCHAR}
+    where oos_id = #{oosId,jdbcType=VARCHAR}
+  </update>
+</mapper>

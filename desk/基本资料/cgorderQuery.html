@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/layui.css" media="all" />
+		<style>
+			input{
+				background-color: white;
+				border-top: solid white;
+				border-right: solid white;
+				border-left: solid white;
+			}
+			select{
+				background-color: white;
+				border: solid white;
+			}
+			
+			/*超出文本转为...*/
+		table{
+            width: 100%;
+            table-layout: fixed;
+         }
+		td{
+         	white-space: nowrap;/*控制单行显示*/
+			overflow: hidden;/*超出隐藏*/
+			text-overflow: ellipsis;/*隐藏的字符用省略号表示*/
+         }
+		th{
+			white-space:nowrap;
+			/*text-align: center !important;*/
+		}
+		</style>
+	</head>
+	<body>
+		<div class="app">
+			 <div class="layui-tab-item layui-show" style="margin:20px;overflow:auto;">
+		    	<!--表单-->
+		    	<div class="">
+		    		<label>客户</label>
+					<input type="text" v-model="seracName" style="height: 21px;margin-left: 20px;"/>
+					<div class="layui-btn-container" style="display: inline-block;">
+					  <button class="layui-btn layui-btn-disabled layui-btn-xs">资料输出</button>
+					  <button class="layui-btn layui-btn-primary  layui-btn-xs" id="readO">取回</button>
+					</div>
+				</div>
+		    	<!---->
+		    	<div class="layui-tab-item layui-show" style="width: 560px;height: 220px;overflow:auto;">
+								    	<!--表单-->
+								    	<table class="layui-table single" lay-size="sm" style="empty-cells:show;min-width:765px">
+											  <colgroup>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											  </colgroup>
+											  <thead>
+													<tr>
+													  <th>栏号</th>
+													  <th>物料编号</th>
+													  <th>物料名称</th>
+													  <th>规格型号</th>
+													  <th>单位名称</th>
+													  <th>数量</th>
+													  <th>折前单价</th>
+													  <th>折数(%)</th>
+													  <th>单价</th>
+													  <th>金额</th>
+													  <th>税率</th>
+													  <th>税额</th>
+													  <th>含税金额</th>
+													  <th>批号</th>
+													  <th>物料组合</th>
+													  <th>赠品</th>
+													  <th>发票明细</th>
+													  <th>未开票数量</th>
+													  <th>分录备注</th>
+													  <th>(来源单别)</th>
+													  <th>(来源单号)</th>
+													  <th>客户订单</th>
+													  <th style="white-space:nowrap" class="sli">物料编号</th>
+													</tr> 
+											  </thead>
+											  <tbody>
+												    <tr v-for="item,index in list.sowd">
+												      <td>{{item.sowdId}}</td>	
+												      <td>{{item.sowId}}</td>
+												      <td>{{item.sowdEngname}}</td>
+												      <td>{{item.sowdRemark}}</td>
+												      <td>{{item.sowdPriceIncludeTax}}</td>
+												      <td>{{item.sowdSingleStatus}}</td>
+												      <td>{{item.sowdDocumentDate}}</td>
+												      <td>{{item.sowdDocumentNumber}}</td>
+												      <td>{{item.sowdPrice}}</td>
+												      <td>{{item.sowdMoney}}</td>
+												      <td>{{item.sowdTaxRate}}</td>
+												      <td>{{item.sowdTaxAmount}}</td>
+												      <td>{{item.sowdIncludingTaxAmount}}</td>
+												      <td>
+													     <div class="layui-form">
+														    <div class="layui-input-inline" style="width: 50px;margin-left:15px;" v-on:click="wd(item,index)">
+														       <input type="checkbox"  v-model="item.sowdCustom1"   lay-skin="primary" >
+														    </div>
+														  </div>
+												      </td>
+												      <td>
+													     <div class="layui-form">
+														    <div class="layui-input-inline" style="width: 50px;margin-left:15px;">
+														       <input type="checkbox" name="like1[write]" lay-skin="primary"  checked="">
+														    </div>
+														  </div>
+												      </td>
+												      <td>
+													     <div class="layui-form">
+														    <div class="layui-input-inline" style="width: 50px;margin-left:15px;">
+														       <input type="checkbox" name="like1[write]" lay-skin="primary"  checked="">
+														    </div>
+														  </div>
+												      </td>
+												      <td>
+													     <div class="layui-form">
+														    <div class="layui-input-inline" style="width: 50px;margin-left:15px;">
+														       <input type="checkbox" name="like1[write]" lay-skin="primary"  checked="">
+														    </div>
+														  </div>
+												      </td>
+												      <td>{{item.sowdNomakeInvoiceNum}}</td>
+												      <td>{{item.sowdRemarks}}</td>
+												      <td>{{item.sowdSourceOrder}}</td>
+												      <td>{{item.sowdSourceNo}}</td>
+												      <td>{{item.sowdSourceNo}}</td>
+												      <td>{{item.matterId}}</td>
+												    </tr>
+											  </tbody>
+										</table>
+								    	<!---->
+										<script type="text/html" id="barDemo">
+										    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+										    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+										    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+										</script>
+								    	<!---->
+								    </div>
+		    	<!---->
+				<script type="text/html" id="barDemo">
+				    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+				    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+				    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+				</script>
+		    	<!---->
+		    </div>
+		</div>
+	</body>	
+	<script type="text/javascript" src="../js/jquery-1.12.4.js" ></script>
+	<script type="text/javascript" src="../js/layui.all.js" ></script>
+	<script type="text/javascript" src="../js/layui.js" ></script>
+	<script type="text/javascript" src="../js/vue.js" ></script>
+	  <script>
+	  	var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+	  		var vueww=new Vue({
+	  			el:".app",
+	  			data(){
+	  				return{
+	  					list:[],
+	  					seracType:"all",
+						seracName:"",
+						vueName:''
+	  				}
+	  			},
+	  			methods:{
+	  				/*addL(ss){
+					   	parent.childToParent(ss.customerName);//调用父页面vue对象接收想要的数据
+					   	parent.layer.close(index);//关闭窗口
+	  				}*/
+	  				addL(ss){
+					   //	parent[this.vueName].list.teamId=ss.teamId;	//把部门id传给销售预收款的reces对象的部门id
+					   	parent[this.vueName].list.warehouseId=ss.warehouseName;//把部门名称传给销售预收款的reces对象的部门名称
+					   	parent.layer.close(index);//关闭窗口
+	  				}
+	  			},
+	  			computed:{
+				getList:function(){
+					console.info(this.seracType)
+					let seracType=this.seracType;
+					let seracName=this.seracName;
+					if(seracType=="id"){
+						return this.list.filter(item=>{
+							return item.warehouseId.indexOf(seracName)!=-1;
+						})
+					}else if(seracType=="name"){
+					     return this.list.filter(item=>{
+					          return  item.warehouseName.indexOf(seracName)!=-1;
+					     })
+					}else if(seracType="all"){//全部
+						return this.list.filter(item=>{
+							return Object.values(item).toString().indexOf(seracName)!=-1;
+							
+						})
+					}
+				
+				}
+			}
+	  		})
+	  		//父窗口传vue的名字过来
+	  		function setVueName(name,sowId){
+	  			alert(sowId)
+	  			if(sowId==1){
+	  				$("#readO").addClass("layui-btn-disabled");
+	  			}
+	  			console.log(name);
+	  			vueww.vueName = name;
+	  		}
+	  		
+	  		$(function(){
+				$.ajax({
+          			type: 'GET',
+	   				dataType: "json",  //json text 服务器返回的数据类型
+          			url:"http://localhost:8080/t_khzl_Controller/w",
+          			success: function (result) {
+          				 vueww.list=result;
+          				 console.log(this.list)
+          			}
+          		});
+			})
+	  </script>
+</html>

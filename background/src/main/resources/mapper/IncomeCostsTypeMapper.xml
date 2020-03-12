@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.IncomeCostsTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.IncomeCostsType" >
+    <id column="ict_id" property="ictId" jdbcType="VARCHAR" />
+    <result column="ict_name" property="ictName" jdbcType="VARCHAR" />
+    <result column="ict_english_name" property="ictEnglishName" jdbcType="VARCHAR" />
+    <result column="ict_subject" property="ictSubject" jdbcType="VARCHAR" />
+    <result column="ict_remark" property="ictRemark" jdbcType="VARCHAR" />
+    <result column="ict_Auditing" property="ictAuditing" jdbcType="VARCHAR" />
+    <result column="ict_yn" property="ictYn" jdbcType="VARCHAR" />
+    <result column="ict_custom1" property="ictCustom1" jdbcType="VARCHAR" />
+    <result column="ict_custom2" property="ictCustom2" jdbcType="VARCHAR" />
+    <result column="ict_custom3" property="ictCustom3" jdbcType="VARCHAR" />
+    <result column="ict_custom4" property="ictCustom4" jdbcType="VARCHAR" />
+    <result column="ict_custom5" property="ictCustom5" jdbcType="VARCHAR" />
+    <result column="ict_custom6" property="ictCustom6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ict_id, ict_name, ict_english_name, ict_subject, ict_remark, ict_Auditing, ict_yn, 
+    ict_custom1, ict_custom2, ict_custom3, ict_custom4, ict_custom5, ict_custom6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.IncomeCostsTypeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from income_costs_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from income_costs_type
+    where ict_id = #{ictId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from income_costs_type
+    where ict_id = #{ictId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.IncomeCostsTypeExample" >
+    delete from income_costs_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.IncomeCostsType" >
+    insert into income_costs_type (ict_id, ict_name, ict_english_name, 
+      ict_subject, ict_remark, ict_Auditing, 
+      ict_yn, ict_custom1, ict_custom2, 
+      ict_custom3, ict_custom4, ict_custom5, 
+      ict_custom6)
+    values (#{ictId,jdbcType=VARCHAR}, #{ictName,jdbcType=VARCHAR}, #{ictEnglishName,jdbcType=VARCHAR}, 
+      #{ictSubject,jdbcType=VARCHAR}, #{ictRemark,jdbcType=VARCHAR}, #{ictAuditing,jdbcType=VARCHAR}, 
+      #{ictYn,jdbcType=VARCHAR}, #{ictCustom1,jdbcType=VARCHAR}, #{ictCustom2,jdbcType=VARCHAR}, 
+      #{ictCustom3,jdbcType=VARCHAR}, #{ictCustom4,jdbcType=VARCHAR}, #{ictCustom5,jdbcType=VARCHAR}, 
+      #{ictCustom6,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.IncomeCostsType" >
+    insert into income_costs_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ictId != null" >
+        ict_id,
+      </if>
+      <if test="ictName != null" >
+        ict_name,
+      </if>
+      <if test="ictEnglishName != null" >
+        ict_english_name,
+      </if>
+      <if test="ictSubject != null" >
+        ict_subject,
+      </if>
+      <if test="ictRemark != null" >
+        ict_remark,
+      </if>
+      <if test="ictAuditing != null" >
+        ict_Auditing,
+      </if>
+      <if test="ictYn != null" >
+        ict_yn,
+      </if>
+      <if test="ictCustom1 != null" >
+        ict_custom1,
+      </if>
+      <if test="ictCustom2 != null" >
+        ict_custom2,
+      </if>
+      <if test="ictCustom3 != null" >
+        ict_custom3,
+      </if>
+      <if test="ictCustom4 != null" >
+        ict_custom4,
+      </if>
+      <if test="ictCustom5 != null" >
+        ict_custom5,
+      </if>
+      <if test="ictCustom6 != null" >
+        ict_custom6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ictId != null" >
+        #{ictId,jdbcType=VARCHAR},
+      </if>
+      <if test="ictName != null" >
+        #{ictName,jdbcType=VARCHAR},
+      </if>
+      <if test="ictEnglishName != null" >
+        #{ictEnglishName,jdbcType=VARCHAR},
+      </if>
+      <if test="ictSubject != null" >
+        #{ictSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="ictRemark != null" >
+        #{ictRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="ictAuditing != null" >
+        #{ictAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="ictYn != null" >
+        #{ictYn,jdbcType=VARCHAR},
+      </if>
+      <if test="ictCustom1 != null" >
+        #{ictCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="ictCustom2 != null" >
+        #{ictCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="ictCustom3 != null" >
+        #{ictCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="ictCustom4 != null" >
+        #{ictCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="ictCustom5 != null" >
+        #{ictCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="ictCustom6 != null" >
+        #{ictCustom6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.IncomeCostsTypeExample" resultType="java.lang.Integer" >
+    select count(*) from income_costs_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update income_costs_type
+    <set >
+      <if test="record.ictId != null" >
+        ict_id = #{record.ictId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ictName != null" >
+        ict_name = #{record.ictName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ictEnglishName != null" >
+        ict_english_name = #{record.ictEnglishName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ictSubject != null" >
+        ict_subject = #{record.ictSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ictRemark != null" >
+        ict_remark = #{record.ictRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ictAuditing != null" >
+        ict_Auditing = #{record.ictAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ictYn != null" >
+        ict_yn = #{record.ictYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ictCustom1 != null" >
+        ict_custom1 = #{record.ictCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ictCustom2 != null" >
+        ict_custom2 = #{record.ictCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ictCustom3 != null" >
+        ict_custom3 = #{record.ictCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ictCustom4 != null" >
+        ict_custom4 = #{record.ictCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ictCustom5 != null" >
+        ict_custom5 = #{record.ictCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ictCustom6 != null" >
+        ict_custom6 = #{record.ictCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update income_costs_type
+    set ict_id = #{record.ictId,jdbcType=VARCHAR},
+      ict_name = #{record.ictName,jdbcType=VARCHAR},
+      ict_english_name = #{record.ictEnglishName,jdbcType=VARCHAR},
+      ict_subject = #{record.ictSubject,jdbcType=VARCHAR},
+      ict_remark = #{record.ictRemark,jdbcType=VARCHAR},
+      ict_Auditing = #{record.ictAuditing,jdbcType=VARCHAR},
+      ict_yn = #{record.ictYn,jdbcType=VARCHAR},
+      ict_custom1 = #{record.ictCustom1,jdbcType=VARCHAR},
+      ict_custom2 = #{record.ictCustom2,jdbcType=VARCHAR},
+      ict_custom3 = #{record.ictCustom3,jdbcType=VARCHAR},
+      ict_custom4 = #{record.ictCustom4,jdbcType=VARCHAR},
+      ict_custom5 = #{record.ictCustom5,jdbcType=VARCHAR},
+      ict_custom6 = #{record.ictCustom6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.IncomeCostsType" >
+    update income_costs_type
+    <set >
+      <if test="ictName != null" >
+        ict_name = #{ictName,jdbcType=VARCHAR},
+      </if>
+      <if test="ictEnglishName != null" >
+        ict_english_name = #{ictEnglishName,jdbcType=VARCHAR},
+      </if>
+      <if test="ictSubject != null" >
+        ict_subject = #{ictSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="ictRemark != null" >
+        ict_remark = #{ictRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="ictAuditing != null" >
+        ict_Auditing = #{ictAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="ictYn != null" >
+        ict_yn = #{ictYn,jdbcType=VARCHAR},
+      </if>
+      <if test="ictCustom1 != null" >
+        ict_custom1 = #{ictCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="ictCustom2 != null" >
+        ict_custom2 = #{ictCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="ictCustom3 != null" >
+        ict_custom3 = #{ictCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="ictCustom4 != null" >
+        ict_custom4 = #{ictCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="ictCustom5 != null" >
+        ict_custom5 = #{ictCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="ictCustom6 != null" >
+        ict_custom6 = #{ictCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ict_id = #{ictId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.IncomeCostsType" >
+    update income_costs_type
+    set ict_name = #{ictName,jdbcType=VARCHAR},
+      ict_english_name = #{ictEnglishName,jdbcType=VARCHAR},
+      ict_subject = #{ictSubject,jdbcType=VARCHAR},
+      ict_remark = #{ictRemark,jdbcType=VARCHAR},
+      ict_Auditing = #{ictAuditing,jdbcType=VARCHAR},
+      ict_yn = #{ictYn,jdbcType=VARCHAR},
+      ict_custom1 = #{ictCustom1,jdbcType=VARCHAR},
+      ict_custom2 = #{ictCustom2,jdbcType=VARCHAR},
+      ict_custom3 = #{ictCustom3,jdbcType=VARCHAR},
+      ict_custom4 = #{ictCustom4,jdbcType=VARCHAR},
+      ict_custom5 = #{ictCustom5,jdbcType=VARCHAR},
+      ict_custom6 = #{ictCustom6,jdbcType=VARCHAR}
+    where ict_id = #{ictId,jdbcType=VARCHAR}
+  </update>
+</mapper>

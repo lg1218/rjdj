@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.RequisitionMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Requisition" >
+    <id column="requisition_id" property="requisitionId" jdbcType="VARCHAR" />
+    <result column="requisition_out_warehouse" property="requisitionOutWarehouse" jdbcType="VARCHAR" />
+    <result column="requisition_input_warehouse" property="requisitionInputWarehouse" jdbcType="VARCHAR" />
+    <result column="requisition_documentation_date" property="requisitionDocumentationDate" jdbcType="TIMESTAMP" />
+    <result column="requisition_documentation_no" property="requisitionDocumentationNo" jdbcType="VARCHAR" />
+    <result column="requisition_form" property="requisitionForm" jdbcType="VARCHAR" />
+    <result column="is_review_staff" property="isReviewStaff" jdbcType="VARCHAR" />
+    <result column="requisition_remark" property="requisitionRemark" jdbcType="VARCHAR" />
+    <result column="requisition_auditing" property="requisitionAuditing" jdbcType="VARCHAR" />
+    <result column="requisition_yn" property="requisitionYn" jdbcType="VARCHAR" />
+    <result column="requisition_custom1" property="requisitionCustom1" jdbcType="VARCHAR" />
+    <result column="requisition_custom2" property="requisitionCustom2" jdbcType="VARCHAR" />
+    <result column="requisition_custom3" property="requisitionCustom3" jdbcType="VARCHAR" />
+    <result column="requisition_custom4" property="requisitionCustom4" jdbcType="VARCHAR" />
+    <result column="requisition_custom5" property="requisitionCustom5" jdbcType="VARCHAR" />
+    <result column="requisition_custom6" property="requisitionCustom6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    requisition_id, requisition_out_warehouse, requisition_input_warehouse, requisition_documentation_date, 
+    requisition_documentation_no, requisition_form, is_review_staff, requisition_remark, 
+    requisition_auditing, requisition_yn, requisition_custom1, requisition_custom2, requisition_custom3, 
+    requisition_custom4, requisition_custom5, requisition_custom6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.RequisitionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from requisition
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from requisition
+    where requisition_id = #{requisitionId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from requisition
+    where requisition_id = #{requisitionId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.RequisitionExample" >
+    delete from requisition
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Requisition" >
+    insert into requisition (requisition_id, requisition_out_warehouse, 
+      requisition_input_warehouse, requisition_documentation_date, 
+      requisition_documentation_no, requisition_form, 
+      is_review_staff, requisition_remark, requisition_auditing, 
+      requisition_yn, requisition_custom1, requisition_custom2, 
+      requisition_custom3, requisition_custom4, 
+      requisition_custom5, requisition_custom6)
+    values (#{requisitionId,jdbcType=VARCHAR}, #{requisitionOutWarehouse,jdbcType=VARCHAR}, 
+      #{requisitionInputWarehouse,jdbcType=VARCHAR}, #{requisitionDocumentationDate,jdbcType=TIMESTAMP}, 
+      #{requisitionDocumentationNo,jdbcType=VARCHAR}, #{requisitionForm,jdbcType=VARCHAR}, 
+      #{isReviewStaff,jdbcType=VARCHAR}, #{requisitionRemark,jdbcType=VARCHAR}, #{requisitionAuditing,jdbcType=VARCHAR}, 
+      #{requisitionYn,jdbcType=VARCHAR}, #{requisitionCustom1,jdbcType=VARCHAR}, #{requisitionCustom2,jdbcType=VARCHAR}, 
+      #{requisitionCustom3,jdbcType=VARCHAR}, #{requisitionCustom4,jdbcType=VARCHAR}, 
+      #{requisitionCustom5,jdbcType=VARCHAR}, #{requisitionCustom6,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Requisition" >
+    insert into requisition
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="requisitionId != null" >
+        requisition_id,
+      </if>
+      <if test="requisitionOutWarehouse != null" >
+        requisition_out_warehouse,
+      </if>
+      <if test="requisitionInputWarehouse != null" >
+        requisition_input_warehouse,
+      </if>
+      <if test="requisitionDocumentationDate != null" >
+        requisition_documentation_date,
+      </if>
+      <if test="requisitionDocumentationNo != null" >
+        requisition_documentation_no,
+      </if>
+      <if test="requisitionForm != null" >
+        requisition_form,
+      </if>
+      <if test="isReviewStaff != null" >
+        is_review_staff,
+      </if>
+      <if test="requisitionRemark != null" >
+        requisition_remark,
+      </if>
+      <if test="requisitionAuditing != null" >
+        requisition_auditing,
+      </if>
+      <if test="requisitionYn != null" >
+        requisition_yn,
+      </if>
+      <if test="requisitionCustom1 != null" >
+        requisition_custom1,
+      </if>
+      <if test="requisitionCustom2 != null" >
+        requisition_custom2,
+      </if>
+      <if test="requisitionCustom3 != null" >
+        requisition_custom3,
+      </if>
+      <if test="requisitionCustom4 != null" >
+        requisition_custom4,
+      </if>
+      <if test="requisitionCustom5 != null" >
+        requisition_custom5,
+      </if>
+      <if test="requisitionCustom6 != null" >
+        requisition_custom6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="requisitionId != null" >
+        #{requisitionId,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionOutWarehouse != null" >
+        #{requisitionOutWarehouse,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionInputWarehouse != null" >
+        #{requisitionInputWarehouse,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionDocumentationDate != null" >
+        #{requisitionDocumentationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requisitionDocumentationNo != null" >
+        #{requisitionDocumentationNo,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionForm != null" >
+        #{requisitionForm,jdbcType=VARCHAR},
+      </if>
+      <if test="isReviewStaff != null" >
+        #{isReviewStaff,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionRemark != null" >
+        #{requisitionRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionAuditing != null" >
+        #{requisitionAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionYn != null" >
+        #{requisitionYn,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionCustom1 != null" >
+        #{requisitionCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionCustom2 != null" >
+        #{requisitionCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionCustom3 != null" >
+        #{requisitionCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionCustom4 != null" >
+        #{requisitionCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionCustom5 != null" >
+        #{requisitionCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionCustom6 != null" >
+        #{requisitionCustom6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.RequisitionExample" resultType="java.lang.Integer" >
+    select count(*) from requisition
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update requisition
+    <set >
+      <if test="record.requisitionId != null" >
+        requisition_id = #{record.requisitionId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requisitionOutWarehouse != null" >
+        requisition_out_warehouse = #{record.requisitionOutWarehouse,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requisitionInputWarehouse != null" >
+        requisition_input_warehouse = #{record.requisitionInputWarehouse,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requisitionDocumentationDate != null" >
+        requisition_documentation_date = #{record.requisitionDocumentationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.requisitionDocumentationNo != null" >
+        requisition_documentation_no = #{record.requisitionDocumentationNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requisitionForm != null" >
+        requisition_form = #{record.requisitionForm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isReviewStaff != null" >
+        is_review_staff = #{record.isReviewStaff,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requisitionRemark != null" >
+        requisition_remark = #{record.requisitionRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requisitionAuditing != null" >
+        requisition_auditing = #{record.requisitionAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requisitionYn != null" >
+        requisition_yn = #{record.requisitionYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requisitionCustom1 != null" >
+        requisition_custom1 = #{record.requisitionCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requisitionCustom2 != null" >
+        requisition_custom2 = #{record.requisitionCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requisitionCustom3 != null" >
+        requisition_custom3 = #{record.requisitionCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requisitionCustom4 != null" >
+        requisition_custom4 = #{record.requisitionCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requisitionCustom5 != null" >
+        requisition_custom5 = #{record.requisitionCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requisitionCustom6 != null" >
+        requisition_custom6 = #{record.requisitionCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update requisition
+    set requisition_id = #{record.requisitionId,jdbcType=VARCHAR},
+      requisition_out_warehouse = #{record.requisitionOutWarehouse,jdbcType=VARCHAR},
+      requisition_input_warehouse = #{record.requisitionInputWarehouse,jdbcType=VARCHAR},
+      requisition_documentation_date = #{record.requisitionDocumentationDate,jdbcType=TIMESTAMP},
+      requisition_documentation_no = #{record.requisitionDocumentationNo,jdbcType=VARCHAR},
+      requisition_form = #{record.requisitionForm,jdbcType=VARCHAR},
+      is_review_staff = #{record.isReviewStaff,jdbcType=VARCHAR},
+      requisition_remark = #{record.requisitionRemark,jdbcType=VARCHAR},
+      requisition_auditing = #{record.requisitionAuditing,jdbcType=VARCHAR},
+      requisition_yn = #{record.requisitionYn,jdbcType=VARCHAR},
+      requisition_custom1 = #{record.requisitionCustom1,jdbcType=VARCHAR},
+      requisition_custom2 = #{record.requisitionCustom2,jdbcType=VARCHAR},
+      requisition_custom3 = #{record.requisitionCustom3,jdbcType=VARCHAR},
+      requisition_custom4 = #{record.requisitionCustom4,jdbcType=VARCHAR},
+      requisition_custom5 = #{record.requisitionCustom5,jdbcType=VARCHAR},
+      requisition_custom6 = #{record.requisitionCustom6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Requisition" >
+    update requisition
+    <set >
+      <if test="requisitionOutWarehouse != null" >
+        requisition_out_warehouse = #{requisitionOutWarehouse,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionInputWarehouse != null" >
+        requisition_input_warehouse = #{requisitionInputWarehouse,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionDocumentationDate != null" >
+        requisition_documentation_date = #{requisitionDocumentationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requisitionDocumentationNo != null" >
+        requisition_documentation_no = #{requisitionDocumentationNo,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionForm != null" >
+        requisition_form = #{requisitionForm,jdbcType=VARCHAR},
+      </if>
+      <if test="isReviewStaff != null" >
+        is_review_staff = #{isReviewStaff,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionRemark != null" >
+        requisition_remark = #{requisitionRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionAuditing != null" >
+        requisition_auditing = #{requisitionAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionYn != null" >
+        requisition_yn = #{requisitionYn,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionCustom1 != null" >
+        requisition_custom1 = #{requisitionCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionCustom2 != null" >
+        requisition_custom2 = #{requisitionCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionCustom3 != null" >
+        requisition_custom3 = #{requisitionCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionCustom4 != null" >
+        requisition_custom4 = #{requisitionCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionCustom5 != null" >
+        requisition_custom5 = #{requisitionCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionCustom6 != null" >
+        requisition_custom6 = #{requisitionCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where requisition_id = #{requisitionId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Requisition" >
+    update requisition
+    set requisition_out_warehouse = #{requisitionOutWarehouse,jdbcType=VARCHAR},
+      requisition_input_warehouse = #{requisitionInputWarehouse,jdbcType=VARCHAR},
+      requisition_documentation_date = #{requisitionDocumentationDate,jdbcType=TIMESTAMP},
+      requisition_documentation_no = #{requisitionDocumentationNo,jdbcType=VARCHAR},
+      requisition_form = #{requisitionForm,jdbcType=VARCHAR},
+      is_review_staff = #{isReviewStaff,jdbcType=VARCHAR},
+      requisition_remark = #{requisitionRemark,jdbcType=VARCHAR},
+      requisition_auditing = #{requisitionAuditing,jdbcType=VARCHAR},
+      requisition_yn = #{requisitionYn,jdbcType=VARCHAR},
+      requisition_custom1 = #{requisitionCustom1,jdbcType=VARCHAR},
+      requisition_custom2 = #{requisitionCustom2,jdbcType=VARCHAR},
+      requisition_custom3 = #{requisitionCustom3,jdbcType=VARCHAR},
+      requisition_custom4 = #{requisitionCustom4,jdbcType=VARCHAR},
+      requisition_custom5 = #{requisitionCustom5,jdbcType=VARCHAR},
+      requisition_custom6 = #{requisitionCustom6,jdbcType=VARCHAR}
+    where requisition_id = #{requisitionId,jdbcType=VARCHAR}
+  </update>
+</mapper>

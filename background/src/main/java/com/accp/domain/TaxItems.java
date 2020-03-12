@@ -1,39 +1,35 @@
 package com.accp.domain;
 
 public class TaxItems {
-    private Integer tiId;
+    private String tiId;
 
     private String tiName;
 
-    private String tiEname;
+    private String tiEnglishName;
 
     private String tiRemark;
 
-    private String bz1;
+    private String tiAuditing;
 
-    private String bz2;
+    private String tiYn;
 
-    private String bz3;
+    private String tiCustom1;
 
-    private String bz4;
+    private String tiCustom2;
 
-    private String bz5;
+    private String tiCustom3;
 
-    private String bz6;
+    private String tiCustom4;
 
-    private String bz7;
+    private String tiCustom5;
 
-    private String bz8;
+    private String tiCustom6;
 
-    private String bz9;
-
-    private String bz10;
-
-    public Integer getTiId() {
+    public String getTiId() {
         return tiId;
     }
 
-    public void setTiId(Integer tiId) {
+    public void setTiId(String tiId) {
         this.tiId = tiId;
     }
 
@@ -45,12 +41,12 @@ public class TaxItems {
         this.tiName = tiName;
     }
 
-    public String getTiEname() {
-        return tiEname;
+    public String getTiEnglishName() {
+        return tiEnglishName;
     }
 
-    public void setTiEname(String tiEname) {
-        this.tiEname = tiEname;
+    public void setTiEnglishName(String tiEnglishName) {
+        this.tiEnglishName = tiEnglishName;
     }
 
     public String getTiRemark() {
@@ -61,83 +57,67 @@ public class TaxItems {
         this.tiRemark = tiRemark;
     }
 
-    public String getBz1() {
-        return bz1;
+    public String getTiAuditing() {
+        return tiAuditing;
     }
 
-    public void setBz1(String bz1) {
-        this.bz1 = bz1;
+    public void setTiAuditing(String tiAuditing) {
+        this.tiAuditing = tiAuditing;
     }
 
-    public String getBz2() {
-        return bz2;
+    public String getTiYn() {
+        return tiYn;
     }
 
-    public void setBz2(String bz2) {
-        this.bz2 = bz2;
+    public void setTiYn(String tiYn) {
+        this.tiYn = tiYn;
     }
 
-    public String getBz3() {
-        return bz3;
+    public String getTiCustom1() {
+        return tiCustom1;
     }
 
-    public void setBz3(String bz3) {
-        this.bz3 = bz3;
+    public void setTiCustom1(String tiCustom1) {
+        this.tiCustom1 = tiCustom1;
     }
 
-    public String getBz4() {
-        return bz4;
+    public String getTiCustom2() {
+        return tiCustom2;
     }
 
-    public void setBz4(String bz4) {
-        this.bz4 = bz4;
+    public void setTiCustom2(String tiCustom2) {
+        this.tiCustom2 = tiCustom2;
     }
 
-    public String getBz5() {
-        return bz5;
+    public String getTiCustom3() {
+        return tiCustom3;
     }
 
-    public void setBz5(String bz5) {
-        this.bz5 = bz5;
+    public void setTiCustom3(String tiCustom3) {
+        this.tiCustom3 = tiCustom3;
     }
 
-    public String getBz6() {
-        return bz6;
+    public String getTiCustom4() {
+        return tiCustom4;
     }
 
-    public void setBz6(String bz6) {
-        this.bz6 = bz6;
+    public void setTiCustom4(String tiCustom4) {
+        this.tiCustom4 = tiCustom4;
     }
 
-    public String getBz7() {
-        return bz7;
+    public String getTiCustom5() {
+        return tiCustom5;
     }
 
-    public void setBz7(String bz7) {
-        this.bz7 = bz7;
+    public void setTiCustom5(String tiCustom5) {
+        this.tiCustom5 = tiCustom5;
     }
 
-    public String getBz8() {
-        return bz8;
+    public String getTiCustom6() {
+        return tiCustom6;
     }
 
-    public void setBz8(String bz8) {
-        this.bz8 = bz8;
-    }
-
-    public String getBz9() {
-        return bz9;
-    }
-
-    public void setBz9(String bz9) {
-        this.bz9 = bz9;
-    }
-
-    public String getBz10() {
-        return bz10;
-    }
-
-    public void setBz10(String bz10) {
-        this.bz10 = bz10;
+    public void setTiCustom6(String tiCustom6) {
+        this.tiCustom6 = tiCustom6;
     }
 }

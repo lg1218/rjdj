@@ -104,203 +104,213 @@ public class SalesorderlistExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andSolDocumentnumberIsNull() {
-            addCriterion("sol_documentnumber is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSolDocumentnumberIsNotNull() {
-            addCriterion("sol_documentnumber is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSolDocumentnumberEqualTo(String value) {
-            addCriterion("sol_documentnumber =", value, "solDocumentnumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andSolDocumentnumberNotEqualTo(String value) {
-            addCriterion("sol_documentnumber <>", value, "solDocumentnumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andSolDocumentnumberGreaterThan(String value) {
-            addCriterion("sol_documentnumber >", value, "solDocumentnumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andSolDocumentnumberGreaterThanOrEqualTo(String value) {
-            addCriterion("sol_documentnumber >=", value, "solDocumentnumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andSolDocumentnumberLessThan(String value) {
-            addCriterion("sol_documentnumber <", value, "solDocumentnumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andSolDocumentnumberLessThanOrEqualTo(String value) {
-            addCriterion("sol_documentnumber <=", value, "solDocumentnumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andSolDocumentnumberLike(String value) {
-            addCriterion("sol_documentnumber like", value, "solDocumentnumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andSolDocumentnumberNotLike(String value) {
-            addCriterion("sol_documentnumber not like", value, "solDocumentnumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andSolDocumentnumberIn(List<String> values) {
-            addCriterion("sol_documentnumber in", values, "solDocumentnumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andSolDocumentnumberNotIn(List<String> values) {
-            addCriterion("sol_documentnumber not in", values, "solDocumentnumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andSolDocumentnumberBetween(String value1, String value2) {
-            addCriterion("sol_documentnumber between", value1, value2, "solDocumentnumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andSolDocumentnumberNotBetween(String value1, String value2) {
-            addCriterion("sol_documentnumber not between", value1, value2, "solDocumentnumber");
-            return (Criteria) this;
-        }
-
         public Criteria andSolIdIsNull() {
-            addCriterion("sol_Id is null");
+            addCriterion("sol_id is null");
             return (Criteria) this;
         }
 
         public Criteria andSolIdIsNotNull() {
-            addCriterion("sol_Id is not null");
+            addCriterion("sol_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSolIdEqualTo(Integer value) {
-            addCriterion("sol_Id =", value, "solId");
+        public Criteria andSolIdEqualTo(String value) {
+            addCriterion("sol_id =", value, "solId");
             return (Criteria) this;
         }
 
-        public Criteria andSolIdNotEqualTo(Integer value) {
-            addCriterion("sol_Id <>", value, "solId");
+        public Criteria andSolIdNotEqualTo(String value) {
+            addCriterion("sol_id <>", value, "solId");
             return (Criteria) this;
         }
 
-        public Criteria andSolIdGreaterThan(Integer value) {
-            addCriterion("sol_Id >", value, "solId");
+        public Criteria andSolIdGreaterThan(String value) {
+            addCriterion("sol_id >", value, "solId");
             return (Criteria) this;
         }
 
-        public Criteria andSolIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("sol_Id >=", value, "solId");
+        public Criteria andSolIdGreaterThanOrEqualTo(String value) {
+            addCriterion("sol_id >=", value, "solId");
             return (Criteria) this;
         }
 
-        public Criteria andSolIdLessThan(Integer value) {
-            addCriterion("sol_Id <", value, "solId");
+        public Criteria andSolIdLessThan(String value) {
+            addCriterion("sol_id <", value, "solId");
             return (Criteria) this;
         }
 
-        public Criteria andSolIdLessThanOrEqualTo(Integer value) {
-            addCriterion("sol_Id <=", value, "solId");
+        public Criteria andSolIdLessThanOrEqualTo(String value) {
+            addCriterion("sol_id <=", value, "solId");
             return (Criteria) this;
         }
 
-        public Criteria andSolIdIn(List<Integer> values) {
-            addCriterion("sol_Id in", values, "solId");
+        public Criteria andSolIdLike(String value) {
+            addCriterion("sol_id like", value, "solId");
             return (Criteria) this;
         }
 
-        public Criteria andSolIdNotIn(List<Integer> values) {
-            addCriterion("sol_Id not in", values, "solId");
+        public Criteria andSolIdNotLike(String value) {
+            addCriterion("sol_id not like", value, "solId");
             return (Criteria) this;
         }
 
-        public Criteria andSolIdBetween(Integer value1, Integer value2) {
-            addCriterion("sol_Id between", value1, value2, "solId");
+        public Criteria andSolIdIn(List<String> values) {
+            addCriterion("sol_id in", values, "solId");
             return (Criteria) this;
         }
 
-        public Criteria andSolIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("sol_Id not between", value1, value2, "solId");
+        public Criteria andSolIdNotIn(List<String> values) {
+            addCriterion("sol_id not in", values, "solId");
             return (Criteria) this;
         }
 
-        public Criteria andSolMatNumberIsNull() {
-            addCriterion("sol_mat_number is null");
+        public Criteria andSolIdBetween(String value1, String value2) {
+            addCriterion("sol_id between", value1, value2, "solId");
             return (Criteria) this;
         }
 
-        public Criteria andSolMatNumberIsNotNull() {
-            addCriterion("sol_mat_number is not null");
+        public Criteria andSolIdNotBetween(String value1, String value2) {
+            addCriterion("sol_id not between", value1, value2, "solId");
             return (Criteria) this;
         }
 
-        public Criteria andSolMatNumberEqualTo(String value) {
-            addCriterion("sol_mat_number =", value, "solMatNumber");
+        public Criteria andSoIdIsNull() {
+            addCriterion("so_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andSolMatNumberNotEqualTo(String value) {
-            addCriterion("sol_mat_number <>", value, "solMatNumber");
+        public Criteria andSoIdIsNotNull() {
+            addCriterion("so_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSolMatNumberGreaterThan(String value) {
-            addCriterion("sol_mat_number >", value, "solMatNumber");
+        public Criteria andSoIdEqualTo(String value) {
+            addCriterion("so_id =", value, "soId");
             return (Criteria) this;
         }
 
-        public Criteria andSolMatNumberGreaterThanOrEqualTo(String value) {
-            addCriterion("sol_mat_number >=", value, "solMatNumber");
+        public Criteria andSoIdNotEqualTo(String value) {
+            addCriterion("so_id <>", value, "soId");
             return (Criteria) this;
         }
 
-        public Criteria andSolMatNumberLessThan(String value) {
-            addCriterion("sol_mat_number <", value, "solMatNumber");
+        public Criteria andSoIdGreaterThan(String value) {
+            addCriterion("so_id >", value, "soId");
             return (Criteria) this;
         }
 
-        public Criteria andSolMatNumberLessThanOrEqualTo(String value) {
-            addCriterion("sol_mat_number <=", value, "solMatNumber");
+        public Criteria andSoIdGreaterThanOrEqualTo(String value) {
+            addCriterion("so_id >=", value, "soId");
             return (Criteria) this;
         }
 
-        public Criteria andSolMatNumberLike(String value) {
-            addCriterion("sol_mat_number like", value, "solMatNumber");
+        public Criteria andSoIdLessThan(String value) {
+            addCriterion("so_id <", value, "soId");
             return (Criteria) this;
         }
 
-        public Criteria andSolMatNumberNotLike(String value) {
-            addCriterion("sol_mat_number not like", value, "solMatNumber");
+        public Criteria andSoIdLessThanOrEqualTo(String value) {
+            addCriterion("so_id <=", value, "soId");
             return (Criteria) this;
         }
 
-        public Criteria andSolMatNumberIn(List<String> values) {
-            addCriterion("sol_mat_number in", values, "solMatNumber");
+        public Criteria andSoIdLike(String value) {
+            addCriterion("so_id like", value, "soId");
             return (Criteria) this;
         }
 
-        public Criteria andSolMatNumberNotIn(List<String> values) {
-            addCriterion("sol_mat_number not in", values, "solMatNumber");
+        public Criteria andSoIdNotLike(String value) {
+            addCriterion("so_id not like", value, "soId");
             return (Criteria) this;
         }
 
-        public Criteria andSolMatNumberBetween(String value1, String value2) {
-            addCriterion("sol_mat_number between", value1, value2, "solMatNumber");
+        public Criteria andSoIdIn(List<String> values) {
+            addCriterion("so_id in", values, "soId");
             return (Criteria) this;
         }
 
-        public Criteria andSolMatNumberNotBetween(String value1, String value2) {
-            addCriterion("sol_mat_number not between", value1, value2, "solMatNumber");
+        public Criteria andSoIdNotIn(List<String> values) {
+            addCriterion("so_id not in", values, "soId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSoIdBetween(String value1, String value2) {
+            addCriterion("so_id between", value1, value2, "soId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSoIdNotBetween(String value1, String value2) {
+            addCriterion("so_id not between", value1, value2, "soId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMatterIdIsNull() {
+            addCriterion("matter_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMatterIdIsNotNull() {
+            addCriterion("matter_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMatterIdEqualTo(String value) {
+            addCriterion("matter_id =", value, "matterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMatterIdNotEqualTo(String value) {
+            addCriterion("matter_id <>", value, "matterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMatterIdGreaterThan(String value) {
+            addCriterion("matter_id >", value, "matterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMatterIdGreaterThanOrEqualTo(String value) {
+            addCriterion("matter_id >=", value, "matterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMatterIdLessThan(String value) {
+            addCriterion("matter_id <", value, "matterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMatterIdLessThanOrEqualTo(String value) {
+            addCriterion("matter_id <=", value, "matterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMatterIdLike(String value) {
+            addCriterion("matter_id like", value, "matterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMatterIdNotLike(String value) {
+            addCriterion("matter_id not like", value, "matterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMatterIdIn(List<String> values) {
+            addCriterion("matter_id in", values, "matterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMatterIdNotIn(List<String> values) {
+            addCriterion("matter_id not in", values, "matterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMatterIdBetween(String value1, String value2) {
+            addCriterion("matter_id between", value1, value2, "matterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMatterIdNotBetween(String value1, String value2) {
+            addCriterion("matter_id not between", value1, value2, "matterId");
             return (Criteria) this;
         }
 
@@ -584,52 +594,52 @@ public class SalesorderlistExample {
             return (Criteria) this;
         }
 
-        public Criteria andSolPrePriceEqualTo(Double value) {
+        public Criteria andSolPrePriceEqualTo(Float value) {
             addCriterion("sol_pre_price =", value, "solPrePrice");
             return (Criteria) this;
         }
 
-        public Criteria andSolPrePriceNotEqualTo(Double value) {
+        public Criteria andSolPrePriceNotEqualTo(Float value) {
             addCriterion("sol_pre_price <>", value, "solPrePrice");
             return (Criteria) this;
         }
 
-        public Criteria andSolPrePriceGreaterThan(Double value) {
+        public Criteria andSolPrePriceGreaterThan(Float value) {
             addCriterion("sol_pre_price >", value, "solPrePrice");
             return (Criteria) this;
         }
 
-        public Criteria andSolPrePriceGreaterThanOrEqualTo(Double value) {
+        public Criteria andSolPrePriceGreaterThanOrEqualTo(Float value) {
             addCriterion("sol_pre_price >=", value, "solPrePrice");
             return (Criteria) this;
         }
 
-        public Criteria andSolPrePriceLessThan(Double value) {
+        public Criteria andSolPrePriceLessThan(Float value) {
             addCriterion("sol_pre_price <", value, "solPrePrice");
             return (Criteria) this;
         }
 
-        public Criteria andSolPrePriceLessThanOrEqualTo(Double value) {
+        public Criteria andSolPrePriceLessThanOrEqualTo(Float value) {
             addCriterion("sol_pre_price <=", value, "solPrePrice");
             return (Criteria) this;
         }
 
-        public Criteria andSolPrePriceIn(List<Double> values) {
+        public Criteria andSolPrePriceIn(List<Float> values) {
             addCriterion("sol_pre_price in", values, "solPrePrice");
             return (Criteria) this;
         }
 
-        public Criteria andSolPrePriceNotIn(List<Double> values) {
+        public Criteria andSolPrePriceNotIn(List<Float> values) {
             addCriterion("sol_pre_price not in", values, "solPrePrice");
             return (Criteria) this;
         }
 
-        public Criteria andSolPrePriceBetween(Double value1, Double value2) {
+        public Criteria andSolPrePriceBetween(Float value1, Float value2) {
             addCriterion("sol_pre_price between", value1, value2, "solPrePrice");
             return (Criteria) this;
         }
 
-        public Criteria andSolPrePriceNotBetween(Double value1, Double value2) {
+        public Criteria andSolPrePriceNotBetween(Float value1, Float value2) {
             addCriterion("sol_pre_price not between", value1, value2, "solPrePrice");
             return (Criteria) this;
         }
@@ -695,62 +705,62 @@ public class SalesorderlistExample {
         }
 
         public Criteria andSolPriceIsNull() {
-            addCriterion("Sol_price is null");
+            addCriterion("sol_price is null");
             return (Criteria) this;
         }
 
         public Criteria andSolPriceIsNotNull() {
-            addCriterion("Sol_price is not null");
+            addCriterion("sol_price is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSolPriceEqualTo(Double value) {
-            addCriterion("Sol_price =", value, "solPrice");
+        public Criteria andSolPriceEqualTo(Float value) {
+            addCriterion("sol_price =", value, "solPrice");
             return (Criteria) this;
         }
 
-        public Criteria andSolPriceNotEqualTo(Double value) {
-            addCriterion("Sol_price <>", value, "solPrice");
+        public Criteria andSolPriceNotEqualTo(Float value) {
+            addCriterion("sol_price <>", value, "solPrice");
             return (Criteria) this;
         }
 
-        public Criteria andSolPriceGreaterThan(Double value) {
-            addCriterion("Sol_price >", value, "solPrice");
+        public Criteria andSolPriceGreaterThan(Float value) {
+            addCriterion("sol_price >", value, "solPrice");
             return (Criteria) this;
         }
 
-        public Criteria andSolPriceGreaterThanOrEqualTo(Double value) {
-            addCriterion("Sol_price >=", value, "solPrice");
+        public Criteria andSolPriceGreaterThanOrEqualTo(Float value) {
+            addCriterion("sol_price >=", value, "solPrice");
             return (Criteria) this;
         }
 
-        public Criteria andSolPriceLessThan(Double value) {
-            addCriterion("Sol_price <", value, "solPrice");
+        public Criteria andSolPriceLessThan(Float value) {
+            addCriterion("sol_price <", value, "solPrice");
             return (Criteria) this;
         }
 
-        public Criteria andSolPriceLessThanOrEqualTo(Double value) {
-            addCriterion("Sol_price <=", value, "solPrice");
+        public Criteria andSolPriceLessThanOrEqualTo(Float value) {
+            addCriterion("sol_price <=", value, "solPrice");
             return (Criteria) this;
         }
 
-        public Criteria andSolPriceIn(List<Double> values) {
-            addCriterion("Sol_price in", values, "solPrice");
+        public Criteria andSolPriceIn(List<Float> values) {
+            addCriterion("sol_price in", values, "solPrice");
             return (Criteria) this;
         }
 
-        public Criteria andSolPriceNotIn(List<Double> values) {
-            addCriterion("Sol_price not in", values, "solPrice");
+        public Criteria andSolPriceNotIn(List<Float> values) {
+            addCriterion("sol_price not in", values, "solPrice");
             return (Criteria) this;
         }
 
-        public Criteria andSolPriceBetween(Double value1, Double value2) {
-            addCriterion("Sol_price between", value1, value2, "solPrice");
+        public Criteria andSolPriceBetween(Float value1, Float value2) {
+            addCriterion("sol_price between", value1, value2, "solPrice");
             return (Criteria) this;
         }
 
-        public Criteria andSolPriceNotBetween(Double value1, Double value2) {
-            addCriterion("Sol_price not between", value1, value2, "solPrice");
+        public Criteria andSolPriceNotBetween(Float value1, Float value2) {
+            addCriterion("sol_price not between", value1, value2, "solPrice");
             return (Criteria) this;
         }
 
@@ -764,52 +774,52 @@ public class SalesorderlistExample {
             return (Criteria) this;
         }
 
-        public Criteria andSolAmountEqualTo(Double value) {
+        public Criteria andSolAmountEqualTo(Float value) {
             addCriterion("sol_amount =", value, "solAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSolAmountNotEqualTo(Double value) {
+        public Criteria andSolAmountNotEqualTo(Float value) {
             addCriterion("sol_amount <>", value, "solAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSolAmountGreaterThan(Double value) {
+        public Criteria andSolAmountGreaterThan(Float value) {
             addCriterion("sol_amount >", value, "solAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSolAmountGreaterThanOrEqualTo(Double value) {
+        public Criteria andSolAmountGreaterThanOrEqualTo(Float value) {
             addCriterion("sol_amount >=", value, "solAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSolAmountLessThan(Double value) {
+        public Criteria andSolAmountLessThan(Float value) {
             addCriterion("sol_amount <", value, "solAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSolAmountLessThanOrEqualTo(Double value) {
+        public Criteria andSolAmountLessThanOrEqualTo(Float value) {
             addCriterion("sol_amount <=", value, "solAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSolAmountIn(List<Double> values) {
+        public Criteria andSolAmountIn(List<Float> values) {
             addCriterion("sol_amount in", values, "solAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSolAmountNotIn(List<Double> values) {
+        public Criteria andSolAmountNotIn(List<Float> values) {
             addCriterion("sol_amount not in", values, "solAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSolAmountBetween(Double value1, Double value2) {
+        public Criteria andSolAmountBetween(Float value1, Float value2) {
             addCriterion("sol_amount between", value1, value2, "solAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSolAmountNotBetween(Double value1, Double value2) {
+        public Criteria andSolAmountNotBetween(Float value1, Float value2) {
             addCriterion("sol_amount not between", value1, value2, "solAmount");
             return (Criteria) this;
         }
@@ -824,52 +834,52 @@ public class SalesorderlistExample {
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxRateEqualTo(Double value) {
+        public Criteria andSolTaxRateEqualTo(Float value) {
             addCriterion("sol_tax_rate =", value, "solTaxRate");
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxRateNotEqualTo(Double value) {
+        public Criteria andSolTaxRateNotEqualTo(Float value) {
             addCriterion("sol_tax_rate <>", value, "solTaxRate");
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxRateGreaterThan(Double value) {
+        public Criteria andSolTaxRateGreaterThan(Float value) {
             addCriterion("sol_tax_rate >", value, "solTaxRate");
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxRateGreaterThanOrEqualTo(Double value) {
+        public Criteria andSolTaxRateGreaterThanOrEqualTo(Float value) {
             addCriterion("sol_tax_rate >=", value, "solTaxRate");
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxRateLessThan(Double value) {
+        public Criteria andSolTaxRateLessThan(Float value) {
             addCriterion("sol_tax_rate <", value, "solTaxRate");
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxRateLessThanOrEqualTo(Double value) {
+        public Criteria andSolTaxRateLessThanOrEqualTo(Float value) {
             addCriterion("sol_tax_rate <=", value, "solTaxRate");
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxRateIn(List<Double> values) {
+        public Criteria andSolTaxRateIn(List<Float> values) {
             addCriterion("sol_tax_rate in", values, "solTaxRate");
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxRateNotIn(List<Double> values) {
+        public Criteria andSolTaxRateNotIn(List<Float> values) {
             addCriterion("sol_tax_rate not in", values, "solTaxRate");
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxRateBetween(Double value1, Double value2) {
+        public Criteria andSolTaxRateBetween(Float value1, Float value2) {
             addCriterion("sol_tax_rate between", value1, value2, "solTaxRate");
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxRateNotBetween(Double value1, Double value2) {
+        public Criteria andSolTaxRateNotBetween(Float value1, Float value2) {
             addCriterion("sol_tax_rate not between", value1, value2, "solTaxRate");
             return (Criteria) this;
         }
@@ -884,52 +894,52 @@ public class SalesorderlistExample {
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxEqualTo(Double value) {
+        public Criteria andSolTaxEqualTo(Float value) {
             addCriterion("sol_tax =", value, "solTax");
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxNotEqualTo(Double value) {
+        public Criteria andSolTaxNotEqualTo(Float value) {
             addCriterion("sol_tax <>", value, "solTax");
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxGreaterThan(Double value) {
+        public Criteria andSolTaxGreaterThan(Float value) {
             addCriterion("sol_tax >", value, "solTax");
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxGreaterThanOrEqualTo(Double value) {
+        public Criteria andSolTaxGreaterThanOrEqualTo(Float value) {
             addCriterion("sol_tax >=", value, "solTax");
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxLessThan(Double value) {
+        public Criteria andSolTaxLessThan(Float value) {
             addCriterion("sol_tax <", value, "solTax");
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxLessThanOrEqualTo(Double value) {
+        public Criteria andSolTaxLessThanOrEqualTo(Float value) {
             addCriterion("sol_tax <=", value, "solTax");
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxIn(List<Double> values) {
+        public Criteria andSolTaxIn(List<Float> values) {
             addCriterion("sol_tax in", values, "solTax");
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxNotIn(List<Double> values) {
+        public Criteria andSolTaxNotIn(List<Float> values) {
             addCriterion("sol_tax not in", values, "solTax");
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxBetween(Double value1, Double value2) {
+        public Criteria andSolTaxBetween(Float value1, Float value2) {
             addCriterion("sol_tax between", value1, value2, "solTax");
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxNotBetween(Double value1, Double value2) {
+        public Criteria andSolTaxNotBetween(Float value1, Float value2) {
             addCriterion("sol_tax not between", value1, value2, "solTax");
             return (Criteria) this;
         }
@@ -944,52 +954,52 @@ public class SalesorderlistExample {
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxAmountEqualTo(Double value) {
+        public Criteria andSolTaxAmountEqualTo(Float value) {
             addCriterion("sol_tax_amount =", value, "solTaxAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxAmountNotEqualTo(Double value) {
+        public Criteria andSolTaxAmountNotEqualTo(Float value) {
             addCriterion("sol_tax_amount <>", value, "solTaxAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxAmountGreaterThan(Double value) {
+        public Criteria andSolTaxAmountGreaterThan(Float value) {
             addCriterion("sol_tax_amount >", value, "solTaxAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxAmountGreaterThanOrEqualTo(Double value) {
+        public Criteria andSolTaxAmountGreaterThanOrEqualTo(Float value) {
             addCriterion("sol_tax_amount >=", value, "solTaxAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxAmountLessThan(Double value) {
+        public Criteria andSolTaxAmountLessThan(Float value) {
             addCriterion("sol_tax_amount <", value, "solTaxAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxAmountLessThanOrEqualTo(Double value) {
+        public Criteria andSolTaxAmountLessThanOrEqualTo(Float value) {
             addCriterion("sol_tax_amount <=", value, "solTaxAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxAmountIn(List<Double> values) {
+        public Criteria andSolTaxAmountIn(List<Float> values) {
             addCriterion("sol_tax_amount in", values, "solTaxAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxAmountNotIn(List<Double> values) {
+        public Criteria andSolTaxAmountNotIn(List<Float> values) {
             addCriterion("sol_tax_amount not in", values, "solTaxAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxAmountBetween(Double value1, Double value2) {
+        public Criteria andSolTaxAmountBetween(Float value1, Float value2) {
             addCriterion("sol_tax_amount between", value1, value2, "solTaxAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSolTaxAmountNotBetween(Double value1, Double value2) {
+        public Criteria andSolTaxAmountNotBetween(Float value1, Float value2) {
             addCriterion("sol_tax_amount not between", value1, value2, "solTaxAmount");
             return (Criteria) this;
         }
@@ -1125,202 +1135,202 @@ public class SalesorderlistExample {
         }
 
         public Criteria andSolMaterialCompositionIsNull() {
-            addCriterion("sol_Material_composition is null");
+            addCriterion("sol_material_composition is null");
             return (Criteria) this;
         }
 
         public Criteria andSolMaterialCompositionIsNotNull() {
-            addCriterion("sol_Material_composition is not null");
+            addCriterion("sol_material_composition is not null");
             return (Criteria) this;
         }
 
         public Criteria andSolMaterialCompositionEqualTo(Integer value) {
-            addCriterion("sol_Material_composition =", value, "solMaterialComposition");
+            addCriterion("sol_material_composition =", value, "solMaterialComposition");
             return (Criteria) this;
         }
 
         public Criteria andSolMaterialCompositionNotEqualTo(Integer value) {
-            addCriterion("sol_Material_composition <>", value, "solMaterialComposition");
+            addCriterion("sol_material_composition <>", value, "solMaterialComposition");
             return (Criteria) this;
         }
 
         public Criteria andSolMaterialCompositionGreaterThan(Integer value) {
-            addCriterion("sol_Material_composition >", value, "solMaterialComposition");
+            addCriterion("sol_material_composition >", value, "solMaterialComposition");
             return (Criteria) this;
         }
 
         public Criteria andSolMaterialCompositionGreaterThanOrEqualTo(Integer value) {
-            addCriterion("sol_Material_composition >=", value, "solMaterialComposition");
+            addCriterion("sol_material_composition >=", value, "solMaterialComposition");
             return (Criteria) this;
         }
 
         public Criteria andSolMaterialCompositionLessThan(Integer value) {
-            addCriterion("sol_Material_composition <", value, "solMaterialComposition");
+            addCriterion("sol_material_composition <", value, "solMaterialComposition");
             return (Criteria) this;
         }
 
         public Criteria andSolMaterialCompositionLessThanOrEqualTo(Integer value) {
-            addCriterion("sol_Material_composition <=", value, "solMaterialComposition");
+            addCriterion("sol_material_composition <=", value, "solMaterialComposition");
             return (Criteria) this;
         }
 
         public Criteria andSolMaterialCompositionIn(List<Integer> values) {
-            addCriterion("sol_Material_composition in", values, "solMaterialComposition");
+            addCriterion("sol_material_composition in", values, "solMaterialComposition");
             return (Criteria) this;
         }
 
         public Criteria andSolMaterialCompositionNotIn(List<Integer> values) {
-            addCriterion("sol_Material_composition not in", values, "solMaterialComposition");
+            addCriterion("sol_material_composition not in", values, "solMaterialComposition");
             return (Criteria) this;
         }
 
         public Criteria andSolMaterialCompositionBetween(Integer value1, Integer value2) {
-            addCriterion("sol_Material_composition between", value1, value2, "solMaterialComposition");
+            addCriterion("sol_material_composition between", value1, value2, "solMaterialComposition");
             return (Criteria) this;
         }
 
         public Criteria andSolMaterialCompositionNotBetween(Integer value1, Integer value2) {
-            addCriterion("sol_Material_composition not between", value1, value2, "solMaterialComposition");
+            addCriterion("sol_material_composition not between", value1, value2, "solMaterialComposition");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleSourceIsNull() {
-            addCriterion("sol_Single_source is null");
+            addCriterion("sol_single_source is null");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleSourceIsNotNull() {
-            addCriterion("sol_Single_source is not null");
+            addCriterion("sol_single_source is not null");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleSourceEqualTo(String value) {
-            addCriterion("sol_Single_source =", value, "solSingleSource");
+            addCriterion("sol_single_source =", value, "solSingleSource");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleSourceNotEqualTo(String value) {
-            addCriterion("sol_Single_source <>", value, "solSingleSource");
+            addCriterion("sol_single_source <>", value, "solSingleSource");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleSourceGreaterThan(String value) {
-            addCriterion("sol_Single_source >", value, "solSingleSource");
+            addCriterion("sol_single_source >", value, "solSingleSource");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleSourceGreaterThanOrEqualTo(String value) {
-            addCriterion("sol_Single_source >=", value, "solSingleSource");
+            addCriterion("sol_single_source >=", value, "solSingleSource");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleSourceLessThan(String value) {
-            addCriterion("sol_Single_source <", value, "solSingleSource");
+            addCriterion("sol_single_source <", value, "solSingleSource");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleSourceLessThanOrEqualTo(String value) {
-            addCriterion("sol_Single_source <=", value, "solSingleSource");
+            addCriterion("sol_single_source <=", value, "solSingleSource");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleSourceLike(String value) {
-            addCriterion("sol_Single_source like", value, "solSingleSource");
+            addCriterion("sol_single_source like", value, "solSingleSource");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleSourceNotLike(String value) {
-            addCriterion("sol_Single_source not like", value, "solSingleSource");
+            addCriterion("sol_single_source not like", value, "solSingleSource");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleSourceIn(List<String> values) {
-            addCriterion("sol_Single_source in", values, "solSingleSource");
+            addCriterion("sol_single_source in", values, "solSingleSource");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleSourceNotIn(List<String> values) {
-            addCriterion("sol_Single_source not in", values, "solSingleSource");
+            addCriterion("sol_single_source not in", values, "solSingleSource");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleSourceBetween(String value1, String value2) {
-            addCriterion("sol_Single_source between", value1, value2, "solSingleSource");
+            addCriterion("sol_single_source between", value1, value2, "solSingleSource");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleSourceNotBetween(String value1, String value2) {
-            addCriterion("sol_Single_source not between", value1, value2, "solSingleSource");
+            addCriterion("sol_single_source not between", value1, value2, "solSingleSource");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleOderIsNull() {
-            addCriterion("sol_Single_oder is null");
+            addCriterion("sol_single_oder is null");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleOderIsNotNull() {
-            addCriterion("sol_Single_oder is not null");
+            addCriterion("sol_single_oder is not null");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleOderEqualTo(String value) {
-            addCriterion("sol_Single_oder =", value, "solSingleOder");
+            addCriterion("sol_single_oder =", value, "solSingleOder");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleOderNotEqualTo(String value) {
-            addCriterion("sol_Single_oder <>", value, "solSingleOder");
+            addCriterion("sol_single_oder <>", value, "solSingleOder");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleOderGreaterThan(String value) {
-            addCriterion("sol_Single_oder >", value, "solSingleOder");
+            addCriterion("sol_single_oder >", value, "solSingleOder");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleOderGreaterThanOrEqualTo(String value) {
-            addCriterion("sol_Single_oder >=", value, "solSingleOder");
+            addCriterion("sol_single_oder >=", value, "solSingleOder");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleOderLessThan(String value) {
-            addCriterion("sol_Single_oder <", value, "solSingleOder");
+            addCriterion("sol_single_oder <", value, "solSingleOder");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleOderLessThanOrEqualTo(String value) {
-            addCriterion("sol_Single_oder <=", value, "solSingleOder");
+            addCriterion("sol_single_oder <=", value, "solSingleOder");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleOderLike(String value) {
-            addCriterion("sol_Single_oder like", value, "solSingleOder");
+            addCriterion("sol_single_oder like", value, "solSingleOder");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleOderNotLike(String value) {
-            addCriterion("sol_Single_oder not like", value, "solSingleOder");
+            addCriterion("sol_single_oder not like", value, "solSingleOder");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleOderIn(List<String> values) {
-            addCriterion("sol_Single_oder in", values, "solSingleOder");
+            addCriterion("sol_single_oder in", values, "solSingleOder");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleOderNotIn(List<String> values) {
-            addCriterion("sol_Single_oder not in", values, "solSingleOder");
+            addCriterion("sol_single_oder not in", values, "solSingleOder");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleOderBetween(String value1, String value2) {
-            addCriterion("sol_Single_oder between", value1, value2, "solSingleOder");
+            addCriterion("sol_single_oder between", value1, value2, "solSingleOder");
             return (Criteria) this;
         }
 
         public Criteria andSolSingleOderNotBetween(String value1, String value2) {
-            addCriterion("sol_Single_oder not between", value1, value2, "solSingleOder");
+            addCriterion("sol_single_oder not between", value1, value2, "solSingleOder");
             return (Criteria) this;
         }
 
@@ -1385,482 +1395,692 @@ public class SalesorderlistExample {
         }
 
         public Criteria andSolSchedulingSingleNumberIsNull() {
-            addCriterion("sol_Scheduling_single_number is null");
+            addCriterion("sol_scheduling_single_number is null");
             return (Criteria) this;
         }
 
         public Criteria andSolSchedulingSingleNumberIsNotNull() {
-            addCriterion("sol_Scheduling_single_number is not null");
+            addCriterion("sol_scheduling_single_number is not null");
             return (Criteria) this;
         }
 
         public Criteria andSolSchedulingSingleNumberEqualTo(String value) {
-            addCriterion("sol_Scheduling_single_number =", value, "solSchedulingSingleNumber");
+            addCriterion("sol_scheduling_single_number =", value, "solSchedulingSingleNumber");
             return (Criteria) this;
         }
 
         public Criteria andSolSchedulingSingleNumberNotEqualTo(String value) {
-            addCriterion("sol_Scheduling_single_number <>", value, "solSchedulingSingleNumber");
+            addCriterion("sol_scheduling_single_number <>", value, "solSchedulingSingleNumber");
             return (Criteria) this;
         }
 
         public Criteria andSolSchedulingSingleNumberGreaterThan(String value) {
-            addCriterion("sol_Scheduling_single_number >", value, "solSchedulingSingleNumber");
+            addCriterion("sol_scheduling_single_number >", value, "solSchedulingSingleNumber");
             return (Criteria) this;
         }
 
         public Criteria andSolSchedulingSingleNumberGreaterThanOrEqualTo(String value) {
-            addCriterion("sol_Scheduling_single_number >=", value, "solSchedulingSingleNumber");
+            addCriterion("sol_scheduling_single_number >=", value, "solSchedulingSingleNumber");
             return (Criteria) this;
         }
 
         public Criteria andSolSchedulingSingleNumberLessThan(String value) {
-            addCriterion("sol_Scheduling_single_number <", value, "solSchedulingSingleNumber");
+            addCriterion("sol_scheduling_single_number <", value, "solSchedulingSingleNumber");
             return (Criteria) this;
         }
 
         public Criteria andSolSchedulingSingleNumberLessThanOrEqualTo(String value) {
-            addCriterion("sol_Scheduling_single_number <=", value, "solSchedulingSingleNumber");
+            addCriterion("sol_scheduling_single_number <=", value, "solSchedulingSingleNumber");
             return (Criteria) this;
         }
 
         public Criteria andSolSchedulingSingleNumberLike(String value) {
-            addCriterion("sol_Scheduling_single_number like", value, "solSchedulingSingleNumber");
+            addCriterion("sol_scheduling_single_number like", value, "solSchedulingSingleNumber");
             return (Criteria) this;
         }
 
         public Criteria andSolSchedulingSingleNumberNotLike(String value) {
-            addCriterion("sol_Scheduling_single_number not like", value, "solSchedulingSingleNumber");
+            addCriterion("sol_scheduling_single_number not like", value, "solSchedulingSingleNumber");
             return (Criteria) this;
         }
 
         public Criteria andSolSchedulingSingleNumberIn(List<String> values) {
-            addCriterion("sol_Scheduling_single_number in", values, "solSchedulingSingleNumber");
+            addCriterion("sol_scheduling_single_number in", values, "solSchedulingSingleNumber");
             return (Criteria) this;
         }
 
         public Criteria andSolSchedulingSingleNumberNotIn(List<String> values) {
-            addCriterion("sol_Scheduling_single_number not in", values, "solSchedulingSingleNumber");
+            addCriterion("sol_scheduling_single_number not in", values, "solSchedulingSingleNumber");
             return (Criteria) this;
         }
 
         public Criteria andSolSchedulingSingleNumberBetween(String value1, String value2) {
-            addCriterion("sol_Scheduling_single_number between", value1, value2, "solSchedulingSingleNumber");
+            addCriterion("sol_scheduling_single_number between", value1, value2, "solSchedulingSingleNumber");
             return (Criteria) this;
         }
 
         public Criteria andSolSchedulingSingleNumberNotBetween(String value1, String value2) {
-            addCriterion("sol_Scheduling_single_number not between", value1, value2, "solSchedulingSingleNumber");
+            addCriterion("sol_scheduling_single_number not between", value1, value2, "solSchedulingSingleNumber");
             return (Criteria) this;
         }
 
         public Criteria andSolProducedQuantityIsNull() {
-            addCriterion("sol_Produced_quantity is null");
+            addCriterion("sol_produced_quantity is null");
             return (Criteria) this;
         }
 
         public Criteria andSolProducedQuantityIsNotNull() {
-            addCriterion("sol_Produced_quantity is not null");
+            addCriterion("sol_produced_quantity is not null");
             return (Criteria) this;
         }
 
         public Criteria andSolProducedQuantityEqualTo(Integer value) {
-            addCriterion("sol_Produced_quantity =", value, "solProducedQuantity");
+            addCriterion("sol_produced_quantity =", value, "solProducedQuantity");
             return (Criteria) this;
         }
 
         public Criteria andSolProducedQuantityNotEqualTo(Integer value) {
-            addCriterion("sol_Produced_quantity <>", value, "solProducedQuantity");
+            addCriterion("sol_produced_quantity <>", value, "solProducedQuantity");
             return (Criteria) this;
         }
 
         public Criteria andSolProducedQuantityGreaterThan(Integer value) {
-            addCriterion("sol_Produced_quantity >", value, "solProducedQuantity");
+            addCriterion("sol_produced_quantity >", value, "solProducedQuantity");
             return (Criteria) this;
         }
 
         public Criteria andSolProducedQuantityGreaterThanOrEqualTo(Integer value) {
-            addCriterion("sol_Produced_quantity >=", value, "solProducedQuantity");
+            addCriterion("sol_produced_quantity >=", value, "solProducedQuantity");
             return (Criteria) this;
         }
 
         public Criteria andSolProducedQuantityLessThan(Integer value) {
-            addCriterion("sol_Produced_quantity <", value, "solProducedQuantity");
+            addCriterion("sol_produced_quantity <", value, "solProducedQuantity");
             return (Criteria) this;
         }
 
         public Criteria andSolProducedQuantityLessThanOrEqualTo(Integer value) {
-            addCriterion("sol_Produced_quantity <=", value, "solProducedQuantity");
+            addCriterion("sol_produced_quantity <=", value, "solProducedQuantity");
             return (Criteria) this;
         }
 
         public Criteria andSolProducedQuantityIn(List<Integer> values) {
-            addCriterion("sol_Produced_quantity in", values, "solProducedQuantity");
+            addCriterion("sol_produced_quantity in", values, "solProducedQuantity");
             return (Criteria) this;
         }
 
         public Criteria andSolProducedQuantityNotIn(List<Integer> values) {
-            addCriterion("sol_Produced_quantity not in", values, "solProducedQuantity");
+            addCriterion("sol_produced_quantity not in", values, "solProducedQuantity");
             return (Criteria) this;
         }
 
         public Criteria andSolProducedQuantityBetween(Integer value1, Integer value2) {
-            addCriterion("sol_Produced_quantity between", value1, value2, "solProducedQuantity");
+            addCriterion("sol_produced_quantity between", value1, value2, "solProducedQuantity");
             return (Criteria) this;
         }
 
         public Criteria andSolProducedQuantityNotBetween(Integer value1, Integer value2) {
-            addCriterion("sol_Produced_quantity not between", value1, value2, "solProducedQuantity");
+            addCriterion("sol_produced_quantity not between", value1, value2, "solProducedQuantity");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare1IsNull() {
-            addCriterion("sol_Spare1 is null");
+        public Criteria andSolAuditingIsNull() {
+            addCriterion("sol_auditing is null");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare1IsNotNull() {
-            addCriterion("sol_Spare1 is not null");
+        public Criteria andSolAuditingIsNotNull() {
+            addCriterion("sol_auditing is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare1EqualTo(String value) {
-            addCriterion("sol_Spare1 =", value, "solSpare1");
+        public Criteria andSolAuditingEqualTo(String value) {
+            addCriterion("sol_auditing =", value, "solAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare1NotEqualTo(String value) {
-            addCriterion("sol_Spare1 <>", value, "solSpare1");
+        public Criteria andSolAuditingNotEqualTo(String value) {
+            addCriterion("sol_auditing <>", value, "solAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare1GreaterThan(String value) {
-            addCriterion("sol_Spare1 >", value, "solSpare1");
+        public Criteria andSolAuditingGreaterThan(String value) {
+            addCriterion("sol_auditing >", value, "solAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare1GreaterThanOrEqualTo(String value) {
-            addCriterion("sol_Spare1 >=", value, "solSpare1");
+        public Criteria andSolAuditingGreaterThanOrEqualTo(String value) {
+            addCriterion("sol_auditing >=", value, "solAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare1LessThan(String value) {
-            addCriterion("sol_Spare1 <", value, "solSpare1");
+        public Criteria andSolAuditingLessThan(String value) {
+            addCriterion("sol_auditing <", value, "solAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare1LessThanOrEqualTo(String value) {
-            addCriterion("sol_Spare1 <=", value, "solSpare1");
+        public Criteria andSolAuditingLessThanOrEqualTo(String value) {
+            addCriterion("sol_auditing <=", value, "solAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare1Like(String value) {
-            addCriterion("sol_Spare1 like", value, "solSpare1");
+        public Criteria andSolAuditingLike(String value) {
+            addCriterion("sol_auditing like", value, "solAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare1NotLike(String value) {
-            addCriterion("sol_Spare1 not like", value, "solSpare1");
+        public Criteria andSolAuditingNotLike(String value) {
+            addCriterion("sol_auditing not like", value, "solAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare1In(List<String> values) {
-            addCriterion("sol_Spare1 in", values, "solSpare1");
+        public Criteria andSolAuditingIn(List<String> values) {
+            addCriterion("sol_auditing in", values, "solAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare1NotIn(List<String> values) {
-            addCriterion("sol_Spare1 not in", values, "solSpare1");
+        public Criteria andSolAuditingNotIn(List<String> values) {
+            addCriterion("sol_auditing not in", values, "solAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare1Between(String value1, String value2) {
-            addCriterion("sol_Spare1 between", value1, value2, "solSpare1");
+        public Criteria andSolAuditingBetween(String value1, String value2) {
+            addCriterion("sol_auditing between", value1, value2, "solAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare1NotBetween(String value1, String value2) {
-            addCriterion("sol_Spare1 not between", value1, value2, "solSpare1");
+        public Criteria andSolAuditingNotBetween(String value1, String value2) {
+            addCriterion("sol_auditing not between", value1, value2, "solAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare2IsNull() {
-            addCriterion("sol_Spare2 is null");
+        public Criteria andSolYnIsNull() {
+            addCriterion("sol_yn is null");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare2IsNotNull() {
-            addCriterion("sol_Spare2 is not null");
+        public Criteria andSolYnIsNotNull() {
+            addCriterion("sol_yn is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare2EqualTo(String value) {
-            addCriterion("sol_Spare2 =", value, "solSpare2");
+        public Criteria andSolYnEqualTo(String value) {
+            addCriterion("sol_yn =", value, "solYn");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare2NotEqualTo(String value) {
-            addCriterion("sol_Spare2 <>", value, "solSpare2");
+        public Criteria andSolYnNotEqualTo(String value) {
+            addCriterion("sol_yn <>", value, "solYn");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare2GreaterThan(String value) {
-            addCriterion("sol_Spare2 >", value, "solSpare2");
+        public Criteria andSolYnGreaterThan(String value) {
+            addCriterion("sol_yn >", value, "solYn");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare2GreaterThanOrEqualTo(String value) {
-            addCriterion("sol_Spare2 >=", value, "solSpare2");
+        public Criteria andSolYnGreaterThanOrEqualTo(String value) {
+            addCriterion("sol_yn >=", value, "solYn");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare2LessThan(String value) {
-            addCriterion("sol_Spare2 <", value, "solSpare2");
+        public Criteria andSolYnLessThan(String value) {
+            addCriterion("sol_yn <", value, "solYn");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare2LessThanOrEqualTo(String value) {
-            addCriterion("sol_Spare2 <=", value, "solSpare2");
+        public Criteria andSolYnLessThanOrEqualTo(String value) {
+            addCriterion("sol_yn <=", value, "solYn");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare2Like(String value) {
-            addCriterion("sol_Spare2 like", value, "solSpare2");
+        public Criteria andSolYnLike(String value) {
+            addCriterion("sol_yn like", value, "solYn");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare2NotLike(String value) {
-            addCriterion("sol_Spare2 not like", value, "solSpare2");
+        public Criteria andSolYnNotLike(String value) {
+            addCriterion("sol_yn not like", value, "solYn");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare2In(List<String> values) {
-            addCriterion("sol_Spare2 in", values, "solSpare2");
+        public Criteria andSolYnIn(List<String> values) {
+            addCriterion("sol_yn in", values, "solYn");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare2NotIn(List<String> values) {
-            addCriterion("sol_Spare2 not in", values, "solSpare2");
+        public Criteria andSolYnNotIn(List<String> values) {
+            addCriterion("sol_yn not in", values, "solYn");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare2Between(String value1, String value2) {
-            addCriterion("sol_Spare2 between", value1, value2, "solSpare2");
+        public Criteria andSolYnBetween(String value1, String value2) {
+            addCriterion("sol_yn between", value1, value2, "solYn");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare2NotBetween(String value1, String value2) {
-            addCriterion("sol_Spare2 not between", value1, value2, "solSpare2");
+        public Criteria andSolYnNotBetween(String value1, String value2) {
+            addCriterion("sol_yn not between", value1, value2, "solYn");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare3IsNull() {
-            addCriterion("sol_Spare3 is null");
+        public Criteria andSolCustom1IsNull() {
+            addCriterion("sol_custom1 is null");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare3IsNotNull() {
-            addCriterion("sol_Spare3 is not null");
+        public Criteria andSolCustom1IsNotNull() {
+            addCriterion("sol_custom1 is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare3EqualTo(String value) {
-            addCriterion("sol_Spare3 =", value, "solSpare3");
+        public Criteria andSolCustom1EqualTo(String value) {
+            addCriterion("sol_custom1 =", value, "solCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare3NotEqualTo(String value) {
-            addCriterion("sol_Spare3 <>", value, "solSpare3");
+        public Criteria andSolCustom1NotEqualTo(String value) {
+            addCriterion("sol_custom1 <>", value, "solCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare3GreaterThan(String value) {
-            addCriterion("sol_Spare3 >", value, "solSpare3");
+        public Criteria andSolCustom1GreaterThan(String value) {
+            addCriterion("sol_custom1 >", value, "solCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare3GreaterThanOrEqualTo(String value) {
-            addCriterion("sol_Spare3 >=", value, "solSpare3");
+        public Criteria andSolCustom1GreaterThanOrEqualTo(String value) {
+            addCriterion("sol_custom1 >=", value, "solCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare3LessThan(String value) {
-            addCriterion("sol_Spare3 <", value, "solSpare3");
+        public Criteria andSolCustom1LessThan(String value) {
+            addCriterion("sol_custom1 <", value, "solCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare3LessThanOrEqualTo(String value) {
-            addCriterion("sol_Spare3 <=", value, "solSpare3");
+        public Criteria andSolCustom1LessThanOrEqualTo(String value) {
+            addCriterion("sol_custom1 <=", value, "solCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare3Like(String value) {
-            addCriterion("sol_Spare3 like", value, "solSpare3");
+        public Criteria andSolCustom1Like(String value) {
+            addCriterion("sol_custom1 like", value, "solCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare3NotLike(String value) {
-            addCriterion("sol_Spare3 not like", value, "solSpare3");
+        public Criteria andSolCustom1NotLike(String value) {
+            addCriterion("sol_custom1 not like", value, "solCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare3In(List<String> values) {
-            addCriterion("sol_Spare3 in", values, "solSpare3");
+        public Criteria andSolCustom1In(List<String> values) {
+            addCriterion("sol_custom1 in", values, "solCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare3NotIn(List<String> values) {
-            addCriterion("sol_Spare3 not in", values, "solSpare3");
+        public Criteria andSolCustom1NotIn(List<String> values) {
+            addCriterion("sol_custom1 not in", values, "solCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare3Between(String value1, String value2) {
-            addCriterion("sol_Spare3 between", value1, value2, "solSpare3");
+        public Criteria andSolCustom1Between(String value1, String value2) {
+            addCriterion("sol_custom1 between", value1, value2, "solCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare3NotBetween(String value1, String value2) {
-            addCriterion("sol_Spare3 not between", value1, value2, "solSpare3");
+        public Criteria andSolCustom1NotBetween(String value1, String value2) {
+            addCriterion("sol_custom1 not between", value1, value2, "solCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare4IsNull() {
-            addCriterion("sol_Spare4 is null");
+        public Criteria andSolCustom2IsNull() {
+            addCriterion("sol_custom2 is null");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare4IsNotNull() {
-            addCriterion("sol_Spare4 is not null");
+        public Criteria andSolCustom2IsNotNull() {
+            addCriterion("sol_custom2 is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare4EqualTo(String value) {
-            addCriterion("sol_Spare4 =", value, "solSpare4");
+        public Criteria andSolCustom2EqualTo(String value) {
+            addCriterion("sol_custom2 =", value, "solCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare4NotEqualTo(String value) {
-            addCriterion("sol_Spare4 <>", value, "solSpare4");
+        public Criteria andSolCustom2NotEqualTo(String value) {
+            addCriterion("sol_custom2 <>", value, "solCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare4GreaterThan(String value) {
-            addCriterion("sol_Spare4 >", value, "solSpare4");
+        public Criteria andSolCustom2GreaterThan(String value) {
+            addCriterion("sol_custom2 >", value, "solCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare4GreaterThanOrEqualTo(String value) {
-            addCriterion("sol_Spare4 >=", value, "solSpare4");
+        public Criteria andSolCustom2GreaterThanOrEqualTo(String value) {
+            addCriterion("sol_custom2 >=", value, "solCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare4LessThan(String value) {
-            addCriterion("sol_Spare4 <", value, "solSpare4");
+        public Criteria andSolCustom2LessThan(String value) {
+            addCriterion("sol_custom2 <", value, "solCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare4LessThanOrEqualTo(String value) {
-            addCriterion("sol_Spare4 <=", value, "solSpare4");
+        public Criteria andSolCustom2LessThanOrEqualTo(String value) {
+            addCriterion("sol_custom2 <=", value, "solCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare4Like(String value) {
-            addCriterion("sol_Spare4 like", value, "solSpare4");
+        public Criteria andSolCustom2Like(String value) {
+            addCriterion("sol_custom2 like", value, "solCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare4NotLike(String value) {
-            addCriterion("sol_Spare4 not like", value, "solSpare4");
+        public Criteria andSolCustom2NotLike(String value) {
+            addCriterion("sol_custom2 not like", value, "solCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare4In(List<String> values) {
-            addCriterion("sol_Spare4 in", values, "solSpare4");
+        public Criteria andSolCustom2In(List<String> values) {
+            addCriterion("sol_custom2 in", values, "solCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare4NotIn(List<String> values) {
-            addCriterion("sol_Spare4 not in", values, "solSpare4");
+        public Criteria andSolCustom2NotIn(List<String> values) {
+            addCriterion("sol_custom2 not in", values, "solCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare4Between(String value1, String value2) {
-            addCriterion("sol_Spare4 between", value1, value2, "solSpare4");
+        public Criteria andSolCustom2Between(String value1, String value2) {
+            addCriterion("sol_custom2 between", value1, value2, "solCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare4NotBetween(String value1, String value2) {
-            addCriterion("sol_Spare4 not between", value1, value2, "solSpare4");
+        public Criteria andSolCustom2NotBetween(String value1, String value2) {
+            addCriterion("sol_custom2 not between", value1, value2, "solCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare5IsNull() {
-            addCriterion("sol_Spare5 is null");
+        public Criteria andSolCustom3IsNull() {
+            addCriterion("sol_custom3 is null");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare5IsNotNull() {
-            addCriterion("sol_Spare5 is not null");
+        public Criteria andSolCustom3IsNotNull() {
+            addCriterion("sol_custom3 is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare5EqualTo(String value) {
-            addCriterion("sol_Spare5 =", value, "solSpare5");
+        public Criteria andSolCustom3EqualTo(String value) {
+            addCriterion("sol_custom3 =", value, "solCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare5NotEqualTo(String value) {
-            addCriterion("sol_Spare5 <>", value, "solSpare5");
+        public Criteria andSolCustom3NotEqualTo(String value) {
+            addCriterion("sol_custom3 <>", value, "solCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare5GreaterThan(String value) {
-            addCriterion("sol_Spare5 >", value, "solSpare5");
+        public Criteria andSolCustom3GreaterThan(String value) {
+            addCriterion("sol_custom3 >", value, "solCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare5GreaterThanOrEqualTo(String value) {
-            addCriterion("sol_Spare5 >=", value, "solSpare5");
+        public Criteria andSolCustom3GreaterThanOrEqualTo(String value) {
+            addCriterion("sol_custom3 >=", value, "solCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare5LessThan(String value) {
-            addCriterion("sol_Spare5 <", value, "solSpare5");
+        public Criteria andSolCustom3LessThan(String value) {
+            addCriterion("sol_custom3 <", value, "solCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare5LessThanOrEqualTo(String value) {
-            addCriterion("sol_Spare5 <=", value, "solSpare5");
+        public Criteria andSolCustom3LessThanOrEqualTo(String value) {
+            addCriterion("sol_custom3 <=", value, "solCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare5Like(String value) {
-            addCriterion("sol_Spare5 like", value, "solSpare5");
+        public Criteria andSolCustom3Like(String value) {
+            addCriterion("sol_custom3 like", value, "solCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare5NotLike(String value) {
-            addCriterion("sol_Spare5 not like", value, "solSpare5");
+        public Criteria andSolCustom3NotLike(String value) {
+            addCriterion("sol_custom3 not like", value, "solCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare5In(List<String> values) {
-            addCriterion("sol_Spare5 in", values, "solSpare5");
+        public Criteria andSolCustom3In(List<String> values) {
+            addCriterion("sol_custom3 in", values, "solCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare5NotIn(List<String> values) {
-            addCriterion("sol_Spare5 not in", values, "solSpare5");
+        public Criteria andSolCustom3NotIn(List<String> values) {
+            addCriterion("sol_custom3 not in", values, "solCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare5Between(String value1, String value2) {
-            addCriterion("sol_Spare5 between", value1, value2, "solSpare5");
+        public Criteria andSolCustom3Between(String value1, String value2) {
+            addCriterion("sol_custom3 between", value1, value2, "solCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andSolSpare5NotBetween(String value1, String value2) {
-            addCriterion("sol_Spare5 not between", value1, value2, "solSpare5");
+        public Criteria andSolCustom3NotBetween(String value1, String value2) {
+            addCriterion("sol_custom3 not between", value1, value2, "solCustom3");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom4IsNull() {
+            addCriterion("sol_custom4 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom4IsNotNull() {
+            addCriterion("sol_custom4 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom4EqualTo(String value) {
+            addCriterion("sol_custom4 =", value, "solCustom4");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom4NotEqualTo(String value) {
+            addCriterion("sol_custom4 <>", value, "solCustom4");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom4GreaterThan(String value) {
+            addCriterion("sol_custom4 >", value, "solCustom4");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom4GreaterThanOrEqualTo(String value) {
+            addCriterion("sol_custom4 >=", value, "solCustom4");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom4LessThan(String value) {
+            addCriterion("sol_custom4 <", value, "solCustom4");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom4LessThanOrEqualTo(String value) {
+            addCriterion("sol_custom4 <=", value, "solCustom4");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom4Like(String value) {
+            addCriterion("sol_custom4 like", value, "solCustom4");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom4NotLike(String value) {
+            addCriterion("sol_custom4 not like", value, "solCustom4");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom4In(List<String> values) {
+            addCriterion("sol_custom4 in", values, "solCustom4");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom4NotIn(List<String> values) {
+            addCriterion("sol_custom4 not in", values, "solCustom4");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom4Between(String value1, String value2) {
+            addCriterion("sol_custom4 between", value1, value2, "solCustom4");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom4NotBetween(String value1, String value2) {
+            addCriterion("sol_custom4 not between", value1, value2, "solCustom4");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom5IsNull() {
+            addCriterion("sol_custom5 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom5IsNotNull() {
+            addCriterion("sol_custom5 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom5EqualTo(String value) {
+            addCriterion("sol_custom5 =", value, "solCustom5");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom5NotEqualTo(String value) {
+            addCriterion("sol_custom5 <>", value, "solCustom5");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom5GreaterThan(String value) {
+            addCriterion("sol_custom5 >", value, "solCustom5");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom5GreaterThanOrEqualTo(String value) {
+            addCriterion("sol_custom5 >=", value, "solCustom5");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom5LessThan(String value) {
+            addCriterion("sol_custom5 <", value, "solCustom5");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom5LessThanOrEqualTo(String value) {
+            addCriterion("sol_custom5 <=", value, "solCustom5");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom5Like(String value) {
+            addCriterion("sol_custom5 like", value, "solCustom5");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom5NotLike(String value) {
+            addCriterion("sol_custom5 not like", value, "solCustom5");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom5In(List<String> values) {
+            addCriterion("sol_custom5 in", values, "solCustom5");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom5NotIn(List<String> values) {
+            addCriterion("sol_custom5 not in", values, "solCustom5");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom5Between(String value1, String value2) {
+            addCriterion("sol_custom5 between", value1, value2, "solCustom5");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom5NotBetween(String value1, String value2) {
+            addCriterion("sol_custom5 not between", value1, value2, "solCustom5");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom6IsNull() {
+            addCriterion("sol_custom6 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom6IsNotNull() {
+            addCriterion("sol_custom6 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom6EqualTo(String value) {
+            addCriterion("sol_custom6 =", value, "solCustom6");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom6NotEqualTo(String value) {
+            addCriterion("sol_custom6 <>", value, "solCustom6");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom6GreaterThan(String value) {
+            addCriterion("sol_custom6 >", value, "solCustom6");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom6GreaterThanOrEqualTo(String value) {
+            addCriterion("sol_custom6 >=", value, "solCustom6");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom6LessThan(String value) {
+            addCriterion("sol_custom6 <", value, "solCustom6");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom6LessThanOrEqualTo(String value) {
+            addCriterion("sol_custom6 <=", value, "solCustom6");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom6Like(String value) {
+            addCriterion("sol_custom6 like", value, "solCustom6");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom6NotLike(String value) {
+            addCriterion("sol_custom6 not like", value, "solCustom6");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom6In(List<String> values) {
+            addCriterion("sol_custom6 in", values, "solCustom6");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom6NotIn(List<String> values) {
+            addCriterion("sol_custom6 not in", values, "solCustom6");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom6Between(String value1, String value2) {
+            addCriterion("sol_custom6 between", value1, value2, "solCustom6");
+            return (Criteria) this;
+        }
+
+        public Criteria andSolCustom6NotBetween(String value1, String value2) {
+            addCriterion("sol_custom6 not between", value1, value2, "solCustom6");
             return (Criteria) this;
         }
     }

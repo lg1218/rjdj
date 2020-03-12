@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.SubjectBlanketCategoryMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.SubjectBlanketCategory" >
+    <id column="sbc_id" property="sbcId" jdbcType="VARCHAR" />
+    <result column="sbc_name" property="sbcName" jdbcType="VARCHAR" />
+    <result column="sbc_engname" property="sbcEngname" jdbcType="VARCHAR" />
+    <result column="sbc_remark" property="sbcRemark" jdbcType="VARCHAR" />
+    <result column="sbc_Auditing" property="sbcAuditing" jdbcType="VARCHAR" />
+    <result column="sbc_yn" property="sbcYn" jdbcType="VARCHAR" />
+    <result column="sbc_custom1" property="sbcCustom1" jdbcType="VARCHAR" />
+    <result column="sbc_custom2" property="sbcCustom2" jdbcType="VARCHAR" />
+    <result column="sbc_custom3" property="sbcCustom3" jdbcType="VARCHAR" />
+    <result column="sbc_custom4" property="sbcCustom4" jdbcType="VARCHAR" />
+    <result column="sbc_custom5" property="sbcCustom5" jdbcType="VARCHAR" />
+    <result column="sbc_custom6" property="sbcCustom6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    sbc_id, sbc_name, sbc_engname, sbc_remark, sbc_Auditing, sbc_yn, sbc_custom1, sbc_custom2, 
+    sbc_custom3, sbc_custom4, sbc_custom5, sbc_custom6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.SubjectBlanketCategoryExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from subject_blanket_category
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from subject_blanket_category
+    where sbc_id = #{sbcId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from subject_blanket_category
+    where sbc_id = #{sbcId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.SubjectBlanketCategoryExample" >
+    delete from subject_blanket_category
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.SubjectBlanketCategory" >
+    insert into subject_blanket_category (sbc_id, sbc_name, sbc_engname, 
+      sbc_remark, sbc_Auditing, sbc_yn, 
+      sbc_custom1, sbc_custom2, sbc_custom3, 
+      sbc_custom4, sbc_custom5, sbc_custom6
+      )
+    values (#{sbcId,jdbcType=VARCHAR}, #{sbcName,jdbcType=VARCHAR}, #{sbcEngname,jdbcType=VARCHAR}, 
+      #{sbcRemark,jdbcType=VARCHAR}, #{sbcAuditing,jdbcType=VARCHAR}, #{sbcYn,jdbcType=VARCHAR}, 
+      #{sbcCustom1,jdbcType=VARCHAR}, #{sbcCustom2,jdbcType=VARCHAR}, #{sbcCustom3,jdbcType=VARCHAR}, 
+      #{sbcCustom4,jdbcType=VARCHAR}, #{sbcCustom5,jdbcType=VARCHAR}, #{sbcCustom6,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.SubjectBlanketCategory" >
+    insert into subject_blanket_category
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sbcId != null" >
+        sbc_id,
+      </if>
+      <if test="sbcName != null" >
+        sbc_name,
+      </if>
+      <if test="sbcEngname != null" >
+        sbc_engname,
+      </if>
+      <if test="sbcRemark != null" >
+        sbc_remark,
+      </if>
+      <if test="sbcAuditing != null" >
+        sbc_Auditing,
+      </if>
+      <if test="sbcYn != null" >
+        sbc_yn,
+      </if>
+      <if test="sbcCustom1 != null" >
+        sbc_custom1,
+      </if>
+      <if test="sbcCustom2 != null" >
+        sbc_custom2,
+      </if>
+      <if test="sbcCustom3 != null" >
+        sbc_custom3,
+      </if>
+      <if test="sbcCustom4 != null" >
+        sbc_custom4,
+      </if>
+      <if test="sbcCustom5 != null" >
+        sbc_custom5,
+      </if>
+      <if test="sbcCustom6 != null" >
+        sbc_custom6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sbcId != null" >
+        #{sbcId,jdbcType=VARCHAR},
+      </if>
+      <if test="sbcName != null" >
+        #{sbcName,jdbcType=VARCHAR},
+      </if>
+      <if test="sbcEngname != null" >
+        #{sbcEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="sbcRemark != null" >
+        #{sbcRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="sbcAuditing != null" >
+        #{sbcAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="sbcYn != null" >
+        #{sbcYn,jdbcType=VARCHAR},
+      </if>
+      <if test="sbcCustom1 != null" >
+        #{sbcCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="sbcCustom2 != null" >
+        #{sbcCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="sbcCustom3 != null" >
+        #{sbcCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="sbcCustom4 != null" >
+        #{sbcCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="sbcCustom5 != null" >
+        #{sbcCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="sbcCustom6 != null" >
+        #{sbcCustom6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.SubjectBlanketCategoryExample" resultType="java.lang.Integer" >
+    select count(*) from subject_blanket_category
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update subject_blanket_category
+    <set >
+      <if test="record.sbcId != null" >
+        sbc_id = #{record.sbcId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sbcName != null" >
+        sbc_name = #{record.sbcName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sbcEngname != null" >
+        sbc_engname = #{record.sbcEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sbcRemark != null" >
+        sbc_remark = #{record.sbcRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sbcAuditing != null" >
+        sbc_Auditing = #{record.sbcAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sbcYn != null" >
+        sbc_yn = #{record.sbcYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sbcCustom1 != null" >
+        sbc_custom1 = #{record.sbcCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sbcCustom2 != null" >
+        sbc_custom2 = #{record.sbcCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sbcCustom3 != null" >
+        sbc_custom3 = #{record.sbcCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sbcCustom4 != null" >
+        sbc_custom4 = #{record.sbcCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sbcCustom5 != null" >
+        sbc_custom5 = #{record.sbcCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sbcCustom6 != null" >
+        sbc_custom6 = #{record.sbcCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update subject_blanket_category
+    set sbc_id = #{record.sbcId,jdbcType=VARCHAR},
+      sbc_name = #{record.sbcName,jdbcType=VARCHAR},
+      sbc_engname = #{record.sbcEngname,jdbcType=VARCHAR},
+      sbc_remark = #{record.sbcRemark,jdbcType=VARCHAR},
+      sbc_Auditing = #{record.sbcAuditing,jdbcType=VARCHAR},
+      sbc_yn = #{record.sbcYn,jdbcType=VARCHAR},
+      sbc_custom1 = #{record.sbcCustom1,jdbcType=VARCHAR},
+      sbc_custom2 = #{record.sbcCustom2,jdbcType=VARCHAR},
+      sbc_custom3 = #{record.sbcCustom3,jdbcType=VARCHAR},
+      sbc_custom4 = #{record.sbcCustom4,jdbcType=VARCHAR},
+      sbc_custom5 = #{record.sbcCustom5,jdbcType=VARCHAR},
+      sbc_custom6 = #{record.sbcCustom6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.SubjectBlanketCategory" >
+    update subject_blanket_category
+    <set >
+      <if test="sbcName != null" >
+        sbc_name = #{sbcName,jdbcType=VARCHAR},
+      </if>
+      <if test="sbcEngname != null" >
+        sbc_engname = #{sbcEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="sbcRemark != null" >
+        sbc_remark = #{sbcRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="sbcAuditing != null" >
+        sbc_Auditing = #{sbcAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="sbcYn != null" >
+        sbc_yn = #{sbcYn,jdbcType=VARCHAR},
+      </if>
+      <if test="sbcCustom1 != null" >
+        sbc_custom1 = #{sbcCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="sbcCustom2 != null" >
+        sbc_custom2 = #{sbcCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="sbcCustom3 != null" >
+        sbc_custom3 = #{sbcCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="sbcCustom4 != null" >
+        sbc_custom4 = #{sbcCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="sbcCustom5 != null" >
+        sbc_custom5 = #{sbcCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="sbcCustom6 != null" >
+        sbc_custom6 = #{sbcCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sbc_id = #{sbcId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.SubjectBlanketCategory" >
+    update subject_blanket_category
+    set sbc_name = #{sbcName,jdbcType=VARCHAR},
+      sbc_engname = #{sbcEngname,jdbcType=VARCHAR},
+      sbc_remark = #{sbcRemark,jdbcType=VARCHAR},
+      sbc_Auditing = #{sbcAuditing,jdbcType=VARCHAR},
+      sbc_yn = #{sbcYn,jdbcType=VARCHAR},
+      sbc_custom1 = #{sbcCustom1,jdbcType=VARCHAR},
+      sbc_custom2 = #{sbcCustom2,jdbcType=VARCHAR},
+      sbc_custom3 = #{sbcCustom3,jdbcType=VARCHAR},
+      sbc_custom4 = #{sbcCustom4,jdbcType=VARCHAR},
+      sbc_custom5 = #{sbcCustom5,jdbcType=VARCHAR},
+      sbc_custom6 = #{sbcCustom6,jdbcType=VARCHAR}
+    where sbc_id = #{sbcId,jdbcType=VARCHAR}
+  </update>
+</mapper>

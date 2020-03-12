@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.EducationalBackgroundMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.EducationalBackground" >
+    <id column="eb_id" property="ebId" jdbcType="VARCHAR" />
+    <result column="eb_name" property="ebName" jdbcType="VARCHAR" />
+    <result column="eb_english_name" property="ebEnglishName" jdbcType="VARCHAR" />
+    <result column="eb_remark" property="ebRemark" jdbcType="VARCHAR" />
+    <result column="eb_Auditing" property="ebAuditing" jdbcType="VARCHAR" />
+    <result column="eb_yn" property="ebYn" jdbcType="VARCHAR" />
+    <result column="eb_custom1" property="ebCustom1" jdbcType="VARCHAR" />
+    <result column="eb_custom2" property="ebCustom2" jdbcType="VARCHAR" />
+    <result column="eb_custom3" property="ebCustom3" jdbcType="VARCHAR" />
+    <result column="eb_custom4" property="ebCustom4" jdbcType="VARCHAR" />
+    <result column="eb_custom5" property="ebCustom5" jdbcType="VARCHAR" />
+    <result column="eb_custom6" property="ebCustom6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    eb_id, eb_name, eb_english_name, eb_remark, eb_Auditing, eb_yn, eb_custom1, eb_custom2, 
+    eb_custom3, eb_custom4, eb_custom5, eb_custom6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.EducationalBackgroundExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from educational_background
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from educational_background
+    where eb_id = #{ebId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from educational_background
+    where eb_id = #{ebId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.EducationalBackgroundExample" >
+    delete from educational_background
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.EducationalBackground" >
+    insert into educational_background (eb_id, eb_name, eb_english_name, 
+      eb_remark, eb_Auditing, eb_yn, 
+      eb_custom1, eb_custom2, eb_custom3, 
+      eb_custom4, eb_custom5, eb_custom6
+      )
+    values (#{ebId,jdbcType=VARCHAR}, #{ebName,jdbcType=VARCHAR}, #{ebEnglishName,jdbcType=VARCHAR}, 
+      #{ebRemark,jdbcType=VARCHAR}, #{ebAuditing,jdbcType=VARCHAR}, #{ebYn,jdbcType=VARCHAR}, 
+      #{ebCustom1,jdbcType=VARCHAR}, #{ebCustom2,jdbcType=VARCHAR}, #{ebCustom3,jdbcType=VARCHAR}, 
+      #{ebCustom4,jdbcType=VARCHAR}, #{ebCustom5,jdbcType=VARCHAR}, #{ebCustom6,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.EducationalBackground" >
+    insert into educational_background
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ebId != null" >
+        eb_id,
+      </if>
+      <if test="ebName != null" >
+        eb_name,
+      </if>
+      <if test="ebEnglishName != null" >
+        eb_english_name,
+      </if>
+      <if test="ebRemark != null" >
+        eb_remark,
+      </if>
+      <if test="ebAuditing != null" >
+        eb_Auditing,
+      </if>
+      <if test="ebYn != null" >
+        eb_yn,
+      </if>
+      <if test="ebCustom1 != null" >
+        eb_custom1,
+      </if>
+      <if test="ebCustom2 != null" >
+        eb_custom2,
+      </if>
+      <if test="ebCustom3 != null" >
+        eb_custom3,
+      </if>
+      <if test="ebCustom4 != null" >
+        eb_custom4,
+      </if>
+      <if test="ebCustom5 != null" >
+        eb_custom5,
+      </if>
+      <if test="ebCustom6 != null" >
+        eb_custom6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ebId != null" >
+        #{ebId,jdbcType=VARCHAR},
+      </if>
+      <if test="ebName != null" >
+        #{ebName,jdbcType=VARCHAR},
+      </if>
+      <if test="ebEnglishName != null" >
+        #{ebEnglishName,jdbcType=VARCHAR},
+      </if>
+      <if test="ebRemark != null" >
+        #{ebRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="ebAuditing != null" >
+        #{ebAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="ebYn != null" >
+        #{ebYn,jdbcType=VARCHAR},
+      </if>
+      <if test="ebCustom1 != null" >
+        #{ebCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="ebCustom2 != null" >
+        #{ebCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="ebCustom3 != null" >
+        #{ebCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="ebCustom4 != null" >
+        #{ebCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="ebCustom5 != null" >
+        #{ebCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="ebCustom6 != null" >
+        #{ebCustom6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.EducationalBackgroundExample" resultType="java.lang.Integer" >
+    select count(*) from educational_background
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update educational_background
+    <set >
+      <if test="record.ebId != null" >
+        eb_id = #{record.ebId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ebName != null" >
+        eb_name = #{record.ebName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ebEnglishName != null" >
+        eb_english_name = #{record.ebEnglishName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ebRemark != null" >
+        eb_remark = #{record.ebRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ebAuditing != null" >
+        eb_Auditing = #{record.ebAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ebYn != null" >
+        eb_yn = #{record.ebYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ebCustom1 != null" >
+        eb_custom1 = #{record.ebCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ebCustom2 != null" >
+        eb_custom2 = #{record.ebCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ebCustom3 != null" >
+        eb_custom3 = #{record.ebCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ebCustom4 != null" >
+        eb_custom4 = #{record.ebCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ebCustom5 != null" >
+        eb_custom5 = #{record.ebCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ebCustom6 != null" >
+        eb_custom6 = #{record.ebCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update educational_background
+    set eb_id = #{record.ebId,jdbcType=VARCHAR},
+      eb_name = #{record.ebName,jdbcType=VARCHAR},
+      eb_english_name = #{record.ebEnglishName,jdbcType=VARCHAR},
+      eb_remark = #{record.ebRemark,jdbcType=VARCHAR},
+      eb_Auditing = #{record.ebAuditing,jdbcType=VARCHAR},
+      eb_yn = #{record.ebYn,jdbcType=VARCHAR},
+      eb_custom1 = #{record.ebCustom1,jdbcType=VARCHAR},
+      eb_custom2 = #{record.ebCustom2,jdbcType=VARCHAR},
+      eb_custom3 = #{record.ebCustom3,jdbcType=VARCHAR},
+      eb_custom4 = #{record.ebCustom4,jdbcType=VARCHAR},
+      eb_custom5 = #{record.ebCustom5,jdbcType=VARCHAR},
+      eb_custom6 = #{record.ebCustom6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.EducationalBackground" >
+    update educational_background
+    <set >
+      <if test="ebName != null" >
+        eb_name = #{ebName,jdbcType=VARCHAR},
+      </if>
+      <if test="ebEnglishName != null" >
+        eb_english_name = #{ebEnglishName,jdbcType=VARCHAR},
+      </if>
+      <if test="ebRemark != null" >
+        eb_remark = #{ebRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="ebAuditing != null" >
+        eb_Auditing = #{ebAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="ebYn != null" >
+        eb_yn = #{ebYn,jdbcType=VARCHAR},
+      </if>
+      <if test="ebCustom1 != null" >
+        eb_custom1 = #{ebCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="ebCustom2 != null" >
+        eb_custom2 = #{ebCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="ebCustom3 != null" >
+        eb_custom3 = #{ebCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="ebCustom4 != null" >
+        eb_custom4 = #{ebCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="ebCustom5 != null" >
+        eb_custom5 = #{ebCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="ebCustom6 != null" >
+        eb_custom6 = #{ebCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where eb_id = #{ebId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.EducationalBackground" >
+    update educational_background
+    set eb_name = #{ebName,jdbcType=VARCHAR},
+      eb_english_name = #{ebEnglishName,jdbcType=VARCHAR},
+      eb_remark = #{ebRemark,jdbcType=VARCHAR},
+      eb_Auditing = #{ebAuditing,jdbcType=VARCHAR},
+      eb_yn = #{ebYn,jdbcType=VARCHAR},
+      eb_custom1 = #{ebCustom1,jdbcType=VARCHAR},
+      eb_custom2 = #{ebCustom2,jdbcType=VARCHAR},
+      eb_custom3 = #{ebCustom3,jdbcType=VARCHAR},
+      eb_custom4 = #{ebCustom4,jdbcType=VARCHAR},
+      eb_custom5 = #{ebCustom5,jdbcType=VARCHAR},
+      eb_custom6 = #{ebCustom6,jdbcType=VARCHAR}
+    where eb_id = #{ebId,jdbcType=VARCHAR}
+  </update>
+</mapper>

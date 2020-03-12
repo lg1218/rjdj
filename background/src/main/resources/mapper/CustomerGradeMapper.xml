@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.CustomerGradeMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.CustomerGrade" >
+    <id column="cg_id" property="cgId" jdbcType="VARCHAR" />
+    <result column="cg_name" property="cgName" jdbcType="VARCHAR" />
+    <result column="cg_remark" property="cgRemark" jdbcType="VARCHAR" />
+    <result column="cg_Auditing" property="cgAuditing" jdbcType="VARCHAR" />
+    <result column="cg_yn" property="cgYn" jdbcType="VARCHAR" />
+    <result column="cg_custom1" property="cgCustom1" jdbcType="VARCHAR" />
+    <result column="cg_custom2" property="cgCustom2" jdbcType="VARCHAR" />
+    <result column="cg_custom3" property="cgCustom3" jdbcType="VARCHAR" />
+    <result column="cg_custom4" property="cgCustom4" jdbcType="VARCHAR" />
+    <result column="cg_custom5" property="cgCustom5" jdbcType="VARCHAR" />
+    <result column="cg_custom6" property="cgCustom6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    cg_id, cg_name, cg_remark, cg_Auditing, cg_yn, cg_custom1, cg_custom2, cg_custom3, 
+    cg_custom4, cg_custom5, cg_custom6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.CustomerGradeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from customer_grade
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from customer_grade
+    where cg_id = #{cgId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from customer_grade
+    where cg_id = #{cgId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.CustomerGradeExample" >
+    delete from customer_grade
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.CustomerGrade" >
+    insert into customer_grade (cg_id, cg_name, cg_remark, 
+      cg_Auditing, cg_yn, cg_custom1, 
+      cg_custom2, cg_custom3, cg_custom4, 
+      cg_custom5, cg_custom6)
+    values (#{cgId,jdbcType=VARCHAR}, #{cgName,jdbcType=VARCHAR}, #{cgRemark,jdbcType=VARCHAR}, 
+      #{cgAuditing,jdbcType=VARCHAR}, #{cgYn,jdbcType=VARCHAR}, #{cgCustom1,jdbcType=VARCHAR}, 
+      #{cgCustom2,jdbcType=VARCHAR}, #{cgCustom3,jdbcType=VARCHAR}, #{cgCustom4,jdbcType=VARCHAR}, 
+      #{cgCustom5,jdbcType=VARCHAR}, #{cgCustom6,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.CustomerGrade" >
+    insert into customer_grade
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cgId != null" >
+        cg_id,
+      </if>
+      <if test="cgName != null" >
+        cg_name,
+      </if>
+      <if test="cgRemark != null" >
+        cg_remark,
+      </if>
+      <if test="cgAuditing != null" >
+        cg_Auditing,
+      </if>
+      <if test="cgYn != null" >
+        cg_yn,
+      </if>
+      <if test="cgCustom1 != null" >
+        cg_custom1,
+      </if>
+      <if test="cgCustom2 != null" >
+        cg_custom2,
+      </if>
+      <if test="cgCustom3 != null" >
+        cg_custom3,
+      </if>
+      <if test="cgCustom4 != null" >
+        cg_custom4,
+      </if>
+      <if test="cgCustom5 != null" >
+        cg_custom5,
+      </if>
+      <if test="cgCustom6 != null" >
+        cg_custom6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cgId != null" >
+        #{cgId,jdbcType=VARCHAR},
+      </if>
+      <if test="cgName != null" >
+        #{cgName,jdbcType=VARCHAR},
+      </if>
+      <if test="cgRemark != null" >
+        #{cgRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="cgAuditing != null" >
+        #{cgAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="cgYn != null" >
+        #{cgYn,jdbcType=VARCHAR},
+      </if>
+      <if test="cgCustom1 != null" >
+        #{cgCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="cgCustom2 != null" >
+        #{cgCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="cgCustom3 != null" >
+        #{cgCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="cgCustom4 != null" >
+        #{cgCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="cgCustom5 != null" >
+        #{cgCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="cgCustom6 != null" >
+        #{cgCustom6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.CustomerGradeExample" resultType="java.lang.Integer" >
+    select count(*) from customer_grade
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update customer_grade
+    <set >
+      <if test="record.cgId != null" >
+        cg_id = #{record.cgId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cgName != null" >
+        cg_name = #{record.cgName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cgRemark != null" >
+        cg_remark = #{record.cgRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cgAuditing != null" >
+        cg_Auditing = #{record.cgAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cgYn != null" >
+        cg_yn = #{record.cgYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cgCustom1 != null" >
+        cg_custom1 = #{record.cgCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cgCustom2 != null" >
+        cg_custom2 = #{record.cgCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cgCustom3 != null" >
+        cg_custom3 = #{record.cgCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cgCustom4 != null" >
+        cg_custom4 = #{record.cgCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cgCustom5 != null" >
+        cg_custom5 = #{record.cgCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cgCustom6 != null" >
+        cg_custom6 = #{record.cgCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update customer_grade
+    set cg_id = #{record.cgId,jdbcType=VARCHAR},
+      cg_name = #{record.cgName,jdbcType=VARCHAR},
+      cg_remark = #{record.cgRemark,jdbcType=VARCHAR},
+      cg_Auditing = #{record.cgAuditing,jdbcType=VARCHAR},
+      cg_yn = #{record.cgYn,jdbcType=VARCHAR},
+      cg_custom1 = #{record.cgCustom1,jdbcType=VARCHAR},
+      cg_custom2 = #{record.cgCustom2,jdbcType=VARCHAR},
+      cg_custom3 = #{record.cgCustom3,jdbcType=VARCHAR},
+      cg_custom4 = #{record.cgCustom4,jdbcType=VARCHAR},
+      cg_custom5 = #{record.cgCustom5,jdbcType=VARCHAR},
+      cg_custom6 = #{record.cgCustom6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.CustomerGrade" >
+    update customer_grade
+    <set >
+      <if test="cgName != null" >
+        cg_name = #{cgName,jdbcType=VARCHAR},
+      </if>
+      <if test="cgRemark != null" >
+        cg_remark = #{cgRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="cgAuditing != null" >
+        cg_Auditing = #{cgAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="cgYn != null" >
+        cg_yn = #{cgYn,jdbcType=VARCHAR},
+      </if>
+      <if test="cgCustom1 != null" >
+        cg_custom1 = #{cgCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="cgCustom2 != null" >
+        cg_custom2 = #{cgCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="cgCustom3 != null" >
+        cg_custom3 = #{cgCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="cgCustom4 != null" >
+        cg_custom4 = #{cgCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="cgCustom5 != null" >
+        cg_custom5 = #{cgCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="cgCustom6 != null" >
+        cg_custom6 = #{cgCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cg_id = #{cgId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.CustomerGrade" >
+    update customer_grade
+    set cg_name = #{cgName,jdbcType=VARCHAR},
+      cg_remark = #{cgRemark,jdbcType=VARCHAR},
+      cg_Auditing = #{cgAuditing,jdbcType=VARCHAR},
+      cg_yn = #{cgYn,jdbcType=VARCHAR},
+      cg_custom1 = #{cgCustom1,jdbcType=VARCHAR},
+      cg_custom2 = #{cgCustom2,jdbcType=VARCHAR},
+      cg_custom3 = #{cgCustom3,jdbcType=VARCHAR},
+      cg_custom4 = #{cgCustom4,jdbcType=VARCHAR},
+      cg_custom5 = #{cgCustom5,jdbcType=VARCHAR},
+      cg_custom6 = #{cgCustom6,jdbcType=VARCHAR}
+    where cg_id = #{cgId,jdbcType=VARCHAR}
+  </update>
+</mapper>

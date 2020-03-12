@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.NegotiationStageMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.NegotiationStage" >
+    <id column="ns_id" property="nsId" jdbcType="VARCHAR" />
+    <result column="ns_name" property="nsName" jdbcType="VARCHAR" />
+    <result column="ns_engname" property="nsEngname" jdbcType="REAL" />
+    <result column="ns_remark" property="nsRemark" jdbcType="VARCHAR" />
+    <result column="ns_Auditing" property="nsAuditing" jdbcType="VARCHAR" />
+    <result column="ns_yn" property="nsYn" jdbcType="VARCHAR" />
+    <result column="ns_custom1" property="nsCustom1" jdbcType="VARCHAR" />
+    <result column="ns_custom2" property="nsCustom2" jdbcType="VARCHAR" />
+    <result column="ns_custom3" property="nsCustom3" jdbcType="VARCHAR" />
+    <result column="ns_custom4" property="nsCustom4" jdbcType="VARCHAR" />
+    <result column="ns_custom5" property="nsCustom5" jdbcType="VARCHAR" />
+    <result column="ns_custom6" property="nsCustom6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ns_id, ns_name, ns_engname, ns_remark, ns_Auditing, ns_yn, ns_custom1, ns_custom2, 
+    ns_custom3, ns_custom4, ns_custom5, ns_custom6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.NegotiationStageExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from negotiation_stage
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from negotiation_stage
+    where ns_id = #{nsId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from negotiation_stage
+    where ns_id = #{nsId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.NegotiationStageExample" >
+    delete from negotiation_stage
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.NegotiationStage" >
+    insert into negotiation_stage (ns_id, ns_name, ns_engname, 
+      ns_remark, ns_Auditing, ns_yn, 
+      ns_custom1, ns_custom2, ns_custom3, 
+      ns_custom4, ns_custom5, ns_custom6
+      )
+    values (#{nsId,jdbcType=VARCHAR}, #{nsName,jdbcType=VARCHAR}, #{nsEngname,jdbcType=REAL}, 
+      #{nsRemark,jdbcType=VARCHAR}, #{nsAuditing,jdbcType=VARCHAR}, #{nsYn,jdbcType=VARCHAR}, 
+      #{nsCustom1,jdbcType=VARCHAR}, #{nsCustom2,jdbcType=VARCHAR}, #{nsCustom3,jdbcType=VARCHAR}, 
+      #{nsCustom4,jdbcType=VARCHAR}, #{nsCustom5,jdbcType=VARCHAR}, #{nsCustom6,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.NegotiationStage" >
+    insert into negotiation_stage
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nsId != null" >
+        ns_id,
+      </if>
+      <if test="nsName != null" >
+        ns_name,
+      </if>
+      <if test="nsEngname != null" >
+        ns_engname,
+      </if>
+      <if test="nsRemark != null" >
+        ns_remark,
+      </if>
+      <if test="nsAuditing != null" >
+        ns_Auditing,
+      </if>
+      <if test="nsYn != null" >
+        ns_yn,
+      </if>
+      <if test="nsCustom1 != null" >
+        ns_custom1,
+      </if>
+      <if test="nsCustom2 != null" >
+        ns_custom2,
+      </if>
+      <if test="nsCustom3 != null" >
+        ns_custom3,
+      </if>
+      <if test="nsCustom4 != null" >
+        ns_custom4,
+      </if>
+      <if test="nsCustom5 != null" >
+        ns_custom5,
+      </if>
+      <if test="nsCustom6 != null" >
+        ns_custom6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nsId != null" >
+        #{nsId,jdbcType=VARCHAR},
+      </if>
+      <if test="nsName != null" >
+        #{nsName,jdbcType=VARCHAR},
+      </if>
+      <if test="nsEngname != null" >
+        #{nsEngname,jdbcType=REAL},
+      </if>
+      <if test="nsRemark != null" >
+        #{nsRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="nsAuditing != null" >
+        #{nsAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="nsYn != null" >
+        #{nsYn,jdbcType=VARCHAR},
+      </if>
+      <if test="nsCustom1 != null" >
+        #{nsCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="nsCustom2 != null" >
+        #{nsCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="nsCustom3 != null" >
+        #{nsCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="nsCustom4 != null" >
+        #{nsCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="nsCustom5 != null" >
+        #{nsCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="nsCustom6 != null" >
+        #{nsCustom6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.NegotiationStageExample" resultType="java.lang.Integer" >
+    select count(*) from negotiation_stage
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update negotiation_stage
+    <set >
+      <if test="record.nsId != null" >
+        ns_id = #{record.nsId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nsName != null" >
+        ns_name = #{record.nsName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nsEngname != null" >
+        ns_engname = #{record.nsEngname,jdbcType=REAL},
+      </if>
+      <if test="record.nsRemark != null" >
+        ns_remark = #{record.nsRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nsAuditing != null" >
+        ns_Auditing = #{record.nsAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nsYn != null" >
+        ns_yn = #{record.nsYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nsCustom1 != null" >
+        ns_custom1 = #{record.nsCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nsCustom2 != null" >
+        ns_custom2 = #{record.nsCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nsCustom3 != null" >
+        ns_custom3 = #{record.nsCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nsCustom4 != null" >
+        ns_custom4 = #{record.nsCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nsCustom5 != null" >
+        ns_custom5 = #{record.nsCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nsCustom6 != null" >
+        ns_custom6 = #{record.nsCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update negotiation_stage
+    set ns_id = #{record.nsId,jdbcType=VARCHAR},
+      ns_name = #{record.nsName,jdbcType=VARCHAR},
+      ns_engname = #{record.nsEngname,jdbcType=REAL},
+      ns_remark = #{record.nsRemark,jdbcType=VARCHAR},
+      ns_Auditing = #{record.nsAuditing,jdbcType=VARCHAR},
+      ns_yn = #{record.nsYn,jdbcType=VARCHAR},
+      ns_custom1 = #{record.nsCustom1,jdbcType=VARCHAR},
+      ns_custom2 = #{record.nsCustom2,jdbcType=VARCHAR},
+      ns_custom3 = #{record.nsCustom3,jdbcType=VARCHAR},
+      ns_custom4 = #{record.nsCustom4,jdbcType=VARCHAR},
+      ns_custom5 = #{record.nsCustom5,jdbcType=VARCHAR},
+      ns_custom6 = #{record.nsCustom6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.NegotiationStage" >
+    update negotiation_stage
+    <set >
+      <if test="nsName != null" >
+        ns_name = #{nsName,jdbcType=VARCHAR},
+      </if>
+      <if test="nsEngname != null" >
+        ns_engname = #{nsEngname,jdbcType=REAL},
+      </if>
+      <if test="nsRemark != null" >
+        ns_remark = #{nsRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="nsAuditing != null" >
+        ns_Auditing = #{nsAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="nsYn != null" >
+        ns_yn = #{nsYn,jdbcType=VARCHAR},
+      </if>
+      <if test="nsCustom1 != null" >
+        ns_custom1 = #{nsCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="nsCustom2 != null" >
+        ns_custom2 = #{nsCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="nsCustom3 != null" >
+        ns_custom3 = #{nsCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="nsCustom4 != null" >
+        ns_custom4 = #{nsCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="nsCustom5 != null" >
+        ns_custom5 = #{nsCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="nsCustom6 != null" >
+        ns_custom6 = #{nsCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ns_id = #{nsId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.NegotiationStage" >
+    update negotiation_stage
+    set ns_name = #{nsName,jdbcType=VARCHAR},
+      ns_engname = #{nsEngname,jdbcType=REAL},
+      ns_remark = #{nsRemark,jdbcType=VARCHAR},
+      ns_Auditing = #{nsAuditing,jdbcType=VARCHAR},
+      ns_yn = #{nsYn,jdbcType=VARCHAR},
+      ns_custom1 = #{nsCustom1,jdbcType=VARCHAR},
+      ns_custom2 = #{nsCustom2,jdbcType=VARCHAR},
+      ns_custom3 = #{nsCustom3,jdbcType=VARCHAR},
+      ns_custom4 = #{nsCustom4,jdbcType=VARCHAR},
+      ns_custom5 = #{nsCustom5,jdbcType=VARCHAR},
+      ns_custom6 = #{nsCustom6,jdbcType=VARCHAR}
+    where ns_id = #{nsId,jdbcType=VARCHAR}
+  </update>
+</mapper>

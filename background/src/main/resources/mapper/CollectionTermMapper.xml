@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.CollectionTermMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.CollectionTerm" >
+    <id column="cote_id" property="coteId" jdbcType="VARCHAR" />
+    <result column="cote_name" property="coteName" jdbcType="VARCHAR" />
+    <result column="cote_days" property="coteDays" jdbcType="INTEGER" />
+    <result column="cote_Auditing" property="coteAuditing" jdbcType="VARCHAR" />
+    <result column="cote_yn" property="coteYn" jdbcType="VARCHAR" />
+    <result column="cote_custom1" property="coteCustom1" jdbcType="VARCHAR" />
+    <result column="cote_custom2" property="coteCustom2" jdbcType="VARCHAR" />
+    <result column="cote_custom3" property="coteCustom3" jdbcType="VARCHAR" />
+    <result column="cote_custom4" property="coteCustom4" jdbcType="VARCHAR" />
+    <result column="cote_custom5" property="coteCustom5" jdbcType="VARCHAR" />
+    <result column="cote_custom6" property="coteCustom6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    cote_id, cote_name, cote_days, cote_Auditing, cote_yn, cote_custom1, cote_custom2, 
+    cote_custom3, cote_custom4, cote_custom5, cote_custom6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.CollectionTermExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from collection_term
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from collection_term
+    where cote_id = #{coteId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from collection_term
+    where cote_id = #{coteId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.CollectionTermExample" >
+    delete from collection_term
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.CollectionTerm" >
+    insert into collection_term (cote_id, cote_name, cote_days, 
+      cote_Auditing, cote_yn, cote_custom1, 
+      cote_custom2, cote_custom3, cote_custom4, 
+      cote_custom5, cote_custom6)
+    values (#{coteId,jdbcType=VARCHAR}, #{coteName,jdbcType=VARCHAR}, #{coteDays,jdbcType=INTEGER}, 
+      #{coteAuditing,jdbcType=VARCHAR}, #{coteYn,jdbcType=VARCHAR}, #{coteCustom1,jdbcType=VARCHAR}, 
+      #{coteCustom2,jdbcType=VARCHAR}, #{coteCustom3,jdbcType=VARCHAR}, #{coteCustom4,jdbcType=VARCHAR}, 
+      #{coteCustom5,jdbcType=VARCHAR}, #{coteCustom6,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.CollectionTerm" >
+    insert into collection_term
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="coteId != null" >
+        cote_id,
+      </if>
+      <if test="coteName != null" >
+        cote_name,
+      </if>
+      <if test="coteDays != null" >
+        cote_days,
+      </if>
+      <if test="coteAuditing != null" >
+        cote_Auditing,
+      </if>
+      <if test="coteYn != null" >
+        cote_yn,
+      </if>
+      <if test="coteCustom1 != null" >
+        cote_custom1,
+      </if>
+      <if test="coteCustom2 != null" >
+        cote_custom2,
+      </if>
+      <if test="coteCustom3 != null" >
+        cote_custom3,
+      </if>
+      <if test="coteCustom4 != null" >
+        cote_custom4,
+      </if>
+      <if test="coteCustom5 != null" >
+        cote_custom5,
+      </if>
+      <if test="coteCustom6 != null" >
+        cote_custom6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="coteId != null" >
+        #{coteId,jdbcType=VARCHAR},
+      </if>
+      <if test="coteName != null" >
+        #{coteName,jdbcType=VARCHAR},
+      </if>
+      <if test="coteDays != null" >
+        #{coteDays,jdbcType=INTEGER},
+      </if>
+      <if test="coteAuditing != null" >
+        #{coteAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="coteYn != null" >
+        #{coteYn,jdbcType=VARCHAR},
+      </if>
+      <if test="coteCustom1 != null" >
+        #{coteCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="coteCustom2 != null" >
+        #{coteCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="coteCustom3 != null" >
+        #{coteCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="coteCustom4 != null" >
+        #{coteCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="coteCustom5 != null" >
+        #{coteCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="coteCustom6 != null" >
+        #{coteCustom6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.CollectionTermExample" resultType="java.lang.Integer" >
+    select count(*) from collection_term
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update collection_term
+    <set >
+      <if test="record.coteId != null" >
+        cote_id = #{record.coteId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coteName != null" >
+        cote_name = #{record.coteName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coteDays != null" >
+        cote_days = #{record.coteDays,jdbcType=INTEGER},
+      </if>
+      <if test="record.coteAuditing != null" >
+        cote_Auditing = #{record.coteAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coteYn != null" >
+        cote_yn = #{record.coteYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coteCustom1 != null" >
+        cote_custom1 = #{record.coteCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coteCustom2 != null" >
+        cote_custom2 = #{record.coteCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coteCustom3 != null" >
+        cote_custom3 = #{record.coteCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coteCustom4 != null" >
+        cote_custom4 = #{record.coteCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coteCustom5 != null" >
+        cote_custom5 = #{record.coteCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coteCustom6 != null" >
+        cote_custom6 = #{record.coteCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update collection_term
+    set cote_id = #{record.coteId,jdbcType=VARCHAR},
+      cote_name = #{record.coteName,jdbcType=VARCHAR},
+      cote_days = #{record.coteDays,jdbcType=INTEGER},
+      cote_Auditing = #{record.coteAuditing,jdbcType=VARCHAR},
+      cote_yn = #{record.coteYn,jdbcType=VARCHAR},
+      cote_custom1 = #{record.coteCustom1,jdbcType=VARCHAR},
+      cote_custom2 = #{record.coteCustom2,jdbcType=VARCHAR},
+      cote_custom3 = #{record.coteCustom3,jdbcType=VARCHAR},
+      cote_custom4 = #{record.coteCustom4,jdbcType=VARCHAR},
+      cote_custom5 = #{record.coteCustom5,jdbcType=VARCHAR},
+      cote_custom6 = #{record.coteCustom6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.CollectionTerm" >
+    update collection_term
+    <set >
+      <if test="coteName != null" >
+        cote_name = #{coteName,jdbcType=VARCHAR},
+      </if>
+      <if test="coteDays != null" >
+        cote_days = #{coteDays,jdbcType=INTEGER},
+      </if>
+      <if test="coteAuditing != null" >
+        cote_Auditing = #{coteAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="coteYn != null" >
+        cote_yn = #{coteYn,jdbcType=VARCHAR},
+      </if>
+      <if test="coteCustom1 != null" >
+        cote_custom1 = #{coteCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="coteCustom2 != null" >
+        cote_custom2 = #{coteCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="coteCustom3 != null" >
+        cote_custom3 = #{coteCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="coteCustom4 != null" >
+        cote_custom4 = #{coteCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="coteCustom5 != null" >
+        cote_custom5 = #{coteCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="coteCustom6 != null" >
+        cote_custom6 = #{coteCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cote_id = #{coteId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.CollectionTerm" >
+    update collection_term
+    set cote_name = #{coteName,jdbcType=VARCHAR},
+      cote_days = #{coteDays,jdbcType=INTEGER},
+      cote_Auditing = #{coteAuditing,jdbcType=VARCHAR},
+      cote_yn = #{coteYn,jdbcType=VARCHAR},
+      cote_custom1 = #{coteCustom1,jdbcType=VARCHAR},
+      cote_custom2 = #{coteCustom2,jdbcType=VARCHAR},
+      cote_custom3 = #{coteCustom3,jdbcType=VARCHAR},
+      cote_custom4 = #{coteCustom4,jdbcType=VARCHAR},
+      cote_custom5 = #{coteCustom5,jdbcType=VARCHAR},
+      cote_custom6 = #{coteCustom6,jdbcType=VARCHAR}
+    where cote_id = #{coteId,jdbcType=VARCHAR}
+  </update>
+</mapper>

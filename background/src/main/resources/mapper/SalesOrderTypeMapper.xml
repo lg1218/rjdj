@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.SalesOrderTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.SalesOrderType" >
+    <id column="sot_id" property="sotId" jdbcType="VARCHAR" />
+    <result column="sot_name" property="sotName" jdbcType="VARCHAR" />
+    <result column="sot_engname" property="sotEngname" jdbcType="VARCHAR" />
+    <result column="sot_remark" property="sotRemark" jdbcType="VARCHAR" />
+    <result column="sot_auditing" property="sotAuditing" jdbcType="VARCHAR" />
+    <result column="sot_yn" property="sotYn" jdbcType="VARCHAR" />
+    <result column="sot_custom1" property="sotCustom1" jdbcType="VARCHAR" />
+    <result column="sot_custom2" property="sotCustom2" jdbcType="VARCHAR" />
+    <result column="sot_custom3" property="sotCustom3" jdbcType="VARCHAR" />
+    <result column="sot_custom4" property="sotCustom4" jdbcType="VARCHAR" />
+    <result column="sot_custom5" property="sotCustom5" jdbcType="VARCHAR" />
+    <result column="sot_custom6" property="sotCustom6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    sot_id, sot_name, sot_engname, sot_remark, sot_auditing, sot_yn, sot_custom1, sot_custom2, 
+    sot_custom3, sot_custom4, sot_custom5, sot_custom6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.SalesOrderTypeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sales_order_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sales_order_type
+    where sot_id = #{sotId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sales_order_type
+    where sot_id = #{sotId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.SalesOrderTypeExample" >
+    delete from sales_order_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.SalesOrderType" >
+    insert into sales_order_type (sot_id, sot_name, sot_engname, 
+      sot_remark, sot_auditing, sot_yn, 
+      sot_custom1, sot_custom2, sot_custom3, 
+      sot_custom4, sot_custom5, sot_custom6
+      )
+    values (#{sotId,jdbcType=VARCHAR}, #{sotName,jdbcType=VARCHAR}, #{sotEngname,jdbcType=VARCHAR}, 
+      #{sotRemark,jdbcType=VARCHAR}, #{sotAuditing,jdbcType=VARCHAR}, #{sotYn,jdbcType=VARCHAR}, 
+      #{sotCustom1,jdbcType=VARCHAR}, #{sotCustom2,jdbcType=VARCHAR}, #{sotCustom3,jdbcType=VARCHAR}, 
+      #{sotCustom4,jdbcType=VARCHAR}, #{sotCustom5,jdbcType=VARCHAR}, #{sotCustom6,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.SalesOrderType" >
+    insert into sales_order_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sotId != null" >
+        sot_id,
+      </if>
+      <if test="sotName != null" >
+        sot_name,
+      </if>
+      <if test="sotEngname != null" >
+        sot_engname,
+      </if>
+      <if test="sotRemark != null" >
+        sot_remark,
+      </if>
+      <if test="sotAuditing != null" >
+        sot_auditing,
+      </if>
+      <if test="sotYn != null" >
+        sot_yn,
+      </if>
+      <if test="sotCustom1 != null" >
+        sot_custom1,
+      </if>
+      <if test="sotCustom2 != null" >
+        sot_custom2,
+      </if>
+      <if test="sotCustom3 != null" >
+        sot_custom3,
+      </if>
+      <if test="sotCustom4 != null" >
+        sot_custom4,
+      </if>
+      <if test="sotCustom5 != null" >
+        sot_custom5,
+      </if>
+      <if test="sotCustom6 != null" >
+        sot_custom6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sotId != null" >
+        #{sotId,jdbcType=VARCHAR},
+      </if>
+      <if test="sotName != null" >
+        #{sotName,jdbcType=VARCHAR},
+      </if>
+      <if test="sotEngname != null" >
+        #{sotEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="sotRemark != null" >
+        #{sotRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="sotAuditing != null" >
+        #{sotAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="sotYn != null" >
+        #{sotYn,jdbcType=VARCHAR},
+      </if>
+      <if test="sotCustom1 != null" >
+        #{sotCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="sotCustom2 != null" >
+        #{sotCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="sotCustom3 != null" >
+        #{sotCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="sotCustom4 != null" >
+        #{sotCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="sotCustom5 != null" >
+        #{sotCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="sotCustom6 != null" >
+        #{sotCustom6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.SalesOrderTypeExample" resultType="java.lang.Integer" >
+    select count(*) from sales_order_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sales_order_type
+    <set >
+      <if test="record.sotId != null" >
+        sot_id = #{record.sotId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sotName != null" >
+        sot_name = #{record.sotName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sotEngname != null" >
+        sot_engname = #{record.sotEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sotRemark != null" >
+        sot_remark = #{record.sotRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sotAuditing != null" >
+        sot_auditing = #{record.sotAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sotYn != null" >
+        sot_yn = #{record.sotYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sotCustom1 != null" >
+        sot_custom1 = #{record.sotCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sotCustom2 != null" >
+        sot_custom2 = #{record.sotCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sotCustom3 != null" >
+        sot_custom3 = #{record.sotCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sotCustom4 != null" >
+        sot_custom4 = #{record.sotCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sotCustom5 != null" >
+        sot_custom5 = #{record.sotCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sotCustom6 != null" >
+        sot_custom6 = #{record.sotCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sales_order_type
+    set sot_id = #{record.sotId,jdbcType=VARCHAR},
+      sot_name = #{record.sotName,jdbcType=VARCHAR},
+      sot_engname = #{record.sotEngname,jdbcType=VARCHAR},
+      sot_remark = #{record.sotRemark,jdbcType=VARCHAR},
+      sot_auditing = #{record.sotAuditing,jdbcType=VARCHAR},
+      sot_yn = #{record.sotYn,jdbcType=VARCHAR},
+      sot_custom1 = #{record.sotCustom1,jdbcType=VARCHAR},
+      sot_custom2 = #{record.sotCustom2,jdbcType=VARCHAR},
+      sot_custom3 = #{record.sotCustom3,jdbcType=VARCHAR},
+      sot_custom4 = #{record.sotCustom4,jdbcType=VARCHAR},
+      sot_custom5 = #{record.sotCustom5,jdbcType=VARCHAR},
+      sot_custom6 = #{record.sotCustom6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.SalesOrderType" >
+    update sales_order_type
+    <set >
+      <if test="sotName != null" >
+        sot_name = #{sotName,jdbcType=VARCHAR},
+      </if>
+      <if test="sotEngname != null" >
+        sot_engname = #{sotEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="sotRemark != null" >
+        sot_remark = #{sotRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="sotAuditing != null" >
+        sot_auditing = #{sotAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="sotYn != null" >
+        sot_yn = #{sotYn,jdbcType=VARCHAR},
+      </if>
+      <if test="sotCustom1 != null" >
+        sot_custom1 = #{sotCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="sotCustom2 != null" >
+        sot_custom2 = #{sotCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="sotCustom3 != null" >
+        sot_custom3 = #{sotCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="sotCustom4 != null" >
+        sot_custom4 = #{sotCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="sotCustom5 != null" >
+        sot_custom5 = #{sotCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="sotCustom6 != null" >
+        sot_custom6 = #{sotCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sot_id = #{sotId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.SalesOrderType" >
+    update sales_order_type
+    set sot_name = #{sotName,jdbcType=VARCHAR},
+      sot_engname = #{sotEngname,jdbcType=VARCHAR},
+      sot_remark = #{sotRemark,jdbcType=VARCHAR},
+      sot_auditing = #{sotAuditing,jdbcType=VARCHAR},
+      sot_yn = #{sotYn,jdbcType=VARCHAR},
+      sot_custom1 = #{sotCustom1,jdbcType=VARCHAR},
+      sot_custom2 = #{sotCustom2,jdbcType=VARCHAR},
+      sot_custom3 = #{sotCustom3,jdbcType=VARCHAR},
+      sot_custom4 = #{sotCustom4,jdbcType=VARCHAR},
+      sot_custom5 = #{sotCustom5,jdbcType=VARCHAR},
+      sot_custom6 = #{sotCustom6,jdbcType=VARCHAR}
+    where sot_id = #{sotId,jdbcType=VARCHAR}
+  </update>
+</mapper>

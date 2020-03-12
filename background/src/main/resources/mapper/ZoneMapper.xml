@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.ZoneMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Zone" >
+    <id column="zone_id" property="zoneId" jdbcType="VARCHAR" />
+    <result column="zone_name" property="zoneName" jdbcType="VARCHAR" />
+    <result column="zone_english_name" property="zoneEnglishName" jdbcType="VARCHAR" />
+    <result column="zone_remark" property="zoneRemark" jdbcType="VARCHAR" />
+    <result column="zone_Auditing" property="zoneAuditing" jdbcType="VARCHAR" />
+    <result column="zone_yn" property="zoneYn" jdbcType="VARCHAR" />
+    <result column="zone_custom1" property="zoneCustom1" jdbcType="VARCHAR" />
+    <result column="zone_custom2" property="zoneCustom2" jdbcType="VARCHAR" />
+    <result column="zone_custom3" property="zoneCustom3" jdbcType="VARCHAR" />
+    <result column="zone_custom4" property="zoneCustom4" jdbcType="VARCHAR" />
+    <result column="zone_custom5" property="zoneCustom5" jdbcType="VARCHAR" />
+    <result column="zone_custom6" property="zoneCustom6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    zone_id, zone_name, zone_english_name, zone_remark, zone_Auditing, zone_yn, zone_custom1, 
+    zone_custom2, zone_custom3, zone_custom4, zone_custom5, zone_custom6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.ZoneExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from zone
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from zone
+    where zone_id = #{zoneId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from zone
+    where zone_id = #{zoneId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.ZoneExample" >
+    delete from zone
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Zone" >
+    insert into zone (zone_id, zone_name, zone_english_name, 
+      zone_remark, zone_Auditing, zone_yn, 
+      zone_custom1, zone_custom2, zone_custom3, 
+      zone_custom4, zone_custom5, zone_custom6
+      )
+    values (#{zoneId,jdbcType=VARCHAR}, #{zoneName,jdbcType=VARCHAR}, #{zoneEnglishName,jdbcType=VARCHAR}, 
+      #{zoneRemark,jdbcType=VARCHAR}, #{zoneAuditing,jdbcType=VARCHAR}, #{zoneYn,jdbcType=VARCHAR}, 
+      #{zoneCustom1,jdbcType=VARCHAR}, #{zoneCustom2,jdbcType=VARCHAR}, #{zoneCustom3,jdbcType=VARCHAR}, 
+      #{zoneCustom4,jdbcType=VARCHAR}, #{zoneCustom5,jdbcType=VARCHAR}, #{zoneCustom6,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Zone" >
+    insert into zone
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="zoneId != null" >
+        zone_id,
+      </if>
+      <if test="zoneName != null" >
+        zone_name,
+      </if>
+      <if test="zoneEnglishName != null" >
+        zone_english_name,
+      </if>
+      <if test="zoneRemark != null" >
+        zone_remark,
+      </if>
+      <if test="zoneAuditing != null" >
+        zone_Auditing,
+      </if>
+      <if test="zoneYn != null" >
+        zone_yn,
+      </if>
+      <if test="zoneCustom1 != null" >
+        zone_custom1,
+      </if>
+      <if test="zoneCustom2 != null" >
+        zone_custom2,
+      </if>
+      <if test="zoneCustom3 != null" >
+        zone_custom3,
+      </if>
+      <if test="zoneCustom4 != null" >
+        zone_custom4,
+      </if>
+      <if test="zoneCustom5 != null" >
+        zone_custom5,
+      </if>
+      <if test="zoneCustom6 != null" >
+        zone_custom6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="zoneId != null" >
+        #{zoneId,jdbcType=VARCHAR},
+      </if>
+      <if test="zoneName != null" >
+        #{zoneName,jdbcType=VARCHAR},
+      </if>
+      <if test="zoneEnglishName != null" >
+        #{zoneEnglishName,jdbcType=VARCHAR},
+      </if>
+      <if test="zoneRemark != null" >
+        #{zoneRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="zoneAuditing != null" >
+        #{zoneAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="zoneYn != null" >
+        #{zoneYn,jdbcType=VARCHAR},
+      </if>
+      <if test="zoneCustom1 != null" >
+        #{zoneCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="zoneCustom2 != null" >
+        #{zoneCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="zoneCustom3 != null" >
+        #{zoneCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="zoneCustom4 != null" >
+        #{zoneCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="zoneCustom5 != null" >
+        #{zoneCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="zoneCustom6 != null" >
+        #{zoneCustom6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.ZoneExample" resultType="java.lang.Integer" >
+    select count(*) from zone
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update zone
+    <set >
+      <if test="record.zoneId != null" >
+        zone_id = #{record.zoneId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zoneName != null" >
+        zone_name = #{record.zoneName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zoneEnglishName != null" >
+        zone_english_name = #{record.zoneEnglishName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zoneRemark != null" >
+        zone_remark = #{record.zoneRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zoneAuditing != null" >
+        zone_Auditing = #{record.zoneAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zoneYn != null" >
+        zone_yn = #{record.zoneYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zoneCustom1 != null" >
+        zone_custom1 = #{record.zoneCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zoneCustom2 != null" >
+        zone_custom2 = #{record.zoneCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zoneCustom3 != null" >
+        zone_custom3 = #{record.zoneCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zoneCustom4 != null" >
+        zone_custom4 = #{record.zoneCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zoneCustom5 != null" >
+        zone_custom5 = #{record.zoneCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zoneCustom6 != null" >
+        zone_custom6 = #{record.zoneCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update zone
+    set zone_id = #{record.zoneId,jdbcType=VARCHAR},
+      zone_name = #{record.zoneName,jdbcType=VARCHAR},
+      zone_english_name = #{record.zoneEnglishName,jdbcType=VARCHAR},
+      zone_remark = #{record.zoneRemark,jdbcType=VARCHAR},
+      zone_Auditing = #{record.zoneAuditing,jdbcType=VARCHAR},
+      zone_yn = #{record.zoneYn,jdbcType=VARCHAR},
+      zone_custom1 = #{record.zoneCustom1,jdbcType=VARCHAR},
+      zone_custom2 = #{record.zoneCustom2,jdbcType=VARCHAR},
+      zone_custom3 = #{record.zoneCustom3,jdbcType=VARCHAR},
+      zone_custom4 = #{record.zoneCustom4,jdbcType=VARCHAR},
+      zone_custom5 = #{record.zoneCustom5,jdbcType=VARCHAR},
+      zone_custom6 = #{record.zoneCustom6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Zone" >
+    update zone
+    <set >
+      <if test="zoneName != null" >
+        zone_name = #{zoneName,jdbcType=VARCHAR},
+      </if>
+      <if test="zoneEnglishName != null" >
+        zone_english_name = #{zoneEnglishName,jdbcType=VARCHAR},
+      </if>
+      <if test="zoneRemark != null" >
+        zone_remark = #{zoneRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="zoneAuditing != null" >
+        zone_Auditing = #{zoneAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="zoneYn != null" >
+        zone_yn = #{zoneYn,jdbcType=VARCHAR},
+      </if>
+      <if test="zoneCustom1 != null" >
+        zone_custom1 = #{zoneCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="zoneCustom2 != null" >
+        zone_custom2 = #{zoneCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="zoneCustom3 != null" >
+        zone_custom3 = #{zoneCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="zoneCustom4 != null" >
+        zone_custom4 = #{zoneCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="zoneCustom5 != null" >
+        zone_custom5 = #{zoneCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="zoneCustom6 != null" >
+        zone_custom6 = #{zoneCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where zone_id = #{zoneId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Zone" >
+    update zone
+    set zone_name = #{zoneName,jdbcType=VARCHAR},
+      zone_english_name = #{zoneEnglishName,jdbcType=VARCHAR},
+      zone_remark = #{zoneRemark,jdbcType=VARCHAR},
+      zone_Auditing = #{zoneAuditing,jdbcType=VARCHAR},
+      zone_yn = #{zoneYn,jdbcType=VARCHAR},
+      zone_custom1 = #{zoneCustom1,jdbcType=VARCHAR},
+      zone_custom2 = #{zoneCustom2,jdbcType=VARCHAR},
+      zone_custom3 = #{zoneCustom3,jdbcType=VARCHAR},
+      zone_custom4 = #{zoneCustom4,jdbcType=VARCHAR},
+      zone_custom5 = #{zoneCustom5,jdbcType=VARCHAR},
+      zone_custom6 = #{zoneCustom6,jdbcType=VARCHAR}
+    where zone_id = #{zoneId,jdbcType=VARCHAR}
+  </update>
+</mapper>

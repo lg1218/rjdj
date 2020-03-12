@@ -10,7 +10,7 @@ public interface SupplierTypeMapper {
 
     int deleteByExample(SupplierTypeExample example);
 
-    int deleteByPrimaryKey(Integer stId);
+    int deleteByPrimaryKey(String stId);
 
     int insert(SupplierType record);
 
@@ -18,7 +18,7 @@ public interface SupplierTypeMapper {
 
     List<SupplierType> selectByExample(SupplierTypeExample example);
 
-    SupplierType selectByPrimaryKey(Integer stId);
+    SupplierType selectByPrimaryKey(String stId);
 
     int updateByExampleSelective(@Param("record") SupplierType record, @Param("example") SupplierTypeExample example);
 

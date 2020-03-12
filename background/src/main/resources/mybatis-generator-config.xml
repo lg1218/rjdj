@@ -34,77 +34,91 @@
 		<!-- mapper接口生成 -->
 		<javaClientGenerator targetPackage="com.accp.mapper"
 			targetProject="src/main/java" type="XMLMAPPER" />
-
-		<table schema="Salesquotation" tableName="Salesquotation"></table>
-
-		<!--<table schema="billnot_purchase_requisitions" tableName="billnot_purchase_requisitions"></table>
-		<table schema="c_payforcontent" tableName="c_payforcontent"></table>
-		<table schema="ca_xiaoshou" tableName="ca_xiaoshou"></table>
-		<table schema="cgft" tableName="cgft"></table>
-		<table schema="cgftmx" tableName="cgftmx"></table>
-		<table schema="db" tableName="db"></table>
-		<table schema="dbmx" tableName="dbmx"></table>
-		<table schema="in_out_warehouse" tableName="in_out_warehouse"></table>
-		<table schema="in_stock_total" tableName="in_stock_total"></table>
-		<table schema="k_store_adjustpriecedetail" tableName="k_store_adjustpriecedetail"></table>
-		<table schema="kehu_address" tableName="kehu_address"></table>
-		<table schema="kehu_address_details" tableName="kehu_address_details"></table>
-		<table schema="kehu_main" tableName="kehu_main"></table>
-		<table schema="kehu_type" tableName="kehu_type"></table>
-		<table schema="materials_main" tableName="materials_main"></table>
-		<table schema="materials_type" tableName="materials_type"></table>
-		<table schema="p_check_memu" tableName="p_check_memu"></table>
-		<table schema="p_checkmemu_detail" tableName="p_checkmemu_detail"></table>
-		<table schema="p_r_details" tableName="p_r_details"></table>
-		<table schema="p_r_main" tableName="p_r_main"></table>
-		<table schema="p_s_details" tableName="p_s_details"></table>
-		<table schema="p_s_main" tableName="p_s_main"></table>
-		<table schema="q_takeprepay" tableName="q_takeprepay"></table>
-		<table schema="s_sell_cancelparticular" tableName="s_sell_cancelparticular"></table>
-		<table schema="s_sell_out" tableName="s_sell_out"></table>
-		<table schema="s_sell_outparticular" tableName="s_sell_outparticular"></table>
-		<table schema="salesorder" tableName="salesorder"></table>
-		<table schema="salesorderlist" tableName="salesorderlist"></table>
-		<table schema="salesquotation" tableName="salesquotation"></table>
-		<table schema="salesquotationlist" tableName="salesquotationlist"></table>
-		<table schema="supplier_address" tableName="supplier_address"></table>
-		<table schema="supplier_address_details" tableName="supplier_address_details"></table>
-		<table schema="supplier_main" tableName="supplier_main"></table>
-		<table schema="supplier_type" tableName="supplier_type"></table>
-		<table schema="t_purchase_inquiry" tableName="t_purchase_inquiry"></table>
-		<table schema="t_purchase_inquiry_details" tableName="t_purchase_inquiry_details"></table>
-		<table schema="t_purchase_order" tableName="t_purchase_order"></table>
-		<table schema="t_purchase_order_details" tableName="t_purchase_order_details"></table>
-		<table schema="t_purchase_requisitions_details" tableName="t_purchase_requisitions_details"></table>
-		<table schema="t_purchase_requisitions_type" tableName="t_purchase_requisitions_type"></table>
-		<table schema="tax_items" tableName="tax_items"></table>
-		<table schema="unit" tableName="unit"></table>
-		<table schema="warehouse" tableName="warehouse"></table>
-		<table schema="y_advancechild" tableName="y_advancechild"></table>
-		<table schema="y_advancemain" tableName="y_advancemain"></table>
-		<table schema="y_money_expect" tableName="y_money_expect"></table>
-		<table schema="y_money_expect1" tableName="y_money_expect1"></table>
-		<table schema="y_money_expect2" tableName="y_money_expect2"></table>
-		<table schema="y_money_should" tableName="y_money_should"></table>
-		<table schema="y_money_shouldparticular" tableName="y_money_shouldparticular"></table>
-		<table schema="y_payformain" tableName="y_payformain"></table>-->
-
-
-		<!--<table schema="Module" tableName="module">
-
-		</table>
-		<table schema="Role" tableName="role">
-
-		</table>
-		<table schema="User" tableName="user">
-
-		</table>
-		<table schema="RoleModule" tableName="rolemodule">
-
-		</table>
-		<table schema="RoleUser" tableName="roleuser">
-
-		</table>-->
+       <!--  <table schema="account" tableName="account"></table>
+        <table schema="adjust_price" tableName="adjust_price"></table>
+        <table schema="assessment_procurement" tableName="assessment_procurement"></table>
+        <table schema="assessment_procurement_detailed" tableName="assessment_procurement_detailed"></table>
+        <table schema="assessment_procurement_fruit" tableName="assessment_procurement_fruit"></table>
+        <table schema="bank" tableName="bank"></table>
+        <table schema="bank_deposit_account" tableName="bank_deposit_account"></table>
+        <table schema="bank_type" tableName="bank_type"></table>
+        <table schema="casha_ccount" tableName="casha_ccount"></table>
+        <table schema="check" tableName="check"></table>
+        <table schema="check_detailed" tableName="check_detailed"></table>
+        <table schema="collection_term" tableName="collection_term"></table>
+        <table schema="currency" tableName="currency"></table>
+        <table schema="customer" tableName="customer"></table>
+        <table schema="customer_address" tableName="customer_address"></table>
+        <table schema="customer_demand_products" tableName="customer_demand_products"></table>
+        <table schema="customer_grade" tableName="customer_grade"></table>
+        <table schema="customer_type" tableName="customer_type"></table>
+        <table schema="dull_section" tableName="dull_section"></table>
+        <table schema="educational_background" tableName="educational_background"></table>
+        <table schema="income_costs_type" tableName="income_costs_type"></table>
+        <table schema="input_storage_type" tableName="input_storage_type"></table>
+        <table schema="invoice_type" tableName="invoice_type"></table>
+        <table schema="material_type" tableName="material_type"></table>
+        <table schema="matter" tableName="matter"></table>
+        <table schema="measurement_unit" tableName="measurement_unit"></table>
+        <table schema="moneybelong" tableName="moneybelong"></table>
+        <table schema="negotiation_stage" tableName="negotiation_stage"></table>
+        <table schema="other_input_storage" tableName="other_input_storage"></table>
+        <table schema="other_input_storage_detailed" tableName="other_input_storage_detailed"></table>
+        <table schema="other_out_storage" tableName="other_out_storage"></table>
+        <table schema="other_out_storage_detailed" tableName="other_out_storage_detailed"></table>
+        <table schema="out_storage_type" tableName="out_storage_type"></table>
+        <table schema="payables" tableName="payables"></table>
+        <table schema="payables_detail" tableName="payables_detail"></table>
+        <table schema="payablesmain" tableName="payablesmain"></table>
+        <table schema="potential_customer" tableName="potential_customer"></table>
+        <table schema="priabill" tableName="priabill"></table>
+        <table schema="priadetails" tableName="priadetails"></table>
+        <table schema="project" tableName="project"></table>
+        <table schema="purchase_discount" tableName="purchase_discount"></table>
+        <table schema="purchase_discount_detailed" tableName="purchase_discount_detailed"></table>
+        <table schema="purchase_inquiry" tableName="purchase_inquiry"></table>
+        <table schema="purchase_inquiry_detailed" tableName="purchase_inquiry_detailed"></table>
+        <table schema="purchase_requisition" tableName="purchase_requisition"></table>
+        <table schema="purchase_requisition_detailed" tableName="purchase_requisition_detailed"></table>
+        <table schema="purchase_requisition_type" tableName="purchase_requisition_type"></table>
+        <table schema="purchase_returns" tableName="purchase_returns"></table>
+        <table schema="purchase_returns_detailed" tableName="purchase_returns_detailed"></table>
+        <table schema="purchase_storage" tableName="purchase_storage"></table>
+        <table schema="purchase_storage_detailed" tableName="purchase_storage_detailed"></table>
+        <table schema="purchase_storage_type" tableName="purchase_storage_type"></table>
+        <table schema="purchasing_order" tableName="purchasing_order"></table>
+        <table schema="purchasing_order_detailed" tableName="purchasing_order_detailed"></table>
+        <table schema="purchasing_order_type" tableName="purchasing_order_type"></table>
+        <table schema="receivable" tableName="receivable"></table>
+        <table schema="receivable_detail" tableName="receivable_detail"></table>
+        <table schema="receivablesdetails" tableName="receivablesdetails"></table>
+        <table schema="referpria" tableName="referpria"></table>
+        <table schema="referrece" tableName="referrece"></table>
+        <table schema="requisition" tableName="requisition"></table>
+        <table schema="requisition_detailed" tableName="requisition_detailed"></table>
+        <table schema="sales_discount" tableName="sales_discount"></table>
+        <table schema="sales_order_type" tableName="sales_order_type"></table>
+        <table schema="sales_out_warehouse" tableName="sales_out_warehouse"></table> -->
+        <table schema="sales_out_warehouse_detailed" tableName="sales_out_warehouse_detailed"></table>
+      <!--   <table schema="sales_out_warehouse_type" tableName="sales_out_warehouse_type"></table>
+        <table schema="sales_quotation" tableName="sales_quotation"></table>
+        <table schema="sales_quotation_details" tableName="sales_quotation_details"></table>
+        <table schema="sales_return_warehouse" tableName="sales_return_warehouse"></table>
+        <table schema="sales_return_warehouse_detailed" tableName="sales_return_warehouse_detailed"></table>
+        <table schema="salesorder" tableName="salesorder"></table>
+        <table schema="salesorderlist" tableName="salesorderlist"></table>
+        <table schema="settle_accounts_type" tableName="settle_accounts_type"></table>
+        <table schema="staff" tableName="staff"></table>
+        <table schema="subject_blanket_category" tableName="subject_blanket_category"></table>
+        <table schema="subject_category" tableName="subject_category"></table>
+        <table schema="supplier" tableName="supplier"></table>
+        <table schema="supplier_type" tableName="supplier_type"></table>
+        <table schema="tax_items" tableName="tax_items"></table>
+        <table schema="team" tableName="team"></table>
+        <table schema="updown_program" tableName="updown_program"></table>
+        <table schema="warehouse" tableName="warehouse"></table>
+        <table schema="warehouse_detail" tableName="warehouse_detail"></table>
+        <table schema="zone" tableName="zone"></table> -->
 	</context>
 </generatorConfiguration>
 

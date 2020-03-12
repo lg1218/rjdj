@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.OtherInputStorageDetailedMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.OtherInputStorageDetailed" >
+    <id column="oisd_id" property="oisdId" jdbcType="VARCHAR" />
+    <result column="ois_id" property="oisId" jdbcType="VARCHAR" />
+    <result column="matter_id" property="matterId" jdbcType="VARCHAR" />
+    <result column="oisd_engname" property="oisdEngname" jdbcType="VARCHAR" />
+    <result column="oisd_remark" property="oisdRemark" jdbcType="VARCHAR" />
+    <result column="oisd_price_include_tax" property="oisdPriceIncludeTax" jdbcType="VARCHAR" />
+    <result column="oisd_single_status" property="oisdSingleStatus" jdbcType="INTEGER" />
+    <result column="oisd_price" property="oisdPrice" jdbcType="REAL" />
+    <result column="oisd_money" property="oisdMoney" jdbcType="REAL" />
+    <result column="oisd_remarks" property="oisdRemarks" jdbcType="VARCHAR" />
+    <result column="oisd_source_order" property="oisdSourceOrder" jdbcType="VARCHAR" />
+    <result column="oisd_source_no" property="oisdSourceNo" jdbcType="VARCHAR" />
+    <result column="oisd_auditing" property="oisdAuditing" jdbcType="VARCHAR" />
+    <result column="oisd_yn" property="oisdYn" jdbcType="VARCHAR" />
+    <result column="oisd_custom1" property="oisdCustom1" jdbcType="VARCHAR" />
+    <result column="oisd_custom2" property="oisdCustom2" jdbcType="VARCHAR" />
+    <result column="oisd_custom3" property="oisdCustom3" jdbcType="VARCHAR" />
+    <result column="oisd_custom4" property="oisdCustom4" jdbcType="VARCHAR" />
+    <result column="oisd_custom5" property="oisdCustom5" jdbcType="VARCHAR" />
+    <result column="oisd_custom6" property="oisdCustom6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    oisd_id, ois_id, matter_id, oisd_engname, oisd_remark, oisd_price_include_tax, oisd_single_status, 
+    oisd_price, oisd_money, oisd_remarks, oisd_source_order, oisd_source_no, oisd_auditing, 
+    oisd_yn, oisd_custom1, oisd_custom2, oisd_custom3, oisd_custom4, oisd_custom5, oisd_custom6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.OtherInputStorageDetailedExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from other_input_storage_detailed
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from other_input_storage_detailed
+    where oisd_id = #{oisdId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from other_input_storage_detailed
+    where oisd_id = #{oisdId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.OtherInputStorageDetailedExample" >
+    delete from other_input_storage_detailed
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.OtherInputStorageDetailed" >
+    insert into other_input_storage_detailed (oisd_id, ois_id, matter_id, 
+      oisd_engname, oisd_remark, oisd_price_include_tax, 
+      oisd_single_status, oisd_price, oisd_money, 
+      oisd_remarks, oisd_source_order, oisd_source_no, 
+      oisd_auditing, oisd_yn, oisd_custom1, 
+      oisd_custom2, oisd_custom3, oisd_custom4, 
+      oisd_custom5, oisd_custom6)
+    values (#{oisdId,jdbcType=VARCHAR}, #{oisId,jdbcType=VARCHAR}, #{matterId,jdbcType=VARCHAR}, 
+      #{oisdEngname,jdbcType=VARCHAR}, #{oisdRemark,jdbcType=VARCHAR}, #{oisdPriceIncludeTax,jdbcType=VARCHAR}, 
+      #{oisdSingleStatus,jdbcType=INTEGER}, #{oisdPrice,jdbcType=REAL}, #{oisdMoney,jdbcType=REAL}, 
+      #{oisdRemarks,jdbcType=VARCHAR}, #{oisdSourceOrder,jdbcType=VARCHAR}, #{oisdSourceNo,jdbcType=VARCHAR}, 
+      #{oisdAuditing,jdbcType=VARCHAR}, #{oisdYn,jdbcType=VARCHAR}, #{oisdCustom1,jdbcType=VARCHAR}, 
+      #{oisdCustom2,jdbcType=VARCHAR}, #{oisdCustom3,jdbcType=VARCHAR}, #{oisdCustom4,jdbcType=VARCHAR}, 
+      #{oisdCustom5,jdbcType=VARCHAR}, #{oisdCustom6,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.OtherInputStorageDetailed" >
+    insert into other_input_storage_detailed
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="oisdId != null" >
+        oisd_id,
+      </if>
+      <if test="oisId != null" >
+        ois_id,
+      </if>
+      <if test="matterId != null" >
+        matter_id,
+      </if>
+      <if test="oisdEngname != null" >
+        oisd_engname,
+      </if>
+      <if test="oisdRemark != null" >
+        oisd_remark,
+      </if>
+      <if test="oisdPriceIncludeTax != null" >
+        oisd_price_include_tax,
+      </if>
+      <if test="oisdSingleStatus != null" >
+        oisd_single_status,
+      </if>
+      <if test="oisdPrice != null" >
+        oisd_price,
+      </if>
+      <if test="oisdMoney != null" >
+        oisd_money,
+      </if>
+      <if test="oisdRemarks != null" >
+        oisd_remarks,
+      </if>
+      <if test="oisdSourceOrder != null" >
+        oisd_source_order,
+      </if>
+      <if test="oisdSourceNo != null" >
+        oisd_source_no,
+      </if>
+      <if test="oisdAuditing != null" >
+        oisd_auditing,
+      </if>
+      <if test="oisdYn != null" >
+        oisd_yn,
+      </if>
+      <if test="oisdCustom1 != null" >
+        oisd_custom1,
+      </if>
+      <if test="oisdCustom2 != null" >
+        oisd_custom2,
+      </if>
+      <if test="oisdCustom3 != null" >
+        oisd_custom3,
+      </if>
+      <if test="oisdCustom4 != null" >
+        oisd_custom4,
+      </if>
+      <if test="oisdCustom5 != null" >
+        oisd_custom5,
+      </if>
+      <if test="oisdCustom6 != null" >
+        oisd_custom6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="oisdId != null" >
+        #{oisdId,jdbcType=VARCHAR},
+      </if>
+      <if test="oisId != null" >
+        #{oisId,jdbcType=VARCHAR},
+      </if>
+      <if test="matterId != null" >
+        #{matterId,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdEngname != null" >
+        #{oisdEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdRemark != null" >
+        #{oisdRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdPriceIncludeTax != null" >
+        #{oisdPriceIncludeTax,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdSingleStatus != null" >
+        #{oisdSingleStatus,jdbcType=INTEGER},
+      </if>
+      <if test="oisdPrice != null" >
+        #{oisdPrice,jdbcType=REAL},
+      </if>
+      <if test="oisdMoney != null" >
+        #{oisdMoney,jdbcType=REAL},
+      </if>
+      <if test="oisdRemarks != null" >
+        #{oisdRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdSourceOrder != null" >
+        #{oisdSourceOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdSourceNo != null" >
+        #{oisdSourceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdAuditing != null" >
+        #{oisdAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdYn != null" >
+        #{oisdYn,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdCustom1 != null" >
+        #{oisdCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdCustom2 != null" >
+        #{oisdCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdCustom3 != null" >
+        #{oisdCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdCustom4 != null" >
+        #{oisdCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdCustom5 != null" >
+        #{oisdCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdCustom6 != null" >
+        #{oisdCustom6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.OtherInputStorageDetailedExample" resultType="java.lang.Integer" >
+    select count(*) from other_input_storage_detailed
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update other_input_storage_detailed
+    <set >
+      <if test="record.oisdId != null" >
+        oisd_id = #{record.oisdId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oisId != null" >
+        ois_id = #{record.oisId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.matterId != null" >
+        matter_id = #{record.matterId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oisdEngname != null" >
+        oisd_engname = #{record.oisdEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oisdRemark != null" >
+        oisd_remark = #{record.oisdRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oisdPriceIncludeTax != null" >
+        oisd_price_include_tax = #{record.oisdPriceIncludeTax,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oisdSingleStatus != null" >
+        oisd_single_status = #{record.oisdSingleStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.oisdPrice != null" >
+        oisd_price = #{record.oisdPrice,jdbcType=REAL},
+      </if>
+      <if test="record.oisdMoney != null" >
+        oisd_money = #{record.oisdMoney,jdbcType=REAL},
+      </if>
+      <if test="record.oisdRemarks != null" >
+        oisd_remarks = #{record.oisdRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oisdSourceOrder != null" >
+        oisd_source_order = #{record.oisdSourceOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oisdSourceNo != null" >
+        oisd_source_no = #{record.oisdSourceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oisdAuditing != null" >
+        oisd_auditing = #{record.oisdAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oisdYn != null" >
+        oisd_yn = #{record.oisdYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oisdCustom1 != null" >
+        oisd_custom1 = #{record.oisdCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oisdCustom2 != null" >
+        oisd_custom2 = #{record.oisdCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oisdCustom3 != null" >
+        oisd_custom3 = #{record.oisdCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oisdCustom4 != null" >
+        oisd_custom4 = #{record.oisdCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oisdCustom5 != null" >
+        oisd_custom5 = #{record.oisdCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oisdCustom6 != null" >
+        oisd_custom6 = #{record.oisdCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update other_input_storage_detailed
+    set oisd_id = #{record.oisdId,jdbcType=VARCHAR},
+      ois_id = #{record.oisId,jdbcType=VARCHAR},
+      matter_id = #{record.matterId,jdbcType=VARCHAR},
+      oisd_engname = #{record.oisdEngname,jdbcType=VARCHAR},
+      oisd_remark = #{record.oisdRemark,jdbcType=VARCHAR},
+      oisd_price_include_tax = #{record.oisdPriceIncludeTax,jdbcType=VARCHAR},
+      oisd_single_status = #{record.oisdSingleStatus,jdbcType=INTEGER},
+      oisd_price = #{record.oisdPrice,jdbcType=REAL},
+      oisd_money = #{record.oisdMoney,jdbcType=REAL},
+      oisd_remarks = #{record.oisdRemarks,jdbcType=VARCHAR},
+      oisd_source_order = #{record.oisdSourceOrder,jdbcType=VARCHAR},
+      oisd_source_no = #{record.oisdSourceNo,jdbcType=VARCHAR},
+      oisd_auditing = #{record.oisdAuditing,jdbcType=VARCHAR},
+      oisd_yn = #{record.oisdYn,jdbcType=VARCHAR},
+      oisd_custom1 = #{record.oisdCustom1,jdbcType=VARCHAR},
+      oisd_custom2 = #{record.oisdCustom2,jdbcType=VARCHAR},
+      oisd_custom3 = #{record.oisdCustom3,jdbcType=VARCHAR},
+      oisd_custom4 = #{record.oisdCustom4,jdbcType=VARCHAR},
+      oisd_custom5 = #{record.oisdCustom5,jdbcType=VARCHAR},
+      oisd_custom6 = #{record.oisdCustom6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.OtherInputStorageDetailed" >
+    update other_input_storage_detailed
+    <set >
+      <if test="oisId != null" >
+        ois_id = #{oisId,jdbcType=VARCHAR},
+      </if>
+      <if test="matterId != null" >
+        matter_id = #{matterId,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdEngname != null" >
+        oisd_engname = #{oisdEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdRemark != null" >
+        oisd_remark = #{oisdRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdPriceIncludeTax != null" >
+        oisd_price_include_tax = #{oisdPriceIncludeTax,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdSingleStatus != null" >
+        oisd_single_status = #{oisdSingleStatus,jdbcType=INTEGER},
+      </if>
+      <if test="oisdPrice != null" >
+        oisd_price = #{oisdPrice,jdbcType=REAL},
+      </if>
+      <if test="oisdMoney != null" >
+        oisd_money = #{oisdMoney,jdbcType=REAL},
+      </if>
+      <if test="oisdRemarks != null" >
+        oisd_remarks = #{oisdRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdSourceOrder != null" >
+        oisd_source_order = #{oisdSourceOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdSourceNo != null" >
+        oisd_source_no = #{oisdSourceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdAuditing != null" >
+        oisd_auditing = #{oisdAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdYn != null" >
+        oisd_yn = #{oisdYn,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdCustom1 != null" >
+        oisd_custom1 = #{oisdCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdCustom2 != null" >
+        oisd_custom2 = #{oisdCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdCustom3 != null" >
+        oisd_custom3 = #{oisdCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdCustom4 != null" >
+        oisd_custom4 = #{oisdCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdCustom5 != null" >
+        oisd_custom5 = #{oisdCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="oisdCustom6 != null" >
+        oisd_custom6 = #{oisdCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where oisd_id = #{oisdId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.OtherInputStorageDetailed" >
+    update other_input_storage_detailed
+    set ois_id = #{oisId,jdbcType=VARCHAR},
+      matter_id = #{matterId,jdbcType=VARCHAR},
+      oisd_engname = #{oisdEngname,jdbcType=VARCHAR},
+      oisd_remark = #{oisdRemark,jdbcType=VARCHAR},
+      oisd_price_include_tax = #{oisdPriceIncludeTax,jdbcType=VARCHAR},
+      oisd_single_status = #{oisdSingleStatus,jdbcType=INTEGER},
+      oisd_price = #{oisdPrice,jdbcType=REAL},
+      oisd_money = #{oisdMoney,jdbcType=REAL},
+      oisd_remarks = #{oisdRemarks,jdbcType=VARCHAR},
+      oisd_source_order = #{oisdSourceOrder,jdbcType=VARCHAR},
+      oisd_source_no = #{oisdSourceNo,jdbcType=VARCHAR},
+      oisd_auditing = #{oisdAuditing,jdbcType=VARCHAR},
+      oisd_yn = #{oisdYn,jdbcType=VARCHAR},
+      oisd_custom1 = #{oisdCustom1,jdbcType=VARCHAR},
+      oisd_custom2 = #{oisdCustom2,jdbcType=VARCHAR},
+      oisd_custom3 = #{oisdCustom3,jdbcType=VARCHAR},
+      oisd_custom4 = #{oisdCustom4,jdbcType=VARCHAR},
+      oisd_custom5 = #{oisdCustom5,jdbcType=VARCHAR},
+      oisd_custom6 = #{oisdCustom6,jdbcType=VARCHAR}
+    where oisd_id = #{oisdId,jdbcType=VARCHAR}
+  </update>
+</mapper>

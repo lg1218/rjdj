@@ -2,24 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.accp.mapper.WarehouseMapper" >
   <resultMap id="BaseResultMap" type="com.accp.domain.Warehouse" >
-    <id column="w_id" property="wId" jdbcType="INTEGER" />
-    <result column="w_name" property="wName" jdbcType="VARCHAR" />
-    <result column="w_jname" property="wJname" jdbcType="VARCHAR" />
-    <result column="w_ename" property="wEname" jdbcType="VARCHAR" />
-    <result column="w_lx_man" property="wLxMan" jdbcType="VARCHAR" />
-    <result column="w_lx_phone" property="wLxPhone" jdbcType="VARCHAR" />
-    <result column="w_ck_address" property="wCkAddress" jdbcType="VARCHAR" />
-    <result column="w_remark" property="wRemark" jdbcType="VARCHAR" />
-    <result column="bz1" property="bz1" jdbcType="VARCHAR" />
-    <result column="bz2" property="bz2" jdbcType="VARCHAR" />
-    <result column="bz3" property="bz3" jdbcType="VARCHAR" />
-    <result column="bz4" property="bz4" jdbcType="VARCHAR" />
-    <result column="bz5" property="bz5" jdbcType="VARCHAR" />
-    <result column="bz6" property="bz6" jdbcType="VARCHAR" />
-    <result column="bz7" property="bz7" jdbcType="VARCHAR" />
-    <result column="bz8" property="bz8" jdbcType="VARCHAR" />
-    <result column="bz9" property="bz9" jdbcType="VARCHAR" />
-    <result column="bz10" property="bz10" jdbcType="VARCHAR" />
+    <id column="warehouse_id" property="warehouseId" jdbcType="VARCHAR" />
+    <result column="warehouse_name" property="warehouseName" jdbcType="VARCHAR" />
+    <result column="warehouse_easy_name" property="warehouseEasyName" jdbcType="VARCHAR" />
+    <result column="warehouse_engname" property="warehouseEngname" jdbcType="VARCHAR" />
+    <result column="warehouse_linkman" property="warehouseLinkman" jdbcType="VARCHAR" />
+    <result column="warehouse_linktel" property="warehouseLinktel" jdbcType="VARCHAR" />
+    <result column="warehouse_address" property="warehouseAddress" jdbcType="VARCHAR" />
+    <result column="warehouse_decoration" property="warehouseDecoration" jdbcType="VARCHAR" />
+    <result column="warehouse_Auditing" property="warehouseAuditing" jdbcType="VARCHAR" />
+    <result column="warehouse_yn" property="warehouseYn" jdbcType="VARCHAR" />
+    <result column="warehouse_custom1" property="warehouseCustom1" jdbcType="VARCHAR" />
+    <result column="warehouse_custom2" property="warehouseCustom2" jdbcType="VARCHAR" />
+    <result column="warehouse_custom3" property="warehouseCustom3" jdbcType="VARCHAR" />
+    <result column="warehouse_custom4" property="warehouseCustom4" jdbcType="VARCHAR" />
+    <result column="warehouse_custom5" property="warehouseCustom5" jdbcType="VARCHAR" />
+    <result column="warehouse_custom6" property="warehouseCustom6" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -80,8 +78,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    w_id, w_name, w_jname, w_ename, w_lx_man, w_lx_phone, w_ck_address, w_remark, bz1, 
-    bz2, bz3, bz4, bz5, bz6, bz7, bz8, bz9, bz10
+    warehouse_id, warehouse_name, warehouse_easy_name, warehouse_engname, warehouse_linkman, 
+    warehouse_linktel, warehouse_address, warehouse_decoration, warehouse_Auditing, warehouse_yn, 
+    warehouse_custom1, warehouse_custom2, warehouse_custom3, warehouse_custom4, warehouse_custom5, 
+    warehouse_custom6
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.WarehouseExample" >
     select
@@ -97,15 +97,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from warehouse
-    where w_id = #{wId,jdbcType=INTEGER}
+    where warehouse_id = #{warehouseId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from warehouse
-    where w_id = #{wId,jdbcType=INTEGER}
+    where warehouse_id = #{warehouseId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.accp.domain.WarehouseExample" >
     delete from warehouse
@@ -114,131 +114,119 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.accp.domain.Warehouse" >
-    insert into warehouse (w_id, w_name, w_jname, 
-      w_ename, w_lx_man, w_lx_phone, 
-      w_ck_address, w_remark, bz1, 
-      bz2, bz3, bz4, bz5, 
-      bz6, bz7, bz8, bz9, 
-      bz10)
-    values (#{wId,jdbcType=INTEGER}, #{wName,jdbcType=VARCHAR}, #{wJname,jdbcType=VARCHAR}, 
-      #{wEname,jdbcType=VARCHAR}, #{wLxMan,jdbcType=VARCHAR}, #{wLxPhone,jdbcType=VARCHAR}, 
-      #{wCkAddress,jdbcType=VARCHAR}, #{wRemark,jdbcType=VARCHAR}, #{bz1,jdbcType=VARCHAR}, 
-      #{bz2,jdbcType=VARCHAR}, #{bz3,jdbcType=VARCHAR}, #{bz4,jdbcType=VARCHAR}, #{bz5,jdbcType=VARCHAR}, 
-      #{bz6,jdbcType=VARCHAR}, #{bz7,jdbcType=VARCHAR}, #{bz8,jdbcType=VARCHAR}, #{bz9,jdbcType=VARCHAR}, 
-      #{bz10,jdbcType=VARCHAR})
+    insert into warehouse (warehouse_id, warehouse_name, warehouse_easy_name, 
+      warehouse_engname, warehouse_linkman, warehouse_linktel, 
+      warehouse_address, warehouse_decoration, 
+      warehouse_Auditing, warehouse_yn, warehouse_custom1, 
+      warehouse_custom2, warehouse_custom3, warehouse_custom4, 
+      warehouse_custom5, warehouse_custom6)
+    values (#{warehouseId,jdbcType=VARCHAR}, #{warehouseName,jdbcType=VARCHAR}, #{warehouseEasyName,jdbcType=VARCHAR}, 
+      #{warehouseEngname,jdbcType=VARCHAR}, #{warehouseLinkman,jdbcType=VARCHAR}, #{warehouseLinktel,jdbcType=VARCHAR}, 
+      #{warehouseAddress,jdbcType=VARCHAR}, #{warehouseDecoration,jdbcType=VARCHAR}, 
+      #{warehouseAuditing,jdbcType=VARCHAR}, #{warehouseYn,jdbcType=VARCHAR}, #{warehouseCustom1,jdbcType=VARCHAR}, 
+      #{warehouseCustom2,jdbcType=VARCHAR}, #{warehouseCustom3,jdbcType=VARCHAR}, #{warehouseCustom4,jdbcType=VARCHAR}, 
+      #{warehouseCustom5,jdbcType=VARCHAR}, #{warehouseCustom6,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.accp.domain.Warehouse" >
     insert into warehouse
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="wId != null" >
-        w_id,
+      <if test="warehouseId != null" >
+        warehouse_id,
       </if>
-      <if test="wName != null" >
-        w_name,
+      <if test="warehouseName != null" >
+        warehouse_name,
       </if>
-      <if test="wJname != null" >
-        w_jname,
+      <if test="warehouseEasyName != null" >
+        warehouse_easy_name,
       </if>
-      <if test="wEname != null" >
-        w_ename,
+      <if test="warehouseEngname != null" >
+        warehouse_engname,
       </if>
-      <if test="wLxMan != null" >
-        w_lx_man,
+      <if test="warehouseLinkman != null" >
+        warehouse_linkman,
       </if>
-      <if test="wLxPhone != null" >
-        w_lx_phone,
+      <if test="warehouseLinktel != null" >
+        warehouse_linktel,
       </if>
-      <if test="wCkAddress != null" >
-        w_ck_address,
+      <if test="warehouseAddress != null" >
+        warehouse_address,
       </if>
-      <if test="wRemark != null" >
-        w_remark,
+      <if test="warehouseDecoration != null" >
+        warehouse_decoration,
       </if>
-      <if test="bz1 != null" >
-        bz1,
+      <if test="warehouseAuditing != null" >
+        warehouse_Auditing,
       </if>
-      <if test="bz2 != null" >
-        bz2,
+      <if test="warehouseYn != null" >
+        warehouse_yn,
       </if>
-      <if test="bz3 != null" >
-        bz3,
+      <if test="warehouseCustom1 != null" >
+        warehouse_custom1,
       </if>
-      <if test="bz4 != null" >
-        bz4,
+      <if test="warehouseCustom2 != null" >
+        warehouse_custom2,
       </if>
-      <if test="bz5 != null" >
-        bz5,
+      <if test="warehouseCustom3 != null" >
+        warehouse_custom3,
       </if>
-      <if test="bz6 != null" >
-        bz6,
+      <if test="warehouseCustom4 != null" >
+        warehouse_custom4,
       </if>
-      <if test="bz7 != null" >
-        bz7,
+      <if test="warehouseCustom5 != null" >
+        warehouse_custom5,
       </if>
-      <if test="bz8 != null" >
-        bz8,
-      </if>
-      <if test="bz9 != null" >
-        bz9,
-      </if>
-      <if test="bz10 != null" >
-        bz10,
+      <if test="warehouseCustom6 != null" >
+        warehouse_custom6,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="wId != null" >
-        #{wId,jdbcType=INTEGER},
+      <if test="warehouseId != null" >
+        #{warehouseId,jdbcType=VARCHAR},
       </if>
-      <if test="wName != null" >
-        #{wName,jdbcType=VARCHAR},
+      <if test="warehouseName != null" >
+        #{warehouseName,jdbcType=VARCHAR},
       </if>
-      <if test="wJname != null" >
-        #{wJname,jdbcType=VARCHAR},
+      <if test="warehouseEasyName != null" >
+        #{warehouseEasyName,jdbcType=VARCHAR},
       </if>
-      <if test="wEname != null" >
-        #{wEname,jdbcType=VARCHAR},
+      <if test="warehouseEngname != null" >
+        #{warehouseEngname,jdbcType=VARCHAR},
       </if>
-      <if test="wLxMan != null" >
-        #{wLxMan,jdbcType=VARCHAR},
+      <if test="warehouseLinkman != null" >
+        #{warehouseLinkman,jdbcType=VARCHAR},
       </if>
-      <if test="wLxPhone != null" >
-        #{wLxPhone,jdbcType=VARCHAR},
+      <if test="warehouseLinktel != null" >
+        #{warehouseLinktel,jdbcType=VARCHAR},
       </if>
-      <if test="wCkAddress != null" >
-        #{wCkAddress,jdbcType=VARCHAR},
+      <if test="warehouseAddress != null" >
+        #{warehouseAddress,jdbcType=VARCHAR},
       </if>
-      <if test="wRemark != null" >
-        #{wRemark,jdbcType=VARCHAR},
+      <if test="warehouseDecoration != null" >
+        #{warehouseDecoration,jdbcType=VARCHAR},
       </if>
-      <if test="bz1 != null" >
-        #{bz1,jdbcType=VARCHAR},
+      <if test="warehouseAuditing != null" >
+        #{warehouseAuditing,jdbcType=VARCHAR},
       </if>
-      <if test="bz2 != null" >
-        #{bz2,jdbcType=VARCHAR},
+      <if test="warehouseYn != null" >
+        #{warehouseYn,jdbcType=VARCHAR},
       </if>
-      <if test="bz3 != null" >
-        #{bz3,jdbcType=VARCHAR},
+      <if test="warehouseCustom1 != null" >
+        #{warehouseCustom1,jdbcType=VARCHAR},
       </if>
-      <if test="bz4 != null" >
-        #{bz4,jdbcType=VARCHAR},
+      <if test="warehouseCustom2 != null" >
+        #{warehouseCustom2,jdbcType=VARCHAR},
       </if>
-      <if test="bz5 != null" >
-        #{bz5,jdbcType=VARCHAR},
+      <if test="warehouseCustom3 != null" >
+        #{warehouseCustom3,jdbcType=VARCHAR},
       </if>
-      <if test="bz6 != null" >
-        #{bz6,jdbcType=VARCHAR},
+      <if test="warehouseCustom4 != null" >
+        #{warehouseCustom4,jdbcType=VARCHAR},
       </if>
-      <if test="bz7 != null" >
-        #{bz7,jdbcType=VARCHAR},
+      <if test="warehouseCustom5 != null" >
+        #{warehouseCustom5,jdbcType=VARCHAR},
       </if>
-      <if test="bz8 != null" >
-        #{bz8,jdbcType=VARCHAR},
-      </if>
-      <if test="bz9 != null" >
-        #{bz9,jdbcType=VARCHAR},
-      </if>
-      <if test="bz10 != null" >
-        #{bz10,jdbcType=VARCHAR},
+      <if test="warehouseCustom6 != null" >
+        #{warehouseCustom6,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -251,59 +239,53 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update warehouse
     <set >
-      <if test="record.wId != null" >
-        w_id = #{record.wId,jdbcType=INTEGER},
+      <if test="record.warehouseId != null" >
+        warehouse_id = #{record.warehouseId,jdbcType=VARCHAR},
       </if>
-      <if test="record.wName != null" >
-        w_name = #{record.wName,jdbcType=VARCHAR},
+      <if test="record.warehouseName != null" >
+        warehouse_name = #{record.warehouseName,jdbcType=VARCHAR},
       </if>
-      <if test="record.wJname != null" >
-        w_jname = #{record.wJname,jdbcType=VARCHAR},
+      <if test="record.warehouseEasyName != null" >
+        warehouse_easy_name = #{record.warehouseEasyName,jdbcType=VARCHAR},
       </if>
-      <if test="record.wEname != null" >
-        w_ename = #{record.wEname,jdbcType=VARCHAR},
+      <if test="record.warehouseEngname != null" >
+        warehouse_engname = #{record.warehouseEngname,jdbcType=VARCHAR},
       </if>
-      <if test="record.wLxMan != null" >
-        w_lx_man = #{record.wLxMan,jdbcType=VARCHAR},
+      <if test="record.warehouseLinkman != null" >
+        warehouse_linkman = #{record.warehouseLinkman,jdbcType=VARCHAR},
       </if>
-      <if test="record.wLxPhone != null" >
-        w_lx_phone = #{record.wLxPhone,jdbcType=VARCHAR},
+      <if test="record.warehouseLinktel != null" >
+        warehouse_linktel = #{record.warehouseLinktel,jdbcType=VARCHAR},
       </if>
-      <if test="record.wCkAddress != null" >
-        w_ck_address = #{record.wCkAddress,jdbcType=VARCHAR},
+      <if test="record.warehouseAddress != null" >
+        warehouse_address = #{record.warehouseAddress,jdbcType=VARCHAR},
       </if>
-      <if test="record.wRemark != null" >
-        w_remark = #{record.wRemark,jdbcType=VARCHAR},
+      <if test="record.warehouseDecoration != null" >
+        warehouse_decoration = #{record.warehouseDecoration,jdbcType=VARCHAR},
       </if>
-      <if test="record.bz1 != null" >
-        bz1 = #{record.bz1,jdbcType=VARCHAR},
+      <if test="record.warehouseAuditing != null" >
+        warehouse_Auditing = #{record.warehouseAuditing,jdbcType=VARCHAR},
       </if>
-      <if test="record.bz2 != null" >
-        bz2 = #{record.bz2,jdbcType=VARCHAR},
+      <if test="record.warehouseYn != null" >
+        warehouse_yn = #{record.warehouseYn,jdbcType=VARCHAR},
       </if>
-      <if test="record.bz3 != null" >
-        bz3 = #{record.bz3,jdbcType=VARCHAR},
+      <if test="record.warehouseCustom1 != null" >
+        warehouse_custom1 = #{record.warehouseCustom1,jdbcType=VARCHAR},
       </if>
-      <if test="record.bz4 != null" >
-        bz4 = #{record.bz4,jdbcType=VARCHAR},
+      <if test="record.warehouseCustom2 != null" >
+        warehouse_custom2 = #{record.warehouseCustom2,jdbcType=VARCHAR},
       </if>
-      <if test="record.bz5 != null" >
-        bz5 = #{record.bz5,jdbcType=VARCHAR},
+      <if test="record.warehouseCustom3 != null" >
+        warehouse_custom3 = #{record.warehouseCustom3,jdbcType=VARCHAR},
       </if>
-      <if test="record.bz6 != null" >
-        bz6 = #{record.bz6,jdbcType=VARCHAR},
+      <if test="record.warehouseCustom4 != null" >
+        warehouse_custom4 = #{record.warehouseCustom4,jdbcType=VARCHAR},
       </if>
-      <if test="record.bz7 != null" >
-        bz7 = #{record.bz7,jdbcType=VARCHAR},
+      <if test="record.warehouseCustom5 != null" >
+        warehouse_custom5 = #{record.warehouseCustom5,jdbcType=VARCHAR},
       </if>
-      <if test="record.bz8 != null" >
-        bz8 = #{record.bz8,jdbcType=VARCHAR},
-      </if>
-      <if test="record.bz9 != null" >
-        bz9 = #{record.bz9,jdbcType=VARCHAR},
-      </if>
-      <if test="record.bz10 != null" >
-        bz10 = #{record.bz10,jdbcType=VARCHAR},
+      <if test="record.warehouseCustom6 != null" >
+        warehouse_custom6 = #{record.warehouseCustom6,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -312,24 +294,22 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update warehouse
-    set w_id = #{record.wId,jdbcType=INTEGER},
-      w_name = #{record.wName,jdbcType=VARCHAR},
-      w_jname = #{record.wJname,jdbcType=VARCHAR},
-      w_ename = #{record.wEname,jdbcType=VARCHAR},
-      w_lx_man = #{record.wLxMan,jdbcType=VARCHAR},
-      w_lx_phone = #{record.wLxPhone,jdbcType=VARCHAR},
-      w_ck_address = #{record.wCkAddress,jdbcType=VARCHAR},
-      w_remark = #{record.wRemark,jdbcType=VARCHAR},
-      bz1 = #{record.bz1,jdbcType=VARCHAR},
-      bz2 = #{record.bz2,jdbcType=VARCHAR},
-      bz3 = #{record.bz3,jdbcType=VARCHAR},
-      bz4 = #{record.bz4,jdbcType=VARCHAR},
-      bz5 = #{record.bz5,jdbcType=VARCHAR},
-      bz6 = #{record.bz6,jdbcType=VARCHAR},
-      bz7 = #{record.bz7,jdbcType=VARCHAR},
-      bz8 = #{record.bz8,jdbcType=VARCHAR},
-      bz9 = #{record.bz9,jdbcType=VARCHAR},
-      bz10 = #{record.bz10,jdbcType=VARCHAR}
+    set warehouse_id = #{record.warehouseId,jdbcType=VARCHAR},
+      warehouse_name = #{record.warehouseName,jdbcType=VARCHAR},
+      warehouse_easy_name = #{record.warehouseEasyName,jdbcType=VARCHAR},
+      warehouse_engname = #{record.warehouseEngname,jdbcType=VARCHAR},
+      warehouse_linkman = #{record.warehouseLinkman,jdbcType=VARCHAR},
+      warehouse_linktel = #{record.warehouseLinktel,jdbcType=VARCHAR},
+      warehouse_address = #{record.warehouseAddress,jdbcType=VARCHAR},
+      warehouse_decoration = #{record.warehouseDecoration,jdbcType=VARCHAR},
+      warehouse_Auditing = #{record.warehouseAuditing,jdbcType=VARCHAR},
+      warehouse_yn = #{record.warehouseYn,jdbcType=VARCHAR},
+      warehouse_custom1 = #{record.warehouseCustom1,jdbcType=VARCHAR},
+      warehouse_custom2 = #{record.warehouseCustom2,jdbcType=VARCHAR},
+      warehouse_custom3 = #{record.warehouseCustom3,jdbcType=VARCHAR},
+      warehouse_custom4 = #{record.warehouseCustom4,jdbcType=VARCHAR},
+      warehouse_custom5 = #{record.warehouseCustom5,jdbcType=VARCHAR},
+      warehouse_custom6 = #{record.warehouseCustom6,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -337,79 +317,71 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Warehouse" >
     update warehouse
     <set >
-      <if test="wName != null" >
-        w_name = #{wName,jdbcType=VARCHAR},
+      <if test="warehouseName != null" >
+        warehouse_name = #{warehouseName,jdbcType=VARCHAR},
       </if>
-      <if test="wJname != null" >
-        w_jname = #{wJname,jdbcType=VARCHAR},
+      <if test="warehouseEasyName != null" >
+        warehouse_easy_name = #{warehouseEasyName,jdbcType=VARCHAR},
       </if>
-      <if test="wEname != null" >
-        w_ename = #{wEname,jdbcType=VARCHAR},
+      <if test="warehouseEngname != null" >
+        warehouse_engname = #{warehouseEngname,jdbcType=VARCHAR},
       </if>
-      <if test="wLxMan != null" >
-        w_lx_man = #{wLxMan,jdbcType=VARCHAR},
+      <if test="warehouseLinkman != null" >
+        warehouse_linkman = #{warehouseLinkman,jdbcType=VARCHAR},
       </if>
-      <if test="wLxPhone != null" >
-        w_lx_phone = #{wLxPhone,jdbcType=VARCHAR},
+      <if test="warehouseLinktel != null" >
+        warehouse_linktel = #{warehouseLinktel,jdbcType=VARCHAR},
       </if>
-      <if test="wCkAddress != null" >
-        w_ck_address = #{wCkAddress,jdbcType=VARCHAR},
+      <if test="warehouseAddress != null" >
+        warehouse_address = #{warehouseAddress,jdbcType=VARCHAR},
       </if>
-      <if test="wRemark != null" >
-        w_remark = #{wRemark,jdbcType=VARCHAR},
+      <if test="warehouseDecoration != null" >
+        warehouse_decoration = #{warehouseDecoration,jdbcType=VARCHAR},
       </if>
-      <if test="bz1 != null" >
-        bz1 = #{bz1,jdbcType=VARCHAR},
+      <if test="warehouseAuditing != null" >
+        warehouse_Auditing = #{warehouseAuditing,jdbcType=VARCHAR},
       </if>
-      <if test="bz2 != null" >
-        bz2 = #{bz2,jdbcType=VARCHAR},
+      <if test="warehouseYn != null" >
+        warehouse_yn = #{warehouseYn,jdbcType=VARCHAR},
       </if>
-      <if test="bz3 != null" >
-        bz3 = #{bz3,jdbcType=VARCHAR},
+      <if test="warehouseCustom1 != null" >
+        warehouse_custom1 = #{warehouseCustom1,jdbcType=VARCHAR},
       </if>
-      <if test="bz4 != null" >
-        bz4 = #{bz4,jdbcType=VARCHAR},
+      <if test="warehouseCustom2 != null" >
+        warehouse_custom2 = #{warehouseCustom2,jdbcType=VARCHAR},
       </if>
-      <if test="bz5 != null" >
-        bz5 = #{bz5,jdbcType=VARCHAR},
+      <if test="warehouseCustom3 != null" >
+        warehouse_custom3 = #{warehouseCustom3,jdbcType=VARCHAR},
       </if>
-      <if test="bz6 != null" >
-        bz6 = #{bz6,jdbcType=VARCHAR},
+      <if test="warehouseCustom4 != null" >
+        warehouse_custom4 = #{warehouseCustom4,jdbcType=VARCHAR},
       </if>
-      <if test="bz7 != null" >
-        bz7 = #{bz7,jdbcType=VARCHAR},
+      <if test="warehouseCustom5 != null" >
+        warehouse_custom5 = #{warehouseCustom5,jdbcType=VARCHAR},
       </if>
-      <if test="bz8 != null" >
-        bz8 = #{bz8,jdbcType=VARCHAR},
-      </if>
-      <if test="bz9 != null" >
-        bz9 = #{bz9,jdbcType=VARCHAR},
-      </if>
-      <if test="bz10 != null" >
-        bz10 = #{bz10,jdbcType=VARCHAR},
+      <if test="warehouseCustom6 != null" >
+        warehouse_custom6 = #{warehouseCustom6,jdbcType=VARCHAR},
       </if>
     </set>
-    where w_id = #{wId,jdbcType=INTEGER}
+    where warehouse_id = #{warehouseId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.accp.domain.Warehouse" >
     update warehouse
-    set w_name = #{wName,jdbcType=VARCHAR},
-      w_jname = #{wJname,jdbcType=VARCHAR},
-      w_ename = #{wEname,jdbcType=VARCHAR},
-      w_lx_man = #{wLxMan,jdbcType=VARCHAR},
-      w_lx_phone = #{wLxPhone,jdbcType=VARCHAR},
-      w_ck_address = #{wCkAddress,jdbcType=VARCHAR},
-      w_remark = #{wRemark,jdbcType=VARCHAR},
-      bz1 = #{bz1,jdbcType=VARCHAR},
-      bz2 = #{bz2,jdbcType=VARCHAR},
-      bz3 = #{bz3,jdbcType=VARCHAR},
-      bz4 = #{bz4,jdbcType=VARCHAR},
-      bz5 = #{bz5,jdbcType=VARCHAR},
-      bz6 = #{bz6,jdbcType=VARCHAR},
-      bz7 = #{bz7,jdbcType=VARCHAR},
-      bz8 = #{bz8,jdbcType=VARCHAR},
-      bz9 = #{bz9,jdbcType=VARCHAR},
-      bz10 = #{bz10,jdbcType=VARCHAR}
-    where w_id = #{wId,jdbcType=INTEGER}
+    set warehouse_name = #{warehouseName,jdbcType=VARCHAR},
+      warehouse_easy_name = #{warehouseEasyName,jdbcType=VARCHAR},
+      warehouse_engname = #{warehouseEngname,jdbcType=VARCHAR},
+      warehouse_linkman = #{warehouseLinkman,jdbcType=VARCHAR},
+      warehouse_linktel = #{warehouseLinktel,jdbcType=VARCHAR},
+      warehouse_address = #{warehouseAddress,jdbcType=VARCHAR},
+      warehouse_decoration = #{warehouseDecoration,jdbcType=VARCHAR},
+      warehouse_Auditing = #{warehouseAuditing,jdbcType=VARCHAR},
+      warehouse_yn = #{warehouseYn,jdbcType=VARCHAR},
+      warehouse_custom1 = #{warehouseCustom1,jdbcType=VARCHAR},
+      warehouse_custom2 = #{warehouseCustom2,jdbcType=VARCHAR},
+      warehouse_custom3 = #{warehouseCustom3,jdbcType=VARCHAR},
+      warehouse_custom4 = #{warehouseCustom4,jdbcType=VARCHAR},
+      warehouse_custom5 = #{warehouseCustom5,jdbcType=VARCHAR},
+      warehouse_custom6 = #{warehouseCustom6,jdbcType=VARCHAR}
+    where warehouse_id = #{warehouseId,jdbcType=VARCHAR}
   </update>
 </mapper>

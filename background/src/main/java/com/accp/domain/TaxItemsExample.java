@@ -114,52 +114,62 @@ public class TaxItemsExample {
             return (Criteria) this;
         }
 
-        public Criteria andTiIdEqualTo(Integer value) {
+        public Criteria andTiIdEqualTo(String value) {
             addCriterion("ti_id =", value, "tiId");
             return (Criteria) this;
         }
 
-        public Criteria andTiIdNotEqualTo(Integer value) {
+        public Criteria andTiIdNotEqualTo(String value) {
             addCriterion("ti_id <>", value, "tiId");
             return (Criteria) this;
         }
 
-        public Criteria andTiIdGreaterThan(Integer value) {
+        public Criteria andTiIdGreaterThan(String value) {
             addCriterion("ti_id >", value, "tiId");
             return (Criteria) this;
         }
 
-        public Criteria andTiIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andTiIdGreaterThanOrEqualTo(String value) {
             addCriterion("ti_id >=", value, "tiId");
             return (Criteria) this;
         }
 
-        public Criteria andTiIdLessThan(Integer value) {
+        public Criteria andTiIdLessThan(String value) {
             addCriterion("ti_id <", value, "tiId");
             return (Criteria) this;
         }
 
-        public Criteria andTiIdLessThanOrEqualTo(Integer value) {
+        public Criteria andTiIdLessThanOrEqualTo(String value) {
             addCriterion("ti_id <=", value, "tiId");
             return (Criteria) this;
         }
 
-        public Criteria andTiIdIn(List<Integer> values) {
+        public Criteria andTiIdLike(String value) {
+            addCriterion("ti_id like", value, "tiId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTiIdNotLike(String value) {
+            addCriterion("ti_id not like", value, "tiId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTiIdIn(List<String> values) {
             addCriterion("ti_id in", values, "tiId");
             return (Criteria) this;
         }
 
-        public Criteria andTiIdNotIn(List<Integer> values) {
+        public Criteria andTiIdNotIn(List<String> values) {
             addCriterion("ti_id not in", values, "tiId");
             return (Criteria) this;
         }
 
-        public Criteria andTiIdBetween(Integer value1, Integer value2) {
+        public Criteria andTiIdBetween(String value1, String value2) {
             addCriterion("ti_id between", value1, value2, "tiId");
             return (Criteria) this;
         }
 
-        public Criteria andTiIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andTiIdNotBetween(String value1, String value2) {
             addCriterion("ti_id not between", value1, value2, "tiId");
             return (Criteria) this;
         }
@@ -234,73 +244,73 @@ public class TaxItemsExample {
             return (Criteria) this;
         }
 
-        public Criteria andTiEnameIsNull() {
-            addCriterion("ti_ename is null");
+        public Criteria andTiEnglishNameIsNull() {
+            addCriterion("ti_english_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andTiEnameIsNotNull() {
-            addCriterion("ti_ename is not null");
+        public Criteria andTiEnglishNameIsNotNull() {
+            addCriterion("ti_english_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTiEnameEqualTo(String value) {
-            addCriterion("ti_ename =", value, "tiEname");
+        public Criteria andTiEnglishNameEqualTo(String value) {
+            addCriterion("ti_english_name =", value, "tiEnglishName");
             return (Criteria) this;
         }
 
-        public Criteria andTiEnameNotEqualTo(String value) {
-            addCriterion("ti_ename <>", value, "tiEname");
+        public Criteria andTiEnglishNameNotEqualTo(String value) {
+            addCriterion("ti_english_name <>", value, "tiEnglishName");
             return (Criteria) this;
         }
 
-        public Criteria andTiEnameGreaterThan(String value) {
-            addCriterion("ti_ename >", value, "tiEname");
+        public Criteria andTiEnglishNameGreaterThan(String value) {
+            addCriterion("ti_english_name >", value, "tiEnglishName");
             return (Criteria) this;
         }
 
-        public Criteria andTiEnameGreaterThanOrEqualTo(String value) {
-            addCriterion("ti_ename >=", value, "tiEname");
+        public Criteria andTiEnglishNameGreaterThanOrEqualTo(String value) {
+            addCriterion("ti_english_name >=", value, "tiEnglishName");
             return (Criteria) this;
         }
 
-        public Criteria andTiEnameLessThan(String value) {
-            addCriterion("ti_ename <", value, "tiEname");
+        public Criteria andTiEnglishNameLessThan(String value) {
+            addCriterion("ti_english_name <", value, "tiEnglishName");
             return (Criteria) this;
         }
 
-        public Criteria andTiEnameLessThanOrEqualTo(String value) {
-            addCriterion("ti_ename <=", value, "tiEname");
+        public Criteria andTiEnglishNameLessThanOrEqualTo(String value) {
+            addCriterion("ti_english_name <=", value, "tiEnglishName");
             return (Criteria) this;
         }
 
-        public Criteria andTiEnameLike(String value) {
-            addCriterion("ti_ename like", value, "tiEname");
+        public Criteria andTiEnglishNameLike(String value) {
+            addCriterion("ti_english_name like", value, "tiEnglishName");
             return (Criteria) this;
         }
 
-        public Criteria andTiEnameNotLike(String value) {
-            addCriterion("ti_ename not like", value, "tiEname");
+        public Criteria andTiEnglishNameNotLike(String value) {
+            addCriterion("ti_english_name not like", value, "tiEnglishName");
             return (Criteria) this;
         }
 
-        public Criteria andTiEnameIn(List<String> values) {
-            addCriterion("ti_ename in", values, "tiEname");
+        public Criteria andTiEnglishNameIn(List<String> values) {
+            addCriterion("ti_english_name in", values, "tiEnglishName");
             return (Criteria) this;
         }
 
-        public Criteria andTiEnameNotIn(List<String> values) {
-            addCriterion("ti_ename not in", values, "tiEname");
+        public Criteria andTiEnglishNameNotIn(List<String> values) {
+            addCriterion("ti_english_name not in", values, "tiEnglishName");
             return (Criteria) this;
         }
 
-        public Criteria andTiEnameBetween(String value1, String value2) {
-            addCriterion("ti_ename between", value1, value2, "tiEname");
+        public Criteria andTiEnglishNameBetween(String value1, String value2) {
+            addCriterion("ti_english_name between", value1, value2, "tiEnglishName");
             return (Criteria) this;
         }
 
-        public Criteria andTiEnameNotBetween(String value1, String value2) {
-            addCriterion("ti_ename not between", value1, value2, "tiEname");
+        public Criteria andTiEnglishNameNotBetween(String value1, String value2) {
+            addCriterion("ti_english_name not between", value1, value2, "tiEnglishName");
             return (Criteria) this;
         }
 
@@ -374,703 +384,563 @@ public class TaxItemsExample {
             return (Criteria) this;
         }
 
-        public Criteria andBz1IsNull() {
-            addCriterion("bz1 is null");
+        public Criteria andTiAuditingIsNull() {
+            addCriterion("ti_Auditing is null");
             return (Criteria) this;
         }
 
-        public Criteria andBz1IsNotNull() {
-            addCriterion("bz1 is not null");
+        public Criteria andTiAuditingIsNotNull() {
+            addCriterion("ti_Auditing is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBz1EqualTo(String value) {
-            addCriterion("bz1 =", value, "bz1");
+        public Criteria andTiAuditingEqualTo(String value) {
+            addCriterion("ti_Auditing =", value, "tiAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andBz1NotEqualTo(String value) {
-            addCriterion("bz1 <>", value, "bz1");
+        public Criteria andTiAuditingNotEqualTo(String value) {
+            addCriterion("ti_Auditing <>", value, "tiAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andBz1GreaterThan(String value) {
-            addCriterion("bz1 >", value, "bz1");
+        public Criteria andTiAuditingGreaterThan(String value) {
+            addCriterion("ti_Auditing >", value, "tiAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andBz1GreaterThanOrEqualTo(String value) {
-            addCriterion("bz1 >=", value, "bz1");
+        public Criteria andTiAuditingGreaterThanOrEqualTo(String value) {
+            addCriterion("ti_Auditing >=", value, "tiAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andBz1LessThan(String value) {
-            addCriterion("bz1 <", value, "bz1");
+        public Criteria andTiAuditingLessThan(String value) {
+            addCriterion("ti_Auditing <", value, "tiAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andBz1LessThanOrEqualTo(String value) {
-            addCriterion("bz1 <=", value, "bz1");
+        public Criteria andTiAuditingLessThanOrEqualTo(String value) {
+            addCriterion("ti_Auditing <=", value, "tiAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andBz1Like(String value) {
-            addCriterion("bz1 like", value, "bz1");
+        public Criteria andTiAuditingLike(String value) {
+            addCriterion("ti_Auditing like", value, "tiAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andBz1NotLike(String value) {
-            addCriterion("bz1 not like", value, "bz1");
+        public Criteria andTiAuditingNotLike(String value) {
+            addCriterion("ti_Auditing not like", value, "tiAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andBz1In(List<String> values) {
-            addCriterion("bz1 in", values, "bz1");
+        public Criteria andTiAuditingIn(List<String> values) {
+            addCriterion("ti_Auditing in", values, "tiAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andBz1NotIn(List<String> values) {
-            addCriterion("bz1 not in", values, "bz1");
+        public Criteria andTiAuditingNotIn(List<String> values) {
+            addCriterion("ti_Auditing not in", values, "tiAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andBz1Between(String value1, String value2) {
-            addCriterion("bz1 between", value1, value2, "bz1");
+        public Criteria andTiAuditingBetween(String value1, String value2) {
+            addCriterion("ti_Auditing between", value1, value2, "tiAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andBz1NotBetween(String value1, String value2) {
-            addCriterion("bz1 not between", value1, value2, "bz1");
+        public Criteria andTiAuditingNotBetween(String value1, String value2) {
+            addCriterion("ti_Auditing not between", value1, value2, "tiAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andBz2IsNull() {
-            addCriterion("bz2 is null");
+        public Criteria andTiYnIsNull() {
+            addCriterion("ti_yn is null");
             return (Criteria) this;
         }
 
-        public Criteria andBz2IsNotNull() {
-            addCriterion("bz2 is not null");
+        public Criteria andTiYnIsNotNull() {
+            addCriterion("ti_yn is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBz2EqualTo(String value) {
-            addCriterion("bz2 =", value, "bz2");
+        public Criteria andTiYnEqualTo(String value) {
+            addCriterion("ti_yn =", value, "tiYn");
             return (Criteria) this;
         }
 
-        public Criteria andBz2NotEqualTo(String value) {
-            addCriterion("bz2 <>", value, "bz2");
+        public Criteria andTiYnNotEqualTo(String value) {
+            addCriterion("ti_yn <>", value, "tiYn");
             return (Criteria) this;
         }
 
-        public Criteria andBz2GreaterThan(String value) {
-            addCriterion("bz2 >", value, "bz2");
+        public Criteria andTiYnGreaterThan(String value) {
+            addCriterion("ti_yn >", value, "tiYn");
             return (Criteria) this;
         }
 
-        public Criteria andBz2GreaterThanOrEqualTo(String value) {
-            addCriterion("bz2 >=", value, "bz2");
+        public Criteria andTiYnGreaterThanOrEqualTo(String value) {
+            addCriterion("ti_yn >=", value, "tiYn");
             return (Criteria) this;
         }
 
-        public Criteria andBz2LessThan(String value) {
-            addCriterion("bz2 <", value, "bz2");
+        public Criteria andTiYnLessThan(String value) {
+            addCriterion("ti_yn <", value, "tiYn");
             return (Criteria) this;
         }
 
-        public Criteria andBz2LessThanOrEqualTo(String value) {
-            addCriterion("bz2 <=", value, "bz2");
+        public Criteria andTiYnLessThanOrEqualTo(String value) {
+            addCriterion("ti_yn <=", value, "tiYn");
             return (Criteria) this;
         }
 
-        public Criteria andBz2Like(String value) {
-            addCriterion("bz2 like", value, "bz2");
+        public Criteria andTiYnLike(String value) {
+            addCriterion("ti_yn like", value, "tiYn");
             return (Criteria) this;
         }
 
-        public Criteria andBz2NotLike(String value) {
-            addCriterion("bz2 not like", value, "bz2");
+        public Criteria andTiYnNotLike(String value) {
+            addCriterion("ti_yn not like", value, "tiYn");
             return (Criteria) this;
         }
 
-        public Criteria andBz2In(List<String> values) {
-            addCriterion("bz2 in", values, "bz2");
+        public Criteria andTiYnIn(List<String> values) {
+            addCriterion("ti_yn in", values, "tiYn");
             return (Criteria) this;
         }
 
-        public Criteria andBz2NotIn(List<String> values) {
-            addCriterion("bz2 not in", values, "bz2");
+        public Criteria andTiYnNotIn(List<String> values) {
+            addCriterion("ti_yn not in", values, "tiYn");
             return (Criteria) this;
         }
 
-        public Criteria andBz2Between(String value1, String value2) {
-            addCriterion("bz2 between", value1, value2, "bz2");
+        public Criteria andTiYnBetween(String value1, String value2) {
+            addCriterion("ti_yn between", value1, value2, "tiYn");
             return (Criteria) this;
         }
 
-        public Criteria andBz2NotBetween(String value1, String value2) {
-            addCriterion("bz2 not between", value1, value2, "bz2");
+        public Criteria andTiYnNotBetween(String value1, String value2) {
+            addCriterion("ti_yn not between", value1, value2, "tiYn");
             return (Criteria) this;
         }
 
-        public Criteria andBz3IsNull() {
-            addCriterion("bz3 is null");
+        public Criteria andTiCustom1IsNull() {
+            addCriterion("ti_custom1 is null");
             return (Criteria) this;
         }
 
-        public Criteria andBz3IsNotNull() {
-            addCriterion("bz3 is not null");
+        public Criteria andTiCustom1IsNotNull() {
+            addCriterion("ti_custom1 is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBz3EqualTo(String value) {
-            addCriterion("bz3 =", value, "bz3");
+        public Criteria andTiCustom1EqualTo(String value) {
+            addCriterion("ti_custom1 =", value, "tiCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andBz3NotEqualTo(String value) {
-            addCriterion("bz3 <>", value, "bz3");
+        public Criteria andTiCustom1NotEqualTo(String value) {
+            addCriterion("ti_custom1 <>", value, "tiCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andBz3GreaterThan(String value) {
-            addCriterion("bz3 >", value, "bz3");
+        public Criteria andTiCustom1GreaterThan(String value) {
+            addCriterion("ti_custom1 >", value, "tiCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andBz3GreaterThanOrEqualTo(String value) {
-            addCriterion("bz3 >=", value, "bz3");
+        public Criteria andTiCustom1GreaterThanOrEqualTo(String value) {
+            addCriterion("ti_custom1 >=", value, "tiCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andBz3LessThan(String value) {
-            addCriterion("bz3 <", value, "bz3");
+        public Criteria andTiCustom1LessThan(String value) {
+            addCriterion("ti_custom1 <", value, "tiCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andBz3LessThanOrEqualTo(String value) {
-            addCriterion("bz3 <=", value, "bz3");
+        public Criteria andTiCustom1LessThanOrEqualTo(String value) {
+            addCriterion("ti_custom1 <=", value, "tiCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andBz3Like(String value) {
-            addCriterion("bz3 like", value, "bz3");
+        public Criteria andTiCustom1Like(String value) {
+            addCriterion("ti_custom1 like", value, "tiCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andBz3NotLike(String value) {
-            addCriterion("bz3 not like", value, "bz3");
+        public Criteria andTiCustom1NotLike(String value) {
+            addCriterion("ti_custom1 not like", value, "tiCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andBz3In(List<String> values) {
-            addCriterion("bz3 in", values, "bz3");
+        public Criteria andTiCustom1In(List<String> values) {
+            addCriterion("ti_custom1 in", values, "tiCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andBz3NotIn(List<String> values) {
-            addCriterion("bz3 not in", values, "bz3");
+        public Criteria andTiCustom1NotIn(List<String> values) {
+            addCriterion("ti_custom1 not in", values, "tiCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andBz3Between(String value1, String value2) {
-            addCriterion("bz3 between", value1, value2, "bz3");
+        public Criteria andTiCustom1Between(String value1, String value2) {
+            addCriterion("ti_custom1 between", value1, value2, "tiCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andBz3NotBetween(String value1, String value2) {
-            addCriterion("bz3 not between", value1, value2, "bz3");
+        public Criteria andTiCustom1NotBetween(String value1, String value2) {
+            addCriterion("ti_custom1 not between", value1, value2, "tiCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andBz4IsNull() {
-            addCriterion("bz4 is null");
+        public Criteria andTiCustom2IsNull() {
+            addCriterion("ti_custom2 is null");
             return (Criteria) this;
         }
 
-        public Criteria andBz4IsNotNull() {
-            addCriterion("bz4 is not null");
+        public Criteria andTiCustom2IsNotNull() {
+            addCriterion("ti_custom2 is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBz4EqualTo(String value) {
-            addCriterion("bz4 =", value, "bz4");
+        public Criteria andTiCustom2EqualTo(String value) {
+            addCriterion("ti_custom2 =", value, "tiCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andBz4NotEqualTo(String value) {
-            addCriterion("bz4 <>", value, "bz4");
+        public Criteria andTiCustom2NotEqualTo(String value) {
+            addCriterion("ti_custom2 <>", value, "tiCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andBz4GreaterThan(String value) {
-            addCriterion("bz4 >", value, "bz4");
+        public Criteria andTiCustom2GreaterThan(String value) {
+            addCriterion("ti_custom2 >", value, "tiCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andBz4GreaterThanOrEqualTo(String value) {
-            addCriterion("bz4 >=", value, "bz4");
+        public Criteria andTiCustom2GreaterThanOrEqualTo(String value) {
+            addCriterion("ti_custom2 >=", value, "tiCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andBz4LessThan(String value) {
-            addCriterion("bz4 <", value, "bz4");
+        public Criteria andTiCustom2LessThan(String value) {
+            addCriterion("ti_custom2 <", value, "tiCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andBz4LessThanOrEqualTo(String value) {
-            addCriterion("bz4 <=", value, "bz4");
+        public Criteria andTiCustom2LessThanOrEqualTo(String value) {
+            addCriterion("ti_custom2 <=", value, "tiCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andBz4Like(String value) {
-            addCriterion("bz4 like", value, "bz4");
+        public Criteria andTiCustom2Like(String value) {
+            addCriterion("ti_custom2 like", value, "tiCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andBz4NotLike(String value) {
-            addCriterion("bz4 not like", value, "bz4");
+        public Criteria andTiCustom2NotLike(String value) {
+            addCriterion("ti_custom2 not like", value, "tiCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andBz4In(List<String> values) {
-            addCriterion("bz4 in", values, "bz4");
+        public Criteria andTiCustom2In(List<String> values) {
+            addCriterion("ti_custom2 in", values, "tiCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andBz4NotIn(List<String> values) {
-            addCriterion("bz4 not in", values, "bz4");
+        public Criteria andTiCustom2NotIn(List<String> values) {
+            addCriterion("ti_custom2 not in", values, "tiCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andBz4Between(String value1, String value2) {
-            addCriterion("bz4 between", value1, value2, "bz4");
+        public Criteria andTiCustom2Between(String value1, String value2) {
+            addCriterion("ti_custom2 between", value1, value2, "tiCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andBz4NotBetween(String value1, String value2) {
-            addCriterion("bz4 not between", value1, value2, "bz4");
+        public Criteria andTiCustom2NotBetween(String value1, String value2) {
+            addCriterion("ti_custom2 not between", value1, value2, "tiCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andBz5IsNull() {
-            addCriterion("bz5 is null");
+        public Criteria andTiCustom3IsNull() {
+            addCriterion("ti_custom3 is null");
             return (Criteria) this;
         }
 
-        public Criteria andBz5IsNotNull() {
-            addCriterion("bz5 is not null");
+        public Criteria andTiCustom3IsNotNull() {
+            addCriterion("ti_custom3 is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBz5EqualTo(String value) {
-            addCriterion("bz5 =", value, "bz5");
+        public Criteria andTiCustom3EqualTo(String value) {
+            addCriterion("ti_custom3 =", value, "tiCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andBz5NotEqualTo(String value) {
-            addCriterion("bz5 <>", value, "bz5");
+        public Criteria andTiCustom3NotEqualTo(String value) {
+            addCriterion("ti_custom3 <>", value, "tiCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andBz5GreaterThan(String value) {
-            addCriterion("bz5 >", value, "bz5");
+        public Criteria andTiCustom3GreaterThan(String value) {
+            addCriterion("ti_custom3 >", value, "tiCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andBz5GreaterThanOrEqualTo(String value) {
-            addCriterion("bz5 >=", value, "bz5");
+        public Criteria andTiCustom3GreaterThanOrEqualTo(String value) {
+            addCriterion("ti_custom3 >=", value, "tiCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andBz5LessThan(String value) {
-            addCriterion("bz5 <", value, "bz5");
+        public Criteria andTiCustom3LessThan(String value) {
+            addCriterion("ti_custom3 <", value, "tiCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andBz5LessThanOrEqualTo(String value) {
-            addCriterion("bz5 <=", value, "bz5");
+        public Criteria andTiCustom3LessThanOrEqualTo(String value) {
+            addCriterion("ti_custom3 <=", value, "tiCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andBz5Like(String value) {
-            addCriterion("bz5 like", value, "bz5");
+        public Criteria andTiCustom3Like(String value) {
+            addCriterion("ti_custom3 like", value, "tiCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andBz5NotLike(String value) {
-            addCriterion("bz5 not like", value, "bz5");
+        public Criteria andTiCustom3NotLike(String value) {
+            addCriterion("ti_custom3 not like", value, "tiCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andBz5In(List<String> values) {
-            addCriterion("bz5 in", values, "bz5");
+        public Criteria andTiCustom3In(List<String> values) {
+            addCriterion("ti_custom3 in", values, "tiCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andBz5NotIn(List<String> values) {
-            addCriterion("bz5 not in", values, "bz5");
+        public Criteria andTiCustom3NotIn(List<String> values) {
+            addCriterion("ti_custom3 not in", values, "tiCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andBz5Between(String value1, String value2) {
-            addCriterion("bz5 between", value1, value2, "bz5");
+        public Criteria andTiCustom3Between(String value1, String value2) {
+            addCriterion("ti_custom3 between", value1, value2, "tiCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andBz5NotBetween(String value1, String value2) {
-            addCriterion("bz5 not between", value1, value2, "bz5");
+        public Criteria andTiCustom3NotBetween(String value1, String value2) {
+            addCriterion("ti_custom3 not between", value1, value2, "tiCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andBz6IsNull() {
-            addCriterion("bz6 is null");
+        public Criteria andTiCustom4IsNull() {
+            addCriterion("ti_custom4 is null");
             return (Criteria) this;
         }
 
-        public Criteria andBz6IsNotNull() {
-            addCriterion("bz6 is not null");
+        public Criteria andTiCustom4IsNotNull() {
+            addCriterion("ti_custom4 is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBz6EqualTo(String value) {
-            addCriterion("bz6 =", value, "bz6");
+        public Criteria andTiCustom4EqualTo(String value) {
+            addCriterion("ti_custom4 =", value, "tiCustom4");
             return (Criteria) this;
         }
 
-        public Criteria andBz6NotEqualTo(String value) {
-            addCriterion("bz6 <>", value, "bz6");
+        public Criteria andTiCustom4NotEqualTo(String value) {
+            addCriterion("ti_custom4 <>", value, "tiCustom4");
             return (Criteria) this;
         }
 
-        public Criteria andBz6GreaterThan(String value) {
-            addCriterion("bz6 >", value, "bz6");
+        public Criteria andTiCustom4GreaterThan(String value) {
+            addCriterion("ti_custom4 >", value, "tiCustom4");
             return (Criteria) this;
         }
 
-        public Criteria andBz6GreaterThanOrEqualTo(String value) {
-            addCriterion("bz6 >=", value, "bz6");
+        public Criteria andTiCustom4GreaterThanOrEqualTo(String value) {
+            addCriterion("ti_custom4 >=", value, "tiCustom4");
             return (Criteria) this;
         }
 
-        public Criteria andBz6LessThan(String value) {
-            addCriterion("bz6 <", value, "bz6");
+        public Criteria andTiCustom4LessThan(String value) {
+            addCriterion("ti_custom4 <", value, "tiCustom4");
             return (Criteria) this;
         }
 
-        public Criteria andBz6LessThanOrEqualTo(String value) {
-            addCriterion("bz6 <=", value, "bz6");
+        public Criteria andTiCustom4LessThanOrEqualTo(String value) {
+            addCriterion("ti_custom4 <=", value, "tiCustom4");
             return (Criteria) this;
         }
 
-        public Criteria andBz6Like(String value) {
-            addCriterion("bz6 like", value, "bz6");
+        public Criteria andTiCustom4Like(String value) {
+            addCriterion("ti_custom4 like", value, "tiCustom4");
             return (Criteria) this;
         }
 
-        public Criteria andBz6NotLike(String value) {
-            addCriterion("bz6 not like", value, "bz6");
+        public Criteria andTiCustom4NotLike(String value) {
+            addCriterion("ti_custom4 not like", value, "tiCustom4");
             return (Criteria) this;
         }
 
-        public Criteria andBz6In(List<String> values) {
-            addCriterion("bz6 in", values, "bz6");
+        public Criteria andTiCustom4In(List<String> values) {
+            addCriterion("ti_custom4 in", values, "tiCustom4");
             return (Criteria) this;
         }
 
-        public Criteria andBz6NotIn(List<String> values) {
-            addCriterion("bz6 not in", values, "bz6");
+        public Criteria andTiCustom4NotIn(List<String> values) {
+            addCriterion("ti_custom4 not in", values, "tiCustom4");
             return (Criteria) this;
         }
 
-        public Criteria andBz6Between(String value1, String value2) {
-            addCriterion("bz6 between", value1, value2, "bz6");
+        public Criteria andTiCustom4Between(String value1, String value2) {
+            addCriterion("ti_custom4 between", value1, value2, "tiCustom4");
             return (Criteria) this;
         }
 
-        public Criteria andBz6NotBetween(String value1, String value2) {
-            addCriterion("bz6 not between", value1, value2, "bz6");
+        public Criteria andTiCustom4NotBetween(String value1, String value2) {
+            addCriterion("ti_custom4 not between", value1, value2, "tiCustom4");
             return (Criteria) this;
         }
 
-        public Criteria andBz7IsNull() {
-            addCriterion("bz7 is null");
+        public Criteria andTiCustom5IsNull() {
+            addCriterion("ti_custom5 is null");
             return (Criteria) this;
         }
 
-        public Criteria andBz7IsNotNull() {
-            addCriterion("bz7 is not null");
+        public Criteria andTiCustom5IsNotNull() {
+            addCriterion("ti_custom5 is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBz7EqualTo(String value) {
-            addCriterion("bz7 =", value, "bz7");
+        public Criteria andTiCustom5EqualTo(String value) {
+            addCriterion("ti_custom5 =", value, "tiCustom5");
             return (Criteria) this;
         }
 
-        public Criteria andBz7NotEqualTo(String value) {
-            addCriterion("bz7 <>", value, "bz7");
+        public Criteria andTiCustom5NotEqualTo(String value) {
+            addCriterion("ti_custom5 <>", value, "tiCustom5");
             return (Criteria) this;
         }
 
-        public Criteria andBz7GreaterThan(String value) {
-            addCriterion("bz7 >", value, "bz7");
+        public Criteria andTiCustom5GreaterThan(String value) {
+            addCriterion("ti_custom5 >", value, "tiCustom5");
             return (Criteria) this;
         }
 
-        public Criteria andBz7GreaterThanOrEqualTo(String value) {
-            addCriterion("bz7 >=", value, "bz7");
+        public Criteria andTiCustom5GreaterThanOrEqualTo(String value) {
+            addCriterion("ti_custom5 >=", value, "tiCustom5");
             return (Criteria) this;
         }
 
-        public Criteria andBz7LessThan(String value) {
-            addCriterion("bz7 <", value, "bz7");
+        public Criteria andTiCustom5LessThan(String value) {
+            addCriterion("ti_custom5 <", value, "tiCustom5");
             return (Criteria) this;
         }
 
-        public Criteria andBz7LessThanOrEqualTo(String value) {
-            addCriterion("bz7 <=", value, "bz7");
+        public Criteria andTiCustom5LessThanOrEqualTo(String value) {
+            addCriterion("ti_custom5 <=", value, "tiCustom5");
             return (Criteria) this;
         }
 
-        public Criteria andBz7Like(String value) {
-            addCriterion("bz7 like", value, "bz7");
+        public Criteria andTiCustom5Like(String value) {
+            addCriterion("ti_custom5 like", value, "tiCustom5");
             return (Criteria) this;
         }
 
-        public Criteria andBz7NotLike(String value) {
-            addCriterion("bz7 not like", value, "bz7");
+        public Criteria andTiCustom5NotLike(String value) {
+            addCriterion("ti_custom5 not like", value, "tiCustom5");
             return (Criteria) this;
         }
 
-        public Criteria andBz7In(List<String> values) {
-            addCriterion("bz7 in", values, "bz7");
+        public Criteria andTiCustom5In(List<String> values) {
+            addCriterion("ti_custom5 in", values, "tiCustom5");
             return (Criteria) this;
         }
 
-        public Criteria andBz7NotIn(List<String> values) {
-            addCriterion("bz7 not in", values, "bz7");
+        public Criteria andTiCustom5NotIn(List<String> values) {
+            addCriterion("ti_custom5 not in", values, "tiCustom5");
             return (Criteria) this;
         }
 
-        public Criteria andBz7Between(String value1, String value2) {
-            addCriterion("bz7 between", value1, value2, "bz7");
+        public Criteria andTiCustom5Between(String value1, String value2) {
+            addCriterion("ti_custom5 between", value1, value2, "tiCustom5");
             return (Criteria) this;
         }
 
-        public Criteria andBz7NotBetween(String value1, String value2) {
-            addCriterion("bz7 not between", value1, value2, "bz7");
+        public Criteria andTiCustom5NotBetween(String value1, String value2) {
+            addCriterion("ti_custom5 not between", value1, value2, "tiCustom5");
             return (Criteria) this;
         }
 
-        public Criteria andBz8IsNull() {
-            addCriterion("bz8 is null");
+        public Criteria andTiCustom6IsNull() {
+            addCriterion("ti_custom6 is null");
             return (Criteria) this;
         }
 
-        public Criteria andBz8IsNotNull() {
-            addCriterion("bz8 is not null");
+        public Criteria andTiCustom6IsNotNull() {
+            addCriterion("ti_custom6 is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBz8EqualTo(String value) {
-            addCriterion("bz8 =", value, "bz8");
+        public Criteria andTiCustom6EqualTo(String value) {
+            addCriterion("ti_custom6 =", value, "tiCustom6");
             return (Criteria) this;
         }
 
-        public Criteria andBz8NotEqualTo(String value) {
-            addCriterion("bz8 <>", value, "bz8");
+        public Criteria andTiCustom6NotEqualTo(String value) {
+            addCriterion("ti_custom6 <>", value, "tiCustom6");
             return (Criteria) this;
         }
 
-        public Criteria andBz8GreaterThan(String value) {
-            addCriterion("bz8 >", value, "bz8");
+        public Criteria andTiCustom6GreaterThan(String value) {
+            addCriterion("ti_custom6 >", value, "tiCustom6");
             return (Criteria) this;
         }
 
-        public Criteria andBz8GreaterThanOrEqualTo(String value) {
-            addCriterion("bz8 >=", value, "bz8");
+        public Criteria andTiCustom6GreaterThanOrEqualTo(String value) {
+            addCriterion("ti_custom6 >=", value, "tiCustom6");
             return (Criteria) this;
         }
 
-        public Criteria andBz8LessThan(String value) {
-            addCriterion("bz8 <", value, "bz8");
+        public Criteria andTiCustom6LessThan(String value) {
+            addCriterion("ti_custom6 <", value, "tiCustom6");
             return (Criteria) this;
         }
 
-        public Criteria andBz8LessThanOrEqualTo(String value) {
-            addCriterion("bz8 <=", value, "bz8");
+        public Criteria andTiCustom6LessThanOrEqualTo(String value) {
+            addCriterion("ti_custom6 <=", value, "tiCustom6");
             return (Criteria) this;
         }
 
-        public Criteria andBz8Like(String value) {
-            addCriterion("bz8 like", value, "bz8");
+        public Criteria andTiCustom6Like(String value) {
+            addCriterion("ti_custom6 like", value, "tiCustom6");
             return (Criteria) this;
         }
 
-        public Criteria andBz8NotLike(String value) {
-            addCriterion("bz8 not like", value, "bz8");
+        public Criteria andTiCustom6NotLike(String value) {
+            addCriterion("ti_custom6 not like", value, "tiCustom6");
             return (Criteria) this;
         }
 
-        public Criteria andBz8In(List<String> values) {
-            addCriterion("bz8 in", values, "bz8");
+        public Criteria andTiCustom6In(List<String> values) {
+            addCriterion("ti_custom6 in", values, "tiCustom6");
             return (Criteria) this;
         }
 
-        public Criteria andBz8NotIn(List<String> values) {
-            addCriterion("bz8 not in", values, "bz8");
+        public Criteria andTiCustom6NotIn(List<String> values) {
+            addCriterion("ti_custom6 not in", values, "tiCustom6");
             return (Criteria) this;
         }
 
-        public Criteria andBz8Between(String value1, String value2) {
-            addCriterion("bz8 between", value1, value2, "bz8");
+        public Criteria andTiCustom6Between(String value1, String value2) {
+            addCriterion("ti_custom6 between", value1, value2, "tiCustom6");
             return (Criteria) this;
         }
 
-        public Criteria andBz8NotBetween(String value1, String value2) {
-            addCriterion("bz8 not between", value1, value2, "bz8");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz9IsNull() {
-            addCriterion("bz9 is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz9IsNotNull() {
-            addCriterion("bz9 is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz9EqualTo(String value) {
-            addCriterion("bz9 =", value, "bz9");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz9NotEqualTo(String value) {
-            addCriterion("bz9 <>", value, "bz9");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz9GreaterThan(String value) {
-            addCriterion("bz9 >", value, "bz9");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz9GreaterThanOrEqualTo(String value) {
-            addCriterion("bz9 >=", value, "bz9");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz9LessThan(String value) {
-            addCriterion("bz9 <", value, "bz9");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz9LessThanOrEqualTo(String value) {
-            addCriterion("bz9 <=", value, "bz9");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz9Like(String value) {
-            addCriterion("bz9 like", value, "bz9");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz9NotLike(String value) {
-            addCriterion("bz9 not like", value, "bz9");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz9In(List<String> values) {
-            addCriterion("bz9 in", values, "bz9");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz9NotIn(List<String> values) {
-            addCriterion("bz9 not in", values, "bz9");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz9Between(String value1, String value2) {
-            addCriterion("bz9 between", value1, value2, "bz9");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz9NotBetween(String value1, String value2) {
-            addCriterion("bz9 not between", value1, value2, "bz9");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10IsNull() {
-            addCriterion("bz10 is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10IsNotNull() {
-            addCriterion("bz10 is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10EqualTo(String value) {
-            addCriterion("bz10 =", value, "bz10");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10NotEqualTo(String value) {
-            addCriterion("bz10 <>", value, "bz10");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10GreaterThan(String value) {
-            addCriterion("bz10 >", value, "bz10");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10GreaterThanOrEqualTo(String value) {
-            addCriterion("bz10 >=", value, "bz10");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10LessThan(String value) {
-            addCriterion("bz10 <", value, "bz10");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10LessThanOrEqualTo(String value) {
-            addCriterion("bz10 <=", value, "bz10");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10Like(String value) {
-            addCriterion("bz10 like", value, "bz10");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10NotLike(String value) {
-            addCriterion("bz10 not like", value, "bz10");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10In(List<String> values) {
-            addCriterion("bz10 in", values, "bz10");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10NotIn(List<String> values) {
-            addCriterion("bz10 not in", values, "bz10");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10Between(String value1, String value2) {
-            addCriterion("bz10 between", value1, value2, "bz10");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10NotBetween(String value1, String value2) {
-            addCriterion("bz10 not between", value1, value2, "bz10");
+        public Criteria andTiCustom6NotBetween(String value1, String value2) {
+            addCriterion("ti_custom6 not between", value1, value2, "tiCustom6");
             return (Criteria) this;
         }
     }

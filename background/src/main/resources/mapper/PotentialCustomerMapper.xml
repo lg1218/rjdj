@@ -1,0 +1,925 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.PotentialCustomerMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.PotentialCustomer" >
+    <id column="pc_id" property="pcId" jdbcType="VARCHAR" />
+    <result column="pc_name" property="pcName" jdbcType="VARCHAR" />
+    <result column="pc_easyname" property="pcEasyname" jdbcType="VARCHAR" />
+    <result column="pc_english_name" property="pcEnglishName" jdbcType="VARCHAR" />
+    <result column="pc_charge_person" property="pcChargePerson" jdbcType="VARCHAR" />
+    <result column="pc_type" property="pcType" jdbcType="VARCHAR" />
+    <result column="pc_area" property="pcArea" jdbcType="VARCHAR" />
+    <result column="currency_id" property="currencyId" jdbcType="VARCHAR" />
+    <result column="cg_id" property="cgId" jdbcType="VARCHAR" />
+    <result column="ns_id" property="nsId" jdbcType="VARCHAR" />
+    <result column="Pc_probability_success" property="pcProbabilitySuccess" jdbcType="REAL" />
+    <result column="Pc_decision maker" property="pcDecisionMaker" jdbcType="VARCHAR" />
+    <result column="Pc_negotiation_date" property="pcNegotiationDate" jdbcType="DATE" />
+    <result column="Pc_Appointment_visit_date" property="pcAppointmentVisitDate" jdbcType="DATE" />
+    <result column="Pc_Recent_visit_date" property="pcRecentVisitDate" jdbcType="DATE" />
+    <result column="Pc_Estimated_turnover" property="pcEstimatedTurnover" jdbcType="REAL" />
+    <result column="Pc_Customer_Profile" property="pcCustomerProfile" jdbcType="VARCHAR" />
+    <result column="pc_principalman" property="pcPrincipalman" jdbcType="VARCHAR" />
+    <result column="pc_linkman" property="pcLinkman" jdbcType="VARCHAR" />
+    <result column="pc_linktela" property="pcLinktela" jdbcType="VARCHAR" />
+    <result column="pc_linktelb" property="pcLinktelb" jdbcType="VARCHAR" />
+    <result column="pc_linktelc" property="pcLinktelc" jdbcType="VARCHAR" />
+    <result column="pc_mobilephone" property="pcMobilephone" jdbcType="VARCHAR" />
+    <result column="ada_id" property="adaId" jdbcType="VARCHAR" />
+    <result column="bank_id" property="bankId" jdbcType="VARCHAR" />
+    <result column="Pc_servicer" property="pcServicer" jdbcType="VARCHAR" />
+    <result column="pc_taxcheckno" property="pcTaxcheckno" jdbcType="VARCHAR" />
+    <result column="pc_capitalmoney" property="pcCapitalmoney" jdbcType="REAL" />
+    <result column="pc_job" property="pcJob" jdbcType="VARCHAR" />
+    <result column="pc_email" property="pcEmail" jdbcType="VARCHAR" />
+    <result column="pc_webadd" property="pcWebadd" jdbcType="VARCHAR" />
+    <result column="pc_faxno" property="pcFaxno" jdbcType="VARCHAR" />
+    <result column="Pc_Expiry_date" property="pcExpiryDate" jdbcType="DATE" />
+    <result column="pc_salelv" property="pcSalelv" jdbcType="VARCHAR" />
+    <result column="Receivable_id" property="receivableId" jdbcType="VARCHAR" />
+    <result column="pc_cuendorderday" property="pcCuendorderday" jdbcType="DATE" />
+    <result column="It_Accounts_eceivable_subject" property="itAccountsEceivableSubject" jdbcType="VARCHAR" />
+    <result column="pc_discountpoint" property="pcDiscountpoint" jdbcType="REAL" />
+    <result column="pc_honestlv" property="pcHonestlv" jdbcType="VARCHAR" />
+    <result column="pc_cuiftax" property="pcCuiftax" jdbcType="INTEGER" />
+    <result column="It_deposit_received_subject" property="itDepositReceivedSubject" jdbcType="VARCHAR" />
+    <result column="pc_remark" property="pcRemark" jdbcType="VARCHAR" />
+    <result column="pc_Auditing" property="pcAuditing" jdbcType="VARCHAR" />
+    <result column="pc_yn" property="pcYn" jdbcType="VARCHAR" />
+    <result column="pc_custom1" property="pcCustom1" jdbcType="VARCHAR" />
+    <result column="pc_custom2" property="pcCustom2" jdbcType="VARCHAR" />
+    <result column="pc_custom3" property="pcCustom3" jdbcType="VARCHAR" />
+    <result column="pc_custom4" property="pcCustom4" jdbcType="VARCHAR" />
+    <result column="pc_custom5" property="pcCustom5" jdbcType="VARCHAR" />
+    <result column="pc_custom6" property="pcCustom6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pc_id, pc_name, pc_easyname, pc_english_name, pc_charge_person, pc_type, pc_area, 
+    currency_id, cg_id, ns_id, Pc_probability_success, "Pc_decision maker", Pc_negotiation_date, 
+    Pc_Appointment_visit_date, Pc_Recent_visit_date, Pc_Estimated_turnover, Pc_Customer_Profile, 
+    pc_principalman, pc_linkman, pc_linktela, pc_linktelb, pc_linktelc, pc_mobilephone, 
+    ada_id, bank_id, Pc_servicer, pc_taxcheckno, pc_capitalmoney, pc_job, pc_email, pc_webadd, 
+    pc_faxno, Pc_Expiry_date, pc_salelv, Receivable_id, pc_cuendorderday, It_Accounts_eceivable_subject, 
+    pc_discountpoint, pc_honestlv, pc_cuiftax, It_deposit_received_subject, pc_remark, 
+    pc_Auditing, pc_yn, pc_custom1, pc_custom2, pc_custom3, pc_custom4, pc_custom5, pc_custom6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.PotentialCustomerExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from potential_customer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from potential_customer
+    where pc_id = #{pcId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from potential_customer
+    where pc_id = #{pcId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.PotentialCustomerExample" >
+    delete from potential_customer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.PotentialCustomer" >
+    insert into potential_customer (pc_id, pc_name, pc_easyname, 
+      pc_english_name, pc_charge_person, pc_type, 
+      pc_area, currency_id, cg_id, 
+      ns_id, Pc_probability_success, "Pc_decision maker", 
+      Pc_negotiation_date, Pc_Appointment_visit_date, Pc_Recent_visit_date, 
+      Pc_Estimated_turnover, Pc_Customer_Profile, pc_principalman, 
+      pc_linkman, pc_linktela, pc_linktelb, 
+      pc_linktelc, pc_mobilephone, ada_id, 
+      bank_id, Pc_servicer, pc_taxcheckno, 
+      pc_capitalmoney, pc_job, pc_email, 
+      pc_webadd, pc_faxno, Pc_Expiry_date, 
+      pc_salelv, Receivable_id, pc_cuendorderday, 
+      It_Accounts_eceivable_subject, pc_discountpoint, 
+      pc_honestlv, pc_cuiftax, It_deposit_received_subject, 
+      pc_remark, pc_Auditing, pc_yn, 
+      pc_custom1, pc_custom2, pc_custom3, 
+      pc_custom4, pc_custom5, pc_custom6
+      )
+    values (#{pcId,jdbcType=VARCHAR}, #{pcName,jdbcType=VARCHAR}, #{pcEasyname,jdbcType=VARCHAR}, 
+      #{pcEnglishName,jdbcType=VARCHAR}, #{pcChargePerson,jdbcType=VARCHAR}, #{pcType,jdbcType=VARCHAR}, 
+      #{pcArea,jdbcType=VARCHAR}, #{currencyId,jdbcType=VARCHAR}, #{cgId,jdbcType=VARCHAR}, 
+      #{nsId,jdbcType=VARCHAR}, #{pcProbabilitySuccess,jdbcType=REAL}, #{pcDecisionMaker,jdbcType=VARCHAR}, 
+      #{pcNegotiationDate,jdbcType=DATE}, #{pcAppointmentVisitDate,jdbcType=DATE}, #{pcRecentVisitDate,jdbcType=DATE}, 
+      #{pcEstimatedTurnover,jdbcType=REAL}, #{pcCustomerProfile,jdbcType=VARCHAR}, #{pcPrincipalman,jdbcType=VARCHAR}, 
+      #{pcLinkman,jdbcType=VARCHAR}, #{pcLinktela,jdbcType=VARCHAR}, #{pcLinktelb,jdbcType=VARCHAR}, 
+      #{pcLinktelc,jdbcType=VARCHAR}, #{pcMobilephone,jdbcType=VARCHAR}, #{adaId,jdbcType=VARCHAR}, 
+      #{bankId,jdbcType=VARCHAR}, #{pcServicer,jdbcType=VARCHAR}, #{pcTaxcheckno,jdbcType=VARCHAR}, 
+      #{pcCapitalmoney,jdbcType=REAL}, #{pcJob,jdbcType=VARCHAR}, #{pcEmail,jdbcType=VARCHAR}, 
+      #{pcWebadd,jdbcType=VARCHAR}, #{pcFaxno,jdbcType=VARCHAR}, #{pcExpiryDate,jdbcType=DATE}, 
+      #{pcSalelv,jdbcType=VARCHAR}, #{receivableId,jdbcType=VARCHAR}, #{pcCuendorderday,jdbcType=DATE}, 
+      #{itAccountsEceivableSubject,jdbcType=VARCHAR}, #{pcDiscountpoint,jdbcType=REAL}, 
+      #{pcHonestlv,jdbcType=VARCHAR}, #{pcCuiftax,jdbcType=INTEGER}, #{itDepositReceivedSubject,jdbcType=VARCHAR}, 
+      #{pcRemark,jdbcType=VARCHAR}, #{pcAuditing,jdbcType=VARCHAR}, #{pcYn,jdbcType=VARCHAR}, 
+      #{pcCustom1,jdbcType=VARCHAR}, #{pcCustom2,jdbcType=VARCHAR}, #{pcCustom3,jdbcType=VARCHAR}, 
+      #{pcCustom4,jdbcType=VARCHAR}, #{pcCustom5,jdbcType=VARCHAR}, #{pcCustom6,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.PotentialCustomer" >
+    insert into potential_customer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pcId != null" >
+        pc_id,
+      </if>
+      <if test="pcName != null" >
+        pc_name,
+      </if>
+      <if test="pcEasyname != null" >
+        pc_easyname,
+      </if>
+      <if test="pcEnglishName != null" >
+        pc_english_name,
+      </if>
+      <if test="pcChargePerson != null" >
+        pc_charge_person,
+      </if>
+      <if test="pcType != null" >
+        pc_type,
+      </if>
+      <if test="pcArea != null" >
+        pc_area,
+      </if>
+      <if test="currencyId != null" >
+        currency_id,
+      </if>
+      <if test="cgId != null" >
+        cg_id,
+      </if>
+      <if test="nsId != null" >
+        ns_id,
+      </if>
+      <if test="pcProbabilitySuccess != null" >
+        Pc_probability_success,
+      </if>
+      <if test="pcDecisionMaker != null" >
+        "Pc_decision maker",
+      </if>
+      <if test="pcNegotiationDate != null" >
+        Pc_negotiation_date,
+      </if>
+      <if test="pcAppointmentVisitDate != null" >
+        Pc_Appointment_visit_date,
+      </if>
+      <if test="pcRecentVisitDate != null" >
+        Pc_Recent_visit_date,
+      </if>
+      <if test="pcEstimatedTurnover != null" >
+        Pc_Estimated_turnover,
+      </if>
+      <if test="pcCustomerProfile != null" >
+        Pc_Customer_Profile,
+      </if>
+      <if test="pcPrincipalman != null" >
+        pc_principalman,
+      </if>
+      <if test="pcLinkman != null" >
+        pc_linkman,
+      </if>
+      <if test="pcLinktela != null" >
+        pc_linktela,
+      </if>
+      <if test="pcLinktelb != null" >
+        pc_linktelb,
+      </if>
+      <if test="pcLinktelc != null" >
+        pc_linktelc,
+      </if>
+      <if test="pcMobilephone != null" >
+        pc_mobilephone,
+      </if>
+      <if test="adaId != null" >
+        ada_id,
+      </if>
+      <if test="bankId != null" >
+        bank_id,
+      </if>
+      <if test="pcServicer != null" >
+        Pc_servicer,
+      </if>
+      <if test="pcTaxcheckno != null" >
+        pc_taxcheckno,
+      </if>
+      <if test="pcCapitalmoney != null" >
+        pc_capitalmoney,
+      </if>
+      <if test="pcJob != null" >
+        pc_job,
+      </if>
+      <if test="pcEmail != null" >
+        pc_email,
+      </if>
+      <if test="pcWebadd != null" >
+        pc_webadd,
+      </if>
+      <if test="pcFaxno != null" >
+        pc_faxno,
+      </if>
+      <if test="pcExpiryDate != null" >
+        Pc_Expiry_date,
+      </if>
+      <if test="pcSalelv != null" >
+        pc_salelv,
+      </if>
+      <if test="receivableId != null" >
+        Receivable_id,
+      </if>
+      <if test="pcCuendorderday != null" >
+        pc_cuendorderday,
+      </if>
+      <if test="itAccountsEceivableSubject != null" >
+        It_Accounts_eceivable_subject,
+      </if>
+      <if test="pcDiscountpoint != null" >
+        pc_discountpoint,
+      </if>
+      <if test="pcHonestlv != null" >
+        pc_honestlv,
+      </if>
+      <if test="pcCuiftax != null" >
+        pc_cuiftax,
+      </if>
+      <if test="itDepositReceivedSubject != null" >
+        It_deposit_received_subject,
+      </if>
+      <if test="pcRemark != null" >
+        pc_remark,
+      </if>
+      <if test="pcAuditing != null" >
+        pc_Auditing,
+      </if>
+      <if test="pcYn != null" >
+        pc_yn,
+      </if>
+      <if test="pcCustom1 != null" >
+        pc_custom1,
+      </if>
+      <if test="pcCustom2 != null" >
+        pc_custom2,
+      </if>
+      <if test="pcCustom3 != null" >
+        pc_custom3,
+      </if>
+      <if test="pcCustom4 != null" >
+        pc_custom4,
+      </if>
+      <if test="pcCustom5 != null" >
+        pc_custom5,
+      </if>
+      <if test="pcCustom6 != null" >
+        pc_custom6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pcId != null" >
+        #{pcId,jdbcType=VARCHAR},
+      </if>
+      <if test="pcName != null" >
+        #{pcName,jdbcType=VARCHAR},
+      </if>
+      <if test="pcEasyname != null" >
+        #{pcEasyname,jdbcType=VARCHAR},
+      </if>
+      <if test="pcEnglishName != null" >
+        #{pcEnglishName,jdbcType=VARCHAR},
+      </if>
+      <if test="pcChargePerson != null" >
+        #{pcChargePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="pcType != null" >
+        #{pcType,jdbcType=VARCHAR},
+      </if>
+      <if test="pcArea != null" >
+        #{pcArea,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyId != null" >
+        #{currencyId,jdbcType=VARCHAR},
+      </if>
+      <if test="cgId != null" >
+        #{cgId,jdbcType=VARCHAR},
+      </if>
+      <if test="nsId != null" >
+        #{nsId,jdbcType=VARCHAR},
+      </if>
+      <if test="pcProbabilitySuccess != null" >
+        #{pcProbabilitySuccess,jdbcType=REAL},
+      </if>
+      <if test="pcDecisionMaker != null" >
+        #{pcDecisionMaker,jdbcType=VARCHAR},
+      </if>
+      <if test="pcNegotiationDate != null" >
+        #{pcNegotiationDate,jdbcType=DATE},
+      </if>
+      <if test="pcAppointmentVisitDate != null" >
+        #{pcAppointmentVisitDate,jdbcType=DATE},
+      </if>
+      <if test="pcRecentVisitDate != null" >
+        #{pcRecentVisitDate,jdbcType=DATE},
+      </if>
+      <if test="pcEstimatedTurnover != null" >
+        #{pcEstimatedTurnover,jdbcType=REAL},
+      </if>
+      <if test="pcCustomerProfile != null" >
+        #{pcCustomerProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="pcPrincipalman != null" >
+        #{pcPrincipalman,jdbcType=VARCHAR},
+      </if>
+      <if test="pcLinkman != null" >
+        #{pcLinkman,jdbcType=VARCHAR},
+      </if>
+      <if test="pcLinktela != null" >
+        #{pcLinktela,jdbcType=VARCHAR},
+      </if>
+      <if test="pcLinktelb != null" >
+        #{pcLinktelb,jdbcType=VARCHAR},
+      </if>
+      <if test="pcLinktelc != null" >
+        #{pcLinktelc,jdbcType=VARCHAR},
+      </if>
+      <if test="pcMobilephone != null" >
+        #{pcMobilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="adaId != null" >
+        #{adaId,jdbcType=VARCHAR},
+      </if>
+      <if test="bankId != null" >
+        #{bankId,jdbcType=VARCHAR},
+      </if>
+      <if test="pcServicer != null" >
+        #{pcServicer,jdbcType=VARCHAR},
+      </if>
+      <if test="pcTaxcheckno != null" >
+        #{pcTaxcheckno,jdbcType=VARCHAR},
+      </if>
+      <if test="pcCapitalmoney != null" >
+        #{pcCapitalmoney,jdbcType=REAL},
+      </if>
+      <if test="pcJob != null" >
+        #{pcJob,jdbcType=VARCHAR},
+      </if>
+      <if test="pcEmail != null" >
+        #{pcEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="pcWebadd != null" >
+        #{pcWebadd,jdbcType=VARCHAR},
+      </if>
+      <if test="pcFaxno != null" >
+        #{pcFaxno,jdbcType=VARCHAR},
+      </if>
+      <if test="pcExpiryDate != null" >
+        #{pcExpiryDate,jdbcType=DATE},
+      </if>
+      <if test="pcSalelv != null" >
+        #{pcSalelv,jdbcType=VARCHAR},
+      </if>
+      <if test="receivableId != null" >
+        #{receivableId,jdbcType=VARCHAR},
+      </if>
+      <if test="pcCuendorderday != null" >
+        #{pcCuendorderday,jdbcType=DATE},
+      </if>
+      <if test="itAccountsEceivableSubject != null" >
+        #{itAccountsEceivableSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="pcDiscountpoint != null" >
+        #{pcDiscountpoint,jdbcType=REAL},
+      </if>
+      <if test="pcHonestlv != null" >
+        #{pcHonestlv,jdbcType=VARCHAR},
+      </if>
+      <if test="pcCuiftax != null" >
+        #{pcCuiftax,jdbcType=INTEGER},
+      </if>
+      <if test="itDepositReceivedSubject != null" >
+        #{itDepositReceivedSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="pcRemark != null" >
+        #{pcRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="pcAuditing != null" >
+        #{pcAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="pcYn != null" >
+        #{pcYn,jdbcType=VARCHAR},
+      </if>
+      <if test="pcCustom1 != null" >
+        #{pcCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="pcCustom2 != null" >
+        #{pcCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="pcCustom3 != null" >
+        #{pcCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="pcCustom4 != null" >
+        #{pcCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="pcCustom5 != null" >
+        #{pcCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="pcCustom6 != null" >
+        #{pcCustom6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.PotentialCustomerExample" resultType="java.lang.Integer" >
+    select count(*) from potential_customer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update potential_customer
+    <set >
+      <if test="record.pcId != null" >
+        pc_id = #{record.pcId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcName != null" >
+        pc_name = #{record.pcName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcEasyname != null" >
+        pc_easyname = #{record.pcEasyname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcEnglishName != null" >
+        pc_english_name = #{record.pcEnglishName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcChargePerson != null" >
+        pc_charge_person = #{record.pcChargePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcType != null" >
+        pc_type = #{record.pcType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcArea != null" >
+        pc_area = #{record.pcArea,jdbcType=VARCHAR},
+      </if>
+      <if test="record.currencyId != null" >
+        currency_id = #{record.currencyId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cgId != null" >
+        cg_id = #{record.cgId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nsId != null" >
+        ns_id = #{record.nsId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcProbabilitySuccess != null" >
+        Pc_probability_success = #{record.pcProbabilitySuccess,jdbcType=REAL},
+      </if>
+      <if test="record.pcDecisionMaker != null" >
+        "Pc_decision maker" = #{record.pcDecisionMaker,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcNegotiationDate != null" >
+        Pc_negotiation_date = #{record.pcNegotiationDate,jdbcType=DATE},
+      </if>
+      <if test="record.pcAppointmentVisitDate != null" >
+        Pc_Appointment_visit_date = #{record.pcAppointmentVisitDate,jdbcType=DATE},
+      </if>
+      <if test="record.pcRecentVisitDate != null" >
+        Pc_Recent_visit_date = #{record.pcRecentVisitDate,jdbcType=DATE},
+      </if>
+      <if test="record.pcEstimatedTurnover != null" >
+        Pc_Estimated_turnover = #{record.pcEstimatedTurnover,jdbcType=REAL},
+      </if>
+      <if test="record.pcCustomerProfile != null" >
+        Pc_Customer_Profile = #{record.pcCustomerProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcPrincipalman != null" >
+        pc_principalman = #{record.pcPrincipalman,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcLinkman != null" >
+        pc_linkman = #{record.pcLinkman,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcLinktela != null" >
+        pc_linktela = #{record.pcLinktela,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcLinktelb != null" >
+        pc_linktelb = #{record.pcLinktelb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcLinktelc != null" >
+        pc_linktelc = #{record.pcLinktelc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcMobilephone != null" >
+        pc_mobilephone = #{record.pcMobilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adaId != null" >
+        ada_id = #{record.adaId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankId != null" >
+        bank_id = #{record.bankId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcServicer != null" >
+        Pc_servicer = #{record.pcServicer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcTaxcheckno != null" >
+        pc_taxcheckno = #{record.pcTaxcheckno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcCapitalmoney != null" >
+        pc_capitalmoney = #{record.pcCapitalmoney,jdbcType=REAL},
+      </if>
+      <if test="record.pcJob != null" >
+        pc_job = #{record.pcJob,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcEmail != null" >
+        pc_email = #{record.pcEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcWebadd != null" >
+        pc_webadd = #{record.pcWebadd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcFaxno != null" >
+        pc_faxno = #{record.pcFaxno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcExpiryDate != null" >
+        Pc_Expiry_date = #{record.pcExpiryDate,jdbcType=DATE},
+      </if>
+      <if test="record.pcSalelv != null" >
+        pc_salelv = #{record.pcSalelv,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receivableId != null" >
+        Receivable_id = #{record.receivableId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcCuendorderday != null" >
+        pc_cuendorderday = #{record.pcCuendorderday,jdbcType=DATE},
+      </if>
+      <if test="record.itAccountsEceivableSubject != null" >
+        It_Accounts_eceivable_subject = #{record.itAccountsEceivableSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcDiscountpoint != null" >
+        pc_discountpoint = #{record.pcDiscountpoint,jdbcType=REAL},
+      </if>
+      <if test="record.pcHonestlv != null" >
+        pc_honestlv = #{record.pcHonestlv,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcCuiftax != null" >
+        pc_cuiftax = #{record.pcCuiftax,jdbcType=INTEGER},
+      </if>
+      <if test="record.itDepositReceivedSubject != null" >
+        It_deposit_received_subject = #{record.itDepositReceivedSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcRemark != null" >
+        pc_remark = #{record.pcRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcAuditing != null" >
+        pc_Auditing = #{record.pcAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcYn != null" >
+        pc_yn = #{record.pcYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcCustom1 != null" >
+        pc_custom1 = #{record.pcCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcCustom2 != null" >
+        pc_custom2 = #{record.pcCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcCustom3 != null" >
+        pc_custom3 = #{record.pcCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcCustom4 != null" >
+        pc_custom4 = #{record.pcCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcCustom5 != null" >
+        pc_custom5 = #{record.pcCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcCustom6 != null" >
+        pc_custom6 = #{record.pcCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update potential_customer
+    set pc_id = #{record.pcId,jdbcType=VARCHAR},
+      pc_name = #{record.pcName,jdbcType=VARCHAR},
+      pc_easyname = #{record.pcEasyname,jdbcType=VARCHAR},
+      pc_english_name = #{record.pcEnglishName,jdbcType=VARCHAR},
+      pc_charge_person = #{record.pcChargePerson,jdbcType=VARCHAR},
+      pc_type = #{record.pcType,jdbcType=VARCHAR},
+      pc_area = #{record.pcArea,jdbcType=VARCHAR},
+      currency_id = #{record.currencyId,jdbcType=VARCHAR},
+      cg_id = #{record.cgId,jdbcType=VARCHAR},
+      ns_id = #{record.nsId,jdbcType=VARCHAR},
+      Pc_probability_success = #{record.pcProbabilitySuccess,jdbcType=REAL},
+      "Pc_decision maker" = #{record.pcDecisionMaker,jdbcType=VARCHAR},
+      Pc_negotiation_date = #{record.pcNegotiationDate,jdbcType=DATE},
+      Pc_Appointment_visit_date = #{record.pcAppointmentVisitDate,jdbcType=DATE},
+      Pc_Recent_visit_date = #{record.pcRecentVisitDate,jdbcType=DATE},
+      Pc_Estimated_turnover = #{record.pcEstimatedTurnover,jdbcType=REAL},
+      Pc_Customer_Profile = #{record.pcCustomerProfile,jdbcType=VARCHAR},
+      pc_principalman = #{record.pcPrincipalman,jdbcType=VARCHAR},
+      pc_linkman = #{record.pcLinkman,jdbcType=VARCHAR},
+      pc_linktela = #{record.pcLinktela,jdbcType=VARCHAR},
+      pc_linktelb = #{record.pcLinktelb,jdbcType=VARCHAR},
+      pc_linktelc = #{record.pcLinktelc,jdbcType=VARCHAR},
+      pc_mobilephone = #{record.pcMobilephone,jdbcType=VARCHAR},
+      ada_id = #{record.adaId,jdbcType=VARCHAR},
+      bank_id = #{record.bankId,jdbcType=VARCHAR},
+      Pc_servicer = #{record.pcServicer,jdbcType=VARCHAR},
+      pc_taxcheckno = #{record.pcTaxcheckno,jdbcType=VARCHAR},
+      pc_capitalmoney = #{record.pcCapitalmoney,jdbcType=REAL},
+      pc_job = #{record.pcJob,jdbcType=VARCHAR},
+      pc_email = #{record.pcEmail,jdbcType=VARCHAR},
+      pc_webadd = #{record.pcWebadd,jdbcType=VARCHAR},
+      pc_faxno = #{record.pcFaxno,jdbcType=VARCHAR},
+      Pc_Expiry_date = #{record.pcExpiryDate,jdbcType=DATE},
+      pc_salelv = #{record.pcSalelv,jdbcType=VARCHAR},
+      Receivable_id = #{record.receivableId,jdbcType=VARCHAR},
+      pc_cuendorderday = #{record.pcCuendorderday,jdbcType=DATE},
+      It_Accounts_eceivable_subject = #{record.itAccountsEceivableSubject,jdbcType=VARCHAR},
+      pc_discountpoint = #{record.pcDiscountpoint,jdbcType=REAL},
+      pc_honestlv = #{record.pcHonestlv,jdbcType=VARCHAR},
+      pc_cuiftax = #{record.pcCuiftax,jdbcType=INTEGER},
+      It_deposit_received_subject = #{record.itDepositReceivedSubject,jdbcType=VARCHAR},
+      pc_remark = #{record.pcRemark,jdbcType=VARCHAR},
+      pc_Auditing = #{record.pcAuditing,jdbcType=VARCHAR},
+      pc_yn = #{record.pcYn,jdbcType=VARCHAR},
+      pc_custom1 = #{record.pcCustom1,jdbcType=VARCHAR},
+      pc_custom2 = #{record.pcCustom2,jdbcType=VARCHAR},
+      pc_custom3 = #{record.pcCustom3,jdbcType=VARCHAR},
+      pc_custom4 = #{record.pcCustom4,jdbcType=VARCHAR},
+      pc_custom5 = #{record.pcCustom5,jdbcType=VARCHAR},
+      pc_custom6 = #{record.pcCustom6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.PotentialCustomer" >
+    update potential_customer
+    <set >
+      <if test="pcName != null" >
+        pc_name = #{pcName,jdbcType=VARCHAR},
+      </if>
+      <if test="pcEasyname != null" >
+        pc_easyname = #{pcEasyname,jdbcType=VARCHAR},
+      </if>
+      <if test="pcEnglishName != null" >
+        pc_english_name = #{pcEnglishName,jdbcType=VARCHAR},
+      </if>
+      <if test="pcChargePerson != null" >
+        pc_charge_person = #{pcChargePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="pcType != null" >
+        pc_type = #{pcType,jdbcType=VARCHAR},
+      </if>
+      <if test="pcArea != null" >
+        pc_area = #{pcArea,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyId != null" >
+        currency_id = #{currencyId,jdbcType=VARCHAR},
+      </if>
+      <if test="cgId != null" >
+        cg_id = #{cgId,jdbcType=VARCHAR},
+      </if>
+      <if test="nsId != null" >
+        ns_id = #{nsId,jdbcType=VARCHAR},
+      </if>
+      <if test="pcProbabilitySuccess != null" >
+        Pc_probability_success = #{pcProbabilitySuccess,jdbcType=REAL},
+      </if>
+      <if test="pcDecisionMaker != null" >
+        "Pc_decision maker" = #{pcDecisionMaker,jdbcType=VARCHAR},
+      </if>
+      <if test="pcNegotiationDate != null" >
+        Pc_negotiation_date = #{pcNegotiationDate,jdbcType=DATE},
+      </if>
+      <if test="pcAppointmentVisitDate != null" >
+        Pc_Appointment_visit_date = #{pcAppointmentVisitDate,jdbcType=DATE},
+      </if>
+      <if test="pcRecentVisitDate != null" >
+        Pc_Recent_visit_date = #{pcRecentVisitDate,jdbcType=DATE},
+      </if>
+      <if test="pcEstimatedTurnover != null" >
+        Pc_Estimated_turnover = #{pcEstimatedTurnover,jdbcType=REAL},
+      </if>
+      <if test="pcCustomerProfile != null" >
+        Pc_Customer_Profile = #{pcCustomerProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="pcPrincipalman != null" >
+        pc_principalman = #{pcPrincipalman,jdbcType=VARCHAR},
+      </if>
+      <if test="pcLinkman != null" >
+        pc_linkman = #{pcLinkman,jdbcType=VARCHAR},
+      </if>
+      <if test="pcLinktela != null" >
+        pc_linktela = #{pcLinktela,jdbcType=VARCHAR},
+      </if>
+      <if test="pcLinktelb != null" >
+        pc_linktelb = #{pcLinktelb,jdbcType=VARCHAR},
+      </if>
+      <if test="pcLinktelc != null" >
+        pc_linktelc = #{pcLinktelc,jdbcType=VARCHAR},
+      </if>
+      <if test="pcMobilephone != null" >
+        pc_mobilephone = #{pcMobilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="adaId != null" >
+        ada_id = #{adaId,jdbcType=VARCHAR},
+      </if>
+      <if test="bankId != null" >
+        bank_id = #{bankId,jdbcType=VARCHAR},
+      </if>
+      <if test="pcServicer != null" >
+        Pc_servicer = #{pcServicer,jdbcType=VARCHAR},
+      </if>
+      <if test="pcTaxcheckno != null" >
+        pc_taxcheckno = #{pcTaxcheckno,jdbcType=VARCHAR},
+      </if>
+      <if test="pcCapitalmoney != null" >
+        pc_capitalmoney = #{pcCapitalmoney,jdbcType=REAL},
+      </if>
+      <if test="pcJob != null" >
+        pc_job = #{pcJob,jdbcType=VARCHAR},
+      </if>
+      <if test="pcEmail != null" >
+        pc_email = #{pcEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="pcWebadd != null" >
+        pc_webadd = #{pcWebadd,jdbcType=VARCHAR},
+      </if>
+      <if test="pcFaxno != null" >
+        pc_faxno = #{pcFaxno,jdbcType=VARCHAR},
+      </if>
+      <if test="pcExpiryDate != null" >
+        Pc_Expiry_date = #{pcExpiryDate,jdbcType=DATE},
+      </if>
+      <if test="pcSalelv != null" >
+        pc_salelv = #{pcSalelv,jdbcType=VARCHAR},
+      </if>
+      <if test="receivableId != null" >
+        Receivable_id = #{receivableId,jdbcType=VARCHAR},
+      </if>
+      <if test="pcCuendorderday != null" >
+        pc_cuendorderday = #{pcCuendorderday,jdbcType=DATE},
+      </if>
+      <if test="itAccountsEceivableSubject != null" >
+        It_Accounts_eceivable_subject = #{itAccountsEceivableSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="pcDiscountpoint != null" >
+        pc_discountpoint = #{pcDiscountpoint,jdbcType=REAL},
+      </if>
+      <if test="pcHonestlv != null" >
+        pc_honestlv = #{pcHonestlv,jdbcType=VARCHAR},
+      </if>
+      <if test="pcCuiftax != null" >
+        pc_cuiftax = #{pcCuiftax,jdbcType=INTEGER},
+      </if>
+      <if test="itDepositReceivedSubject != null" >
+        It_deposit_received_subject = #{itDepositReceivedSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="pcRemark != null" >
+        pc_remark = #{pcRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="pcAuditing != null" >
+        pc_Auditing = #{pcAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="pcYn != null" >
+        pc_yn = #{pcYn,jdbcType=VARCHAR},
+      </if>
+      <if test="pcCustom1 != null" >
+        pc_custom1 = #{pcCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="pcCustom2 != null" >
+        pc_custom2 = #{pcCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="pcCustom3 != null" >
+        pc_custom3 = #{pcCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="pcCustom4 != null" >
+        pc_custom4 = #{pcCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="pcCustom5 != null" >
+        pc_custom5 = #{pcCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="pcCustom6 != null" >
+        pc_custom6 = #{pcCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pc_id = #{pcId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.PotentialCustomer" >
+    update potential_customer
+    set pc_name = #{pcName,jdbcType=VARCHAR},
+      pc_easyname = #{pcEasyname,jdbcType=VARCHAR},
+      pc_english_name = #{pcEnglishName,jdbcType=VARCHAR},
+      pc_charge_person = #{pcChargePerson,jdbcType=VARCHAR},
+      pc_type = #{pcType,jdbcType=VARCHAR},
+      pc_area = #{pcArea,jdbcType=VARCHAR},
+      currency_id = #{currencyId,jdbcType=VARCHAR},
+      cg_id = #{cgId,jdbcType=VARCHAR},
+      ns_id = #{nsId,jdbcType=VARCHAR},
+      Pc_probability_success = #{pcProbabilitySuccess,jdbcType=REAL},
+      "Pc_decision maker" = #{pcDecisionMaker,jdbcType=VARCHAR},
+      Pc_negotiation_date = #{pcNegotiationDate,jdbcType=DATE},
+      Pc_Appointment_visit_date = #{pcAppointmentVisitDate,jdbcType=DATE},
+      Pc_Recent_visit_date = #{pcRecentVisitDate,jdbcType=DATE},
+      Pc_Estimated_turnover = #{pcEstimatedTurnover,jdbcType=REAL},
+      Pc_Customer_Profile = #{pcCustomerProfile,jdbcType=VARCHAR},
+      pc_principalman = #{pcPrincipalman,jdbcType=VARCHAR},
+      pc_linkman = #{pcLinkman,jdbcType=VARCHAR},
+      pc_linktela = #{pcLinktela,jdbcType=VARCHAR},
+      pc_linktelb = #{pcLinktelb,jdbcType=VARCHAR},
+      pc_linktelc = #{pcLinktelc,jdbcType=VARCHAR},
+      pc_mobilephone = #{pcMobilephone,jdbcType=VARCHAR},
+      ada_id = #{adaId,jdbcType=VARCHAR},
+      bank_id = #{bankId,jdbcType=VARCHAR},
+      Pc_servicer = #{pcServicer,jdbcType=VARCHAR},
+      pc_taxcheckno = #{pcTaxcheckno,jdbcType=VARCHAR},
+      pc_capitalmoney = #{pcCapitalmoney,jdbcType=REAL},
+      pc_job = #{pcJob,jdbcType=VARCHAR},
+      pc_email = #{pcEmail,jdbcType=VARCHAR},
+      pc_webadd = #{pcWebadd,jdbcType=VARCHAR},
+      pc_faxno = #{pcFaxno,jdbcType=VARCHAR},
+      Pc_Expiry_date = #{pcExpiryDate,jdbcType=DATE},
+      pc_salelv = #{pcSalelv,jdbcType=VARCHAR},
+      Receivable_id = #{receivableId,jdbcType=VARCHAR},
+      pc_cuendorderday = #{pcCuendorderday,jdbcType=DATE},
+      It_Accounts_eceivable_subject = #{itAccountsEceivableSubject,jdbcType=VARCHAR},
+      pc_discountpoint = #{pcDiscountpoint,jdbcType=REAL},
+      pc_honestlv = #{pcHonestlv,jdbcType=VARCHAR},
+      pc_cuiftax = #{pcCuiftax,jdbcType=INTEGER},
+      It_deposit_received_subject = #{itDepositReceivedSubject,jdbcType=VARCHAR},
+      pc_remark = #{pcRemark,jdbcType=VARCHAR},
+      pc_Auditing = #{pcAuditing,jdbcType=VARCHAR},
+      pc_yn = #{pcYn,jdbcType=VARCHAR},
+      pc_custom1 = #{pcCustom1,jdbcType=VARCHAR},
+      pc_custom2 = #{pcCustom2,jdbcType=VARCHAR},
+      pc_custom3 = #{pcCustom3,jdbcType=VARCHAR},
+      pc_custom4 = #{pcCustom4,jdbcType=VARCHAR},
+      pc_custom5 = #{pcCustom5,jdbcType=VARCHAR},
+      pc_custom6 = #{pcCustom6,jdbcType=VARCHAR}
+    where pc_id = #{pcId,jdbcType=VARCHAR}
+  </update>
+</mapper>

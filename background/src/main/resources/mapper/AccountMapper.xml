@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.AccountMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Account" >
+    <id column="account_id" property="accountId" jdbcType="VARCHAR" />
+    <result column="account_invoicetypename" property="accountInvoicetypename" jdbcType="VARCHAR" />
+    <result column="account_engname" property="accountEngname" jdbcType="VARCHAR" />
+    <result column="account_remark" property="accountRemark" jdbcType="VARCHAR" />
+    <result column="account_Auditing" property="accountAuditing" jdbcType="VARCHAR" />
+    <result column="account_yn" property="accountYn" jdbcType="VARCHAR" />
+    <result column="account_custom1" property="accountCustom1" jdbcType="VARCHAR" />
+    <result column="account_custom2" property="accountCustom2" jdbcType="VARCHAR" />
+    <result column="account_custom3" property="accountCustom3" jdbcType="VARCHAR" />
+    <result column="account_custom4" property="accountCustom4" jdbcType="VARCHAR" />
+    <result column="account_custom5" property="accountCustom5" jdbcType="VARCHAR" />
+    <result column="account_custom6" property="accountCustom6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    account_id, account_invoicetypename, account_engname, account_remark, account_Auditing, 
+    account_yn, account_custom1, account_custom2, account_custom3, account_custom4, account_custom5, 
+    account_custom6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.AccountExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from account
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from account
+    where account_id = #{accountId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from account
+    where account_id = #{accountId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.AccountExample" >
+    delete from account
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Account" >
+    insert into account (account_id, account_invoicetypename, 
+      account_engname, account_remark, account_Auditing, 
+      account_yn, account_custom1, account_custom2, 
+      account_custom3, account_custom4, account_custom5, 
+      account_custom6)
+    values (#{accountId,jdbcType=VARCHAR}, #{accountInvoicetypename,jdbcType=VARCHAR}, 
+      #{accountEngname,jdbcType=VARCHAR}, #{accountRemark,jdbcType=VARCHAR}, #{accountAuditing,jdbcType=VARCHAR}, 
+      #{accountYn,jdbcType=VARCHAR}, #{accountCustom1,jdbcType=VARCHAR}, #{accountCustom2,jdbcType=VARCHAR}, 
+      #{accountCustom3,jdbcType=VARCHAR}, #{accountCustom4,jdbcType=VARCHAR}, #{accountCustom5,jdbcType=VARCHAR}, 
+      #{accountCustom6,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Account" >
+    insert into account
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="accountId != null" >
+        account_id,
+      </if>
+      <if test="accountInvoicetypename != null" >
+        account_invoicetypename,
+      </if>
+      <if test="accountEngname != null" >
+        account_engname,
+      </if>
+      <if test="accountRemark != null" >
+        account_remark,
+      </if>
+      <if test="accountAuditing != null" >
+        account_Auditing,
+      </if>
+      <if test="accountYn != null" >
+        account_yn,
+      </if>
+      <if test="accountCustom1 != null" >
+        account_custom1,
+      </if>
+      <if test="accountCustom2 != null" >
+        account_custom2,
+      </if>
+      <if test="accountCustom3 != null" >
+        account_custom3,
+      </if>
+      <if test="accountCustom4 != null" >
+        account_custom4,
+      </if>
+      <if test="accountCustom5 != null" >
+        account_custom5,
+      </if>
+      <if test="accountCustom6 != null" >
+        account_custom6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="accountId != null" >
+        #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="accountInvoicetypename != null" >
+        #{accountInvoicetypename,jdbcType=VARCHAR},
+      </if>
+      <if test="accountEngname != null" >
+        #{accountEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="accountRemark != null" >
+        #{accountRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="accountAuditing != null" >
+        #{accountAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="accountYn != null" >
+        #{accountYn,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCustom1 != null" >
+        #{accountCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCustom2 != null" >
+        #{accountCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCustom3 != null" >
+        #{accountCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCustom4 != null" >
+        #{accountCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCustom5 != null" >
+        #{accountCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCustom6 != null" >
+        #{accountCustom6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.AccountExample" resultType="java.lang.Integer" >
+    select count(*) from account
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update account
+    <set >
+      <if test="record.accountId != null" >
+        account_id = #{record.accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountInvoicetypename != null" >
+        account_invoicetypename = #{record.accountInvoicetypename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountEngname != null" >
+        account_engname = #{record.accountEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountRemark != null" >
+        account_remark = #{record.accountRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountAuditing != null" >
+        account_Auditing = #{record.accountAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountYn != null" >
+        account_yn = #{record.accountYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountCustom1 != null" >
+        account_custom1 = #{record.accountCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountCustom2 != null" >
+        account_custom2 = #{record.accountCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountCustom3 != null" >
+        account_custom3 = #{record.accountCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountCustom4 != null" >
+        account_custom4 = #{record.accountCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountCustom5 != null" >
+        account_custom5 = #{record.accountCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountCustom6 != null" >
+        account_custom6 = #{record.accountCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update account
+    set account_id = #{record.accountId,jdbcType=VARCHAR},
+      account_invoicetypename = #{record.accountInvoicetypename,jdbcType=VARCHAR},
+      account_engname = #{record.accountEngname,jdbcType=VARCHAR},
+      account_remark = #{record.accountRemark,jdbcType=VARCHAR},
+      account_Auditing = #{record.accountAuditing,jdbcType=VARCHAR},
+      account_yn = #{record.accountYn,jdbcType=VARCHAR},
+      account_custom1 = #{record.accountCustom1,jdbcType=VARCHAR},
+      account_custom2 = #{record.accountCustom2,jdbcType=VARCHAR},
+      account_custom3 = #{record.accountCustom3,jdbcType=VARCHAR},
+      account_custom4 = #{record.accountCustom4,jdbcType=VARCHAR},
+      account_custom5 = #{record.accountCustom5,jdbcType=VARCHAR},
+      account_custom6 = #{record.accountCustom6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.Account" >
+    update account
+    <set >
+      <if test="accountInvoicetypename != null" >
+        account_invoicetypename = #{accountInvoicetypename,jdbcType=VARCHAR},
+      </if>
+      <if test="accountEngname != null" >
+        account_engname = #{accountEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="accountRemark != null" >
+        account_remark = #{accountRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="accountAuditing != null" >
+        account_Auditing = #{accountAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="accountYn != null" >
+        account_yn = #{accountYn,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCustom1 != null" >
+        account_custom1 = #{accountCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCustom2 != null" >
+        account_custom2 = #{accountCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCustom3 != null" >
+        account_custom3 = #{accountCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCustom4 != null" >
+        account_custom4 = #{accountCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCustom5 != null" >
+        account_custom5 = #{accountCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCustom6 != null" >
+        account_custom6 = #{accountCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where account_id = #{accountId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.Account" >
+    update account
+    set account_invoicetypename = #{accountInvoicetypename,jdbcType=VARCHAR},
+      account_engname = #{accountEngname,jdbcType=VARCHAR},
+      account_remark = #{accountRemark,jdbcType=VARCHAR},
+      account_Auditing = #{accountAuditing,jdbcType=VARCHAR},
+      account_yn = #{accountYn,jdbcType=VARCHAR},
+      account_custom1 = #{accountCustom1,jdbcType=VARCHAR},
+      account_custom2 = #{accountCustom2,jdbcType=VARCHAR},
+      account_custom3 = #{accountCustom3,jdbcType=VARCHAR},
+      account_custom4 = #{accountCustom4,jdbcType=VARCHAR},
+      account_custom5 = #{accountCustom5,jdbcType=VARCHAR},
+      account_custom6 = #{accountCustom6,jdbcType=VARCHAR}
+    where account_id = #{accountId,jdbcType=VARCHAR}
+  </update>
+</mapper>

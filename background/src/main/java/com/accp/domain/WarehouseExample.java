@@ -104,1253 +104,1123 @@ public class WarehouseExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andWIdIsNull() {
-            addCriterion("w_id is null");
+        public Criteria andWarehouseIdIsNull() {
+            addCriterion("warehouse_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andWIdIsNotNull() {
-            addCriterion("w_id is not null");
+        public Criteria andWarehouseIdIsNotNull() {
+            addCriterion("warehouse_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andWIdEqualTo(Integer value) {
-            addCriterion("w_id =", value, "wId");
+        public Criteria andWarehouseIdEqualTo(String value) {
+            addCriterion("warehouse_id =", value, "warehouseId");
             return (Criteria) this;
         }
 
-        public Criteria andWIdNotEqualTo(Integer value) {
-            addCriterion("w_id <>", value, "wId");
+        public Criteria andWarehouseIdNotEqualTo(String value) {
+            addCriterion("warehouse_id <>", value, "warehouseId");
             return (Criteria) this;
         }
 
-        public Criteria andWIdGreaterThan(Integer value) {
-            addCriterion("w_id >", value, "wId");
+        public Criteria andWarehouseIdGreaterThan(String value) {
+            addCriterion("warehouse_id >", value, "warehouseId");
             return (Criteria) this;
         }
 
-        public Criteria andWIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("w_id >=", value, "wId");
+        public Criteria andWarehouseIdGreaterThanOrEqualTo(String value) {
+            addCriterion("warehouse_id >=", value, "warehouseId");
             return (Criteria) this;
         }
 
-        public Criteria andWIdLessThan(Integer value) {
-            addCriterion("w_id <", value, "wId");
+        public Criteria andWarehouseIdLessThan(String value) {
+            addCriterion("warehouse_id <", value, "warehouseId");
             return (Criteria) this;
         }
 
-        public Criteria andWIdLessThanOrEqualTo(Integer value) {
-            addCriterion("w_id <=", value, "wId");
+        public Criteria andWarehouseIdLessThanOrEqualTo(String value) {
+            addCriterion("warehouse_id <=", value, "warehouseId");
             return (Criteria) this;
         }
 
-        public Criteria andWIdIn(List<Integer> values) {
-            addCriterion("w_id in", values, "wId");
+        public Criteria andWarehouseIdLike(String value) {
+            addCriterion("warehouse_id like", value, "warehouseId");
             return (Criteria) this;
         }
 
-        public Criteria andWIdNotIn(List<Integer> values) {
-            addCriterion("w_id not in", values, "wId");
+        public Criteria andWarehouseIdNotLike(String value) {
+            addCriterion("warehouse_id not like", value, "warehouseId");
             return (Criteria) this;
         }
 
-        public Criteria andWIdBetween(Integer value1, Integer value2) {
-            addCriterion("w_id between", value1, value2, "wId");
+        public Criteria andWarehouseIdIn(List<String> values) {
+            addCriterion("warehouse_id in", values, "warehouseId");
             return (Criteria) this;
         }
 
-        public Criteria andWIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("w_id not between", value1, value2, "wId");
+        public Criteria andWarehouseIdNotIn(List<String> values) {
+            addCriterion("warehouse_id not in", values, "warehouseId");
             return (Criteria) this;
         }
 
-        public Criteria andWNameIsNull() {
-            addCriterion("w_name is null");
+        public Criteria andWarehouseIdBetween(String value1, String value2) {
+            addCriterion("warehouse_id between", value1, value2, "warehouseId");
             return (Criteria) this;
         }
 
-        public Criteria andWNameIsNotNull() {
-            addCriterion("w_name is not null");
+        public Criteria andWarehouseIdNotBetween(String value1, String value2) {
+            addCriterion("warehouse_id not between", value1, value2, "warehouseId");
             return (Criteria) this;
         }
 
-        public Criteria andWNameEqualTo(String value) {
-            addCriterion("w_name =", value, "wName");
+        public Criteria andWarehouseNameIsNull() {
+            addCriterion("warehouse_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andWNameNotEqualTo(String value) {
-            addCriterion("w_name <>", value, "wName");
+        public Criteria andWarehouseNameIsNotNull() {
+            addCriterion("warehouse_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andWNameGreaterThan(String value) {
-            addCriterion("w_name >", value, "wName");
+        public Criteria andWarehouseNameEqualTo(String value) {
+            addCriterion("warehouse_name =", value, "warehouseName");
             return (Criteria) this;
         }
 
-        public Criteria andWNameGreaterThanOrEqualTo(String value) {
-            addCriterion("w_name >=", value, "wName");
+        public Criteria andWarehouseNameNotEqualTo(String value) {
+            addCriterion("warehouse_name <>", value, "warehouseName");
             return (Criteria) this;
         }
 
-        public Criteria andWNameLessThan(String value) {
-            addCriterion("w_name <", value, "wName");
+        public Criteria andWarehouseNameGreaterThan(String value) {
+            addCriterion("warehouse_name >", value, "warehouseName");
             return (Criteria) this;
         }
 
-        public Criteria andWNameLessThanOrEqualTo(String value) {
-            addCriterion("w_name <=", value, "wName");
+        public Criteria andWarehouseNameGreaterThanOrEqualTo(String value) {
+            addCriterion("warehouse_name >=", value, "warehouseName");
             return (Criteria) this;
         }
 
-        public Criteria andWNameLike(String value) {
-            addCriterion("w_name like", value, "wName");
+        public Criteria andWarehouseNameLessThan(String value) {
+            addCriterion("warehouse_name <", value, "warehouseName");
             return (Criteria) this;
         }
 
-        public Criteria andWNameNotLike(String value) {
-            addCriterion("w_name not like", value, "wName");
+        public Criteria andWarehouseNameLessThanOrEqualTo(String value) {
+            addCriterion("warehouse_name <=", value, "warehouseName");
             return (Criteria) this;
         }
 
-        public Criteria andWNameIn(List<String> values) {
-            addCriterion("w_name in", values, "wName");
+        public Criteria andWarehouseNameLike(String value) {
+            addCriterion("warehouse_name like", value, "warehouseName");
             return (Criteria) this;
         }
 
-        public Criteria andWNameNotIn(List<String> values) {
-            addCriterion("w_name not in", values, "wName");
+        public Criteria andWarehouseNameNotLike(String value) {
+            addCriterion("warehouse_name not like", value, "warehouseName");
             return (Criteria) this;
         }
 
-        public Criteria andWNameBetween(String value1, String value2) {
-            addCriterion("w_name between", value1, value2, "wName");
+        public Criteria andWarehouseNameIn(List<String> values) {
+            addCriterion("warehouse_name in", values, "warehouseName");
             return (Criteria) this;
         }
 
-        public Criteria andWNameNotBetween(String value1, String value2) {
-            addCriterion("w_name not between", value1, value2, "wName");
+        public Criteria andWarehouseNameNotIn(List<String> values) {
+            addCriterion("warehouse_name not in", values, "warehouseName");
             return (Criteria) this;
         }
 
-        public Criteria andWJnameIsNull() {
-            addCriterion("w_jname is null");
+        public Criteria andWarehouseNameBetween(String value1, String value2) {
+            addCriterion("warehouse_name between", value1, value2, "warehouseName");
             return (Criteria) this;
         }
 
-        public Criteria andWJnameIsNotNull() {
-            addCriterion("w_jname is not null");
+        public Criteria andWarehouseNameNotBetween(String value1, String value2) {
+            addCriterion("warehouse_name not between", value1, value2, "warehouseName");
             return (Criteria) this;
         }
 
-        public Criteria andWJnameEqualTo(String value) {
-            addCriterion("w_jname =", value, "wJname");
+        public Criteria andWarehouseEasyNameIsNull() {
+            addCriterion("warehouse_easy_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andWJnameNotEqualTo(String value) {
-            addCriterion("w_jname <>", value, "wJname");
+        public Criteria andWarehouseEasyNameIsNotNull() {
+            addCriterion("warehouse_easy_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andWJnameGreaterThan(String value) {
-            addCriterion("w_jname >", value, "wJname");
+        public Criteria andWarehouseEasyNameEqualTo(String value) {
+            addCriterion("warehouse_easy_name =", value, "warehouseEasyName");
             return (Criteria) this;
         }
 
-        public Criteria andWJnameGreaterThanOrEqualTo(String value) {
-            addCriterion("w_jname >=", value, "wJname");
+        public Criteria andWarehouseEasyNameNotEqualTo(String value) {
+            addCriterion("warehouse_easy_name <>", value, "warehouseEasyName");
             return (Criteria) this;
         }
 
-        public Criteria andWJnameLessThan(String value) {
-            addCriterion("w_jname <", value, "wJname");
+        public Criteria andWarehouseEasyNameGreaterThan(String value) {
+            addCriterion("warehouse_easy_name >", value, "warehouseEasyName");
             return (Criteria) this;
         }
 
-        public Criteria andWJnameLessThanOrEqualTo(String value) {
-            addCriterion("w_jname <=", value, "wJname");
+        public Criteria andWarehouseEasyNameGreaterThanOrEqualTo(String value) {
+            addCriterion("warehouse_easy_name >=", value, "warehouseEasyName");
             return (Criteria) this;
         }
 
-        public Criteria andWJnameLike(String value) {
-            addCriterion("w_jname like", value, "wJname");
+        public Criteria andWarehouseEasyNameLessThan(String value) {
+            addCriterion("warehouse_easy_name <", value, "warehouseEasyName");
             return (Criteria) this;
         }
 
-        public Criteria andWJnameNotLike(String value) {
-            addCriterion("w_jname not like", value, "wJname");
+        public Criteria andWarehouseEasyNameLessThanOrEqualTo(String value) {
+            addCriterion("warehouse_easy_name <=", value, "warehouseEasyName");
             return (Criteria) this;
         }
 
-        public Criteria andWJnameIn(List<String> values) {
-            addCriterion("w_jname in", values, "wJname");
+        public Criteria andWarehouseEasyNameLike(String value) {
+            addCriterion("warehouse_easy_name like", value, "warehouseEasyName");
             return (Criteria) this;
         }
 
-        public Criteria andWJnameNotIn(List<String> values) {
-            addCriterion("w_jname not in", values, "wJname");
+        public Criteria andWarehouseEasyNameNotLike(String value) {
+            addCriterion("warehouse_easy_name not like", value, "warehouseEasyName");
             return (Criteria) this;
         }
 
-        public Criteria andWJnameBetween(String value1, String value2) {
-            addCriterion("w_jname between", value1, value2, "wJname");
+        public Criteria andWarehouseEasyNameIn(List<String> values) {
+            addCriterion("warehouse_easy_name in", values, "warehouseEasyName");
             return (Criteria) this;
         }
 
-        public Criteria andWJnameNotBetween(String value1, String value2) {
-            addCriterion("w_jname not between", value1, value2, "wJname");
+        public Criteria andWarehouseEasyNameNotIn(List<String> values) {
+            addCriterion("warehouse_easy_name not in", values, "warehouseEasyName");
             return (Criteria) this;
         }
 
-        public Criteria andWEnameIsNull() {
-            addCriterion("w_ename is null");
+        public Criteria andWarehouseEasyNameBetween(String value1, String value2) {
+            addCriterion("warehouse_easy_name between", value1, value2, "warehouseEasyName");
             return (Criteria) this;
         }
 
-        public Criteria andWEnameIsNotNull() {
-            addCriterion("w_ename is not null");
+        public Criteria andWarehouseEasyNameNotBetween(String value1, String value2) {
+            addCriterion("warehouse_easy_name not between", value1, value2, "warehouseEasyName");
             return (Criteria) this;
         }
 
-        public Criteria andWEnameEqualTo(String value) {
-            addCriterion("w_ename =", value, "wEname");
+        public Criteria andWarehouseEngnameIsNull() {
+            addCriterion("warehouse_engname is null");
             return (Criteria) this;
         }
 
-        public Criteria andWEnameNotEqualTo(String value) {
-            addCriterion("w_ename <>", value, "wEname");
+        public Criteria andWarehouseEngnameIsNotNull() {
+            addCriterion("warehouse_engname is not null");
             return (Criteria) this;
         }
 
-        public Criteria andWEnameGreaterThan(String value) {
-            addCriterion("w_ename >", value, "wEname");
+        public Criteria andWarehouseEngnameEqualTo(String value) {
+            addCriterion("warehouse_engname =", value, "warehouseEngname");
             return (Criteria) this;
         }
 
-        public Criteria andWEnameGreaterThanOrEqualTo(String value) {
-            addCriterion("w_ename >=", value, "wEname");
+        public Criteria andWarehouseEngnameNotEqualTo(String value) {
+            addCriterion("warehouse_engname <>", value, "warehouseEngname");
             return (Criteria) this;
         }
 
-        public Criteria andWEnameLessThan(String value) {
-            addCriterion("w_ename <", value, "wEname");
+        public Criteria andWarehouseEngnameGreaterThan(String value) {
+            addCriterion("warehouse_engname >", value, "warehouseEngname");
             return (Criteria) this;
         }
 
-        public Criteria andWEnameLessThanOrEqualTo(String value) {
-            addCriterion("w_ename <=", value, "wEname");
+        public Criteria andWarehouseEngnameGreaterThanOrEqualTo(String value) {
+            addCriterion("warehouse_engname >=", value, "warehouseEngname");
             return (Criteria) this;
         }
 
-        public Criteria andWEnameLike(String value) {
-            addCriterion("w_ename like", value, "wEname");
+        public Criteria andWarehouseEngnameLessThan(String value) {
+            addCriterion("warehouse_engname <", value, "warehouseEngname");
             return (Criteria) this;
         }
 
-        public Criteria andWEnameNotLike(String value) {
-            addCriterion("w_ename not like", value, "wEname");
+        public Criteria andWarehouseEngnameLessThanOrEqualTo(String value) {
+            addCriterion("warehouse_engname <=", value, "warehouseEngname");
             return (Criteria) this;
         }
 
-        public Criteria andWEnameIn(List<String> values) {
-            addCriterion("w_ename in", values, "wEname");
+        public Criteria andWarehouseEngnameLike(String value) {
+            addCriterion("warehouse_engname like", value, "warehouseEngname");
             return (Criteria) this;
         }
 
-        public Criteria andWEnameNotIn(List<String> values) {
-            addCriterion("w_ename not in", values, "wEname");
+        public Criteria andWarehouseEngnameNotLike(String value) {
+            addCriterion("warehouse_engname not like", value, "warehouseEngname");
             return (Criteria) this;
         }
 
-        public Criteria andWEnameBetween(String value1, String value2) {
-            addCriterion("w_ename between", value1, value2, "wEname");
+        public Criteria andWarehouseEngnameIn(List<String> values) {
+            addCriterion("warehouse_engname in", values, "warehouseEngname");
             return (Criteria) this;
         }
 
-        public Criteria andWEnameNotBetween(String value1, String value2) {
-            addCriterion("w_ename not between", value1, value2, "wEname");
+        public Criteria andWarehouseEngnameNotIn(List<String> values) {
+            addCriterion("warehouse_engname not in", values, "warehouseEngname");
             return (Criteria) this;
         }
 
-        public Criteria andWLxManIsNull() {
-            addCriterion("w_lx_man is null");
+        public Criteria andWarehouseEngnameBetween(String value1, String value2) {
+            addCriterion("warehouse_engname between", value1, value2, "warehouseEngname");
             return (Criteria) this;
         }
 
-        public Criteria andWLxManIsNotNull() {
-            addCriterion("w_lx_man is not null");
+        public Criteria andWarehouseEngnameNotBetween(String value1, String value2) {
+            addCriterion("warehouse_engname not between", value1, value2, "warehouseEngname");
             return (Criteria) this;
         }
 
-        public Criteria andWLxManEqualTo(String value) {
-            addCriterion("w_lx_man =", value, "wLxMan");
+        public Criteria andWarehouseLinkmanIsNull() {
+            addCriterion("warehouse_linkman is null");
             return (Criteria) this;
         }
 
-        public Criteria andWLxManNotEqualTo(String value) {
-            addCriterion("w_lx_man <>", value, "wLxMan");
+        public Criteria andWarehouseLinkmanIsNotNull() {
+            addCriterion("warehouse_linkman is not null");
             return (Criteria) this;
         }
 
-        public Criteria andWLxManGreaterThan(String value) {
-            addCriterion("w_lx_man >", value, "wLxMan");
+        public Criteria andWarehouseLinkmanEqualTo(String value) {
+            addCriterion("warehouse_linkman =", value, "warehouseLinkman");
             return (Criteria) this;
         }
 
-        public Criteria andWLxManGreaterThanOrEqualTo(String value) {
-            addCriterion("w_lx_man >=", value, "wLxMan");
+        public Criteria andWarehouseLinkmanNotEqualTo(String value) {
+            addCriterion("warehouse_linkman <>", value, "warehouseLinkman");
             return (Criteria) this;
         }
 
-        public Criteria andWLxManLessThan(String value) {
-            addCriterion("w_lx_man <", value, "wLxMan");
+        public Criteria andWarehouseLinkmanGreaterThan(String value) {
+            addCriterion("warehouse_linkman >", value, "warehouseLinkman");
             return (Criteria) this;
         }
 
-        public Criteria andWLxManLessThanOrEqualTo(String value) {
-            addCriterion("w_lx_man <=", value, "wLxMan");
+        public Criteria andWarehouseLinkmanGreaterThanOrEqualTo(String value) {
+            addCriterion("warehouse_linkman >=", value, "warehouseLinkman");
             return (Criteria) this;
         }
 
-        public Criteria andWLxManLike(String value) {
-            addCriterion("w_lx_man like", value, "wLxMan");
+        public Criteria andWarehouseLinkmanLessThan(String value) {
+            addCriterion("warehouse_linkman <", value, "warehouseLinkman");
             return (Criteria) this;
         }
 
-        public Criteria andWLxManNotLike(String value) {
-            addCriterion("w_lx_man not like", value, "wLxMan");
+        public Criteria andWarehouseLinkmanLessThanOrEqualTo(String value) {
+            addCriterion("warehouse_linkman <=", value, "warehouseLinkman");
             return (Criteria) this;
         }
 
-        public Criteria andWLxManIn(List<String> values) {
-            addCriterion("w_lx_man in", values, "wLxMan");
+        public Criteria andWarehouseLinkmanLike(String value) {
+            addCriterion("warehouse_linkman like", value, "warehouseLinkman");
             return (Criteria) this;
         }
 
-        public Criteria andWLxManNotIn(List<String> values) {
-            addCriterion("w_lx_man not in", values, "wLxMan");
+        public Criteria andWarehouseLinkmanNotLike(String value) {
+            addCriterion("warehouse_linkman not like", value, "warehouseLinkman");
             return (Criteria) this;
         }
 
-        public Criteria andWLxManBetween(String value1, String value2) {
-            addCriterion("w_lx_man between", value1, value2, "wLxMan");
+        public Criteria andWarehouseLinkmanIn(List<String> values) {
+            addCriterion("warehouse_linkman in", values, "warehouseLinkman");
             return (Criteria) this;
         }
 
-        public Criteria andWLxManNotBetween(String value1, String value2) {
-            addCriterion("w_lx_man not between", value1, value2, "wLxMan");
+        public Criteria andWarehouseLinkmanNotIn(List<String> values) {
+            addCriterion("warehouse_linkman not in", values, "warehouseLinkman");
             return (Criteria) this;
         }
 
-        public Criteria andWLxPhoneIsNull() {
-            addCriterion("w_lx_phone is null");
+        public Criteria andWarehouseLinkmanBetween(String value1, String value2) {
+            addCriterion("warehouse_linkman between", value1, value2, "warehouseLinkman");
             return (Criteria) this;
         }
 
-        public Criteria andWLxPhoneIsNotNull() {
-            addCriterion("w_lx_phone is not null");
+        public Criteria andWarehouseLinkmanNotBetween(String value1, String value2) {
+            addCriterion("warehouse_linkman not between", value1, value2, "warehouseLinkman");
             return (Criteria) this;
         }
 
-        public Criteria andWLxPhoneEqualTo(String value) {
-            addCriterion("w_lx_phone =", value, "wLxPhone");
+        public Criteria andWarehouseLinktelIsNull() {
+            addCriterion("warehouse_linktel is null");
             return (Criteria) this;
         }
 
-        public Criteria andWLxPhoneNotEqualTo(String value) {
-            addCriterion("w_lx_phone <>", value, "wLxPhone");
+        public Criteria andWarehouseLinktelIsNotNull() {
+            addCriterion("warehouse_linktel is not null");
             return (Criteria) this;
         }
 
-        public Criteria andWLxPhoneGreaterThan(String value) {
-            addCriterion("w_lx_phone >", value, "wLxPhone");
+        public Criteria andWarehouseLinktelEqualTo(String value) {
+            addCriterion("warehouse_linktel =", value, "warehouseLinktel");
             return (Criteria) this;
         }
 
-        public Criteria andWLxPhoneGreaterThanOrEqualTo(String value) {
-            addCriterion("w_lx_phone >=", value, "wLxPhone");
+        public Criteria andWarehouseLinktelNotEqualTo(String value) {
+            addCriterion("warehouse_linktel <>", value, "warehouseLinktel");
             return (Criteria) this;
         }
 
-        public Criteria andWLxPhoneLessThan(String value) {
-            addCriterion("w_lx_phone <", value, "wLxPhone");
+        public Criteria andWarehouseLinktelGreaterThan(String value) {
+            addCriterion("warehouse_linktel >", value, "warehouseLinktel");
             return (Criteria) this;
         }
 
-        public Criteria andWLxPhoneLessThanOrEqualTo(String value) {
-            addCriterion("w_lx_phone <=", value, "wLxPhone");
+        public Criteria andWarehouseLinktelGreaterThanOrEqualTo(String value) {
+            addCriterion("warehouse_linktel >=", value, "warehouseLinktel");
             return (Criteria) this;
         }
 
-        public Criteria andWLxPhoneLike(String value) {
-            addCriterion("w_lx_phone like", value, "wLxPhone");
+        public Criteria andWarehouseLinktelLessThan(String value) {
+            addCriterion("warehouse_linktel <", value, "warehouseLinktel");
             return (Criteria) this;
         }
 
-        public Criteria andWLxPhoneNotLike(String value) {
-            addCriterion("w_lx_phone not like", value, "wLxPhone");
+        public Criteria andWarehouseLinktelLessThanOrEqualTo(String value) {
+            addCriterion("warehouse_linktel <=", value, "warehouseLinktel");
             return (Criteria) this;
         }
 
-        public Criteria andWLxPhoneIn(List<String> values) {
-            addCriterion("w_lx_phone in", values, "wLxPhone");
+        public Criteria andWarehouseLinktelLike(String value) {
+            addCriterion("warehouse_linktel like", value, "warehouseLinktel");
             return (Criteria) this;
         }
 
-        public Criteria andWLxPhoneNotIn(List<String> values) {
-            addCriterion("w_lx_phone not in", values, "wLxPhone");
+        public Criteria andWarehouseLinktelNotLike(String value) {
+            addCriterion("warehouse_linktel not like", value, "warehouseLinktel");
             return (Criteria) this;
         }
 
-        public Criteria andWLxPhoneBetween(String value1, String value2) {
-            addCriterion("w_lx_phone between", value1, value2, "wLxPhone");
+        public Criteria andWarehouseLinktelIn(List<String> values) {
+            addCriterion("warehouse_linktel in", values, "warehouseLinktel");
             return (Criteria) this;
         }
 
-        public Criteria andWLxPhoneNotBetween(String value1, String value2) {
-            addCriterion("w_lx_phone not between", value1, value2, "wLxPhone");
+        public Criteria andWarehouseLinktelNotIn(List<String> values) {
+            addCriterion("warehouse_linktel not in", values, "warehouseLinktel");
             return (Criteria) this;
         }
 
-        public Criteria andWCkAddressIsNull() {
-            addCriterion("w_ck_address is null");
+        public Criteria andWarehouseLinktelBetween(String value1, String value2) {
+            addCriterion("warehouse_linktel between", value1, value2, "warehouseLinktel");
             return (Criteria) this;
         }
 
-        public Criteria andWCkAddressIsNotNull() {
-            addCriterion("w_ck_address is not null");
+        public Criteria andWarehouseLinktelNotBetween(String value1, String value2) {
+            addCriterion("warehouse_linktel not between", value1, value2, "warehouseLinktel");
             return (Criteria) this;
         }
 
-        public Criteria andWCkAddressEqualTo(String value) {
-            addCriterion("w_ck_address =", value, "wCkAddress");
+        public Criteria andWarehouseAddressIsNull() {
+            addCriterion("warehouse_address is null");
             return (Criteria) this;
         }
 
-        public Criteria andWCkAddressNotEqualTo(String value) {
-            addCriterion("w_ck_address <>", value, "wCkAddress");
+        public Criteria andWarehouseAddressIsNotNull() {
+            addCriterion("warehouse_address is not null");
             return (Criteria) this;
         }
 
-        public Criteria andWCkAddressGreaterThan(String value) {
-            addCriterion("w_ck_address >", value, "wCkAddress");
+        public Criteria andWarehouseAddressEqualTo(String value) {
+            addCriterion("warehouse_address =", value, "warehouseAddress");
             return (Criteria) this;
         }
 
-        public Criteria andWCkAddressGreaterThanOrEqualTo(String value) {
-            addCriterion("w_ck_address >=", value, "wCkAddress");
+        public Criteria andWarehouseAddressNotEqualTo(String value) {
+            addCriterion("warehouse_address <>", value, "warehouseAddress");
             return (Criteria) this;
         }
 
-        public Criteria andWCkAddressLessThan(String value) {
-            addCriterion("w_ck_address <", value, "wCkAddress");
+        public Criteria andWarehouseAddressGreaterThan(String value) {
+            addCriterion("warehouse_address >", value, "warehouseAddress");
             return (Criteria) this;
         }
 
-        public Criteria andWCkAddressLessThanOrEqualTo(String value) {
-            addCriterion("w_ck_address <=", value, "wCkAddress");
+        public Criteria andWarehouseAddressGreaterThanOrEqualTo(String value) {
+            addCriterion("warehouse_address >=", value, "warehouseAddress");
             return (Criteria) this;
         }
 
-        public Criteria andWCkAddressLike(String value) {
-            addCriterion("w_ck_address like", value, "wCkAddress");
+        public Criteria andWarehouseAddressLessThan(String value) {
+            addCriterion("warehouse_address <", value, "warehouseAddress");
             return (Criteria) this;
         }
 
-        public Criteria andWCkAddressNotLike(String value) {
-            addCriterion("w_ck_address not like", value, "wCkAddress");
+        public Criteria andWarehouseAddressLessThanOrEqualTo(String value) {
+            addCriterion("warehouse_address <=", value, "warehouseAddress");
             return (Criteria) this;
         }
 
-        public Criteria andWCkAddressIn(List<String> values) {
-            addCriterion("w_ck_address in", values, "wCkAddress");
+        public Criteria andWarehouseAddressLike(String value) {
+            addCriterion("warehouse_address like", value, "warehouseAddress");
             return (Criteria) this;
         }
 
-        public Criteria andWCkAddressNotIn(List<String> values) {
-            addCriterion("w_ck_address not in", values, "wCkAddress");
+        public Criteria andWarehouseAddressNotLike(String value) {
+            addCriterion("warehouse_address not like", value, "warehouseAddress");
             return (Criteria) this;
         }
 
-        public Criteria andWCkAddressBetween(String value1, String value2) {
-            addCriterion("w_ck_address between", value1, value2, "wCkAddress");
+        public Criteria andWarehouseAddressIn(List<String> values) {
+            addCriterion("warehouse_address in", values, "warehouseAddress");
             return (Criteria) this;
         }
 
-        public Criteria andWCkAddressNotBetween(String value1, String value2) {
-            addCriterion("w_ck_address not between", value1, value2, "wCkAddress");
+        public Criteria andWarehouseAddressNotIn(List<String> values) {
+            addCriterion("warehouse_address not in", values, "warehouseAddress");
             return (Criteria) this;
         }
 
-        public Criteria andWRemarkIsNull() {
-            addCriterion("w_remark is null");
+        public Criteria andWarehouseAddressBetween(String value1, String value2) {
+            addCriterion("warehouse_address between", value1, value2, "warehouseAddress");
             return (Criteria) this;
         }
 
-        public Criteria andWRemarkIsNotNull() {
-            addCriterion("w_remark is not null");
+        public Criteria andWarehouseAddressNotBetween(String value1, String value2) {
+            addCriterion("warehouse_address not between", value1, value2, "warehouseAddress");
             return (Criteria) this;
         }
 
-        public Criteria andWRemarkEqualTo(String value) {
-            addCriterion("w_remark =", value, "wRemark");
+        public Criteria andWarehouseDecorationIsNull() {
+            addCriterion("warehouse_decoration is null");
             return (Criteria) this;
         }
 
-        public Criteria andWRemarkNotEqualTo(String value) {
-            addCriterion("w_remark <>", value, "wRemark");
+        public Criteria andWarehouseDecorationIsNotNull() {
+            addCriterion("warehouse_decoration is not null");
             return (Criteria) this;
         }
 
-        public Criteria andWRemarkGreaterThan(String value) {
-            addCriterion("w_remark >", value, "wRemark");
+        public Criteria andWarehouseDecorationEqualTo(String value) {
+            addCriterion("warehouse_decoration =", value, "warehouseDecoration");
             return (Criteria) this;
         }
 
-        public Criteria andWRemarkGreaterThanOrEqualTo(String value) {
-            addCriterion("w_remark >=", value, "wRemark");
+        public Criteria andWarehouseDecorationNotEqualTo(String value) {
+            addCriterion("warehouse_decoration <>", value, "warehouseDecoration");
             return (Criteria) this;
         }
 
-        public Criteria andWRemarkLessThan(String value) {
-            addCriterion("w_remark <", value, "wRemark");
+        public Criteria andWarehouseDecorationGreaterThan(String value) {
+            addCriterion("warehouse_decoration >", value, "warehouseDecoration");
             return (Criteria) this;
         }
 
-        public Criteria andWRemarkLessThanOrEqualTo(String value) {
-            addCriterion("w_remark <=", value, "wRemark");
+        public Criteria andWarehouseDecorationGreaterThanOrEqualTo(String value) {
+            addCriterion("warehouse_decoration >=", value, "warehouseDecoration");
             return (Criteria) this;
         }
 
-        public Criteria andWRemarkLike(String value) {
-            addCriterion("w_remark like", value, "wRemark");
+        public Criteria andWarehouseDecorationLessThan(String value) {
+            addCriterion("warehouse_decoration <", value, "warehouseDecoration");
             return (Criteria) this;
         }
 
-        public Criteria andWRemarkNotLike(String value) {
-            addCriterion("w_remark not like", value, "wRemark");
+        public Criteria andWarehouseDecorationLessThanOrEqualTo(String value) {
+            addCriterion("warehouse_decoration <=", value, "warehouseDecoration");
             return (Criteria) this;
         }
 
-        public Criteria andWRemarkIn(List<String> values) {
-            addCriterion("w_remark in", values, "wRemark");
+        public Criteria andWarehouseDecorationLike(String value) {
+            addCriterion("warehouse_decoration like", value, "warehouseDecoration");
             return (Criteria) this;
         }
 
-        public Criteria andWRemarkNotIn(List<String> values) {
-            addCriterion("w_remark not in", values, "wRemark");
+        public Criteria andWarehouseDecorationNotLike(String value) {
+            addCriterion("warehouse_decoration not like", value, "warehouseDecoration");
             return (Criteria) this;
         }
 
-        public Criteria andWRemarkBetween(String value1, String value2) {
-            addCriterion("w_remark between", value1, value2, "wRemark");
+        public Criteria andWarehouseDecorationIn(List<String> values) {
+            addCriterion("warehouse_decoration in", values, "warehouseDecoration");
             return (Criteria) this;
         }
 
-        public Criteria andWRemarkNotBetween(String value1, String value2) {
-            addCriterion("w_remark not between", value1, value2, "wRemark");
+        public Criteria andWarehouseDecorationNotIn(List<String> values) {
+            addCriterion("warehouse_decoration not in", values, "warehouseDecoration");
             return (Criteria) this;
         }
 
-        public Criteria andBz1IsNull() {
-            addCriterion("bz1 is null");
+        public Criteria andWarehouseDecorationBetween(String value1, String value2) {
+            addCriterion("warehouse_decoration between", value1, value2, "warehouseDecoration");
             return (Criteria) this;
         }
 
-        public Criteria andBz1IsNotNull() {
-            addCriterion("bz1 is not null");
+        public Criteria andWarehouseDecorationNotBetween(String value1, String value2) {
+            addCriterion("warehouse_decoration not between", value1, value2, "warehouseDecoration");
             return (Criteria) this;
         }
 
-        public Criteria andBz1EqualTo(String value) {
-            addCriterion("bz1 =", value, "bz1");
+        public Criteria andWarehouseAuditingIsNull() {
+            addCriterion("warehouse_Auditing is null");
             return (Criteria) this;
         }
 
-        public Criteria andBz1NotEqualTo(String value) {
-            addCriterion("bz1 <>", value, "bz1");
+        public Criteria andWarehouseAuditingIsNotNull() {
+            addCriterion("warehouse_Auditing is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBz1GreaterThan(String value) {
-            addCriterion("bz1 >", value, "bz1");
+        public Criteria andWarehouseAuditingEqualTo(String value) {
+            addCriterion("warehouse_Auditing =", value, "warehouseAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andBz1GreaterThanOrEqualTo(String value) {
-            addCriterion("bz1 >=", value, "bz1");
+        public Criteria andWarehouseAuditingNotEqualTo(String value) {
+            addCriterion("warehouse_Auditing <>", value, "warehouseAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andBz1LessThan(String value) {
-            addCriterion("bz1 <", value, "bz1");
+        public Criteria andWarehouseAuditingGreaterThan(String value) {
+            addCriterion("warehouse_Auditing >", value, "warehouseAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andBz1LessThanOrEqualTo(String value) {
-            addCriterion("bz1 <=", value, "bz1");
+        public Criteria andWarehouseAuditingGreaterThanOrEqualTo(String value) {
+            addCriterion("warehouse_Auditing >=", value, "warehouseAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andBz1Like(String value) {
-            addCriterion("bz1 like", value, "bz1");
+        public Criteria andWarehouseAuditingLessThan(String value) {
+            addCriterion("warehouse_Auditing <", value, "warehouseAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andBz1NotLike(String value) {
-            addCriterion("bz1 not like", value, "bz1");
+        public Criteria andWarehouseAuditingLessThanOrEqualTo(String value) {
+            addCriterion("warehouse_Auditing <=", value, "warehouseAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andBz1In(List<String> values) {
-            addCriterion("bz1 in", values, "bz1");
+        public Criteria andWarehouseAuditingLike(String value) {
+            addCriterion("warehouse_Auditing like", value, "warehouseAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andBz1NotIn(List<String> values) {
-            addCriterion("bz1 not in", values, "bz1");
+        public Criteria andWarehouseAuditingNotLike(String value) {
+            addCriterion("warehouse_Auditing not like", value, "warehouseAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andBz1Between(String value1, String value2) {
-            addCriterion("bz1 between", value1, value2, "bz1");
+        public Criteria andWarehouseAuditingIn(List<String> values) {
+            addCriterion("warehouse_Auditing in", values, "warehouseAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andBz1NotBetween(String value1, String value2) {
-            addCriterion("bz1 not between", value1, value2, "bz1");
+        public Criteria andWarehouseAuditingNotIn(List<String> values) {
+            addCriterion("warehouse_Auditing not in", values, "warehouseAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andBz2IsNull() {
-            addCriterion("bz2 is null");
+        public Criteria andWarehouseAuditingBetween(String value1, String value2) {
+            addCriterion("warehouse_Auditing between", value1, value2, "warehouseAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andBz2IsNotNull() {
-            addCriterion("bz2 is not null");
+        public Criteria andWarehouseAuditingNotBetween(String value1, String value2) {
+            addCriterion("warehouse_Auditing not between", value1, value2, "warehouseAuditing");
             return (Criteria) this;
         }
 
-        public Criteria andBz2EqualTo(String value) {
-            addCriterion("bz2 =", value, "bz2");
+        public Criteria andWarehouseYnIsNull() {
+            addCriterion("warehouse_yn is null");
             return (Criteria) this;
         }
 
-        public Criteria andBz2NotEqualTo(String value) {
-            addCriterion("bz2 <>", value, "bz2");
+        public Criteria andWarehouseYnIsNotNull() {
+            addCriterion("warehouse_yn is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBz2GreaterThan(String value) {
-            addCriterion("bz2 >", value, "bz2");
+        public Criteria andWarehouseYnEqualTo(String value) {
+            addCriterion("warehouse_yn =", value, "warehouseYn");
             return (Criteria) this;
         }
 
-        public Criteria andBz2GreaterThanOrEqualTo(String value) {
-            addCriterion("bz2 >=", value, "bz2");
+        public Criteria andWarehouseYnNotEqualTo(String value) {
+            addCriterion("warehouse_yn <>", value, "warehouseYn");
             return (Criteria) this;
         }
 
-        public Criteria andBz2LessThan(String value) {
-            addCriterion("bz2 <", value, "bz2");
+        public Criteria andWarehouseYnGreaterThan(String value) {
+            addCriterion("warehouse_yn >", value, "warehouseYn");
             return (Criteria) this;
         }
 
-        public Criteria andBz2LessThanOrEqualTo(String value) {
-            addCriterion("bz2 <=", value, "bz2");
+        public Criteria andWarehouseYnGreaterThanOrEqualTo(String value) {
+            addCriterion("warehouse_yn >=", value, "warehouseYn");
             return (Criteria) this;
         }
 
-        public Criteria andBz2Like(String value) {
-            addCriterion("bz2 like", value, "bz2");
+        public Criteria andWarehouseYnLessThan(String value) {
+            addCriterion("warehouse_yn <", value, "warehouseYn");
             return (Criteria) this;
         }
 
-        public Criteria andBz2NotLike(String value) {
-            addCriterion("bz2 not like", value, "bz2");
+        public Criteria andWarehouseYnLessThanOrEqualTo(String value) {
+            addCriterion("warehouse_yn <=", value, "warehouseYn");
             return (Criteria) this;
         }
 
-        public Criteria andBz2In(List<String> values) {
-            addCriterion("bz2 in", values, "bz2");
+        public Criteria andWarehouseYnLike(String value) {
+            addCriterion("warehouse_yn like", value, "warehouseYn");
             return (Criteria) this;
         }
 
-        public Criteria andBz2NotIn(List<String> values) {
-            addCriterion("bz2 not in", values, "bz2");
+        public Criteria andWarehouseYnNotLike(String value) {
+            addCriterion("warehouse_yn not like", value, "warehouseYn");
             return (Criteria) this;
         }
 
-        public Criteria andBz2Between(String value1, String value2) {
-            addCriterion("bz2 between", value1, value2, "bz2");
+        public Criteria andWarehouseYnIn(List<String> values) {
+            addCriterion("warehouse_yn in", values, "warehouseYn");
             return (Criteria) this;
         }
 
-        public Criteria andBz2NotBetween(String value1, String value2) {
-            addCriterion("bz2 not between", value1, value2, "bz2");
+        public Criteria andWarehouseYnNotIn(List<String> values) {
+            addCriterion("warehouse_yn not in", values, "warehouseYn");
             return (Criteria) this;
         }
 
-        public Criteria andBz3IsNull() {
-            addCriterion("bz3 is null");
+        public Criteria andWarehouseYnBetween(String value1, String value2) {
+            addCriterion("warehouse_yn between", value1, value2, "warehouseYn");
             return (Criteria) this;
         }
 
-        public Criteria andBz3IsNotNull() {
-            addCriterion("bz3 is not null");
+        public Criteria andWarehouseYnNotBetween(String value1, String value2) {
+            addCriterion("warehouse_yn not between", value1, value2, "warehouseYn");
             return (Criteria) this;
         }
 
-        public Criteria andBz3EqualTo(String value) {
-            addCriterion("bz3 =", value, "bz3");
+        public Criteria andWarehouseCustom1IsNull() {
+            addCriterion("warehouse_custom1 is null");
             return (Criteria) this;
         }
 
-        public Criteria andBz3NotEqualTo(String value) {
-            addCriterion("bz3 <>", value, "bz3");
+        public Criteria andWarehouseCustom1IsNotNull() {
+            addCriterion("warehouse_custom1 is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBz3GreaterThan(String value) {
-            addCriterion("bz3 >", value, "bz3");
+        public Criteria andWarehouseCustom1EqualTo(String value) {
+            addCriterion("warehouse_custom1 =", value, "warehouseCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andBz3GreaterThanOrEqualTo(String value) {
-            addCriterion("bz3 >=", value, "bz3");
+        public Criteria andWarehouseCustom1NotEqualTo(String value) {
+            addCriterion("warehouse_custom1 <>", value, "warehouseCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andBz3LessThan(String value) {
-            addCriterion("bz3 <", value, "bz3");
+        public Criteria andWarehouseCustom1GreaterThan(String value) {
+            addCriterion("warehouse_custom1 >", value, "warehouseCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andBz3LessThanOrEqualTo(String value) {
-            addCriterion("bz3 <=", value, "bz3");
+        public Criteria andWarehouseCustom1GreaterThanOrEqualTo(String value) {
+            addCriterion("warehouse_custom1 >=", value, "warehouseCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andBz3Like(String value) {
-            addCriterion("bz3 like", value, "bz3");
+        public Criteria andWarehouseCustom1LessThan(String value) {
+            addCriterion("warehouse_custom1 <", value, "warehouseCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andBz3NotLike(String value) {
-            addCriterion("bz3 not like", value, "bz3");
+        public Criteria andWarehouseCustom1LessThanOrEqualTo(String value) {
+            addCriterion("warehouse_custom1 <=", value, "warehouseCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andBz3In(List<String> values) {
-            addCriterion("bz3 in", values, "bz3");
+        public Criteria andWarehouseCustom1Like(String value) {
+            addCriterion("warehouse_custom1 like", value, "warehouseCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andBz3NotIn(List<String> values) {
-            addCriterion("bz3 not in", values, "bz3");
+        public Criteria andWarehouseCustom1NotLike(String value) {
+            addCriterion("warehouse_custom1 not like", value, "warehouseCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andBz3Between(String value1, String value2) {
-            addCriterion("bz3 between", value1, value2, "bz3");
+        public Criteria andWarehouseCustom1In(List<String> values) {
+            addCriterion("warehouse_custom1 in", values, "warehouseCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andBz3NotBetween(String value1, String value2) {
-            addCriterion("bz3 not between", value1, value2, "bz3");
+        public Criteria andWarehouseCustom1NotIn(List<String> values) {
+            addCriterion("warehouse_custom1 not in", values, "warehouseCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andBz4IsNull() {
-            addCriterion("bz4 is null");
+        public Criteria andWarehouseCustom1Between(String value1, String value2) {
+            addCriterion("warehouse_custom1 between", value1, value2, "warehouseCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andBz4IsNotNull() {
-            addCriterion("bz4 is not null");
+        public Criteria andWarehouseCustom1NotBetween(String value1, String value2) {
+            addCriterion("warehouse_custom1 not between", value1, value2, "warehouseCustom1");
             return (Criteria) this;
         }
 
-        public Criteria andBz4EqualTo(String value) {
-            addCriterion("bz4 =", value, "bz4");
+        public Criteria andWarehouseCustom2IsNull() {
+            addCriterion("warehouse_custom2 is null");
             return (Criteria) this;
         }
 
-        public Criteria andBz4NotEqualTo(String value) {
-            addCriterion("bz4 <>", value, "bz4");
+        public Criteria andWarehouseCustom2IsNotNull() {
+            addCriterion("warehouse_custom2 is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBz4GreaterThan(String value) {
-            addCriterion("bz4 >", value, "bz4");
+        public Criteria andWarehouseCustom2EqualTo(String value) {
+            addCriterion("warehouse_custom2 =", value, "warehouseCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andBz4GreaterThanOrEqualTo(String value) {
-            addCriterion("bz4 >=", value, "bz4");
+        public Criteria andWarehouseCustom2NotEqualTo(String value) {
+            addCriterion("warehouse_custom2 <>", value, "warehouseCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andBz4LessThan(String value) {
-            addCriterion("bz4 <", value, "bz4");
+        public Criteria andWarehouseCustom2GreaterThan(String value) {
+            addCriterion("warehouse_custom2 >", value, "warehouseCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andBz4LessThanOrEqualTo(String value) {
-            addCriterion("bz4 <=", value, "bz4");
+        public Criteria andWarehouseCustom2GreaterThanOrEqualTo(String value) {
+            addCriterion("warehouse_custom2 >=", value, "warehouseCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andBz4Like(String value) {
-            addCriterion("bz4 like", value, "bz4");
+        public Criteria andWarehouseCustom2LessThan(String value) {
+            addCriterion("warehouse_custom2 <", value, "warehouseCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andBz4NotLike(String value) {
-            addCriterion("bz4 not like", value, "bz4");
+        public Criteria andWarehouseCustom2LessThanOrEqualTo(String value) {
+            addCriterion("warehouse_custom2 <=", value, "warehouseCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andBz4In(List<String> values) {
-            addCriterion("bz4 in", values, "bz4");
+        public Criteria andWarehouseCustom2Like(String value) {
+            addCriterion("warehouse_custom2 like", value, "warehouseCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andBz4NotIn(List<String> values) {
-            addCriterion("bz4 not in", values, "bz4");
+        public Criteria andWarehouseCustom2NotLike(String value) {
+            addCriterion("warehouse_custom2 not like", value, "warehouseCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andBz4Between(String value1, String value2) {
-            addCriterion("bz4 between", value1, value2, "bz4");
+        public Criteria andWarehouseCustom2In(List<String> values) {
+            addCriterion("warehouse_custom2 in", values, "warehouseCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andBz4NotBetween(String value1, String value2) {
-            addCriterion("bz4 not between", value1, value2, "bz4");
+        public Criteria andWarehouseCustom2NotIn(List<String> values) {
+            addCriterion("warehouse_custom2 not in", values, "warehouseCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andBz5IsNull() {
-            addCriterion("bz5 is null");
+        public Criteria andWarehouseCustom2Between(String value1, String value2) {
+            addCriterion("warehouse_custom2 between", value1, value2, "warehouseCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andBz5IsNotNull() {
-            addCriterion("bz5 is not null");
+        public Criteria andWarehouseCustom2NotBetween(String value1, String value2) {
+            addCriterion("warehouse_custom2 not between", value1, value2, "warehouseCustom2");
             return (Criteria) this;
         }
 
-        public Criteria andBz5EqualTo(String value) {
-            addCriterion("bz5 =", value, "bz5");
+        public Criteria andWarehouseCustom3IsNull() {
+            addCriterion("warehouse_custom3 is null");
             return (Criteria) this;
         }
 
-        public Criteria andBz5NotEqualTo(String value) {
-            addCriterion("bz5 <>", value, "bz5");
+        public Criteria andWarehouseCustom3IsNotNull() {
+            addCriterion("warehouse_custom3 is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBz5GreaterThan(String value) {
-            addCriterion("bz5 >", value, "bz5");
+        public Criteria andWarehouseCustom3EqualTo(String value) {
+            addCriterion("warehouse_custom3 =", value, "warehouseCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andBz5GreaterThanOrEqualTo(String value) {
-            addCriterion("bz5 >=", value, "bz5");
+        public Criteria andWarehouseCustom3NotEqualTo(String value) {
+            addCriterion("warehouse_custom3 <>", value, "warehouseCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andBz5LessThan(String value) {
-            addCriterion("bz5 <", value, "bz5");
+        public Criteria andWarehouseCustom3GreaterThan(String value) {
+            addCriterion("warehouse_custom3 >", value, "warehouseCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andBz5LessThanOrEqualTo(String value) {
-            addCriterion("bz5 <=", value, "bz5");
+        public Criteria andWarehouseCustom3GreaterThanOrEqualTo(String value) {
+            addCriterion("warehouse_custom3 >=", value, "warehouseCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andBz5Like(String value) {
-            addCriterion("bz5 like", value, "bz5");
+        public Criteria andWarehouseCustom3LessThan(String value) {
+            addCriterion("warehouse_custom3 <", value, "warehouseCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andBz5NotLike(String value) {
-            addCriterion("bz5 not like", value, "bz5");
+        public Criteria andWarehouseCustom3LessThanOrEqualTo(String value) {
+            addCriterion("warehouse_custom3 <=", value, "warehouseCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andBz5In(List<String> values) {
-            addCriterion("bz5 in", values, "bz5");
+        public Criteria andWarehouseCustom3Like(String value) {
+            addCriterion("warehouse_custom3 like", value, "warehouseCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andBz5NotIn(List<String> values) {
-            addCriterion("bz5 not in", values, "bz5");
+        public Criteria andWarehouseCustom3NotLike(String value) {
+            addCriterion("warehouse_custom3 not like", value, "warehouseCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andBz5Between(String value1, String value2) {
-            addCriterion("bz5 between", value1, value2, "bz5");
+        public Criteria andWarehouseCustom3In(List<String> values) {
+            addCriterion("warehouse_custom3 in", values, "warehouseCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andBz5NotBetween(String value1, String value2) {
-            addCriterion("bz5 not between", value1, value2, "bz5");
+        public Criteria andWarehouseCustom3NotIn(List<String> values) {
+            addCriterion("warehouse_custom3 not in", values, "warehouseCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andBz6IsNull() {
-            addCriterion("bz6 is null");
+        public Criteria andWarehouseCustom3Between(String value1, String value2) {
+            addCriterion("warehouse_custom3 between", value1, value2, "warehouseCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andBz6IsNotNull() {
-            addCriterion("bz6 is not null");
+        public Criteria andWarehouseCustom3NotBetween(String value1, String value2) {
+            addCriterion("warehouse_custom3 not between", value1, value2, "warehouseCustom3");
             return (Criteria) this;
         }
 
-        public Criteria andBz6EqualTo(String value) {
-            addCriterion("bz6 =", value, "bz6");
+        public Criteria andWarehouseCustom4IsNull() {
+            addCriterion("warehouse_custom4 is null");
             return (Criteria) this;
         }
 
-        public Criteria andBz6NotEqualTo(String value) {
-            addCriterion("bz6 <>", value, "bz6");
+        public Criteria andWarehouseCustom4IsNotNull() {
+            addCriterion("warehouse_custom4 is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBz6GreaterThan(String value) {
-            addCriterion("bz6 >", value, "bz6");
+        public Criteria andWarehouseCustom4EqualTo(String value) {
+            addCriterion("warehouse_custom4 =", value, "warehouseCustom4");
             return (Criteria) this;
         }
 
-        public Criteria andBz6GreaterThanOrEqualTo(String value) {
-            addCriterion("bz6 >=", value, "bz6");
+        public Criteria andWarehouseCustom4NotEqualTo(String value) {
+            addCriterion("warehouse_custom4 <>", value, "warehouseCustom4");
             return (Criteria) this;
         }
 
-        public Criteria andBz6LessThan(String value) {
-            addCriterion("bz6 <", value, "bz6");
+        public Criteria andWarehouseCustom4GreaterThan(String value) {
+            addCriterion("warehouse_custom4 >", value, "warehouseCustom4");
             return (Criteria) this;
         }
 
-        public Criteria andBz6LessThanOrEqualTo(String value) {
-            addCriterion("bz6 <=", value, "bz6");
+        public Criteria andWarehouseCustom4GreaterThanOrEqualTo(String value) {
+            addCriterion("warehouse_custom4 >=", value, "warehouseCustom4");
             return (Criteria) this;
         }
 
-        public Criteria andBz6Like(String value) {
-            addCriterion("bz6 like", value, "bz6");
+        public Criteria andWarehouseCustom4LessThan(String value) {
+            addCriterion("warehouse_custom4 <", value, "warehouseCustom4");
             return (Criteria) this;
         }
 
-        public Criteria andBz6NotLike(String value) {
-            addCriterion("bz6 not like", value, "bz6");
+        public Criteria andWarehouseCustom4LessThanOrEqualTo(String value) {
+            addCriterion("warehouse_custom4 <=", value, "warehouseCustom4");
             return (Criteria) this;
         }
 
-        public Criteria andBz6In(List<String> values) {
-            addCriterion("bz6 in", values, "bz6");
+        public Criteria andWarehouseCustom4Like(String value) {
+            addCriterion("warehouse_custom4 like", value, "warehouseCustom4");
             return (Criteria) this;
         }
 
-        public Criteria andBz6NotIn(List<String> values) {
-            addCriterion("bz6 not in", values, "bz6");
+        public Criteria andWarehouseCustom4NotLike(String value) {
+            addCriterion("warehouse_custom4 not like", value, "warehouseCustom4");
             return (Criteria) this;
         }
 
-        public Criteria andBz6Between(String value1, String value2) {
-            addCriterion("bz6 between", value1, value2, "bz6");
+        public Criteria andWarehouseCustom4In(List<String> values) {
+            addCriterion("warehouse_custom4 in", values, "warehouseCustom4");
             return (Criteria) this;
         }
 
-        public Criteria andBz6NotBetween(String value1, String value2) {
-            addCriterion("bz6 not between", value1, value2, "bz6");
+        public Criteria andWarehouseCustom4NotIn(List<String> values) {
+            addCriterion("warehouse_custom4 not in", values, "warehouseCustom4");
             return (Criteria) this;
         }
 
-        public Criteria andBz7IsNull() {
-            addCriterion("bz7 is null");
+        public Criteria andWarehouseCustom4Between(String value1, String value2) {
+            addCriterion("warehouse_custom4 between", value1, value2, "warehouseCustom4");
             return (Criteria) this;
         }
 
-        public Criteria andBz7IsNotNull() {
-            addCriterion("bz7 is not null");
+        public Criteria andWarehouseCustom4NotBetween(String value1, String value2) {
+            addCriterion("warehouse_custom4 not between", value1, value2, "warehouseCustom4");
             return (Criteria) this;
         }
 
-        public Criteria andBz7EqualTo(String value) {
-            addCriterion("bz7 =", value, "bz7");
+        public Criteria andWarehouseCustom5IsNull() {
+            addCriterion("warehouse_custom5 is null");
             return (Criteria) this;
         }
 
-        public Criteria andBz7NotEqualTo(String value) {
-            addCriterion("bz7 <>", value, "bz7");
+        public Criteria andWarehouseCustom5IsNotNull() {
+            addCriterion("warehouse_custom5 is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBz7GreaterThan(String value) {
-            addCriterion("bz7 >", value, "bz7");
+        public Criteria andWarehouseCustom5EqualTo(String value) {
+            addCriterion("warehouse_custom5 =", value, "warehouseCustom5");
             return (Criteria) this;
         }
 
-        public Criteria andBz7GreaterThanOrEqualTo(String value) {
-            addCriterion("bz7 >=", value, "bz7");
+        public Criteria andWarehouseCustom5NotEqualTo(String value) {
+            addCriterion("warehouse_custom5 <>", value, "warehouseCustom5");
             return (Criteria) this;
         }
 
-        public Criteria andBz7LessThan(String value) {
-            addCriterion("bz7 <", value, "bz7");
+        public Criteria andWarehouseCustom5GreaterThan(String value) {
+            addCriterion("warehouse_custom5 >", value, "warehouseCustom5");
             return (Criteria) this;
         }
 
-        public Criteria andBz7LessThanOrEqualTo(String value) {
-            addCriterion("bz7 <=", value, "bz7");
+        public Criteria andWarehouseCustom5GreaterThanOrEqualTo(String value) {
+            addCriterion("warehouse_custom5 >=", value, "warehouseCustom5");
             return (Criteria) this;
         }
 
-        public Criteria andBz7Like(String value) {
-            addCriterion("bz7 like", value, "bz7");
+        public Criteria andWarehouseCustom5LessThan(String value) {
+            addCriterion("warehouse_custom5 <", value, "warehouseCustom5");
             return (Criteria) this;
         }
 
-        public Criteria andBz7NotLike(String value) {
-            addCriterion("bz7 not like", value, "bz7");
+        public Criteria andWarehouseCustom5LessThanOrEqualTo(String value) {
+            addCriterion("warehouse_custom5 <=", value, "warehouseCustom5");
             return (Criteria) this;
         }
 
-        public Criteria andBz7In(List<String> values) {
-            addCriterion("bz7 in", values, "bz7");
+        public Criteria andWarehouseCustom5Like(String value) {
+            addCriterion("warehouse_custom5 like", value, "warehouseCustom5");
             return (Criteria) this;
         }
 
-        public Criteria andBz7NotIn(List<String> values) {
-            addCriterion("bz7 not in", values, "bz7");
+        public Criteria andWarehouseCustom5NotLike(String value) {
+            addCriterion("warehouse_custom5 not like", value, "warehouseCustom5");
             return (Criteria) this;
         }
 
-        public Criteria andBz7Between(String value1, String value2) {
-            addCriterion("bz7 between", value1, value2, "bz7");
+        public Criteria andWarehouseCustom5In(List<String> values) {
+            addCriterion("warehouse_custom5 in", values, "warehouseCustom5");
             return (Criteria) this;
         }
 
-        public Criteria andBz7NotBetween(String value1, String value2) {
-            addCriterion("bz7 not between", value1, value2, "bz7");
+        public Criteria andWarehouseCustom5NotIn(List<String> values) {
+            addCriterion("warehouse_custom5 not in", values, "warehouseCustom5");
             return (Criteria) this;
         }
 
-        public Criteria andBz8IsNull() {
-            addCriterion("bz8 is null");
+        public Criteria andWarehouseCustom5Between(String value1, String value2) {
+            addCriterion("warehouse_custom5 between", value1, value2, "warehouseCustom5");
             return (Criteria) this;
         }
 
-        public Criteria andBz8IsNotNull() {
-            addCriterion("bz8 is not null");
+        public Criteria andWarehouseCustom5NotBetween(String value1, String value2) {
+            addCriterion("warehouse_custom5 not between", value1, value2, "warehouseCustom5");
             return (Criteria) this;
         }
 
-        public Criteria andBz8EqualTo(String value) {
-            addCriterion("bz8 =", value, "bz8");
+        public Criteria andWarehouseCustom6IsNull() {
+            addCriterion("warehouse_custom6 is null");
             return (Criteria) this;
         }
 
-        public Criteria andBz8NotEqualTo(String value) {
-            addCriterion("bz8 <>", value, "bz8");
+        public Criteria andWarehouseCustom6IsNotNull() {
+            addCriterion("warehouse_custom6 is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBz8GreaterThan(String value) {
-            addCriterion("bz8 >", value, "bz8");
+        public Criteria andWarehouseCustom6EqualTo(String value) {
+            addCriterion("warehouse_custom6 =", value, "warehouseCustom6");
             return (Criteria) this;
         }
 
-        public Criteria andBz8GreaterThanOrEqualTo(String value) {
-            addCriterion("bz8 >=", value, "bz8");
+        public Criteria andWarehouseCustom6NotEqualTo(String value) {
+            addCriterion("warehouse_custom6 <>", value, "warehouseCustom6");
             return (Criteria) this;
         }
 
-        public Criteria andBz8LessThan(String value) {
-            addCriterion("bz8 <", value, "bz8");
+        public Criteria andWarehouseCustom6GreaterThan(String value) {
+            addCriterion("warehouse_custom6 >", value, "warehouseCustom6");
             return (Criteria) this;
         }
 
-        public Criteria andBz8LessThanOrEqualTo(String value) {
-            addCriterion("bz8 <=", value, "bz8");
+        public Criteria andWarehouseCustom6GreaterThanOrEqualTo(String value) {
+            addCriterion("warehouse_custom6 >=", value, "warehouseCustom6");
             return (Criteria) this;
         }
 
-        public Criteria andBz8Like(String value) {
-            addCriterion("bz8 like", value, "bz8");
+        public Criteria andWarehouseCustom6LessThan(String value) {
+            addCriterion("warehouse_custom6 <", value, "warehouseCustom6");
             return (Criteria) this;
         }
 
-        public Criteria andBz8NotLike(String value) {
-            addCriterion("bz8 not like", value, "bz8");
+        public Criteria andWarehouseCustom6LessThanOrEqualTo(String value) {
+            addCriterion("warehouse_custom6 <=", value, "warehouseCustom6");
             return (Criteria) this;
         }
 
-        public Criteria andBz8In(List<String> values) {
-            addCriterion("bz8 in", values, "bz8");
+        public Criteria andWarehouseCustom6Like(String value) {
+            addCriterion("warehouse_custom6 like", value, "warehouseCustom6");
             return (Criteria) this;
         }
 
-        public Criteria andBz8NotIn(List<String> values) {
-            addCriterion("bz8 not in", values, "bz8");
+        public Criteria andWarehouseCustom6NotLike(String value) {
+            addCriterion("warehouse_custom6 not like", value, "warehouseCustom6");
             return (Criteria) this;
         }
 
-        public Criteria andBz8Between(String value1, String value2) {
-            addCriterion("bz8 between", value1, value2, "bz8");
+        public Criteria andWarehouseCustom6In(List<String> values) {
+            addCriterion("warehouse_custom6 in", values, "warehouseCustom6");
             return (Criteria) this;
         }
 
-        public Criteria andBz8NotBetween(String value1, String value2) {
-            addCriterion("bz8 not between", value1, value2, "bz8");
+        public Criteria andWarehouseCustom6NotIn(List<String> values) {
+            addCriterion("warehouse_custom6 not in", values, "warehouseCustom6");
             return (Criteria) this;
         }
 
-        public Criteria andBz9IsNull() {
-            addCriterion("bz9 is null");
+        public Criteria andWarehouseCustom6Between(String value1, String value2) {
+            addCriterion("warehouse_custom6 between", value1, value2, "warehouseCustom6");
             return (Criteria) this;
         }
 
-        public Criteria andBz9IsNotNull() {
-            addCriterion("bz9 is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz9EqualTo(String value) {
-            addCriterion("bz9 =", value, "bz9");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz9NotEqualTo(String value) {
-            addCriterion("bz9 <>", value, "bz9");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz9GreaterThan(String value) {
-            addCriterion("bz9 >", value, "bz9");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz9GreaterThanOrEqualTo(String value) {
-            addCriterion("bz9 >=", value, "bz9");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz9LessThan(String value) {
-            addCriterion("bz9 <", value, "bz9");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz9LessThanOrEqualTo(String value) {
-            addCriterion("bz9 <=", value, "bz9");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz9Like(String value) {
-            addCriterion("bz9 like", value, "bz9");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz9NotLike(String value) {
-            addCriterion("bz9 not like", value, "bz9");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz9In(List<String> values) {
-            addCriterion("bz9 in", values, "bz9");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz9NotIn(List<String> values) {
-            addCriterion("bz9 not in", values, "bz9");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz9Between(String value1, String value2) {
-            addCriterion("bz9 between", value1, value2, "bz9");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz9NotBetween(String value1, String value2) {
-            addCriterion("bz9 not between", value1, value2, "bz9");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10IsNull() {
-            addCriterion("bz10 is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10IsNotNull() {
-            addCriterion("bz10 is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10EqualTo(String value) {
-            addCriterion("bz10 =", value, "bz10");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10NotEqualTo(String value) {
-            addCriterion("bz10 <>", value, "bz10");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10GreaterThan(String value) {
-            addCriterion("bz10 >", value, "bz10");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10GreaterThanOrEqualTo(String value) {
-            addCriterion("bz10 >=", value, "bz10");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10LessThan(String value) {
-            addCriterion("bz10 <", value, "bz10");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10LessThanOrEqualTo(String value) {
-            addCriterion("bz10 <=", value, "bz10");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10Like(String value) {
-            addCriterion("bz10 like", value, "bz10");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10NotLike(String value) {
-            addCriterion("bz10 not like", value, "bz10");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10In(List<String> values) {
-            addCriterion("bz10 in", values, "bz10");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10NotIn(List<String> values) {
-            addCriterion("bz10 not in", values, "bz10");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10Between(String value1, String value2) {
-            addCriterion("bz10 between", value1, value2, "bz10");
-            return (Criteria) this;
-        }
-
-        public Criteria andBz10NotBetween(String value1, String value2) {
-            addCriterion("bz10 not between", value1, value2, "bz10");
+        public Criteria andWarehouseCustom6NotBetween(String value1, String value2) {
+            addCriterion("warehouse_custom6 not between", value1, value2, "warehouseCustom6");
             return (Criteria) this;
         }
     }

@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.WarehouseDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.WarehouseDetail" >
+    <id column="wd_id" property="wdId" jdbcType="VARCHAR" />
+    <result column="warehouse_id" property="warehouseId" jdbcType="INTEGER" />
+    <result column="mt_id" property="mtId" jdbcType="INTEGER" />
+    <result column="wd_unit_rice" property="wdUnitRice" jdbcType="REAL" />
+    <result column="wd_number" property="wdNumber" jdbcType="INTEGER" />
+    <result column="wd_inorout" property="wdInorout" jdbcType="INTEGER" />
+    <result column="wd_lastbalancenumber" property="wdLastbalancenumber" jdbcType="INTEGER" />
+    <result column="wd_Auditing" property="wdAuditing" jdbcType="VARCHAR" />
+    <result column="wd_yn" property="wdYn" jdbcType="VARCHAR" />
+    <result column="wd_custom1" property="wdCustom1" jdbcType="VARCHAR" />
+    <result column="wd_custom2" property="wdCustom2" jdbcType="VARCHAR" />
+    <result column="wd_custom3" property="wdCustom3" jdbcType="VARCHAR" />
+    <result column="wd_custom4" property="wdCustom4" jdbcType="VARCHAR" />
+    <result column="wd_custom5" property="wdCustom5" jdbcType="VARCHAR" />
+    <result column="wd_custom6" property="wdCustom6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    wd_id, warehouse_id, mt_id, wd_unit_rice, wd_number, wd_inorout, wd_lastbalancenumber, 
+    wd_Auditing, wd_yn, wd_custom1, wd_custom2, wd_custom3, wd_custom4, wd_custom5, wd_custom6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.WarehouseDetailExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from warehouse_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from warehouse_detail
+    where wd_id = #{wdId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from warehouse_detail
+    where wd_id = #{wdId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.WarehouseDetailExample" >
+    delete from warehouse_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.WarehouseDetail" >
+    insert into warehouse_detail (wd_id, warehouse_id, mt_id, 
+      wd_unit_rice, wd_number, wd_inorout, 
+      wd_lastbalancenumber, wd_Auditing, wd_yn, 
+      wd_custom1, wd_custom2, wd_custom3, 
+      wd_custom4, wd_custom5, wd_custom6
+      )
+    values (#{wdId,jdbcType=VARCHAR}, #{warehouseId,jdbcType=INTEGER}, #{mtId,jdbcType=INTEGER}, 
+      #{wdUnitRice,jdbcType=REAL}, #{wdNumber,jdbcType=INTEGER}, #{wdInorout,jdbcType=INTEGER}, 
+      #{wdLastbalancenumber,jdbcType=INTEGER}, #{wdAuditing,jdbcType=VARCHAR}, #{wdYn,jdbcType=VARCHAR}, 
+      #{wdCustom1,jdbcType=VARCHAR}, #{wdCustom2,jdbcType=VARCHAR}, #{wdCustom3,jdbcType=VARCHAR}, 
+      #{wdCustom4,jdbcType=VARCHAR}, #{wdCustom5,jdbcType=VARCHAR}, #{wdCustom6,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.WarehouseDetail" >
+    insert into warehouse_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="wdId != null" >
+        wd_id,
+      </if>
+      <if test="warehouseId != null" >
+        warehouse_id,
+      </if>
+      <if test="mtId != null" >
+        mt_id,
+      </if>
+      <if test="wdUnitRice != null" >
+        wd_unit_rice,
+      </if>
+      <if test="wdNumber != null" >
+        wd_number,
+      </if>
+      <if test="wdInorout != null" >
+        wd_inorout,
+      </if>
+      <if test="wdLastbalancenumber != null" >
+        wd_lastbalancenumber,
+      </if>
+      <if test="wdAuditing != null" >
+        wd_Auditing,
+      </if>
+      <if test="wdYn != null" >
+        wd_yn,
+      </if>
+      <if test="wdCustom1 != null" >
+        wd_custom1,
+      </if>
+      <if test="wdCustom2 != null" >
+        wd_custom2,
+      </if>
+      <if test="wdCustom3 != null" >
+        wd_custom3,
+      </if>
+      <if test="wdCustom4 != null" >
+        wd_custom4,
+      </if>
+      <if test="wdCustom5 != null" >
+        wd_custom5,
+      </if>
+      <if test="wdCustom6 != null" >
+        wd_custom6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="wdId != null" >
+        #{wdId,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseId != null" >
+        #{warehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="mtId != null" >
+        #{mtId,jdbcType=INTEGER},
+      </if>
+      <if test="wdUnitRice != null" >
+        #{wdUnitRice,jdbcType=REAL},
+      </if>
+      <if test="wdNumber != null" >
+        #{wdNumber,jdbcType=INTEGER},
+      </if>
+      <if test="wdInorout != null" >
+        #{wdInorout,jdbcType=INTEGER},
+      </if>
+      <if test="wdLastbalancenumber != null" >
+        #{wdLastbalancenumber,jdbcType=INTEGER},
+      </if>
+      <if test="wdAuditing != null" >
+        #{wdAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="wdYn != null" >
+        #{wdYn,jdbcType=VARCHAR},
+      </if>
+      <if test="wdCustom1 != null" >
+        #{wdCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="wdCustom2 != null" >
+        #{wdCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="wdCustom3 != null" >
+        #{wdCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="wdCustom4 != null" >
+        #{wdCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="wdCustom5 != null" >
+        #{wdCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="wdCustom6 != null" >
+        #{wdCustom6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.WarehouseDetailExample" resultType="java.lang.Integer" >
+    select count(*) from warehouse_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update warehouse_detail
+    <set >
+      <if test="record.wdId != null" >
+        wd_id = #{record.wdId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.warehouseId != null" >
+        warehouse_id = #{record.warehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="record.mtId != null" >
+        mt_id = #{record.mtId,jdbcType=INTEGER},
+      </if>
+      <if test="record.wdUnitRice != null" >
+        wd_unit_rice = #{record.wdUnitRice,jdbcType=REAL},
+      </if>
+      <if test="record.wdNumber != null" >
+        wd_number = #{record.wdNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.wdInorout != null" >
+        wd_inorout = #{record.wdInorout,jdbcType=INTEGER},
+      </if>
+      <if test="record.wdLastbalancenumber != null" >
+        wd_lastbalancenumber = #{record.wdLastbalancenumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.wdAuditing != null" >
+        wd_Auditing = #{record.wdAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wdYn != null" >
+        wd_yn = #{record.wdYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wdCustom1 != null" >
+        wd_custom1 = #{record.wdCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wdCustom2 != null" >
+        wd_custom2 = #{record.wdCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wdCustom3 != null" >
+        wd_custom3 = #{record.wdCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wdCustom4 != null" >
+        wd_custom4 = #{record.wdCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wdCustom5 != null" >
+        wd_custom5 = #{record.wdCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wdCustom6 != null" >
+        wd_custom6 = #{record.wdCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update warehouse_detail
+    set wd_id = #{record.wdId,jdbcType=VARCHAR},
+      warehouse_id = #{record.warehouseId,jdbcType=INTEGER},
+      mt_id = #{record.mtId,jdbcType=INTEGER},
+      wd_unit_rice = #{record.wdUnitRice,jdbcType=REAL},
+      wd_number = #{record.wdNumber,jdbcType=INTEGER},
+      wd_inorout = #{record.wdInorout,jdbcType=INTEGER},
+      wd_lastbalancenumber = #{record.wdLastbalancenumber,jdbcType=INTEGER},
+      wd_Auditing = #{record.wdAuditing,jdbcType=VARCHAR},
+      wd_yn = #{record.wdYn,jdbcType=VARCHAR},
+      wd_custom1 = #{record.wdCustom1,jdbcType=VARCHAR},
+      wd_custom2 = #{record.wdCustom2,jdbcType=VARCHAR},
+      wd_custom3 = #{record.wdCustom3,jdbcType=VARCHAR},
+      wd_custom4 = #{record.wdCustom4,jdbcType=VARCHAR},
+      wd_custom5 = #{record.wdCustom5,jdbcType=VARCHAR},
+      wd_custom6 = #{record.wdCustom6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.WarehouseDetail" >
+    update warehouse_detail
+    <set >
+      <if test="warehouseId != null" >
+        warehouse_id = #{warehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="mtId != null" >
+        mt_id = #{mtId,jdbcType=INTEGER},
+      </if>
+      <if test="wdUnitRice != null" >
+        wd_unit_rice = #{wdUnitRice,jdbcType=REAL},
+      </if>
+      <if test="wdNumber != null" >
+        wd_number = #{wdNumber,jdbcType=INTEGER},
+      </if>
+      <if test="wdInorout != null" >
+        wd_inorout = #{wdInorout,jdbcType=INTEGER},
+      </if>
+      <if test="wdLastbalancenumber != null" >
+        wd_lastbalancenumber = #{wdLastbalancenumber,jdbcType=INTEGER},
+      </if>
+      <if test="wdAuditing != null" >
+        wd_Auditing = #{wdAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="wdYn != null" >
+        wd_yn = #{wdYn,jdbcType=VARCHAR},
+      </if>
+      <if test="wdCustom1 != null" >
+        wd_custom1 = #{wdCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="wdCustom2 != null" >
+        wd_custom2 = #{wdCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="wdCustom3 != null" >
+        wd_custom3 = #{wdCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="wdCustom4 != null" >
+        wd_custom4 = #{wdCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="wdCustom5 != null" >
+        wd_custom5 = #{wdCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="wdCustom6 != null" >
+        wd_custom6 = #{wdCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where wd_id = #{wdId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.WarehouseDetail" >
+    update warehouse_detail
+    set warehouse_id = #{warehouseId,jdbcType=INTEGER},
+      mt_id = #{mtId,jdbcType=INTEGER},
+      wd_unit_rice = #{wdUnitRice,jdbcType=REAL},
+      wd_number = #{wdNumber,jdbcType=INTEGER},
+      wd_inorout = #{wdInorout,jdbcType=INTEGER},
+      wd_lastbalancenumber = #{wdLastbalancenumber,jdbcType=INTEGER},
+      wd_Auditing = #{wdAuditing,jdbcType=VARCHAR},
+      wd_yn = #{wdYn,jdbcType=VARCHAR},
+      wd_custom1 = #{wdCustom1,jdbcType=VARCHAR},
+      wd_custom2 = #{wdCustom2,jdbcType=VARCHAR},
+      wd_custom3 = #{wdCustom3,jdbcType=VARCHAR},
+      wd_custom4 = #{wdCustom4,jdbcType=VARCHAR},
+      wd_custom5 = #{wdCustom5,jdbcType=VARCHAR},
+      wd_custom6 = #{wdCustom6,jdbcType=VARCHAR}
+    where wd_id = #{wdId,jdbcType=VARCHAR}
+  </update>
+</mapper>

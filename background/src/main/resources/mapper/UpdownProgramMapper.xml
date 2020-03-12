@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.UpdownProgramMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.UpdownProgram" >
+    <id column="up_id" property="upId" jdbcType="VARCHAR" />
+    <result column="up_name" property="upName" jdbcType="VARCHAR" />
+    <result column="up_auditing" property="upAuditing" jdbcType="VARCHAR" />
+    <result column="up_yn" property="upYn" jdbcType="VARCHAR" />
+    <result column="up_custom1" property="upCustom1" jdbcType="VARCHAR" />
+    <result column="up_custom2" property="upCustom2" jdbcType="VARCHAR" />
+    <result column="up_custom3" property="upCustom3" jdbcType="VARCHAR" />
+    <result column="up_custom4" property="upCustom4" jdbcType="VARCHAR" />
+    <result column="up_custom5" property="upCustom5" jdbcType="VARCHAR" />
+    <result column="up_custom6" property="upCustom6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    up_id, up_name, up_auditing, up_yn, up_custom1, up_custom2, up_custom3, up_custom4, 
+    up_custom5, up_custom6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.UpdownProgramExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from updown_program
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from updown_program
+    where up_id = #{upId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from updown_program
+    where up_id = #{upId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.UpdownProgramExample" >
+    delete from updown_program
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.UpdownProgram" >
+    insert into updown_program (up_id, up_name, up_auditing, 
+      up_yn, up_custom1, up_custom2, 
+      up_custom3, up_custom4, up_custom5, 
+      up_custom6)
+    values (#{upId,jdbcType=VARCHAR}, #{upName,jdbcType=VARCHAR}, #{upAuditing,jdbcType=VARCHAR}, 
+      #{upYn,jdbcType=VARCHAR}, #{upCustom1,jdbcType=VARCHAR}, #{upCustom2,jdbcType=VARCHAR}, 
+      #{upCustom3,jdbcType=VARCHAR}, #{upCustom4,jdbcType=VARCHAR}, #{upCustom5,jdbcType=VARCHAR}, 
+      #{upCustom6,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.UpdownProgram" >
+    insert into updown_program
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="upId != null" >
+        up_id,
+      </if>
+      <if test="upName != null" >
+        up_name,
+      </if>
+      <if test="upAuditing != null" >
+        up_auditing,
+      </if>
+      <if test="upYn != null" >
+        up_yn,
+      </if>
+      <if test="upCustom1 != null" >
+        up_custom1,
+      </if>
+      <if test="upCustom2 != null" >
+        up_custom2,
+      </if>
+      <if test="upCustom3 != null" >
+        up_custom3,
+      </if>
+      <if test="upCustom4 != null" >
+        up_custom4,
+      </if>
+      <if test="upCustom5 != null" >
+        up_custom5,
+      </if>
+      <if test="upCustom6 != null" >
+        up_custom6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="upId != null" >
+        #{upId,jdbcType=VARCHAR},
+      </if>
+      <if test="upName != null" >
+        #{upName,jdbcType=VARCHAR},
+      </if>
+      <if test="upAuditing != null" >
+        #{upAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="upYn != null" >
+        #{upYn,jdbcType=VARCHAR},
+      </if>
+      <if test="upCustom1 != null" >
+        #{upCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="upCustom2 != null" >
+        #{upCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="upCustom3 != null" >
+        #{upCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="upCustom4 != null" >
+        #{upCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="upCustom5 != null" >
+        #{upCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="upCustom6 != null" >
+        #{upCustom6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.UpdownProgramExample" resultType="java.lang.Integer" >
+    select count(*) from updown_program
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update updown_program
+    <set >
+      <if test="record.upId != null" >
+        up_id = #{record.upId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.upName != null" >
+        up_name = #{record.upName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.upAuditing != null" >
+        up_auditing = #{record.upAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.upYn != null" >
+        up_yn = #{record.upYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.upCustom1 != null" >
+        up_custom1 = #{record.upCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.upCustom2 != null" >
+        up_custom2 = #{record.upCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.upCustom3 != null" >
+        up_custom3 = #{record.upCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.upCustom4 != null" >
+        up_custom4 = #{record.upCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.upCustom5 != null" >
+        up_custom5 = #{record.upCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.upCustom6 != null" >
+        up_custom6 = #{record.upCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update updown_program
+    set up_id = #{record.upId,jdbcType=VARCHAR},
+      up_name = #{record.upName,jdbcType=VARCHAR},
+      up_auditing = #{record.upAuditing,jdbcType=VARCHAR},
+      up_yn = #{record.upYn,jdbcType=VARCHAR},
+      up_custom1 = #{record.upCustom1,jdbcType=VARCHAR},
+      up_custom2 = #{record.upCustom2,jdbcType=VARCHAR},
+      up_custom3 = #{record.upCustom3,jdbcType=VARCHAR},
+      up_custom4 = #{record.upCustom4,jdbcType=VARCHAR},
+      up_custom5 = #{record.upCustom5,jdbcType=VARCHAR},
+      up_custom6 = #{record.upCustom6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.UpdownProgram" >
+    update updown_program
+    <set >
+      <if test="upName != null" >
+        up_name = #{upName,jdbcType=VARCHAR},
+      </if>
+      <if test="upAuditing != null" >
+        up_auditing = #{upAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="upYn != null" >
+        up_yn = #{upYn,jdbcType=VARCHAR},
+      </if>
+      <if test="upCustom1 != null" >
+        up_custom1 = #{upCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="upCustom2 != null" >
+        up_custom2 = #{upCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="upCustom3 != null" >
+        up_custom3 = #{upCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="upCustom4 != null" >
+        up_custom4 = #{upCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="upCustom5 != null" >
+        up_custom5 = #{upCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="upCustom6 != null" >
+        up_custom6 = #{upCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where up_id = #{upId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.UpdownProgram" >
+    update updown_program
+    set up_name = #{upName,jdbcType=VARCHAR},
+      up_auditing = #{upAuditing,jdbcType=VARCHAR},
+      up_yn = #{upYn,jdbcType=VARCHAR},
+      up_custom1 = #{upCustom1,jdbcType=VARCHAR},
+      up_custom2 = #{upCustom2,jdbcType=VARCHAR},
+      up_custom3 = #{upCustom3,jdbcType=VARCHAR},
+      up_custom4 = #{upCustom4,jdbcType=VARCHAR},
+      up_custom5 = #{upCustom5,jdbcType=VARCHAR},
+      up_custom6 = #{upCustom6,jdbcType=VARCHAR}
+    where up_id = #{upId,jdbcType=VARCHAR}
+  </update>
+</mapper>

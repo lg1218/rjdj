@@ -1,39 +1,35 @@
 package com.accp.domain;
 
 public class SupplierType {
-    private Integer stId;
+    private String stId;
 
     private String stName;
 
-    private String stEname;
+    private String stEngname;
 
     private String stRemark;
 
-    private String bz1;
+    private String stAuditing;
 
-    private String bz2;
+    private String stYn;
 
-    private String bz3;
+    private String stCustom1;
 
-    private String bz4;
+    private String stCustom2;
 
-    private String bz5;
+    private String stCustom3;
 
-    private String bz6;
+    private String stCustom4;
 
-    private String bz7;
+    private String stCustom5;
 
-    private String bz8;
+    private String stCustom6;
 
-    private String bz9;
-
-    private String bz10;
-
-    public Integer getStId() {
+    public String getStId() {
         return stId;
     }
 
-    public void setStId(Integer stId) {
+    public void setStId(String stId) {
         this.stId = stId;
     }
 
@@ -45,12 +41,12 @@ public class SupplierType {
         this.stName = stName;
     }
 
-    public String getStEname() {
-        return stEname;
+    public String getStEngname() {
+        return stEngname;
     }
 
-    public void setStEname(String stEname) {
-        this.stEname = stEname;
+    public void setStEngname(String stEngname) {
+        this.stEngname = stEngname;
     }
 
     public String getStRemark() {
@@ -61,83 +57,67 @@ public class SupplierType {
         this.stRemark = stRemark;
     }
 
-    public String getBz1() {
-        return bz1;
+    public String getStAuditing() {
+        return stAuditing;
     }
 
-    public void setBz1(String bz1) {
-        this.bz1 = bz1;
+    public void setStAuditing(String stAuditing) {
+        this.stAuditing = stAuditing;
     }
 
-    public String getBz2() {
-        return bz2;
+    public String getStYn() {
+        return stYn;
     }
 
-    public void setBz2(String bz2) {
-        this.bz2 = bz2;
+    public void setStYn(String stYn) {
+        this.stYn = stYn;
     }
 
-    public String getBz3() {
-        return bz3;
+    public String getStCustom1() {
+        return stCustom1;
     }
 
-    public void setBz3(String bz3) {
-        this.bz3 = bz3;
+    public void setStCustom1(String stCustom1) {
+        this.stCustom1 = stCustom1;
     }
 
-    public String getBz4() {
-        return bz4;
+    public String getStCustom2() {
+        return stCustom2;
     }
 
-    public void setBz4(String bz4) {
-        this.bz4 = bz4;
+    public void setStCustom2(String stCustom2) {
+        this.stCustom2 = stCustom2;
     }
 
-    public String getBz5() {
-        return bz5;
+    public String getStCustom3() {
+        return stCustom3;
     }
 
-    public void setBz5(String bz5) {
-        this.bz5 = bz5;
+    public void setStCustom3(String stCustom3) {
+        this.stCustom3 = stCustom3;
     }
 
-    public String getBz6() {
-        return bz6;
+    public String getStCustom4() {
+        return stCustom4;
     }
 
-    public void setBz6(String bz6) {
-        this.bz6 = bz6;
+    public void setStCustom4(String stCustom4) {
+        this.stCustom4 = stCustom4;
     }
 
-    public String getBz7() {
-        return bz7;
+    public String getStCustom5() {
+        return stCustom5;
     }
 
-    public void setBz7(String bz7) {
-        this.bz7 = bz7;
+    public void setStCustom5(String stCustom5) {
+        this.stCustom5 = stCustom5;
     }
 
-    public String getBz8() {
-        return bz8;
+    public String getStCustom6() {
+        return stCustom6;
     }
 
-    public void setBz8(String bz8) {
-        this.bz8 = bz8;
-    }
-
-    public String getBz9() {
-        return bz9;
-    }
-
-    public void setBz9(String bz9) {
-        this.bz9 = bz9;
-    }
-
-    public String getBz10() {
-        return bz10;
-    }
-
-    public void setBz10(String bz10) {
-        this.bz10 = bz10;
+    public void setStCustom6(String stCustom6) {
+        this.stCustom6 = stCustom6;
     }
 }

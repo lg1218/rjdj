@@ -1,11 +1,11 @@
 package com.accp.domain;
 
 public class Salesorderlist {
-    private String solDocumentnumber;
+    private String solId;
 
-    private Integer solId;
+    private String soId;
 
-    private String solMatNumber;
+    private String matterId;
 
     private String solMatName;
 
@@ -15,19 +15,19 @@ public class Salesorderlist {
 
     private Integer solQuantity;
 
-    private Double solPrePrice;
+    private Float solPrePrice;
 
     private Integer solFold;
 
-    private Double solPrice;
+    private Float solPrice;
 
-    private Double solAmount;
+    private Float solAmount;
 
-    private Double solTaxRate;
+    private Float solTaxRate;
 
-    private Double solTax;
+    private Float solTax;
 
-    private Double solTaxAmount;
+    private Float solTaxAmount;
 
     private Integer solGiveaway;
 
@@ -45,38 +45,44 @@ public class Salesorderlist {
 
     private Integer solProducedQuantity;
 
-    private String solSpare1;
+    private String solAuditing;
 
-    private String solSpare2;
+    private String solYn;
 
-    private String solSpare3;
+    private String solCustom1;
 
-    private String solSpare4;
+    private String solCustom2;
 
-    private String solSpare5;
+    private String solCustom3;
 
-    public String getSolDocumentnumber() {
-        return solDocumentnumber;
-    }
+    private String solCustom4;
 
-    public void setSolDocumentnumber(String solDocumentnumber) {
-        this.solDocumentnumber = solDocumentnumber;
-    }
+    private String solCustom5;
 
-    public Integer getSolId() {
+    private String solCustom6;
+
+    public String getSolId() {
         return solId;
     }
 
-    public void setSolId(Integer solId) {
+    public void setSolId(String solId) {
         this.solId = solId;
     }
 
-    public String getSolMatNumber() {
-        return solMatNumber;
+    public String getSoId() {
+        return soId;
     }
 
-    public void setSolMatNumber(String solMatNumber) {
-        this.solMatNumber = solMatNumber;
+    public void setSoId(String soId) {
+        this.soId = soId;
+    }
+
+    public String getMatterId() {
+        return matterId;
+    }
+
+    public void setMatterId(String matterId) {
+        this.matterId = matterId;
     }
 
     public String getSolMatName() {
@@ -111,11 +117,11 @@ public class Salesorderlist {
         this.solQuantity = solQuantity;
     }
 
-    public Double getSolPrePrice() {
+    public Float getSolPrePrice() {
         return solPrePrice;
     }
 
-    public void setSolPrePrice(Double solPrePrice) {
+    public void setSolPrePrice(Float solPrePrice) {
         this.solPrePrice = solPrePrice;
     }
 
@@ -127,43 +133,43 @@ public class Salesorderlist {
         this.solFold = solFold;
     }
 
-    public Double getSolPrice() {
+    public Float getSolPrice() {
         return solPrice;
     }
 
-    public void setSolPrice(Double solPrice) {
+    public void setSolPrice(Float solPrice) {
         this.solPrice = solPrice;
     }
 
-    public Double getSolAmount() {
+    public Float getSolAmount() {
         return solAmount;
     }
 
-    public void setSolAmount(Double solAmount) {
+    public void setSolAmount(Float solAmount) {
         this.solAmount = solAmount;
     }
 
-    public Double getSolTaxRate() {
+    public Float getSolTaxRate() {
         return solTaxRate;
     }
 
-    public void setSolTaxRate(Double solTaxRate) {
+    public void setSolTaxRate(Float solTaxRate) {
         this.solTaxRate = solTaxRate;
     }
 
-    public Double getSolTax() {
+    public Float getSolTax() {
         return solTax;
     }
 
-    public void setSolTax(Double solTax) {
+    public void setSolTax(Float solTax) {
         this.solTax = solTax;
     }
 
-    public Double getSolTaxAmount() {
+    public Float getSolTaxAmount() {
         return solTaxAmount;
     }
 
-    public void setSolTaxAmount(Double solTaxAmount) {
+    public void setSolTaxAmount(Float solTaxAmount) {
         this.solTaxAmount = solTaxAmount;
     }
 
@@ -231,43 +237,67 @@ public class Salesorderlist {
         this.solProducedQuantity = solProducedQuantity;
     }
 
-    public String getSolSpare1() {
-        return solSpare1;
+    public String getSolAuditing() {
+        return solAuditing;
     }
 
-    public void setSolSpare1(String solSpare1) {
-        this.solSpare1 = solSpare1;
+    public void setSolAuditing(String solAuditing) {
+        this.solAuditing = solAuditing;
     }
 
-    public String getSolSpare2() {
-        return solSpare2;
+    public String getSolYn() {
+        return solYn;
     }
 
-    public void setSolSpare2(String solSpare2) {
-        this.solSpare2 = solSpare2;
+    public void setSolYn(String solYn) {
+        this.solYn = solYn;
     }
 
-    public String getSolSpare3() {
-        return solSpare3;
+    public String getSolCustom1() {
+        return solCustom1;
     }
 
-    public void setSolSpare3(String solSpare3) {
-        this.solSpare3 = solSpare3;
+    public void setSolCustom1(String solCustom1) {
+        this.solCustom1 = solCustom1;
     }
 
-    public String getSolSpare4() {
-        return solSpare4;
+    public String getSolCustom2() {
+        return solCustom2;
     }
 
-    public void setSolSpare4(String solSpare4) {
-        this.solSpare4 = solSpare4;
+    public void setSolCustom2(String solCustom2) {
+        this.solCustom2 = solCustom2;
     }
 
-    public String getSolSpare5() {
-        return solSpare5;
+    public String getSolCustom3() {
+        return solCustom3;
     }
 
-    public void setSolSpare5(String solSpare5) {
-        this.solSpare5 = solSpare5;
+    public void setSolCustom3(String solCustom3) {
+        this.solCustom3 = solCustom3;
+    }
+
+    public String getSolCustom4() {
+        return solCustom4;
+    }
+
+    public void setSolCustom4(String solCustom4) {
+        this.solCustom4 = solCustom4;
+    }
+
+    public String getSolCustom5() {
+        return solCustom5;
+    }
+
+    public void setSolCustom5(String solCustom5) {
+        this.solCustom5 = solCustom5;
+    }
+
+    public String getSolCustom6() {
+        return solCustom6;
+    }
+
+    public void setSolCustom6(String solCustom6) {
+        this.solCustom6 = solCustom6;
     }
 }

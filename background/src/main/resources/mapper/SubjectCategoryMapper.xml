@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.SubjectCategoryMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.SubjectCategory" >
+    <id column="sc_id" property="scId" jdbcType="VARCHAR" />
+    <result column="sc_name" property="scName" jdbcType="VARCHAR" />
+    <result column="sc_engname" property="scEngname" jdbcType="VARCHAR" />
+    <result column="sc_remark" property="scRemark" jdbcType="VARCHAR" />
+    <result column="sc_Auditing" property="scAuditing" jdbcType="VARCHAR" />
+    <result column="sc_yn" property="scYn" jdbcType="VARCHAR" />
+    <result column="sc_custom1" property="scCustom1" jdbcType="VARCHAR" />
+    <result column="sc_custom2" property="scCustom2" jdbcType="VARCHAR" />
+    <result column="sc_custom3" property="scCustom3" jdbcType="VARCHAR" />
+    <result column="sc_custom4" property="scCustom4" jdbcType="VARCHAR" />
+    <result column="sc_custom5" property="scCustom5" jdbcType="VARCHAR" />
+    <result column="sc_custom6" property="scCustom6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    sc_id, sc_name, sc_engname, sc_remark, sc_Auditing, sc_yn, sc_custom1, sc_custom2, 
+    sc_custom3, sc_custom4, sc_custom5, sc_custom6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.SubjectCategoryExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from subject_category
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from subject_category
+    where sc_id = #{scId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from subject_category
+    where sc_id = #{scId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.SubjectCategoryExample" >
+    delete from subject_category
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.SubjectCategory" >
+    insert into subject_category (sc_id, sc_name, sc_engname, 
+      sc_remark, sc_Auditing, sc_yn, 
+      sc_custom1, sc_custom2, sc_custom3, 
+      sc_custom4, sc_custom5, sc_custom6
+      )
+    values (#{scId,jdbcType=VARCHAR}, #{scName,jdbcType=VARCHAR}, #{scEngname,jdbcType=VARCHAR}, 
+      #{scRemark,jdbcType=VARCHAR}, #{scAuditing,jdbcType=VARCHAR}, #{scYn,jdbcType=VARCHAR}, 
+      #{scCustom1,jdbcType=VARCHAR}, #{scCustom2,jdbcType=VARCHAR}, #{scCustom3,jdbcType=VARCHAR}, 
+      #{scCustom4,jdbcType=VARCHAR}, #{scCustom5,jdbcType=VARCHAR}, #{scCustom6,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.SubjectCategory" >
+    insert into subject_category
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="scId != null" >
+        sc_id,
+      </if>
+      <if test="scName != null" >
+        sc_name,
+      </if>
+      <if test="scEngname != null" >
+        sc_engname,
+      </if>
+      <if test="scRemark != null" >
+        sc_remark,
+      </if>
+      <if test="scAuditing != null" >
+        sc_Auditing,
+      </if>
+      <if test="scYn != null" >
+        sc_yn,
+      </if>
+      <if test="scCustom1 != null" >
+        sc_custom1,
+      </if>
+      <if test="scCustom2 != null" >
+        sc_custom2,
+      </if>
+      <if test="scCustom3 != null" >
+        sc_custom3,
+      </if>
+      <if test="scCustom4 != null" >
+        sc_custom4,
+      </if>
+      <if test="scCustom5 != null" >
+        sc_custom5,
+      </if>
+      <if test="scCustom6 != null" >
+        sc_custom6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="scId != null" >
+        #{scId,jdbcType=VARCHAR},
+      </if>
+      <if test="scName != null" >
+        #{scName,jdbcType=VARCHAR},
+      </if>
+      <if test="scEngname != null" >
+        #{scEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="scRemark != null" >
+        #{scRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="scAuditing != null" >
+        #{scAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="scYn != null" >
+        #{scYn,jdbcType=VARCHAR},
+      </if>
+      <if test="scCustom1 != null" >
+        #{scCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="scCustom2 != null" >
+        #{scCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="scCustom3 != null" >
+        #{scCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="scCustom4 != null" >
+        #{scCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="scCustom5 != null" >
+        #{scCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="scCustom6 != null" >
+        #{scCustom6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.SubjectCategoryExample" resultType="java.lang.Integer" >
+    select count(*) from subject_category
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update subject_category
+    <set >
+      <if test="record.scId != null" >
+        sc_id = #{record.scId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scName != null" >
+        sc_name = #{record.scName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scEngname != null" >
+        sc_engname = #{record.scEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scRemark != null" >
+        sc_remark = #{record.scRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scAuditing != null" >
+        sc_Auditing = #{record.scAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scYn != null" >
+        sc_yn = #{record.scYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scCustom1 != null" >
+        sc_custom1 = #{record.scCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scCustom2 != null" >
+        sc_custom2 = #{record.scCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scCustom3 != null" >
+        sc_custom3 = #{record.scCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scCustom4 != null" >
+        sc_custom4 = #{record.scCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scCustom5 != null" >
+        sc_custom5 = #{record.scCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scCustom6 != null" >
+        sc_custom6 = #{record.scCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update subject_category
+    set sc_id = #{record.scId,jdbcType=VARCHAR},
+      sc_name = #{record.scName,jdbcType=VARCHAR},
+      sc_engname = #{record.scEngname,jdbcType=VARCHAR},
+      sc_remark = #{record.scRemark,jdbcType=VARCHAR},
+      sc_Auditing = #{record.scAuditing,jdbcType=VARCHAR},
+      sc_yn = #{record.scYn,jdbcType=VARCHAR},
+      sc_custom1 = #{record.scCustom1,jdbcType=VARCHAR},
+      sc_custom2 = #{record.scCustom2,jdbcType=VARCHAR},
+      sc_custom3 = #{record.scCustom3,jdbcType=VARCHAR},
+      sc_custom4 = #{record.scCustom4,jdbcType=VARCHAR},
+      sc_custom5 = #{record.scCustom5,jdbcType=VARCHAR},
+      sc_custom6 = #{record.scCustom6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.SubjectCategory" >
+    update subject_category
+    <set >
+      <if test="scName != null" >
+        sc_name = #{scName,jdbcType=VARCHAR},
+      </if>
+      <if test="scEngname != null" >
+        sc_engname = #{scEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="scRemark != null" >
+        sc_remark = #{scRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="scAuditing != null" >
+        sc_Auditing = #{scAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="scYn != null" >
+        sc_yn = #{scYn,jdbcType=VARCHAR},
+      </if>
+      <if test="scCustom1 != null" >
+        sc_custom1 = #{scCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="scCustom2 != null" >
+        sc_custom2 = #{scCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="scCustom3 != null" >
+        sc_custom3 = #{scCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="scCustom4 != null" >
+        sc_custom4 = #{scCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="scCustom5 != null" >
+        sc_custom5 = #{scCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="scCustom6 != null" >
+        sc_custom6 = #{scCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sc_id = #{scId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.SubjectCategory" >
+    update subject_category
+    set sc_name = #{scName,jdbcType=VARCHAR},
+      sc_engname = #{scEngname,jdbcType=VARCHAR},
+      sc_remark = #{scRemark,jdbcType=VARCHAR},
+      sc_Auditing = #{scAuditing,jdbcType=VARCHAR},
+      sc_yn = #{scYn,jdbcType=VARCHAR},
+      sc_custom1 = #{scCustom1,jdbcType=VARCHAR},
+      sc_custom2 = #{scCustom2,jdbcType=VARCHAR},
+      sc_custom3 = #{scCustom3,jdbcType=VARCHAR},
+      sc_custom4 = #{scCustom4,jdbcType=VARCHAR},
+      sc_custom5 = #{scCustom5,jdbcType=VARCHAR},
+      sc_custom6 = #{scCustom6,jdbcType=VARCHAR}
+    where sc_id = #{scId,jdbcType=VARCHAR}
+  </update>
+</mapper>

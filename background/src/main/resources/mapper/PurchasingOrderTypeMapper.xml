@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.PurchasingOrderTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.PurchasingOrderType" >
+    <id column="pot_id" property="potId" jdbcType="VARCHAR" />
+    <result column="pot_name" property="potName" jdbcType="VARCHAR" />
+    <result column="pot_engname" property="potEngname" jdbcType="VARCHAR" />
+    <result column="pot_remark" property="potRemark" jdbcType="VARCHAR" />
+    <result column="pot_audition" property="potAudition" jdbcType="VARCHAR" />
+    <result column="pot_yn" property="potYn" jdbcType="VARCHAR" />
+    <result column="pot_custom1" property="potCustom1" jdbcType="VARCHAR" />
+    <result column="pot_custom2" property="potCustom2" jdbcType="VARCHAR" />
+    <result column="pot_custom3" property="potCustom3" jdbcType="VARCHAR" />
+    <result column="pot_custom4" property="potCustom4" jdbcType="VARCHAR" />
+    <result column="pot_custom5" property="potCustom5" jdbcType="VARCHAR" />
+    <result column="pot_custom6" property="potCustom6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pot_id, pot_name, pot_engname, pot_remark, pot_audition, pot_yn, pot_custom1, pot_custom2, 
+    pot_custom3, pot_custom4, pot_custom5, pot_custom6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.PurchasingOrderTypeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from purchasing_order_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from purchasing_order_type
+    where pot_id = #{potId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from purchasing_order_type
+    where pot_id = #{potId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.PurchasingOrderTypeExample" >
+    delete from purchasing_order_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.PurchasingOrderType" >
+    insert into purchasing_order_type (pot_id, pot_name, pot_engname, 
+      pot_remark, pot_audition, pot_yn, 
+      pot_custom1, pot_custom2, pot_custom3, 
+      pot_custom4, pot_custom5, pot_custom6
+      )
+    values (#{potId,jdbcType=VARCHAR}, #{potName,jdbcType=VARCHAR}, #{potEngname,jdbcType=VARCHAR}, 
+      #{potRemark,jdbcType=VARCHAR}, #{potAudition,jdbcType=VARCHAR}, #{potYn,jdbcType=VARCHAR}, 
+      #{potCustom1,jdbcType=VARCHAR}, #{potCustom2,jdbcType=VARCHAR}, #{potCustom3,jdbcType=VARCHAR}, 
+      #{potCustom4,jdbcType=VARCHAR}, #{potCustom5,jdbcType=VARCHAR}, #{potCustom6,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.PurchasingOrderType" >
+    insert into purchasing_order_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="potId != null" >
+        pot_id,
+      </if>
+      <if test="potName != null" >
+        pot_name,
+      </if>
+      <if test="potEngname != null" >
+        pot_engname,
+      </if>
+      <if test="potRemark != null" >
+        pot_remark,
+      </if>
+      <if test="potAudition != null" >
+        pot_audition,
+      </if>
+      <if test="potYn != null" >
+        pot_yn,
+      </if>
+      <if test="potCustom1 != null" >
+        pot_custom1,
+      </if>
+      <if test="potCustom2 != null" >
+        pot_custom2,
+      </if>
+      <if test="potCustom3 != null" >
+        pot_custom3,
+      </if>
+      <if test="potCustom4 != null" >
+        pot_custom4,
+      </if>
+      <if test="potCustom5 != null" >
+        pot_custom5,
+      </if>
+      <if test="potCustom6 != null" >
+        pot_custom6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="potId != null" >
+        #{potId,jdbcType=VARCHAR},
+      </if>
+      <if test="potName != null" >
+        #{potName,jdbcType=VARCHAR},
+      </if>
+      <if test="potEngname != null" >
+        #{potEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="potRemark != null" >
+        #{potRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="potAudition != null" >
+        #{potAudition,jdbcType=VARCHAR},
+      </if>
+      <if test="potYn != null" >
+        #{potYn,jdbcType=VARCHAR},
+      </if>
+      <if test="potCustom1 != null" >
+        #{potCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="potCustom2 != null" >
+        #{potCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="potCustom3 != null" >
+        #{potCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="potCustom4 != null" >
+        #{potCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="potCustom5 != null" >
+        #{potCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="potCustom6 != null" >
+        #{potCustom6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.PurchasingOrderTypeExample" resultType="java.lang.Integer" >
+    select count(*) from purchasing_order_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update purchasing_order_type
+    <set >
+      <if test="record.potId != null" >
+        pot_id = #{record.potId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.potName != null" >
+        pot_name = #{record.potName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.potEngname != null" >
+        pot_engname = #{record.potEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.potRemark != null" >
+        pot_remark = #{record.potRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.potAudition != null" >
+        pot_audition = #{record.potAudition,jdbcType=VARCHAR},
+      </if>
+      <if test="record.potYn != null" >
+        pot_yn = #{record.potYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.potCustom1 != null" >
+        pot_custom1 = #{record.potCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.potCustom2 != null" >
+        pot_custom2 = #{record.potCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.potCustom3 != null" >
+        pot_custom3 = #{record.potCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.potCustom4 != null" >
+        pot_custom4 = #{record.potCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.potCustom5 != null" >
+        pot_custom5 = #{record.potCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.potCustom6 != null" >
+        pot_custom6 = #{record.potCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update purchasing_order_type
+    set pot_id = #{record.potId,jdbcType=VARCHAR},
+      pot_name = #{record.potName,jdbcType=VARCHAR},
+      pot_engname = #{record.potEngname,jdbcType=VARCHAR},
+      pot_remark = #{record.potRemark,jdbcType=VARCHAR},
+      pot_audition = #{record.potAudition,jdbcType=VARCHAR},
+      pot_yn = #{record.potYn,jdbcType=VARCHAR},
+      pot_custom1 = #{record.potCustom1,jdbcType=VARCHAR},
+      pot_custom2 = #{record.potCustom2,jdbcType=VARCHAR},
+      pot_custom3 = #{record.potCustom3,jdbcType=VARCHAR},
+      pot_custom4 = #{record.potCustom4,jdbcType=VARCHAR},
+      pot_custom5 = #{record.potCustom5,jdbcType=VARCHAR},
+      pot_custom6 = #{record.potCustom6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.PurchasingOrderType" >
+    update purchasing_order_type
+    <set >
+      <if test="potName != null" >
+        pot_name = #{potName,jdbcType=VARCHAR},
+      </if>
+      <if test="potEngname != null" >
+        pot_engname = #{potEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="potRemark != null" >
+        pot_remark = #{potRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="potAudition != null" >
+        pot_audition = #{potAudition,jdbcType=VARCHAR},
+      </if>
+      <if test="potYn != null" >
+        pot_yn = #{potYn,jdbcType=VARCHAR},
+      </if>
+      <if test="potCustom1 != null" >
+        pot_custom1 = #{potCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="potCustom2 != null" >
+        pot_custom2 = #{potCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="potCustom3 != null" >
+        pot_custom3 = #{potCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="potCustom4 != null" >
+        pot_custom4 = #{potCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="potCustom5 != null" >
+        pot_custom5 = #{potCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="potCustom6 != null" >
+        pot_custom6 = #{potCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pot_id = #{potId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.PurchasingOrderType" >
+    update purchasing_order_type
+    set pot_name = #{potName,jdbcType=VARCHAR},
+      pot_engname = #{potEngname,jdbcType=VARCHAR},
+      pot_remark = #{potRemark,jdbcType=VARCHAR},
+      pot_audition = #{potAudition,jdbcType=VARCHAR},
+      pot_yn = #{potYn,jdbcType=VARCHAR},
+      pot_custom1 = #{potCustom1,jdbcType=VARCHAR},
+      pot_custom2 = #{potCustom2,jdbcType=VARCHAR},
+      pot_custom3 = #{potCustom3,jdbcType=VARCHAR},
+      pot_custom4 = #{potCustom4,jdbcType=VARCHAR},
+      pot_custom5 = #{potCustom5,jdbcType=VARCHAR},
+      pot_custom6 = #{potCustom6,jdbcType=VARCHAR}
+    where pot_id = #{potId,jdbcType=VARCHAR}
+  </update>
+</mapper>

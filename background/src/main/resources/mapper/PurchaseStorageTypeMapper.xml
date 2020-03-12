@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.PurchaseStorageTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.PurchaseStorageType" >
+    <id column="pst_id" property="pstId" jdbcType="VARCHAR" />
+    <result column="pst_name" property="pstName" jdbcType="VARCHAR" />
+    <result column="pst_engname" property="pstEngname" jdbcType="VARCHAR" />
+    <result column="pst_remark" property="pstRemark" jdbcType="VARCHAR" />
+    <result column="pst_audition" property="pstAudition" jdbcType="VARCHAR" />
+    <result column="pst_yn" property="pstYn" jdbcType="VARCHAR" />
+    <result column="pst_custom1" property="pstCustom1" jdbcType="VARCHAR" />
+    <result column="pst_custom2" property="pstCustom2" jdbcType="VARCHAR" />
+    <result column="pst_custom3" property="pstCustom3" jdbcType="VARCHAR" />
+    <result column="pst_custom4" property="pstCustom4" jdbcType="VARCHAR" />
+    <result column="pst_custom5" property="pstCustom5" jdbcType="VARCHAR" />
+    <result column="pst_custom6" property="pstCustom6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pst_id, pst_name, pst_engname, pst_remark, pst_audition, pst_yn, pst_custom1, pst_custom2, 
+    pst_custom3, pst_custom4, pst_custom5, pst_custom6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.PurchaseStorageTypeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from purchase_storage_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from purchase_storage_type
+    where pst_id = #{pstId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from purchase_storage_type
+    where pst_id = #{pstId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.PurchaseStorageTypeExample" >
+    delete from purchase_storage_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.PurchaseStorageType" >
+    insert into purchase_storage_type (pst_id, pst_name, pst_engname, 
+      pst_remark, pst_audition, pst_yn, 
+      pst_custom1, pst_custom2, pst_custom3, 
+      pst_custom4, pst_custom5, pst_custom6
+      )
+    values (#{pstId,jdbcType=VARCHAR}, #{pstName,jdbcType=VARCHAR}, #{pstEngname,jdbcType=VARCHAR}, 
+      #{pstRemark,jdbcType=VARCHAR}, #{pstAudition,jdbcType=VARCHAR}, #{pstYn,jdbcType=VARCHAR}, 
+      #{pstCustom1,jdbcType=VARCHAR}, #{pstCustom2,jdbcType=VARCHAR}, #{pstCustom3,jdbcType=VARCHAR}, 
+      #{pstCustom4,jdbcType=VARCHAR}, #{pstCustom5,jdbcType=VARCHAR}, #{pstCustom6,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.PurchaseStorageType" >
+    insert into purchase_storage_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pstId != null" >
+        pst_id,
+      </if>
+      <if test="pstName != null" >
+        pst_name,
+      </if>
+      <if test="pstEngname != null" >
+        pst_engname,
+      </if>
+      <if test="pstRemark != null" >
+        pst_remark,
+      </if>
+      <if test="pstAudition != null" >
+        pst_audition,
+      </if>
+      <if test="pstYn != null" >
+        pst_yn,
+      </if>
+      <if test="pstCustom1 != null" >
+        pst_custom1,
+      </if>
+      <if test="pstCustom2 != null" >
+        pst_custom2,
+      </if>
+      <if test="pstCustom3 != null" >
+        pst_custom3,
+      </if>
+      <if test="pstCustom4 != null" >
+        pst_custom4,
+      </if>
+      <if test="pstCustom5 != null" >
+        pst_custom5,
+      </if>
+      <if test="pstCustom6 != null" >
+        pst_custom6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pstId != null" >
+        #{pstId,jdbcType=VARCHAR},
+      </if>
+      <if test="pstName != null" >
+        #{pstName,jdbcType=VARCHAR},
+      </if>
+      <if test="pstEngname != null" >
+        #{pstEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="pstRemark != null" >
+        #{pstRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="pstAudition != null" >
+        #{pstAudition,jdbcType=VARCHAR},
+      </if>
+      <if test="pstYn != null" >
+        #{pstYn,jdbcType=VARCHAR},
+      </if>
+      <if test="pstCustom1 != null" >
+        #{pstCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="pstCustom2 != null" >
+        #{pstCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="pstCustom3 != null" >
+        #{pstCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="pstCustom4 != null" >
+        #{pstCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="pstCustom5 != null" >
+        #{pstCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="pstCustom6 != null" >
+        #{pstCustom6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.PurchaseStorageTypeExample" resultType="java.lang.Integer" >
+    select count(*) from purchase_storage_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update purchase_storage_type
+    <set >
+      <if test="record.pstId != null" >
+        pst_id = #{record.pstId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pstName != null" >
+        pst_name = #{record.pstName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pstEngname != null" >
+        pst_engname = #{record.pstEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pstRemark != null" >
+        pst_remark = #{record.pstRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pstAudition != null" >
+        pst_audition = #{record.pstAudition,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pstYn != null" >
+        pst_yn = #{record.pstYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pstCustom1 != null" >
+        pst_custom1 = #{record.pstCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pstCustom2 != null" >
+        pst_custom2 = #{record.pstCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pstCustom3 != null" >
+        pst_custom3 = #{record.pstCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pstCustom4 != null" >
+        pst_custom4 = #{record.pstCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pstCustom5 != null" >
+        pst_custom5 = #{record.pstCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pstCustom6 != null" >
+        pst_custom6 = #{record.pstCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update purchase_storage_type
+    set pst_id = #{record.pstId,jdbcType=VARCHAR},
+      pst_name = #{record.pstName,jdbcType=VARCHAR},
+      pst_engname = #{record.pstEngname,jdbcType=VARCHAR},
+      pst_remark = #{record.pstRemark,jdbcType=VARCHAR},
+      pst_audition = #{record.pstAudition,jdbcType=VARCHAR},
+      pst_yn = #{record.pstYn,jdbcType=VARCHAR},
+      pst_custom1 = #{record.pstCustom1,jdbcType=VARCHAR},
+      pst_custom2 = #{record.pstCustom2,jdbcType=VARCHAR},
+      pst_custom3 = #{record.pstCustom3,jdbcType=VARCHAR},
+      pst_custom4 = #{record.pstCustom4,jdbcType=VARCHAR},
+      pst_custom5 = #{record.pstCustom5,jdbcType=VARCHAR},
+      pst_custom6 = #{record.pstCustom6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.PurchaseStorageType" >
+    update purchase_storage_type
+    <set >
+      <if test="pstName != null" >
+        pst_name = #{pstName,jdbcType=VARCHAR},
+      </if>
+      <if test="pstEngname != null" >
+        pst_engname = #{pstEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="pstRemark != null" >
+        pst_remark = #{pstRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="pstAudition != null" >
+        pst_audition = #{pstAudition,jdbcType=VARCHAR},
+      </if>
+      <if test="pstYn != null" >
+        pst_yn = #{pstYn,jdbcType=VARCHAR},
+      </if>
+      <if test="pstCustom1 != null" >
+        pst_custom1 = #{pstCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="pstCustom2 != null" >
+        pst_custom2 = #{pstCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="pstCustom3 != null" >
+        pst_custom3 = #{pstCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="pstCustom4 != null" >
+        pst_custom4 = #{pstCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="pstCustom5 != null" >
+        pst_custom5 = #{pstCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="pstCustom6 != null" >
+        pst_custom6 = #{pstCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pst_id = #{pstId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.PurchaseStorageType" >
+    update purchase_storage_type
+    set pst_name = #{pstName,jdbcType=VARCHAR},
+      pst_engname = #{pstEngname,jdbcType=VARCHAR},
+      pst_remark = #{pstRemark,jdbcType=VARCHAR},
+      pst_audition = #{pstAudition,jdbcType=VARCHAR},
+      pst_yn = #{pstYn,jdbcType=VARCHAR},
+      pst_custom1 = #{pstCustom1,jdbcType=VARCHAR},
+      pst_custom2 = #{pstCustom2,jdbcType=VARCHAR},
+      pst_custom3 = #{pstCustom3,jdbcType=VARCHAR},
+      pst_custom4 = #{pstCustom4,jdbcType=VARCHAR},
+      pst_custom5 = #{pstCustom5,jdbcType=VARCHAR},
+      pst_custom6 = #{pstCustom6,jdbcType=VARCHAR}
+    where pst_id = #{pstId,jdbcType=VARCHAR}
+  </update>
+</mapper>

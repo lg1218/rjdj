@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.CustomerAddressMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.CustomerAddress" >
+    <id column="ca_addressid" property="caAddressid" jdbcType="VARCHAR" />
+    <result column="ca_address" property="caAddress" jdbcType="VARCHAR" />
+    <result column="ca_postcode" property="caPostcode" jdbcType="VARCHAR" />
+    <result column="ca_alinkman" property="caAlinkman" jdbcType="VARCHAR" />
+    <result column="ca_linkmaneasyname" property="caLinkmaneasyname" jdbcType="VARCHAR" />
+    <result column="ca_afaxno" property="caAfaxno" jdbcType="VARCHAR" />
+    <result column="ca_way" property="caWay" jdbcType="VARCHAR" />
+    <result column="ca_adecoration" property="caAdecoration" jdbcType="VARCHAR" />
+    <result column="customer_id" property="customerId" jdbcType="VARCHAR" />
+    <result column="ca_Auditing" property="caAuditing" jdbcType="VARCHAR" />
+    <result column="ca_yn" property="caYn" jdbcType="VARCHAR" />
+    <result column="ca_custom1" property="caCustom1" jdbcType="VARCHAR" />
+    <result column="ca_custom2" property="caCustom2" jdbcType="VARCHAR" />
+    <result column="ca_custom3" property="caCustom3" jdbcType="VARCHAR" />
+    <result column="ca_custom4" property="caCustom4" jdbcType="VARCHAR" />
+    <result column="ca_custom5" property="caCustom5" jdbcType="VARCHAR" />
+    <result column="ca_custom6" property="caCustom6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ca_addressid, ca_address, ca_postcode, ca_alinkman, ca_linkmaneasyname, ca_afaxno, 
+    ca_way, ca_adecoration, customer_id, ca_Auditing, ca_yn, ca_custom1, ca_custom2, 
+    ca_custom3, ca_custom4, ca_custom5, ca_custom6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.CustomerAddressExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from customer_address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from customer_address
+    where ca_addressid = #{caAddressid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from customer_address
+    where ca_addressid = #{caAddressid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.accp.domain.CustomerAddressExample" >
+    delete from customer_address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.CustomerAddress" >
+    insert into customer_address (ca_addressid, ca_address, ca_postcode, 
+      ca_alinkman, ca_linkmaneasyname, ca_afaxno, 
+      ca_way, ca_adecoration, customer_id, 
+      ca_Auditing, ca_yn, ca_custom1, 
+      ca_custom2, ca_custom3, ca_custom4, 
+      ca_custom5, ca_custom6)
+    values (#{caAddressid,jdbcType=VARCHAR}, #{caAddress,jdbcType=VARCHAR}, #{caPostcode,jdbcType=VARCHAR}, 
+      #{caAlinkman,jdbcType=VARCHAR}, #{caLinkmaneasyname,jdbcType=VARCHAR}, #{caAfaxno,jdbcType=VARCHAR}, 
+      #{caWay,jdbcType=VARCHAR}, #{caAdecoration,jdbcType=VARCHAR}, #{customerId,jdbcType=VARCHAR}, 
+      #{caAuditing,jdbcType=VARCHAR}, #{caYn,jdbcType=VARCHAR}, #{caCustom1,jdbcType=VARCHAR}, 
+      #{caCustom2,jdbcType=VARCHAR}, #{caCustom3,jdbcType=VARCHAR}, #{caCustom4,jdbcType=VARCHAR}, 
+      #{caCustom5,jdbcType=VARCHAR}, #{caCustom6,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.CustomerAddress" >
+    insert into customer_address
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="caAddressid != null" >
+        ca_addressid,
+      </if>
+      <if test="caAddress != null" >
+        ca_address,
+      </if>
+      <if test="caPostcode != null" >
+        ca_postcode,
+      </if>
+      <if test="caAlinkman != null" >
+        ca_alinkman,
+      </if>
+      <if test="caLinkmaneasyname != null" >
+        ca_linkmaneasyname,
+      </if>
+      <if test="caAfaxno != null" >
+        ca_afaxno,
+      </if>
+      <if test="caWay != null" >
+        ca_way,
+      </if>
+      <if test="caAdecoration != null" >
+        ca_adecoration,
+      </if>
+      <if test="customerId != null" >
+        customer_id,
+      </if>
+      <if test="caAuditing != null" >
+        ca_Auditing,
+      </if>
+      <if test="caYn != null" >
+        ca_yn,
+      </if>
+      <if test="caCustom1 != null" >
+        ca_custom1,
+      </if>
+      <if test="caCustom2 != null" >
+        ca_custom2,
+      </if>
+      <if test="caCustom3 != null" >
+        ca_custom3,
+      </if>
+      <if test="caCustom4 != null" >
+        ca_custom4,
+      </if>
+      <if test="caCustom5 != null" >
+        ca_custom5,
+      </if>
+      <if test="caCustom6 != null" >
+        ca_custom6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="caAddressid != null" >
+        #{caAddressid,jdbcType=VARCHAR},
+      </if>
+      <if test="caAddress != null" >
+        #{caAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="caPostcode != null" >
+        #{caPostcode,jdbcType=VARCHAR},
+      </if>
+      <if test="caAlinkman != null" >
+        #{caAlinkman,jdbcType=VARCHAR},
+      </if>
+      <if test="caLinkmaneasyname != null" >
+        #{caLinkmaneasyname,jdbcType=VARCHAR},
+      </if>
+      <if test="caAfaxno != null" >
+        #{caAfaxno,jdbcType=VARCHAR},
+      </if>
+      <if test="caWay != null" >
+        #{caWay,jdbcType=VARCHAR},
+      </if>
+      <if test="caAdecoration != null" >
+        #{caAdecoration,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null" >
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="caAuditing != null" >
+        #{caAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="caYn != null" >
+        #{caYn,jdbcType=VARCHAR},
+      </if>
+      <if test="caCustom1 != null" >
+        #{caCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="caCustom2 != null" >
+        #{caCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="caCustom3 != null" >
+        #{caCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="caCustom4 != null" >
+        #{caCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="caCustom5 != null" >
+        #{caCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="caCustom6 != null" >
+        #{caCustom6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.CustomerAddressExample" resultType="java.lang.Integer" >
+    select count(*) from customer_address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update customer_address
+    <set >
+      <if test="record.caAddressid != null" >
+        ca_addressid = #{record.caAddressid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caAddress != null" >
+        ca_address = #{record.caAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caPostcode != null" >
+        ca_postcode = #{record.caPostcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caAlinkman != null" >
+        ca_alinkman = #{record.caAlinkman,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caLinkmaneasyname != null" >
+        ca_linkmaneasyname = #{record.caLinkmaneasyname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caAfaxno != null" >
+        ca_afaxno = #{record.caAfaxno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caWay != null" >
+        ca_way = #{record.caWay,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caAdecoration != null" >
+        ca_adecoration = #{record.caAdecoration,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customerId != null" >
+        customer_id = #{record.customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caAuditing != null" >
+        ca_Auditing = #{record.caAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caYn != null" >
+        ca_yn = #{record.caYn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caCustom1 != null" >
+        ca_custom1 = #{record.caCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caCustom2 != null" >
+        ca_custom2 = #{record.caCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caCustom3 != null" >
+        ca_custom3 = #{record.caCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caCustom4 != null" >
+        ca_custom4 = #{record.caCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caCustom5 != null" >
+        ca_custom5 = #{record.caCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caCustom6 != null" >
+        ca_custom6 = #{record.caCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update customer_address
+    set ca_addressid = #{record.caAddressid,jdbcType=VARCHAR},
+      ca_address = #{record.caAddress,jdbcType=VARCHAR},
+      ca_postcode = #{record.caPostcode,jdbcType=VARCHAR},
+      ca_alinkman = #{record.caAlinkman,jdbcType=VARCHAR},
+      ca_linkmaneasyname = #{record.caLinkmaneasyname,jdbcType=VARCHAR},
+      ca_afaxno = #{record.caAfaxno,jdbcType=VARCHAR},
+      ca_way = #{record.caWay,jdbcType=VARCHAR},
+      ca_adecoration = #{record.caAdecoration,jdbcType=VARCHAR},
+      customer_id = #{record.customerId,jdbcType=VARCHAR},
+      ca_Auditing = #{record.caAuditing,jdbcType=VARCHAR},
+      ca_yn = #{record.caYn,jdbcType=VARCHAR},
+      ca_custom1 = #{record.caCustom1,jdbcType=VARCHAR},
+      ca_custom2 = #{record.caCustom2,jdbcType=VARCHAR},
+      ca_custom3 = #{record.caCustom3,jdbcType=VARCHAR},
+      ca_custom4 = #{record.caCustom4,jdbcType=VARCHAR},
+      ca_custom5 = #{record.caCustom5,jdbcType=VARCHAR},
+      ca_custom6 = #{record.caCustom6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.domain.CustomerAddress" >
+    update customer_address
+    <set >
+      <if test="caAddress != null" >
+        ca_address = #{caAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="caPostcode != null" >
+        ca_postcode = #{caPostcode,jdbcType=VARCHAR},
+      </if>
+      <if test="caAlinkman != null" >
+        ca_alinkman = #{caAlinkman,jdbcType=VARCHAR},
+      </if>
+      <if test="caLinkmaneasyname != null" >
+        ca_linkmaneasyname = #{caLinkmaneasyname,jdbcType=VARCHAR},
+      </if>
+      <if test="caAfaxno != null" >
+        ca_afaxno = #{caAfaxno,jdbcType=VARCHAR},
+      </if>
+      <if test="caWay != null" >
+        ca_way = #{caWay,jdbcType=VARCHAR},
+      </if>
+      <if test="caAdecoration != null" >
+        ca_adecoration = #{caAdecoration,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null" >
+        customer_id = #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="caAuditing != null" >
+        ca_Auditing = #{caAuditing,jdbcType=VARCHAR},
+      </if>
+      <if test="caYn != null" >
+        ca_yn = #{caYn,jdbcType=VARCHAR},
+      </if>
+      <if test="caCustom1 != null" >
+        ca_custom1 = #{caCustom1,jdbcType=VARCHAR},
+      </if>
+      <if test="caCustom2 != null" >
+        ca_custom2 = #{caCustom2,jdbcType=VARCHAR},
+      </if>
+      <if test="caCustom3 != null" >
+        ca_custom3 = #{caCustom3,jdbcType=VARCHAR},
+      </if>
+      <if test="caCustom4 != null" >
+        ca_custom4 = #{caCustom4,jdbcType=VARCHAR},
+      </if>
+      <if test="caCustom5 != null" >
+        ca_custom5 = #{caCustom5,jdbcType=VARCHAR},
+      </if>
+      <if test="caCustom6 != null" >
+        ca_custom6 = #{caCustom6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ca_addressid = #{caAddressid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.domain.CustomerAddress" >
+    update customer_address
+    set ca_address = #{caAddress,jdbcType=VARCHAR},
+      ca_postcode = #{caPostcode,jdbcType=VARCHAR},
+      ca_alinkman = #{caAlinkman,jdbcType=VARCHAR},
+      ca_linkmaneasyname = #{caLinkmaneasyname,jdbcType=VARCHAR},
+      ca_afaxno = #{caAfaxno,jdbcType=VARCHAR},
+      ca_way = #{caWay,jdbcType=VARCHAR},
+      ca_adecoration = #{caAdecoration,jdbcType=VARCHAR},
+      customer_id = #{customerId,jdbcType=VARCHAR},
+      ca_Auditing = #{caAuditing,jdbcType=VARCHAR},
+      ca_yn = #{caYn,jdbcType=VARCHAR},
+      ca_custom1 = #{caCustom1,jdbcType=VARCHAR},
+      ca_custom2 = #{caCustom2,jdbcType=VARCHAR},
+      ca_custom3 = #{caCustom3,jdbcType=VARCHAR},
+      ca_custom4 = #{caCustom4,jdbcType=VARCHAR},
+      ca_custom5 = #{caCustom5,jdbcType=VARCHAR},
+      ca_custom6 = #{caCustom6,jdbcType=VARCHAR}
+    where ca_addressid = #{caAddressid,jdbcType=VARCHAR}
+  </update>
+</mapper>

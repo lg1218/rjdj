@@ -1,183 +1,163 @@
 package com.accp.domain;
 
 public class Warehouse {
-    private Integer wId;
+    private String warehouseId;
 
-    private String wName;
+    private String warehouseName;
 
-    private String wJname;
+    private String warehouseEasyName;
 
-    private String wEname;
+    private String warehouseEngname;
 
-    private String wLxMan;
+    private String warehouseLinkman;
 
-    private String wLxPhone;
+    private String warehouseLinktel;
 
-    private String wCkAddress;
+    private String warehouseAddress;
 
-    private String wRemark;
+    private String warehouseDecoration;
 
-    private String bz1;
+    private String warehouseAuditing;
 
-    private String bz2;
+    private String warehouseYn;
 
-    private String bz3;
+    private String warehouseCustom1;
 
-    private String bz4;
+    private String warehouseCustom2;
 
-    private String bz5;
+    private String warehouseCustom3;
 
-    private String bz6;
+    private String warehouseCustom4;
 
-    private String bz7;
+    private String warehouseCustom5;
 
-    private String bz8;
+    private String warehouseCustom6;
 
-    private String bz9;
-
-    private String bz10;
-
-    public Integer getwId() {
-        return wId;
+    public String getWarehouseId() {
+        return warehouseId;
     }
 
-    public void setwId(Integer wId) {
-        this.wId = wId;
+    public void setWarehouseId(String warehouseId) {
+        this.warehouseId = warehouseId;
     }
 
-    public String getwName() {
-        return wName;
+    public String getWarehouseName() {
+        return warehouseName;
     }
 
-    public void setwName(String wName) {
-        this.wName = wName;
+    public void setWarehouseName(String warehouseName) {
+        this.warehouseName = warehouseName;
     }
 
-    public String getwJname() {
-        return wJname;
+    public String getWarehouseEasyName() {
+        return warehouseEasyName;
     }
 
-    public void setwJname(String wJname) {
-        this.wJname = wJname;
+    public void setWarehouseEasyName(String warehouseEasyName) {
+        this.warehouseEasyName = warehouseEasyName;
     }
 
-    public String getwEname() {
-        return wEname;
+    public String getWarehouseEngname() {
+        return warehouseEngname;
     }
 
-    public void setwEname(String wEname) {
-        this.wEname = wEname;
+    public void setWarehouseEngname(String warehouseEngname) {
+        this.warehouseEngname = warehouseEngname;
     }
 
-    public String getwLxMan() {
-        return wLxMan;
+    public String getWarehouseLinkman() {
+        return warehouseLinkman;
     }
 
-    public void setwLxMan(String wLxMan) {
-        this.wLxMan = wLxMan;
+    public void setWarehouseLinkman(String warehouseLinkman) {
+        this.warehouseLinkman = warehouseLinkman;
     }
 
-    public String getwLxPhone() {
-        return wLxPhone;
+    public String getWarehouseLinktel() {
+        return warehouseLinktel;
     }
 
-    public void setwLxPhone(String wLxPhone) {
-        this.wLxPhone = wLxPhone;
+    public void setWarehouseLinktel(String warehouseLinktel) {
+        this.warehouseLinktel = warehouseLinktel;
     }
 
-    public String getwCkAddress() {
-        return wCkAddress;
+    public String getWarehouseAddress() {
+        return warehouseAddress;
     }
 
-    public void setwCkAddress(String wCkAddress) {
-        this.wCkAddress = wCkAddress;
+    public void setWarehouseAddress(String warehouseAddress) {
+        this.warehouseAddress = warehouseAddress;
     }
 
-    public String getwRemark() {
-        return wRemark;
+    public String getWarehouseDecoration() {
+        return warehouseDecoration;
     }
 
-    public void setwRemark(String wRemark) {
-        this.wRemark = wRemark;
+    public void setWarehouseDecoration(String warehouseDecoration) {
+        this.warehouseDecoration = warehouseDecoration;
     }
 
-    public String getBz1() {
-        return bz1;
+    public String getWarehouseAuditing() {
+        return warehouseAuditing;
     }
 
-    public void setBz1(String bz1) {
-        this.bz1 = bz1;
+    public void setWarehouseAuditing(String warehouseAuditing) {
+        this.warehouseAuditing = warehouseAuditing;
     }
 
-    public String getBz2() {
-        return bz2;
+    public String getWarehouseYn() {
+        return warehouseYn;
     }
 
-    public void setBz2(String bz2) {
-        this.bz2 = bz2;
+    public void setWarehouseYn(String warehouseYn) {
+        this.warehouseYn = warehouseYn;
     }
 
-    public String getBz3() {
-        return bz3;
+    public String getWarehouseCustom1() {
+        return warehouseCustom1;
     }
 
-    public void setBz3(String bz3) {
-        this.bz3 = bz3;
+    public void setWarehouseCustom1(String warehouseCustom1) {
+        this.warehouseCustom1 = warehouseCustom1;
     }
 
-    public String getBz4() {
-        return bz4;
+    public String getWarehouseCustom2() {
+        return warehouseCustom2;
     }
 
-    public void setBz4(String bz4) {
-        this.bz4 = bz4;
+    public void setWarehouseCustom2(String warehouseCustom2) {
+        this.warehouseCustom2 = warehouseCustom2;
     }
 
-    public String getBz5() {
-        return bz5;
+    public String getWarehouseCustom3() {
+        return warehouseCustom3;
     }
 
-    public void setBz5(String bz5) {
-        this.bz5 = bz5;
+    public void setWarehouseCustom3(String warehouseCustom3) {
+        this.warehouseCustom3 = warehouseCustom3;
     }
 
-    public String getBz6() {
-        return bz6;
+    public String getWarehouseCustom4() {
+        return warehouseCustom4;
     }
 
-    public void setBz6(String bz6) {
-        this.bz6 = bz6;
+    public void setWarehouseCustom4(String warehouseCustom4) {
+        this.warehouseCustom4 = warehouseCustom4;
     }
 
-    public String getBz7() {
-        return bz7;
+    public String getWarehouseCustom5() {
+        return warehouseCustom5;
     }
 
-    public void setBz7(String bz7) {
-        this.bz7 = bz7;
+    public void setWarehouseCustom5(String warehouseCustom5) {
+        this.warehouseCustom5 = warehouseCustom5;
     }
 
-    public String getBz8() {
-        return bz8;
+    public String getWarehouseCustom6() {
+        return warehouseCustom6;
     }
 
-    public void setBz8(String bz8) {
-        this.bz8 = bz8;
-    }
-
-    public String getBz9() {
-        return bz9;
-    }
-
-    public void setBz9(String bz9) {
-        this.bz9 = bz9;
-    }
-
-    public String getBz10() {
-        return bz10;
-    }
-
-    public void setBz10(String bz10) {
-        this.bz10 = bz10;
+    public void setWarehouseCustom6(String warehouseCustom6) {
+        this.warehouseCustom6 = warehouseCustom6;
     }
 }

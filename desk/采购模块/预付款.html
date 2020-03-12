@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/layui.css" media="all" />
+		<style>
+			.dayo{
+				margin: 0 auto;
+			}
+			.layui-form-item{
+				height: 20px;
+			}	
+			.layui-tab-title li {
+			    display: inline-block;
+			    vertical-align: middle;
+			    font-size: 14px;
+			    transition: all .2s;
+			    -webkit-transition: all .2s;
+			    position: relative;
+			    line-height: 40px;
+			    min-width: 52.5px;
+			    padding: 0 15px;
+			    text-align: center;
+			    cursor: pointer;
+			}	
+			.layui-form-label {
+			    float: left;
+			    display: block;
+			    padding: 9px 10px;
+			    width: 85px;
+			    font-weight: 400;
+			    line-height: 20px;
+			    text-align: right;
+			}
+
+		 /* 防止下拉框的下拉列表被隐藏---必须设置--- */
+		.layui-table-cell {
+			overflow: visible !important;
+		}
+		/* 设置下拉框的高度与表格单元相同 */
+		.layui-input, .layui-select, .layui-textarea{
+		height: 30px !important;
+		}
+		
+		.layui-textarea {
+		    min-height: 200px;
+		    height: auto;
+		    line-height: 20px;
+		    padding: 6px 10px;
+		    resize: vertical;
+		}
+			.shenHeImg{
+				width: 60px;
+				height: 60px;
+				position: absolute;
+				left: 620px;
+				z-index: 999;
+				/*border: 1px solid #000;*/
+			}
+			.isSee{
+				display: none;
+			}
+		</style>
+	</head>
+		<body>
+		<div  id="content">
+			<div class="layui-container app" style="width: 800px;margin-top: 50px;">
+				<div id="disable">
+			  <div style="margin-left: -20px;">
+				  <div id="shenHeDiv"><img class="isSee" src="../images/shenhe.png"/></div>
+			  	<form class="layui-form" action="">
+						<!--1-->
+						<div class="layui-row">
+							<div class="layui-col-sm6">
+								<div class="layui-form-item">
+								    <label class="layui-form-label">供应商</label>
+								    <div class="layui-input-inline">
+								      <input type="text" name="CustomerName"  required  lay-verify="required" placeholder="请输入客户名称" autocomplete="off" class="layui-input" v-model="priabill.priabillSupplierName" @keyup.f4="queryBySupplier()">
+								    </div>
+							 	<div class="layui-form-mid layui-word-aux" @click="kh($event,'客户信息单','客户信息单.html')">选择客户</div>
+								</div>
+							</div>
+							<div class="layui-col-sm6">
+								<div class="layui-form-item">
+								    <label class="layui-form-label">单据日期</label>
+								      <div class="layui-input-inline">
+								        <input type="text"  name="date" id="test1" lay-verify="date" autocomplete="off" class="layui-input" v-model="priabill.priabillPayablestime">
+								      </div>
+							 	</div>
+							</div>
+				 		</div>
+				 		 <!--2-->
+						<div class="layui-row">
+							<div class="layui-col-sm6">
+								<div class="layui-form-item">
+								    <label class="layui-form-label">结账方式一</label>
+								    <div class="layui-input-inline" style="width: 70px;">
+								      <input type="text" name="title" required  lay-verify="required"  autocomplete="off" class="layui-input" v-model="priabill.priabillSatName1">
+								    </div>
+								    <div class="layui-input-inline" style="width: 120px;margin-left: -10px;">
+								      <input type="text" name="title" required  lay-verify="required" placeholder="0.00"  autocomplete="off" class="layui-input" v-model="priabill.priabillPrice1">
+								    </div>
+								    <div class="layui-form-mid layui-word-aux" @click="kh($event,'客户信息单','客户信息单.html')">选择客户</div>
+							 	</div>
+							</div>
+							<div class="layui-col-sm6">
+								<div class="layui-form-item">
+								    <label class="layui-form-label">单据号码</label>
+								    <div class="layui-input-inline">
+								      <input type="text" name="title"  required  lay-verify="required" autocomplete="off" class="layui-input" v-model="priabill.priabillId">
+								    </div>
+							 	</div>
+							</div>
+				 		</div>
+				 		<!--3-->
+				 		<div class="layui-row">
+							<div class="layui-col-sm6">
+								<div class="layui-form-item">
+								    <label class="layui-form-label">结账方式二</label>
+								    <div class="layui-input-inline" style="width: 70px;">
+								      <input type="text" name="title" required  lay-verify="required"  autocomplete="off" class="layui-input" v-model="priabill.priabillSatName2">
+								    </div>
+								    <div class="layui-input-inline" style="width: 120px;margin-left: -10px;">
+								      <input type="text" name="title" required  lay-verify="required" placeholder="0.00"  autocomplete="off" class="layui-input"  v-model="priabill.priabillPrice2">
+								    </div>
+								    <div class="layui-form-mid layui-word-aux" @click="kh($event,'客户信息单','客户信息单.html')">选择客户</div>
+							 	</div>
+							</div>
+							<div class="layui-col-sm6">
+								<div class="layui-form-item">
+								    <label class="layui-form-label">币别</label>
+								    <div class="layui-input-inline">
+								      <input type="text" name="title" required  lay-verify="required" autocomplete="off" class="layui-input" v-model="priabill.priabillCurrencyName">
+								    </div>
+								    <div class="layui-form-mid layui-word-aux" @click="kh($event,'客户信息单','客户信息单.html')">选择客户</div>
+							 	</div>
+							</div>
+				 		</div>
+				 		<!--4-->
+				 		<div class="layui-row">
+							<div class="layui-col-sm6">
+								<div class="layui-form-item">
+								    <label class="layui-form-label">结账方式三</label>
+								    <div class="layui-input-inline" style="width: 70px;">
+								      <input type="text" name="title" required  lay-verify="required"  autocomplete="off" class="layui-input" v-model="priabill.priabillSatName3">
+								    </div>
+								    <div class="layui-input-inline" style="width: 120px;margin-left: -10px;">
+								      <input type="text" name="title" required  lay-verify="required" placeholder="0.00"  autocomplete="off" class="layui-input" v-model="priabill.priabillPrice3">
+								    </div>
+								    <div class="layui-form-mid layui-word-aux" @click="kh($event,'客户信息单','客户信息单.html')">选择客户</div>
+							 	</div>
+							</div>
+							<div class="layui-col-sm6">
+								<div class="layui-form-item">
+								    <label class="layui-form-label">汇率</label>
+								    <div class="layui-input-inline">
+								      <input type="text" name="title" required  lay-verify="required" placeholder="1.0000" autocomplete="off" class="layui-input" v-model="priabill.priabillCurrencyInexchange">
+								    </div>
+							 	</div>
+							</div>
+				 		</div>
+				 		<!--5-->
+				 		<div class="layui-row">
+							<div class="layui-col-sm6">
+								<div class="layui-form-item">
+								    <label class="layui-form-label">折扣率(%)</label>
+								   <div class="layui-input-inline">
+								      <input type="text" name="title" required  lay-verify="required" placeholder="0.00" autocomplete="off" class="layui-input" v-model="priabill.priabillZhekou">
+								    </div>
+							 	</div>
+							</div>
+							<div class="layui-col-sm6">
+								<div class="layui-form-item">
+								    <label class="layui-form-label">应付冲款类型</label>
+								    <div class="layui-input-inline" style="width:190px;margin-left: -5;">
+								      <select name="" lay-verify="required" >
+								        <option value="1" >预付款</option>
+								        <option value="0">付款冲款</option>
+								        <option value="2">预付充应收</option>
+								      </select>
+								    </div>
+							 	</div>
+							</div>
+				 		</div>
+				 		<!--5-->
+				 		<div class="layui-row">
+							<div class="layui-col-sm6">
+								<div class="layui-form-item">
+								    <label class="layui-form-label">终止账月</label>
+								   <div class="layui-input-inline">
+								      <input type="text"   name="date" id="test5"  lay-verify="date" v-model="priabill.priabillEndtime" autocomplete="off" class="layui-input">
+								    </div>
+							 	</div>
+							</div>
+							<div class="layui-col-sm6">
+								<div class="layui-form-item">
+								    <label class="layui-form-label">凭证编号</label>
+								   <div class="layui-input-inline">
+								       <input type="text" name="title" required  lay-verify="required" placeholder="0.00" autocomplete="off" class="layui-input" v-model="priabill.priabillVoucherno">
+								    </div>
+							 	</div>
+							</div>
+				 		</div>
+						<!-- <div class="layui-form-item">
+						    <div class="layui-input-block">
+						      <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+						      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+						    </div>
+						 </div>-->
+				</form>
+			  </div>
+				<div class="layui-row">
+					<div class="layui-col-sm12">
+						<div class="layui-tab layui-tab-card">
+							<ul class="layui-tab-title">
+								<li class="layui-this">内容</li>
+								<li>备注</li>
+							</ul>
+							<div class="layui-tab-content">
+								<div style="width: 760px;overflow:auto;" class="layui-tab-item layui-show" style="margin:-21px -10px -20px -11px;">
+								<!--	<table style="empty-cells:show;width:auto;min-width:760px" class="layui-table" lay-size="sm"  id="quReadonly">
+										<colgroup>
+											<col width="9%">
+											<col width="9%">
+											<col width="18%">
+										</colgroup>
+										<thead>
+										<tr>
+											<th style="white-space:nowrap" colspan="3">预付金额</th>
+											<th style="white-space:nowrap" colspan="4">来源别</th>
+											<th style="white-space:nowrap" colspan="4">来源单号</th>
+											<th style="white-space:nowrap" colspan="4">摘要</th>
+										</tr>
+										</thead>
+										<tbody>
+										<tr v-for="item in priabill.priadetails_list">
+											<td colspan="3">
+												<input type="text" name="title" required  lay-verify="required" placeholder="0.00" autocomplete="off" class="layui-input" v-model="item.priabillPrice">
+											</td>
+											<td colspan="4">
+													<div class="layui-form-item">
+														<div class="layui-input-inline">
+															<select name="" lay-verify="required" lay-filter="yfdb">
+																<option value="0" >采购订单</option>
+																<option value="1">进口采购单</option>
+																<option value="2">P/O</option>
+															</select>
+														</div>
+													</div>
+											</td>
+											<td colspan="4">
+												<input type="text" name="title" required  lay-verify="required"  autocomplete="off" class="layui-input" v-model="item.priabillNumber">
+											</td>
+											<td colspan="4">
+												<input type="text" name="title" required  lay-verify="required"  autocomplete="off" class="layui-input" v-model="item.priabillRemarks">
+											</td>
+										</tr>
+										</tbody>
+
+
+										<tbody v-if="stutas" id="showTab"  @keyup.down="insertRows()">
+											<tr id="yuAppend">
+												<td><input value="0.0" name="inputOne"></td>
+												<td>
+													<select name="selectOne">
+														<option>销售订单</option>
+														<option>S/C</option>
+													</select>
+												</td>
+												<td><input name="inputTwo"></td>
+												<td><input name="inputThree"></td>
+											</tr>
+										</tbody>-->
+									<table id="quReadonly" style="empty-cells:show;width:auto;min-width:760px" class="layui-table" lay-size="sm" >
+										<colgroup>
+											<col width="9%">
+											<col width="9%">
+											<col width="18%">
+										</colgroup>
+										<thead>
+										<tr>
+											<th style="white-space:nowrap">预收金额</th>
+											<th style="white-space:nowrap">来源别</th>
+											<th style="white-space:nowrap">来源单号</th>
+											<th style="white-space:nowrap">摘要</th>
+										</tr>
+										</thead>
+										<tbody @keyup.down="insertRows()">
+										<tr v-if="status=='Add'&&tabStatus">
+											<td colspan="4" @dblclick="doubleNew()" style="width:100%;height: 100%;text-align: center;border: 0px;vertical-align: middle;">没有可以显示的数据，编辑状态下双击增加新的一行</td>
+										</tr>
+										<!--<tr v-if="priabill.priadetails_list!=null" id="yuAppend">
+											<td><input value="0.0" name="inputOne"></td>
+											<td>
+												<select name="selectOne">
+													<option>销售订单</option>
+													<option>S/C</option>
+												</select>
+											</td>
+											<td><input name="inputTwo"></td>
+											<td><input name="inputThree"></td>
+										</tr>-->
+										</tbody>
+										<tr>
+											<td>
+												{{cdje}}
+											</td>
+										</tr>
+									</table>
+									<!--<table class="layui-hide" id="demo" style=""></table>-->
+									<script type="text/html" id="barDemo">
+										<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+										<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+										<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+									</script>
+									<!---->
+								</div>
+								<!--账款-->
+								<!---->
+								<div class="layui-tab-item layui-form" style="height: 311px;">
+									<!--3-->
+									<div class="layui-row">
+										<div class="layui-col-sm6">
+											<div class="layui-form-item">
+												<label class="layui-form-label">自定义栏一</label>
+												<div class="layui-input-inline">
+													<input type="text" name="title" required  lay-verify="required" placeholder="1.0000" autocomplete="off" class="layui-input">
+												</div>
+											</div>
+										</div>
+										<div class="layui-col-sm6">
+											<div class="layui-form-item">
+												<label class="layui-form-label">自定义栏一</label>
+												<div class="layui-input-inline">
+													<input type="text" name="title" required  lay-verify="required" placeholder="1.0000" autocomplete="off" class="layui-input">
+												</div>
+											</div>
+										</div>
+									</div>
+									<!--3-->
+									<div class="layui-row">
+										<div class="layui-col-sm12">
+											<div class="layui-form-item layui-form-text">
+												<label class="layui-form-label">备注</label>
+												<div class="layui-input-block">
+													<textarea name="" required lay-verify="required" placeholder="请输入" class="layui-textarea" style="width: 565px;" v-model="priabill.priabill_remarks"></textarea>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			  <!--1-->
+						<div class="layui-row">
+							<div class="layui-col-sm6">
+								<div class="layui-form-item">
+								    <label class="layui-form-label">所属项目</label>
+								    <div class="layui-input-inline">
+								      <input type="text" name="title" required  lay-verify="required" placeholder="请输入客户名称" autocomplete="off" class="layui-input" v-model="priabill.priabillProjectName">
+								    </div>
+							 	<div class="layui-form-mid layui-word-aux" @click="kh($event,'业务人员','业务人员.html')">选择客户</div>
+								</div>
+							</div>
+							<div class="layui-col-sm6">
+								<div class="layui-form-item">
+								    <label class="layui-form-label">制单人员</label>
+								      <div class="layui-input-inline">
+								        <input type="text" name="title" v-model="priabill.priabillBillpersonnel" required  lay-verify="required" placeholder="请输入客户名称" autocomplete="off" class="layui-input">
+								      </div>
+							 	</div>
+							</div>
+				 		</div>
+				 		<!--2-->
+						<div class="layui-row">
+							<div class="layui-col-sm6">
+								<div class="layui-form-item">
+								    <label class="layui-form-label">所属部门</label>
+								    <div class="layui-input-inline">
+								      <input type="text" name="title" required  lay-verify="required"  autocomplete="off" class="layui-input" v-model="priabill.priabillTeamName">
+								    </div>
+							 	<div class="layui-form-mid layui-word-aux" @click="kh($event,'所属部门','所属部门.html')">选择客户</div>
+								</div>
+							</div>
+							<div class="layui-col-sm6">
+								<div class="layui-form-item">
+								    <label class="layui-form-label">复核人员</label>
+								      <div class="layui-input-inline">
+								        <input type="text" name="title" required  lay-verify="required" placeholder="请输入客户名称" autocomplete="off" class="layui-input" v-model="priabill.priabillReviewers">
+								      </div>
+							 	</div>
+							</div>
+				 		</div>
+				 		<!---->
+				 		<div class="layui-row layui-form">
+							<div class="layui-col-sm12">
+								<div class="layui-form-item">
+									<div class="layui-input-inline" style="width:100px;"  >
+										<select name="city" lay-verify="required" lay-filter="feature">
+											<option value="">功能</option>
+											<option value="0">载入单币别账款</option>
+											<option value="1">载入多币别账款</option>
+											<option value="2">载入预收</option>
+										</select>
+									</div>
+									<div class="layui-input-inline" style="width:100px;">
+										<select name="city" lay-verify="required">
+											<option value="">自动计算</option>
+											<option value="0">以下冲款</option>
+											<option value="1">以下折让</option>
+											<option value="1">以下空白</option>
+										</select>
+									</div>
+								</div>
+							</div>
+				 		</div>
+				</div>
+				<button v-on:click="toInsert()">新增</button> |
+				<button v-on:click="toupdate()">修改</button> |
+				<button v-on:click="del()">删除</button> |
+				<button v-on:click="download()">保存</button> |
+				<button v-on:click="toIndex()">首条记录</button> |
+				<button v-on:click="toPrePage()">上一条</button> |
+				<button v-on:click="toNextPage()">下一条</button> |
+				<button v-on:click="toLastPage()">最后一条</button> |
+				<button v-on:click="reloadNow()">刷新</button> |
+				<div class="layui-input-inline" style="width:70px;">
+					<button id="shenhe" @click="shenhe()" class="layui-btn layui-btn-normal">审核</button>
+				</div>
+				<div class="layui-input-inline" style="width:70px;">
+					<button id="quhe" @click="quhe()" class="layui-btn layui-btn-danger">取消审核</button>
+				</div>
+			</div>
+		</div>
+		</body>
+	<script type="text/javascript" src="../js/jquery-1.12.4.js" ></script>
+	<script type="text/javascript" src="../js/layui.all.js" ></script>
+	<script type="text/javascript" src="../js/layui.js" ></script>
+	<script type="text/javascript" src="../js/vue.js" ></script>
+	<script>
+	/*	Date.prototype.toLocaleString = function() {
+			return this.getFullYear() + "-" + (this.getMonth() + 1) + "-" + this.getDate();
+		};*/
+		var xsbj_vue=new Vue({
+			el:'.app',
+			data(){
+				return{
+					data1:null,
+					danju:'',
+					host : "http://127.0.0.1:8080",
+					priabill:{
+						priabillId:"",//单号
+						supplierId:"",//供应商Id
+						scsId:"",//结算方式id
+						staffId:"",//部门员工表id
+						currencyId:"",//币别类型
+						projectId:"",//项目表id
+						priabillSupplierName:"",//供应商
+						priabillSatName1:"信用卡",
+						priabillPrice1:0.00,
+						priabillSatName2:"现金",
+						priabillPrice2:0.00,
+						priabillSatName3:"汇票",
+						priabillPrice3:0.00,
+						priabillZhekou:0.00,//折扣率
+						priabillEndtime:"",//终止帐月
+						priabillPayablestime:"",//单据日期
+						priabillCurrencyName:"",//币别类型快照
+						priabillCurrencyInexchange:"",//币别类型快照
+						priabillType:"",//应付冲款类型
+						priabillVoucherno:"",//凭证编号
+						priabillTeam_name:"",//部门表
+						priabillProject_name:"",//项目表
+						priabillBillpersonnel:"",//制单人员
+						priabillReviewers:"",//复核人员
+						priadetails_list:{}
+					},
+					pageInfo:{},
+					cdje:0.00,
+					stutas:"query",
+					tabStatus:true,
+					listFea:{},
+					billno:0
+				}
+			},
+			methods:{
+				priabillAudit:function(){
+					let priabill = JSON.stringify(xsbj_vue.priabill)
+					console.log(priabill)
+					$.ajax({
+						url:xsbj_vue.host+"/priabill/priabillAudit",
+						data:priabill,
+						type:"post",
+						contentType:"application/json;charset=utf-8",
+						success:function (result) {
+							console.log(result)
+						}
+					})
+				},
+				shenhe:function(){
+					if(confirm("确认复核记录项吗?")){
+						if(xsbj_vue.priabill.priabillAuditstatus=="1")return
+						xsbj_vue.priabill.priabillAuditstatus="1";
+						this.status="update"
+						this.priabillAudit();
+						$("#shenHeDiv img").addClass("shenHeImg");
+						$("#shenHeDiv img").removeClass("isSee");
+
+					}
+
+				},
+				quhe:function(){
+					if(confirm("确认取消复核记录项吗?")){
+						if(xsbj_vue.priabill.priabillAuditstatus=="0")return
+						xsbj_vue.priabill.priabillAuditstatus="0";
+						this.priabillAudit();
+						$("#shenHeDiv img").removeClass("shenHeImg");
+						$("#shenHeDiv img").addClass("isSee");
+					}
+
+				},	getShenhe:function(){
+					if(xsbj_vue.priabill.priabillAuditstatus=="0"){
+						$("#shenHeDiv img").removeClass("shenHeImg");
+						$("#shenHeDiv img").addClass("isSee");
+					}else{
+						$("#shenHeDiv img").addClass("shenHeImg");
+						$("#shenHeDiv img").removeClass("isSee");
+					}
+
+				},
+				queryBySupplier: function () {
+					layer.open({
+						type: 2,
+						title: false,
+						closeBtn: 1,//右上角
+						area: ['350px'],
+						shade: 0,
+						content: '../基本资料/客户资料.html',
+						success: function (layero, index) {
+							var body = layer.getChildFrame('body', index);  //获取的子页面HTML所有类容
+							//得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
+							var iframeWin = window[layero.find('iframe')[0]['name']];
+							console.log(iframeWin);
+							iframeWin.setVueName("xsbj_vue");//调用iframeWin页面的属性或者方法
+						}
+					})
+				},
+				getBySupplier:function (data) {
+					xsbj_vue.priabill.priabillSupplierName = data.supplierName;
+					xsbj_vue.priabill.supplierId = data.supplierId;
+					xsbj_vue.priabill.currencyId = data.currencyId;
+					xsbj_vue.priabill.priabillEndtime = data.supplierTerminationdate;
+					xsbj_vue.priabill.priabillTeamName = data.supplierCustom1;
+					$.ajax({
+						url: xsbj_vue.host+"/payable/queryByCurrencyId",
+						data:{
+							currencyId:xsbj_vue.priabill.currencyId
+						},
+						success:function (res) {
+							xsbj_vue.priabill.priabillCurrencyInexchange = res.currencyStandardexchange;
+							xsbj_vue.priabill.priabillCurrencyName = res.currencyName;
+						}
+					})
+				},
+				insertRows:function(){
+					this.getSum();
+					$.ajax({
+						url:xsbj_vue.host+"/priabill/getBillno",
+						success:function (result) {
+							var newTr =	$("<tr  id='yuAppend' name='quDiao'><td><input name='inputZreo' value='"+result+"' type='hidden'><input name='inputOne' value='0.0'></td><td><select  name='selectOne'><option>销售订单</option><option>S/C</option></select></td><td><input name='inputTwo' ></td><td><input name='inputThree' ></td></tr>");
+							$("#quReadonly").append(newTr);
+						}
+					})
+				},
+				getSum:function(){
+					xsbj_vue.cdje=0.00
+					$("#quReadonly tr:gt(0)").each(function(){
+						var input1 = $(this).find('input[name="inputOne"]').val();
+						if(!isNaN(input1)){
+							xsbj_vue.cdje += parseInt(input1)
+						}
+					});
+				},
+				getList:function(){
+					let listFea=[]
+					$("#quReadonly tr:gt(0)").each(function(){
+						var detail={};
+						var inputZero = $(this).find('input[name="inputZreo"]').val();
+						var input1 = $(this).find('input[name="inputOne"]').val();
+						var select1 = $(this).find('select[name="selectOne"]').val();
+						var input2 = $(this).find('input[name="inputTwo"]').val();
+						var input3 = $(this).find('input[name="inputThree"]').val();+
+						console.log(inputZero,input1,select1,input2,input3);
+						detail.priadetailsId = inputZero;
+						detail.priabillPrice = input1;
+						detail.priabillType = select1;
+						detail.priabillNumber = input2;
+						detail.priabillRemarks = input3;
+						listFea.push(detail);
+					});
+					xsbj_vue.priabill.priadetails_list = listFea;
+				},
+				/*setckType:function(){
+					/!*if(xsbj_vue.payables.payablesType==0){
+						$("#tab1").show();
+						$("#tab2").hide();
+						layui.form.render('select');
+					}else if(xsbj_vue.payables.payablesType==1){
+						$("#tab2").show();
+						$("#tab1").hide();
+						layui.form.render('select');
+
+					}*!/
+					$("[name=ckType]").val(xsbj_vue.payables.payablesType);
+					layui.form.render()
+				},*/
+				/*findCustomer:function(){
+					$.ajax({
+						url: xsbj_vue.host+"/payable/queryByCustomerName",
+						data:{name:xsbj_vue.priabill.priabillSupplierName},
+						type:"get",
+						success:function (result) {
+							xsbj_vue.priabill.priabillSupplierName = result.supplierName;
+							xsbj_vue.priabill.supplierId = result.supplierId;
+							xsbj_vue.priabill.currencyId = result.currencyId;
+							xsbj_vue.priabill.priabillEndtime = result.supplierTerminationdate;
+							xsbj_vue.priabill.priabillTeamName = result.supplierCustom1;
+						}
+					})
+				},*/
+				countCdje:function(){
+					xsbj_vue.cdje = 0;
+					for (let i = 0; i <= xsbj_vue.priabill.priadetails_list.length; i++) {
+						xsbj_vue.cdje+=parseInt(xsbj_vue.priabill.priadetails_list[i].priabillPrice);
+					}
+				},
+				getToDay:function(){
+					let data=new Date();//获取当前时间
+					/*this.payables.payables_payablestime=data.toLocaleString()//用自己重构的方法吧时间戳转为字符串*/
+					var year = data.getFullYear(); //获取当前年
+					var mon = data.getMonth() + 1; //获取当前月
+					var day = data.getDate(); //获取当前日
+					if (mon<10){
+						mon = "0"+mon
+					}else if(day){
+						day = "0"+day;
+					}
+					this.priabill.priabillPayablestime = year+"-"+mon+"-"+day
+					$.ajax({
+						url:this.host+"/priabill/queryByPriabillBillno",
+						data:{date:this.priabill.priabillPayablestime},
+						type:"get",
+						success:function (result) {
+							xsbj_vue.priabill.priabillId = result
+						}
+					})
+				},
+				/*queryBySingleCurrency:function(data){
+					if(xsbj_vue.payables.supplierId==null) return;
+					if(data.value==0){//单币别
+						$.ajax({
+							url:xsbj_vue.host+"/payable/queryBySingleCurrency",
+							data:{id:xsbj_vue.payables.supplierId},
+							type:"get",
+							success:function(result){
+								console.log(result);
+								xsbj_vue.payables.priadetails_list = result;
+								xsbj_vue.countCdje()
+							}
+						})
+					}else if(data.value==1){
+						$.ajax({//多币别
+							url:xsbj_vue.host+"/payable/queryByMoreCurrency",
+							data:{id:xsbj_vue.payables.supplierId},
+							type:"get",
+							success:function(result){
+								console.log(result);
+								xsbj_vue.payables.priadetails_list = result;
+								xsbj_vue.countCdje();
+							}
+						})
+					}else if(data.value==2){
+
+					}
+				},*/
+				download:function(){
+					alert(1)
+					xsbj_vue.tabStatus = true;
+					xsbj_vue.getList();
+					xsbj_vue.getSum();
+					alert((parseFloat(xsbj_vue.priabill.priabillPrice1)+parseFloat(xsbj_vue.priabill.priabillPrice2)+parseFloat(xsbj_vue.priabill.priabillPrice3)))
+						if (xsbj_vue.status == "Add"&&xsbj_vue.cdje==(parseFloat(xsbj_vue.priabill.priabillPrice1)+parseFloat(xsbj_vue.priabill.priabillPrice2)+parseFloat(xsbj_vue.priabill.priabillPrice3))){
+							xsbj_vue.insert();
+						}else if(xsbj_vue.status=="update"&&xsbj_vue.cdje==(parseFloat(xsbj_vue.priabill.priabillPrice1)+parseFloat(xsbj_vue.priabill.priabillPrice2)+parseFloat(xsbj_vue.priabill.priabillPrice3))){
+							xsbj_vue.update();
+						}else{
+							alert("付款与实际预付金额不同")
+						}
+				},
+				toInsert:function(){
+				$("#disable :input").attr("disabled", false);
+					layui.form.render();
+					xsbj_vue.priabill = {
+						priabillId:"",//单号
+						supplierId:"",//供应商Id
+						scsId:"",//结算方式id
+						staffId:"",//部门员工表id
+						currencyId:"",//币别类型
+						projectId:"",//项目表id
+						priabillSupplierName:"",//供应商
+						priabillSatName1:"信用卡",
+						priabillPrice1:0.00,
+						priabillSatName2:"现金",
+						priabillPrice2:0.00,
+						priabillSatName3:"汇票",
+						priabillPrice3:0.00,
+						priabillZhekou:0.00,//折扣率
+						priabillEndtime:"",//终止帐月
+						priabillPayablestime:"",//单据日期
+						priabillCurrencyName:"",//币别类型快照
+						priabillCurrencyInexchange:"",//币别类型快照
+						priabillType:"",//应付冲款类型
+						priabillVoucherno:"",//凭证编号
+						priabillTeam_name:"",//部门表
+						priabillProject_name:"",//项目表
+						priabillBillpersonnel:"",//制单人员
+						priabillReviewers:"",//复核人员
+						priadetails_list:{}
+					}
+					xsbj_vue.status = "Add";
+					$("[name='quDiao']").remove();	//清空原来的动态生成的行
+					/*var newTr =	$("<tr> <td colspan=\"4\"v-on:dblclick='doubleNew()' style=\"width:100%;height: 100%;text-align: center;border: 0px;vertical-align: middle;\">没有可以显示的数据，编辑状态下双击增加新的一行</td></tr>")
+					$("#quReadonly").append(newTr);*/
+					this.getToDay();
+				},
+				doubleNew:function(){
+					xsbj_vue.tabStatus=false
+					$("[name='quDiao']").remove();	//清空原来的动态生成的行
+					var newTr =	$("<tr  id='yuAppend' name='quDiao'><td><input name='inputZreo'  type='hidden'><input name='inputOne'   value='0.0'></td><td><select    name='selectOne'><option>销售订单</option><option>S/C</option></select></td><td><input   name='inputTwo' ></td><td><input   name='inputThree' ></td></tr>");
+					$("#quReadonly").append(newTr);
+				},
+				insert:function(){
+					let priabill = JSON.stringify(xsbj_vue.priabill);
+					$.ajax({
+						url:xsbj_vue.host+"/priabill/insertByPriabill",
+						data:priabill,
+						type:"post",
+						contentType:"application/json;charset=utf-8",
+						success:function(result){
+							if(result){
+								$("[name='quDiao']").remove();
+								xsbj_vue.func()
+							}
+						}
+					})
+				},
+				toupdate:function(){
+					xsbj_vue.status = "update";
+					$("#disable :input").attr("disabled", false);
+					layui.form.render();
+				},
+				update:function(){
+					let priabill = JSON.stringify(xsbj_vue.priabill);
+					console.log(priabill)
+					$.ajax({
+						url:xsbj_vue.host+"/priabill/updateByPriabill",
+						data:priabill,
+						type:"post",
+						contentType:"application/json;charset=utf-8",
+						success:function(result){
+							if(result){
+								xsbj_vue.func()
+							}
+						}
+					})
+				},
+				del:function(){
+					if(confirm("确定要删除吗？"))
+					{
+						let priabill = JSON.stringify(xsbj_vue.priabill);
+						console.log(priabill)
+						$.ajax({
+							url:xsbj_vue.host+"/priabill/deleteBypriabill",
+							data:priabill,
+							type:"post",
+							contentType:"application/json;charset=utf-8",
+							success:function(result){
+								if(result){
+									xsbj_vue.func()
+								}
+							}
+						})
+					}
+				},
+				reloadNow:function(){
+					window.location.reload();//刷新当前页面.
+				},
+				toIndex:function(){
+					if(xsbj_vue.pageInfo.isFirstPage)return;
+					xsbj_vue.func(1,xsbj_vue.pageInfo.firstPage)
+				},
+				toLastPage:function(){
+					if (xsbj_vue.pageInfo.isLastPage)return;
+					xsbj_vue.func(1,xsbj_vue.pageInfo.lastPage)
+				},
+				toPrePage:function(){
+					if (xsbj_vue.pageInfo.isFirstPage)return;
+					xsbj_vue.func(1,xsbj_vue.pageInfo.prePage)
+				},
+				toNextPage:function(){
+					if(xsbj_vue.pageInfo.isLastPage)return;
+					xsbj_vue.func(1,xsbj_vue.pageInfo.nextPage)
+				},
+				func:function(pageSize,pageNum){
+					if (pageSize==0||pageSize==null){
+						pageSize = 1;
+					} if(pageNum==0||pageNum==null){
+						pageNum = 1;
+					}
+					console.log("pageSize"+pageSize+"     pageNum"+pageNum)
+					$.ajax({
+						url:"http://127.0.0.1:8080/priabill/queryByPriabill",
+						data:{
+							pageSize:pageSize,
+							pageNum:pageNum
+						},
+						success:function(result){
+							xsbj_vue.status = "query"
+							xsbj_vue.pageInfo = result;
+							xsbj_vue.priabill = xsbj_vue.pageInfo.list[0]
+							/*table详表赋值*//*
+							var detailsList = [];*/
+							$("[name='quDiao']").remove();	//清空原来的动态生成的行
+							xsbj_vue.cdje =0.00;
+							$.each(xsbj_vue.priabill.priadetails_list,function(i,obj){
+								xsbj_vue.cdje += obj.priabillPrice;
+								var newTr =	$("<tr name='quDiao'  id='yuAppend'><td><input name='inputZreo' value='"+obj.priadetailsId+"' type='hidden'><input disabled='disabled' name='inputOne' value='"+obj.priabillPrice+"'></td><td><select disabled='disabled' name='selectOne' value='"+obj.priabillType+"'><option>销售订单</option><option>S/C</option></select></td><td><input disabled='disabled' name='inputTwo' value='"+obj.priabillNumber+"'></td><td><input disabled='disabled' name='inputThree' value='"+obj.priabillRemarks+"'></td></tr>");
+								//console.log(newTr);
+								$("#quReadonly").append(newTr);
+							});
+							$("#disable :input").attr("disabled", "disabled");
+							xsbj_vue.getShenhe()
+							/*xsbj_vue.showTab();*/
+							/*xsbj_vue.countCdje();*/
+							/*xsbj_vue.setckType();*/
+						}
+					})
+				},
+              kh:function(e,title,url){ // e.target 获取当前对象 在父层弹出一个层
+              	parent.vue_tjy_xsgl.show(e,title,url);
+                   /* parent.layer.open({
+                        type: 2
+                        ,title:title
+                        ,area: ['800px', '360px']
+                        ,shade: 0
+                        ,maxmin: true
+                        ,offset:'auto'
+                        ,content: url// $(e.target) 要显示的节点,若用此法则可能会影响到样式，就是把选择的节点移到弹出框了
+                        ,btn: ['关闭']
+                        ,yes: function(i){
+                            layer.close(i);// 关闭弹窗
+                        },
+                        id:title
+                        ,zIndex: layer.zIndex
+                        ,success: function(layero){
+                           // layer.setTop(layero);
+                        }
+                    });*/
+                   
+               }
+			}
+			,created:function(){
+				/*单据日期默认为今天*/
+				this.func();
+			}
+		})
+		var s=[];
+		s=[{"id":1,"name":"xiao"},
+		   {"id":1,"name":"xiao"},
+		   {"id":1,"name":"xiao"},
+		   {"id":1,"name":"xiao"},
+		   {"id":1,"name":"xiao"},
+		   {"id":1,"name":"xiao"},
+		   {"id":1,"name":"xiao"},
+		   {"id":1,"name":"xiao"},
+		   {"id":1,"name":"xiao"},
+		   {"id":1,"name":"xiao"}
+		   ]
+		//alert(JSON.stringify(new URLSearchParams(location.search).get("list"))); // 蜘蛛侠)
+layui.use('element', function(){
+	var element = layui.element;			
+});
+
+//form表单提交
+layui.use('form', function(){
+  var form = layui.form;
+  
+  //监听提交
+  form.on('submit(formDemo)', function(data){
+    layer.msg(JSON.stringify(data.field));
+    return false;
+  });
+  //select选择事件
+/*	form.on('select(feature)', function(data){
+		console.log(data);
+		xsbj_vue.queryBySingleCurrency(data);
+	});*/
+	form.on('select(yfdb)', function(data){
+		console.log(data);
+		xsbj_vue.priabill.priabill_detailList.priabillNumber = data.value;
+	});
+	/*form.on('select(showTab)', function(data){
+		console.log(data.value);
+		xsbj_vue.payables.payablesType=data.value;
+
+	});*/
+});
+//单据日期
+layui.use('laydate', function(){
+	var laydate = layui.laydate;
+	laydate.render({
+	    elem: '#test1',
+	    done:function(value,date){//value, date, endDate点击日期、清空、现在、确定均会触发。回调返回三个参数，分别代表：生成的值、日期时间对象、结束的日期时间对象
+        var value=value.replace(/-/g,'');
+         alert(value)
+			/*访问后台确定单号*/
+		xsbj_vue.danju=value;
+    	}
+	  });
+});
+
+//有效日期
+layui.use('laydate', function(){
+	var laydate = layui.laydate;
+	laydate.render({
+	    elem: '#test2'
+	  });
+});
+
+//有效日期
+layui.use('laydate', function(){
+	var laydate = layui.laydate;
+	laydate.render({
+	    elem: '#test3'
+	  });
+});
+
+
+//年月选择器
+layui.use('laydate', function(){
+	var laydate = layui.laydate;
+	laydate.render({ 
+  	elem: '#test4'
+  	,type: 'month'
+});
+})
+
+
+//年月选择器
+layui.use('laydate', function(){
+	var laydate = layui.laydate;
+	laydate.render({ 
+  	elem: '#test5'
+  	,type: 'month'
+});
+})
+</script>
+<script>
+			layui.use(['layer', 'table', 'element', 'form'], function () {
+				var layer = layui.layer //弹层
+					, table = layui.table //表格
+					, form = layui.form;
+				//监听地址选择操作
+				form.on('select(selectDemo)', function (obj) {
+					layer.tips(obj.elem.getAttribute('name') + '：'+obj.value + ' ' + obj.elem.getAttribute('dataId') , obj.othis);
+				});
+				//监听性别操作
+				form.on('switch(sexDemo)', function (obj) {
+					layer.tips(this.value + ' ' + this.name + '：' + obj.elem.checked, obj.othis);
+				});
+
+				//执行一个 table 实例
+				table.render({
+					elem: '#demo'
+					,cols: [[ //标题栏
+						{field: 'id', title: '(栏号)', width: 80, sort: true}
+						,{field: 'name', title: '(单别)', width: 120}
+						,{field: 'email', title: '(原单日期)', minWidth: 150}
+						,{field: 'sign', title: '(原单单号)', minWidth: 160}
+						,{field: 'sex', title: '(发票号码)', width: 80}
+						,{field: 'city', title: '(交易对象)', width: 100}
+						,{field: 'experience', title: '(交易对象名称)', width: 80, sort: true}
+						,{field: 'experience', title: '(部门编号)', width: 80, sort: true}
+						,{field: 'experience', title: '(部门编号)', width: 80, sort: true}
+						,{field: 'experience', title: '(业务人员)', width: 80, sort: true}
+						,{field: 'experience', title: '(项目名称)', width: 80, sort: true}
+						,{field: 'experience', title: '(币别)', width: 80, sort: true}
+						,{field: 'experience', title: '(汇率)', width: 80, sort: true}
+						,{field: 'experience', title: '(原单金额)', width: 80, sort: true}
+						,{field: 'experience', title: '(现行余额)', width: 80, sort: true}
+						,{field: 'experience', title: '(折让金额)', width: 80, sort: true}
+						,{field: 'experience', title: '(冲款金额)', width: 80, sort: true}
+						,{field: 'experience', title: '(冲抵金额)', width: 80, sort: true}
+					]]
+					,data:s
+					//,skin: 'line' //表格风格
+					,even: true
+					//,page: true //是否显示分页
+					//,limits: [5, 7, 10]
+					//,limit: 5 //每页默认显示的数量
+				});
+				//监听单元格编辑
+				table.on('edit(tableDemo)', function(obj){
+					var value = obj.value //得到修改后的值
+						,data = obj.data //得到所在行所有键值
+						,field = obj.field; //得到字段
+					layer.msg('[ID: '+ data.id +'] ' + field + ' 字段更改为：'+ value);
+				});
+				//监听工具条
+				table.on('tool(tableDemo)', function (obj) { //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+					var data = obj.data //获得当前行数据
+						, layEvent = obj.event; //获得 lay-event 对应的值
+					if (layEvent === 'detail') {
+						layer.msg('查看操作');
+					} else if (layEvent === 'del') {
+						layer.confirm('真的删除行么', function (index) {
+							obj.del(); //删除对应行（tr）的DOM结构
+							layer.close(index);
+							//向服务端发送删除指令
+						});
+					} else if (layEvent === 'edit') {
+						layer.msg('编辑操作');
+					}
+				});
+			});
+		</script>
+
+		<script type="text/javascript">
+			var cityArr = ['昆明', '长沙', '富源', '楚雄', '长春', '哈尔滨', '桂林'];
+		</script>
+		<script type="text/html" id="selectTool" desc="下拉选择器" intro="用到了layui模板（不能设置lay-ignore,否则监听不到事件）">
+			<select name="city" dataId="{{d.id}}" lay-filter="selectDemo">
+				{{# layui.each(cityArr, function(index, item){ }}
+				<option {{ (d.city==item)?'selected' : '' }}>{{ item }}</option>
+				{{# }); }}
+			</select>
+		</script>
+
+		<script type="text/html" id="switchTpl" desc="切换开关" intro="layui表单空间">
+			<input type="checkbox" name="sex" value="{{d.id}}" lay-skin="switch"
+				   lay-text="女|男" lay-filter="sexDemo" {{ (d.id==10003)?'checked' :'' }}>
+		</script>
+</html>
+

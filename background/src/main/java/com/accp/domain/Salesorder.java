@@ -3,25 +3,27 @@ package com.accp.domain;
 import java.util.Date;
 
 public class Salesorder {
-    private String soDocumentnumber;
+    private String soId;
 
     private Date soDocumentTime;
 
-    private String soDeliveryAddress;
+    private String soDocumentnumber;
 
-    private String soMarketType;
+    private Double soDeliveryAddress;
 
-    private String soCustomerorder;
+    private Date sotId;
 
-    private Integer soTax;
+    private Integer soCustomerorder;
 
-    private String soCoinArewell;
+    private String soTax;
 
-    private Integer soOderStatic;
+    private String currencyId;
 
-    private String soBusinessPersonnel;
+    private String soOderStatic;
 
-    private String soSubordinateDepartment;
+    private String staffId;
+
+    private String teamId;
 
     private String soMonograph;
 
@@ -33,38 +35,40 @@ public class Salesorder {
 
     private String soTailclause;
 
-    private String soSelfBoundColumn1;
-
-    private String soSelfBoundColumn2;
-
     private String soRemark;
 
     private String soAccountOwnership;
 
-    private Date soCollectionTime;
+    private String soCollectionTime;
 
-    private Date soCollectionMonth;
+    private String soCollectionMonth;
 
     private String soCollectionTerms;
 
     private String soCollectionTermsDay;
 
-    private String soSpare1;
+    private String soAuditing;
 
-    private String soSpare2;
+    private String soYn;
 
-    private String soSpare3;
+    private String soCustom1;
 
-    private String soSpare4;
+    private String soCustom2;
 
-    private String soSpare5;
+    private String soCustom3;
 
-    public String getSoDocumentnumber() {
-        return soDocumentnumber;
+    private String soCustom4;
+
+    private String soCustom5;
+
+    private String soCustom6;
+
+    public String getSoId() {
+        return soId;
     }
 
-    public void setSoDocumentnumber(String soDocumentnumber) {
-        this.soDocumentnumber = soDocumentnumber;
+    public void setSoId(String soId) {
+        this.soId = soId;
     }
 
     public Date getSoDocumentTime() {
@@ -75,68 +79,76 @@ public class Salesorder {
         this.soDocumentTime = soDocumentTime;
     }
 
-    public String getSoDeliveryAddress() {
+    public String getSoDocumentnumber() {
+        return soDocumentnumber;
+    }
+
+    public void setSoDocumentnumber(String soDocumentnumber) {
+        this.soDocumentnumber = soDocumentnumber;
+    }
+
+    public Double getSoDeliveryAddress() {
         return soDeliveryAddress;
     }
 
-    public void setSoDeliveryAddress(String soDeliveryAddress) {
+    public void setSoDeliveryAddress(Double soDeliveryAddress) {
         this.soDeliveryAddress = soDeliveryAddress;
     }
 
-    public String getSoMarketType() {
-        return soMarketType;
+    public Date getSotId() {
+        return sotId;
     }
 
-    public void setSoMarketType(String soMarketType) {
-        this.soMarketType = soMarketType;
+    public void setSotId(Date sotId) {
+        this.sotId = sotId;
     }
 
-    public String getSoCustomerorder() {
+    public Integer getSoCustomerorder() {
         return soCustomerorder;
     }
 
-    public void setSoCustomerorder(String soCustomerorder) {
+    public void setSoCustomerorder(Integer soCustomerorder) {
         this.soCustomerorder = soCustomerorder;
     }
 
-    public Integer getSoTax() {
+    public String getSoTax() {
         return soTax;
     }
 
-    public void setSoTax(Integer soTax) {
+    public void setSoTax(String soTax) {
         this.soTax = soTax;
     }
 
-    public String getSoCoinArewell() {
-        return soCoinArewell;
+    public String getCurrencyId() {
+        return currencyId;
     }
 
-    public void setSoCoinArewell(String soCoinArewell) {
-        this.soCoinArewell = soCoinArewell;
+    public void setCurrencyId(String currencyId) {
+        this.currencyId = currencyId;
     }
 
-    public Integer getSoOderStatic() {
+    public String getSoOderStatic() {
         return soOderStatic;
     }
 
-    public void setSoOderStatic(Integer soOderStatic) {
+    public void setSoOderStatic(String soOderStatic) {
         this.soOderStatic = soOderStatic;
     }
 
-    public String getSoBusinessPersonnel() {
-        return soBusinessPersonnel;
+    public String getStaffId() {
+        return staffId;
     }
 
-    public void setSoBusinessPersonnel(String soBusinessPersonnel) {
-        this.soBusinessPersonnel = soBusinessPersonnel;
+    public void setStaffId(String staffId) {
+        this.staffId = staffId;
     }
 
-    public String getSoSubordinateDepartment() {
-        return soSubordinateDepartment;
+    public String getTeamId() {
+        return teamId;
     }
 
-    public void setSoSubordinateDepartment(String soSubordinateDepartment) {
-        this.soSubordinateDepartment = soSubordinateDepartment;
+    public void setTeamId(String teamId) {
+        this.teamId = teamId;
     }
 
     public String getSoMonograph() {
@@ -179,22 +191,6 @@ public class Salesorder {
         this.soTailclause = soTailclause;
     }
 
-    public String getSoSelfBoundColumn1() {
-        return soSelfBoundColumn1;
-    }
-
-    public void setSoSelfBoundColumn1(String soSelfBoundColumn1) {
-        this.soSelfBoundColumn1 = soSelfBoundColumn1;
-    }
-
-    public String getSoSelfBoundColumn2() {
-        return soSelfBoundColumn2;
-    }
-
-    public void setSoSelfBoundColumn2(String soSelfBoundColumn2) {
-        this.soSelfBoundColumn2 = soSelfBoundColumn2;
-    }
-
     public String getSoRemark() {
         return soRemark;
     }
@@ -211,19 +207,19 @@ public class Salesorder {
         this.soAccountOwnership = soAccountOwnership;
     }
 
-    public Date getSoCollectionTime() {
+    public String getSoCollectionTime() {
         return soCollectionTime;
     }
 
-    public void setSoCollectionTime(Date soCollectionTime) {
+    public void setSoCollectionTime(String soCollectionTime) {
         this.soCollectionTime = soCollectionTime;
     }
 
-    public Date getSoCollectionMonth() {
+    public String getSoCollectionMonth() {
         return soCollectionMonth;
     }
 
-    public void setSoCollectionMonth(Date soCollectionMonth) {
+    public void setSoCollectionMonth(String soCollectionMonth) {
         this.soCollectionMonth = soCollectionMonth;
     }
 
@@ -243,43 +239,67 @@ public class Salesorder {
         this.soCollectionTermsDay = soCollectionTermsDay;
     }
 
-    public String getSoSpare1() {
-        return soSpare1;
+    public String getSoAuditing() {
+        return soAuditing;
     }
 
-    public void setSoSpare1(String soSpare1) {
-        this.soSpare1 = soSpare1;
+    public void setSoAuditing(String soAuditing) {
+        this.soAuditing = soAuditing;
     }
 
-    public String getSoSpare2() {
-        return soSpare2;
+    public String getSoYn() {
+        return soYn;
     }
 
-    public void setSoSpare2(String soSpare2) {
-        this.soSpare2 = soSpare2;
+    public void setSoYn(String soYn) {
+        this.soYn = soYn;
     }
 
-    public String getSoSpare3() {
-        return soSpare3;
+    public String getSoCustom1() {
+        return soCustom1;
     }
 
-    public void setSoSpare3(String soSpare3) {
-        this.soSpare3 = soSpare3;
+    public void setSoCustom1(String soCustom1) {
+        this.soCustom1 = soCustom1;
     }
 
-    public String getSoSpare4() {
-        return soSpare4;
+    public String getSoCustom2() {
+        return soCustom2;
     }
 
-    public void setSoSpare4(String soSpare4) {
-        this.soSpare4 = soSpare4;
+    public void setSoCustom2(String soCustom2) {
+        this.soCustom2 = soCustom2;
     }
 
-    public String getSoSpare5() {
-        return soSpare5;
+    public String getSoCustom3() {
+        return soCustom3;
     }
 
-    public void setSoSpare5(String soSpare5) {
-        this.soSpare5 = soSpare5;
+    public void setSoCustom3(String soCustom3) {
+        this.soCustom3 = soCustom3;
+    }
+
+    public String getSoCustom4() {
+        return soCustom4;
+    }
+
+    public void setSoCustom4(String soCustom4) {
+        this.soCustom4 = soCustom4;
+    }
+
+    public String getSoCustom5() {
+        return soCustom5;
+    }
+
+    public void setSoCustom5(String soCustom5) {
+        this.soCustom5 = soCustom5;
+    }
+
+    public String getSoCustom6() {
+        return soCustom6;
+    }
+
+    public void setSoCustom6(String soCustom6) {
+        this.soCustom6 = soCustom6;
     }
 }
