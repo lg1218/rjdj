@@ -1,482 +1,1284 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
 		<link rel="stylesheet" href="../css/layui.css" media="all" />
 		<style>
-			.dayo{
+			.dayo {
 				margin: 0 auto;
 			}
-			.layui-form-item{
+			
+			.layui-form-item {
 				height: 20px;
-			}	
+			}
+			
 			.layui-tab-title li {
-			    display: inline-block;
-			    vertical-align: middle;
-			    font-size: 14px;
-			    transition: all .2s;
-			    -webkit-transition: all .2s;
-			    position: relative;
-			    line-height: 40px;
-			    min-width: 52.5px;
-			    padding: 0 15px;
-			    text-align: center;
-			    cursor: pointer;
-			}		
+				display: inline-block;
+				vertical-align: middle;
+				font-size: 14px;
+				transition: all .2s;
+				-webkit-transition: all .2s;
+				position: relative;
+				line-height: 40px;
+				min-width: 52.5px;
+				padding: 0 15px;
+				text-align: center;
+				cursor: pointer;
+			}
 		</style>
-		 <style>
-		 /* 防止下拉框的下拉列表被隐藏---必须设置--- */
-		.layui-table-cell {
-			overflow: visible !important;
-		}
-		/* 设置下拉框的高度与表格单元相同 */
-		.layui-input, .layui-select, .layui-textarea{
-			height: 30px !important;
-		}
+		<style>
+			/* 防止下拉框的下拉列表被隐藏---必须设置--- */
+			
+			.layui-table-cell {
+				overflow: visible !important;
+			}
+			/* 设置下拉框的高度与表格单元相同 */
+			
+			.layui-input,
+			.layui-select,
+			.layui-textarea {
+				height: 30px !important;
+			}
 		</style>
 	</head>
-		<body>
-			<div class="layui-container app" style="width: 800px;margin-top: 50px;">
-			  <div style="margin-left: -20px;">
-			  	<form class="layui-form" action="">
-						<!--1-->
-						<div class="layui-row">
-							<div class="layui-col-sm6">
-								<div class="layui-form-item">
-								    <label class="layui-form-label">客户名称</label>
-								    <div class="layui-input-inline">
-								      <input type="text" name="title" required  lay-verify="required" placeholder="请输入客户名称" autocomplete="off" class="layui-input">
-								    </div>
-							 	<div class="layui-form-mid layui-word-aux" @click="kh($event,'客户信息单','客户信息单.html')">选择客户</div>
+
+	<body>
+		<div class="layui-container app" style="width: 800px;margin-top: 50px;">
+			<div style="margin-left: -20px;" v-for="pages,index in page.list">
+				<form class="layui-form" action="">
+					<!--1-->
+					<div class="layui-row">
+						<div class="layui-col-sm6">
+							<div class="layui-form-item">
+								<label class="layui-form-label">客户名称</label>
+								<div class="layui-input-inline">
+									<input type="text" @keyup.f4="showClientWindow()" required lay-verify="required" placeholder="请输入客户名称" autocomplete="off" class="layui-input" v-model="pages.customerId" name="customerId">
+								</div>
+								<div class="layui-form-mid layui-word-aux" @click="kh($event,'客户信息单','客户信息单.html')">选择客户</div>
+							</div>
+						</div>
+						<div class="layui-col-sm6">
+							<div class="layui-form-item">
+								<label class="layui-form-label">验证日期</label>
+								<div class="layui-input-inline">
+									<input type="text" v-model="pages.sqDocumentTime" name="sqDocumentTime" id="test1" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
 								</div>
 							</div>
-							<div class="layui-col-sm6">
-								<div class="layui-form-item">
-								    <label class="layui-form-label">验证日期</label>
-								      <div class="layui-input-inline">
-								        <input type="text" v-model="data1"  name="date" id="test1" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
-								      </div>
-							 	</div>
+						</div>
+					</div>
+					<!--2-->
+					<div class="layui-row">
+						<div class="layui-col-sm6">
+							<div class="layui-form-item">
+								<label class="layui-form-label">送货地址</label>
+								<div class="layui-input-inline">
+									<input type="text" name="title" required lay-verify="required" placeholder="请输入送货地址" autocomplete="off" class="layui-input" name="sqDeliveryAddress" v-model="pages.sqDeliveryAddress">
+								</div>
 							</div>
-				 		</div>
-				 		 <!--2-->
-						<div class="layui-row">
-							<div class="layui-col-sm6">
-								<div class="layui-form-item">
-								    <label class="layui-form-label">送货地址</label>
-								    <div class="layui-input-inline">
-								      <input type="text" name="title" required  lay-verify="required" placeholder="请输入送货地址" autocomplete="off" class="layui-input">
-								    </div>
-							 	</div>
+						</div>
+						<div class="layui-col-sm6">
+							<div class="layui-form-item">
+								<label class="layui-form-label">单据号码</label>
+								<div class="layui-input-inline">
+									<input type="text" v-model="pages.sqId" name="sqId" disabled required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+								</div>
+								<div class="layui-form-mid layui-word-aux">辅助文字</div>
 							</div>
-							<div class="layui-col-sm6">
-								<div class="layui-form-item">
-								    <label class="layui-form-label">单据号码</label>
-								    <div class="layui-input-inline">
-								      <input type="text" name="title" v-model="danju" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
-								    </div>
-								    <div class="layui-form-mid layui-word-aux">辅助文字</div>
-							 	</div>
+						</div>
+					</div>
+					<!--3-->
+					<div class="layui-row">
+						<div class="layui-col-sm6">
+							<div class="layui-form-item">
+								<label class="layui-form-label">有效日期</label>
+								<div class="layui-input-inline">
+									<input type="text" v-model="pages.sqEffectiveTime" name="sqEffectiveTime" id="test2" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+								</div>
 							</div>
-				 		</div>
-				 		<!--3-->
-				 		<div class="layui-row">
-							<div class="layui-col-sm6">
-								<div class="layui-form-item">
-								    <label class="layui-form-label">有效日期</label>
-								    <div class="layui-input-inline">
-								        <input type="text" v-model="data2"  name="date" id="test2" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
-								    </div>
-							 	</div>
+						</div>
+						<div class="layui-col-sm6">
+							<div class="layui-form-item">
+								<label class="layui-form-label">币别</label>
+								<div class="layui-input-inline">
+									<input type="text" @keyup.f4="showCurrencyWindow()" v-model="pages.currencyId" name="currencyId" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+								</div>
 							</div>
-							<div class="layui-col-sm6">
-								<div class="layui-form-item">
-								    <label class="layui-form-label">币别</label>
-								    <div class="layui-input-inline">
-								      <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
-								    </div>
-							 	</div>
+						</div>
+					</div>
+					<!--4-->
+					<div class="layui-row">
+						<div class="layui-col-sm6">
+							<div class="layui-form-item">
+								<label class="layui-form-label">单价是税否</label>
+								<div class="layui-input-block" style="width:190px;">
+									<template v-if="pages.sqTax==1">
+										<select  name="sqTax">
+											<option value="1" selected="selected">含税</option>
+											<option value="0">未含税</option>
+										</select>
+									</template>
+									<template v-if="pages.sqTax==0">
+										<select  name="sqTax">
+											<option value="1">含税</option>
+											<option  value="0" selected="selected">未含税</option>
+										</select>
+									</template>
+								</div>
 							</div>
-				 		</div>
-				 		<!--4-->
-				 		<div class="layui-row">
-							<div class="layui-col-sm6">
-								<div class="layui-form-item">
-								    <label class="layui-form-label">单价是税否</label>
-								    <div class="layui-input-block" style="width:190px;">
-								      <select name="city" lay-verify="required">
-								        <option value="0">未税</option>
-								        <option value="1">含税</option>
-								      </select>
-								    </div>								  
-							 	</div>
+						</div>
+						<div class="layui-col-sm6">
+							<div class="layui-form-item">
+								<label class="layui-form-label">汇率</label>
+								<div class="layui-input-inline">
+									<input type="text" v-model="pages.sqExchangeRate" disabled name="sqExchangeRate" required lay-verify="required" placeholder="1.0000" autocomplete="off" class="layui-input">
+								</div>
 							</div>
-							<div class="layui-col-sm6">
-								<div class="layui-form-item">
-								    <label class="layui-form-label">汇率</label>
-								    <div class="layui-input-inline">
-								      <input type="text" name="title" required  lay-verify="required" placeholder="1.0000" autocomplete="off" class="layui-input">
-								    </div>
-							 	</div>
-							</div>
-				 		</div>
-						<!-- <div class="layui-form-item">
+						</div>
+					</div>
+					<!-- <div class="layui-form-item">
 						    <div class="layui-input-block">
 						      <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
 						      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
 						    </div>
 						 </div>-->
 				</form>
-			  </div>	
-			  <div class="layui-row">
-			  		 <div class="layui-col-sm12">
-			  		 	 	 <div class="layui-tab layui-tab-card">
-								  <ul class="layui-tab-title">
-								    <li class="layui-this">内容</li>
-								    <li>备注</li>
-								  </ul>
-								  <div class="layui-tab-content">
-								    <div class="layui-tab-item layui-show" style="margin:-21px -10px -20px -11px;">
-								    	<!--表单-->
-								    	
-								    	<table class="layui-hide layui-form" id="tableDemo" lay-filter="tableDemo"></table>
-										<script type="text/html" id="barDemo">
-										    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
-										    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-										    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-										</script>
-								    	<!---->
-								    </div>
-								    <div class="layui-tab-item layui-form" style="height: 331px;">
-								    	<!--3-->
-								 		<div class="layui-row">
-											<div class="layui-col-sm6">
-												<div class="layui-form-item">
-												    <label class="layui-form-label">表头条纹</label>
-												    <div class="layui-input-inline">
-												        <input type="text" v-model="data2"  name="date" id="test2" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
-												    </div>
-											 	</div>
-											</div>
-											<div class="layui-col-sm6">
-												<div class="layui-form-item">
-												    <label class="layui-form-label">自定栏一</label>
-												    <div class="layui-input-block" style="width:190px;">
-												      <select name="city" lay-verify="required">
-												        <option value="0">未税</option>
-												        <option value="1">含税</option>
-												      </select>
-												    </div>	
-											 	</div>
-											</div>
-								 		</div>
-								 		<!--4-->
-								 		<div class="layui-row">
-											<div class="layui-col-sm6">
-												<div class="layui-form-item">
-												    <label class="layui-form-label">单价是税否</label>
-												     <div class="layui-input-inline">
-												        <input type="text" v-model="data2"  name="date" id="test2" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
-												    </div>							  
-											 	</div>
-											</div>
-											<div class="layui-col-sm6">
-												<div class="layui-form-item">
-												    <label class="layui-form-label">汇率</label>
-												    <div class="layui-input-block" style="width:190px;">
-												      <select name="city" lay-verify="required">
-												        <option value="0">未税</option>
-												        <option value="1">含税</option>
-												      </select>
-												    </div>	
-											 	</div>
-											</div>
-								 		</div>
-										<!--3-->
-										<div class="layui-row">
-											<div class="layui-col-sm12">
-												<div class="layui-form-item layui-form-text">
-												    <label class="layui-form-label">普通文本域</label>
-												    <div class="layui-input-block">
-												      <textarea placeholder="请输入内容" class="layui-textarea" s></textarea>
-												    </div>
-												  </div>
+			</div>
+			<div class="layui-row">
+				<div class="layui-col-sm12">
+					<div class="layui-tab layui-tab-card">
+						<ul class="layui-tab-title">
+							<li class="layui-this">内容</li>
+							<li>备注</li>
+						</ul>
+						<div class="layui-tab-content">
+							<div class="layui-tab-item layui-show" style="margin:-21px -10px -20px -11px;width: 760px;overflow:auto;">
+								<!--表单-->
+
+								<!--表单-->
+								<table id="materialsContent" class="layui-hide" >
+									
+								</table>
+								<script type="text/html" id="barDemo">
+									<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+									<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+									<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+								</script>
+								<!---->
+							</div>
+							<div class="layui-tab-item layui-form" style="height: 331px;" v-for="pages,index in page.list">
+								<!--3-->
+								<div class="layui-row">
+									<div class="layui-col-sm6">
+										<div class="layui-form-item">
+											<label class="layui-form-label">表头条纹</label>
+											<div class="layui-input-inline">
+												<input type="text" v-model="pages.sqWatchword" name="sqWatchword"  autocomplete="off" class="layui-input">
 											</div>
 										</div>
-								    </div>
-								  </div>
-							  </div>
-			  		 </div> 
-			  </div>
-			  <!--1-->
-						<div class="layui-row">
-							<div class="layui-col-sm6">
-								<div class="layui-form-item">
-								    <label class="layui-form-label">业务人员</label>
-								    <div class="layui-input-inline">
-								      <input type="text" name="title" required  lay-verify="required" placeholder="请输入客户名称" autocomplete="off" class="layui-input">
-								    </div>
-							 	<div class="layui-form-mid layui-word-aux" @click="kh($event,'业务人员','业务人员.html')">选择客户</div>
-								</div>
-							</div>
-							<div class="layui-col-sm6">
-								<div class="layui-form-item">
-								    <label class="layui-form-label">制单人员</label>
-								      <div class="layui-input-inline">
-								        <input type="text" v-model="data1"  name="date" id="test1" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
-								      </div>
-							 	</div>
-							</div>
-				 		</div>
-				 		<!--2-->
-						<div class="layui-row">
-							<div class="layui-col-sm6">
-								<div class="layui-form-item">
-								    <label class="layui-form-label">所属部门</label>
-								    <div class="layui-input-inline">
-								      <input type="text" name="title" required  lay-verify="required" placeholder="请输入客户名称" autocomplete="off" class="layui-input">
-								    </div>
-							 	<div class="layui-form-mid layui-word-aux" @click="kh($event,'所属部门','所属部门.html')">选择客户</div>
-								</div>
-							</div>
-							<div class="layui-col-sm6">
-								<div class="layui-form-item">
-								    <label class="layui-form-label">复核人员</label>
-								      <div class="layui-input-inline">
-								        <input type="text" v-model="data1"  name="date" id="test1" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
-								      </div>
-							 	</div>
-							</div>
-				 		</div>
-				 		<div class="layui-row layui-form">
-							<div class="layui-col-sm12">
-								<div class="layui-form-item">
-									<div class="layui-input-inline" style="width:100px;">
-										<select name="city" lay-verify="required">
-											<option value="">查询</option>
-											<option value="0">历史交易查询</option>
-											<option value="1">利润预估查询</option>
-										</select>
 									</div>
-									<div class="layui-input-inline" style="width:100px;">
-										<select name="city" lay-verify="required">
-											<option value="">功能</option>
-											<option value="0">批次变更单价</option>
-											<option value="1">发送EMail</option>								
-										</select>
+									<div class="layui-col-sm6">
+										<div class="layui-form-item">
+											<label class="layui-form-label">自定栏一</label>
+											<div class="layui-input-block" style="width:190px;">
+												<input type="text"   class="layui-input" v-model="pages.sqCustom2" name="">
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--4-->
+								<div class="layui-row">
+									<div class="layui-col-sm6">
+										<div class="layui-form-item">
+											<label class="layui-form-label">表头尾纹</label>
+											<div class="layui-input-inline">
+												<input type="text"   class="layui-input" v-model="pages.sqTailclause" name="sqTailclause">
+											</div>
+										</div>
+									</div>
+									<div class="layui-col-sm6">
+										<div class="layui-form-item">
+											<label class="layui-form-label">自定栏二</label>
+											<div class="layui-input-block" style="width:190px;">
+												<input type="text"   class="layui-input" v-model="pages.sqCustom3">
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--3-->
+								<div class="layui-row">
+									<div class="layui-col-sm12">
+										<div class="layui-form-item layui-form-text">
+											<label class="layui-form-label">备注</label>
+											<div class="layui-input-block">
+												<textarea placeholder="请输入内容" class="layui-textarea" v-model="pages.sqRemark" name="sqRemark"></textarea>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
-				 		</div>
-		</div>	
-		</body>
-	<script type="text/javascript" src="../js/jquery-1.12.4.js" ></script>
-	<script type="text/javascript" src="../js/layui.all.js" ></script>
-	<script type="text/javascript" src="../js/layui.js" ></script>
-	<script type="text/javascript" src="../js/vue.js" ></script>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--1-->
+			<div class="layui-row" v-for="pages,index in page.list">
+				<div class="layui-col-sm6">
+					<div class="layui-form-item">
+						<label class="layui-form-label">业务人员</label>
+						<div class="layui-input-inline">
+							<input type="text" v-model="pages.staffId" @keyup.f4="showSalesmanWindow()" name="staffId" required lay-verify="required" placeholder="请输入客户名称" autocomplete="off" class="layui-input">
+						</div>
+						<div class="layui-form-mid layui-word-aux" @click="kh($event,'业务人员','业务人员.html')">选择客户</div>
+					</div>
+				</div>
+				<div class="layui-col-sm6">
+					<div class="layui-form-item">
+						<label class="layui-form-label">制单人员</label>
+						<div class="layui-input-inline">
+							<input type="text" class="layui-input" v-model="pages.sqMonograph" name="sqMonograph">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--2-->
+			<div class="layui-row" v-for="pages,index in page.list">
+				<div class="layui-col-sm6">
+					<div class="layui-form-item">
+						<label class="layui-form-label">所属部门</label>
+						<div class="layui-input-inline">
+							<input type="text" v-model="pages.sqCustom4" name="sqCustom4" required lay-verify="required" placeholder="请输入客户名称" autocomplete="off" class="layui-input">
+						</div>
+						<div class="layui-form-mid layui-word-aux" @click="kh($event,'所属部门','所属部门.html')">选择客户</div>
+					</div>
+				</div>
+				<div class="layui-col-sm6">
+					<div class="layui-form-item">
+						<label class="layui-form-label">复核人员</label>
+						<div class="layui-input-inline">
+							<input type="text" class="layui-input" v-model="pages.sqReviewer" id="fhname" name="sqReviewer">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="layui-row layui-form">
+				<div class="layui-col-sm12">
+					<div class="layui-form-item">
+						<div class="layui-input-inline" style="width:100px;">
+							<select name="city" lay-verify="required">
+								<option value="">查询</option>
+								<option value="0">历史交易查询</option>
+								<option value="1">利润预估查询</option>
+							</select>
+						</div>
+						<div class="layui-input-inline" style="width:100px;">
+							<select name="city" lay-verify="required">
+								<option value="">功能</option>
+								<option value="0">批次变更单价</option>
+								<option value="1">发送EMail</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+					<div class="layui-input-block">
+						<button class="layui-btn" id="fistinfo" title="第一笔" v-on:click="goFirstPage"><i class="fa fa-angle-double-left fa-lg" aria-hidden="true">第一笔</i></button>
+						<button class="layui-btn" id="preinfo" title="上一笔" v-on:click="goPrePage"><i class="fa fa-angle-left fa-lg" aria-hidden="true">上一笔</i></button>
+						<button class="layui-btn" id="nextinfo" title="下一笔" v-on:click="goNextPage"><i class="fa fa-angle-right fa-lg" aria-hidden="true">下一笔</i></button>
+						<button class="layui-btn" id="lastinfo" title="后一笔" v-on:click="goLastPage"><i class="fa fa-angle-double-right fa-lg" aria-hidden="true">后一笔</i></button>
+						<button class="layui-btn" title="新增" v-on:click="addinfo"><i class="fa fa-file fa-lg" aria-hidden="true">新增</i></button>
+						<button class="layui-btn layui-btn-disabled" id="save" style="border: 1px solid #008000;" title="保存"  @click="add" ><i   class="fa fa-floppy-o fa-lg" aria-hidden="true">保存</i></button>
+						<button class="layui-btn" id="updateinfo" title="编辑" v-on:click="updateinfo"><i class="fa fa-pencil-square-o fa-lg">编辑</i></button>
+						<button class="layui-btn" id="deleinfo" title="删除" v-on:click="gomove"><i class="fa fa-trash fa-lg" aria-hidden="true">删除</i></button>
+						<button class="layui-btn" id="resetinfo" title="重置" type="reset"><i class="fa fa-rotate-left fa-lg" aria-hidden="true">重置</i></button>
+						<button class="layui-btn" id="renovateinfo" title="刷新" v-on:click="renovate"><i class="fa fa-refresh fa-lg" aria-hidden="true">刷新</i></button>
+						<button class="layui-btn" id="auditinfo" title="审核" v-on:click="audit"><i class="fa fa-check fa-lg" aria-hidden="true">审核</i></button>
+						<button class="layui-btn" id="cancelauditinfo" title="取消审核" v-on:click="cancelaudit"><i class="fa fa-close fa-lg" aria-hidden="true">取消审核</i></button>
+					</div>
+				</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="../js/layui.all.js"></script>
+	<script type="text/javascript" src="../js/layui.js"></script>
+	<script type="text/javascript" src="../js/vue.js"></script>
 	<script>
-		var xsbj_vue=new Vue({
-			el:'.app',
-			data(){
-				return{
-					data1:'1991-02-01',
-					data2:'1991-02-01',
-					danju:''
+		function wuliaoget(customerId){
+					alert(customerId);
+					layui.use('table', function() {
+						var table = layui.table;
+						table.render({
+							elem: '#materialsContent',
+							url: 'http://127.0.0.1:8080/MatterController/querybysqid?sqlid=' + customerId,
+							data:{customerId:[
+							]},
+							cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+								,
+							cols: [
+								[ {
+										field: 'matterId',
+										title: '物料编号',
+										edit: 'text',
+									} //width 支持：数字、百分比和不填写。你还可以通过 minWidth 参数局部定义当前单元格的最小宽度，layui 2.2.1 新增
+									, {
+										field: 'matterName',
+										title: '(物料名称)',
+										sort: true
+									}, {
+										field: 'matterSize',
+										title: '(规格型号)'
+									}, {
+										field: 'sqdUnitname',
+										title: '(单位名称)'
+									}, {
+										field: 'sqdSquantity',
+										title: '数量',
+										edit: 'text',
+										align: 'center',
+										sort: true,
+									} //单元格内容水平居中
+									, {
+										field: 'sqdZkqprice',
+										title: '折扣前单价',
+										edit: 'text',
+										sort: true,
+										align: 'right'
+									} //单元格内容水平居中
+									, {
+										field: 'sqdDiscount',
+										title: '折数(%)',
+										sort: true,
+										edit: 'text',
+										align: 'right'
+									}, {
+										field: 'matterMsaleA',
+										title: '单价',
+										edit: 'text',
+										sort: true,
+										align: 'right'
+									}, {
+										field: 'sqdPrice',
+										title: '金额',
+										sort: true,
+										align: 'right'
+									}, {
+										field: 'sqdTaxrate',
+										title: '税率(%)',
+										sort: true,
+										edit: 'text',
+										align: 'right'
+									}, {
+										field: 'sqdTaxlimit',
+										title: '(税额)',
+										sort: true,
+										align: 'right'
+									}, {
+										field: 'sqdTaxinclusiveprice',
+										title: '(含税金额)',
+										sort: true,
+										align: 'right'
+									}, {
+										field: 'sqdComplimentart',
+										title: '赠品',
+										edit: 'text',
+										sort: true,
+										align: 'right'
+									}, {
+										field: 'sqdItemremark',
+										title: '分录备注',
+										edit: 'text',
+										sort: true,
+										align: 'right'
+									}, {
+										field: '无',
+										title: '(来源别)',
+										sort: true,
+										align: 'right'
+									}, {
+										field: 'sqlId',
+										title: '(来源单号)',
+										sort: true,
+										align: 'right'
+									} 
+								]
+							]
+						});
+					});
 				}
-			}
-			,methods:{
+		
+		
+		
+		var xsbj_vue = new Vue({
+			el: '.app',
+			data() {
+				return {
+					data1: '1991-02-01',
+					data2: '1991-02-01',
+					danju: '',
+					page: [],
+					customerId:"",
+						list:[]
+				}
+			},
+			methods: {
 
-              kh:function(e,title,url){ // e.target 获取当前对象 在父层弹出一个层
-              	parent.vue_tjy_xsgl.show(e,title,url);
-                   /* parent.layer.open({
-                        type: 2
-                        ,title:title
-                        ,area: ['800px', '360px']
-                        ,shade: 0
-                        ,maxmin: true
-                        ,offset:'auto'
-                        ,content: url// $(e.target) 要显示的节点,若用此法则可能会影响到样式，就是把选择的节点移到弹出框了
-                        ,btn: ['关闭']
-                        ,yes: function(i){
-                            layer.close(i);// 关闭弹窗
-                        },
-                        id:title
-                        ,zIndex: layer.zIndex
-                        ,success: function(layero){
-                           // layer.setTop(layero);
-                        }
-                    });*/
-                   
-               }
-			}
-			,created:function(){
-				
-				
+				kh: function(e, title, url) { // e.target 获取当前对象 在父层弹出一个层
+					parent.vue_tjy_xsgl.show(e, title, url);
+					/* parent.layer.open({
+					     type: 2
+					     ,title:title
+					     ,area: ['800px', '360px']
+					     ,shade: 0
+					     ,maxmin: true
+					     ,offset:'auto'
+					     ,content: url// $(e.target) 要显示的节点,若用此法则可能会影响到样式，就是把选择的节点移到弹出框了
+					     ,btn: ['关闭']
+					     ,yes: function(i){
+					         layer.close(i);// 关闭弹窗
+					     },
+					     id:title
+					     ,zIndex: layer.zIndex
+					     ,success: function(layero){
+					        // layer.setTop(layero);
+					     }
+					 });*/
+
+				},
+				goPage: function(page) {
+						var this_ = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/Sales_quotationController/selectAllpage",
+							type: "get",
+							async:false, 
+							data: "pageNum=" + page + "&pageSize=1",
+							success: function(res) {
+								console.info(res)
+								this_.page = res;
+							},
+							
+						});
+						this.logininfo();
+					},
+					goFirstPage: function() { //第一条
+						this.goPage(this.page.pages);
+					},
+					goLastPage: function() { //最后一条
+						this.goPage(1);
+					},
+					goPrePage: function() { //上一条
+						if (this.page.hasPreviousPage) {
+							this.goPage(this.page.prePage);
+						}
+					},
+					goNextPage: function() { //下一条
+						if (this.page.hasNextPage) {
+							this.goPage(this.page.nextPage);
+							
+						}
+					},
+					
+					//客户资料弹窗
+					showClientWindow(){
+						var t=this;
+						layer.open({
+							type:2,
+							title:"客户资料",
+							content:"customerinfo.html",
+							area:['762px','450px'],
+							closeBtn: 1,//右上角
+							       success: function(layero, index){  
+							            var body = layer.getChildFrame('body', index);  
+							            var iframeWin = window[layero.find('iframe')[0]['name']]; //得到子页面的窗口对象，执行iframe页的方法：iframeWin.method();
+							            //console.log(iframeWin);
+							            iframeWin.setVueName("info");
+										iframeWin.id = 100;
+										iframeWin.printId();
+							          }  
+						})
+					},
+					//币别资料弹窗
+					showCurrencyWindow(){
+						layer.open({
+							type:2,
+							title:"币别资料",
+							content:"currencyTC1.html",
+							area:['762px','450px']
+						})
+					},
+					//业务人员资料弹窗
+					showSalesmanWindow(){
+						layer.open({
+							type:2,
+							title:"业务人员资料",
+							content:"window_set_ personnel_master_file_settings.html",
+							area:['762px','450px']
+						})
+					},
+					
+					//取消省和
+					cancelaudit: function() {
+						var name = $("#fhname").val();
+						if (name == "") {
+							layer.msg("该单据还未审核!");
+						} else {
+							var con = confirm("是否取消该单据的审核?");
+							if (con) {
+								var sqid = $("[name=sqId]").val();
+								var record = {
+									sqId: sqid,
+									sqReviewer: "",
+									sqAuditing: "否"
+								}
+								$.ajax({
+									url: "http://127.0.0.1:8080/Sales_quotationController/updateByPrimaryKeySelective2",
+									type: "post",
+									contentType: "application/json",
+									data: JSON.stringify(record),
+									success: function(res) {
+										if (res.code == "1") {
+											layer.msg("订单已取消审核！");
+										} else {
+											layer.msg("订单已取消审核失败！");
+										}
+									}
+								});
+								this.goPage(1);
+							}
+						}
+					},
+					//刷新
+					renovate: function() {
+						this.goPage(1);
+						$("#save").attr("class","layui-btn layui-btn-disabled");
+						$("#fistinfo").attr("class","layui-btn");
+						$("#preinfo").attr("class","layui-btn");
+						$("#nextinfo").attr("class","layui-btn");
+						$("#lastinfo").attr("class","layui-btn");
+						$("#updateinfo").attr("class","layui-btn");
+						$("#deleinfo").attr("class","layui-btn");
+						$("#auditinfo").attr("class","layui-btn");
+						$("#cancelauditinfo").attr("class","layui-btn");
+					},
+					//保存数据
+					add:function(){
+						 var sqId=$("[name=sqId]").val();
+						var record={
+							sqId:$("[name=sqId]").val(),
+							sqDocumentTime:$("[name=sqDocumentTime]").val(),
+							currencyId:$("[name=currencyId]").val(),
+							sqExchangeRate:$("[name=sqExchangeRate]").val(),
+							sqEffectiveTime:$("[name=sqEffectiveTime]").val(),
+							sqTax:$("[name=sqTax]").val(),
+							customerId:$("[name=customerId]").val(),
+							sqDeliveryAddress:$("[name=sqDeliveryAddress]").val(),
+							staffId:$("[name=staffId]").val(),
+							teamId:$("[name=teamId]").val(),
+							sqMonograph:$("[name=sqMonograph]").val(),
+							sqReviewer:$("[name=sqReviewer]").val(),
+							sqWatchword:$("[name=sqWatchword]").val(),
+							sqTailclause:$("[name=sqTailclause]").val(),
+							sqRemark:$("[name=sqRemark]").val(),
+							sqAuditing:$("[name=sqAuditing]").val(),
+							sqYn:"0",
+							sqCustom2:$("[name=sqCustom2]").val(),
+							sqCustom3:$("[name=sqCustom3]").val(),
+							sqCustom4:$("[name=sqCustom4]").val()
+						}
+						//判断修改还是新增
+						$.ajax({
+							url: "http://127.0.0.1:8080/Sales_quotationController/selectByPrimaryKey",
+							type: "get",
+							data:"sqId="+sqId,
+							success: function(res){
+								alert(res.msg);
+								if(res.msg=="200"){
+									if(record.sqDocumentTime>=record.sqEffectiveTime){
+										alert("有效日期必须大于单据日期");
+										return;
+									}else{
+										var con=confirm("是否确认修改该订单？");
+										if(con){
+											$.ajax({
+												url: "http://127.0.0.1:8080/Sales_quotationController/updateByPrimaryKeySelective3",
+												type: "post",
+												contentType: "application/json",
+												data: JSON.stringify(record),
+												success: function(res){
+													layer.msg(res.message);
+												}
+											});
+										}
+									}
+								}else{
+									 //新增数据主表
+								 	$.ajax({
+										url: "http://127.0.0.1:8080/Sales_quotationController/insertSelective1",
+										type: "post",
+										async:false, 
+										contentType: "application/json",
+										data: JSON.stringify(record),
+										success: function(res){
+											layer.msg("主表:"+res.message);
+										}
+									}); 
+									//新增数据详表
+									layui.use('table',function(){
+										var table = layui.table;
+										var tabdata=table.cache["materialsContent"];
+										 for(var i=0;i<tabdata.length;i++){
+											 //获取最后一条数据的id
+											 var prodid="";	
+											 $.ajax({
+											 	url:"http://127.0.0.1:8080/Sales_quotation_detailsController/selectlimet",
+											 	type:"GET",
+												async:false, 
+											 	success:function(res){
+											 		prodid=res.sqdProdid;
+											 		prodid++;
+													var sqdProdid1=tabdata[i].matterId;
+													alert(sqdProdid1);
+													alert(prodid);
+													var matterName=tabdata[i].matterName;
+													var matterSize=tabdata[i].matterSize;
+													var matterMsaleA=tabdata[i].matterMsaleA;
+													var sqlid = $("[name=sqId]").val();
+													var record={
+														sqdSerno:sqdProdid1,
+														sqdProdid:prodid,
+														sqdProdname:matterName,
+														sqdProdsize:matterSize,
+														sqdUnitname:"吨",
+														sqdSquantity:"1",
+														sqdZkqprice:matterMsaleA,
+														sqdDiscount:"",
+														sqdUnitprice:"",
+														sqdPrice:matterMsaleA,
+														sqdTaxrate:"",
+														sqdTaxlimit:"",
+														sqdTaxinclusiveprice:"",
+														sqdComplimentart:"",
+														sqdItemremark:"",
+														sqlId:sqlid,
+														sqdAuditing:"",
+														sqdYn:"",
+														sqdCustom1:""
+													}
+													//新增详表的ajax
+													$.ajax({
+															url: "http://127.0.0.1:8080/Sales_quotation_detailsController/insertSelective",
+															type: "post",
+															contentType: "application/json",
+															data: JSON.stringify(record),
+															success: function(res){
+																layer.msg("详表："+res.message);
+															}
+														}); 
+											 	}
+											 })
+											
+											
+										} 
+									});
+								}
+							}
+						})
+					},
+					//编辑状态时
+					updateinfo:function(){
+							layui.use('table', function() {
+								var table = layui.table;
+								
+								//监听单元格编辑
+								table.on('edit(materialsContent)', function(obj) {
+									var value = obj.value //得到修改后的值
+										data = obj.data //得到所在行所有键值
+										field = obj.field; //得到字段
+										layer.msg('[ID: ' + data.id + '] ' + field + ' 字段更改为：' + value);
+										//修改物料表的数据
+										$.ajax({
+											url: "http://127.0.0.1:8080/Sales_quotation_detailsController/updateByPrimaryKeySelective",
+											type: "post",
+											contentType: "application/json",
+											data: JSON.stringify(data),
+											success: function(res){
+												layer.msg(res.message);
+											}
+										}); 
+								});
+							});
+							//改变保存的按钮属性
+							$("#save").attr("class","layui-btn");
+							$("#fistinfo").attr("class","layui-btn layui-btn-disabled");
+							$("#preinfo").attr("class","layui-btn layui-btn-disabled");
+							$("#nextinfo").attr("class","layui-btn layui-btn-disabled");
+							$("#lastinfo").attr("class","layui-btn layui-btn-disabled");
+							$("#updateinfo").attr("class","layui-btn layui-btn-disabled");
+							$("#deleinfo").attr("class","layui-btn layui-btn-disabled");
+							$("#auditinfo").attr("class","layui-btn layui-btn-disabled");
+							$("#cancelauditinfo").attr("class","layui-btn layui-btn-disabled");
+							//物料资料绑定事件
+							$("table").on("dblclick",function(){
+								layui.use(['layer'],function(){
+								var $ = layui.jquery;
+								var layer = layui.layer;
+									layer.open({
+										type:2,
+										content:"materialget.html",
+										area:['762px','450px']
+									});				
+							});
+								
+							})
+						// var record={
+						// 	sqId:$("[name=sqId]").val(),
+						// 	sqDocumentTime:$("[name=sqDocumentTime]").val(),
+						// 	currencyId:$("[name=currencyId]").val(),
+						// 	sqExchangeRate:$("[name=sqExchangeRate]").val(),
+						// 	sqEffectiveTime:$("[name=sqEffectiveTime]").val(),
+						// 	sqTax:$("[name=sqTax]").val(),
+						// 	customerId:$("[name=customerId]").val(),
+						// 	sqDeliveryAddress:$("[name=sqDeliveryAddress]").val(),
+						// 	staffId:$("[name=staffId]").val(),
+						// 	teamId:$("[name=teamId]").val(),
+						// 	sqMonograph:$("[name=sqMonograph]").val(),
+						// 	sqReviewer:$("[name=sqReviewer]").val(),
+						// 	sqWatchword:$("[name=sqWatchword]").val(),
+						// 	sqTailclause:$("[name=sqTailclause]").val(),
+						// 	sqRemark:$("[name=sqRemark]").val(),
+						// 	sqAuditing:$("[name=sqAuditing]").val(),
+						// 	sqYn:"0",//是否删除
+						// 	sqCustom2:$("[name=sqCustom2]").val(),
+						// 	sqCustom3:$("[name=sqCustom3]").val(),
+						// 	sqCustom4:$("[name=sqCustom4]").val()
+						// }
+						// if(record.sqDocumentTime>=record.sqEffectiveTime){
+						// 	alert("有效日期必须大于单据日期");
+						// 	return;
+						// }else{
+						// 	var con=confirm("是否确认修改该订单？");
+						// 	if(con){
+						// 		$.ajax({
+						// 			url: "http://127.0.0.1:8080/Sales_quotationController/updateByPrimaryKeySelective3",
+						// 			type: "post",
+						// 			contentType: "application/json",
+						// 			data: JSON.stringify(record),
+						// 			success: function(res){
+						// 				alert(res.message);
+						// 			}
+						// 		});
+						// 		this.page(1);
+						// 	}
+						// }
+					},
+					//新增订单
+					addinfo: function() {
+						  var data=this.page;
+						   console.log(data);
+							/* for(var o in data.list){
+							      data.list[0]="";
+							 } */
+							//data.list[0].customerId = "";
+							// data.list[0].sqDocumentTime = "";
+							 data.list[0].currencyId = "人民币";
+							 data.list[0].sqExchangeRate = "1.0000";
+							 data.list[0].sqEffectiveTime = "";
+							 data.list[0].sqTax = "";
+							 data.list[0].customerId = "";
+							 data.list[0].sqDeliveryAddress = "";
+							 data.list[0].staffId = "";
+							 data.list[0].sqMonograph = "";
+							 data.list[0].teamId = "";
+							 data.list[0].sqReviewer = "";
+							 data.list[0].sqWatchword = "";
+							 data.list[0].sqTailclause = "";
+							 data.list[0].sqRemark = "";
+							 data.list[0].sqAuditing = "";
+							 data.list[0].sqYn =0;
+							 data.list[0].sqCustom1 = "";
+							 data.list[0].sqCustom2 = "";
+							 data.list[0].sqCustom3 = "";
+							 data.list[0].sqCustom4 = "";
+							 data.list[0].sqCustom5 = "";
+							 data.list[0].sqCustom6 = "";
+							var myDate = new Date;
+						    var year = myDate.getFullYear(); //获取当前年
+						    var mon = myDate.getMonth() + 1; //获取当前月
+							if(mon<=9){
+								mon="0"+mon;
+							}
+						    var date = myDate.getDate(); //获取当前日
+						    // var h = myDate.getHours();//获取当前小时数(0-23)
+						    // var m = myDate.getMinutes();//获取当前分钟数(0-59)
+						    // var s = myDate.getSeconds();//获取当前秒
+							var nowDate=year+"-"+mon+"-"+date
+							//获取当前时间
+							data.list[0].sqDocumentTime = nowDate;
+							// data.list[0].sqDocumentTime = "";
+							//获取当前操作员name
+							 data.list[0].sqMonograph = "admin";
+							//生成订单号
+							 var x = 100;
+							  var y = 999;
+							 var  rand= parseInt(Math.random() * (x - y + 1) + y);
+							var sqId1=year+mon+date+rand
+							data.list[0].sqId = sqId1;
+							//改变保存的按钮属性
+							$("#save").attr("class","layui-btn");
+							$("#fistinfo").attr("class","layui-btn layui-btn-disabled");
+							$("#preinfo").attr("class","layui-btn layui-btn-disabled");
+							$("#nextinfo").attr("class","layui-btn layui-btn-disabled");
+							$("#lastinfo").attr("class","layui-btn layui-btn-disabled");
+							$("#updateinfo").attr("class","layui-btn layui-btn-disabled");
+							$("#deleinfo").attr("class","layui-btn layui-btn-disabled");
+							$("#auditinfo").attr("class","layui-btn layui-btn-disabled");
+							$("#cancelauditinfo").attr("class","layui-btn layui-btn-disabled");
+							//物料资料绑定事件
+								layui.use('table', function(){
+								   var table = layui.table; 
+								   //监听单元格事件
+										table.on('rowDouble(materialsContent)',function(obj){
+											
+												layer.open({
+													type:2,
+													content:"materialget.html",
+													area:['762px','450px']
+												});
+											})
+								   }); 
+							//数据表格重载
+							layui.use('table', function() {
+								var table = layui.table;
+								table.render({
+									elem: '#materialsContent',
+									url: '',//http://127.0.0.1:8080/Sales_quotationController/querybysqid?sqlid=
+									data:[{}],
+									cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+										,
+									cols: [
+										[{
+												field: 'sqdProdid',
+												title: '(栏号)',
+												sort: true
+											}, {
+												field: 'sqdSerno',
+												title: '物料编号',
+												edit: 'text',
+											} //width 支持：数字、百分比和不填写。你还可以通过 minWidth 参数局部定义当前单元格的最小宽度，layui 2.2.1 新增
+											, {
+												field: 'sqdProdname',
+												title: '(物料名称)',
+												sort: true
+											}, {
+												field: 'sqdProdsize',
+												title: '(规格型号)'
+											}, {
+												field: 'sqdUnitname',
+												title: '(单位名称)'
+											}, {
+												field: 'sqdSquantity',
+												title: '数量',
+												edit: 'text',
+												align: 'center',
+												sort: true,
+											} //单元格内容水平居中
+											, {
+												field: 'sqdZkqprice',
+												title: '折扣前单价',
+												edit: 'text',
+												sort: true,
+												align: 'right'
+											} //单元格内容水平居中
+											, {
+												field: 'sqdDiscount',
+												title: '折数(%)',
+												sort: true,
+												edit: 'text',
+												align: 'right'
+											}, {
+												field: 'sqdUnitprice',
+												title: '单价',
+												edit: 'text',
+												sort: true,
+												align: 'right'
+											}, {
+												field: 'sqdPrice',
+												title: '金额',
+												sort: true,
+												align: 'right'
+											}, {
+												field: 'sqdTaxrate',
+												title: '税率(%)',
+												sort: true,
+												edit: 'text',
+												align: 'right'
+											}, {
+												field: 'sqdTaxlimit',
+												title: '(税额)',
+												sort: true,
+												align: 'right'
+											}, {
+												field: 'sqdTaxinclusiveprice',
+												title: '(含税金额)',
+												sort: true,
+												align: 'right'
+											}, {
+												field: 'sqdComplimentart',
+												title: '赠品',
+												edit: 'text',
+												sort: true,
+												align: 'right'
+											}, {
+												field: 'sqdItemremark',
+												title: '分录备注',
+												edit: 'text',
+												sort: true,
+												align: 'right'
+											}, {
+												field: '无',
+												title: '(来源别)',
+												sort: true,
+												align: 'right'
+											}, {
+												field: 'sqlId',
+												title: '(来源单号)',
+												sort: true,
+												align: 'right'
+											}
+										]
+									]
+								});
+							});
+							
+					},
+					//删除订单
+					gomove: function() {
+						var a = confirm("是否删除该张单据？");
+						if (a) {
+							var sqid = $("[name=sqId]").val();
+							var sq_yn = 1;
+							var record = {
+								sqId: sqid,
+								sqYn: sq_yn
+							}
+							$.ajax({
+								url: "http://127.0.0.1:8080/Sales_quotationController/updateByPrimaryKeySelective1",
+								type: "post",
+								contentType: "application/json",
+								data: JSON.stringify(record),
+								success: function(res){
+									layer.msg(res.message);
+								}
+							});
+							this.goPage(1);
+						}
+					},
+					//修改订单审核状态
+					audit: function() {
+						var name = $("#fhname").val();
+						if (name != "") {
+							layer.msg("该订单已复核！");
+						} else {
+							//发ajax请求修改订单审核状态
+							var sqid = $("[name=sqId]").val();
+							var record = {
+								sqId: sqid,
+								sqReviewer: "admin",
+								sqAuditing: "是"
+							}
+							$.ajax({
+								url: "http://127.0.0.1:8080/Sales_quotationController/updateByPrimaryKeySelective2",
+								type: "post",
+								contentType: "application/json",
+								data: JSON.stringify(record),
+								success: function(res) {
+									layer.msg(res.message);
+								}
+							});
+							this.goPage(1);
+						}
+					},
+					logininfo: function() {
+						var sqlid = $("[name=sqId]").val();
+						layui.use('table', function() {
+							var table = layui.table;
+							table.render({
+								elem: '#materialsContent',
+								url: 'http://127.0.0.1:8080/Sales_quotationController/querybysqid?sqlid=' + sqlid,
+								data:{list:[
+										
+								]},
+								cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+									,
+								cols: [
+									[{
+											field: 'sqdProdid',
+											title: '(栏号)',
+											sort: true
+										}, {
+											field: 'sqdSerno',
+											title: '物料编号',
+											edit: 'text',
+										} //width 支持：数字、百分比和不填写。你还可以通过 minWidth 参数局部定义当前单元格的最小宽度，layui 2.2.1 新增
+										, {
+											field: 'sqdProdname',
+											title: '(物料名称)',
+											sort: true
+										}, {
+											field: 'sqdProdsize',
+											title: '(规格型号)'
+										}, {
+											field: 'sqdUnitname',
+											title: '(单位名称)'
+										}, {
+											field: 'sqdSquantity',
+											title: '数量',
+											edit: 'text',
+											align: 'center',
+											sort: true,
+										} //单元格内容水平居中
+										, {
+											field: 'sqdZkqprice',
+											title: '折扣前单价',
+											edit: 'text',
+											sort: true,
+											align: 'right'
+										} //单元格内容水平居中
+										, {
+											field: 'sqdDiscount',
+											title: '折数(%)',
+											sort: true,
+											edit: 'text',
+											align: 'right'
+										}, {
+											field: 'sqdUnitprice',
+											title: '单价',
+											edit: 'text',
+											sort: true,
+											align: 'right'
+										}, {
+											field: 'sqdPrice',
+											title: '金额',
+											sort: true,
+											align: 'right'
+										}, {
+											field: 'sqdTaxrate',
+											title: '税率(%)',
+											sort: true,
+											edit: 'text',
+											align: 'right'
+										}, {
+											field: 'sqdTaxlimit',
+											title: '(税额)',
+											sort: true,
+											align: 'right'
+										}, {
+											field: 'sqdTaxinclusiveprice',
+											title: '(含税金额)',
+											sort: true,
+											align: 'right'
+										}, {
+											field: 'sqdComplimentart',
+											title: '赠品',
+											edit: 'text',
+											sort: true,
+											align: 'right'
+										}, {
+											field: 'sqdItemremark',
+											title: '分录备注',
+											edit: 'text',
+											sort: true,
+											align: 'right'
+										}, {
+											field: '无',
+											title: '(来源别)',
+											sort: true,
+											align: 'right'
+										}, {
+											field: 'sqlId',
+											title: '(来源单号)',
+											sort: true,
+											align: 'right'
+										}
+									]
+								]
+							});
+						});
+						
+					}
+				},
+				mounted: function() {
+					this.goPage(1);
 			}
 		})
-		var s=[];
-		s=[{"id":1,"name":"xiao"},
-		   {"id":1,"name":"xiao"},
-		   {"id":1,"name":"xiao"},
-		   {"id":1,"name":"xiao"},
-		   {"id":1,"name":"xiao"},
-		   {"id":1,"name":"xiao"},
-		   {"id":1,"name":"xiao"},
-		   {"id":1,"name":"xiao"},
-		   {"id":1,"name":"xiao"},
-		   {"id":1,"name":"xiao"}
-		   ]
+
+		//				$(function() {
+		//					alert(111);
+		//					$.ajax({
+		//						type: 'GET',
+		//						dataType: "json", //json text 服务器返回的数据类型
+		//						url: 'http://localhost:8080/f_sow/goodstypepage',
+		//						success: function(res) {
+		//							alert(res)
+		//
+		//						}
+		//					});
+		//				});
+
+		var s = [];
+		s = [{ "id": 1, "name": "xiao" },
+			{ "id": 1, "name": "xiao" },
+			{ "id": 1, "name": "xiao" },
+			{ "id": 1, "name": "xiao" },
+			{ "id": 1, "name": "xiao" },
+			{ "id": 1, "name": "xiao" },
+			{ "id": 1, "name": "xiao" },
+			{ "id": 1, "name": "xiao" },
+			{ "id": 1, "name": "xiao" },
+			{ "id": 1, "name": "xiao" }
+		]
 		//alert(JSON.stringify(new URLSearchParams(location.search).get("list"))); // 蜘蛛侠)
-layui.use('element', function(){
-	var element = layui.element;			
-});
+		layui.use('element', function() {
+			var element = layui.element;
+		});
 
-//form表单提交
-layui.use('form', function(){
-  var form = layui.form;
-  
-  //监听提交
-  form.on('submit(formDemo)', function(data){
-    layer.msg(JSON.stringify(data.field));
-    return false;
-  });
-});
-/*表单*/
-/*layui.use('table', function(){
-  var table = layui.table;
-  
-  //第一个实例
-  table.render({
-    elem: '#demo'
-    ,height:312
-    ,data: s //数据接口
-    ,page: true //开启分页
-    ,cols: [[ //表头
-                {field: 'id', title: 'ID', width: 80, sort: true, fixed: 'left'}
-                , {field: 'username', title: '用户名', width: 80}
-                , {field: 'sign', title: '可编辑', edit: 'text',width: 80, sort: true}
-                , {field: 'city', title: '城市', width: 80}
-                , {field: 'sex', title: '性别', width: 85, templet: '#switchTpl', unresize: true}
-                , {field: 'lock', title: '下拉框', width: 110, templet: '#selectTool', unresize: true}
-                , {fixed: 'right', title: '操作', width: 165, align: 'center', toolbar: '#barDemo'}
- 		]]
-  });
-  
-});*/
+		//form表单提交
+		layui.use('form', function() {
+			var form = layui.form;
 
+			//监听提交
+			form.on('submit(formDemo)', function(data) {
+				layer.msg(JSON.stringify(data.field));
+				return false;
+			});
+		});
+		/*表单*/
+		/*layui.use('table', function(){
+		  var table = layui.table;
+		  
+		  //第一个实例
+		  table.render({
+		    elem: '#demo'
+		    ,height:312
+		    ,data: s //数据接口
+		    ,page: true //开启分页
+		    ,cols: [[ //表头
+		                {field: 'id', title: 'ID', width: 80, sort: true, fixed: 'left'}
+		                , {field: 'username', title: '用户名', width: 80}
+		                , {field: 'sign', title: '可编辑', edit: 'text',width: 80, sort: true}
+		                , {field: 'city', title: '城市', width: 80}
+		                , {field: 'sex', title: '性别', width: 85, templet: '#switchTpl', unresize: true}
+		                , {field: 'lock', title: '下拉框', width: 110, templet: '#selectTool', unresize: true}
+		                , {fixed: 'right', title: '操作', width: 165, align: 'center', toolbar: '#barDemo'}
+		 		]]
+		  });
+		  
+		});*/
 
+		//单据日期
+		layui.use('laydate', function() {
+			var laydate = layui.laydate;
+			laydate.render({
+				elem: '#test1',
+				done: function(value, date) { //value, date, endDate点击日期、清空、现在、确定均会触发。回调返回三个参数，分别代表：生成的值、日期时间对象、结束的日期时间对象
+					var value = value.replace(/-/g, '');
+					xsbj_vue.danju = value;
+				}
+			});
+		});
 
+		//有效日期
+		layui.use('laydate', function() {
+			var laydate = layui.laydate;
+			laydate.render({
+				elem: '#test2'
+			});
+		});
 
+		//laydate-day-prev
 
-
-//单据日期
-layui.use('laydate', function(){
-	var laydate = layui.laydate;
-	laydate.render({
-	    elem: '#test1',
-	    done:function(value,date){//value, date, endDate点击日期、清空、现在、确定均会触发。回调返回三个参数，分别代表：生成的值、日期时间对象、结束的日期时间对象
-        var value=value.replace(/-/g,'');
-			xsbj_vue.danju=value;
-    	}
-	  });
-});
-
-//有效日期
-layui.use('laydate', function(){
-	var laydate = layui.laydate;
-	laydate.render({
-	    elem: '#test2'
-	  });
-});
-
-//laydate-day-prev
-
-	/*如果是页面层
+		/*如果是页面层
   $(".s1").click(function(){
   	window.parent.vue.zishow();	
   })*/
-</script>
-<!--选择客户-->
-<script>
+	</script>
+	<!--选择客户-->
+	<script>
+	</script>
 
+	<script>
+		layui.use(['layer', 'table', 'element', 'form'], function() {
+			var layer = layui.layer //弹层
+				,
+				table = layui.table //表格
+				,
+				form = layui.form;
+			//监听地址选择操作
+			form.on('select(selectDemo)', function(obj) {
+				layer.tips(obj.elem.getAttribute('name') + '：' + obj.value + ' ' + obj.elem.getAttribute('dataId'), obj.othis);
+			});
+			//监听性别操作
+			form.on('switch(sexDemo)', function(obj) {
+				layer.tips(this.value + ' ' + this.name + '：' + obj.elem.checked, obj.othis);
+			});
 
-</script>
+			//执行一个 table 实例
+			table.render({
+				elem: '#tableDemo',
+				height: 332,
+				url: '../销售模块/dataTable.json' //数据接口
+					,
+				page: true //开启分页
+					,
+				cols: [
+					[ //表头
+						{ field: 'id', title: 'ID', width: 80, sort: true, fixed: 'left' }, { field: 'username', title: '用户名', width: 80 }, { field: 'sign', title: '可编辑', edit: 'text', width: 80, sort: true }, { field: 'city', title: '城市', width: 80 }, { field: 'sex', title: '性别', width: 85, templet: '#switchTpl', unresize: true }, { field: 'lock', title: '下拉框', width: 110, templet: '#selectTool', unresize: true }, { fixed: 'right', title: '操作', width: 165, align: 'center', toolbar: '#barDemo' }
+					]
+				]
+			});
+			//监听单元格编辑
+			table.on('edit(tableDemo)', function(obj) {
+				var value = obj.value //得到修改后的值
+					,
+					data = obj.data //得到所在行所有键值
+					,
+					field = obj.field; //得到字段
+				layer.msg('[ID: ' + data.id + '] ' + field + ' 字段更改为：' + value);
+			});
+			//监听工具条
+			table.on('tool(tableDemo)', function(obj) { //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+				var data = obj.data //获得当前行数据
+					,
+					layEvent = obj.event; //获得 lay-event 对应的值
+				if(layEvent === 'detail') {
+					layer.msg('查看操作');
+				} else if(layEvent === 'del') {
+					layer.confirm('真的删除行么', function(index) {
+						obj.del(); //删除对应行（tr）的DOM结构
+						layer.close(index);
+						//向服务端发送删除指令
+					});
+				} else if(layEvent === 'edit') {
+					layer.msg('编辑操作');
+				}
+			});
+		});
+	</script>
 
+	<script type="text/javascript">
+		var cityArr = ['昆明', '长沙', '富源', '楚雄', '长春', '哈尔滨', '桂林'];
+	</script>
+	<script type="text/html" id="selectTool" desc="下拉选择器" intro="用到了layui模板（不能设置lay-ignore,否则监听不到事件）">
+		<select name="city" dataId="{{d.id}}" lay-filter="selectDemo">
+			{{# layui.each(cityArr, function(index, item){ }}
+			<option {{ (d.city==item)? 'selected' : '' }}>{{ item }}</option>
+			{{# }); }}
+		</select>
+	</script>
 
+	<script type="text/html" id="switchTpl" desc="切换开关" intro="layui表单空间">
+		<input type="checkbox" name="sex" value="{{d.id}}" lay-skin="switch" lay-text="女|男" lay-filter="sexDemo" {{ (d.id==10003)? 'checked' : '' }}>
+	</script>
 
-
-
-
-<script>
-										    layui.use(['layer', 'table', 'element', 'form'], function () {
-										        var layer = layui.layer //弹层
-										            , table = layui.table //表格
-										            , form = layui.form;
-										        //监听地址选择操作
-										        form.on('select(selectDemo)', function (obj) {
-										            layer.tips(obj.elem.getAttribute('name') + '：'+obj.value + ' ' + obj.elem.getAttribute('dataId') , obj.othis);
-										        });
-										        //监听性别操作
-										        form.on('switch(sexDemo)', function (obj) {
-										            layer.tips(this.value + ' ' + this.name + '：' + obj.elem.checked, obj.othis);
-										        });
-										 
-										        //执行一个 table 实例
-										        table.render({
-										            elem: '#tableDemo'
-										            , height: 332
-										            , url: '../销售模块/dataTable.json' //数据接口
-										            , page: true //开启分页
-										            , cols: [[ //表头
-										                {field: 'id', title: 'ID', width: 80, sort: true, fixed: 'left'}
-										                , {field: 'username', title: '用户名', width: 80}
-										                , {field: 'sign', title: '可编辑', edit: 'text',width: 80, sort: true}
-										                , {field: 'city', title: '城市', width: 80}
-										                , {field: 'sex', title: '性别', width: 85, templet: '#switchTpl', unresize: true}
-										                , {field: 'lock', title: '下拉框', width: 110, templet: '#selectTool', unresize: true}
-										                , {fixed: 'right', title: '操作', width: 165, align: 'center', toolbar: '#barDemo'}
-										            ]]
-										        });
-										        //监听单元格编辑
-										        table.on('edit(tableDemo)', function(obj){
-										            var value = obj.value //得到修改后的值
-										                ,data = obj.data //得到所在行所有键值
-										                ,field = obj.field; //得到字段
-										            layer.msg('[ID: '+ data.id +'] ' + field + ' 字段更改为：'+ value);
-										        });
-										        //监听工具条
-										        table.on('tool(tableDemo)', function (obj) { //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
-										            var data = obj.data //获得当前行数据
-										                , layEvent = obj.event; //获得 lay-event 对应的值
-										            if (layEvent === 'detail') {
-										                layer.msg('查看操作');
-										            } else if (layEvent === 'del') {
-										                layer.confirm('真的删除行么', function (index) {
-										                    obj.del(); //删除对应行（tr）的DOM结构
-										                    layer.close(index);
-										                    //向服务端发送删除指令
-										                });
-										            } else if (layEvent === 'edit') {
-										                layer.msg('编辑操作');
-										            }
-										        });
-										    });
-										</script>
-										 
-										<script type="text/javascript">
-										    var cityArr = ['昆明', '长沙', '富源', '楚雄', '长春', '哈尔滨', '桂林'];
-										</script>
-										<script type="text/html" id="selectTool" desc="下拉选择器" intro="用到了layui模板（不能设置lay-ignore,否则监听不到事件）">
-										    <select name="city" dataId="{{d.id}}" lay-filter="selectDemo">
-										        {{# layui.each(cityArr, function(index, item){ }}
-										        <option {{ (d.city==item)?'selected' : '' }}>{{ item }}</option>
-										        {{# }); }}
-										    </select>
-										</script>
-										 
-										<script type="text/html" id="switchTpl" desc="切换开关" intro="layui表单空间">
-										    <input type="checkbox" name="sex" value="{{d.id}}" lay-skin="switch"
-										           lay-text="女|男" lay-filter="sexDemo" {{ (d.id==10003)?'checked' : '' }}>
-										</script>
 </html>

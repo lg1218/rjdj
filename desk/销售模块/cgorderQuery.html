@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/layui.css" media="all" />
+		<script type="text/javascript" src="../js/jquery-1.12.4.js" ></script>
+		<script type="text/javascript" src="../js/layui.all.js" ></script>
+		<script type="text/javascript" src="../js/layui.js" ></script>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+		<style>
+			input{
+				background-color: white;
+				border-top: solid white;
+				border-right: solid white;
+				border-left: solid white;
+			}
+			select{
+				background-color: white;
+				border: solid white;
+			}
+			
+			/*超出文本转为...*/
+		table{
+            width: 100%;
+            table-layout: fixed;
+         }
+		td{
+         	white-space: nowrap;/*控制单行显示*/
+			overflow: hidden;/*超出隐藏*/
+			text-overflow: ellipsis;/*隐藏的字符用省略号表示*/
+         }
+		th{
+			white-space:nowrap;
+			/*text-align: center !important;*/
+		}
+		</style>
+	</head>
+	<body>
+		<div class="app">
+			 <div class="layui-tab-item layui-show" style="margin:20px;overflow:auto;">
+		    	<!--表单-->
+		    	<div class="">
+						<div style="width: 70%;float: left;">
+							<form class="layui-form" action="" style="margin-top: 10px;">
+								<!--1-->
+								<div class="layui-row">
+									<div class="layui-col-md6 layui-form-item ">
+										<div class="layui-form-item">
+											<label class="layui-form-label" style="color: #2D93CA">日期区间</label>
+											<div class="layui-input-block">
+												<input type="date" name="date" v-model="wheres.firstDate" placeholder="yyyy-MM-dd"  class="layui-input ">
+											</div>
+										</div>
+									</div>
+									<div class="layui-col-md6">
+										<label class="layui-form-label" style="color: #2D93CA;text-align: center">To</label>
+										<div class="layui-input-block">
+											<input type="date" name="date" v-model="wheres.secondDate" placeholder="yyyy-MM-dd"  class="layui-input ">
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					<div class="width: 30%;display: inline-block">
+						<button class="layuibtn  layui-btn-xs" @click="getlines">导入数据</button>
+						<br>
+						<button class="layui-btn layui-btn-primary  layui-btn-xs" @click="returnPorders">取回</button>
+					</div>
+				</div>
+				
+		    	<!---->
+		    	<div class="layui-tab-item layui-show" style="width: 100%;height: 220px;overflow:auto;">
+								    	<!--表单-->
+								    	<table class="layui-table single" lay-size="sm" style="empty-cells:show;min-width:765px">
+											  <colgroup>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											    <col width="70"></col>
+											  </colgroup>
+											  <thead>
+													<tr>
+													  <th>转单数量</th>
+													  <th>（单据号码）</th>
+													  <th>（单据日期）</th>
+													  <th>（物料编号）</th>
+													  <th>（物料名称）</th>
+													  <th>（单价）</th>
+													  <th>（数量）</th>
+													  <th>（预入库日）</th>
+													  <th>（未入库量）</th>
+													</tr> 
+											  </thead>
+											  <tbody>
+												    <template v-for="  pos,posindex in   pos">
+														<template v-for="pods,podsindex in pos.purchasingOrderDetailed">
+															<template  v-if="pods.podYn==0">
+																<tr @dblclick="delpods(posindex,podsindex)">
+																	<!--  转单数量   这个值是带到入库详细数据中的--><td><input type="text" v-model="pods.zdNum"></td>
+																	<!--（单据号码）--><td><input type="text" v-model="pos.poDocumentNumber" disabled></td>
+																	<!--（单据日期）--><td><input type="text" v-model="pos.poDocumentDate"  disabled></td>
+																	<!--（物料编号）--><td><input type="text" v-model="pods.poMatterId"  disabled></td>
+																	<!--（物料名称）--><td><input type="text" v-model="pods.podMatterName"  disabled></td>
+																	<!--（单价）    --><td><input type="text"  v-model="pods.podPrice" disabled></td>
+																	<!--（数量）   --> <td><input type="text" v-model="pods.podCustom2" disabled></td>
+																	<!--（预入库日）--><td><input type="text" v-model="pods.podBeforehandLaidupDate"  disabled></td>
+																	<!--（未入库量）--><td><input type="text" v-model="pods.podNotLaiupNum"  disabled></td>
+																</tr>
+															</template>  <!-- //1代表已删除-->
+														</template>
+
+													</template>
+											  </tbody>
+										</table>
+								    </div>
+			 </div>
+		</div>
+
+	</body>	
+
+	  <script>
+		  layui.use(['element','form','laydate'], function(){
+			  var element = layui.element,
+					  laydate = layui.laydate;
+			  laydate.render({
+				  elem: '.date',
+				  trigger: 'click' //添加这一行来处理
+			  });
+		  });
+	  		var vue=new Vue({
+				el: ".app",
+				data() {
+					return {
+						wheres:{
+
+						},
+						pos:[]
+					}
+				},
+				methods: {
+					getlines:function () {
+						// 根据日期去查询采购订单
+						$.ajax({
+							url:"http://localhost:8080/selectPos",
+							type:"post",
+							data:{
+								data1:vue.wheres.firstDate,
+								data2:vue.wheres.secondDate
+							},success:function (res) {
+								res.forEach((i,e)=>{
+									i.purchasingOrderDetailed.forEach((ii,ee)=>{
+										ii.zdNum = "1";  //填充一个默认值
+									})
+								})
+								vue.pos = res;
+								console.log(vue.pos);
+							}
+						})
+
+					},
+					delpods:function (posindex,podsindex) {  //在此次的查询当中剔除这个数据
+						vue.pos[posindex].purchasingOrderDetailed[podsindex].podYn = 1 ;
+					}
+					,
+					returnPorders:function () {
+						let newpods = [];
+						this.pos.forEach((i,e)=>{
+							i.purchasingOrderDetailed.forEach((ii,ee)=>{
+								if(ii.podYn == 0 ){   // 没有软删除的数据  再次加上它主表的单号以及单别
+									ii.db ="采购订单";
+									ii.dh =i.poDocumentNumber ;
+									newpods.push(ii);
+								}
+							})
+						});
+						parent.procurementVue.getCgOrderTrue(newpods);  //传数据
+					}
+				},
+				created: function () {
+
+				}
+			});
+	  </script>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="../css/layui.css" />
+	</head>
+	<body>
+		<table class="layui-table" id="wll">
+			<tr>
+				<th>
+					物料编号
+				</th>
+				<th>
+					物料名称
+				</th>
+		
+			</tr>
+			<tr v-for="item in list" @dblclick="xuanzhong(item)" onclick="add(this)" >
+				<td>{{item.matterId}}</td>
+				<td>{{item.matterName}}</td>
+			</tr>
+			
+		</table>
+		<input type="hidden" v-model="name" />
+	</body>
+	<script src="../js/vue.js"></script>
+	<script src="../js/layui.js"></script>
+	<script src="../js/jquery-1.12.4.js"></script>
+	<script>
+		var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+		var vuewl = new Vue({
+			el:"#wll",
+			data(){
+				return{
+					list:[],
+					vueName:""
+					
+				};
+			},
+			methods:{
+				//查询物料数据
+				findWuLiao:function(){
+					var that = this;
+					$.ajax({
+						type:"post",
+						url:"http://localhost:8080/x_diaobo/findWuLiao",
+						success:function(res){
+							that.list = res;
+							console.log(res);
+						}
+					});
+				},
+				//选择物料数据
+				xuanzhong:function(item){
+					var a = {};
+					a.apdMmId=item.matterId;
+					a.apdProname=item.matterName;
+					a.apdStandardtype=item.matterSize
+					a.apdAmount=item.matterNowcount
+					a.apdMeancost=item.matterAvgcost
+					//console.log(JSON.stringify(item));
+					parent[this.vueName].page.list[0].jihe.push(a);//把物料对象传给主页物料对象；
+//					parent[this.vueName].cangku1.warehouseId=item.warehouseId;	//把仓库id传给主页对象；
+//					parent[this.vueName].cangku1.warehouseName=item.warehouseName;//把仓库名称传给主页对象；
+					//var index = parent.layer.getFrameIndex(window.name);//获取当前页面index
+					parent.layer.close(index);//关闭当前页
+				}
+				
+			},
+			created: function() {
+				this.findWuLiao();
+			}
+		});
+		function add(a){
+				$("tr").css("background","white");
+				$(a).css("background","red");
+			
+		}
+		//获得主页面vue名称
+		function setVueName(name){
+	  			//console.log(name);
+	  			vuewl.vueName = name;
+	  	}
+		
+	</script>
+</html>
+
+
+
+
+
+
+
+	
+	

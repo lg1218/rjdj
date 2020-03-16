@@ -1012,52 +1012,52 @@ public class SalesReturnWarehouseExample {
             return (Criteria) this;
         }
 
-        public Criteria andSrwSunnumEqualTo(Float value) {
+        public Criteria andSrwSunnumEqualTo(Double value) {
             addCriterion("srw_sunnum =", value, "srwSunnum");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSunnumNotEqualTo(Float value) {
+        public Criteria andSrwSunnumNotEqualTo(Double value) {
             addCriterion("srw_sunnum <>", value, "srwSunnum");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSunnumGreaterThan(Float value) {
+        public Criteria andSrwSunnumGreaterThan(Double value) {
             addCriterion("srw_sunnum >", value, "srwSunnum");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSunnumGreaterThanOrEqualTo(Float value) {
+        public Criteria andSrwSunnumGreaterThanOrEqualTo(Double value) {
             addCriterion("srw_sunnum >=", value, "srwSunnum");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSunnumLessThan(Float value) {
+        public Criteria andSrwSunnumLessThan(Double value) {
             addCriterion("srw_sunnum <", value, "srwSunnum");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSunnumLessThanOrEqualTo(Float value) {
+        public Criteria andSrwSunnumLessThanOrEqualTo(Double value) {
             addCriterion("srw_sunnum <=", value, "srwSunnum");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSunnumIn(List<Float> values) {
+        public Criteria andSrwSunnumIn(List<Double> values) {
             addCriterion("srw_sunnum in", values, "srwSunnum");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSunnumNotIn(List<Float> values) {
+        public Criteria andSrwSunnumNotIn(List<Double> values) {
             addCriterion("srw_sunnum not in", values, "srwSunnum");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSunnumBetween(Float value1, Float value2) {
+        public Criteria andSrwSunnumBetween(Double value1, Double value2) {
             addCriterion("srw_sunnum between", value1, value2, "srwSunnum");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSunnumNotBetween(Float value1, Float value2) {
+        public Criteria andSrwSunnumNotBetween(Double value1, Double value2) {
             addCriterion("srw_sunnum not between", value1, value2, "srwSunnum");
             return (Criteria) this;
         }
@@ -1072,52 +1072,52 @@ public class SalesReturnWarehouseExample {
             return (Criteria) this;
         }
 
-        public Criteria andSrwSunmoneyEqualTo(Float value) {
+        public Criteria andSrwSunmoneyEqualTo(Double value) {
             addCriterion("srw_sunmoney =", value, "srwSunmoney");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSunmoneyNotEqualTo(Float value) {
+        public Criteria andSrwSunmoneyNotEqualTo(Double value) {
             addCriterion("srw_sunmoney <>", value, "srwSunmoney");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSunmoneyGreaterThan(Float value) {
+        public Criteria andSrwSunmoneyGreaterThan(Double value) {
             addCriterion("srw_sunmoney >", value, "srwSunmoney");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSunmoneyGreaterThanOrEqualTo(Float value) {
+        public Criteria andSrwSunmoneyGreaterThanOrEqualTo(Double value) {
             addCriterion("srw_sunmoney >=", value, "srwSunmoney");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSunmoneyLessThan(Float value) {
+        public Criteria andSrwSunmoneyLessThan(Double value) {
             addCriterion("srw_sunmoney <", value, "srwSunmoney");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSunmoneyLessThanOrEqualTo(Float value) {
+        public Criteria andSrwSunmoneyLessThanOrEqualTo(Double value) {
             addCriterion("srw_sunmoney <=", value, "srwSunmoney");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSunmoneyIn(List<Float> values) {
+        public Criteria andSrwSunmoneyIn(List<Double> values) {
             addCriterion("srw_sunmoney in", values, "srwSunmoney");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSunmoneyNotIn(List<Float> values) {
+        public Criteria andSrwSunmoneyNotIn(List<Double> values) {
             addCriterion("srw_sunmoney not in", values, "srwSunmoney");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSunmoneyBetween(Float value1, Float value2) {
+        public Criteria andSrwSunmoneyBetween(Double value1, Double value2) {
             addCriterion("srw_sunmoney between", value1, value2, "srwSunmoney");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSunmoneyNotBetween(Float value1, Float value2) {
+        public Criteria andSrwSunmoneyNotBetween(Double value1, Double value2) {
             addCriterion("srw_sunmoney not between", value1, value2, "srwSunmoney");
             return (Criteria) this;
         }
@@ -1132,52 +1132,52 @@ public class SalesReturnWarehouseExample {
             return (Criteria) this;
         }
 
-        public Criteria andSrwTaxEqualTo(Float value) {
+        public Criteria andSrwTaxEqualTo(Double value) {
             addCriterion("srw_tax =", value, "srwTax");
             return (Criteria) this;
         }
 
-        public Criteria andSrwTaxNotEqualTo(Float value) {
+        public Criteria andSrwTaxNotEqualTo(Double value) {
             addCriterion("srw_tax <>", value, "srwTax");
             return (Criteria) this;
         }
 
-        public Criteria andSrwTaxGreaterThan(Float value) {
+        public Criteria andSrwTaxGreaterThan(Double value) {
             addCriterion("srw_tax >", value, "srwTax");
             return (Criteria) this;
         }
 
-        public Criteria andSrwTaxGreaterThanOrEqualTo(Float value) {
+        public Criteria andSrwTaxGreaterThanOrEqualTo(Double value) {
             addCriterion("srw_tax >=", value, "srwTax");
             return (Criteria) this;
         }
 
-        public Criteria andSrwTaxLessThan(Float value) {
+        public Criteria andSrwTaxLessThan(Double value) {
             addCriterion("srw_tax <", value, "srwTax");
             return (Criteria) this;
         }
 
-        public Criteria andSrwTaxLessThanOrEqualTo(Float value) {
+        public Criteria andSrwTaxLessThanOrEqualTo(Double value) {
             addCriterion("srw_tax <=", value, "srwTax");
             return (Criteria) this;
         }
 
-        public Criteria andSrwTaxIn(List<Float> values) {
+        public Criteria andSrwTaxIn(List<Double> values) {
             addCriterion("srw_tax in", values, "srwTax");
             return (Criteria) this;
         }
 
-        public Criteria andSrwTaxNotIn(List<Float> values) {
+        public Criteria andSrwTaxNotIn(List<Double> values) {
             addCriterion("srw_tax not in", values, "srwTax");
             return (Criteria) this;
         }
 
-        public Criteria andSrwTaxBetween(Float value1, Float value2) {
+        public Criteria andSrwTaxBetween(Double value1, Double value2) {
             addCriterion("srw_tax between", value1, value2, "srwTax");
             return (Criteria) this;
         }
 
-        public Criteria andSrwTaxNotBetween(Float value1, Float value2) {
+        public Criteria andSrwTaxNotBetween(Double value1, Double value2) {
             addCriterion("srw_tax not between", value1, value2, "srwTax");
             return (Criteria) this;
         }
@@ -1192,62 +1192,52 @@ public class SalesReturnWarehouseExample {
             return (Criteria) this;
         }
 
-        public Criteria andSrwIncludingTaxAmountEqualTo(String value) {
+        public Criteria andSrwIncludingTaxAmountEqualTo(Double value) {
             addCriterion("srw_including_tax_amount =", value, "srwIncludingTaxAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSrwIncludingTaxAmountNotEqualTo(String value) {
+        public Criteria andSrwIncludingTaxAmountNotEqualTo(Double value) {
             addCriterion("srw_including_tax_amount <>", value, "srwIncludingTaxAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSrwIncludingTaxAmountGreaterThan(String value) {
+        public Criteria andSrwIncludingTaxAmountGreaterThan(Double value) {
             addCriterion("srw_including_tax_amount >", value, "srwIncludingTaxAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSrwIncludingTaxAmountGreaterThanOrEqualTo(String value) {
+        public Criteria andSrwIncludingTaxAmountGreaterThanOrEqualTo(Double value) {
             addCriterion("srw_including_tax_amount >=", value, "srwIncludingTaxAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSrwIncludingTaxAmountLessThan(String value) {
+        public Criteria andSrwIncludingTaxAmountLessThan(Double value) {
             addCriterion("srw_including_tax_amount <", value, "srwIncludingTaxAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSrwIncludingTaxAmountLessThanOrEqualTo(String value) {
+        public Criteria andSrwIncludingTaxAmountLessThanOrEqualTo(Double value) {
             addCriterion("srw_including_tax_amount <=", value, "srwIncludingTaxAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSrwIncludingTaxAmountLike(String value) {
-            addCriterion("srw_including_tax_amount like", value, "srwIncludingTaxAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andSrwIncludingTaxAmountNotLike(String value) {
-            addCriterion("srw_including_tax_amount not like", value, "srwIncludingTaxAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andSrwIncludingTaxAmountIn(List<String> values) {
+        public Criteria andSrwIncludingTaxAmountIn(List<Double> values) {
             addCriterion("srw_including_tax_amount in", values, "srwIncludingTaxAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSrwIncludingTaxAmountNotIn(List<String> values) {
+        public Criteria andSrwIncludingTaxAmountNotIn(List<Double> values) {
             addCriterion("srw_including_tax_amount not in", values, "srwIncludingTaxAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSrwIncludingTaxAmountBetween(String value1, String value2) {
+        public Criteria andSrwIncludingTaxAmountBetween(Double value1, Double value2) {
             addCriterion("srw_including_tax_amount between", value1, value2, "srwIncludingTaxAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSrwIncludingTaxAmountNotBetween(String value1, String value2) {
+        public Criteria andSrwIncludingTaxAmountNotBetween(Double value1, Double value2) {
             addCriterion("srw_including_tax_amount not between", value1, value2, "srwIncludingTaxAmount");
             return (Criteria) this;
         }
@@ -1262,53 +1252,63 @@ public class SalesReturnWarehouseExample {
             return (Criteria) this;
         }
 
-        public Criteria andSrwSaleszkgsEqualTo(Date value) {
-            addCriterionForJDBCDate("srw_saleszkgs =", value, "srwSaleszkgs");
+        public Criteria andSrwSaleszkgsEqualTo(String value) {
+            addCriterion("srw_saleszkgs =", value, "srwSaleszkgs");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSaleszkgsNotEqualTo(Date value) {
-            addCriterionForJDBCDate("srw_saleszkgs <>", value, "srwSaleszkgs");
+        public Criteria andSrwSaleszkgsNotEqualTo(String value) {
+            addCriterion("srw_saleszkgs <>", value, "srwSaleszkgs");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSaleszkgsGreaterThan(Date value) {
-            addCriterionForJDBCDate("srw_saleszkgs >", value, "srwSaleszkgs");
+        public Criteria andSrwSaleszkgsGreaterThan(String value) {
+            addCriterion("srw_saleszkgs >", value, "srwSaleszkgs");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSaleszkgsGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("srw_saleszkgs >=", value, "srwSaleszkgs");
+        public Criteria andSrwSaleszkgsGreaterThanOrEqualTo(String value) {
+            addCriterion("srw_saleszkgs >=", value, "srwSaleszkgs");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSaleszkgsLessThan(Date value) {
-            addCriterionForJDBCDate("srw_saleszkgs <", value, "srwSaleszkgs");
+        public Criteria andSrwSaleszkgsLessThan(String value) {
+            addCriterion("srw_saleszkgs <", value, "srwSaleszkgs");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSaleszkgsLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("srw_saleszkgs <=", value, "srwSaleszkgs");
+        public Criteria andSrwSaleszkgsLessThanOrEqualTo(String value) {
+            addCriterion("srw_saleszkgs <=", value, "srwSaleszkgs");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSaleszkgsIn(List<Date> values) {
-            addCriterionForJDBCDate("srw_saleszkgs in", values, "srwSaleszkgs");
+        public Criteria andSrwSaleszkgsLike(String value) {
+            addCriterion("srw_saleszkgs like", value, "srwSaleszkgs");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSaleszkgsNotIn(List<Date> values) {
-            addCriterionForJDBCDate("srw_saleszkgs not in", values, "srwSaleszkgs");
+        public Criteria andSrwSaleszkgsNotLike(String value) {
+            addCriterion("srw_saleszkgs not like", value, "srwSaleszkgs");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSaleszkgsBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("srw_saleszkgs between", value1, value2, "srwSaleszkgs");
+        public Criteria andSrwSaleszkgsIn(List<String> values) {
+            addCriterion("srw_saleszkgs in", values, "srwSaleszkgs");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSaleszkgsNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("srw_saleszkgs not between", value1, value2, "srwSaleszkgs");
+        public Criteria andSrwSaleszkgsNotIn(List<String> values) {
+            addCriterion("srw_saleszkgs not in", values, "srwSaleszkgs");
+            return (Criteria) this;
+        }
+
+        public Criteria andSrwSaleszkgsBetween(String value1, String value2) {
+            addCriterion("srw_saleszkgs between", value1, value2, "srwSaleszkgs");
+            return (Criteria) this;
+        }
+
+        public Criteria andSrwSaleszkgsNotBetween(String value1, String value2) {
+            addCriterion("srw_saleszkgs not between", value1, value2, "srwSaleszkgs");
             return (Criteria) this;
         }
 
@@ -1392,52 +1392,62 @@ public class SalesReturnWarehouseExample {
             return (Criteria) this;
         }
 
-        public Criteria andSrwSalessktjEqualTo(Integer value) {
+        public Criteria andSrwSalessktjEqualTo(String value) {
             addCriterion("srw_salessktj =", value, "srwSalessktj");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSalessktjNotEqualTo(Integer value) {
+        public Criteria andSrwSalessktjNotEqualTo(String value) {
             addCriterion("srw_salessktj <>", value, "srwSalessktj");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSalessktjGreaterThan(Integer value) {
+        public Criteria andSrwSalessktjGreaterThan(String value) {
             addCriterion("srw_salessktj >", value, "srwSalessktj");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSalessktjGreaterThanOrEqualTo(Integer value) {
+        public Criteria andSrwSalessktjGreaterThanOrEqualTo(String value) {
             addCriterion("srw_salessktj >=", value, "srwSalessktj");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSalessktjLessThan(Integer value) {
+        public Criteria andSrwSalessktjLessThan(String value) {
             addCriterion("srw_salessktj <", value, "srwSalessktj");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSalessktjLessThanOrEqualTo(Integer value) {
+        public Criteria andSrwSalessktjLessThanOrEqualTo(String value) {
             addCriterion("srw_salessktj <=", value, "srwSalessktj");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSalessktjIn(List<Integer> values) {
+        public Criteria andSrwSalessktjLike(String value) {
+            addCriterion("srw_salessktj like", value, "srwSalessktj");
+            return (Criteria) this;
+        }
+
+        public Criteria andSrwSalessktjNotLike(String value) {
+            addCriterion("srw_salessktj not like", value, "srwSalessktj");
+            return (Criteria) this;
+        }
+
+        public Criteria andSrwSalessktjIn(List<String> values) {
             addCriterion("srw_salessktj in", values, "srwSalessktj");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSalessktjNotIn(List<Integer> values) {
+        public Criteria andSrwSalessktjNotIn(List<String> values) {
             addCriterion("srw_salessktj not in", values, "srwSalessktj");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSalessktjBetween(Integer value1, Integer value2) {
+        public Criteria andSrwSalessktjBetween(String value1, String value2) {
             addCriterion("srw_salessktj between", value1, value2, "srwSalessktj");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSalessktjNotBetween(Integer value1, Integer value2) {
+        public Criteria andSrwSalessktjNotBetween(String value1, String value2) {
             addCriterion("srw_salessktj not between", value1, value2, "srwSalessktj");
             return (Criteria) this;
         }
@@ -1452,53 +1462,53 @@ public class SalesReturnWarehouseExample {
             return (Criteria) this;
         }
 
-        public Criteria andSrwSalesdayEqualTo(Date value) {
-            addCriterionForJDBCDate("srw_salesday =", value, "srwSalesday");
+        public Criteria andSrwSalesdayEqualTo(Integer value) {
+            addCriterion("srw_salesday =", value, "srwSalesday");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSalesdayNotEqualTo(Date value) {
-            addCriterionForJDBCDate("srw_salesday <>", value, "srwSalesday");
+        public Criteria andSrwSalesdayNotEqualTo(Integer value) {
+            addCriterion("srw_salesday <>", value, "srwSalesday");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSalesdayGreaterThan(Date value) {
-            addCriterionForJDBCDate("srw_salesday >", value, "srwSalesday");
+        public Criteria andSrwSalesdayGreaterThan(Integer value) {
+            addCriterion("srw_salesday >", value, "srwSalesday");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSalesdayGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("srw_salesday >=", value, "srwSalesday");
+        public Criteria andSrwSalesdayGreaterThanOrEqualTo(Integer value) {
+            addCriterion("srw_salesday >=", value, "srwSalesday");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSalesdayLessThan(Date value) {
-            addCriterionForJDBCDate("srw_salesday <", value, "srwSalesday");
+        public Criteria andSrwSalesdayLessThan(Integer value) {
+            addCriterion("srw_salesday <", value, "srwSalesday");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSalesdayLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("srw_salesday <=", value, "srwSalesday");
+        public Criteria andSrwSalesdayLessThanOrEqualTo(Integer value) {
+            addCriterion("srw_salesday <=", value, "srwSalesday");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSalesdayIn(List<Date> values) {
-            addCriterionForJDBCDate("srw_salesday in", values, "srwSalesday");
+        public Criteria andSrwSalesdayIn(List<Integer> values) {
+            addCriterion("srw_salesday in", values, "srwSalesday");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSalesdayNotIn(List<Date> values) {
-            addCriterionForJDBCDate("srw_salesday not in", values, "srwSalesday");
+        public Criteria andSrwSalesdayNotIn(List<Integer> values) {
+            addCriterion("srw_salesday not in", values, "srwSalesday");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSalesdayBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("srw_salesday between", value1, value2, "srwSalesday");
+        public Criteria andSrwSalesdayBetween(Integer value1, Integer value2) {
+            addCriterion("srw_salesday between", value1, value2, "srwSalesday");
             return (Criteria) this;
         }
 
-        public Criteria andSrwSalesdayNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("srw_salesday not between", value1, value2, "srwSalesday");
+        public Criteria andSrwSalesdayNotBetween(Integer value1, Integer value2) {
+            addCriterion("srw_salesday not between", value1, value2, "srwSalesday");
             return (Criteria) this;
         }
 

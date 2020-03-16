@@ -23,7 +23,22 @@
 			    padding: 0 15px;
 			    text-align: center;
 			    cursor: pointer;
-			}		
+			}	
+			
+			/*超出文本转为...*/
+		table{
+            width: 100%;
+            table-layout: fixed;
+         }
+		td{
+         	white-space: nowrap;/*控制单行显示*/
+			overflow: hidden;/*超出隐藏*/
+			text-overflow: ellipsis;/*隐藏的字符用省略号表示*/
+         }
+		th{
+			white-space:nowrap;
+			/*text-align: center !important;*/
+		}	
 		</style>
 		 <style>
 		 /* 防止下拉框的下拉列表被隐藏---必须设置--- */
@@ -43,9 +58,25 @@
 		    resize: vertical;
 		}
 		</style>
+		<style>
+			.fudong{
+				width: 100%;
+				height: 50%;
+				/*border: solid #000000;*/
+				position: absolute;
+				top:0px;
+				visibility: hidden;
+			}
+			
+			.tdinput{
+				border:none;
+				width:140%;
+				margin: -5px -10px;
+			}
+		</style>
 	</head>
 		<body>
-			<div class="layui-container app" style="width: 800px;margin-top: 50px;">
+			<div class="layui-container app" id="readO"  style="width: 800px;margin-top: 50px;">
 			  <div style="margin-left: -20px;">
 			  	<form class="layui-form" action="">
 						<!--1-->
@@ -54,7 +85,7 @@
 								<div class="layui-form-item">
 								    <label class="layui-form-label">客户名称</label>
 								    <div class="layui-input-inline">
-								      <input type="text" name="title" required  lay-verify="required" placeholder="请输入客户名称" autocomplete="off" class="layui-input">
+								      <input type="text" name="title" @keyup.f4="kadd()"  v-model="list.customerId" required  lay-verify="required" placeholder="请输入客户名称"      class="layui-input no_empty">
 								    </div>
 							 	<div class="layui-form-mid layui-word-aux" @click="kh($event,'客户信息单','客户信息单.html')">选择客户</div>
 								</div>
@@ -63,7 +94,7 @@
 								<div class="layui-form-item">
 								    <label class="layui-form-label">单据日期</label>
 								      <div class="layui-input-inline">
-								        <input type="text" v-model="data1"  name="date" id="test1" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+								        <input type="text"  v-model="list.srwDocumentDate"  name="date" id="test1" lay-verify="date" placeholder="yyyy-MM-dd"      class="layui-input no_empty">
 								      </div>
 							 	</div>
 							</div>
@@ -73,11 +104,8 @@
 							<div class="layui-col-sm6">
 								<div class="layui-form-item">
 								    <label class="layui-form-label">送货地址</label>
-								    <div class="layui-input-inline" style="width: 60px;">
-								      <input type="text" name="title" required  lay-verify="required"  autocomplete="off" class="layui-input">
-								    </div>
-								    <div class="layui-input-inline" style="width: 120px;">
-								      <input type="text" name="title" required  lay-verify="required"  autocomplete="off" class="layui-input">
+								    <div class="layui-input-inline">
+								      <input type="text" name="title" required  lay-verify="required"  v-model="list.srwAddress"     class="layui-input no_empty">
 								    </div>
 							 	</div>
 							</div>
@@ -85,7 +113,7 @@
 								<div class="layui-form-item">
 								    <label class="layui-form-label">单据号码</label>
 								    <div class="layui-input-inline">
-								      <input type="text" name="title" v-model="danju" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+								      <input type="text" name="title"    required  lay-verify="required" placeholder="请输入标题"  v-model="list.srwId"    class="layui-input no_empty">
 								    </div>
 								    <div class="layui-form-mid layui-word-aux">辅助文字</div>
 							 	</div>
@@ -97,9 +125,9 @@
 								<div class="layui-form-item">
 								    <label class="layui-form-label">单价?含税</label>
 								    <div class="layui-input-block" style="width:190px;">
-								      <select name="city" lay-verify="required">
-								        <option value="0">未税</option>
-								        <option value="1">含税</option>
+								      <select name="city" v-model="list.srwPriceIncludeTax"  lay-verify="required">
+								        <option value="未税">未税</option>
+								        <option value="含税">含税</option>
 								      </select>
 								    </div>
 							 	</div>
@@ -108,7 +136,7 @@
 								<div class="layui-form-item">
 								    <label class="layui-form-label">币别</label>
 								    <div class="layui-input-inline">
-								      <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+								      <input type="text" name="title" @keyup.f4="badd()" required v-model="list.currencyId" lay-verify="required" placeholder="请输入标题"      class="layui-input no_empty">
 								    </div>
 							 	</div>
 							</div>
@@ -119,7 +147,7 @@
 								<div class="layui-form-item">
 								    <label class="layui-form-label">仓库</label>
 								   	<div class="layui-input-inline">
-								      <input type="text" name="title" v-model="danju" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+								      <input type="text" name="title" @keyup.f4="cadd()" v-model="list.warehouseId"   required  lay-verify="required" placeholder="请输入标题"      class="layui-input no_empty">
 								    </div>
 								    <div class="layui-form-mid layui-word-aux">辅助文字</div>
 							 	</div>
@@ -128,7 +156,7 @@
 								<div class="layui-form-item">
 								    <label class="layui-form-label">汇率</label>
 								    <div class="layui-input-inline">
-								      <input type="text" name="title" required  lay-verify="required" placeholder="1.0000" autocomplete="off" class="layui-input">
+								      <input type="text" name="title" required  lay-verify="required" v-model="list.srwExchangeRate"  placeholder="1.0000"      class="layui-input no_empty">
 								    </div>
 							 	</div>
 							</div>
@@ -139,7 +167,7 @@
 								<div class="layui-form-item">
 								    <label class="layui-form-label">重新出库</label>
 								  <div class="layui-input-block" style="width:190px;">
-								      <select name="city" lay-verify="required">
+								      <select name="city" v-model="list.salescxrk" lay-verify="required">
 								        <option value="0">否</option>
 								        <option value="1">是</option>
 								      </select>
@@ -150,9 +178,9 @@
 								<div class="layui-form-item">
 								    <label class="layui-form-label">国外贸易</label>
 								    <div class="layui-input-block" style="width:190px;">
-								      <select name="city" lay-verify="required">
-								        <option value="0">未税</option>
-								        <option value="1">含税</option>
+								      <select name="city" v-model="list.srwForeignTrade" lay-verify="required">
+								        <option value="0">是</option>
+								        <option value="1">不是</option>
 								      </select>
 								    </div>
 							 	</div>
@@ -164,7 +192,7 @@
 								<div class="layui-form-item">
 								    <label class="layui-form-label">凭证编号</label>
 								   <div class="layui-input-inline">
-								      <input type="text" name="title" required  lay-verify="required" placeholder="1.0000" autocomplete="off" class="layui-input">
+								      <input type="text" v-model="list.srwCertificateNumber" name="title" required  lay-verify="required" placeholder="1.0000"      class="layui-input no_empty">
 								    </div>
 							 	</div>
 							</div>
@@ -186,17 +214,148 @@
 								    <li>备注</li>
 								  </ul>
 								  <div class="layui-tab-content">
-								    <div class="layui-tab-item layui-show" style="margin:-21px -10px -20px -11px;">
+								    <!---->
+								    	<div class="layui-tab-item layui-show" style="margin:-20px 0px 0px -11px;width: 769px;height: 311px;overflow:auto;">
 								    	<!--表单-->
-								    	
-								    	<table class="layui-hide layui-form" id="tableDemo" lay-filter="tableDemo"></table>
-										<script type="text/html" id="barDemo">
-										    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
-										    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-										    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-										</script>
-								    	<!---->
+									    	<table class="layui-table single" lay-size="sm" style="empty-cells:show;min-width:765px">
+												  <colgroup>
+												    <col width="70"></col>
+												    <col width="70"></col>
+												    <col width="70"></col>
+												    <col width="70"></col>
+												    <col width="70"></col>
+												    <col width="70"></col>
+												    <col width="70"></col>
+												    <col width="70"></col>
+												    <col width="70"></col>
+												    <col width="70"></col>
+												    <col width="70"></col>
+												    <col width="70"></col>
+												    <col width="70"></col>
+												    <col width="70"></col>
+												    <col width="70"></col>
+												    <col width="70"></col>
+												    <col width="70"></col>
+												    <col width="70"></col>
+												  </colgroup>
+												  <thead>
+														<tr>
+														  <th>栏号</th>
+														  <th>物料编号</th>
+														  <th>物料名称</th>
+														  <th>规格型号</th>
+														  <th>单位名称</th>
+														  <th>数量</th>
+														  <th>折前单价</th>
+														  <th>折数(%)</th>
+														  <th>单价</th>
+														  <th>金额</th>
+														  <th>税率</th>
+														  <th>税额</th>
+														  <th>含税金额</th>
+														  <th>赠品</th>
+														  <th>未开票数量</th>
+														  <th>分录备注</th>
+														  <th>(来源单别)</th>
+														  <th>(来源单号)</th>
+														</tr> 
+												  </thead>
+												  <tbody>
+													    <tr v-for="item,index in list.list">
+													      <td>{{index+1}}</td>
+													       <td>
+															 <div class="layui-input-inline" style="width: 100%;margin: 0px 0px;">
+															    <input type="text"  name="title" v-model="item.matterId" @keyup.f4="wladd(index)"  required  lay-verify="required" placeholder="1.0000" autocomplete="off" class="layui-input no_empty tdinput xck1">
+															 </div>
+											     		  </td>
+												      	 <td>
+															 <div class="layui-input-inline" style="width: 100%;margin: 0px 0px;">
+															    <input type="text"  name="title" v-model="item.engname" @keyup.f4="wladd(index)"  required  lay-verify="required" placeholder="1.0000" autocomplete="off" class="layui-input no_empty tdinput xck1">
+															 </div>
+											     		  </td>
+											     		  <td>
+															 <div class="layui-input-inline" style="width: 100%;margin: 0px 0px;">
+															    <input type="text"  name="title" v-model="item.remark" @keyup.f4="wladd(index)"  required  lay-verify="required" placeholder="1.0000" autocomplete="off" class="layui-input no_empty tdinput xck1">
+															 </div>
+											     		  </td>
+											     		   <td>
+															 <div class="layui-input-inline" style="width: 100%;margin: 0px 0px;">
+															    <input type="text"  name="title" v-model="item.includeTax" @keyup.f4="wladd(index)"  required  lay-verify="required" placeholder="1.0000" autocomplete="off" class="layui-input no_empty tdinput xck1">
+															 </div>
+											     		  </td>
+														 <td>
+															 <div class="layui-input-inline" style="width: 100%;margin: 0px 0px;">
+															    <input type="text"  name="title" v-model="item.count" @keyup.f4="wladd(index)"  required  lay-verify="required" placeholder="1.0000" autocomplete="off" class="layui-input no_empty tdinput xck1">
+															 </div>
+											     		  </td>
+											     		  <td>
+															 <div class="layui-input-inline" style="width: 100%;margin: 0px 0px;">
+															    <input type="text"  name="title" v-model="item.zqunitprice" @keyup.f4="wladd(index)"  required  lay-verify="required" placeholder="1.0000" autocomplete="off" class="layui-input no_empty tdinput xck1">
+															 </div>
+											     		  </td>
+											     		   <td>
+															 <div class="layui-input-inline" style="width: 100%;margin: 0px 0px;">
+															    <input type="text"  name="title" v-model="item.discount" @keyup.f4="wladd(index)"  required  lay-verify="required" placeholder="1.0000" autocomplete="off" class="layui-input no_empty tdinput xck1">
+															 </div>
+											     		  </td>
+											     		    <td>
+															 <div class="layui-input-inline" style="width: 100%;margin: 0px 0px;">
+															    <input type="text"  name="title" v-model="item.unitprice" @keyup.f4="wladd(index)"  required  lay-verify="required" placeholder="1.0000" autocomplete="off" class="layui-input no_empty tdinput xck1">
+															 </div>
+											     		  </td>
+											     		    <td>
+															 <div class="layui-input-inline" style="width: 100%;margin: 0px 0px;">
+															    <input type="text"  name="title" v-model="item.sqdPrice" @keyup.f4="wladd(index)"  required  lay-verify="required" placeholder="1.0000" autocomplete="off" class="layui-input no_empty tdinput xck1">
+															 </div>
+											     		  </td>
+											     		    <td>
+															 <div class="layui-input-inline" style="width: 100%;margin: 0px 0px;">
+															    <input type="text"  name="title" v-model="item.taxrate" @keyup.f4="wladd(index)"  required  lay-verify="required" placeholder="1.0000" autocomplete="off" class="layui-input no_empty tdinput xck1">
+															 </div>
+											     		  </td>
+											     		   <td>
+															 <div class="layui-input-inline" style="width: 100%;margin: 0px 0px;">
+															    <input type="text"  name="title" v-model="item.taxlimit" @keyup.f4="wladd(index)"  required  lay-verify="required" placeholder="1.0000" autocomplete="off" class="layui-input no_empty tdinput xck1">
+															 </div>
+											     		  </td>
+											     		  <td>
+															 <div class="layui-input-inline" style="width: 100%;margin: 0px 0px;">
+															    <input type="text"  name="title" v-model="item.taxinclusiveprice" @keyup.f4="wladd(index)"  required  lay-verify="required" placeholder="1.0000" autocomplete="off" class="layui-input no_empty tdinput xck1">
+															 </div>
+											     		  </td>
+													      <td>
+														     <div class="layui-form">
+															    <div class="layui-input-inline" style="width: 50px;margin-left:15px;" v-on:click="wd(item,index)">
+															       <input type="checkbox"  v-model="item.complimentart"   lay-skin="primary" >
+															    </div>
+															  </div>
+													      </td>
+													      <td>
+															 <div class="layui-input-inline" style="width: 100%;margin: 0px 0px;">
+															    <input type="text"  name="title" v-model="item.srwCustom3" @keyup.f4="wladd(index)"  required  lay-verify="required" placeholder="1.0000" autocomplete="off" class="layui-input no_empty tdinput xck1">
+															 </div>
+											     		  </td>
+											     		  <td>
+															 <div class="layui-input-inline" style="width: 100%;margin: 0px 0px;">
+															    <input type="text"  name="title" v-model="item.itemremark" @keyup.f4="wladd(index)"  required  lay-verify="required" placeholder="1.0000" autocomplete="off" class="layui-input no_empty tdinput xck1">
+															 </div>
+											     		  </td>
+											     		  <td>
+															 <div class="layui-input-inline" style="width: 100%;margin: 0px 0px;">
+															    <input type="text"  name="title" v-model="item.sourcelist" @keyup.f4="wladd(index)"  required  lay-verify="required" placeholder="1.0000" autocomplete="off" class="layui-input no_empty tdinput xck1">
+															 </div>
+											     		  </td>
+											     		   <td>
+															 <div class="layui-input-inline" style="width: 100%;margin: 0px 0px;">
+															    <input type="text"  name="title" v-model="item.sourcenumber" @keyup.f4="wladd(index)"  required  lay-verify="required" placeholder="1.0000" autocomplete="off" class="layui-input no_empty tdinput xck1">
+															 </div>
+											     		  </td>
+													    </tr>
+												  </tbody>
+											</table>
+
 								    </div>
+								    <!---->
 								    <!--账款-->
 								    <div class="layui-tab-item layui-form" style="height: 311px;">
 								    	<!--3-->
@@ -205,7 +364,7 @@
 												<div class="layui-form-item">
 												    <label class="layui-form-label">账款归属</label>
 												    <div class="layui-input-inline" style="width: 160px;">
-												       <input type="text" name="title" required  lay-verify="required" placeholder="1.0000" autocomplete="off" class="layui-input">
+												       <input type="text" v-model="list.srwSaleszkgs" name="title" required  lay-verify="required" placeholder="1.0000"  class="layui-input">
 												    </div>
 												    <div class="layui-form-mid layui-word-aux">辅助文字</div>
 											 	</div>
@@ -214,7 +373,7 @@
 												<div class="layui-form-item">
 												    <label class="layui-form-label">收款日期</label>
 												    <div class="layui-input-inline" style="width: 160px;">
-												        <input type="text" v-model="data2"  name="date" id="test3" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+												        <input type="text" v-model="list.srwSalesdate" name="date" id="test3" lay-verify="date" placeholder="yyyy-MM-dd"      class="layui-input">
 												    </div>
 											 	</div>
 											</div>
@@ -225,15 +384,15 @@
 												<div class="layui-form-item">
 												    <label class="layui-form-label">收款条件</label>
 												    <div class="layui-input-inline" style="width:80px;">
-												      <select name="city" lay-verify="required">
+												      <select name="city" v-model="list.srwSalessktj" lay-verify="required">
 												        <option value="0">到货</option>
 												        <option value="1">次月</option>
-												        <option value="1">月结</option>
-												        <option value="1">其他</option>
+												        <option value="2">月结</option>
+												        <option value="3">其他</option>
 												      </select>
 												    </div>
 												     <div class="layui-input-inline" style="width: 70px;">
-												        <input type="text" name="title" required  lay-verify="required" placeholder="1" autocomplete="off" class="layui-input">
+												        <input type="text" name="title" v-model="list.srwSalesday" required  lay-verify="required" placeholder="1"      class="layui-input">
 												    </div>							  
 											 		<div class="layui-form-mid layui-word-aux" style="color: #000000!important;">天</div>
 												</div>
@@ -242,7 +401,7 @@
 												<div class="layui-form-item">
 												    <label class="layui-form-label">账款月份</label>
 												    <div class="layui-input-inline" style="width: 160px;">
-												        <input type="text"   name="date" id="test4" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+												        <input type="text" v-model="list.srwSalesyue"  name="date" id="test4" lay-verify="date" placeholder="yyyy-MM-dd"  class="layui-input">
 												    </div>
 												    	
 											 	</div>
@@ -258,7 +417,7 @@
 												<div class="layui-form-item">
 												    <label class="layui-form-label">自定义栏一</label>
 												   <div class="layui-input-inline">
-												      <input type="text" name="title" required  lay-verify="required" placeholder="1.0000" autocomplete="off" class="layui-input">
+												      <input type="text" name="title" required  lay-verify="required" placeholder="1.0000"      class="layui-input">
 												    </div>
 											 	</div>
 											</div>
@@ -266,7 +425,7 @@
 												<div class="layui-form-item">
 												    <label class="layui-form-label">自定义栏一</label>
 												   <div class="layui-input-inline">
-												      <input type="text" name="title" required  lay-verify="required" placeholder="1.0000" autocomplete="off" class="layui-input">
+												      <input type="text" name="title" required  lay-verify="required" placeholder="1.0000"      class="layui-input">
 												    </div>
 											 	</div>
 											</div>
@@ -277,7 +436,7 @@
 												<div class="layui-form-item layui-form-text">
 												    <label class="layui-form-label">备注</label>
 												    <div class="layui-input-block">
-												      <textarea name="" required lay-verify="required" placeholder="请输入" class="layui-textarea" style="width: 565px;"></textarea>
+												      <textarea name="" required lay-verify="required" v-model="list.srwRemark" placeholder="请输入" class="layui-textarea" style="width: 565px;"></textarea>
 												    </div>
 												  </div>
 											</div>
@@ -293,7 +452,7 @@
 								<div class="layui-form-item">
 								    <label class="layui-form-label">业务人员</label>
 								    <div class="layui-input-inline">
-								      <input type="text" name="title" required  lay-verify="required" placeholder="请输入客户名称" autocomplete="off" class="layui-input">
+								      <input type="text" name="title" v-model="list.srwBuyer" required  lay-verify="required" placeholder="请输入客户名称"      class="layui-input no_empty">
 								    </div>
 							 	<div class="layui-form-mid layui-word-aux" @click="kh($event,'业务人员','业务人员.html')">选择客户</div>
 								</div>
@@ -302,7 +461,7 @@
 								<div class="layui-form-item">
 								    <label class="layui-form-label">制单人员</label>
 								      <div class="layui-input-inline">
-								        <input type="text" name="title" required  lay-verify="required" placeholder="请输入客户名称" autocomplete="off" class="layui-input">
+								        <input type="text" v-model="list.srwForm" name="title" required lay-verify="required" placeholder="请输入客户名称"      class="layui-input no_empty">
 								      </div>
 							 	</div>
 							</div>
@@ -313,7 +472,7 @@
 								<div class="layui-form-item">
 								    <label class="layui-form-label">所属部门</label>
 								    <div class="layui-input-inline">
-								      <input type="text" name="title" required  lay-verify="required" placeholder="请输入客户名称" autocomplete="off" class="layui-input">
+								      <input type="text" v-model="list.srwBelongsSection" name="title" required  lay-verify="required" placeholder="请输入客户名称"      class="layui-input no_empty">
 								    </div>
 							 	<div class="layui-form-mid layui-word-aux" @click="kh($event,'所属部门','所属部门.html')">选择客户</div>
 								</div>
@@ -322,7 +481,7 @@
 								<div class="layui-form-item">
 								    <label class="layui-form-label">复核人员</label>
 								      <div class="layui-input-inline">
-								        <input type="text" name="title" required  lay-verify="required" placeholder="请输入客户名称" autocomplete="off" class="layui-input">
+								        <input type="text" v-model="list.srwCheckagainStaff" name="title" required  lay-verify="required" placeholder="请输入客户名称"      class="layui-input no_empty">
 								      </div>
 							 	</div>
 							</div>
@@ -332,18 +491,15 @@
 							<div class="layui-col-sm12">
 								<div class="layui-form-item">
 									<div class="layui-input-inline" style="width:100px;">
-										<select name="city" lay-verify="required">
-											<option value="">查询</option>
-											<option value="0">历史交易查询</option>
-											<option value="1">单据状态查询</option>
+										<select name="college1" lay-filter="college" lay-verify="required">
+											<option value="">转单</option>
+											<option value="0">销售出库转入</option>
 										</select>
 									</div>
 									<div class="layui-input-inline" style="width:100px;">
-										<select name="city" lay-verify="required">
-											<option value="">转单</option>
-											<option value="0">销售报价转入</option>
-											<option value="1">销售订单转入</option>
-											<option value="2">商业发票转入</option>
+										<select name="query1" lay-filter="query" lay-verify="required">
+											<option value="">查询</option>
+											<option value="0">单据状态查询</option>
 										</select>
 									</div>
 									<div class="layui-input-inline" style="width:100px;">
@@ -359,232 +515,436 @@
 							</div>
 				 		</div>
 		</div>	
+		<!---->
+		<div class="fudong">
+			<img style="margin-left:65%;margin-top: 2%;" src="../images/shenhe.png" alt="Smiley face" width="80px" height="80px">
+		</div>
+		<!---->
 		</body>
 	<script type="text/javascript" src="../js/jquery-1.12.4.js" ></script>
 	<script type="text/javascript" src="../js/layui.all.js" ></script>
 	<script type="text/javascript" src="../js/layui.js" ></script>
 	<script type="text/javascript" src="../js/vue.js" ></script>
+	<script>//工具
+	
+</script>
+	
+	
 	<script>
+		function formatDate1(value,index) {// 时间戳转换日期格式方法
+	                if (value == null) {
+	                    return '';
+	                } else {
+	                	let date;
+	                	if(index!=1){
+	                		 date = new Date(value);
+	                	}else{
+	                		alert(11)
+	                		 date = value;
+	                	}
+	                    let y = date.getFullYear();// 年
+	                    let MM = date.getMonth() + 1;// 月
+	                    MM = MM < 10 ? ('0' + MM) : MM;
+	                    let d = date.getDate();// 日
+	                    d = d < 10 ? ('0' + d) : d;
+	                    let h = date.getHours();// 时
+	                    h = h < 10 ? ('0' + h) : h;
+	                    let m = date.getMinutes();// 分
+	                    m = m < 10 ? ('0' + m) : m;
+	                    let s = date.getSeconds();// 秒
+	                    s = s < 10 ? ('0' + s) : s;
+	                    //return y + '-' + MM + '-' + d + ' ' + h + ':' + m + ':' + s;
+	                    return y + '-' + MM + '-' + d;
+	                    
+	                }
+	            }
+		
+		var bool=0;
+		$(function(){
+			into();
+		})
+		
 		var xsbj_vue=new Vue({
 			el:'.app',
 			data(){
 				return{
-					data1:'1991-02-01',
-					data2:'1991-02-01',
-					danju:''
+					list:[]
 				}
-			}
-			,methods:{
+			},
+			methods:{
+				emptyData(ojb){//循环清空
+					for(var o in ojb){
+						if(o=='list'){//子表
+							ojb[o]=[];
+						}else if(o=='sowAuditing'){//审核
+							ojb[o]=0
+						}else if(o=='sowYn'){//假删除
+							ojb[o]='0'
+						}else{
+							ojb[o] = ""; 
+						}
 
-              kh:function(e,title,url){ // e.target 获取当前对象 在父层弹出一个层
-              	parent.vue_tjy_xsgl.show(e,title,url);
-                   /* parent.layer.open({
-                        type: 2
-                        ,title:title
-                        ,area: ['800px', '360px']
-                        ,shade: 0
-                        ,maxmin: true
-                        ,offset:'auto'
-                        ,content: url// $(e.target) 要显示的节点,若用此法则可能会影响到样式，就是把选择的节点移到弹出框了
-                        ,btn: ['关闭']
-                        ,yes: function(i){
-                            layer.close(i);// 关闭弹窗
-                        },
-                        id:title
-                        ,zIndex: layer.zIndex
-                        ,success: function(layero){
-                           // layer.setTop(layero);
-                        }
-                    });*/
-                   
-               }
-			}
-			,created:function(){
+					}
+				},
+				kadd:function(){//开启F4查询//客户
+					layer.open({
+					  type: 2,
+					  title: false,
+					  closeBtn: 1,//右上角
+					  area: ['350px'],
+					  shade:0,
+					  content: '../基本资料/客户资料.html',
+					  success: function(layero, index){  
+					        var body = layer.getChildFrame('body', index);  //获取的子页面HTML所有类容
+	        				//得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
+	        				var iframeWin = window[layero.find('iframe')[0]['name']]; 
+	        				console.log(iframeWin);
+	        				iframeWin.setVueName("xsbj_vue");//调用iframeWin页面的属性或者方法
+	        			}
+					});	
+             	},
+             	success1:function(data){
+             		this.list.customerId=data;
+					this.list.srwAddress='湖南省株洲市哪里呢';//吧客户地址一起带过去list.sowtId
+					this.list.srwtId='啥？';//吧客户地址一起带过去list.
+					this.list.currencyId='人民币';//吧客户地址一起带过去list.
+					this.list.srwExchangeRate=1.00;//吧客户地址一起带过去list.
+					this.list.srwCertificateNumber='12605515846316';//凭证 	
+             	},
+             	badd:function(){//开启F4查询//币别
+					layer.open({
+					  type: 2,
+					  title: false,
+					  closeBtn: 1,//右上角
+					  area: ['350px'],
+					  shade:0,
+					  content: '../基本资料/货币类别.html',
+					  success: function(layero, index){  
+					        var body = layer.getChildFrame('body', index);  //获取的子页面HTML所有类容
+	        				//得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
+	        				var iframeWin = window[layero.find('iframe')[0]['name']]; 
+	        				console.log(iframeWin);
+	        				iframeWin.setVueName("xsbj_vue");//调用iframeWin页面的属性或者方法
+	        			}
+					});
+             	},
+             	success2:function(data){
+             		this.list.customerId=data;
+					this.list.srwExchangeRate=1.00;//吧客户地址一起带过去list.
+             	},
+             	getCgOrderTrue(newpods){//转单
+					newpods.forEach((i,e)=>{
+						i.list.forEach((ii,ee)=>{
+							xsbj_vue.list.list.push(ii);
+						})
+					})
+					console.log(xsbj_vue.list.sowd)
+				},
+             	cadd(){
+             		layer.open({
+					  type: 2,
+					  title: false,
+					  closeBtn: 1,//右上角
+					  area: ['350px'],
+					  shade:0,
+					  content:'../基本资料/仓库.html',
+					  success:function(layero, index){  
+					        var body = layer.getChildFrame('body', index);  //获取的子页面HTML所有类容
+	        				//得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
+	        				var iframeWin = window[layero.find('iframe')[0]['name']]; 
+	        				console.log(iframeWin);
+	        				iframeWin.setVueName("xsbj_vue");//调用iframeWin页面的属性或者方法
+	        			}
+					});
+             	},
+               xz:function(id){//新增
+					bool=1;
+					$("#readO input").attr('readOnly',false);
+					parent.procurementVue.xszs();//解除按钮 
+					this.emptyData(this.list)
+					var that = this;
+					$(".fudong").css('visibility','hidden');
+					var sowDocumentDate = new Date();
+					xsbj_vue.list.srwDocumentDate=formatDate1(sowDocumentDate,1);
+					var value1=xsbj_vue.list.srwDocumentDate.replace(/-/g,'');
+					//alert(value1)
+			        $.ajax({
+			        	type:"get",
+			        	async:false,
+			        	url:"http://localhost:8080/trc/wx?da="+value1,
+			        	success:function(rel){
+			        		//alert(rel)
+			        		that.list.srwId=rel;
+			        		that.list.srwCheckagainStaff='admin';
+			        		that.list.srwForm='admin';
+			        	}
+			        });
+				},sh:function(){
+              		if(xsbj_vue.list.srwAuditing!=1){//
+              			xsbj_vue.list.srwAuditing=1;
+              			$.ajax({
+	              			type:"get",
+	              			url:"http://localhost:8080/trc/s?srwAuditing="+this.list.srwAuditing+"&srwId="+this.list.srwId,
+	              			async:true,
+	              			success:function(rel){
+	              				if(rel==1){
+	              					$("#readO input").attr('readOnly',true);
+	              					$(".fudong").css('visibility','visible');
+	              				}else{
+	              					parent.layer.msg('请先保存');
+	              				}
+	              			}
+	              		});
+              		}else{
+              			parent.layer.msg('此单据已经审核')
+              		}
+				},
+				qxsh:function(){
+					if(xsbj_vue.list.srwAuditing==1){
+						xsbj_vue.list.srwAuditing=0;
+						$.ajax({
+	              			type:"get",
+	              			url:"http://localhost:8080/trc/s?srwAuditing="+this.list.srwAuditing+"&srwId="+this.list.srwId,
+	              			async:true,
+	              			success:function(rel){
+	              				if(rel==1){
+	              					$("#readO input").attr('readOnly',false);
+	              					$(".fudong").css('visibility','hidden');
+	              				}else{
+	              					parent.layer.msg('请不要重复取消')
+	              				}
+	              			}
+	              		});
+					}else{
+						parent.layer.msg('此单据还没有审核');
+					}
+				},
+				sc:function(id){//删除
+					layer.confirm('确认要删除吗？', {
+					  btn: ['确定','取消'] ,//按钮
+					  shade: 0
+					}, function(){
+						if(xsbj_vue.list.srwAuditing!=1){
+							$.ajax({
+								type:'get',
+								url:'http://localhost:8080/t_sow/d?sowId='+xsbj_vue.list.sowId,
+								success:function(ret){
+										layer.msg('销售出库删除成功');
+										ins();
+									
+								}
+							})
+						}else{
+							layer.msg('此单据已经审核不能修改')
+						}
+                       
+					}, function(){
+					  /*layer.msg('也可以这样', {
+					    time: 20000, //20s后自动关闭
+					    btn: ['明白了', '知道了']
+					  });*/ 	
+					});
+				},
+				xg:function(id){//修改
+					if(xsbj_vue.list.srwAuditing==1){
+						layer.msg('此单据已经审核不能修改');
+					}else{
+						bool=2;
+						parent.procurementVue.xszs();
+						$("#readO input").attr('readOnly',false);
+					}
+				},
+				bc:function(id){
+					let empty=no_empty();
+					//alert(empty)
+					if(empty==1){//非空验证
+						var SalesReturnWarehouse=JSON.stringify(xsbj_vue.list)
+	              		console.log(SalesReturnWarehouse)
+						if(bool==1){
+	              			$.ajax({//新增
+		              			type:"POST",
+		              			url:"http://localhost:8080/trc/x",
+		              			data:SalesReturnWarehouse,
+		              			contentType:"application/json;charset=utf-8",
+		              			success:function(ret){
+		              				 if(1==1){
+		              				 	into();
+		              				 	parent.layer.msg('新增成功！！');
+		              				 }
+		              			}
+		              		});
+	              		}else if(bool==2){
+	              			$.ajax({//修改
+		              			type:"POST",
+		              			url:"http://localhost:8080/trc/u",
+		              			data:SalesReturnWarehouse,
+		              			contentType:"application/json;charset=utf-8",
+		              			success:function(ret){
+		              				 if(ret==1){
+		              				 	ins();
+		              				 	parent.layer.msg('修改成功！！');
+		              				 }else{
+		              				 	parent.layer.msg('修改失败！！');
+		              				 }
+		              			}
+		              		});
+	              		}
+					}
+				}
+			},
+			created:function(){
 				
 				
-			}
+			},
+			filters: {
+	            formatDate: function (value) {// 时间戳转换日期格式方法
+	                if (value == null) {
+	                    return '';
+	                } else {
+	                    let date = new Date(value);
+	                    let y = date.getFullYear();// 年
+	                    let MM = date.getMonth() + 1;// 月
+	                    MM = MM < 10 ? ('0' + MM) : MM;
+	                    let d = date.getDate();// 日
+	                    d = d < 10 ? ('0' + d) : d;
+	                    let h = date.getHours();// 时
+	                    h = h < 10 ? ('0' + h) : h;
+	                    let m = date.getMinutes();// 分
+	                    m = m < 10 ? ('0' + m) : m;
+	                    let s = date.getSeconds();// 秒
+	                    s = s < 10 ? ('0' + s) : s;
+	                    //return y + '-' + MM + '-' + d + ' ' + h + ':' + m + ':' + s;
+	                    return y + '-' + MM + '-' + d;
+	                    
+	                }
+	            }
+        	}
 		})
-		var s=[];
-		s=[{"id":1,"name":"xiao"},
-		   {"id":1,"name":"xiao"},
-		   {"id":1,"name":"xiao"},
-		   {"id":1,"name":"xiao"},
-		   {"id":1,"name":"xiao"},
-		   {"id":1,"name":"xiao"},
-		   {"id":1,"name":"xiao"},
-		   {"id":1,"name":"xiao"},
-		   {"id":1,"name":"xiao"},
-		   {"id":1,"name":"xiao"}
-		   ]
-		//alert(JSON.stringify(new URLSearchParams(location.search).get("list"))); // 蜘蛛侠)
-layui.use('element', function(){
-	var element = layui.element;			
-});
 
-//form表单提交
-layui.use('form', function(){
-  var form = layui.form;
-  
-  //监听提交
-  form.on('submit(formDemo)', function(data){
-    layer.msg(JSON.stringify(data.field));
-    return false;
-  });
-});
-/*表单*/
-/*layui.use('table', function(){
-  var table = layui.table;
-  
-  //第一个实例
-  table.render({
-    elem: '#demo'
-    ,height:312
-    ,data: s //数据接口
-    ,page: true //开启分页
-    ,cols: [[ //表头
-                {field: 'id', title: 'ID', width: 80, sort: true, fixed: 'left'}
-                , {field: 'username', title: '用户名', width: 80}
-                , {field: 'sign', title: '可编辑', edit: 'text',width: 80, sort: true}
-                , {field: 'city', title: '城市', width: 80}
-                , {field: 'sex', title: '性别', width: 85, templet: '#switchTpl', unresize: true}
-                , {field: 'lock', title: '下拉框', width: 110, templet: '#selectTool', unresize: true}
-                , {fixed: 'right', title: '操作', width: 165, align: 'center', toolbar: '#barDemo'}
- 		]]
-  });
-  
-});*/
+ 		function into(){//进页面
+ 			$.ajax({
+ 				Type:'GET',
+ 				url:'http://localhost:8080/trc/c',
+ 				success:function(rel){
+						rel.srwDocumentDate=formatDate1(rel.srwDocumentDate)
+	 					xsbj_vue.list=rel;
+	 					//确认审核状态
+			    		if(xsbj_vue.list.srwAuditing==1){
+			    			$("#readO input").attr('readOnly',true);
+			    			$(".fudong").css('visibility','visible');
+			    		}else{
+			    			$("#readO input").attr('readOnly',true);
+			    		}
+ 				}
+ 			})
+ 		}
+ 		
+ 		
+ 		function no_empty(){//非空验证
+                let status ='';//函数返回的状态，0代表是是空，1不是空
+                let val = '';//存历遍的input的输入内容
+                let arr=[];//存历遍后，且为空的input标签对象
+          $('.no_empty').each(function(key,value){
+              val = $(value).val();
+              if(val===''){
+                  arr.push($(value));//把抓到内容为空的input存入arr数组中
+                  let target =arr[0];//始终抓取第一个为空的input标签，并写入下面的弹层参数中
+                  layer.tips(
+                      '不能为空',
+                      target, {
+                          // tipsMore: true,
+                          anim:6,
+                          time:1500,
+                          tips: [1,'#f99501'] //还可配置颜色
+                          ,end:function () {
+                          }
+                      });
+                  status= 0;
+              }else{
+                  status= 1;
+              }
 
+          });
 
-
-
-
-
-//单据日期
-layui.use('laydate', function(){
+          return status
+            }
+</script>
+<script>		//layui 组件
+layui.use(['element','form','laydate'], function(){
+	var element = layui.element;
+	var form = layui.form;
 	var laydate = layui.laydate;
-	laydate.render({
+	
+	laydate.render({//日期
 	    elem: '#test1',
 	    done:function(value,date){//value, date, endDate点击日期、清空、现在、确定均会触发。回调返回三个参数，分别代表：生成的值、日期时间对象、结束的日期时间对象
-        var value=value.replace(/-/g,'');
-         alert(value)
-		xsbj_vue.danju=value;
+         xsbj_vue.list.srwDocumentDate=value;
+        var value1=value.replace(/-/g,'');
+	        $.ajax({
+	        	type:"get",
+	        	url:"http://localhost:8080/t_sow/wx?da="+value1,
+	        	success:function(rel){
+	        		xsbj_vue.list.srwId=rel;
+	        	}
+	        });
+			
     	}
 	  });
-});
-
-//有效日期
-layui.use('laydate', function(){
-	var laydate = layui.laydate;
-	laydate.render({
+	  
+	  laydate.render({
 	    elem: '#test2'
 	  });
-});
-
-//有效日期
-layui.use('laydate', function(){
-	var laydate = layui.laydate;
-	laydate.render({
+	  
+	  laydate.render({
 	    elem: '#test3'
 	  });
+	  //年月选择器
+	  laydate.render({ 
+	  	elem: '#test4'
+	  	,type: 'month'
+	  	});
+	  	//监听提交
+	  	 form.on('submit(formDemo)', function(data){
+		    layer.msg(JSON.stringify(data.field));
+		    return false;
+		  });
+		  
+		//转单
+		form.on('select(college)',function(data){
+			 let college1=$("[name=college1]").val();
+			 if(xsbj_vue.list.srwAuditing!=1){//单据未审核
+			 	 if(xsbj_vue.list.warehouseId!=''){
+			 	 	let message=$("select[name=student_Level").val();
+			 	 	  layer.open({
+						  type: 2,
+						  title: '转单销售报价',
+						  closeBtn: 1,//右上角
+						  area: ['498px','350px'],
+						  shade:0,
+						  content: '../销售模块/转单销售报价.html',
+						  success: function(layero, index){  
+						        var body = layer.getChildFrame('body', index);  //获取的子页面HTML所有类容
+		        				//得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
+		        				var iframeWin = window[layero.find('iframe')[0]['name']]; 
+		        				console.log(xsbj_vue.list.sowId);
+		        				iframeWin.setVueName("xsbj_vue");//调用iframeWin页面的属性或者方法
+		        			}
+						});
+			 	 }else{
+			 	 	layer.msg('仓库不能为空！！')
+			 	 }
+			 }
+		})
+		
+		//查看历史单据
+		form.on('select(query)',function(data){
+			 let query1=$("[name=query1]").val();
+			 if(xsbj_vue.list.srwAuditing!=1){
+			 	
+			 }
+		})
 });
-
-
-//年月选择器
-layui.use('laydate', function(){
-	var laydate = layui.laydate;
-	laydate.render({ 
-  	elem: '#test4'
-  	,type: 'month'
-});
-})
-//laydate-day-prev
-
-	/*如果是页面层
-  $(".s1").click(function(){
-  	window.parent.vue.zishow();	
-  })*/
-</script>
-<!--选择客户-->
-<script>
-
-
 </script>
 
 
-
-
-
-
-<script>
-										    layui.use(['layer', 'table', 'element', 'form'], function () {
-										        var layer = layui.layer //弹层
-										            , table = layui.table //表格
-										            , form = layui.form;
-										        //监听地址选择操作
-										        form.on('select(selectDemo)', function (obj) {
-										            layer.tips(obj.elem.getAttribute('name') + '：'+obj.value + ' ' + obj.elem.getAttribute('dataId') , obj.othis);
-										        });
-										        //监听性别操作
-										        form.on('switch(sexDemo)', function (obj) {
-										            layer.tips(this.value + ' ' + this.name + '：' + obj.elem.checked, obj.othis);
-										        });
-										 
-										        //执行一个 table 实例
-										        table.render({
-										            elem: '#tableDemo'
-										            , height: 332
-										            , url: '../销售模块/dataTable.json' //数据接口
-										            , page: true //开启分页
-										            , cols: [[ //表头
-										                {field: 'id', title: 'ID', width: 80, sort: true, fixed: 'left'}
-										                , {field: 'username', title: '用户名', width: 80}
-										                , {field: 'sign', title: '可编辑', edit: 'text',width: 80, sort: true}
-										                , {field: 'city', title: '城市', width: 80}
-										                , {field: 'sex', title: '性别', width: 85, templet: '#switchTpl', unresize: true}
-										                , {field: 'lock', title: '下拉框', width: 110, templet: '#selectTool', unresize: true}
-										                , {fixed: 'right', title: '操作', width: 165, align: 'center', toolbar: '#barDemo'}
-										            ]]
-										        });
-										        //监听单元格编辑
-										        table.on('edit(tableDemo)', function(obj){
-										            var value = obj.value //得到修改后的值
-										                ,data = obj.data //得到所在行所有键值
-										                ,field = obj.field; //得到字段
-										            layer.msg('[ID: '+ data.id +'] ' + field + ' 字段更改为：'+ value);
-										        });
-										        //监听工具条
-										        table.on('tool(tableDemo)', function (obj) { //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
-										            var data = obj.data //获得当前行数据
-										                , layEvent = obj.event; //获得 lay-event 对应的值
-										            if (layEvent === 'detail') {
-										                layer.msg('查看操作');
-										            } else if (layEvent === 'del') {
-										                layer.confirm('真的删除行么', function (index) {
-										                    obj.del(); //删除对应行（tr）的DOM结构
-										                    layer.close(index);
-										                    //向服务端发送删除指令
-										                });
-										            } else if (layEvent === 'edit') {
-										                layer.msg('编辑操作');
-										            }
-										        });
-										    });
-										</script>
-										 
-										<script type="text/javascript">
-										    var cityArr = ['昆明', '长沙', '富源', '楚雄', '长春', '哈尔滨', '桂林'];
-										</script>
-										<script type="text/html" id="selectTool" desc="下拉选择器" intro="用到了layui模板（不能设置lay-ignore,否则监听不到事件）">
-										    <select name="city" dataId="{{d.id}}" lay-filter="selectDemo">
-										        {{# layui.each(cityArr, function(index, item){ }}
-										        <option {{ (d.city==item)?'selected' : '' }}>{{ item }}</option>
-										        {{# }); }}
-										    </select>
-										</script>
-										 
-										<script type="text/html" id="switchTpl" desc="切换开关" intro="layui表单空间">
-										    <input type="checkbox" name="sex" value="{{d.id}}" lay-skin="switch"
-										           lay-text="女|男" lay-filter="sexDemo" {{ (d.id==10003)?'checked' : '' }}>
-										</script>
 </html>
-下·

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/layui.css" media="all" />
+		<style>
+			input{
+				background-color: white;
+				border-top: solid white;
+				border-right: solid white;
+				border-left: solid white;
+			}
+			select{
+				background-color: white;
+				border: solid white;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="app">
+			 <div class="layui-tab-item layui-show" style="margin:20px;overflow:auto;">
+		    	<!--表单-->
+		    	<div class="">
+					<select v-model="seracType" style="height: 25px;">
+						<option value="all">全部</option>
+						<option value="id">id</option>
+						<option value="name">名字</option>
+					</select>
+					<input type="text" v-model="seracName" style="height: 21px;"/>
+				</div>
+		    	<table class="layui-table single" lay-size="sm" style="empty-cells:show;min-width:60px">
+					  <colgroup>
+					    <col width="70"></col>
+					  </colgroup>
+					  <thead>
+							<tr>
+							  <th>ID</th>
+							  <th style="white-space:nowrap" >币别名字</th>
+							</tr> 
+					  </thead>
+					  <tbody>
+						   <tr v-for="ss in getList"  @dblclick="addL(ss)">
+								<td>{{ss.currencyId}}</td>
+								<td>{{ss.currencyName}}</td>
+							</tr>
+					  </tbody>
+				</table>
+		    	<!---->
+				<script type="text/html" id="barDemo">
+				    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+				    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+				    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+				</script>
+		    	<!---->
+		    </div>
+		</div>
+	</body>	
+	<script type="text/javascript" src="../js/jquery-1.12.4.js" ></script>
+	<script type="text/javascript" src="../js/layui.all.js" ></script>
+	<script type="text/javascript" src="../js/layui.js" ></script>
+	<script type="text/javascript" src="../js/vue.js" ></script>
+	  <script>
+	  	var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+	  		var vueww=new Vue({
+	  			el:".app",
+	  			data(){
+	  				return{
+	  					list:[],
+	  					seracType:"all",
+						seracName:"",
+						vueName:""
+	  				}
+	  			},
+	  			methods:{
+	  				addL(ss){
+					   	parent[this.vueName].reces.currencyId=ss.currencyId;	//把币别id传给销售预收款的reces对象的币别id
+					   	parent[this.vueName].reces.payablesCurrencyName=ss.currencyName;	//把币别名称传给销售预收款的reces对象的币别名称
+					   	
+					   	parent[this.vueName].reces.payablesCurrencyInexchange = ss.currencyStandardexchange;//把币别固定汇率传给销售预收款的reces对象的汇率
+					   	parent.layer.close(index);//关闭窗口
+	  				}
+	  			},
+	  			computed:{
+				getList:function(){
+					console.info(this.seracType)
+					let seracType=this.seracType;
+					let seracName=this.seracName;
+					if(seracType=="id"){
+						return this.list.filter(item=>{
+							return item.currencyId.indexOf(seracName)!=-1;
+						})
+					}else if(seracType=="name"){
+					     return this.list.filter(item=>{
+					          return  item.currencyName.indexOf(seracName)!=-1;
+					     })
+					}else if(seracType="all"){//全部
+						return this.list.filter(item=>{
+							return Object.values(item).toString().indexOf(seracName)!=-1;
+							
+						})
+					}
+				
+				}
+			}
+	  		})
+	  		
+	  		function setVueName(name){
+	  			console.log(name);
+	  			vueww.vueName = name;
+	  		}
+	  		
+	  		$(function(){
+				$.ajax({
+          			type: 'GET',
+	   				dataType: "json",  //json text 服务器返回的数据类型
+          			url:"http://localhost:8080/t_khzl_Controller/selectCurrency",
+          			success: function (result) {
+          				//console.log(result);
+          				 vueww.list=result;
+          				 console.log(vueww.list)
+          			}
+          		});
+			})
+	  </script>
+</html>

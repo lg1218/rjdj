@@ -31,7 +31,6 @@
         	cursor: pointer;
         	color: #fff;
         	border-radius: 50%;}
-			
 			p{
 				color: black !important;
 			}
@@ -160,7 +159,7 @@
   		var element = layui.element;
 	});
 	
-	var vue_tjy_xsgl = new Vue({
+	var procurementVue = new Vue({
 		el:'.app',
 		data(){//值
 			return{
@@ -175,6 +174,30 @@
 			
 		},
 		methods:{//执行方法
+			cl:function(content){
+				$(procurementVue.id)[0].contentWindow.vue.xx = content;
+			},
+			xz:function(id){
+				$(id)[0].contentWindow.xsbj_vue.xz();
+			},
+			xg:function(id){
+				$(id)[0].contentWindow.xsbj_vue.xg();
+			},
+			sc:function(id){
+				$(id)[0].contentWindow.xsbj_vue.sc();
+			},
+			bc:function(id){
+				$(id)[0].contentWindow.xsbj_vue.bc();
+			},
+			qxsh:function(id){
+				$(id)[0].contentWindow.xsbj_vue.qxsh();
+			},
+			sh:function(id){
+				$(id)[0].contentWindow.xsbj_vue.sh();
+			},
+			xszs:function(){
+            	parent.indeVue.xszs();
+         	},
 			 show(e,title,url,width,height,flag){ // e.target 获取当前对象
 				 if(width == null){
 					 width  = "80%";
@@ -193,8 +216,7 @@
                         ,maxmin: true
                         ,offset:'auto'
                         ,content: url// $(e.target) 要显示的节点,若用此法则可能会影响到样式，就是把选择的节点移到弹出框了
-                        ,
-                        id:title
+                        ,id:title
                         ,zIndex: layer.zIndex
                         ,success: function(layero){
                             layer.setTop(layero);
@@ -211,16 +233,16 @@
              zishow(){
              	layui.use('layer', function(){
 		  			var layer = layui.layer;
-		   			 layer.open({
-			  		type: 1, //类型
-			  		content: '传入任意的文本或html',//这里content是一个普通的String
-			  		shade:0,
-			 		id:"s1"
+			   		layer.open({
+				  		type: 1, //类型
+				  		content: '传入任意的文本或html',//这里content是一个普通的String
+				  		shade:0,
+				 		id:"s1"
+					});
 				});
-		});
              }
 		},
-		created:function(){//启动时生成代码
+		created:function(){//启动时生成代码 
 			
 		}
 	})
@@ -235,7 +257,7 @@
 				layer.open({
 				  type: 2, 
 				  skin: 'layui-layer-rim', //加上边框
-				  content: 'html/tjy_xsbjd.html?list='+vue_tjy_xsgl.list, //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+				  content: 'html/tjy_xsbjd.html?list='+procurementVue.list, //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
 				  shade:0,
 				  id:'s',
 				  area: ['800px','382px'],

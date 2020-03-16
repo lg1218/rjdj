@@ -16,21 +16,24 @@
 <div class="layui-layout layui-layout-admin" id="index" >
     <div class="layui-header">
         <div class="layui-logo">日进斗金</div>
-        <ul class="layui-nav layui-layout-left">
+       <ul class="layui-nav layui-layout-left">
             <li class="layui-nav-item">
-                <button @click="xz">新增</button>
+                <button @click="xz" class="layui-btn layui-btn-primary layui-btn-xs">新增</button>
             </li>
             <li class="layui-nav-item">
-                <button @click="xg">修改</button>
+            	<button @click="xg" class="layui-btn layui-btn-primary layui-btn-xs">修改</button>
             </li>
             <li class="layui-nav-item">
-                <button @click="sc">删除</button>
+                <button @click="sc" class="layui-btn layui-btn-primary layui-btn-xs">删除</button>
             </li>
             <li class="layui-nav-item">
-                <!--<button >审核</button> @click="sh"-->
+                <button @click="bc" id="bc" class="layui-btn  layui-btn-disabled layui-btn-primary layui-btn-xs">保存</button>
             </li>
             <li class="layui-nav-item">
-                <!--<button >取消审核</button> @click="qxsh"-->
+                <button @click="sh" class="layui-btn layui-btn-primary layui-btn-xs">审核</button>
+            </li>
+            <li class="layui-nav-item">
+                <button @click="qxsh" class="layui-btn layui-btn-primary layui-btn-xs">取消审核</button>
             </li>
         </ul>
         <!-- 头部区域（可配合layui已有的水平导航） -->
@@ -142,6 +145,45 @@
                         parent.procurementVue.sc("#"+id);//函数回调
                     }
                 })
+            },
+            bc:function(){
+            	$(".layui-layer-iframe").each(function (i,e) {
+            		 let zindex = $(e).attr("style").split(";")[0]; //获取当前最上方的窗口id z-index: 19891015
+            		 let index = zindex.indexOf(":")+1;//查找一个字符串中，第一次出现指定字符串的位置。+1
+            		 zindex = zindex.substring(index,zindex.length);//获取字符串  19891015
+            		 if(indeVue.zIndex == zindex){    //如果zindex想等，则找到了最顶层的窗口
+            		 	let id = $(e).find("iframe").attr("id");
+	                    parent.procurementVue.bc("#"+id);//函数回调
+	                   	parent.procurementVue.id="#"+id;
+            		 }
+            	})
+            },
+            qxsh:function(){
+            	$(".layui-layer-iframe").each(function (i,e) {
+            		 let zindex = $(e).attr("style").split(";")[0]; //获取当前最上方的窗口id z-index: 19891015
+            		 let index = zindex.indexOf(":")+1;//查找一个字符串中，第一次出现指定字符串的位置。+1
+            		 zindex = zindex.substring(index,zindex.length);//获取字符串  19891015
+            		 if(indeVue.zIndex == zindex){    //如果zindex想等，则找到了最顶层的窗口
+            		 	let id = $(e).find("iframe").attr("id");
+	                    parent.procurementVue.qxsh("#"+id);//函数回调
+	                   	parent.procurementVue.id="#"+id;
+            		 }
+            	})
+            },
+            sh:function(){
+            	$(".layui-layer-iframe").each(function (i,e) {
+            		 let zindex = $(e).attr("style").split(";")[0]; //获取当前最上方的窗口id z-index: 19891015
+            		 let index = zindex.indexOf(":")+1;//查找一个字符串中，第一次出现指定字符串的位置。+1
+            		 zindex = zindex.substring(index,zindex.length);//获取字符串  19891015
+            		 if(indeVue.zIndex == zindex){    //如果zindex想等，则找到了最顶层的窗口
+            		 	let id = $(e).find("iframe").attr("id");
+	                    parent.procurementVue.sh("#"+id);//函数回调
+	                   	parent.procurementVue.id="#"+id;
+            		 }
+            	})
+            },
+            xszs:function(){
+            	$("#bc").removeClass('layui-btn-disabled').removeAttr('disabled',"true");
             }
         },created:function () {
             this.LoadContent("采购模块");

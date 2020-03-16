@@ -1,63 +1,29 @@
 {
-  "code": 0,
-  "msg": "",
-  "count": 100,
-  "data": [
-    {
-      "id": 10000,
-      "username": "user-0",
-      "sex": "女",
-      "city": "昆明",
-      "sign": "签名-0"
-    },
-    {
-      "id": 10001,
-      "username": "user-1",
-      "sex": "男",
-      "city": "楚雄",
-      "sign": "签名-1"
-    },
-    {
-      "id": 10002,
-      "username": "user-2",
-      "sex": "女",
-      "city": "富源",
-      "sign": "签名-2"
-    },
-    {
-      "id": 10003,
-      "username": "user-3",
-      "sex": "女",
-      "city": "富源",
-      "sign": "签名-3"
-    },
-    {
-      "id": 10004,
-      "username": "user-4",
-      "sex": "男",
-      "city": "富源",
-      "sign": "签名-4"
-    },
-    {
-      "id": 10005,
-      "username": "user-5",
-      "sex": "女",
-      "city": "长沙",
-      "sign": "签名-5"
-    },
-    {
-      "id": 10006,
-      "username": "user-6",
-      "sex": "女",
-      "city": "桂林",
-      "sign": "签名-6"
-    },
-    {
-      "id": 10007,
-      "username": "user-7",
-      "sex": "男",
-      "city": "长春",
-      "sign": "签名-7"
-    }
+  "records": [
+  { "accountno": "009",
+    "id": "030AC067-8953-48A9-9A11-66E1D60500F5",
+ 		"idcard": "321654",
+		"name": "cbb",
+		"password": "123456",
+		"roleid": null,
+		"status": true},
+	{
+		"accountno": "011",
+		"id": "031AC067-8953-48A9-9A11-66E1D60500F5",
+		"idcard": "362201199311295412",
+		"name": "gyw",
+		"password": "123456321",
+		"roleid": null,
+		"status": true
+	},
+	{
+		"accountno": "005",
+		"id": "032AC067-8953-48A9-9A11-66E1D60500F5",
+		"idcard": "362201199311295412",
+		"name": "大阳",
+	"password": "123456",
+		"roleid": null,
+	"status": true
+		}
   ]
 }

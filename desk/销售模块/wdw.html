@@ -1,0 +1,54 @@
+<!doctype html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8" />
+     <title>表格演示</title>
+	<script type="text/javascript" src="../js/jquery-1.12.4.js" ></script>
+	<script type="text/javascript" src="../js/vue.js" ></script>
+ </head>
+ <body>
+    <div class="app">
+    	<div v-for="item in hobby3">
+    		<input type="checkbox"  v-model="item.h" >
+    	</div>
+    	<!--<label for="游泳">
+        
+	        游泳
+	    </label>
+	    <label for="健身">
+	        <div  :class="hobby3.h!='健身'?'checked':''"></div>
+	        <input type="checkbox" id="健身" v-model="hobby3.h" value="健身" >健身
+	    </label>-->
+	  <!--  <label for="旅游">
+	        <div  :class="hobby3.indexOf('旅游')!=-1?'checked':''"></div>
+	        <input type="checkbox"  v-model="hobby3.h" value="旅游" >旅游
+	    </label>
+	    <label for="爬山">
+	        <div  :class="hobby3.indexOf('爬山')!=-1?'checked':''"></div>
+	        <input type="checkbox" id="爬山" v-model="hobby3.h" value="爬山" >爬山
+	    </label>-->
+	    <div>
+	    	{{hobby3}}
+	    </div>
+    </div>
+</body>
+<script>
+	new Vue({
+		el:".app",
+		data(){
+			return{
+				hobby3:[
+					{h:'true',r:'',w:''},
+					{h:'',r:'',w:''},
+					{h:'',r:'',w:''}
+				]
+			}
+		},
+		methods:{
+			handleClick(){
+				
+			}
+		}
+	})
+</script>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/layui.css" media="all" />
+		<style>
+			input{
+				background-color: white;
+				border-top: solid white;
+				border-right: solid white;
+				border-left: solid white;
+			}
+			select{
+				background-color: white;
+				border: solid white;
+			}
+			
+			/*超出文本转为...*/
+		table{
+            width: 100%;
+            table-layout: fixed;
+         }
+		td{
+         	white-space: nowrap;/*控制单行显示*/
+			overflow: hidden;/*超出隐藏*/
+			text-overflow: ellipsis;/*隐藏的字符用省略号表示*/
+         }
+		th{
+			white-space:nowrap;
+			text-align: center !important;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="app">
+			 <div class="layui-tab-item layui-show" style="margin:20px;overflow:auto;">
+		    	<!--表单-->
+		    	<div class="">
+		    		<label>客户</label>
+					<input type="text" v-model="seracName"  style="height: 21px;margin-left: 20px;"/>
+					<div class="layui-btn-container" style="display: inline-block;">
+					  <button class="layui-btn layui-btn-disabled layui-btn-xs">资料输出</button>
+					  <button class="layui-btn layui-btn-primary  layui-btn-xs" id="readO">取回</button>
+					</div>
+				</div>
+		    	<!---->
+		    	{{list}}
+		    	<div class="layui-tab-item layui-show" style="width: 560px;height: 220px;overflow:auto;">
+								    	<!--表单-->
+								    	<table class="layui-table single" lay-size="sm" style="empty-cells:show;min-width:765px">
+											  <colgroup>
+											  	<col v-for="ii in 15" width="90"></col>
+											  </colgroup>
+											  <thead>
+													<tr> 
+													  <th v-for="i of title" style="white-space:nowrap" class="sli">{{i}}</th>
+													</tr> 
+											  </thead>
+											  <tbody>
+												    <tr v-for="item in list">
+												    	<td>{{item.sqdCustom7}}</td>
+												    	<td>{{item.sqDocumentTime|formatDate}}</td>
+												    	<td>{{item.sqId}}</td>
+												    	<td>{{item.currencyId}}</td>
+												    	<td>{{item.sqdSerno}}</td>
+												    	<td>{{item.sqdProdname}}</td>
+												    	<td>{{item.sqdProdsize}}</td>
+												    	<td>{{item.sqdSquantity}}</td>
+												    	<td>{{item.sqdUnitname}}</td>
+												    	<td>{{item.sqdZkqprice}}</td>
+												    	<td>{{item.sqdDiscount}}</td>
+												    	<td>{{item.sqdUnitprice}}</td>
+												    	<td>{{item.sqTax=='0'?'否':'是'}}</td>
+												    	<td>{{item.sqdPrice}}</td>
+												    	<td>{{item.sqdItemremark}}</td>
+												    </tr>
+											  </tbody>
+										</table>
+								    	<!---->
+
+								    	<!---->
+								    </div>
+		    	<!---->
+				<script type="text/html" id="barDemo">
+				    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+				    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+				    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+				</script>
+		    	<!---->
+		    </div>
+		</div>
+	</body>	
+	<script type="text/javascript" src="../js/jquery-1.12.4.js" ></script>
+	<script type="text/javascript" src="../js/layui.all.js" ></script>
+	<script type="text/javascript" src="../js/layui.js" ></script>
+	<script type="text/javascript" src="../js/vue.js" ></script>
+	  <script>
+	  	var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+	  		var vueww=new Vue({
+	  			el:".app",
+	  			data(){
+	  				return{
+	  					list:[],
+	  					title:['单别','日期','单号','币别','汇率','物料编号','物料名称','规格型号','数量','单位','折扣前单价','折率','单价','单价是否含税','金额','备注'],
+	  					seracType:"all",
+						seracName:"",
+						vueName:''
+	  				}
+	  			},
+	  			methods:{
+	  				/*addL(ss){
+					   	parent.childToParent(ss.customerName);//调用父页面vue对象接收想要的数据
+					   	parent.layer.close(index);//关闭窗口
+	  				}*/
+	  				addL(ss){
+					   //	parent[this.vueName].list.teamId=ss.teamId;	//把部门id传给销售预收款的reces对象的部门id
+					   	parent[this.vueName].list.warehouseId=ss.warehouseName;//把部门名称传给销售预收款的reces对象的部门名称
+					   	parent.layer.close(index);//关闭窗口
+	  				}
+	  			},
+	  			computed:{
+				getList:function(){
+					console.info(this.seracType)
+					let seracType=this.seracType;
+					let seracName=this.seracName;
+					if(seracType=="id"){
+						return this.list.filter(item=>{
+							return item.warehouseId.indexOf(seracName)!=-1;
+						})
+					}else if(seracType=="name"){
+					     return this.list.filter(item=>{
+					          return  item.warehouseName.indexOf(seracName)!=-1;
+					     })
+					}else if(seracType="all"){//全部
+						return this.list.filter(item=>{
+							return Object.values(item).toString().indexOf(seracName)!=-1;
+							
+						})
+					}
+				
+				}
+			},
+			 filters: {
+	            formatDate: function (value) {// 时间戳转换日期格式方法
+	                if (value == null) {
+	                    return '';
+	                } else {
+	                    let date = new Date(value);
+	                    let y = date.getFullYear();// 年
+	                    let MM = date.getMonth() + 1;// 月
+	                    MM = MM < 10 ? ('0' + MM) : MM;
+	                    let d = date.getDate();// 日
+	                    d = d < 10 ? ('0' + d) : d;
+	                    let h = date.getHours();// 时
+	                    h = h < 10 ? ('0' + h) : h;
+	                    let m = date.getMinutes();// 分
+	                    m = m < 10 ? ('0' + m) : m;
+	                    let s = date.getSeconds();// 秒
+	                    s = s < 10 ? ('0' + s) : s;
+	                    //return y + '-' + MM + '-' + d + ' ' + h + ':' + m + ':' + s;
+	                    return y + '-' + MM + '-' + d;
+	                    
+	                }
+	            }
+        	}
+	  		})
+	  		//父窗口传vue的名字过来
+	  		function setVueName(name,sowId,Kname,Kid){
+	  			vueww.seracName=Kname+"__"+Kid;
+	  			if(sowId==1){
+	  				$("#readO").addClass("layui-btn-disabled");
+	  			}
+	  			console.log(name);
+	  			vueww.vueName = name;
+	  		}
+	  		
+	  		$(function(){
+				$.ajax({
+          			type: 'GET',
+	   				dataType: "json",  //json text 服务器返回的数据类型
+          			url:"http://localhost:8080/t_sow/lss",
+          			success: function (result) {
+          				 vueww.list=result;
+          				 console.log(vueww.list)
+          			}
+          		});
+			})
+	  		
+	  		
+	  </script>
+</html>

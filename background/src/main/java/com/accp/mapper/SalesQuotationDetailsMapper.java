@@ -10,7 +10,7 @@ public interface SalesQuotationDetailsMapper {
 
     int deleteByExample(SalesQuotationDetailsExample example);
 
-    int deleteByPrimaryKey(String sqdProdid);
+    int deleteByPrimaryKey(Integer ziid);
 
     int insert(SalesQuotationDetails record);
 
@@ -18,7 +18,7 @@ public interface SalesQuotationDetailsMapper {
 
     List<SalesQuotationDetails> selectByExample(SalesQuotationDetailsExample example);
 
-    SalesQuotationDetails selectByPrimaryKey(String sqdProdid);
+    SalesQuotationDetails selectByPrimaryKey(Integer ziid);
 
     int updateByExampleSelective(@Param("record") SalesQuotationDetails record, @Param("example") SalesQuotationDetailsExample example);
 

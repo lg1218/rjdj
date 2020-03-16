@@ -1,6 +1,7 @@
 package com.accp.domain;
 
 import java.util.Date;
+import java.util.List;
 
 public class Salesorder {
     private String soId;
@@ -62,8 +63,18 @@ public class Salesorder {
     private String soCustom5;
 
     private String soCustom6;
+    
+    private List<Salesorderlist> list;
 
-    public String getSoId() {
+    public List<Salesorderlist> getList() {
+		return list;
+	}
+
+	public void setList(List<Salesorderlist> list) {
+		this.list = list;
+	}
+
+	public String getSoId() {
         return soId;
     }
 

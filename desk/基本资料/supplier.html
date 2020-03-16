@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>供应商</title>
+    <script type="text/javascript" src="../js/jquery-1.12.4.js" ></script>
+    <script type="text/javascript" src="../js/layui.all.js" ></script>
+    <script type="text/javascript" src="../js/layui.js" ></script>
+    <script type="text/javascript" src="../js/vue.js" ></script>
+</head>
+<body>
+    <div id="supplier">
+        采购取值测试 后续待加
+        <button @click="qhSupplier">取回</button>
+    </div>
+
+</body>
+
+
+<script>
+    var vue = new Vue({
+        el:"#supplier",
+        data(){//值
+            return{
+                supplier:{
+                    supplierId:1,
+                    supplierName:"1"
+                }
+            }
+        },methods:{
+            qhSupplier:function () {
+                parent.procurementVue.getSupplier(this.supplier);
+            }
+        },created:function () {
+            
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		111<input class="sw" type="text" oninput="add()" autofocus="autofocus"/>
+		222<input class="sw" type="text" />
+		333<input class="sw" type="text" />
+	</body>
+	<script src="../js/jquery-1.12.4.js"></script>
+	<script>
+		$(".sw").blur(function(){
+			$(".sw").index(this);
+			if($('.sw:eq(0)').val()!="w1"){
+				$('.sw:eq(0)').focus()
+			}
+		})
+		function add(){
+			alert($('.sw:eq(0)').val())
+		}
+	</script>
+</html>

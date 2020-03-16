@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>layui</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <link rel="stylesheet" href="../css/layui.css"  media="all">
+  <script src="../js/jquery-1.12.4.js" ></script>
+  <script src="../js/layui.all.js" charset="utf-8"></script>
+<style>
+	
+table {
+    position: relative;
+    width: 100%;
+    display: block;
+}
+  
+thead {
+    float: left;
+}
+  
+tbody tr {
+    display: inline-block;
+}
+  
+th, td {
+    height: 45px;
+    display: block;
+}
+</style>
+</head>
+<body>
+     <div class="table_cont js_w" id="tableDiv" style="overflow-x:auto;">
+                 <table class="layui-table dash_in " style="min-width:3500px; " >
+                    <thead>
+                          <tr>
+                            <td>营业窗口 </td>
+                            <td>受注rank </td>
+                            <td>更新时间 </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                          <c:if test="${empty page.list }"><tr><td colspan="99"><span style="font-size: 12px;">暂无查询数据</span></td></tr></c:if>    
+                        <c:forEach items="${page.list}" var="page" varStatus="sta">
+                            <tr class="check_tr">
+                                <td>${PROJECT_RANK_MAP[page.rank]}</td>                                          
+                                <td>${page.pUpdateUserName}</td>                        
+                                <td>${page.deptNames}</td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                  </table>
+            </div > 
+<script>
+
+  $("#tableDiv").scroll(function(){//给table外面的div滚动事件绑定一个函数
+
+     var left=$("#tableDiv").scrollLeft();//获取滚动的距离
+
+     var trs=$("#tableDiv table tr");//获取表格的所有tr
+
+   trs.each(function(index,element){//对每一个tr（每一行）进行处理
+
+           //获得每一行下面的所有的td，然后选中下标为0的，即第一列，设置position为相对定位
+
+           //相对于父div左边的距离为滑动的距离，然后设置个背景颜色，覆盖住后面几列数据滑动到第一列下面的情况
+
+           //如果有必要也可以设置一个z-index属性
+
+           $(this).children().eq(0).css({"position":"relative","top":"0px","left":left,"background-color":"#f2f2f2","z-index":"5000" });
+
+           $(this).children().eq(1).css({"position":"relative","top":"0px","left":left,"background-color":"#f2f2f2","z-index":"5000" });
+
+           $(this).children().eq(2).css({"position":"relative","top":"0px","left":left,"background-color":"#f2f2f2","z-index":"5000" });
+
+           $(this).children().eq(3).css({"position":"relative","top":"0px","left":left,"background-color":"#f2f2f2","z-index":"5000" });
+
+     });
+
+}); 
+</script>
+</body>
+</html>

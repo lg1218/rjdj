@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>应收冲款单(新增中...)</title>
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="css/element_ui.css" />
+		<!-- 引入组件库 -->
+		<script src="js/jquery-1.12.4.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/element_ui.js"></script>
+		<script src="js/mpment.js"></script>
+		
+		<!--<style>
+			.el-submenu__title{
+				border-bottom-color:transparent;
+			}
+			.el-submenu__title:hover{
+				background-color: transparent;
+			}
+			.is-opened{
+				background-color: #fff;
+			}
+		</style>-->
+		<style>
+			#gongneng{
+				width:80px;
+				height:30px;
+				line-height: 30px;
+				background-color: #a5c5f4;
+				position: absolute;
+				top: 130px;
+				text-align: center;
+				border: 1px solid #a0a0a0;
+			}
+			li{
+				list-style-type: none;
+				padding: 1px;
+				padding-left: 25px;
+			}
+			li:hover{
+				background: #b3d7f4;
+				padding: 0px;
+				padding-left: 25px;
+				border: 1px solid #0078d7;
+			}
+			ul{
+				width: 150px;
+				height: 75px;
+				padding: 0px;
+				box-shadow: 1px 1px 1px 1px #a0a0a0;
+			}
+			#bottomDiv{
+				position: absolute;
+				top: 145px;
+				/*background-color: #fff;*/
+			}
+			#jisuan{
+				width:130px;
+				height:30px;
+				line-height: 30px;
+				background-color: #a5c5f4;
+				position: absolute;
+				top: 130px;
+				text-align: center;
+				margin-left: 150px;
+				border: 1px solid #a0a0a0;
+			}
+			#jiDiv{
+				position: absolute;
+				top: 145px;
+				left: 150px;
+			}
+			#jiDiv ul{
+				width: 128px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="advanceContent" style="height: auto;width: auto;">
+			<div id="app" style="width:900px;margin: auto;">
+				<el-form ref="form" :model="form" lable-position="left" label-width="100px" >
+				  	<el-col :span="12">
+				  		<el-form-item label="客户">
+				    	<el-input style="width: 300px;"v-model="form.name"></el-input>
+				    	</el-form-item>
+				    </el-col>
+				    <el-col :span="12">
+				    	<el-form-item label="单据日期">
+					       <el-date-picker type="date"  placeholder="选择日期" v-model="form.date1" @change="changeDate" style="width: 300px;"></el-date-picker>
+					    </el-form-item>
+				    </el-col>
+				  	
+				  	<el-col :span="12">
+				  		<el-form-item label="结算方式一">
+				    	  <el-input style="width: 200px;"v-model="form.jieOne"></el-input>
+				    	  <el-input style="width: 100px;"v-model="form.jieOneMoney"></el-input>
+				    	</el-form-item>
+				  	</el-col>
+				  	<el-col :span="12">
+				  		<el-form-item label="单据号码">
+				    	<el-input style="width: 300px;"v-model="form.phoneNumber"></el-input>
+				    	</el-form-item>
+				    </el-col>
+				    
+				    <el-col :span="12">
+				  		<el-form-item label="结算方式二">
+				    	  <el-input style="width: 200px;"v-model="form.jieTwo"></el-input>
+				    	  <el-input style="width: 100px;"v-model="form.jieTwoMoney"></el-input>
+				    	</el-form-item>
+				  	</el-col>
+				  	<el-col :span="12">
+				  		<el-form-item label="币别">
+				    	<el-input style="width: 300px;"v-model="form.currency"></el-input>
+				    	</el-form-item>
+				    </el-col>
+				    
+				    <el-col :span="12">
+				  		<el-form-item label="结算方式三">
+				    	  <el-input style="width: 200px;"v-model="form.jieThree"></el-input>
+				    	  <el-input style="width: 100px;"v-model="form.jieThreeMoney"></el-input>
+				    	</el-form-item>
+				  	</el-col>
+				  	<el-col :span="12">
+				  		<el-form-item label="汇率">
+				    	<el-input style="width: 300px;"v-model="form.exchangeRate "></el-input>
+				    	</el-form-item>
+				    </el-col>
+				    
+				    <el-col :span="12">
+				  		<el-form-item label="折扣率(%)">
+				    	<el-input style="width: 300px;"v-model="form.depositRate "></el-input>
+				    	</el-form-item>
+				    </el-col>
+				    <el-col :span="12">
+				    	<el-form-item label="应收冲款类型">
+					       <el-select v-model="form.punchType" >
+						      <el-option label="预收款" value="yushou"></el-option>
+						      <el-option label="收款冲款" value="chongkuan"></el-option>
+						      <el-option label="预收冲应收" value="chongying"></el-option>
+						   </el-select>
+					    </el-form-item>
+				    </el-col>
+				    
+				    <el-col :span="12">
+				    	<el-form-item label="终止账月">
+				    		<el-date-picker id="stime" @change="AccountMonth()" v-model="form.date2" type="month" placeholder="选择月"></el-date-picker>
+					    </el-form-item>
+				    </el-col>
+				    <el-col :span="12">
+				  		<el-form-item label="凭证编号">
+				    	<el-input readonly="readonly" style="width: 300px;"v-model="form.CertificateNumber"></el-input>
+				    	</el-form-item>
+				    </el-col>
+				    
+				</el-form>
+				
+			</div>
+			
+			<!--
+            	中间tab部分
+            -->	
+			<div id="centerTab" style="position: absolute;top: 400px;left: 200px;">
+				<el-tabs v-model="activeName" type="card" @tab-click="handleClick" >
+				    <el-tab-pane label="内容" name="first">
+				    	<!--内容-->
+				    	<el-table :data="tableData" style="width: 900px" height="250">
+						    <el-table-column fixed prop="date" label="(栏号)" width="150"></el-table-column>
+						    <el-table-column prop="name" label="(单别)" width="120"></el-table-column>
+						    <el-table-column prop="province" label="(原单日期)" width="120"></el-table-column>
+						    <el-table-column prop="city" label="(原单单号)" width="120"></el-table-column>
+						    <el-table-column prop="address" label="(发票号码)" width="300"></el-table-column>
+						    <el-table-column prop="zip" label="(交易对象)" width="120"></el-table-column>
+						    <el-table-column prop="zip" label="(交易对象名称)" width="120"></el-table-column>
+						    <el-table-column prop="zip" label="(部门编号)" width="120"></el-table-column>
+						    <el-table-column prop="zip" label="(业务人员)" width="120"></el-table-column>
+						    <el-table-column prop="zip" label="(项目名称)" width="120"></el-table-column>
+						    <el-table-column prop="zip" label="(币别)" width="120"></el-table-column>
+						    <el-table-column prop="zip" label="(汇率)" width="120"></el-table-column>
+						    <el-table-column prop="zip" label="(原单金额)" width="120"></el-table-column>
+						    <el-table-column prop="zip" label="(现行金额)" width="120"></el-table-column>
+						    <el-table-column prop="zip" label="(折让金额)" width="120"></el-table-column>
+						    <el-table-column prop="zip" label="(冲款金额)" width="120"></el-table-column>
+						    <el-table-column prop="zip" label="(冲抵金额)" width="120"></el-table-column>
+					   </el-table>
+					  
+					  <div style="margin-top: 20px;">
+					  	<el-tag type="danger">合计</el-tag>
+					  	<el-tag type="danger" style="float: right;">{{sumMoney}}</el-tag>
+					  </div>
+
+				    </el-tab-pane>
+				    
+				    <el-tab-pane label="取用预收" name="second">
+				    	<!--取用预收-->
+				    	<el-table :data="tableData" style="width: 900px" height="250">
+						    <el-table-column fixed prop="date" label="(应收冲款单号)" width="150"></el-table-column>
+						    <el-table-column prop="name" label="(来源别)" width="120"></el-table-column>
+						    <el-table-column prop="province" label="(来源单号)" width="120"></el-table-column>
+						    <el-table-column prop="city" label="(预收余额)" width="120"></el-table-column>
+						    <el-table-column prop="address" label="(部门编号)" width="300"></el-table-column>
+						    <el-table-column prop="zip" label="(部门名称)" width="120"></el-table-column>
+						    <el-table-column prop="address" label="(取用预收金额)" width="300"></el-table-column>
+						    <el-table-column prop="zip" label="(来源摘要)" width="120"></el-table-column>
+					   </el-table>
+					   
+					   <div style="margin-top: 20px;">
+					  	<el-tag type="danger">合计</el-tag>
+					  	<el-tag type="danger" style="margin-left: 350px;">{{yuMoney}}</el-tag>
+					  	<el-tag type="danger" style="float: right;">{{quMoney}}</el-tag>
+					  </div>
+					   
+				    </el-tab-pane>
+				    
+				    <el-tab-pane label="备注" name="third">
+				    	<!--备注-->
+				    	<el-form ref="form" :model="form" label-width="100px" label-position="labelPosition">
+					    	<el-col :span="12">
+						    	<el-form-item label="自定义栏一">
+							       <el-select v-model="form.punchType" >
+								      <el-option label="预收款" value="yushou"></el-option>
+								      <el-option label="收款冲款" value="chongkuan"></el-option>
+								      <el-option label="预收冲应收" value="chongying"></el-option>
+								   </el-select>
+							    </el-form-item>
+						    </el-col>
+						    <el-col :span="12">
+						    	<el-form-item label="自定义栏二">
+							       <el-select v-model="form.punchType" >
+								      <el-option label="预收款" value="yushou"></el-option>
+								      <el-option label="收款冲款" value="chongkuan"></el-option>
+								      <el-option label="预收冲应收" value="chongying"></el-option>
+								   </el-select>
+							    </el-form-item>
+						    </el-col>
+						    
+						    <el-form-item label="备注">
+						    	<el-input
+								  type="textarea"
+								  :autosize="{ minRows: 6, maxRows: 100}"
+								  placeholder="请输入内容"
+								  v-model="textarea2">
+								</el-input>
+						    </el-form-item>
+					    
+				    	</el-form>
+					    
+				    </el-tab-pane>
+				</el-tabs>
+			</div>
+			
+			<!--
+            	底部的部分
+            -->
+            <div style="position: absolute;top: 800px;left: 200px;">
+				<el-form ref="form" :model="form" label-width="100px" label-position="labelPosition">
+				  	<el-col :span="12">
+				  		<el-form-item label="所属部门">
+				    	<el-input style="width: 300px;"v-model="form.division"></el-input>
+				    	</el-form-item>
+				    </el-col>
+				    <el-col :span="12">
+				  		<el-form-item label="制单人员">
+				    	<el-input style="width: 300px;"v-model="form.touchingPerson"></el-input>
+				    	</el-form-item>
+				    </el-col>
+				  	
+				  	<el-col :span="12">
+				  		<el-form-item label="所属项目">
+				    	<el-input style="width: 300px;"v-model="form.project"></el-input>
+				    	</el-form-item>
+				    </el-col>
+				    <el-col :span="12">
+				  		<el-form-item label="复核人员">
+				    	<el-input style="width: 300px;"v-model="form.checkPerson"></el-input>
+				    	</el-form-item>
+				    </el-col>
+				    
+				    <!--
+                    	功能和自动计算
+                    -->
+			    	<!--<el-form-item label="功能">
+				    </el-form-item>-->
+				    <div>
+				    	<a>
+				    		<div id="gongneng">功能<i style="margin-left: 20px;" class="el-icon-caret-bottom"></i></div>
+				    		<div id="bottomDiv">
+				    			<ul>
+				    				<li>载入单币别款帐</li>
+				    				<li>载入多币别款帐</li>
+				    				<li>载入预收</li>
+				    			</ul>
+				    		</div>
+				    	</a>
+				    	
+				    	<a>
+				    		<div id="jisuan">自动计算<i style="margin-left: 20px;" class="el-icon-caret-bottom"></i></div>
+				    		<div id="jiDiv">
+				    			<ul>
+				    				<li>以下冲款</li>
+				    				<li>以下折让</li>
+				    				<li>以下空白</li>
+				    			</ul>
+				    		</div>
+				    	</a>
+				    	
+				    </div>
+				    
+				    <!--<el-col :span="12">
+				    	<el-menu
+					      style="width:0px;height: 100px;"
+						  mode="horizontal"
+						  background-color="#fff"
+						  text-color="#999"
+						  active-text-color="#000">
+						  <el-submenu index="2" style="width:auto;height: 100%;">
+						    <template slot="title" >功能</template>
+						    <el-menu-item index="2-1">载入单币别款帐</el-menu-item>
+						    <el-menu-item index="2-2">载入多币别款帐</el-menu-item>
+						    <el-menu-item index="2-3">载入预收</el-menu-item>
+						  </el-submenu>
+						</el-menu>
+				    </el-col>
+				    <el-col :span="12">
+				    	<el-menu
+					      style="width:0px;height: 100px;"
+						  mode="horizontal"
+						  background-color="#fff"
+						  text-color="#999"
+						  active-text-color="#000">
+						  <el-submenu index="2" style="width:auto;height: 100%;">
+						    <template slot="title" >自动计算</template>
+						    <el-menu-item index="2-1">以下冲款</el-menu-item>
+						    <el-menu-item index="2-2">以下折让</el-menu-item>
+						    <el-menu-item index="2-3">以下空白</el-menu-item>
+						  </el-submenu>
+						</el-menu>
+				    </el-col>-->
+				</el-form>
+				<div style="height:50px;position: absolute;margin-top: 150px;">&nbsp;</div>
+			</div>
+			
+		</div>
+		
+		<script>
+			var advanceVue = {
+		    data() {
+		      return {
+		      	activeName: 'first',	//tab设置成默认显示第一个
+		      	sumMoney:1000.00,	//合计的价钱
+		      	yuMoney:1000.00,	//第二个合计的预收金额
+		      	quMoney:1000.00,	//第二个合计的取用预收金额
+		      	textarea2:'',		//备注
+		      	division:'直销部',	//底部的所属部门
+		      	touchingPerson:'Admin',	//底部的制单人员
+		      	project:'',	//底部的所属项目
+		      	checkPerson:'',	//底部的复核人员
+		        form: {
+		          name: '',
+		          jieOne:'转账',
+		          jieOneMoney:0.00,
+		          jieTwo:'汇票',
+		          jieTwoMoney:0.00,
+		          jieThree:'',
+		          jieThreeMoney:0.00,
+		          phoneNumber:'',
+		          exchangeRate:'1.0000',
+		          depositRate:0.00,
+		          punchType:'chongkuan',
+		          CertificateNumber:'',
+		          date1: '',
+		          date2:'',
+		          labelPosition:'left'
+		        },
+		        tableData: [{
+		          date: '2016-05-03',
+		          name: '王小虎',
+		          province: '上海',
+		          city: '普陀区',
+		          address: '上海市普陀区金沙江路 1518 弄',
+		          zip: 200333
+		        }, {
+		          date: '2016-05-02',
+		          name: '王小虎',
+		          province: '上海',
+		          city: '普陀区',
+		          address: '上海市普陀区金沙江路 1518 弄',
+		          zip: 200333
+		        }, {
+		          date: '2016-05-04',
+		          name: '王小虎',
+		          province: '上海',
+		          city: '普陀区',
+		          address: '上海市普陀区金沙江路 1518 弄',
+		          zip: 200333
+		        }, {
+		          date: '2016-05-01',
+		          name: '王小虎',
+		          province: '上海',
+		          city: '普陀区',
+		          address: '上海市普陀区金沙江路 1518 弄',
+		          zip: 200333
+		        }, {
+		          date: '2016-05-08',
+		          name: '王小虎',
+		          province: '上海',
+		          city: '普陀区',
+		          address: '上海市普陀区金沙江路 1518 弄',
+		          zip: 200333
+		        }, {
+		          date: '2016-05-06',
+		          name: '王小虎',
+		          province: '上海',
+		          city: '普陀区',
+		          address: '上海市普陀区金沙江路 1518 弄',
+		          zip: 200333
+		        }, {
+		          date: '2016-05-07',
+		          name: '王小虎',
+		          province: '上海',
+		          city: '普陀区',
+		          address: '上海市普陀区金沙江路 1518 弄',
+		          zip: 200333
+		        }]
+		      }
+		    },
+		    methods: {
+		      handleClick(tab, event) {	//tab选项卡的方法
+		         console.log(tab, event);
+		      },
+		      onSubmit() {
+		        console.log('submit!');
+		      },
+		      dateByNum(){
+		      	var date = new Date(this.form.date1);
+		      	date = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
+		      	var resultDate = date.replace(/-/g, "");
+		      	this.form.phoneNumber = resultDate;
+		      	//alert(date+"---"+this.form.phoneNumber);
+		      },
+		      changeDate(){
+		      	this.dateByNum();
+		      },
+		      AccountMonth(){
+		      	/*var date = this.form.date2;
+		      	var month = (date.getMonth()+1);
+		      	if((month<10)){
+		      		month = "0"+month;
+		      	}
+		      	date=date.getFullYear()+"-"+month;
+		      	alert(date);
+		      	var resultDate = date.replace("-","");
+		      	alert(resultDate);
+		      	moment(resultDate).format("YYYY");*/
+		      	//jQuery("#stime").datetimebox('setValue', resultDate);
+		      	
+		      	//this.form.date2 = resultDate;
+		      }
+		    },
+		    created:function(){
+		    	var date = new Date();
+		    	//单据日期时间
+				this.form.date1 = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
+				this.dateByNum();
+				//终止账月时间
+				this.form.date2 = date.getFullYear()+"-"+(date.getMonth()+1);
+		    }
+		  }
+		var Ctor = Vue.extend(advanceVue)
+		new Ctor().$mount('#advanceContent')
+		
+		$(function(){
+			$("#bottomDiv").hide();
+			$("#jiDiv").hide();
+			$("#gongneng").click(function(){
+				$("#bottomDiv").show();
+			})
+			$("#bottomDiv li").click(function(){
+				$("#bottomDiv").hide();
+			})
+			
+			$("#jisuan").click(function(){
+				$("#jiDiv").show();
+			})
+			$("#jiDiv li").click(function(){
+				$("#jiDiv").hide();
+			})
+		})
+		</script>
+	</body>
+</html>

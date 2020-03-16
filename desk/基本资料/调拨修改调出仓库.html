@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="../css/layui.css" />
+	</head>
+	<body>
+		<table class="layui-table" id="cxx">
+			<tr>
+				<th>
+					仓库编号
+				</th>
+				<th>
+					仓库名称
+				</th>
+		
+			</tr>
+			<tr v-for="item in list" @dblclick="xuanzhong(item)" onclick="add(this)">
+				<td>{{item.warehouseId}}</td>
+				<td>{{item.warehouseName}}</td>
+			</tr>
+			
+		</table>
+		<input type="hidden" v-model="name" />
+	</body>
+	<script src="../js/vue.js"></script>
+	<script src="../js/layui.js"></script>
+	<script src="../js/jquery-1.12.4.js"></script>
+	<script>
+		var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+		var vuess = new Vue({
+			el:"#cxx",
+			data(){
+				return{
+					list:[],
+					vueName:""
+					
+				};
+			},
+			methods:{
+				//查询仓库数据
+				findCangku:function(){
+					var that = this;
+					$.ajax({
+						type:"post",
+						url:"http://localhost:8080/x_diaobo/cangku",
+						success:function(res){
+							that.list = res;
+						}
+					});
+				},
+				//选择仓库数据
+				xuanzhong:function(item){
+					var a = {};
+					a.requisitionCustom1=item.warehouseName;
+					a.requisitionOutWarehouse=item.warehouseId;
+					parent[this.vueName].page.list[0].requisitionCustom1 = item.warehouseName;//a.requisitionCustom1;//把仓库名字传给主页对象里集合里属性名字；
+					parent[this.vueName].page.list[0].requisitionOutWarehouse = item.warehouseId;//a.requisitionOutWarehouse;//把仓库名字传给主页对象里集合里属性id；
+//下面这种不行		parent[this.vueName].cangku.warehouseId=item.warehouseId;	//把仓库id传给主页对象；
+//					parent[this.vueName].cangku.warehouseName=item.warehouseName;//把仓库名称传给主页对象；
+//					var index = parent.layer.getFrameIndex(window.name);//获取当前页面index
+					parent.layer.close(index);//关闭当前页
+				}
+				
+			},
+			created: function() {
+				this.findCangku();
+			}
+		});
+		function add(a){
+				$("tr").css("background","white");
+				$(a).css("background","red");
+			
+		}
+//		function quxiao(){
+//			var index = parent.layer.getFrameIndex(window.name);
+//			parent.layer.close(index);//关闭当前页
+//		}
+		//获得主页面vue名称
+		function setVueName(name){
+	  			//console.log(name);
+	  			vuess.vueName = name;
+	  		}
+		
+	</script>
+</html>
+
+
+
+
+
+
+
+	
+	

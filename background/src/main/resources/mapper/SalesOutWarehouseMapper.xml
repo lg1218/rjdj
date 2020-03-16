@@ -166,7 +166,7 @@
       #{sowCustom2,jdbcType=VARCHAR}, #{sowCustom3,jdbcType=VARCHAR}, #{sowCustom4,jdbcType=VARCHAR}, 
       #{sowCustom5,jdbcType=VARCHAR}, #{sowCustom6,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.accp.domain.SalesOutWarehouse" >
+  <insert id="insertSelective" parameterType="com.accp.domain.SalesOutWarehouse" useGeneratedKeys="true" keyProperty="sowId">
     insert into sales_out_warehouse
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="sowId != null" >

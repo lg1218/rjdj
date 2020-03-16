@@ -3,6 +3,8 @@ package com.accp.domain;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class SalesOutWarehouse {
     private String sowId;
 
@@ -18,6 +20,7 @@ public class SalesOutWarehouse {
 
     private String sowCertificateNumber;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date sowDocumentDate;
 
     private String sowDocumentNumber;
@@ -38,12 +41,14 @@ public class SalesOutWarehouse {
 
     private String sowSaleszkgs;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date sowSalesdate;
 
     private String sowSalessktj;
 
     private Integer sowSalesday;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date sowSalesyue;
 
     private String sowBuyer;

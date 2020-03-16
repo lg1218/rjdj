@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/jquery-1.12.4.js" ></script>
+    <script type="text/javascript" src="../js/layui.all.js" ></script>
+    <script type="text/javascript" src="../js/layui.js" ></script>
+    <script type="text/javascript" src="../js/vue.js" ></script>
+</head>
+<body>
+    <div id="matter">
+            <button @click="qhMatter">取回物料</button>
+    </div>
+    <script>
+        var vue = new Vue({
+            el:"#matter",
+            data(){//值
+                return{
+                    matter:{
+                        matterId:1,
+                        matterName:"1",
+                        matterSize:"规格型号",
+                        mtId:1,
+                        muId:1,
+                        currencyId:1,
+                        matterMsaleA:100,
+                        MeasurementUnit:{    //关联的计量单位
+                            muId:1,
+                            muName:"计量单位1"
+                        },
+                        matterTaxpoint:17
+                    }
+                }
+            },methods:{
+                qhMatter:function () {
+                    parent.procurementVue.getMatter(this.matter);
+                }
+            },created:function () {
+
+            }
+        })
+    </script>
+</body>
+</html>

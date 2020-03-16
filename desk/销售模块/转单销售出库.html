@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/layui.css" media="all" />
+		<style>
+			input{
+				background-color: white;
+				border-top: solid white;
+				border-right: solid white;
+				border-left: solid white;
+			}
+			select{
+				background-color: white;
+				border: solid white;
+			}
+			
+			/*超出文本转为...*/
+		table{
+            width: 100%;
+            table-layout: fixed;
+         }
+		td{
+         	white-space: nowrap;/*控制单行显示*/
+			overflow: hidden;/*超出隐藏*/
+			text-overflow: ellipsis;/*隐藏的字符用省略号表示*/
+         }
+		th{
+			white-space:nowrap;
+			text-align: center !important;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="app">
+			 <div class="layui-tab-item layui-show" style="margin:20px;overflow:auto;">
+		    	<!--表单-->
+		    	<div class="layui-form">
+		    		<label>日期时区</label>
+			<!--		<input type="text" v-model="seracName"  "/>-->
+					  <input type="text" v-model="data1" id="test1"  style="text-align:center;height: 21px;width: 100px; margin-left: 20px;"/>
+					<label>To</label>
+					<input type="text" v-model="data2" id="test2"  style="text-align:center;height: 21px;width: 100px;margin-left: 0px;"/>
+					<div class="layui-btn-container" style="display: inline-block;">
+					  <button class="layui-btn layui-btn-primary layui-btn-xs" v-on:click="add()">载入资料</button>
+					  <button class="layui-btn layui-btn-primary  layui-btn-xs" id="readO" v-on:click="Retrieve()">取回</button>
+					</div>
+				</div>
+		    	<!---->
+		    	<div class="layui-tab-item layui-show" style="margin-left:0.2%; width: 280px;height: 150px;overflow:auto;">
+					    	<!--表单-->
+					    	<table class="layui-table single" lay-size="sm" style="empty-cells:show;min-width:180px">
+								  <colgroup>
+								  	<col v-for="ii in 2" width="90"></col>
+								  </colgroup>
+								  <thead>
+										<tr> 
+										  <th v-for="i of title" style="white-space:nowrap" class="sli">{{i}}</th>
+										</tr> 
+								  </thead>
+								  <tbody>
+									<template v-if="list!=undefined"  v-for="item,index in getList">
+									    	<tr @dblclick="del(item,index)">
+									    		<td>{{index+1}}</td>
+									    		<td>{{item.soDocumentnumber}}</td>
+									    		<td>{{item.soDocumentTime|formatDate}}</td>
+									    	</tr>
+									</template>
+								</tbody>
+							</table>
+					    	<!---->
+
+								    	<!---->
+								    </div>
+		    	<!---->
+				<script type="text/html" id="barDemo">
+				    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+				    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+				    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+				</script>
+		    	<!---->
+		    </div>
+		</div>
+	</body>	
+	<script type="text/javascript" src="../js/jquery-1.12.4.js" ></script>
+	<script type="text/javascript" src="../js/layui.all.js" ></script>
+	<script type="text/javascript" src="../js/layui.js" ></script>
+	<script type="text/javascript" src="../js/vue.js" ></script>
+	  <script>
+	  	var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+	  		var vueww=new Vue({
+	  			el:".app",
+	  			data(){
+	  				return{
+	  					list:[],
+	  					title:['序号','单号','日期'],
+	  					//title:['单号','日期','单号','币别','物料编号','物料名称','规格型号','数量','单位','折扣前单价','折率','单价','单价是否含税','金额','备注'],
+	  					seracType:"all",
+						seracName:"",
+						vueName:'',
+						data1:'',
+						data2:'',
+						Sindex:'',
+						newpods:[]
+	  				}
+	  			},
+	  			methods:{
+	  				/*addL(ss){
+					   	parent.childToParent(ss.customerName);//调用父页面vue对象接收想要的数据
+					   	parent.layer.close(index);//关闭窗口
+	  				}*/
+	  				Retrieve(ss){
+	  					let newpods = [];
+						this.list.forEach((i,e)=>{
+							if(i.zdNum == 0 ){   // 没有软删除的数据  再次加上它主表的单号以及单别
+								newpods.push(i);
+							}
+						});
+						parent.xsbj_vue.getCgOrderTrue(newpods);  //传数据
+	  					//parent[this.vueName].list.sowd.file
+	  				
+					   	//parent[this.vueName].list.warehouseId=ss.warehouseName;//把部门名称传给销售预收款的reces对象的部门名称
+					   parent.layer.close(index);//关闭窗口
+	  				},
+	  				add(){
+	  					if(this.data1!='' && this.data2!=''){
+	  						$.ajax({
+			          			type: 'GET',
+				   				dataType: "json",  //json text 服务器返回的数据类型
+			          			url:"http://localhost:8080/t_sow/lss?data1="+this.data1+"&data2="+this.data2,
+			          			success: function (result) {
+			          				result.forEach((i,e)=>{
+											i.zdNum = "0";  //填充一个默认值
+											vueww.list.push(i);
+									})
+			          				console.log(vueww.list2)
+			          				vueww.list=result;
+			          			}
+		          			});
+	  					}else{
+	  						layer.msg('起止时间都不能为空')
+	  					}
+	  				},
+	  				del(item,index){
+	  					alert(vueww.list[index].zdNum)
+	  					vueww.list[index].zdNum="1";
+	  				}
+	  			},
+	  			computed:{
+					getList:function(){
+						return this.list.filter(item=>{
+							if(item.zdNum!="1"){
+								return item;
+							}
+							
+						})
+					}
+			},
+			 filters: {
+	            formatDate: function (value) {// 时间戳转换日期格式方法
+	                if (value == null) {
+	                    return '';
+	                } else {
+	                    let date = new Date(value);
+	                    let y = date.getFullYear();// 年
+	                    let MM = date.getMonth() + 1;// 月
+	                    MM = MM < 10 ? ('0' + MM) : MM;
+	                    let d = date.getDate();// 日
+	                    d = d < 10 ? ('0' + d) : d;
+	                    let h = date.getHours();// 时
+	                    h = h < 10 ? ('0' + h) : h;
+	                    let m = date.getMinutes();// 分
+	                    m = m < 10 ? ('0' + m) : m;
+	                    let s = date.getSeconds();// 秒
+	                    s = s < 10 ? ('0' + s) : s;
+	                    //return y + '-' + MM + '-' + d + ' ' + h + ':' + m + ':' + s;
+	                    return y + '-' + MM + '-' + d;
+	                    
+	                }
+	            }
+        	}
+	  		})
+	  		//父窗口传vue的名字过来
+	  		function setVueName(name,sowId,Kname,Kid){
+	  			vueww.seracName=Kname+"__"+Kid;
+	  			if(sowId==1){
+	  				$("#readO").addClass("layui-btn-disabled");
+	  			}
+	  			console.log(name);
+	  			vueww.vueName = name;
+	  		}
+
+layui.use(['element','form','laydate'], function(){
+    var element = layui.element;
+    var form = layui.form;
+    var  layer = layui.layer;
+	var laydate = layui.laydate;
+	    
+	  laydate.render({
+	    elem: '#test1',
+	    done:function(value,date,endDate){
+        	vueww.data1=value;
+    	}
+	  });
+	  laydate.render({
+	    elem: '#test2',
+	    done:function(value,date,endDate){
+        	vueww.data2=value;
+    	}
+	  });
+});	
+	  </script>
+</html>

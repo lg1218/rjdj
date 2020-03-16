@@ -2,97 +2,121 @@ package com.accp.domain;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+/**
+ * 物料主文件表
+ * @author 刘成
+ *
+ */
 public class Matter {
-    private String matterId;
+    private String matterId;//物料编号（主键 唯一）
+    private String matterName;//物料名称
+    private String matterSize;//规格型号
+    private String matterEnglishName;//英文名称
+    private String matterBarno;//条形码编号
+    private Float matterMsaleA;//建议售价a
+    private Float matterMsaleB;//建议售价b
+    private Float matterMsaleC;//建议售价c
+    private Float matterMsaleD;//建议售价d
+    private Float matterMsaleE;//建议售价e
+    private Float matterStandardPrice;//标准进价
+    private Float matterTaxno;//税目
+    private Integer matterIftax;//0,1（状态）表示是否含税
+    private Float matterTaxpoint;//税率
+    private Integer matterSafestock;//安全存量
+    private Integer matterLowsafestock;//低于安全存量
+    private Integer matterDaystartcount;//期初总数
+    private Integer matterNowcount;//现行总数
+    private Float matterAvgcost;//平均成本
+    private Float matterNowavgcost;//现行平均成本
+    private Float matterStandardcost;//标准成本
+    private Float matterStandardallcost;//标准总成本
+    private Float matterDaystartallcost;//期初总成本
+    private Float matterNowallcost;//现行总成本
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    @DateTimeFormat(pattern ="yyyy-MM-dd")
+    private Date matterFirstin;//最初出库日
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    @DateTimeFormat(pattern ="yyyy-MM-dd")
+    private Date matterRecentout;//最近出库日
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    @DateTimeFormat(pattern ="yyyy-MM-dd")
+    private Date matterRecentin;//最近入库
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    @DateTimeFormat(pattern ="yyyy-MM-dd")
+    private Date matterFirstout;//最初入库日
+    private Integer matterAppearstartday;//呆滞起记天数
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    @DateTimeFormat(pattern ="yyyy-MM-dd")
+    private Date matterStopdate;//停用日期
+    private String matterMdecoration;//物料说明
+    private String mtId;//物料类型id，关联material_type物料类型表
+    private String muId;//计量单位id，关联munit 计量单位表    
+    private String currencyId;//币别id，关联currency币别表
+    private String matterAuditing;//是否审核
+    private String matterYn;//是否删除（0 否 1 是 ，默认0）
+    private String matterCustom1;//自定栏1
+    private String matterCustom2;//自定栏2
+    private String matterCustom3;//自定栏3
+    private String matterCustom4;//自定栏4
+    private String matterCustom5;//自定栏5
+    private String matterCustom6;//自定栏6
+    
+    private String mu_name;//单位名称
+    
+   
 
-    private String matterName;
+	public Matter() {
+		super();
+	}
 
-    private String matterSize;
+	
 
-    private String matterEnglishName;
+	@Override
+	public String toString() {
+		return "Matter [matterId=" + matterId + ", matterName=" + matterName + ", matterSize=" + matterSize
+				+ ", matterEnglishName=" + matterEnglishName + ", matterBarno=" + matterBarno + ", matterMsaleA="
+				+ matterMsaleA + ", matterMsaleB=" + matterMsaleB + ", matterMsaleC=" + matterMsaleC + ", matterMsaleD="
+				+ matterMsaleD + ", matterMsaleE=" + matterMsaleE + ", matterStandardPrice=" + matterStandardPrice
+				+ ", matterTaxno=" + matterTaxno + ", matterIftax=" + matterIftax + ", matterTaxpoint=" + matterTaxpoint
+				+ ", matterSafestock=" + matterSafestock + ", matterLowsafestock=" + matterLowsafestock
+				+ ", matterDaystartcount=" + matterDaystartcount + ", matterNowcount=" + matterNowcount
+				+ ", matterAvgcost=" + matterAvgcost + ", matterNowavgcost=" + matterNowavgcost
+				+ ", matterStandardcost=" + matterStandardcost + ", matterStandardallcost=" + matterStandardallcost
+				+ ", matterDaystartallcost=" + matterDaystartallcost + ", matterNowallcost=" + matterNowallcost
+				+ ", matterFirstin=" + matterFirstin + ", matterRecentout=" + matterRecentout + ", matterRecentin="
+				+ matterRecentin + ", matterFirstout=" + matterFirstout + ", matterAppearstartday="
+				+ matterAppearstartday + ", matterStopdate=" + matterStopdate + ", matterMdecoration="
+				+ matterMdecoration + ", mtId=" + mtId + ", muId=" + muId + ", currencyId=" + currencyId
+				+ ", matterAuditing=" + matterAuditing + ", matterYn=" + matterYn + ", matterCustom1=" + matterCustom1
+				+ ", matterCustom2=" + matterCustom2 + ", matterCustom3=" + matterCustom3 + ", matterCustom4="
+				+ matterCustom4 + ", matterCustom5=" + matterCustom5 + ", matterCustom6=" + matterCustom6 + ", mu_name="
+				+ mu_name + "]";
+	}
 
-    private String matterBarno;
 
-    private Float matterMsaleA;
 
-    private Float matterMsaleB;
+	public String getMu_name() {
+		return mu_name;
+	}
 
-    private Float matterMsaleC;
 
-    private Float matterMsaleD;
 
-    private Float matterMsaleE;
+	public void setMu_name(String mu_name) {
+		this.mu_name = mu_name;
+	}
 
-    private Float matterStandardPrice;
 
-    private Float matterTaxno;
 
-    private Integer matterIftax;
-
-    private Float matterTaxpoint;
-
-    private Integer matterSafestock;
-
-    private Integer matterLowsafestock;
-
-    private Integer matterDaystartcount;
-
-    private Integer matterNowcount;
-
-    private Float matterAvgcost;
-
-    private Float matterNowavgcost;
-
-    private Float matterStandardcost;
-
-    private Float matterStandardallcost;
-
-    private Float matterDaystartallcost;
-
-    private Float matterNowallcost;
-
-    private Date matterFirstin;
-
-    private Date matterRecentout;
-
-    private Date matterRecentin;
-
-    private Date matterFirstout;
-
-    private Integer matterAppearstartday;
-
-    private Date matterStopdate;
-
-    private String matterMdecoration;
-
-    private String mtId;
-
-    private String muId;
-
-    private String currencyId;
-
-    private String matterAuditing;
-
-    private String matterYn;
-
-    private String matterCustom1;
-
-    private String matterCustom2;
-
-    private String matterCustom3;
-
-    private String matterCustom4;
-
-    private String matterCustom5;
-
-    private String matterCustom6;
-
-    public String getMatterId() {
+	public String getMatterId() {
         return matterId;
     }
 
     public void setMatterId(String matterId) {
-        this.matterId = matterId;
+        this.matterId = matterId == null ? null : matterId.trim();
     }
 
     public String getMatterName() {
@@ -100,7 +124,7 @@ public class Matter {
     }
 
     public void setMatterName(String matterName) {
-        this.matterName = matterName;
+        this.matterName = matterName == null ? null : matterName.trim();
     }
 
     public String getMatterSize() {
@@ -108,7 +132,7 @@ public class Matter {
     }
 
     public void setMatterSize(String matterSize) {
-        this.matterSize = matterSize;
+        this.matterSize = matterSize == null ? null : matterSize.trim();
     }
 
     public String getMatterEnglishName() {
@@ -116,7 +140,7 @@ public class Matter {
     }
 
     public void setMatterEnglishName(String matterEnglishName) {
-        this.matterEnglishName = matterEnglishName;
+        this.matterEnglishName = matterEnglishName == null ? null : matterEnglishName.trim();
     }
 
     public String getMatterBarno() {
@@ -124,7 +148,7 @@ public class Matter {
     }
 
     public void setMatterBarno(String matterBarno) {
-        this.matterBarno = matterBarno;
+        this.matterBarno = matterBarno == null ? null : matterBarno.trim();
     }
 
     public Float getMatterMsaleA() {
@@ -332,7 +356,7 @@ public class Matter {
     }
 
     public void setMatterMdecoration(String matterMdecoration) {
-        this.matterMdecoration = matterMdecoration;
+        this.matterMdecoration = matterMdecoration == null ? null : matterMdecoration.trim();
     }
 
     public String getMtId() {
@@ -340,7 +364,7 @@ public class Matter {
     }
 
     public void setMtId(String mtId) {
-        this.mtId = mtId;
+        this.mtId = mtId == null ? null : mtId.trim();
     }
 
     public String getMuId() {
@@ -348,7 +372,7 @@ public class Matter {
     }
 
     public void setMuId(String muId) {
-        this.muId = muId;
+        this.muId = muId == null ? null : muId.trim();
     }
 
     public String getCurrencyId() {
@@ -356,7 +380,7 @@ public class Matter {
     }
 
     public void setCurrencyId(String currencyId) {
-        this.currencyId = currencyId;
+        this.currencyId = currencyId == null ? null : currencyId.trim();
     }
 
     public String getMatterAuditing() {
@@ -364,7 +388,7 @@ public class Matter {
     }
 
     public void setMatterAuditing(String matterAuditing) {
-        this.matterAuditing = matterAuditing;
+        this.matterAuditing = matterAuditing == null ? null : matterAuditing.trim();
     }
 
     public String getMatterYn() {
@@ -372,7 +396,7 @@ public class Matter {
     }
 
     public void setMatterYn(String matterYn) {
-        this.matterYn = matterYn;
+        this.matterYn = matterYn == null ? null : matterYn.trim();
     }
 
     public String getMatterCustom1() {
@@ -380,7 +404,7 @@ public class Matter {
     }
 
     public void setMatterCustom1(String matterCustom1) {
-        this.matterCustom1 = matterCustom1;
+        this.matterCustom1 = matterCustom1 == null ? null : matterCustom1.trim();
     }
 
     public String getMatterCustom2() {
@@ -388,7 +412,7 @@ public class Matter {
     }
 
     public void setMatterCustom2(String matterCustom2) {
-        this.matterCustom2 = matterCustom2;
+        this.matterCustom2 = matterCustom2 == null ? null : matterCustom2.trim();
     }
 
     public String getMatterCustom3() {
@@ -396,7 +420,7 @@ public class Matter {
     }
 
     public void setMatterCustom3(String matterCustom3) {
-        this.matterCustom3 = matterCustom3;
+        this.matterCustom3 = matterCustom3 == null ? null : matterCustom3.trim();
     }
 
     public String getMatterCustom4() {
@@ -404,7 +428,7 @@ public class Matter {
     }
 
     public void setMatterCustom4(String matterCustom4) {
-        this.matterCustom4 = matterCustom4;
+        this.matterCustom4 = matterCustom4 == null ? null : matterCustom4.trim();
     }
 
     public String getMatterCustom5() {
@@ -412,7 +436,7 @@ public class Matter {
     }
 
     public void setMatterCustom5(String matterCustom5) {
-        this.matterCustom5 = matterCustom5;
+        this.matterCustom5 = matterCustom5 == null ? null : matterCustom5.trim();
     }
 
     public String getMatterCustom6() {
@@ -420,6 +444,6 @@ public class Matter {
     }
 
     public void setMatterCustom6(String matterCustom6) {
-        this.matterCustom6 = matterCustom6;
+        this.matterCustom6 = matterCustom6 == null ? null : matterCustom6.trim();
     }
 }

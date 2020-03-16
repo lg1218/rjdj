@@ -1,80 +1,72 @@
 package com.accp.domain;
 
 public class SalesOutWarehouseDetailed {
-    private String sowdId;
+    private Integer ziid;
 
-    private String sowId;
+    private String zuid;
 
     private String matterId;
 
-    private String sowdEngname;
+    private String engname;
 
-    private String sowdRemark;
+    private String remark;
 
-    private String sowdPriceIncludeTax;
+    private String includeTax;
 
-    private Integer sowdSingleStatus;
+    private Double count;
 
-    private Double sowdDocumentDate;
+    private Double zqunitprice;
 
-    private Float sowdDocumentNumber;
+    private Double discount;
 
-    private Float sowdPrice;
+    private Double unitprice;
 
-    private Float sowdMoney;
+    private Double sqdPrice;
 
-    private Float sowdTaxRate;
+    private Float taxrate;
 
-    private Float sowdTaxAmount;
+    private Double taxlimit;
 
-    private Float sowdIncludingTaxAmount;
+    private Double taxinclusiveprice;
 
-    private String sowdBatchNumber;
+    private Integer complimentart;
 
-    private String sowdMaterialCombination;
+    private String itemremark;
 
-    private String sowdIfgift;
+    private Integer auditing;
 
-    private String sowdInvoiceDetails;
+    private Integer delet;
 
-    private Integer sowdNomakeInvoiceNum;
+    private String sourcelist;
 
-    private String sowdRemarks;
+    private String sourcenumber;
 
-    private String sowdSourceOrder;
+    private String custom3;
 
-    private String sowdSourceNo;
+    private String custom4;
 
-    private String sowdAuditing;
+    private String custom5;
 
-    private String sowdYn;
+    private String custom6;
 
-    private String sowdCustom1;
+    private String custom1;
 
-    private String sowdCustom2;
+    private String custom2;
 
-    private String sowdCustom3;
-
-    private String sowdCustom4;
-
-    private String sowdCustom5;
-
-    private String sowdCustom6;
-
-    public String getSowdId() {
-        return sowdId;
+    public Integer getZiid() {
+        return ziid;
     }
 
-    public void setSowdId(String sowdId) {
-        this.sowdId = sowdId;
+    public void setZiid(Integer ziid) {
+        this.ziid = ziid;
     }
 
-    public String getSowId() {
-        return sowId;
+    public String getZuid() {
+        return zuid;
     }
 
-    public void setSowId(String sowId) {
-        this.sowId = sowId;
+    public void setZuid(String zuid) {
+        this.zuid = zuid;
     }
 
     public String getMatterId() {
@@ -85,219 +77,187 @@ public class SalesOutWarehouseDetailed {
         this.matterId = matterId;
     }
 
-    public String getSowdEngname() {
-        return sowdEngname;
+    public String getEngname() {
+        return engname;
     }
 
-    public void setSowdEngname(String sowdEngname) {
-        this.sowdEngname = sowdEngname;
+    public void setEngname(String engname) {
+        this.engname = engname;
     }
 
-    public String getSowdRemark() {
-        return sowdRemark;
+    public String getRemark() {
+        return remark;
     }
 
-    public void setSowdRemark(String sowdRemark) {
-        this.sowdRemark = sowdRemark;
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
-    public String getSowdPriceIncludeTax() {
-        return sowdPriceIncludeTax;
+    public String getIncludeTax() {
+        return includeTax;
     }
 
-    public void setSowdPriceIncludeTax(String sowdPriceIncludeTax) {
-        this.sowdPriceIncludeTax = sowdPriceIncludeTax;
+    public void setIncludeTax(String includeTax) {
+        this.includeTax = includeTax;
     }
 
-    public Integer getSowdSingleStatus() {
-        return sowdSingleStatus;
+    public Double getCount() {
+        return count;
     }
 
-    public void setSowdSingleStatus(Integer sowdSingleStatus) {
-        this.sowdSingleStatus = sowdSingleStatus;
+    public void setCount(Double count) {
+        this.count = count;
     }
 
-    public Double getSowdDocumentDate() {
-        return sowdDocumentDate;
+    public Double getZqunitprice() {
+        return zqunitprice;
     }
 
-    public void setSowdDocumentDate(Double sowdDocumentDate) {
-        this.sowdDocumentDate = sowdDocumentDate;
+    public void setZqunitprice(Double zqunitprice) {
+        this.zqunitprice = zqunitprice;
     }
 
-    public Float getSowdDocumentNumber() {
-        return sowdDocumentNumber;
+    public Double getDiscount() {
+        return discount;
     }
 
-    public void setSowdDocumentNumber(Float sowdDocumentNumber) {
-        this.sowdDocumentNumber = sowdDocumentNumber;
+    public void setDiscount(Double discount) {
+        this.discount = discount;
     }
 
-    public Float getSowdPrice() {
-        return sowdPrice;
+    public Double getUnitprice() {
+        return unitprice;
     }
 
-    public void setSowdPrice(Float sowdPrice) {
-        this.sowdPrice = sowdPrice;
+    public void setUnitprice(Double unitprice) {
+        this.unitprice = unitprice;
     }
 
-    public Float getSowdMoney() {
-        return sowdMoney;
+    public Double getSqdPrice() {
+        return sqdPrice;
     }
 
-    public void setSowdMoney(Float sowdMoney) {
-        this.sowdMoney = sowdMoney;
+    public void setSqdPrice(Double sqdPrice) {
+        this.sqdPrice = sqdPrice;
     }
 
-    public Float getSowdTaxRate() {
-        return sowdTaxRate;
+    public Float getTaxrate() {
+        return taxrate;
     }
 
-    public void setSowdTaxRate(Float sowdTaxRate) {
-        this.sowdTaxRate = sowdTaxRate;
+    public void setTaxrate(Float taxrate) {
+        this.taxrate = taxrate;
     }
 
-    public Float getSowdTaxAmount() {
-        return sowdTaxAmount;
+    public Double getTaxlimit() {
+        return taxlimit;
     }
 
-    public void setSowdTaxAmount(Float sowdTaxAmount) {
-        this.sowdTaxAmount = sowdTaxAmount;
+    public void setTaxlimit(Double taxlimit) {
+        this.taxlimit = taxlimit;
     }
 
-    public Float getSowdIncludingTaxAmount() {
-        return sowdIncludingTaxAmount;
+    public Double getTaxinclusiveprice() {
+        return taxinclusiveprice;
     }
 
-    public void setSowdIncludingTaxAmount(Float sowdIncludingTaxAmount) {
-        this.sowdIncludingTaxAmount = sowdIncludingTaxAmount;
+    public void setTaxinclusiveprice(Double taxinclusiveprice) {
+        this.taxinclusiveprice = taxinclusiveprice;
     }
 
-    public String getSowdBatchNumber() {
-        return sowdBatchNumber;
+    public Integer getComplimentart() {
+        return complimentart;
     }
 
-    public void setSowdBatchNumber(String sowdBatchNumber) {
-        this.sowdBatchNumber = sowdBatchNumber;
+    public void setComplimentart(Integer complimentart) {
+        this.complimentart = complimentart;
     }
 
-    public String getSowdMaterialCombination() {
-        return sowdMaterialCombination;
+    public String getItemremark() {
+        return itemremark;
     }
 
-    public void setSowdMaterialCombination(String sowdMaterialCombination) {
-        this.sowdMaterialCombination = sowdMaterialCombination;
+    public void setItemremark(String itemremark) {
+        this.itemremark = itemremark;
     }
 
-    public String getSowdIfgift() {
-        return sowdIfgift;
+    public Integer getAuditing() {
+        return auditing;
     }
 
-    public void setSowdIfgift(String sowdIfgift) {
-        this.sowdIfgift = sowdIfgift;
+    public void setAuditing(Integer auditing) {
+        this.auditing = auditing;
     }
 
-    public String getSowdInvoiceDetails() {
-        return sowdInvoiceDetails;
+    public Integer getDelet() {
+        return delet;
     }
 
-    public void setSowdInvoiceDetails(String sowdInvoiceDetails) {
-        this.sowdInvoiceDetails = sowdInvoiceDetails;
+    public void setDelet(Integer delet) {
+        this.delet = delet;
     }
 
-    public Integer getSowdNomakeInvoiceNum() {
-        return sowdNomakeInvoiceNum;
+    public String getSourcelist() {
+        return sourcelist;
     }
 
-    public void setSowdNomakeInvoiceNum(Integer sowdNomakeInvoiceNum) {
-        this.sowdNomakeInvoiceNum = sowdNomakeInvoiceNum;
+    public void setSourcelist(String sourcelist) {
+        this.sourcelist = sourcelist;
     }
 
-    public String getSowdRemarks() {
-        return sowdRemarks;
+    public String getSourcenumber() {
+        return sourcenumber;
     }
 
-    public void setSowdRemarks(String sowdRemarks) {
-        this.sowdRemarks = sowdRemarks;
+    public void setSourcenumber(String sourcenumber) {
+        this.sourcenumber = sourcenumber;
     }
 
-    public String getSowdSourceOrder() {
-        return sowdSourceOrder;
+    public String getCustom3() {
+        return custom3;
     }
 
-    public void setSowdSourceOrder(String sowdSourceOrder) {
-        this.sowdSourceOrder = sowdSourceOrder;
+    public void setCustom3(String custom3) {
+        this.custom3 = custom3;
     }
 
-    public String getSowdSourceNo() {
-        return sowdSourceNo;
+    public String getCustom4() {
+        return custom4;
     }
 
-    public void setSowdSourceNo(String sowdSourceNo) {
-        this.sowdSourceNo = sowdSourceNo;
+    public void setCustom4(String custom4) {
+        this.custom4 = custom4;
     }
 
-    public String getSowdAuditing() {
-        return sowdAuditing;
+    public String getCustom5() {
+        return custom5;
     }
 
-    public void setSowdAuditing(String sowdAuditing) {
-        this.sowdAuditing = sowdAuditing;
+    public void setCustom5(String custom5) {
+        this.custom5 = custom5;
     }
 
-    public String getSowdYn() {
-        return sowdYn;
+    public String getCustom6() {
+        return custom6;
     }
 
-    public void setSowdYn(String sowdYn) {
-        this.sowdYn = sowdYn;
+    public void setCustom6(String custom6) {
+        this.custom6 = custom6;
     }
 
-    public String getSowdCustom1() {
-        return sowdCustom1;
+    public String getCustom1() {
+        return custom1;
     }
 
-    public void setSowdCustom1(String sowdCustom1) {
-        this.sowdCustom1 = sowdCustom1;
+    public void setCustom1(String custom1) {
+        this.custom1 = custom1;
     }
 
-    public String getSowdCustom2() {
-        return sowdCustom2;
+    public String getCustom2() {
+        return custom2;
     }
 
-    public void setSowdCustom2(String sowdCustom2) {
-        this.sowdCustom2 = sowdCustom2;
-    }
-
-    public String getSowdCustom3() {
-        return sowdCustom3;
-    }
-
-    public void setSowdCustom3(String sowdCustom3) {
-        this.sowdCustom3 = sowdCustom3;
-    }
-
-    public String getSowdCustom4() {
-        return sowdCustom4;
-    }
-
-    public void setSowdCustom4(String sowdCustom4) {
-        this.sowdCustom4 = sowdCustom4;
-    }
-
-    public String getSowdCustom5() {
-        return sowdCustom5;
-    }
-
-    public void setSowdCustom5(String sowdCustom5) {
-        this.sowdCustom5 = sowdCustom5;
-    }
-
-    public String getSowdCustom6() {
-        return sowdCustom6;
-    }
-
-    public void setSowdCustom6(String sowdCustom6) {
-        this.sowdCustom6 = sowdCustom6;
+    public void setCustom2(String custom2) {
+        this.custom2 = custom2;
     }
 }

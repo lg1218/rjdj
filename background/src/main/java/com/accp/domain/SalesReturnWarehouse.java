@@ -1,6 +1,7 @@
 package com.accp.domain;
 
 import java.util.Date;
+import java.util.List;
 
 public class SalesReturnWarehouse {
     private String srwId;
@@ -29,21 +30,21 @@ public class SalesReturnWarehouse {
 
     private Integer srwForeignTrade;
 
-    private Float srwSunnum;
+    private Double srwSunnum;
 
-    private Float srwSunmoney;
+    private Double srwSunmoney;
 
-    private Float srwTax;
+    private Double srwTax;
 
-    private String srwIncludingTaxAmount;
+    private Double srwIncludingTaxAmount;
 
-    private Date srwSaleszkgs;
+    private String srwSaleszkgs;
 
     private String srwSalesdate;
 
-    private Integer srwSalessktj;
+    private String srwSalessktj;
 
-    private Date srwSalesday;
+    private Integer srwSalesday;
 
     private String srwSalesyue;
 
@@ -78,8 +79,18 @@ public class SalesReturnWarehouse {
     private String srwCustom5;
 
     private String srwCustom6;
+    
+    private List<SalesReturnWarehouseDetailed> list;
 
-    public String getSrwId() {
+    public List<SalesReturnWarehouseDetailed> getList() {
+		return list;
+	}
+
+	public void setList(List<SalesReturnWarehouseDetailed> list) {
+		this.list = list;
+	}
+
+	public String getSrwId() {
         return srwId;
     }
 
@@ -183,43 +194,43 @@ public class SalesReturnWarehouse {
         this.srwForeignTrade = srwForeignTrade;
     }
 
-    public Float getSrwSunnum() {
+    public Double getSrwSunnum() {
         return srwSunnum;
     }
 
-    public void setSrwSunnum(Float srwSunnum) {
+    public void setSrwSunnum(Double srwSunnum) {
         this.srwSunnum = srwSunnum;
     }
 
-    public Float getSrwSunmoney() {
+    public Double getSrwSunmoney() {
         return srwSunmoney;
     }
 
-    public void setSrwSunmoney(Float srwSunmoney) {
+    public void setSrwSunmoney(Double srwSunmoney) {
         this.srwSunmoney = srwSunmoney;
     }
 
-    public Float getSrwTax() {
+    public Double getSrwTax() {
         return srwTax;
     }
 
-    public void setSrwTax(Float srwTax) {
+    public void setSrwTax(Double srwTax) {
         this.srwTax = srwTax;
     }
 
-    public String getSrwIncludingTaxAmount() {
+    public Double getSrwIncludingTaxAmount() {
         return srwIncludingTaxAmount;
     }
 
-    public void setSrwIncludingTaxAmount(String srwIncludingTaxAmount) {
+    public void setSrwIncludingTaxAmount(Double srwIncludingTaxAmount) {
         this.srwIncludingTaxAmount = srwIncludingTaxAmount;
     }
 
-    public Date getSrwSaleszkgs() {
+    public String getSrwSaleszkgs() {
         return srwSaleszkgs;
     }
 
-    public void setSrwSaleszkgs(Date srwSaleszkgs) {
+    public void setSrwSaleszkgs(String srwSaleszkgs) {
         this.srwSaleszkgs = srwSaleszkgs;
     }
 
@@ -231,19 +242,19 @@ public class SalesReturnWarehouse {
         this.srwSalesdate = srwSalesdate;
     }
 
-    public Integer getSrwSalessktj() {
+    public String getSrwSalessktj() {
         return srwSalessktj;
     }
 
-    public void setSrwSalessktj(Integer srwSalessktj) {
+    public void setSrwSalessktj(String srwSalessktj) {
         this.srwSalessktj = srwSalessktj;
     }
 
-    public Date getSrwSalesday() {
+    public Integer getSrwSalesday() {
         return srwSalesday;
     }
 
-    public void setSrwSalesday(Date srwSalesday) {
+    public void setSrwSalesday(Integer srwSalesday) {
         this.srwSalesday = srwSalesday;
     }
 
